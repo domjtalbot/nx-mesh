@@ -50,7 +50,7 @@ jobs:
             ${{ runner.os }}-yarn-dep-cache-v1-
 
       - name: Install Node Dependencies
-        if: steps.yarn-cache-dir-path.outputs.cache-hit != 'true'
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn
 
       - name: Lint
