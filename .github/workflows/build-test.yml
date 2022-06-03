@@ -34,14 +34,14 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Volta
-        uses: volta-cli/action@v1.7.0
+        uses: volta-cli/action@76620aa011ba56028bb0bae35caa5f9b6118c8c7 # tag=v1.7.0
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
 
       - name: Cache Node Dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@30f413bfed0a2bc738fdfd409e5a9e96b24545fd # tag=v3
         id: yarn-cache
         with:
           path: |
@@ -58,7 +58,7 @@ jobs:
         run: yarn
 
       - name: Nx Shas
-        uses: nrwl/nx-set-shas@v2.0.2
+        uses: nrwl/nx-set-shas@f17afe25f004cf689fe46eae699d71123de43b9c # tag=v2.0.2
 
       - name: Lint
         run: yarn lint
@@ -70,7 +70,7 @@ jobs:
         run: yarn build
 
       - name: E2E
-        uses: cypress-io/github-action@v4.0.0
+        uses: cypress-io/github-action@f9e9419e05e5b83168d397d9c1d8d40ea179901e # tag=v4.0.0
         with:
           install: false
           command: yarn e2e
