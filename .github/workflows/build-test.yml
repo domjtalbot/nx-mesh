@@ -19,7 +19,7 @@ concurrency:
 
 jobs:
   build-test:
-    name: Build & Push
+    name: Build & Test
     runs-on: ubuntu-latest
     steps:
       # Enable tmate debugging of manually-triggered workflows
