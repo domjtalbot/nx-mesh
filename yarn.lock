@@ -2031,7 +2031,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nrwl/devkit@npm:14.1.9":
+"@nrwl/devkit@npm:14.1.9, @nrwl/devkit@npm:^14.1.9":
   version: 14.1.9
   resolution: "@nrwl/devkit@npm:14.1.9"
   dependencies:
@@ -10006,6 +10006,7 @@ __metadata:
   dependencies:
     "@nrwl/cli": 14.1.9
     "@nrwl/cypress": 14.1.9
+    "@nrwl/devkit": ^14.1.9
     "@nrwl/eslint-plugin-nx": 14.1.9
     "@nrwl/jest": 14.1.9
     "@nrwl/linter": 14.1.9
