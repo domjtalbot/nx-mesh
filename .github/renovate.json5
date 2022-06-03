@@ -1,0 +1,9 @@
+{
+  /*
+   * Extend configuration presets.
+   *
+   * @link Documentation - https://docs.renovatebot.com/configuration-options/#extends
+   * @link Shareable Config Presets - https://docs.renovatebot.com/config-presets/
+   */
+  extends: ["github>domjtalbot/renovate"],
+}
