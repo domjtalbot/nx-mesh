@@ -58,7 +58,7 @@ jobs:
         run: yarn
 
       - name: Nx Shas
-        uses: nrwl/nx-set-shas@f17afe25f004cf689fe46eae699d71123de43b9c # tag=v2.0.2
+        uses: nrwl/nx-set-shas@a80e36fdf700047d299324529b0f0eadc1a38cb2 # tag=v2.2.2
 
       - name: Lint
         run: yarn lint
