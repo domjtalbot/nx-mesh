@@ -1,0 +1,6 @@
+# Kodiak GitHub App config
+# https://kodiakhq.com
+# https://github.com/marketplace/kodiakhq#pricing-and-setup
+
+# Minimal config. version is the only required field.
+version = 1
