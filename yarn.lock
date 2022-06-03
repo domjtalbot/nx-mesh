@@ -2165,6 +2165,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nrwl/nx-plugin@npm:^14.1.9":
+  version: 14.1.9
+  resolution: "@nrwl/nx-plugin@npm:14.1.9"
+  dependencies:
+    "@nrwl/devkit": 14.1.9
+    "@nrwl/jest": 14.1.9
+    "@nrwl/js": 14.1.9
+    "@nrwl/linter": 14.1.9
+    fs-extra: ^10.1.0
+    rxjs: ^6.5.4
+    tslib: ^2.3.0
+  checksum: 2a10b4434731e4475c8414124f3379329b221e4ce6ed539c7151b6f62ba26b7f1e75e6188745fc20110410dee4b42f96538756aa3447fe283faad8cb91e7b568
+  languageName: node
+  linkType: hard
+
 "@nrwl/react@npm:14.1.9":
   version: 14.1.9
   resolution: "@nrwl/react@npm:14.1.9"
@@ -10012,6 +10027,7 @@ __metadata:
     "@nrwl/linter": 14.1.9
     "@nrwl/next": 14.1.9
     "@nrwl/nx-cloud": latest
+    "@nrwl/nx-plugin": ^14.1.9
     "@nrwl/react": 14.1.9
     "@nrwl/web": 14.1.9
     "@nrwl/workspace": 14.1.9
