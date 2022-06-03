@@ -30,6 +30,8 @@ jobs:
 
       - name: Check out repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
+        with:
+          fetch-depth: 0
 
       - name: Setup Volta
         uses: volta-cli/action@v1.7.0
@@ -54,6 +56,9 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn
 
+      - name: Nx Shas
+        uses: nrwl/nx-set-shas@v2.0.2
+
       - name: Lint
         run: yarn lint
 
@@ -64,4 +69,7 @@ jobs:
         run: yarn build
 
       - name: E2E
-        run: yarn e2e
+        uses: cypress-io/github-action@v4.0.0
+        with:
+          install: false
+          command: yarn e2e
