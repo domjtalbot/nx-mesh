@@ -1,0 +1,72 @@
+# =========================================================
+# Git Line Endings
+# =========================================================
+
+# Set default behaviour to automatically normalize
+# line endings.
+* text=auto
+
+# Force batch scripts to always use CRLF line endings
+# so that if a repo is accessed in Windows via a file
+# share from Linux, the scripts will work.
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
+
+# Force bash scripts to always use LF line endings so
+# that if a repo is accessed in Unix via a file share
+# from Windows, the scripts will work.
+*.sh text eol=lf
+
+
+# =========================================================
+# File Settings
+# =========================================================
+
+# Archives
+*.7z -text
+*.br -text
+*.gz -text
+*.tar -text
+*.tar.bz2 -text
+*.tar -text
+*.zip -text
+
+# Ignore files (like .npmignore or .gitignore)
+*.*ignore text
+
+# Config files (like .babelrc or .eslintrc).
+*.*rc text
+
+# Git treats .svg as binary by default.
+*.svg text
+
+# Mark built apps as generated to prevent
+# merge conflicts and hide files from GitHub's
+# langauge detection.
+/dist/** linguist-generated -diff -merge
+
+# Mark Yarn generated files as generated to prevent
+# merge conflicts and hide files from GitHub's
+# langauge detection.
+/.pnp.* linguist-generated -diff -merge
+/.yarn/** linguist-generated -diff -merge
+yarn.lock linguist-generated -diff -merge
+
+# Hide documentation from GitHub's language detection.
+/docs/** linguist-documentation
+/docs-website/** linguist-documentation
+
+# Mark built javascript binaries as generated
+# Without this, the repo is marked as >90% javascript,
+# while most code is actually typescript.
+/packages/*/bin/**/*.js linguist-generated
+/packages/*/lib/*.js linguist-generated
+
+# Mark generated files as generated to
+# prevent merge conflicts and hide from GitHub's
+# language detection.
+*.generated.* linguist-generated -diff -merge
+
+# Set the language for these files to json5 to ensure
+# GitHub doesn't show the comments as errors.
+/.vscode/*.json linguist-language=JSON5

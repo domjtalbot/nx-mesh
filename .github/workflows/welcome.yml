@@ -1,0 +1,33 @@
+name: Welcome 👋
+
+permissions:
+  issues: write
+  pull-requests: write
+
+on:
+  pull_request:
+    types: ['opened']
+  issues:
+    types: ['opened']
+
+jobs:
+  welcome:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: 'Welcome 👋'
+        uses: actions/first-interaction@bd33205aa5c96838e10fd65df0d01efd613677c1 # tag=v1.1.0
+        with:
+          issue-message: |
+            Welcome, ${{github.actor}}! 👋
+            Thanks for submitting your first issue! :rocket:
+          pr-message: |
+            Welcome, ${{github.actor}}! :wave:
+            Thanks for submitting your first pull request! :rocket:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Add label to first time contributoins
+        uses: Code-Hex/first-label-interaction@68f71358707a913224afdbf8dc47764807345d4c # tag=v1.0.2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-labels: '["first time contribution"]'
+          pr-labels: '["first time contribution"]'
