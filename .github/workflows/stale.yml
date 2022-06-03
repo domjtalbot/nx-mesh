@@ -14,10 +14,10 @@ on:
   schedule:
     # Checkout for updates daily at midnight
     - cron: '0 0 * * *'
-  
+
   workflow_dispatch:
 
-concurrency: 
+concurrency:
   group: ${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 

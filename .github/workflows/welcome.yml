@@ -6,15 +6,15 @@ permissions:
 
 on:
   pull_request:
-    types: ["opened"]
+    types: ['opened']
   issues:
-    types: ["opened"]
+    types: ['opened']
 
 jobs:
   welcome:
     runs-on: ubuntu-20.04
     steps:
-      - name: "Welcome 👋"
+      - name: 'Welcome 👋'
         uses: actions/first-interaction@bd33205aa5c96838e10fd65df0d01efd613677c1 # tag=v1.1.0
         with:
           issue-message: |

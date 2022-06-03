@@ -4,9 +4,11 @@
   "packageManager": "yarn@3.2.1",
   "license": "MIT",
   "scripts": {
-    "start": "nx serve",
-    "build": "nx build",
-    "test": "nx test"
+    "build": "nx run-many --target=build --all",
+    "e2e": "nx run-many --target=e2e --all",
+    "lint:fix": "nx format:write && nx run-many --target=lint --all --fix",
+    "lint": "nx workspace-lint && nx format && nx run-many --target=lint --all",
+    "test": "nx run-many --target=test --all"
   },
   "private": true,
   "dependencies": {
