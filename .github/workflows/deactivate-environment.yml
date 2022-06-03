@@ -1,0 +1,24 @@
+name: 'Deactivate Environment'
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'What is the name of the environment you want to deactivate?'
+        required: true
+
+concurrency: 
+  group: ${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  deactivate-env:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Deactive Environment
+        uses: bobheadxi/deployments@11bd6447913c3ffeedb5552bcf6890d1668d9732 # tag=v1.2.0
+        with:
+          env: ${{ github.event.inputs.environment }}
+          step: deactivate-env
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
