@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "example-nextjs": "apps/example-nextjs",
-    "example-nextjs-e2e": "apps/example-nextjs-e2e"
+    "example-nextjs-e2e": "apps/example-nextjs-e2e",
+    "nx-plugin-graphql-mesh": "libs/nx-plugin-graphql-mesh"
   }
 }

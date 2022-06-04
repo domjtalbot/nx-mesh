@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@domjtalbot/nx-plugin-graphql-mesh": [
+        "libs/nx-plugin-graphql-mesh/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
