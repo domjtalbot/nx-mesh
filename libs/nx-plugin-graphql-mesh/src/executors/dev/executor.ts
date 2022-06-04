@@ -1,8 +1,36 @@
-import { DevExecutorSchema } from './schema';
+import type { ExecutorContext } from '@nrwl/devkit';
 
-export default async function runExecutor(options: DevExecutorSchema) {
-  console.log('Executor ran for Dev', options);
-  return {
-    success: true,
-  };
+import runCommandsExecutor from 'nx/src/executors/run-commands/run-commands.impl';
+
+import { resolve } from 'path';
+
+import { DevExecutorSchema } from './schema';
+import { createMeshCommand } from '../../utils/mesh-command/mesh-command';
+
+export default async function runExecutor(
+  options: DevExecutorSchema,
+  context: ExecutorContext
+) {
+  const command = await createMeshCommand('dev', {
+    debug: options.debug,
+    dir: resolve(context.root, options.dir),
+    port: options.port,
+    require: options.require,
+  });
+
+  const result = await runCommandsExecutor(
+    {
+      commands: [
+        {
+          command,
+          forwardAllArgs: false,
+        },
+      ],
+      project: context.projectName,
+      name: context.target,
+    },
+    context
+  );
+
+  return result;
 }
