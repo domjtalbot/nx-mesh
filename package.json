@@ -15,6 +15,7 @@
   "dependencies": {
     "@nrwl/devkit": "14.1.9",
     "@nrwl/next": "14.1.9",
+    "@nrwl/node": "^14.1.9",
     "@nrwl/nx-plugin": "14.1.9",
     "core-js": "3.22.8",
     "next": "12.1.5",

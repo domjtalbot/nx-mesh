@@ -2150,6 +2150,39 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nrwl/node@npm:^14.1.9":
+  version: 14.1.9
+  resolution: "@nrwl/node@npm:14.1.9"
+  dependencies:
+    "@nrwl/devkit": 14.1.9
+    "@nrwl/jest": 14.1.9
+    "@nrwl/js": 14.1.9
+    "@nrwl/linter": 14.1.9
+    "@nrwl/workspace": 14.1.9
+    chalk: 4.1.0
+    copy-webpack-plugin: ^9.0.1
+    enhanced-resolve: ^5.8.3
+    fork-ts-checker-webpack-plugin: 6.2.10
+    fs-extra: ^10.1.0
+    glob: 7.1.4
+    license-webpack-plugin: ^4.0.2
+    rxjs: ^6.5.4
+    rxjs-for-await: 0.0.2
+    source-map-support: 0.5.19
+    terser-webpack-plugin: ^5.3.0
+    tree-kill: 1.2.2
+    ts-loader: ^9.2.6
+    ts-node: ~9.1.1
+    tsconfig-paths: ^3.9.0
+    tsconfig-paths-webpack-plugin: 3.5.2
+    tslib: ^2.3.0
+    webpack: ^5.58.1
+    webpack-merge: ^5.8.0
+    webpack-node-externals: ^3.0.0
+  checksum: 22ff506afd266799656c3183b8061a6ed2dcf525fefabcaf477d98ebd2ff88bba91781329fc5456f61620686c65548c365c87f53262e310ac0e340c894bf800e
+  languageName: node
+  linkType: hard
+
 "@nrwl/nx-cloud@npm:latest":
   version: 14.0.5
   resolution: "@nrwl/nx-cloud@npm:14.0.5"
@@ -10163,6 +10196,7 @@ __metadata:
     "@nrwl/js": 14.1.9
     "@nrwl/linter": 14.1.9
     "@nrwl/next": 14.1.9
+    "@nrwl/node": ^14.1.9
     "@nrwl/nx-cloud": latest
     "@nrwl/nx-plugin": 14.1.9
     "@nrwl/react": 14.1.9
