@@ -1,0 +1,32 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/example-api-gateway/src",
+  "projectType": "application",
+  "targets": {
+    "dev": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:dev",
+      "options": {
+        "debug": false,
+        "dir": "apps/example-api-gateway",
+        "port": 4500,
+        "require": []
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/example-api-gateway/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/example-api-gateway"],
+      "options": {
+        "jestConfig": "apps/example-api-gateway/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["type:app"]
+}
