@@ -1953,27 +1953,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-mesh/json-schema@npm:^0.28.14":
-  version: 0.28.14
-  resolution: "@graphql-mesh/json-schema@npm:0.28.14"
-  dependencies:
-    "@graphql-mesh/cross-helpers": 0.1.6
-    "@graphql-mesh/store": 0.8.11
-    "@graphql-mesh/string-interpolation": 0.2.0
-    "@graphql-mesh/types": 0.73.2
-    "@graphql-mesh/utils": 0.35.2
-    "@graphql-tools/utils": 8.6.12
-    "@json-schema-tools/meta-schema": 1.6.19
-    "@omnigraph/json-schema": 0.20.2
-    graphql-compose: 9.0.8
-    json-machete: 0.8.10
-    tslib: ^2.3.1
-  peerDependencies:
-    graphql: "*"
-  checksum: 0af22f3851510ac8a391ea903ea9697af434d9863295c851aeb55bd5c4af4f4c1a62ca10f7cdc76c4f97505f2bfb3c7d019e0eca8f1c1ff59568e8082b1ee6aa
-  languageName: node
-  linkType: hard
-
 "@graphql-mesh/merger-bare@npm:0.13.50":
   version: 0.13.50
   resolution: "@graphql-mesh/merger-bare@npm:0.13.50"
@@ -2730,13 +2709,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@json-schema-tools/meta-schema@npm:1.6.19":
-  version: 1.6.19
-  resolution: "@json-schema-tools/meta-schema@npm:1.6.19"
-  checksum: 0105281416ee79fe027b10b952eec02e21466a7a0ffffc5e280d7d32ec8776536fd420456d0b4f605ecb1bef04efe3e35e75687aa3b1a256e8825078d4843233
-  languageName: node
-  linkType: hard
-
 "@leichtgewicht/ip-codec@npm:^2.0.1":
   version: 2.0.4
   resolution: "@leichtgewicht/ip-codec@npm:2.0.4"
@@ -3320,34 +3292,6 @@ __metadata:
     prettier:
       optional: true
   checksum: 9c3f5778ad762653160902b611eca5b3d05be75b946d25eaf95b3eb808d22e401e89f96677deb8b8453a85c83c3415b1473752788997a1790a418667eb6c8f0c
-  languageName: node
-  linkType: hard
-
-"@omnigraph/json-schema@npm:0.20.2":
-  version: 0.20.2
-  resolution: "@omnigraph/json-schema@npm:0.20.2"
-  dependencies:
-    "@graphql-mesh/cross-helpers": 0.1.6
-    "@graphql-mesh/string-interpolation": 0.2.0
-    "@graphql-mesh/types": 0.73.2
-    "@graphql-mesh/utils": 0.35.2
-    "@graphql-tools/utils": 8.6.12
-    "@json-schema-tools/meta-schema": 1.6.19
-    ajv: 8.11.0
-    ajv-formats: 2.1.1
-    cross-undici-fetch: ^0.4.0
-    graphql-compose: 9.0.8
-    graphql-scalars: 1.17.0
-    json-machete: 0.8.10
-    lodash.set: 4.3.2
-    pascal-case: 3.1.2
-    qs: 6.10.3
-    to-json-schema: 0.2.5
-    tslib: ^2.3.1
-    url-join: 4.0.1
-  peerDependencies:
-    graphql: "*"
-  checksum: 71e320fe85c28a607cc5c403a62022cea41daf430f68774d143be82b32b2dbe9fe600c9b7ef343e84d72f7d988ff5e051c0507a3715f7791fd9034dc35573ff3
   languageName: node
   linkType: hard
 
@@ -4962,7 +4906,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ajv-formats@npm:2.1.1, ajv-formats@npm:^2.1.1":
+"ajv-formats@npm:^2.1.1":
   version: 2.1.1
   resolution: "ajv-formats@npm:2.1.1"
   dependencies:
@@ -9001,17 +8945,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql-compose@npm:9.0.8":
-  version: 9.0.8
-  resolution: "graphql-compose@npm:9.0.8"
-  dependencies:
-    graphql-type-json: 0.3.2
-  peerDependencies:
-    graphql: ^14.2.0 || ^15.0.0 || ^16.0.0
-  checksum: 92ac0311bacf30cddf12309a81cf6b4ac29314254d933a7eb806e7ae343ec43eef0ee87c6cd10b34b493b9cd87cd726131dccfa9d739669001fc46896ea40fe3
-  languageName: node
-  linkType: hard
-
 "graphql-executor@npm:0.0.23":
   version: 0.0.23
   resolution: "graphql-executor@npm:0.0.23"
@@ -9060,15 +8993,6 @@ __metadata:
   peerDependencies:
     graphql: ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
   checksum: b15162a3d62f17b9b79302445b9ee330e041582f1c7faca74b9dec5daa74272c906ec1c34e1c50592bb6215e5c3eba80a309103f6ba9e4c1cddc350c46f010df
-  languageName: node
-  linkType: hard
-
-"graphql-type-json@npm:0.3.2":
-  version: 0.3.2
-  resolution: "graphql-type-json@npm:0.3.2"
-  peerDependencies:
-    graphql: ">=0.8.0"
-  checksum: 41620699637a5294937bd61d6e2696edea5a1279ef3d8f4b33716a910635595435381ccd1b74c6fae62c2bc81064c62ae27d3559c8380c0f99bdfdc8ecb249b0
   languageName: node
   linkType: hard
 
@@ -10793,23 +10717,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json-machete@npm:0.8.10":
-  version: 0.8.10
-  resolution: "json-machete@npm:0.8.10"
-  dependencies:
-    "@graphql-mesh/cross-helpers": 0.1.6
-    "@graphql-mesh/utils": 0.35.2
-    "@graphql-tools/utils": 8.6.12
-    "@json-schema-tools/meta-schema": 1.6.19
-    cross-undici-fetch: ^0.4.0
-    json-pointer: 0.6.2
-    to-json-schema: 0.2.5
-    tslib: ^2.3.1
-    url-join: 4.0.1
-  checksum: b8a1839896ee9ba799384c5151f5db4eca20cddb0a9f6e6e3ff0ae353e854a59a8073f141f72356015ba94fe4aac34b5bbb0833b37408fb9595892dfb328df65
-  languageName: node
-  linkType: hard
-
 "json-parse-even-better-errors@npm:^2.3.0, json-parse-even-better-errors@npm:^2.3.1":
   version: 2.3.1
   resolution: "json-parse-even-better-errors@npm:2.3.1"
@@ -11319,13 +11226,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.keys@npm:^4.2.0":
-  version: 4.2.0
-  resolution: "lodash.keys@npm:4.2.0"
-  checksum: 055576c8c4a0bacc0c1da9bcbb520e6e70dcf94c609495263686c62c8242a440293e9ab8387a7398dda529cb05b76e8f783c3fd3d6ba7bc6d5d6d2e08e8512ae
-  languageName: node
-  linkType: hard
-
 "lodash.memoize@npm:4.x, lodash.memoize@npm:^4.1.2":
   version: 4.1.2
   resolution: "lodash.memoize@npm:4.1.2"
@@ -11337,13 +11237,6 @@ __metadata:
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
   checksum: ad580b4bdbb7ca1f7abf7e1bce63a9a0b98e370cf40194b03380a46b4ed799c9573029599caebc1b14e3f24b111aef72b96674a56cfa105e0f5ac70546cdc005
-  languageName: node
-  linkType: hard
-
-"lodash.omit@npm:^4.5.0":
-  version: 4.5.0
-  resolution: "lodash.omit@npm:4.5.0"
-  checksum: 434645e49fe84ab315719bd5a9a3a585a0f624aa4160bc09157dd041a414bcc287c15840365c1379476a3f3eda41fbe838976c3f7bdecbbf4c5478e86c471a30
   languageName: node
   linkType: hard
 
@@ -11372,20 +11265,6 @@ __metadata:
   version: 4.5.0
   resolution: "lodash.uniq@npm:4.5.0"
   checksum: a4779b57a8d0f3c441af13d9afe7ecff22dd1b8ce1129849f71d9bbc8e8ee4e46dfb4b7c28f7ad3d67481edd6e51126e4e2a6ee276e25906d10f7140187c392d
-  languageName: node
-  linkType: hard
-
-"lodash.without@npm:^4.4.0":
-  version: 4.4.0
-  resolution: "lodash.without@npm:4.4.0"
-  checksum: 8cef752edd4ed4065be2a8fd30ea52c0bb27b0cb6c34742f595263c72ee0c3a188572affb477ef18a4dd4d0347fe1a4e580b70d4e36f37323d7924d2e6046bd6
-  languageName: node
-  linkType: hard
-
-"lodash.xor@npm:^4.5.0":
-  version: 4.5.0
-  resolution: "lodash.xor@npm:4.5.0"
-  checksum: af4df3638cad1fd565ce440c10956938c27f90e6fc7e2f9fa7cd405c8f0aae706a1bdb3fa006b51fa9cbe82427461c42d9bea67304b37aba20d77a37adc3faf8
   languageName: node
   linkType: hard
 
@@ -12167,7 +12046,6 @@ __metadata:
   resolution: "nx-plugin-graphql-mesh@workspace:."
   dependencies:
     "@graphql-mesh/cli": ^0.71.2
-    "@graphql-mesh/json-schema": ^0.28.14
     "@graphql-mesh/openapi": ^0.25.10
     "@nrwl/cli": 14.1.9
     "@nrwl/cypress": 14.1.9
@@ -15481,20 +15359,6 @@ __metadata:
   version: 2.0.0
   resolution: "to-fast-properties@npm:2.0.0"
   checksum: be2de62fe58ead94e3e592680052683b1ec986c72d589e7b21e5697f8744cdbf48c266fa72f6c15932894c10187b5f54573a3bcf7da0bfd964d5caf23d436168
-  languageName: node
-  linkType: hard
-
-"to-json-schema@npm:0.2.5":
-  version: 0.2.5
-  resolution: "to-json-schema@npm:0.2.5"
-  dependencies:
-    lodash.isequal: ^4.5.0
-    lodash.keys: ^4.2.0
-    lodash.merge: ^4.6.2
-    lodash.omit: ^4.5.0
-    lodash.without: ^4.4.0
-    lodash.xor: ^4.5.0
-  checksum: eaedd574b067985946614bfab10d211c6ff1cfdd97e852e04636693e3b771f2785e992a31528ef2e55e498ef307e7aac9daf01d23151e4e45cacb6cfc4357552
   languageName: node
   linkType: hard
 
