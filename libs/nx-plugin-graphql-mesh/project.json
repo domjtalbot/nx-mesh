@@ -11,6 +11,7 @@
         "main": "libs/nx-plugin-graphql-mesh/src/index.ts",
         "tsConfig": "libs/nx-plugin-graphql-mesh/tsconfig.lib.json",
         "assets": [
+          "README.md",
           "libs/nx-plugin-graphql-mesh/*.md",
           {
             "input": "./libs/nx-plugin-graphql-mesh/src",
