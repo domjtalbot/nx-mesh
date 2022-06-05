@@ -28,6 +28,8 @@ export default async function runExecutor(
       ],
       project: context.projectName,
       name: context.target,
+      parallel: true,
+      readyWhen: 'Serving GraphQL Mesh:',
     },
     context
   );

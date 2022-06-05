@@ -6,10 +6,14 @@
     "dev": {
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:dev",
       "options": {
-        "debug": false,
         "dir": "apps/example-api-gateway",
-        "port": 4500,
-        "require": []
+        "port": 4500
+      },
+      "configurations": {
+        "e2e": {
+          "debug": false,
+          "port": 4600
+        }
       }
     },
     "lint": {
