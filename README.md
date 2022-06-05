@@ -16,6 +16,15 @@
 
 ## How to use
 
+### Peer Dependencies
+
+| Name                    | Version    | Required |
+| ----------------------- | ---------- | -------- |
+| **`@graphql-mesh/cli`** | `>=0.71.0` | `true`   |
+| **`nx`**                | `>=14`     | `true`   |
+
+<br/>
+
 ## Executors
 
 ### Dev

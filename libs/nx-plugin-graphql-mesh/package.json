@@ -3,5 +3,9 @@
   "version": "0.0.1",
   "main": "src/index.js",
   "generators": "./generators.json",
-  "executors": "./executors.json"
+  "executors": "./executors.json",
+  "peerDependencies": {
+    "@graphql-mesh/cli": ">=0.71.0",
+    "nx": ">=14"
+  }
 }
