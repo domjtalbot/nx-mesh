@@ -13,6 +13,36 @@
 </div>
 
 <br/>
+
+## How to use
+
+### Dev
+
+Serves a GraphQL server with GraphQL interface by building artifacts on the fly.
+
+This is the equifilent of using `graphql-mesh dev`.
+
+```json
+"targets": {
+  "dev": {
+    "executor": "@domjtalbot/nx-plugin-graphql-mesh:dev",
+    "options": {
+      "dir": "path/to/app/or/lib",
+    },
+  },
+}
+```
+
+#### Options
+
+| Name          | Type       | Required | Default | Description                                                                                 |
+| ------------- | ---------- | -------- | ------- | ------------------------------------------------------------------------------------------- |
+| **`debug`**   | `boolean`  | `false`  | `false` | Display debugging info by applying the `DEBUG` env variable.                                |
+| **`dir`**     | `string`   | `true`   | -       | The path of the directory containing the GraphQL Mesh config.                               |
+| **`port`**    | `number`   | `false`  | `4000`  | The port number to run on.                                                                  |
+| **`require`** | `string[]` | `false`  | `[]`    | Loads specific require.extensions before running the codegen and reading the configuration. |
+
+<br/>
 <br/>
 
 <p align="center">🕸️ ♥ 🐋</p>
