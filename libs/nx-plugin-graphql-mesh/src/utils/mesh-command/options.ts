@@ -104,6 +104,9 @@ export const normalizeOptions = <T extends MeshCommand>(
   const flags: NormalizedOptions<T>['flags'] = {};
 
   Object.keys(options).forEach((key) => {
+    const requireValues =
+      key === 'require' ? normalizeRequireOption(options[key]) : undefined;
+
     switch (key) {
       case 'debug':
         env[key] = `DEBUG=${+options[key]}`;
@@ -122,7 +125,9 @@ export const normalizeOptions = <T extends MeshCommand>(
         break;
 
       case 'require':
-        flags[key] = normalizeRequireOption(options[key]);
+        if (requireValues) {
+          flags[key] = `--require ${requireValues}`;
+        }
         break;
 
       default:

@@ -24,6 +24,26 @@ describe('createMeshCommand', () => {
     expect(output).toContain(`--dir ${dir}`);
   });
 
+  it('can set the require extensions', async () => {
+    const output = await createMeshCommand('build', {
+      ...options,
+      require: ['env', 'lodash'],
+    });
+
+    expect(output).toContain(`--require env lodash`);
+  });
+
+  it.each(['build', 'dev', 'start', 'serve-source', 'validate'])(
+    'only sets the %s require flag when a value is provided',
+    async (command: MeshCommand) => {
+      const output = await createMeshCommand(command, {
+        ...options,
+      });
+
+      expect(output).not.toContain('--require');
+    }
+  );
+
   it.each([true, false])(
     'can set the debug mode to %s',
     async (debug: boolean) => {
@@ -158,53 +178,68 @@ describe('createMeshCommand', () => {
 
     it('can accept build options', async () => {
       const result = normalizeOptions<'build'>({
-        ...options,
         debug: false,
+        dir: '/path/to/dir',
         fileType: 'ts',
+        require: ['env', 'lodash'],
       });
 
-      expect(result.flags.fileType).toBe(`--fileType ts`);
       expect(result.env.debug).toBe(debugDisabled);
+      expect(result.flags.dir).toBe('--dir /path/to/dir');
+      expect(result.flags.fileType).toBe(`--fileType ts`);
+      expect(result.flags.require).toBe('--require env lodash');
     });
 
     it('can accept dev options', async () => {
       const result = normalizeOptions<'dev'>({
-        ...options,
         debug: false,
+        dir: '/path/to/dir',
         port: 1234,
+        require: ['env', 'lodash'],
       });
 
-      expect(result.flags.port).toBe(`--port 1234`);
       expect(result.env.debug).toBe(debugDisabled);
+      expect(result.flags.dir).toBe('--dir /path/to/dir');
+      expect(result.flags.port).toBe('--port 1234');
+      expect(result.flags.require).toBe('--require env lodash');
     });
 
     it('can accept serve-source options', async () => {
       const result = normalizeOptions<'serve-source'>({
-        ...options,
         debug: false,
+        dir: '/path/to/dir',
+        require: ['env', 'lodash'],
       });
 
       expect(result.env.debug).toBe(debugDisabled);
+      expect(result.flags.dir).toBe('--dir /path/to/dir');
+      expect(result.flags.require).toBe('--require env lodash');
     });
 
     it('can accept start options', async () => {
       const result = normalizeOptions<'start'>({
-        ...options,
         debug: false,
+        dir: '/path/to/dir',
         port: 1234,
+        require: ['env', 'lodash'],
       });
 
-      expect(result.flags.port).toBe(`--port 1234`);
       expect(result.env.debug).toBe(debugDisabled);
+      expect(result.flags.dir).toBe('--dir /path/to/dir');
+      expect(result.flags.port).toBe(`--port 1234`);
+      expect(result.flags.require).toBe('--require env lodash');
     });
 
     it('can accept validate options', async () => {
       const result = normalizeOptions<'validate'>({
-        ...options,
         debug: false,
+        dir: '/path/to/dir',
+        require: ['env', 'lodash'],
       });
 
       expect(result.env.debug).toBe(debugDisabled);
+      expect(result.flags.dir).toBe('--dir /path/to/dir');
+      expect(result.flags.require).toBe('--require env lodash');
     });
   });
 });
