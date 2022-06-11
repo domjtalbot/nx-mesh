@@ -1,38 +1,62 @@
 import type { ExecutorContext } from '@nrwl/devkit';
 
-import runCommandsExecutor from 'nx/src/executors/run-commands/run-commands.impl';
-
+import { logger } from '@nrwl/devkit';
 import { resolve } from 'path';
 
-import { DevExecutorSchema } from './schema';
-import { createMeshCommand } from '../../utils/mesh-command/mesh-command';
+import { childProcess, runMeshCli } from '../../utils/mesh-cli';
 
-export default async function runExecutor(
+import { DevExecutorSchema } from './schema';
+
+const readyWhenMsg = 'Serving GraphQL Mesh:';
+
+export default async function* devExecutor(
   options: DevExecutorSchema,
   context: ExecutorContext
 ) {
-  const command = await createMeshCommand('dev', {
-    debug: options.debug,
-    dir: resolve(context.root, options.dir),
-    port: options.port,
-    require: options.require,
-  });
+  const baseUrl = `http://0.0.0.0:${options.port}`;
 
-  const result = await runCommandsExecutor(
+  logger.info('Starting GraphQL Mesh dev server...');
+
+  runMeshCli(
+    'dev',
     {
-      commands: [
-        {
-          command,
-          forwardAllArgs: false,
-        },
-      ],
-      project: context.projectName,
-      name: context.target,
-      parallel: true,
-      readyWhen: 'Serving GraphQL Mesh:',
+      args: {
+        dir: resolve(context.root, options.dir),
+        port: options.port,
+        require: options.require,
+      },
+      env: {
+        debug: options.debug,
+      },
     },
-    context
+    context,
+    {
+      stdio: 'pipe',
+    }
   );
 
-  return result;
+  childProcess?.stdout?.on('data', (chunk) => {
+    process.stdout.write(chunk);
+  });
+
+  childProcess.stderr.on('data', (chunk) => {
+    process.stderr.write(chunk);
+  });
+
+  await new Promise<void>((resolve, _) => {
+    childProcess?.stdout?.on('data', (chunk) => {
+      if (chunk.toString().indexOf(readyWhenMsg) > -1) {
+        resolve();
+      }
+    });
+  });
+
+  yield {
+    baseUrl,
+    success: true,
+  };
+
+  await new Promise<{ success: boolean }>(() => {
+    // This Promise intentionally never resolves, leaving the process running.
+  });
 }

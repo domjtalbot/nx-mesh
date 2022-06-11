@@ -7,7 +7,6 @@
       "executor": "@nrwl/cypress:cypress",
       "options": {
         "cypressConfig": "apps/nx-plugin-graphql-mesh-e2e/cypress.json",
-        "baseUrl": "http://0.0.0.0:4600",
         "devServerTarget": "example-api-gateway:dev:e2e"
       }
     },
