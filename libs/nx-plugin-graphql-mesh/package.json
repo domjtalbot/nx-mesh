@@ -1,0 +1,15 @@
+{
+  "name": "@domjtalbot/nx-plugin-graphql-mesh",
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "generators": "./generators.json",
+  "executors": "./executors.json",
+  "peerDependencies": {
+    "@graphql-mesh/cli": ">=0.71.0",
+    "nx": ">=14"
+  },
+  "dependencies": {
+    "@nrwl/devkit": "14.1.9",
+    "type-fest": "2.13.0"
+  }
+}

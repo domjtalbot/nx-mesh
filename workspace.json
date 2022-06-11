@@ -2,7 +2,10 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "example-api-gateway": "apps/example-api-gateway",
     "example-nextjs": "apps/example-nextjs",
-    "example-nextjs-e2e": "apps/example-nextjs-e2e"
+    "example-nextjs-e2e": "apps/example-nextjs-e2e",
+    "nx-plugin-graphql-mesh": "libs/nx-plugin-graphql-mesh",
+    "nx-plugin-graphql-mesh-e2e": "apps/nx-plugin-graphql-mesh-e2e"
   }
 }
