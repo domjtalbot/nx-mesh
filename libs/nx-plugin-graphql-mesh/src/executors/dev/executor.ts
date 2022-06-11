@@ -43,7 +43,7 @@ export default async function* devExecutor(
     process.stderr.write(chunk);
   });
 
-  await new Promise<void>((resolve, _) => {
+  await new Promise<void>((resolve) => {
     childProcess?.stdout?.on('data', (chunk) => {
       if (chunk.toString().indexOf(readyWhenMsg) > -1) {
         resolve();
