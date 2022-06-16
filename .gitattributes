@@ -45,13 +45,6 @@
 # langauge detection.
 /dist/** linguist-generated -diff -merge
 
-# Mark Yarn generated files as generated to prevent
-# merge conflicts and hide files from GitHub's
-# langauge detection.
-/.pnp.* linguist-generated -diff -merge
-/.yarn/** linguist-generated -diff -merge
-yarn.lock linguist-generated -diff -merge
-
 # Hide documentation from GitHub's language detection.
 /docs/** linguist-documentation
 /docs-website/** linguist-documentation
