@@ -1,0 +1,36 @@
+name: 'Setup the environment'
+description: 'Install Node, PNPM, project dependencies and get NX SHAs'
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Volta
+      uses: volta-cli/action@76620aa011ba56028bb0bae35caa5f9b6118c8c7 # tag=v1.7.0
+
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 7
+
+    - name: Get pnpm cache directory path
+      id: pnpm-cache-dir-path
+      shell: bash
+      run: echo "::set-output name=dir::$(pnpm store path)"
+
+    - name: Cache Node Dependencies
+      uses: actions/cache@30f413bfed0a2bc738fdfd409e5a9e96b24545fd # tag=v3
+      id: pnpm-cache
+      with:
+        path: |
+          ~/.cache/Cypress
+          **/node_modules
+          ${{ steps.pnpm-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-pnpm-dep-cache-v1-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-dep-cache-v1-
+
+    - name: Install Node Dependencies
+      if: steps.pnpm-cache.outputs.cache-hit != 'true'
+      shell: bash
+      run: pnpm install --frozen-lockfile
+
+    - name: Nx Shas
+      uses: nrwl/nx-set-shas@a80e36fdf700047d299324529b0f0eadc1a38cb2 # tag=v2.2.2

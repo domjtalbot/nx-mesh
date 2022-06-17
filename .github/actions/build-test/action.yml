@@ -1,0 +1,22 @@
+name: 'Build & Test'
+description: 'Build, Lint & Test using Nx'
+runs:
+  using: 'composite'
+  steps:
+    - name: Lint
+      shell: bash
+      run: pnpm lint
+
+    - name: Build
+      shell: bash
+      run: pnpm build
+
+    - name: Test
+      shell: bash
+      run: pnpm build
+
+    - name: E2E
+      uses: cypress-io/github-action@f9e9419e05e5b83168d397d9c1d8d40ea179901e # tag=v4.0.0
+      with:
+        install: false
+        command: pnpm e2e
