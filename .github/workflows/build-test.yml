@@ -94,7 +94,7 @@ jobs:
         run: chmod +x ${{ github.workspace }}/.github/workflows/run-commands-in-parallel.sh
 
       # https://github.com/nrwl/ci/blob/main/.github/workflows/nx-cloud-main.yml#L206
-      - name: Process Nx parallel commands
+      - name: Process Nx ${{ env.NX_AFFECTED == 'true' && 'Affected' || ''}} parallel commands
         if: ${{ env.NX_AFFECTED == 'true' }}
         uses: actions/github-script@v6
         id: parallel_commands_config
@@ -121,39 +121,9 @@ jobs:
           result-encoding: string
 
       # https://github.com/nrwl/ci/blob/main/.github/workflows/nx-cloud-main.yml#L246
-      - name: Nx Targets
+      - name: Nx ${{ env.NX_AFFECTED == 'true' && 'Affected' || ''}} Targets
         run: ${{ github.workspace }}/.github/workflows/run-commands-in-parallel.sh '${{ steps.parallel_commands_config.outputs.result }}'
         shell: bash
-
-      # - name: Workspace lint
-      #   run: pnpm nx-cloud record -- npx nx workspace-lint
-
-      # - name: Format Check
-      #   run: pnpm nx-cloud record -- npx nx format:check
-
-      # - name: Affected Lint
-      #   if: ${{ env.NX_AFFECTED == 'true' }}
-      #   run: pnpm nx affected --target=lint --parallel=${{ env.NX_PARALLEL }}
-
-      # - name: Lint
-      #   if: ${{ env.NX_AFFECTED == 'false' }}
-      #   run: pnpm nx run-many --target=lint --all --parallel=${{ env.NX_PARALLEL }}
-
-      # - name: Affected Test
-      #   if: ${{ env.NX_AFFECTED == 'true' }}
-      #   run: pnpm nx affected --target=test --parallel=${{ env.NX_PARALLEL }} --ci --code-coverage
-
-      # - name: Test
-      #   if: ${{ env.NX_AFFECTED == 'false' }}
-      #   run: pnpm nx run-many --target=test --all --parallel=${{ env.NX_PARALLEL }} --ci --code-coverage
-
-      # - name: Affected Build
-      #   if: ${{ env.NX_AFFECTED == 'true' }}
-      #   run: pnpm nx affected --target=build --parallel=${{ env.NX_PARALLEL }}
-
-      # - name: Build
-      #   if: ${{ env.NX_AFFECTED == 'false' }}
-      #   run: pnpm nx run-many --target=build --all --parallel=${{ env.NX_PARALLEL }}
 
       - name: Affected E2E
         if: ${{ env.NX_AFFECTED == 'true' }}
