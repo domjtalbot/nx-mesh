@@ -13,9 +13,38 @@ on:
         required: false
         default: false
 
+  workflow_call:
+    inputs:
+      affected:
+        description: Only build & test affected apps & libraries.
+        type: boolean
+        required: false
+        default: true
+      parallel:
+        description: Max number of parallel processes per Nx target
+        type: number
+        required: false
+        default: 3
+
 concurrency:
   group: ${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
+
+env:
+  NX_AFFECTED: ${{ inputs.affected == 'true' || true }}
+  NX_PARALLEL: ${{ inputs.parallel || 3 }}
+  NX_AFFECTED_COMMANDS: |
+    pnpm nx-cloud record -- npx nx workspace-lint
+    pnpm nx-cloud record -- npx nx format:check
+    pnpm nx affected --target=lint --parallel=${{ inputs.parallel || 3 }}
+    pnpm nx affected --target=test --parallel=${{ inputs.parallel || 3 }} --ci --code-coverage
+    pnpm nx affected --target=build --parallel=${{ inputs.parallel || 3 }}
+  NX_COMMANDS: |
+    pnpm nx-cloud record -- npx nx workspace-lint
+    pnpm nx-cloud record -- npx nx format:check
+    pnpm nx run-many --target=lint --all --parallel=${{ inputs.parallel || 3 }}
+    pnpm nx run-many --target=test --all --parallel=${{ inputs.parallel || 3 }} --ci --code-coverage
+    pnpm nx run-many --target=build --all --parallel=${{ inputs.parallel || 3 }}
 
 jobs:
   build-test:
@@ -33,47 +62,79 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Volta
-        uses: volta-cli/action@76620aa011ba56028bb0bae35caa5f9b6118c8c7 # tag=v1.7.0
+      - name: Setup
+        uses: ./.github/actions/setup
 
-      - uses: pnpm/action-setup@v2
+      # https://github.com/nrwl/ci/blob/main/.github/workflows/nx-cloud-main.yml#L165
+      - name: Create command utils
+        uses: actions/github-script@v6
         with:
-          version: 7
+          script: |
+            const { writeFileSync } = require('fs');
+            const runCommandsInParallelScript = `
+              # Extract the provided commands from the stringified JSON array.
+              IFS=$'\n' read -d '' -a userCommands < <((jq -c -r '.[]') <<<"$1")
+              # Invoke the provided commands in parallel and collect their exit codes.
+              pids=()
+              for userCommand in "\${userCommands[@]}"; do
+                eval "$userCommand" & pids+=($!)
+              done
+              # If any one of the invoked commands exited with a non-zero exit code, exit the whole thing with code 1.
+              for pid in \${pids[*]}; do
+                if ! wait $pid; then
+                  exit 1
+                fi
+              done
+              # All the invoked commands must have exited with code zero.
+              exit 0
+            `;
+            writeFileSync('./.github/workflows/run-commands-in-parallel.sh', runCommandsInParallelScript);
 
-      - name: Get pnpm cache directory path
-        id: pnpm-cache-dir-path
-        run: echo "::set-output name=dir::$(pnpm store path)"
+      - name: Prepare command utils
+        run: chmod +x ${{ github.workspace }}/.github/workflows/run-commands-in-parallel.sh
 
-      - name: Cache Node Dependencies
-        uses: actions/cache@30f413bfed0a2bc738fdfd409e5a9e96b24545fd # tag=v3
-        id: pnpm-cache
+      # https://github.com/nrwl/ci/blob/main/.github/workflows/nx-cloud-main.yml#L206
+      - name: Process Nx parallel commands
+        if: ${{ env.NX_AFFECTED == 'true' }}
+        uses: actions/github-script@v6
+        id: parallel_commands_config
+        env:
+          PARALLEL_COMMANDS: ${{ env.NX_AFFECTED == 'true' && env.NX_AFFECTED_COMMANDS || env.NX_COMMANDS }}
         with:
-          path: |
-            ~/.cache/Cypress
-            **/node_modules
-            ${{ steps.pnpm-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-pnpm-dep-cache-v1-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-dep-cache-v1-
+          script: |
+            const parallelCommandsOnMainStr = process.env.PARALLEL_COMMANDS || '';
+            const parallelCommandsOnMain = parallelCommandsOnMainStr
+              .split('\n')
+              .map(command => command.trim())
+              .filter(command => command.length > 0)
+              .map(s => s.replace(/'/g, '%27'));
+            const formattedArrayOfCommands = [
+              ...parallelCommandsOnMain.map(s => s
+                .split(' && ')
+                .map(s => `NX_CLOUD_DISTRIBUTED_EXECUTION=false ${s}`)
+                .join(' && ')
+              ),
+            ];
+            const stringifiedEncodedArrayOfCommands = JSON.stringify(formattedArrayOfCommands)
+              .replace(/%27/g, "'\\''");
+            return stringifiedEncodedArrayOfCommands
+          result-encoding: string
 
-      - name: Install Node Dependencies
-        if: steps.pnpm-cache.outputs.cache-hit != 'true'
-        run: pnpm install --frozen-lockfile
+      # https://github.com/nrwl/ci/blob/main/.github/workflows/nx-cloud-main.yml#L246
+      - name: Nx Targets
+        run: ${{ github.workspace }}/.github/workflows/run-commands-in-parallel.sh '${{ steps.parallel_commands_config.outputs.result }}'
+        shell: bash
 
-      - name: Nx Shas
-        uses: nrwl/nx-set-shas@a80e36fdf700047d299324529b0f0eadc1a38cb2 # tag=v2.2.2
-
-      - name: Lint
-        run: pnpm lint
-
-      - name: Build
-        run: pnpm build
-
-      - name: Test
-        run: pnpm build
-
-      - name: E2E
+      - name: Affected E2E
+        if: ${{ env.NX_AFFECTED == 'true' }}
         uses: cypress-io/github-action@f9e9419e05e5b83168d397d9c1d8d40ea179901e # tag=v4.0.0
         with:
           install: false
-          command: pnpm e2e
+          command: pnpm nx affected --target=e2e --parallel=${{ env.NX_PARALLEL }}
+
+      - name: E2E
+        if: ${{ env.NX_AFFECTED == 'false' }}
+        uses: cypress-io/github-action@f9e9419e05e5b83168d397d9c1d8d40ea179901e # tag=v4.0.0
+        with:
+          install: false
+          command: pnpm nx run-many --target=e2e --all --parallel=${{ env.NX_PARALLEL }}
