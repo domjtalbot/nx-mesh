@@ -85,10 +85,6 @@ jobs:
 
       - name: Affected E2E
         if: ${{ env.NX_AFFECTED == 'true' }}
-        run: pnpm nx affected --target=build --parallel=${{ env.NX_PARALLEL }}
-
-      - name: Affected E2E
-        if: ${{ env.NX_AFFECTED == 'true' }}
         uses: cypress-io/github-action@f9e9419e05e5b83168d397d9c1d8d40ea179901e # tag=v4.0.0
         with:
           install: false
