@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   build-test:
-    uses: .github/workflows/build-test.yml@${{ github.ref_name }}
+    uses: ./.github/workflows/build-test.yml
     with:
       affected: false
 
