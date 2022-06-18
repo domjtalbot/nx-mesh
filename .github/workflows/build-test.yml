@@ -119,7 +119,7 @@ jobs:
 
       # https://github.com/nrwl/ci/blob/main/.github/workflows/nx-cloud-main.yml#L246
       - name: Nx Targets
-        run: ${{ github.workspace }}/.github/workflows/run-commands-in-parallel.sh '${{ steps.parallel_commands_config.outputs.result }}'
+        run: ./.github/workflows/run-commands-in-parallel.sh '${{ steps.parallel_commands_config.outputs.result }}'
         shell: bash
 
       # - name: Workspace lint
