@@ -94,7 +94,7 @@ jobs:
         run: chmod +x ${{ github.workspace }}/.github/workflows/run-commands-in-parallel.sh
 
       # https://github.com/nrwl/ci/blob/main/.github/workflows/nx-cloud-main.yml#L206
-      - name: Process Nx ${{ env.NX_AFFECTED == 'true' && 'Affected' || ''}} parallel commands
+      - name: Process Nx parallel commands
         if: ${{ env.NX_AFFECTED == 'true' }}
         uses: actions/github-script@v6
         id: parallel_commands_config
@@ -121,7 +121,7 @@ jobs:
           result-encoding: string
 
       # https://github.com/nrwl/ci/blob/main/.github/workflows/nx-cloud-main.yml#L246
-      - name: Nx ${{ env.NX_AFFECTED == 'true' && 'Affected' || ''}} Targets
+      - name: Nx Targets
         run: ${{ github.workspace }}/.github/workflows/run-commands-in-parallel.sh '${{ steps.parallel_commands_config.outputs.result }}'
         shell: bash
 
