@@ -98,10 +98,10 @@ jobs:
         uses: actions/github-script@v6
         id: parallel_commands_config
         env:
-          PARALLEL_COMMANDS: ${{ env.NX_AFFECTED == 'true' && env.NX_AFFECTED_COMMANDS || env.NX_COMMANDS }}
+          NX_AFFECTED: ${{ env.NX_AFFECTED }}
         with:
           script: |
-            const parallelCommandsOnMainStr = process.env.PARALLEL_COMMANDS || '';
+            const parallelCommandsOnMainStr = (process.env.NX_AFFECTED == 'true' ? process.env.NX_AFFECTED_COMMANDS : process.env.NX_COMMANDS) ?? '';
             const parallelCommandsOnMain = parallelCommandsOnMainStr
               .split('\n')
               .map(command => command.trim())
