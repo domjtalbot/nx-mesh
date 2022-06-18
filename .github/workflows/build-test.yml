@@ -41,3 +41,5 @@ jobs:
 
       - name: Build & Test
         uses: ./.github/actions/build-test
+        with:
+          affected: true
