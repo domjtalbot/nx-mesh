@@ -22,49 +22,49 @@ runs:
       run: pnpm nx-cloud record -- npx nx format:check
 
     - name: Affected Lint
-      if: ${{ inputs.affected === 'true' }}
+      if: ${{ inputs.affected == 'true' }}
       shell: bash
       run: pnpm nx affected --target=lint --parallel=${{ inputs.parallel }}
 
     - name: Lint
-      if: ${{ inputs.affected === 'false' }}
+      if: ${{ inputs.affected == 'false' }}
       shell: bash
       run: pnpm nx run-many --target=lint --all --parallel=${{ inputs.parallel }}
 
     - name: Affected Test
-      if: ${{ inputs.affected === 'true' }}
+      if: ${{ inputs.affected == 'true' }}
       shell: bash
       run: pnpm nx affected --target=test --parallel=${{ inputs.parallel }} --ci --code-coverage
 
     - name: Test
-      if: ${{ inputs.affected === 'false' }}
+      if: ${{ inputs.affected == 'false' }}
       shell: bash
       run: pnpm nx run-many --target=test --all --parallel=${{ inputs.parallel }} --ci --code-coverage
 
     - name: Affected Build
-      if: ${{ inputs.affected === 'true' }}
+      if: ${{ inputs.affected == 'true' }}
       shell: bash
       run: pnpm nx affected --target=build --parallel=${{ inputs.parallel }}
 
     - name: Build
-      if: ${{ inputs.affected === 'false' }}
+      if: ${{ inputs.affected == 'false' }}
       shell: bash
       run: pnpm nx run-many --target=build --all --parallel=${{ inputs.parallel }}
 
     - name: Affected E2E
-      if: ${{ inputs.affected === 'true' }}
+      if: ${{ inputs.affected == 'true' }}
       shell: bash
       run: pnpm nx affected --target=build --parallel=${{ inputs.parallel }}
 
     - name: Affected E2E
-      if: ${{ inputs.affected === 'true' }}
+      if: ${{ inputs.affected == 'true' }}
       uses: cypress-io/github-action@f9e9419e05e5b83168d397d9c1d8d40ea179901e # tag=v4.0.0
       with:
         install: false
         command: pnpm nx affected --target=e2e --parallel=${{ inputs.parallel }}
 
     - name: E2E
-      if: ${{ inputs.affected === 'false' }}
+      if: ${{ inputs.affected == 'false' }}
       uses: cypress-io/github-action@f9e9419e05e5b83168d397d9c1d8d40ea179901e # tag=v4.0.0
       with:
         install: false
