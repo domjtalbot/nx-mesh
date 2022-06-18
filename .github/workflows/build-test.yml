@@ -90,6 +90,9 @@ jobs:
             `;
             writeFileSync('./.github/workflows/run-commands-in-parallel.sh', runCommandsInParallelScript);
 
+      - name: Prepare command utils
+        run: chmod +x ${{ github.workspace }}/.github/workflows/run-commands-in-parallel.sh
+
       # https://github.com/nrwl/ci/blob/main/.github/workflows/nx-cloud-main.yml#L206
       - name: Process Nx parallel commands
         if: ${{ env.NX_AFFECTED == 'true' }}
@@ -119,7 +122,7 @@ jobs:
 
       # https://github.com/nrwl/ci/blob/main/.github/workflows/nx-cloud-main.yml#L246
       - name: Nx Targets
-        run: ./.github/workflows/run-commands-in-parallel.sh '${{ steps.parallel_commands_config.outputs.result }}'
+        run: ${{ github.workspace }}/.github/workflows/run-commands-in-parallel.sh '${{ steps.parallel_commands_config.outputs.result }}'
         shell: bash
 
       # - name: Workspace lint
