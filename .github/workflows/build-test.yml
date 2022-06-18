@@ -33,6 +33,18 @@ concurrency:
 env:
   NX_AFFECTED: ${{ inputs.affected == 'true' || true }}
   NX_PARALLEL: ${{ inputs.parallel || 3 }}
+  NX_AFFECTED_COMMANDS: |
+    pnpm nx-cloud record -- npx nx workspace-lint
+    pnpm nx-cloud record -- npx nx format:check
+    pnpm nx affected --target=lint --parallel=${{ env.NX_PARALLEL }}
+    pnpm nx affected --target=test --parallel=${{ env.NX_PARALLEL }} --ci --code-coverage
+    pnpm nx affected --target=build --parallel=${{ env.NX_PARALLEL }}
+  NX_COMMANDS: |
+    pnpm nx-cloud record -- npx nx workspace-lint
+    pnpm nx-cloud record -- npx nx format:check
+    pnpm nx run-many --target=lint --all --parallel=${{ env.NX_PARALLEL }}
+    pnpm nx run-many --target=test --all --parallel=${{ env.NX_PARALLEL }} --ci --code-coverage
+    pnpm nx run-many --target=build --all --parallel=${{ env.NX_PARALLEL }}
 
 jobs:
   build-test:
@@ -53,35 +65,92 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
-      - name: Workspace lint
-        run: pnpm nx-cloud record -- npx nx workspace-lint
+      # https://github.com/nrwl/ci/blob/main/.github/workflows/nx-cloud-main.yml#L165
+      - name: Create command utils
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { writeFileSync } = require('fs');
+            const runCommandsInParallelScript = `
+              # Extract the provided commands from the stringified JSON array.
+              IFS=$'\n' read -d '' -a userCommands < <((jq -c -r '.[]') <<<"$1")
+              # Invoke the provided commands in parallel and collect their exit codes.
+              pids=()
+              for userCommand in "\${userCommands[@]}"; do
+                eval "$userCommand" & pids+=($!)
+              done
+              # If any one of the invoked commands exited with a non-zero exit code, exit the whole thing with code 1.
+              for pid in \${pids[*]}; do
+                if ! wait $pid; then
+                  exit 1
+                fi
+              done
+              # All the invoked commands must have exited with code zero.
+              exit 0
+            `;
+            writeFileSync('./.github/workflows/run-commands-in-parallel.sh', runCommandsInParallelScript);
 
-      - name: Format Check
-        run: pnpm nx-cloud record -- npx nx format:check
-
-      - name: Affected Lint
+      # https://github.com/nrwl/ci/blob/main/.github/workflows/nx-cloud-main.yml#L206
+      - name: Process Nx parallel commands
         if: ${{ env.NX_AFFECTED == 'true' }}
-        run: pnpm nx affected --target=lint --parallel=${{ env.NX_PARALLEL }}
+        uses: actions/github-script@v6
+        id: parallel_commands_config
+        env:
+          PARALLEL_COMMANDS: ${{ env.NX_AFFECTED == 'true' && env.NX_AFFECTED_COMMANDS || env.NX_COMMANDS }}
+        with:
+          script: |
+            const parallelCommandsOnMainStr = process.env.PARALLEL_COMMANDS || '';
+            const parallelCommandsOnMain = parallelCommandsOnMainStr
+              .split('\n')
+              .map(command => command.trim())
+              .filter(command => command.length > 0)
+              .map(s => s.replace(/'/g, '%27'));
+            const formattedArrayOfCommands = [
+              ...parallelCommandsOnMain.map(s => s
+                .split(' && ')
+                .map(s => `NX_CLOUD_DISTRIBUTED_EXECUTION=false ${s}`)
+                .join(' && ')
+              ),
+            ];
+            const stringifiedEncodedArrayOfCommands = JSON.stringify(formattedArrayOfCommands)
+              .replace(/%27/g, "'\\''");
+            return stringifiedEncodedArrayOfCommands
+          result-encoding: string
 
-      - name: Lint
-        if: ${{ env.NX_AFFECTED == 'false' }}
-        run: pnpm nx run-many --target=lint --all --parallel=${{ env.NX_PARALLEL }}
+      # https://github.com/nrwl/ci/blob/main/.github/workflows/nx-cloud-main.yml#L246
+      - name: Nx Targets
+        run: ${{ github.workspace }}/.github/workflows/run-commands-in-parallel.sh '${{ steps.parallel_commands_config.outputs.result }}'
+        shell: bash
 
-      - name: Affected Test
-        if: ${{ env.NX_AFFECTED == 'true' }}
-        run: pnpm nx affected --target=test --parallel=${{ env.NX_PARALLEL }} --ci --code-coverage
+      # - name: Workspace lint
+      #   run: pnpm nx-cloud record -- npx nx workspace-lint
 
-      - name: Test
-        if: ${{ env.NX_AFFECTED == 'false' }}
-        run: pnpm nx run-many --target=test --all --parallel=${{ env.NX_PARALLEL }} --ci --code-coverage
+      # - name: Format Check
+      #   run: pnpm nx-cloud record -- npx nx format:check
 
-      - name: Affected Build
-        if: ${{ env.NX_AFFECTED == 'true' }}
-        run: pnpm nx affected --target=build --parallel=${{ env.NX_PARALLEL }}
+      # - name: Affected Lint
+      #   if: ${{ env.NX_AFFECTED == 'true' }}
+      #   run: pnpm nx affected --target=lint --parallel=${{ env.NX_PARALLEL }}
 
-      - name: Build
-        if: ${{ env.NX_AFFECTED == 'false' }}
-        run: pnpm nx run-many --target=build --all --parallel=${{ env.NX_PARALLEL }}
+      # - name: Lint
+      #   if: ${{ env.NX_AFFECTED == 'false' }}
+      #   run: pnpm nx run-many --target=lint --all --parallel=${{ env.NX_PARALLEL }}
+
+      # - name: Affected Test
+      #   if: ${{ env.NX_AFFECTED == 'true' }}
+      #   run: pnpm nx affected --target=test --parallel=${{ env.NX_PARALLEL }} --ci --code-coverage
+
+      # - name: Test
+      #   if: ${{ env.NX_AFFECTED == 'false' }}
+      #   run: pnpm nx run-many --target=test --all --parallel=${{ env.NX_PARALLEL }} --ci --code-coverage
+
+      # - name: Affected Build
+      #   if: ${{ env.NX_AFFECTED == 'true' }}
+      #   run: pnpm nx affected --target=build --parallel=${{ env.NX_PARALLEL }}
+
+      # - name: Build
+      #   if: ${{ env.NX_AFFECTED == 'false' }}
+      #   run: pnpm nx run-many --target=build --all --parallel=${{ env.NX_PARALLEL }}
 
       - name: Affected E2E
         if: ${{ env.NX_AFFECTED == 'true' }}
