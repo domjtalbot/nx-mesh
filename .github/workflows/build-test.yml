@@ -1,8 +1,5 @@
 name: 'Build & Test'
 
-env:
-  NX_RUN_GROUP: ${{ github.run_id }}
-
 on:
   pull_request:
     branches:
@@ -33,6 +30,10 @@ concurrency:
   group: ${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
+env:
+  NX_AFFECTED: ${{ inputs.affected == 'true' || true }}
+  NX_PARALLEL: ${{ inputs.parallel || 3 }}
+
 jobs:
   build-test:
     name: Build & Test
@@ -59,43 +60,43 @@ jobs:
         run: pnpm nx-cloud record -- npx nx format:check
 
       - name: Affected Lint
-        if: ${{ inputs.affected == 'true' }}
-        run: pnpm nx affected --target=lint --parallel=${{ inputs.parallel }}
+        if: ${{ env.NX_AFFECTED == 'true' }}
+        run: pnpm nx affected --target=lint --parallel=${{ env.NX_PARALLEL }}
 
       - name: Lint
-        if: ${{ inputs.affected == 'false' }}
-        run: pnpm nx run-many --target=lint --all --parallel=${{ inputs.parallel }}
+        if: ${{ env.NX_AFFECTED == 'false' }}
+        run: pnpm nx run-many --target=lint --all --parallel=${{ env.NX_PARALLEL }}
 
       - name: Affected Test
-        if: ${{ inputs.affected == 'true' }}
-        run: pnpm nx affected --target=test --parallel=${{ inputs.parallel }} --ci --code-coverage
+        if: ${{ env.NX_AFFECTED == 'true' }}
+        run: pnpm nx affected --target=test --parallel=${{ env.NX_PARALLEL }} --ci --code-coverage
 
       - name: Test
-        if: ${{ inputs.affected == 'false' }}
-        run: pnpm nx run-many --target=test --all --parallel=${{ inputs.parallel }} --ci --code-coverage
+        if: ${{ env.NX_AFFECTED == 'false' }}
+        run: pnpm nx run-many --target=test --all --parallel=${{ env.NX_PARALLEL }} --ci --code-coverage
 
       - name: Affected Build
-        if: ${{ inputs.affected == 'true' }}
-        run: pnpm nx affected --target=build --parallel=${{ inputs.parallel }}
+        if: ${{ env.NX_AFFECTED == 'true' }}
+        run: pnpm nx affected --target=build --parallel=${{ env.NX_PARALLEL }}
 
       - name: Build
-        if: ${{ inputs.affected == 'false' }}
-        run: pnpm nx run-many --target=build --all --parallel=${{ inputs.parallel }}
+        if: ${{ env.NX_AFFECTED == 'false' }}
+        run: pnpm nx run-many --target=build --all --parallel=${{ env.NX_PARALLEL }}
 
       - name: Affected E2E
-        if: ${{ inputs.affected == 'true' }}
-        run: pnpm nx affected --target=build --parallel=${{ inputs.parallel }}
+        if: ${{ env.NX_AFFECTED == 'true' }}
+        run: pnpm nx affected --target=build --parallel=${{ env.NX_PARALLEL }}
 
       - name: Affected E2E
-        if: ${{ inputs.affected == 'true' }}
+        if: ${{ env.NX_AFFECTED == 'true' }}
         uses: cypress-io/github-action@f9e9419e05e5b83168d397d9c1d8d40ea179901e # tag=v4.0.0
         with:
           install: false
-          command: pnpm nx affected --target=e2e --parallel=${{ inputs.parallel }}
+          command: pnpm nx affected --target=e2e --parallel=${{ env.NX_PARALLEL }}
 
       - name: E2E
-        if: ${{ inputs.affected == 'false' }}
+        if: ${{ env.NX_AFFECTED == 'false' }}
         uses: cypress-io/github-action@f9e9419e05e5b83168d397d9c1d8d40ea179901e # tag=v4.0.0
         with:
           install: false
-          command: pnpm nx run-many --target=e2e --all --parallel=${{ inputs.parallel }}
+          command: pnpm nx run-many --target=e2e --all --parallel=${{ env.NX_PARALLEL }}
