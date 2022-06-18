@@ -18,7 +18,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: ${{ github.head_ref || github.run_id }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -33,13 +33,13 @@ jobs:
           stale-issue-message: |
             > **Warning**
 
-            This issue is stale because it has been open for 60 days with no activity. 💤 
+            This issue is stale because it has been open for 60 days with no activity. 💤
 
             Either remove the `stale` label or leave a comment else this issue will be closed in 7 days.
           stale-pr-message: |
             > **Warning**
 
-            This pull request is stale because it has been open for 60 days with no activity. 💤 
+            This pull request is stale because it has been open for 60 days with no activity. 💤
 
             Either remove the `stale` label, leave a comment or push a commit else this pull request will be closed in 7 days.
           close-issue-message: 'This issue was closed because it has been stale for 67 days with no activity.'
