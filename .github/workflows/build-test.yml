@@ -27,7 +27,7 @@ on:
         default: 3
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: build-test-${{ github.workflow }}-${{ github.ref }}
 
 env:
   NX_AFFECTED: ${{ inputs.affected == 'true' || true }}

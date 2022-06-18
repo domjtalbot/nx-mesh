@@ -14,14 +14,13 @@ on:
         default: false
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: release-${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   build-test:
     uses: ./.github/workflows/build-test.yml
     with:
       affected: false
-      concurrency: ${{ github.workflow }}-${{ github.ref }}-build-test
 
   release:
     needs: [build-test]
