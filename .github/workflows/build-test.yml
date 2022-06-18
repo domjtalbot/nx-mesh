@@ -36,15 +36,15 @@ env:
   NX_AFFECTED_COMMANDS: |
     pnpm nx-cloud record -- npx nx workspace-lint
     pnpm nx-cloud record -- npx nx format:check
-    pnpm nx affected --target=lint --parallel=${{ env.NX_PARALLEL }}
-    pnpm nx affected --target=test --parallel=${{ env.NX_PARALLEL }} --ci --code-coverage
-    pnpm nx affected --target=build --parallel=${{ env.NX_PARALLEL }}
+    pnpm nx affected --target=lint --parallel=${{ inputs.parallel || 3 }}
+    pnpm nx affected --target=test --parallel=${{ inputs.parallel || 3 }} --ci --code-coverage
+    pnpm nx affected --target=build --parallel=${{ inputs.parallel || 3 }}
   NX_COMMANDS: |
     pnpm nx-cloud record -- npx nx workspace-lint
     pnpm nx-cloud record -- npx nx format:check
-    pnpm nx run-many --target=lint --all --parallel=${{ env.NX_PARALLEL }}
-    pnpm nx run-many --target=test --all --parallel=${{ env.NX_PARALLEL }} --ci --code-coverage
-    pnpm nx run-many --target=build --all --parallel=${{ env.NX_PARALLEL }}
+    pnpm nx run-many --target=lint --all --parallel=${{ inputs.parallel || 3 }}
+    pnpm nx run-many --target=test --all --parallel=${{ inputs.parallel || 3 }} --ci --code-coverage
+    pnpm nx run-many --target=build --all --parallel=${{ inputs.parallel || 3 }}
 
 jobs:
   build-test:
