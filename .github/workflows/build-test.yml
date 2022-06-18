@@ -1,8 +1,6 @@
 name: 'Build & Test'
 
 env:
-  NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_TOKEN }}
-  NX_CLOUD_DISTRIBUTED_EXECUTION: true
   NX_RUN_GROUP: ${{ github.run_id }}
 
 on:
@@ -43,25 +41,3 @@ jobs:
 
       - name: Build & Test
         uses: ./.github/actions/build-test
-        env:
-          NX_CLOUD_AUTH_TOKEN: ${{ env.NX_CLOUD_AUTH_TOKEN }}
-          NX_CLOUD_DISTRIBUTED_EXECUTION: ${{ env.NX_CLOUD_DISTRIBUTED_EXECUTION }}
-          NX_RUN_GROUP: ${{ env.NX_RUN_GROUP }}
-
-  agents:
-    runs-on: ubuntu-latest
-    name: Nx Agent
-    strategy:
-      matrix:
-        agent: [1, 2]
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
-        with:
-          fetch-depth: 0
-
-      - name: Setup
-        uses: ./.github/actions/setup
-
-      - name: Start Nx Agent ${{ matrix.agent }}
-        run: pnpm nx-cloud start-agent

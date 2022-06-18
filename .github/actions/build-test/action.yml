@@ -20,12 +20,3 @@ runs:
       with:
         install: false
         command: pnpm e2e
-        env:
-          NX_CLOUD_DISTRIBUTED_EXECUTION: ${{ env.NX_CLOUD_DISTRIBUTED_EXECUTION }}
-          NX_RUN_GROUP: ${{ env.NX_RUN_GROUP }}
-          NX_CLOUD_AUTH_TOKEN: ${{ env.NX_CLOUD_AUTH_TOKEN }}
-
-    - name: Stop Nx Cloud Agents
-      if: ${{ env.NX_CLOUD_DISTRIBUTED_EXECUTION == true }}
-      shell: bash
-      run: pnpm nx-cloud stop-all-agents
