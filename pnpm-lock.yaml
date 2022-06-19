@@ -1,12 +1,12 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@changesets/changelog-github': ^0.4.5
-  '@changesets/cli': ^2.23.0
-  '@commitlint/cli': ^17.0.2
-  '@commitlint/config-angular': ^17.0.0
-  '@graphql-mesh/cli': ^0.71.2
-  '@graphql-mesh/openapi': ^0.25.10
+  '@changesets/changelog-github': 0.4.5
+  '@changesets/cli': 2.23.0
+  '@commitlint/cli': 17.0.2
+  '@commitlint/config-angular': 17.0.0
+  '@graphql-mesh/cli': 0.71.5
+  '@graphql-mesh/openapi': 0.25.11
   '@nrwl/cli': 14.1.9
   '@nrwl/cypress': 14.1.9
   '@nrwl/devkit': 14.1.9
@@ -39,7 +39,7 @@ specifiers:
   eslint-plugin-jsx-a11y: 6.5.1
   eslint-plugin-react: 7.29.4
   eslint-plugin-react-hooks: 4.5.0
-  graphql: ^16.5.0
+  graphql: 16.5.0
   husky: 8.0.1
   jest: 27.5.1
   lint-staged: 13.0.0
@@ -9871,7 +9871,6 @@ packages:
         integrity: sha512-Wrk35e8ydCKDj/ArClo1VrPVmN8zph5V4AtHwIuHhvMXsKf73UT3BOD+azBIW+3wOJ4FhEH7zyaJCFvChjYvMA==,
       }
     engines: { '0': node >=0.6.0 }
-    dev: false
 
   /fast-deep-equal/3.1.3:
     resolution:
@@ -17945,7 +17944,7 @@ packages:
     dependencies:
       assert-plus: 1.0.0
       core-util-is: 1.0.2
-      extsprintf: 1.3.0
+      extsprintf: 1.4.1
 
   /verror/1.10.1:
     resolution:
