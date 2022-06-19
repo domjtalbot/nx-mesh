@@ -48,7 +48,7 @@
     "@nrwl/workspace": "14.1.9",
     "@testing-library/react": "13.1.1",
     "@types/jest": "27.4.1",
-    "@types/node": "16.11.7",
+    "@types/node": "16.11.41",
     "@types/react": "18.0.8",
     "@types/react-dom": "18.0.5",
     "@typescript-eslint/eslint-plugin": "5.18.0",
