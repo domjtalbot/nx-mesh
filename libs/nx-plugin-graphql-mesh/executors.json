@@ -5,6 +5,12 @@
       "implementation": "./src/executors/dev/executor",
       "schema": "./src/executors/dev/schema.json",
       "description": "Serves a GraphQL server with GraphQL interface by building artifacts on the fly"
+    },
+    "build": {
+      "implementation": "./src/executors/build/executor",
+      "schema": "./src/executors/build/schema.json",
+      "description": "Builds artifacts",
+      "hasher": "./src/executors/build/hasher"
     }
   }
 }

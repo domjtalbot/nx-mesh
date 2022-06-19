@@ -3,6 +3,17 @@
   "sourceRoot": "apps/example-api-gateway/src",
   "projectType": "application",
   "targets": {
+    "build": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:build",
+      "options": {
+        "dir": "apps/example-api-gateway"
+      },
+      "configurations": {
+        "e2e": {
+          "debug": false
+        }
+      }
+    },
     "dev": {
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:dev",
       "options": {
