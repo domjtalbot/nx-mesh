@@ -21,7 +21,11 @@
         "type": "string"
       },
       "default": []
+    },
+    "outputPath": {
+      "type": "string",
+      "description": "The output path of the generated files."
     }
   },
-  "required": ["dir"]
+  "required": ["dir", "outputPath"]
 }

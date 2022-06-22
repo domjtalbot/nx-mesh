@@ -1,12 +1,14 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/example-api-gateway/src",
+  "sourceRoot": "apps/example-api-gateway",
   "projectType": "application",
   "targets": {
     "build": {
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:build",
+      "outputs": ["{options.outputPath}"],
       "options": {
-        "dir": "apps/example-api-gateway"
+        "dir": "apps/example-api-gateway",
+        "outputPath": "dist/apps/example-api-gateway"
       },
       "configurations": {
         "e2e": {

@@ -22,6 +22,7 @@ specifiers:
   '@nrwl/web': 14.1.9
   '@nrwl/workspace': 14.1.9
   '@testing-library/react': 13.1.1
+  '@types/fs-extra': 9.0.13
   '@types/jest': 27.4.1
   '@types/node': 16.11.41
   '@types/react': 18.0.8
@@ -39,6 +40,7 @@ specifiers:
   eslint-plugin-jsx-a11y: 6.5.1
   eslint-plugin-react: 7.29.4
   eslint-plugin-react-hooks: 4.5.0
+  fs-extra: 10.1.0
   graphql: 16.5.0
   husky: 8.0.1
   jest: 27.5.1
@@ -88,6 +90,7 @@ devDependencies:
   '@nrwl/web': 14.1.9_bofjklzrudnjdqjl3ft7orfcyq
   '@nrwl/workspace': 14.1.9_rqewt5og66hvojoiyg3twdwkay
   '@testing-library/react': 13.1.1_ef5jwxihqo6n7gxfmzogljlgcm
+  '@types/fs-extra': 9.0.13
   '@types/jest': 27.4.1
   '@types/node': 16.11.41
   '@types/react': 18.0.8
@@ -104,6 +107,7 @@ devDependencies:
   eslint-plugin-jsx-a11y: 6.5.1_eslint@8.12.0
   eslint-plugin-react: 7.29.4_eslint@8.12.0
   eslint-plugin-react-hooks: 4.5.0_eslint@8.12.0
+  fs-extra: 10.1.0
   husky: 8.0.1
   jest: 27.5.1_ts-node@9.1.1
   lint-staged: 13.0.0
@@ -5608,6 +5612,15 @@ packages:
       }
     dependencies:
       '@types/node': 16.11.41
+
+  /@types/fs-extra/9.0.13:
+    resolution:
+      {
+        integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==,
+      }
+    dependencies:
+      '@types/node': 16.11.41
+    dev: true
 
   /@types/glob/7.2.0:
     resolution:

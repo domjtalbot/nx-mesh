@@ -14,4 +14,9 @@ export interface BuildExecutorSchema {
    * and reading the configuration.
    */
   require: string[];
+
+  /**
+   * The output path of the generated files.
+   */
+  outputPath: string;
 }
