@@ -4,21 +4,18 @@ import type { BuildExecutorSchema } from '../schema';
 import { writeJsonFile } from '@nrwl/devkit';
 import { readCachedProjectGraph } from '@nrwl/devkit';
 import { createPackageJson as generatePackageJson } from '@nrwl/workspace/src/utilities/create-package-json';
-import { readFile } from 'fs/promises';
-import { resolve, join } from 'path';
 
 import { meshPackages } from '../../../utils/mesh-packages';
+import { getMeshPackages } from './get-mesh-packages';
+import { getPackageVersions } from './get-package-versions';
+import { getSourceFile } from './get-source-file';
+import { getWildcardPackages } from './get-wildcard-packages';
 
 export async function createPackageJson(
   options: BuildExecutorSchema,
   context: ExecutorContext
 ) {
   const depGraph = readCachedProjectGraph();
-
-  const dir = resolve(context.root, options.dir);
-  const meshBuildIndexPath = join(dir, '.mesh/index.ts');
-
-  const meshBuiltFile = await readFile(meshBuildIndexPath, 'utf8');
 
   const packageJson = generatePackageJson(context.projectName, depGraph, {
     root: context.root,
@@ -39,37 +36,22 @@ export async function createPackageJson(
     packageJson.devDependencies = {};
   }
 
-  const meshCliNode = depGraph.externalNodes['npm:@graphql-mesh/cli'];
-
-  if (meshCliNode) {
-    packageJson.dependencies['@graphql-mesh/cli'] = meshCliNode.data.version;
-  }
-
-  const graphqlNode = depGraph.externalNodes['npm:graphql'];
-
-  if (graphqlNode) {
-    packageJson.dependencies['graphql'] = graphqlNode.data.version;
-  }
-
-  meshPackages.forEach((packageName) => {
-    if (meshBuiltFile.indexOf(packageName) > -1) {
-      const packageNode = depGraph.externalNodes[`npm:${packageName}`];
-
-      if (packageNode) {
-        packageJson.dependencies[packageName] = packageNode.data.version;
-      }
-    }
+  const sourceFile = await getSourceFile({
+    dir: options.dir,
+    root: context.root,
   });
 
-  Object.keys(packageJson.dependencies).forEach((name) => {
-    if (packageJson.dependencies[name] === '*') {
-      const dependencyNode = depGraph.externalNodes[`npm:${name}`];
+  const packages = [
+    '@graphql-mesh/cli',
+    'graphql',
+    ...getWildcardPackages(packageJson.dependencies),
+    ...getMeshPackages(sourceFile, meshPackages),
+  ];
 
-      if (dependencyNode) {
-        packageJson.dependencies[name] = dependencyNode.data.version;
-      }
-    }
-  });
+  packageJson.dependencies = {
+    ...packageJson.dependencies,
+    ...getPackageVersions(packages, depGraph.externalNodes),
+  };
 
   writeJsonFile(`${options.outputPath}/package.json`, packageJson);
 }
