@@ -1,25 +1,32 @@
 import type { ExecutorContext } from '@nrwl/devkit';
-import type { BuildExecutorSchema } from '../schema';
+import type { BuildExecutorSchema } from '../executors/build/schema';
 
 import { writeJsonFile } from '@nrwl/devkit';
 import { readCachedProjectGraph } from '@nrwl/devkit';
 import { createPackageJson as generatePackageJson } from '@nrwl/workspace/src/utilities/create-package-json';
+import { join } from 'path';
 
-import { meshPackages } from '../../../utils/mesh-packages';
+import { meshPackages } from './mesh-packages';
 import { getMeshPackages } from './get-mesh-packages';
 import { getPackageVersions } from './get-package-versions';
 import { getSourceFile } from './get-source-file';
 import { getWildcardPackages } from './get-wildcard-packages';
 
 export async function createPackageJson(
-  options: BuildExecutorSchema,
+  options: {
+    dir: string;
+    outputPath: string;
+    projectRoot?: string;
+  },
   context: ExecutorContext
 ) {
   const depGraph = readCachedProjectGraph();
 
   const packageJson = generatePackageJson(context.projectName, depGraph, {
     root: context.root,
-    projectRoot: context.workspace.projects[context.projectName].sourceRoot,
+    projectRoot:
+      options.projectRoot ??
+      context.workspace.projects[context.projectName].sourceRoot,
   });
 
   if (!packageJson.name) {
@@ -53,5 +60,12 @@ export async function createPackageJson(
     ...getPackageVersions(packages, depGraph.externalNodes),
   };
 
-  writeJsonFile(`${options.outputPath}/package.json`, packageJson);
+  const outputFile = join(options.outputPath, 'package.json');
+
+  writeJsonFile(outputFile, packageJson);
+
+  return {
+    outputFile,
+    packageJson,
+  };
 }

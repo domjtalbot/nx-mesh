@@ -4,7 +4,7 @@
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:build",
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:build-gateway",
       "outputs": ["{options.outputPath}"],
       "options": {
         "dir": "apps/example-api-gateway",

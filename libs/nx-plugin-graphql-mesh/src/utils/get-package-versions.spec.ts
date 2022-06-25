@@ -1,6 +1,6 @@
 import type { ProjectGraphExternalNode } from 'nx/src/config/project-graph';
 
-import { meshPackages } from '../../../utils/mesh-packages';
+import { meshPackages } from './mesh-packages';
 
 import { getPackageVersions } from './get-package-versions';
 

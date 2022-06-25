@@ -1,0 +1,5 @@
+{
+  "name": "@nx-plugin-graphql-mesh/examples/graphql-mesh-lib",
+  "version": "0.0.1",
+  "type": "commonjs"
+}

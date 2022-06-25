@@ -17,6 +17,9 @@
     "paths": {
       "@domjtalbot/nx-plugin-graphql-mesh": [
         "libs/nx-plugin-graphql-mesh/src/index.ts"
+      ],
+      "@nx-plugin-graphql-mesh/examples/graphql-mesh-lib": [
+        "libs/examples/graphql-mesh-lib/src/index.ts"
       ]
     }
   },

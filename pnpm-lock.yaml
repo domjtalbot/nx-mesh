@@ -7,6 +7,7 @@ specifiers:
   '@commitlint/config-angular': 17.0.0
   '@graphql-mesh/cli': 0.71.5
   '@graphql-mesh/openapi': 0.25.11
+  '@graphql-yoga/node': ^2.9.2
   '@nrwl/cli': 14.1.9
   '@nrwl/cypress': 14.1.9
   '@nrwl/devkit': 14.1.9
@@ -65,7 +66,9 @@ dependencies:
   '@commitlint/config-angular': 17.0.0
   '@graphql-mesh/cli': 0.71.5_7g3rmjdxkhyeejmqzznxrtebku
   '@graphql-mesh/openapi': 0.25.11_graphql@16.5.0
+  '@graphql-yoga/node': 2.9.2_graphql@16.5.0
   '@nrwl/devkit': 14.1.9_nx@14.1.9
+  '@nrwl/js': 14.1.9_n5ohodi3sk6wott5bm7yowvthm
   '@nrwl/next': 14.1.9_6nhcidlzpfbptxdk27tlkxqfey
   '@nrwl/nx-plugin': 14.1.9_n5ohodi3sk6wott5bm7yowvthm
   core-js: 3.22.8
@@ -82,7 +85,6 @@ devDependencies:
   '@nrwl/cypress': 14.1.9_sdo7sbqeqiyxfyxdk3s5sc4vai
   '@nrwl/eslint-plugin-nx': 14.1.9_cw5dz7susea54lvxrhyjrnmo7e
   '@nrwl/jest': 14.1.9_u3hct3etyflpkcge2zchqdoyky
-  '@nrwl/js': 14.1.9_n5ohodi3sk6wott5bm7yowvthm
   '@nrwl/linter': 14.1.9_mcb7kdupvpri4hml77ajot75xa
   '@nrwl/node': 14.1.9_v3sjbb2j4dnwvy2kqgps6rlewi
   '@nrwl/nx-cloud': 14.1.2

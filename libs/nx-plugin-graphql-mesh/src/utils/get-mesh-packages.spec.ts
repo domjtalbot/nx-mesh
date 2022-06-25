@@ -1,4 +1,4 @@
-import { meshPackages } from '../../../utils/mesh-packages';
+import { meshPackages } from './mesh-packages';
 
 import { getMeshPackages } from './get-mesh-packages';
 

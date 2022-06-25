@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "title": "Build Gateway executor",
+  "description": "Builds artifacts to be used as an API Gateway",
+  "type": "object",
+  "properties": {
+    "debug": {
+      "type": "boolean",
+      "description": "Display debugging info.",
+      "default": false
+    },
+    "dir": {
+      "description": "The path of the directory containing the GraphQL Mesh config.",
+      "type": "string"
+    },
+    "require": {
+      "type": "array",
+      "description": "Loads specific require.extensions before running the codegen and reading the configuration.",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "outputPath": {
+      "type": "string",
+      "description": "The output path of the generated files."
+    }
+  },
+  "required": ["dir", "outputPath"]
+}
