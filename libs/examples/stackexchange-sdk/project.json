@@ -1,16 +1,16 @@
 {
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/examples/graphql-mesh-lib/src",
+  "sourceRoot": "libs/examples/stackexchange-sdk/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:build",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "dir": "libs/examples/graphql-mesh-lib",
-        "outputPath": "dist/libs/examples/graphql-mesh-lib",
-        "tsConfig": "libs/examples/graphql-mesh-lib/tsconfig.lib.json",
-        "main": "libs/examples/graphql-mesh-lib/src/index.ts"
+        "dir": "libs/examples/stackexchange-sdk",
+        "outputPath": "dist/libs/examples/stackexchange-sdk",
+        "tsConfig": "libs/examples/stackexchange-sdk/tsconfig.lib.json",
+        "main": "libs/examples/stackexchange-sdk/src/index.ts"
       },
       "configurations": {
         "e2e": {
@@ -22,14 +22,14 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/examples/graphql-mesh-lib/**/*.ts"]
+        "lintFilePatterns": ["libs/examples/stackexchange-sdk/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/examples/graphql-mesh-lib"],
+      "outputs": ["coverage/libs/examples/stackexchange-sdk"],
       "options": {
-        "jestConfig": "libs/examples/graphql-mesh-lib/jest.config.ts",
+        "jestConfig": "libs/examples/stackexchange-sdk/jest.config.ts",
         "passWithNoTests": true
       }
     }

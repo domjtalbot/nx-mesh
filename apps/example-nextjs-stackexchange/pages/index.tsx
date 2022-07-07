@@ -1,5 +1,5 @@
 import type { GetStaticProps, NextPage } from 'next';
-import type { listFeaturedQuestions_queryQuery } from '@nx-plugin-graphql-mesh/examples/graphql-mesh-lib';
+import type { listFeaturedQuestions_queryQuery } from '@nx-plugin-graphql-mesh/examples/stackexchange-sdk';
 
 import styles from './index.module.css';
 
@@ -7,7 +7,7 @@ export const getStaticProps: GetStaticProps<
   listFeaturedQuestions_queryQuery
 > = async () => {
   const { getMeshSDK } = await import(
-    '@nx-plugin-graphql-mesh/examples/graphql-mesh-lib'
+    '@nx-plugin-graphql-mesh/examples/stackexchange-sdk'
   );
 
   const data = await getMeshSDK().listFeaturedQuestions_query();

@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'examples-graphql-mesh-lib',
+  displayName: 'examples-stackexchange-sdk',
   preset: '../../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -11,5 +11,5 @@ export default {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../../coverage/libs/examples/graphql-mesh-lib',
+  coverageDirectory: '../../../coverage/libs/examples/stackexchange-sdk',
 };

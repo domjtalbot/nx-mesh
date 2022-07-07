@@ -1,6 +1,6 @@
 import { createServer } from '@graphql-yoga/node';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getBuiltMesh } from '@nx-plugin-graphql-mesh/examples/graphql-mesh-lib';
+import { getBuiltMesh } from '@nx-plugin-graphql-mesh/examples/stackexchange-sdk';
 
 async function buildServer() {
   // retrieve the mesh instance (with configured Envelop plugins)

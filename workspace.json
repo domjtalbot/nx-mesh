@@ -5,7 +5,7 @@
     "example-api-gateway": "apps/example-api-gateway",
     "example-nextjs-stackexchange": "apps/example-nextjs-stackexchange",
     "example-nextjs-stackexchange-e2e": "apps/example-nextjs-stackexchange-e2e",
-    "examples-graphql-mesh-lib": "libs/examples/graphql-mesh-lib",
+    "examples-stackexchange-sdk": "libs/examples/stackexchange-sdk",
     "nx-plugin-graphql-mesh": "libs/nx-plugin-graphql-mesh",
     "nx-plugin-graphql-mesh-e2e": "apps/nx-plugin-graphql-mesh-e2e"
   }
