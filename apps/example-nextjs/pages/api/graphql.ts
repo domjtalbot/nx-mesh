@@ -19,7 +19,7 @@ async function buildServer() {
 }
 
 // avoids building the server at each request!
-const server$ = buildServer();
+export const server$ = buildServer();
 
 export default async function apiHandler(
   req: NextApiRequest,

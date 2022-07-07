@@ -7,5 +7,6 @@ export default {
     'nx affected --target=build',
     'nx affected --target=test',
     'nx affected --target=e2e',
+    'nx run example-nextjs:build:production && nx run nx-plugin-graphql-mesh-e2e:e2e:build',
   ],
 };

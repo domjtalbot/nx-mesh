@@ -32,7 +32,13 @@
           "buildTarget": "example-nextjs:build:production",
           "dev": false
         }
-      }
+      },
+      "dependsOn": [
+        {
+          "projects": "self",
+          "target": "build"
+        }
+      ]
     },
     "export": {
       "executor": "@nrwl/next:export",

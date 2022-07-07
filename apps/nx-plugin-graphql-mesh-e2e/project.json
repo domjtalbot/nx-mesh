@@ -5,9 +5,19 @@
   "targets": {
     "e2e": {
       "executor": "@nrwl/cypress:cypress",
+      "defaultConfiguration": "dev",
       "options": {
-        "cypressConfig": "apps/nx-plugin-graphql-mesh-e2e/cypress.json",
-        "devServerTarget": "example-api-gateway:dev:e2e"
+        "cypressConfig": "apps/nx-plugin-graphql-mesh-e2e/cypress.json"
+      },
+      "configurations": {
+        "build": {
+          "devServerTarget": "example-nextjs:serve:production",
+          "spec": "**/**build.spec**"
+        },
+        "dev": {
+          "devServerTarget": "example-api-gateway:dev:e2e",
+          "spec": "**/**dev.spec**"
+        }
       }
     },
     "lint": {

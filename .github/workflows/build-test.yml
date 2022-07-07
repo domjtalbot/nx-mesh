@@ -129,11 +129,17 @@ jobs:
         uses: cypress-io/github-action@f9e9419e05e5b83168d397d9c1d8d40ea179901e # tag=v4.0.0
         with:
           install: false
-          command: pnpm nx affected --target=e2e --parallel=${{ env.NX_PARALLEL }}
+          command: |
+            pnpm nx affected --target=e2e --parallel=${{ env.NX_PARALLEL }}
+            pnpm nx run example-nextjs:build:production
+            pnpm nx run nx-plugin-graphql-mesh-e2e:e2e:build
 
       - name: E2E
         if: ${{ env.NX_AFFECTED == 'false' }}
         uses: cypress-io/github-action@f9e9419e05e5b83168d397d9c1d8d40ea179901e # tag=v4.0.0
         with:
           install: false
-          command: pnpm nx run-many --target=e2e --all --parallel=${{ env.NX_PARALLEL }}
+          command: |
+            pnpm nx run-many --target=e2e --all --parallel=${{ env.NX_PARALLEL }}
+            pnpm nx run example-nextjs:build:production
+            pnpm nx run nx-plugin-graphql-mesh-e2e:e2e:build
