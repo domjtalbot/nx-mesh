@@ -3,8 +3,8 @@
   "version": 2,
   "projects": {
     "example-api-gateway": "apps/example-api-gateway",
-    "example-nextjs": "apps/example-nextjs",
-    "example-nextjs-e2e": "apps/example-nextjs-e2e",
+    "example-nextjs-stackexchange": "apps/example-nextjs-stackexchange",
+    "example-nextjs-stackexchange-e2e": "apps/example-nextjs-stackexchange-e2e",
     "examples-graphql-mesh-lib": "libs/examples/graphql-mesh-lib",
     "nx-plugin-graphql-mesh": "libs/nx-plugin-graphql-mesh",
     "nx-plugin-graphql-mesh-e2e": "apps/nx-plugin-graphql-mesh-e2e"

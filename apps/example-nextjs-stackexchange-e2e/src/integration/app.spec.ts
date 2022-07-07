@@ -1,4 +1,4 @@
-describe('example-nextjs', () => {
+describe('example-nextjs-stackexchange', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display featured questions', () => {

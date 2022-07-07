@@ -6,7 +6,7 @@
   "supportFile": "./src/support/index.ts",
   "pluginsFile": false,
   "video": true,
-  "videosFolder": "../../dist/cypress/apps/example-nextjs-e2e/videos",
-  "screenshotsFolder": "../../dist/cypress/apps/example-nextjs-e2e/screenshots",
+  "videosFolder": "../../dist/cypress/apps/example-nextjs-stackexchange-e2e/videos",
+  "screenshotsFolder": "../../dist/cypress/apps/example-nextjs-stackexchange-e2e/screenshots",
   "chromeWebSecurity": false
 }

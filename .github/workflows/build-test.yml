@@ -131,7 +131,7 @@ jobs:
           install: false
           command: |
             pnpm nx affected --target=e2e --parallel=${{ env.NX_PARALLEL }}
-            pnpm nx run example-nextjs:build:production
+            pnpm nx run example-nextjs-stackexchange:build:production
             pnpm nx run nx-plugin-graphql-mesh-e2e:e2e:build
 
       - name: E2E
@@ -141,5 +141,5 @@ jobs:
           install: false
           command: |
             pnpm nx run-many --target=e2e --all --parallel=${{ env.NX_PARALLEL }}
-            pnpm nx run example-nextjs:build:production
+            pnpm nx run example-nextjs-stackexchange:build:production
             pnpm nx run nx-plugin-graphql-mesh-e2e:e2e:build

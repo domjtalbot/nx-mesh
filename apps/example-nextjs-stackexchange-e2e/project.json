@@ -1,0 +1,30 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/example-nextjs-stackexchange-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/example-nextjs-stackexchange-e2e/cypress.json",
+        "devServerTarget": "example-nextjs-stackexchange:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "example-nextjs-stackexchange:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/example-nextjs-stackexchange-e2e/**/*.{js,ts}"
+        ]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["example-nextjs-stackexchange"]
+}

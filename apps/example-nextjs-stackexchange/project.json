@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/example-nextjs",
+  "sourceRoot": "apps/example-nextjs-stackexchange",
   "projectType": "application",
   "targets": {
     "build": {
@@ -8,8 +8,8 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "root": "apps/example-nextjs",
-        "outputPath": "dist/apps/example-nextjs"
+        "root": "apps/example-nextjs-stackexchange",
+        "outputPath": "dist/apps/example-nextjs-stackexchange"
       },
       "configurations": {
         "development": {},
@@ -20,16 +20,16 @@
       "executor": "@nrwl/next:server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "example-nextjs:build",
+        "buildTarget": "example-nextjs-stackexchange:build",
         "dev": true
       },
       "configurations": {
         "development": {
-          "buildTarget": "example-nextjs:build:development",
+          "buildTarget": "example-nextjs-stackexchange:build:development",
           "dev": true
         },
         "production": {
-          "buildTarget": "example-nextjs:build:production",
+          "buildTarget": "example-nextjs-stackexchange:build:production",
           "dev": false
         }
       },
@@ -43,14 +43,14 @@
     "export": {
       "executor": "@nrwl/next:export",
       "options": {
-        "buildTarget": "example-nextjs:build:production"
+        "buildTarget": "example-nextjs-stackexchange:build:production"
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/example-nextjs"],
+      "outputs": ["coverage/apps/example-nextjs-stackexchange"],
       "options": {
-        "jestConfig": "apps/example-nextjs/jest.config.ts",
+        "jestConfig": "apps/example-nextjs-stackexchange/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -58,7 +58,9 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/example-nextjs/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": [
+          "apps/example-nextjs-stackexchange/**/*.{ts,tsx,js,jsx}"
+        ]
       }
     }
   },
