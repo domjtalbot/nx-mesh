@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'example-api-gateway',
+  displayName: 'example-api-gateway-stackexchange',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -12,5 +12,5 @@ export default {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/apps/example-api-gateway',
+  coverageDirectory: '../../coverage/apps/example-api-gateway-stackexchange',
 };

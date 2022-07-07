@@ -15,7 +15,7 @@
           "spec": "**/**build.spec**"
         },
         "dev": {
-          "devServerTarget": "example-api-gateway:dev:e2e",
+          "devServerTarget": "example-api-gateway-stackexchange:dev:e2e",
           "spec": "**/**dev.spec**"
         }
       }
@@ -29,5 +29,8 @@
     }
   },
   "tags": [],
-  "implicitDependencies": ["example-api-gateway", "nx-plugin-graphql-mesh"]
+  "implicitDependencies": [
+    "example-api-gateway-stackexchange",
+    "nx-plugin-graphql-mesh"
+  ]
 }
