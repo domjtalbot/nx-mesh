@@ -127,6 +127,7 @@ jobs:
         shell: bash
 
       - name: Affected E2E
+        timeout-minutes: 5
         if: ${{ env.NX_AFFECTED == 'true' }}
         uses: cypress-io/github-action@f9e9419e05e5b83168d397d9c1d8d40ea179901e # tag=v4.0.0
         with:
@@ -135,6 +136,7 @@ jobs:
             pnpm nx affected --target=e2e --parallel=${{ env.NX_PARALLEL }}
 
       - name: E2E
+        timeout-minutes: 5
         if: ${{ env.NX_AFFECTED == 'false' }}
         uses: cypress-io/github-action@f9e9419e05e5b83168d397d9c1d8d40ea179901e # tag=v4.0.0
         with:
