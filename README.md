@@ -117,6 +117,26 @@ This is the equifilent of using `graphql-mesh dev`.
 | **`require`** | `string[]` | `false`  | `[]`    | Loads specific require.extensions before running the codegen and reading the configuration. |
 
 <br/>
+
+## Examples
+
+### API Gateway
+
+| Name                                 | Source Handler |
+| ------------------------------------ | -------------- |
+| **`apps/api-gateway/stackexchange`** | `openapi`      |
+| **`apps/api-gateway/trippin`**       | `odata`        |
+| **`apps/api-gateway/weatherbit`**    | `new-openapi`  |
+
+### SDK
+
+| Name                            | Source Handler | Framework |
+| ------------------------------- | -------------- | --------- |
+| **`apps/nextjs/stackexchange`** | `openapi`      | `nextjs`  |
+| **`apps/nextjs/trippin`**       | `odata`        | `nextjs`  |
+| **`apps/nextjs/weatherbit`**    | `new-openapi`  | `nextjs`  |
+
+<br/>
 <br/>
 
 <p align="center">🕸️ ♥ 🐋</p>
