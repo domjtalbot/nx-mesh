@@ -10,10 +10,13 @@
     "api-gateway-weatherbit-e2e": "apps/api-gateway/weatherbit-e2e",
     "nextjs-stackexchange": "apps/nextjs/stackexchange",
     "nextjs-stackexchange-e2e": "apps/nextjs/stackexchange-e2e",
+    "nextjs-trippin": "apps/nextjs/trippin",
+    "nextjs-trippin-e2e": "apps/nextjs/trippin-e2e",
     "nextjs-weatherbit": "apps/nextjs/weatherbit",
     "nextjs-weatherbit-e2e": "apps/nextjs/weatherbit-e2e",
     "nx-plugin-graphql-mesh": "libs/nx-plugin-graphql-mesh",
     "sdk-stackexchange": "libs/sdk/stackexchange",
+    "sdk-trippin": "libs/sdk/trippin",
     "sdk-weatherbit": "libs/sdk/weatherbit"
   }
 }

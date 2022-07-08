@@ -1,0 +1,38 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/sdk/trippin/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "dir": "libs/sdk/trippin",
+        "outputPath": "dist/libs/sdk/trippin",
+        "tsConfig": "libs/sdk/trippin/tsconfig.lib.json",
+        "main": "libs/sdk/trippin/src/index.ts"
+      },
+      "configurations": {
+        "e2e": {
+          "debug": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/sdk/trippin/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/sdk/trippin"],
+      "options": {
+        "jestConfig": "libs/sdk/trippin/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,16 @@
+{
+  "Airlines": [
+    {
+      "Name": "American Airlines",
+      "AirlineCode": "AA"
+    },
+    {
+      "Name": "Shanghai Airline",
+      "AirlineCode": "FM"
+    },
+    {
+      "Name": "China Eastern Airlines",
+      "AirlineCode": "MU"
+    }
+  ]
+}
