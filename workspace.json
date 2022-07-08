@@ -3,10 +3,12 @@
   "version": 2,
   "projects": {
     "example-api-gateway-stackexchange": "apps/example-api-gateway-stackexchange",
+    "example-api-gateway-stackexchange-e2e": "apps/example-api-gateway-stackexchange-e2e",
+    "example-api-gateway-weatherbit": "apps/example-api-gateway-weatherbit",
+    "example-api-gateway-weatherbit-e2e": "apps/example-api-gateway-weatherbit-e2e",
     "example-nextjs-stackexchange": "apps/example-nextjs-stackexchange",
     "example-nextjs-stackexchange-e2e": "apps/example-nextjs-stackexchange-e2e",
     "examples-stackexchange-sdk": "libs/examples/stackexchange-sdk",
-    "nx-plugin-graphql-mesh": "libs/nx-plugin-graphql-mesh",
-    "nx-plugin-graphql-mesh-e2e": "apps/nx-plugin-graphql-mesh-e2e"
+    "nx-plugin-graphql-mesh": "libs/nx-plugin-graphql-mesh"
   }
 }
