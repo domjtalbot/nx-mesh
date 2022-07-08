@@ -18,8 +18,8 @@
       "@domjtalbot/nx-plugin-graphql-mesh": [
         "libs/nx-plugin-graphql-mesh/src/index.ts"
       ],
-      "@nx-plugin-graphql-mesh/examples/stackexchange-sdk": [
-        "libs/examples/stackexchange-sdk/src/index.ts"
+      "@nx-plugin-graphql-mesh/sdk/stackexchange": [
+        "libs/sdk/stackexchange/src/index.ts"
       ]
     }
   },

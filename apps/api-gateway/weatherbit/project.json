@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/api-gateway/weatherbit",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:build-gateway",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "dir": "apps/api-gateway/weatherbit",
+        "outputPath": "dist/apps/api-gateway/weatherbit"
+      },
+      "configurations": {
+        "e2e": {
+          "debug": false
+        }
+      }
+    },
+    "dev": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:dev",
+      "options": {
+        "dir": "apps/api-gateway/weatherbit",
+        "port": 4500
+      },
+      "configurations": {
+        "e2e": {
+          "debug": false,
+          "port": 4600
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/api-gateway/weatherbit/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/api-gateway/weatherbit"],
+      "options": {
+        "jestConfig": "apps/api-gateway/weatherbit/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["type:app"]
+}
