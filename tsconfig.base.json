@@ -20,6 +20,9 @@
       ],
       "@nx-plugin-graphql-mesh/sdk/stackexchange": [
         "libs/sdk/stackexchange/src/index.ts"
+      ],
+      "@nx-plugin-graphql-mesh/sdk/weatherbit": [
+        "libs/sdk/weatherbit/src/index.ts"
       ]
     }
   },
