@@ -30,6 +30,8 @@ concurrency:
   group: build-test-${{ github.workflow }}-${{ github.ref }}
 
 env:
+  NX__TRIPPIN__API_KEY: ${{ secrets.NX__TRIPPIN__API_KEY }}
+  NX__WEATHERBIT__API_KEY: ${{ secrets.NX__WEATHERBIT__API_KEY }}
   NX_AFFECTED: ${{ inputs.affected == 'true' || true }}
   NX_PARALLEL: ${{ inputs.parallel || 3 }}
   NX_AFFECTED_COMMANDS: |
