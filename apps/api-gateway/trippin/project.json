@@ -25,7 +25,7 @@
       "configurations": {
         "e2e": {
           "debug": false,
-          "port": 4800
+          "port": 5001
         }
       }
     },
