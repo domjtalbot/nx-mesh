@@ -23,6 +23,7 @@
     "@envelop/response-cache": "^2.4.0",
     "@graphql-mesh/cli": "0.74.0",
     "@graphql-mesh/new-openapi": "^0.5.2",
+    "@graphql-mesh/odata": "^0.18.3",
     "@graphql-mesh/openapi": "0.28.0",
     "@graphql-mesh/runtime": "0.40.0",
     "@graphql-mesh/utils": "0.37.0",

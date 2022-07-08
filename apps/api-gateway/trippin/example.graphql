@@ -1,0 +1,20 @@
+query GetMe {
+  Me {
+    UserName
+    FirstName
+    LastName
+    Gender
+    FavoriteFeature
+    AddressInfo {
+      Address
+      City {
+        Name
+        Region
+        CountryRegion
+      }
+    }
+    Trips(queryOptions: { top: 1 }) {
+      Description
+    }
+  }
+}

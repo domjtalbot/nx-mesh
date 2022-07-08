@@ -4,6 +4,8 @@
   "projects": {
     "api-gateway-stackexchange": "apps/api-gateway/stackexchange",
     "api-gateway-stackexchange-e2e": "apps/api-gateway/stackexchange-e2e",
+    "api-gateway-trippin": "apps/api-gateway/trippin",
+    "api-gateway-trippin-e2e": "apps/api-gateway/trippin-e2e",
     "api-gateway-weatherbit": "apps/api-gateway/weatherbit",
     "api-gateway-weatherbit-e2e": "apps/api-gateway/weatherbit-e2e",
     "nextjs-stackexchange": "apps/nextjs/stackexchange",
