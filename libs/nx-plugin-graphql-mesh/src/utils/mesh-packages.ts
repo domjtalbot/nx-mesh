@@ -15,6 +15,7 @@ const sources = [
   '@graphql-mesh/mongoose',
   '@graphql-mesh/mysql',
   '@graphql-mesh/neo4j',
+  '@graphql-mesh/new-openapi',
   '@graphql-mesh/odata',
   '@graphql-mesh/openapi',
   '@graphql-mesh/postgraphile',
