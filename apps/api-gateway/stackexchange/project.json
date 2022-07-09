@@ -5,7 +5,7 @@
   "targets": {
     "build": {
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:build-gateway",
-      "outputs": ["{options.outputPath}"],
+      "outputs": ["{options.dir}/.mesh", "{options.outputPath}"],
       "options": {
         "dir": "apps/api-gateway/stackexchange",
         "outputPath": "dist/apps/api-gateway/stackexchange"
