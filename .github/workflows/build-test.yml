@@ -32,6 +32,7 @@ concurrency:
 env:
   NX__TRIPPIN__API_KEY: ${{ secrets.NX__TRIPPIN__API_KEY }}
   NX__WEATHERBIT__API_KEY: ${{ secrets.NX__WEATHERBIT__API_KEY }}
+  NX_CLOUD_TOKEN: ${{ secrets.NX_CLOUD_TOKEN }}
   NX_AFFECTED: ${{ inputs.affected == 'true' || true }}
   NX_PARALLEL: ${{ inputs.parallel || 3 }}
   NX_AFFECTED_COMMANDS: |
