@@ -13,6 +13,10 @@ on:
         type: number
         required: false
         default: 3
+    outputs:
+      affectedApps:
+        description: 'The affected apps'
+        value: ${{ jobs.build-test.outputs.affectedApps }}
     secrets:
       NX__TRIPPIN__API_KEY:
         description: 'The Trippin API Key'
@@ -50,6 +54,8 @@ jobs:
   build-test:
     name: Build & Test
     runs-on: ubuntu-latest
+    outputs:
+      affectedApps: ${{ steps.affected-apps.outputs.apps }}
     steps:
       - name: Check out repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
@@ -58,6 +64,11 @@ jobs:
 
       - name: Setup
         uses: ./.github/actions/setup
+
+      - name: Get Affected apps
+        id: affected-apps
+        run: |
+          echo ::set-output name=apps::$(pnpm nx affected:apps --plain)
 
       # https://github.com/nrwl/ci/blob/main/.github/workflows/nx-cloud-main.yml#L165
       - name: Create command utils

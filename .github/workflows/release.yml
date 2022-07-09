@@ -65,9 +65,10 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   deploy:
-    needs: [release]
+    needs: [build-test, release]
     if: needs.release.outputs.published == 'true'
     uses: ./.github/workflows/deploy.yml
     with:
+      apps: ${{ needs.build-test.outputs.affectedApps }}
       production: true
     secrets: inherit

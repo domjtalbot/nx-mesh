@@ -3,6 +3,10 @@ name: 'Deploy'
 on:
   workflow_call:
     inputs:
+      apps:
+        description: The apps to deploy
+        type: string
+        required: true
       production:
         description: Deploy production?
         type: boolean
@@ -32,14 +36,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup
-        uses: ./.github/actions/setup
-
-      - name: Get Affected apps
-        id: affected
-        run: |
-          echo ::set-output name=apps::$(pnpm nx affected:apps --plain)
-
       - name: Deploy env
         id: deploy-env
         shell: bash
@@ -54,7 +50,7 @@ jobs:
           echo ::set-output name=name::$name
 
       - name: Deploy to Vercel Action
-        if: contains(steps.affected.outputs.apps, 'nextjs-trippin')
+        if: contains(inputs.apps, 'nextjs-trippin')
         uses: BetaHuhn/deploy-to-vercel-action@v1
         with:
           GITHUB_DEPLOYMENT_ENV: nextjs/trippin ${{ steps.deploy-env.outputs.name }}
