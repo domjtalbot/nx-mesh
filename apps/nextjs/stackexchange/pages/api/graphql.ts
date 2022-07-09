@@ -9,10 +9,13 @@ async function buildServer() {
   // pass the Mesh instance to Yoga and configure GraphiQL
   const server = createServer({
     plugins: mesh.plugins,
-    graphiql: {
-      endpoint: '/api/graphql',
-      title: 'Mesh Gateway',
-    },
+    graphiql:
+      process.env['NX__ENABLE_GRAPHIQL'] === 'false'
+        ? undefined
+        : {
+            endpoint: '/api/graphql',
+            title: 'Mesh Gateway',
+          },
   });
 
   return server;
