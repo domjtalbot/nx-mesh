@@ -28,13 +28,13 @@ jobs:
       - name: Get Affected apps
         id: affected
         run: |
-          echo ::set-output name=apps::$(< pnpm nx affected:apps --plain)
+          echo ::set-output name=apps::$(pnpm nx affected:apps --plain)
 
       - name: Deploy env
         id: deploy-env
         shell: bash
         run: |
-          if [ ${{ inputs.production }} = 'true' ]; then
+          if [ ${{ inputs.production }} = true ]; then
             echo ::set-output name=name::Production
           else
             echo ::set-output name=name::Preview
