@@ -11,7 +11,7 @@ async function buildServer() {
     plugins: mesh.plugins,
     graphiql:
       process.env['NX__ENABLE_GRAPHIQL'] === 'false'
-        ? undefined
+        ? false
         : {
             endpoint: '/api/graphql',
             title: 'Mesh Gateway',
