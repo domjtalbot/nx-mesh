@@ -130,11 +130,11 @@ This is the equifilent of using `graphql-mesh dev`.
 
 ### SDK
 
-| Name                            | Source Handler | Framework |
-| ------------------------------- | -------------- | --------- |
-| **`apps/nextjs/stackexchange`** | `openapi`      | `nextjs`  |
-| **`apps/nextjs/trippin`**       | `odata`        | `nextjs`  |
-| **`apps/nextjs/weatherbit`**    | `new-openapi`  | `nextjs`  |
+| Name                            | Source Handler | Framework | Deployed                                                               |
+| ------------------------------- | -------------- | --------- | ---------------------------------------------------------------------- |
+| **`apps/nextjs/stackexchange`** | `openapi`      | `nextjs`  | -                                                                      |
+| **`apps/nextjs/trippin`**       | `odata`        | `nextjs`  | [Vercel](https://nx-plugin-graphql-mesh-trippin-domjtalbot.vercel.app) |
+| **`apps/nextjs/weatherbit`**    | `new-openapi`  | `nextjs`  | -                                                                      |
 
 <br/>
 <br/>
