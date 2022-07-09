@@ -34,11 +34,14 @@ jobs:
         id: deploy-env
         shell: bash
         run: |
+          name=Preview
+
           if [ ${{ inputs.production }} = true ]; then
-            echo ::set-output name=name::Production
-          else
-            echo ::set-output name=name::Preview
+            name=Production
           fi
+
+          echo The env is $name
+          echo ::set-output name=name::$name
 
       - name: Deploy to Vercel Action
         if: contains(steps.affected.outputs.apps, 'nextjs-trippin')
