@@ -8,6 +8,16 @@ on:
         type: boolean
         required: false
         default: false
+    secrets:
+      VERCEL_ORG_ID:
+        description: 'The Vercel ORG ID'
+        required: true
+      VERCEL_PROJECT_ID:
+        description: 'The Vercel Project Id'
+        required: true
+      VERCEL_TOKEN:
+        description: 'The Vercel API token'
+        required: true
 
 concurrency:
   group: deploy-${{ github.workflow }}-${{ github.ref }}

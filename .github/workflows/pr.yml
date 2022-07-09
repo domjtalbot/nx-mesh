@@ -11,7 +11,9 @@ concurrency:
 jobs:
   build-test:
     uses: ./.github/workflows/build-test.yml
+    secrets: inherit
 
   deploy:
     needs: [build-test]
     uses: ./.github/workflows/deploy.yml
+    secrets: inherit

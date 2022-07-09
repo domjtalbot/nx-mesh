@@ -13,6 +13,16 @@ on:
         type: number
         required: false
         default: 3
+    secrets:
+      NX__TRIPPIN__API_KEY:
+        description: 'The Trippin API Key'
+        required: true
+      NX__WEATHERBIT__API_KEY:
+        description: 'The Weatherbit API Key'
+        required: true
+      NX_CLOUD_TOKEN:
+        description: 'The NX Cloud API token'
+        required: true
 
 concurrency:
   group: build-test-${{ github.workflow }}-${{ github.ref }}

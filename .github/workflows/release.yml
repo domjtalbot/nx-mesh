@@ -21,6 +21,7 @@ jobs:
     uses: ./.github/workflows/build-test.yml
     with:
       affected: false
+    secrets: inherit
 
   release:
     needs: [build-test]
@@ -69,3 +70,4 @@ jobs:
     uses: ./.github/workflows/deploy.yml
     with:
       production: true
+    secrets: inherit
