@@ -1,18 +1,6 @@
 name: 'Build & Test'
 
 on:
-  pull_request:
-    branches:
-      - main
-
-  workflow_dispatch:
-    inputs:
-      debug_enabled:
-        type: boolean
-        description: 'Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)'
-        required: false
-        default: false
-
   workflow_call:
     inputs:
       affected:
@@ -53,12 +41,6 @@ jobs:
     name: Build & Test
     runs-on: ubuntu-latest
     steps:
-      # Enable tmate debugging of manually-triggered workflows
-      # if the input option was provided.
-      - name: Setup SSH debug session
-        uses: mxschmitt/action-tmate@8b4e4ac71822ed7e0ad5fb3d1c33483e9e8fb270 # tag=v3
-        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled }}
-
       - name: Check out repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
         with:
@@ -144,15 +126,3 @@ jobs:
           install: false
           command: |
             pnpm nx run-many --target=e2e --all --parallel=${{ env.NX_PARALLEL }}
-
-      - name: Deploy to Vercel Action
-        uses: BetaHuhn/deploy-to-vercel-action@v1
-        with:
-          GITHUB_DEPLOYMENT_ENV: nextjs/trippin Preview
-          GITHUB_DEPLOYMENT: true
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_LABELS: vercel
-          PRODUCTION: false
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}

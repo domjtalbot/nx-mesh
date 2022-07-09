@@ -1,0 +1,54 @@
+name: 'Deploy'
+
+on:
+  workflow_call:
+    inputs:
+      production:
+        description: Deploy production?
+        type: boolean
+        required: false
+        default: false
+
+concurrency:
+  group: deploy-${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Get Affected apps
+        id: affected
+        run: |
+          echo ::set-output name=apps::$(< pnpm nx affected:apps --plain)
+
+      - name: Deploy env
+        id: deploy-env
+        shell: bash
+        run: |
+          if [ ${{ inputs.production }} = 'true' ]; then
+            echo ::set-output name=name::Production
+          else
+            echo ::set-output name=name::Preview
+          fi
+
+      - name: Deploy to Vercel Action
+        if: contains(steps.affected.outputs.apps, 'nextjs-trippin')
+        uses: BetaHuhn/deploy-to-vercel-action@v1
+        with:
+          GITHUB_DEPLOYMENT_ENV: nextjs/trippin ${{ steps.deploy-env.outputs.name }}
+          GITHUB_DEPLOYMENT: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_LABELS: vercel
+          PRODUCTION: ${{ inputs.production }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}

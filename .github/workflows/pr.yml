@@ -1,0 +1,17 @@
+name: 'Pull Request'
+
+on:
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: pr-${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  build-test:
+    uses: ./.github/workflows/build-test.yml
+
+  deploy:
+    needs: [build-test]
+    uses: ./.github/workflows/deploy.yml
