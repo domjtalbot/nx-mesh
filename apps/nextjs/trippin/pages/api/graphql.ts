@@ -1,3 +1,4 @@
+import { useDepthLimit as depthLimit } from '@envelop/depth-limit';
 import { useDisableIntrospection as disableIntrospection } from '@envelop/disable-introspection';
 import { createServer } from '@graphql-yoga/node';
 import { NextApiRequest, NextApiResponse } from 'next';
@@ -14,6 +15,9 @@ async function buildServer() {
       disableIntrospection({
         disableIf: () =>
           process.env['NX__ENABLE_GRAPHQL_INTROSPECTION'] === 'false',
+      }),
+      depthLimit({
+        maxDepth: 10,
       }),
     ],
     graphiql:
