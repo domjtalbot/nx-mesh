@@ -12,6 +12,7 @@ export default async function* buildExecutor(
   context: ExecutorContext
 ) {
   const dir = resolve(context.root, options.dir);
+  let success = false;
 
   await runMeshCli(
     'build',
@@ -29,7 +30,7 @@ export default async function* buildExecutor(
 
   logger.info('');
 
-  yield* tscExecutor(
+  const tsc = tscExecutor(
     {
       assets: [...options.assets],
       main: options.main,
@@ -41,16 +42,22 @@ export default async function* buildExecutor(
     context
   );
 
-  await createPackageJson(
-    {
-      dir: options.dir,
-      outputPath: options.outputPath,
-      projectRoot: options.outputPath,
-    },
-    context
-  );
+  for await (const result of tsc) {
+    success = result.success;
+  }
+
+  if (success) {
+    await createPackageJson(
+      {
+        dir: options.dir,
+        outputPath: options.outputPath,
+        projectRoot: options.outputPath,
+      },
+      context
+    );
+  }
 
   yield {
-    success: true,
+    success,
   };
 }
