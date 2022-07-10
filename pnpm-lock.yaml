@@ -5,6 +5,7 @@ specifiers:
   '@changesets/cli': 2.23.0
   '@commitlint/cli': 17.0.2
   '@commitlint/config-angular': 17.0.0
+  '@envelop/disable-introspection': ^3.4.0
   '@envelop/response-cache': ^2.4.0
   '@graphql-mesh/cli': 0.74.0
   '@graphql-mesh/new-openapi': ^0.5.2
@@ -70,6 +71,7 @@ dependencies:
   '@changesets/cli': 2.23.0
   '@commitlint/cli': 17.0.2
   '@commitlint/config-angular': 17.0.0
+  '@envelop/disable-introspection': 3.4.0_graphql@16.5.0
   '@envelop/response-cache': 2.4.0_graphql@16.5.0
   '@graphql-mesh/cli': 0.74.0_owf6sgkk3tdb2lil7jz4luljh4
   '@graphql-mesh/new-openapi': 0.5.2_tguxomqdchinjc7y46blh4q5oy
@@ -2598,6 +2600,18 @@ packages:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
       '@envelop/types': 2.3.0_graphql@16.5.0
+      graphql: 16.5.0
+    dev: false
+
+  /@envelop/disable-introspection/3.4.0_graphql@16.5.0:
+    resolution:
+      {
+        integrity: sha512-iDliDXiS/VLuuHWH0FoX8XY7IB1SYuFCrsQ548cQ+0iKAPYPuVbT1r5u6vN3On8m04q2baAl3vMg1fUpYq//HA==,
+      }
+    peerDependencies:
+      '@envelop/core': ^2.4.0
+      graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
+    dependencies:
       graphql: 16.5.0
     dev: false
 

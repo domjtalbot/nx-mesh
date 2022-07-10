@@ -1,3 +1,4 @@
+import { useDisableIntrospection as disableIntrospection } from '@envelop/disable-introspection';
 import { createServer } from '@graphql-yoga/node';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getBuiltMesh } from '@nx-plugin-graphql-mesh/sdk/stackexchange';
@@ -8,7 +9,13 @@ async function buildServer() {
 
   // pass the Mesh instance to Yoga and configure GraphiQL
   const server = createServer({
-    plugins: mesh.plugins,
+    plugins: [
+      ...mesh.plugins,
+      disableIntrospection({
+        disableIf: () =>
+          process.env['NX__ENABLE_GRAPHQL_INTROSPECTION'] === 'false',
+      }),
+    ],
     graphiql:
       process.env['NX__ENABLE_GRAPHIQL'] === 'false'
         ? false

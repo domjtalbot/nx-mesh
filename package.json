@@ -20,6 +20,7 @@
     "@changesets/cli": "2.23.0",
     "@commitlint/cli": "17.0.2",
     "@commitlint/config-angular": "17.0.0",
+    "@envelop/disable-introspection": "^3.4.0",
     "@envelop/response-cache": "^2.4.0",
     "@graphql-mesh/cli": "0.74.0",
     "@graphql-mesh/new-openapi": "^0.5.2",
