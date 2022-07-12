@@ -168,12 +168,12 @@ This is the equifilent of using `graphql-mesh dev`.
 
 ### SDK
 
-| Name                            | Source Handler | Framework | Compiler | Deployed                                                               |
-| ------------------------------- | -------------- | --------- | -------- | ---------------------------------------------------------------------- |
-| **`apps/nextjs/stackexchange`** | `openapi`      | `nextjs`  | `tsc`    | -                                                                      |
-| **`apps/nextjs/trippin`**       | `odata`        | `nextjs`  | `tsc`    | [Vercel](https://nx-plugin-graphql-mesh-trippin-domjtalbot.vercel.app) |
-| **`apps/nextjs/trippin-swc`**   | `odata`        | `nextjs`  | `swc`    | -                                                                      |
-| **`apps/nextjs/weatherbit`**    | `new-openapi`  | `nextjs`  | `tsc`    | -                                                                      |
+| Name                            | Source Handler | Framework | Compiler | Deployed                                                                   |
+| ------------------------------- | -------------- | --------- | -------- | -------------------------------------------------------------------------- |
+| **`apps/nextjs/stackexchange`** | `openapi`      | `nextjs`  | `tsc`    | -                                                                          |
+| **`apps/nextjs/trippin`**       | `odata`        | `nextjs`  | `tsc`    | [Vercel](https://nx-plugin-graphql-mesh-trippin-domjtalbot.vercel.app)     |
+| **`apps/nextjs/trippin-swc`**   | `odata`        | `nextjs`  | `swc`    | [Vercel](https://nx-plugin-graphql-mesh-trippin-swc-domjtalbot.vercel.app) |
+| **`apps/nextjs/weatherbit`**    | `new-openapi`  | `nextjs`  | `tsc`    | -                                                                          |
 
 <br/>
 <br/>
