@@ -1,4 +1,4 @@
-import type { Get, StringKeyOf } from 'type-fest';
+import type { StringKeyOf } from 'type-fest';
 
 /**
  * Arguments that can be passed to the GraphQL Mesh CLI.
@@ -27,11 +27,7 @@ export type Arguments = {
  * Arguments in a format accepted by the GraphQL Mesh CLI.
  */
 export type CliArguments<TArgs extends Arguments = Arguments> = {
-  [Arg in StringKeyOf<TArgs> as `--${Arg}`]?: Arg extends 'require'
-    ? string
-    : Arg extends number
-    ? string
-    : Get<TArgs, Arg>;
+  [Arg in StringKeyOf<TArgs> as `--${Arg}`]?: string;
 };
 
 /**
@@ -41,15 +37,18 @@ export type CliArguments<TArgs extends Arguments = Arguments> = {
 export const getCliArguments = (options: Arguments): CliArguments => {
   const cliArguments: CliArguments = {};
 
-  Object.keys(options).forEach((key) => {
-    let value = options[key];
+  Object.entries(options).forEach(([key, value]) => {
+    const cliKey = `--${key}` as keyof CliArguments;
+    let cliValue;
 
-    if (key === 'require' && Array.isArray(value)) {
-      value = value.join(' ');
+    if (Array.isArray(value)) {
+      cliValue = value.join(' ');
+    } else {
+      cliValue = value;
     }
 
-    if (value !== undefined && value !== '') {
-      cliArguments[`--${key}`] = value;
+    if (cliValue !== undefined && cliValue !== '') {
+      cliArguments[cliKey] = `${cliValue}`;
     }
   });
 
@@ -57,12 +56,4 @@ export const getCliArguments = (options: Arguments): CliArguments => {
 };
 
 export const flatternCliArguments = (args: CliArguments) =>
-  Object.entries(args)
-    .flat()
-    .map((arg) => {
-      if (typeof arg === 'number') {
-        return arg.toString();
-      }
-
-      return arg;
-    });
+  Object.entries(args).flat();

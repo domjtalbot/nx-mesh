@@ -29,6 +29,18 @@
         "target": "build",
         "projects": "dependencies"
       }
+    ],
+    "e2e": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ],
+    "test": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
     ]
   },
   "generators": {
@@ -44,5 +56,5 @@
       }
     }
   },
-  "defaultProject": "example-nextjs"
+  "defaultProject": "nextjs-stackexchange"
 }

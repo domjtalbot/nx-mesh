@@ -5,6 +5,24 @@
       "implementation": "./src/executors/dev/executor",
       "schema": "./src/executors/dev/schema.json",
       "description": "Serves a GraphQL server with GraphQL interface by building artifacts on the fly"
+    },
+    "build": {
+      "implementation": "./src/executors/build/build.impl",
+      "schema": "./src/executors/build/schema.json",
+      "description": "Builds artifacts",
+      "hasher": "./src/executors/build/hasher"
+    },
+    "build-gateway": {
+      "implementation": "./src/executors/build-gateway/build-gateway.impl",
+      "schema": "./src/executors/build-gateway/schema.json",
+      "description": "Builds artifacts to be used as an API Gateway",
+      "hasher": "./src/executors/build-gateway/hasher"
+    },
+    "build-swc": {
+      "implementation": "./src/executors/build-swc/build-swc.impl",
+      "schema": "./src/executors/build-swc/schema.json",
+      "description": "Builds artifacts using SWC.",
+      "hasher": "./src/executors/build-swc/hasher"
     }
   }
 }

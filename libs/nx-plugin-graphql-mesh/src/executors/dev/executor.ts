@@ -39,7 +39,7 @@ export default async function* devExecutor(
     process.stdout.write(chunk);
   });
 
-  childProcess.stderr.on('data', (chunk) => {
+  childProcess?.stderr?.on('data', (chunk) => {
     process.stderr.write(chunk);
   });
 

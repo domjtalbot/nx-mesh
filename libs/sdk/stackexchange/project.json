@@ -1,0 +1,38 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/sdk/stackexchange/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:build",
+      "outputs": ["{options.dir}/.mesh", "{options.outputPath}"],
+      "options": {
+        "dir": "libs/sdk/stackexchange",
+        "outputPath": "dist/libs/sdk/stackexchange",
+        "tsConfig": "libs/sdk/stackexchange/tsconfig.lib.json",
+        "main": "libs/sdk/stackexchange/src/index.ts"
+      },
+      "configurations": {
+        "e2e": {
+          "debug": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/sdk/stackexchange/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/sdk/stackexchange"],
+      "options": {
+        "jestConfig": "libs/sdk/stackexchange/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

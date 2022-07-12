@@ -2,10 +2,24 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
-    "example-api-gateway": "apps/example-api-gateway",
-    "example-nextjs": "apps/example-nextjs",
-    "example-nextjs-e2e": "apps/example-nextjs-e2e",
+    "api-gateway-stackexchange": "apps/api-gateway/stackexchange",
+    "api-gateway-stackexchange-e2e": "apps/api-gateway/stackexchange-e2e",
+    "api-gateway-trippin": "apps/api-gateway/trippin",
+    "api-gateway-trippin-e2e": "apps/api-gateway/trippin-e2e",
+    "api-gateway-weatherbit": "apps/api-gateway/weatherbit",
+    "api-gateway-weatherbit-e2e": "apps/api-gateway/weatherbit-e2e",
+    "nextjs-stackexchange": "apps/nextjs/stackexchange",
+    "nextjs-stackexchange-e2e": "apps/nextjs/stackexchange-e2e",
+    "nextjs-trippin": "apps/nextjs/trippin",
+    "nextjs-trippin-e2e": "apps/nextjs/trippin-e2e",
+    "nextjs-trippin-swc": "apps/nextjs/trippin-swc",
+    "nextjs-trippin-swc-e2e": "apps/nextjs/trippin-swc-e2e",
+    "nextjs-weatherbit": "apps/nextjs/weatherbit",
+    "nextjs-weatherbit-e2e": "apps/nextjs/weatherbit-e2e",
     "nx-plugin-graphql-mesh": "libs/nx-plugin-graphql-mesh",
-    "nx-plugin-graphql-mesh-e2e": "apps/nx-plugin-graphql-mesh-e2e"
+    "sdk-stackexchange": "libs/sdk/stackexchange",
+    "sdk-trippin": "libs/sdk/trippin",
+    "sdk-trippin-swc": "libs/sdk/trippin-swc",
+    "sdk-weatherbit": "libs/sdk/weatherbit"
   }
 }

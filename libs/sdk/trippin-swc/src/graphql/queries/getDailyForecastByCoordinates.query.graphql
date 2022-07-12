@@ -1,0 +1,18 @@
+query getDailyForecastByCoordinates(
+  $lat: Float!
+  $lng: Float!
+  $apiKey: String!
+) {
+  forecastData: forecast_daily_by_lat_by_lon(
+    lat: $lat
+    lon: $lng
+    input: { key: $apiKey }
+  ) {
+    ...DailyForecast
+
+    ... on Error {
+      code
+      message
+    }
+  }
+}

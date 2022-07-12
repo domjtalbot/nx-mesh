@@ -5,5 +5,13 @@
     "module": "commonjs",
     "types": ["jest", "node"]
   },
-  "include": ["jest.config.ts", "**/*.test.ts", "**/*.spec.ts", "**/*.d.ts"]
+  "include": [
+    "jest.config.ts",
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "**/*.d.ts",
+    "src/executors/build-gateway/schema.ts",
+    "src/executors/build/schema.ts",
+    "src/executors/build-swc/schema.ts"
+  ]
 }

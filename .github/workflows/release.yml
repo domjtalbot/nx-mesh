@@ -21,11 +21,14 @@ jobs:
     uses: ./.github/workflows/build-test.yml
     with:
       affected: false
+    secrets: inherit
 
   release:
     needs: [build-test]
     name: Release
     runs-on: ubuntu-latest
+    outputs:
+      published: ${{ steps.changesets.outputs.published }}
     steps:
       # Enable tmate debugging of manually-triggered workflows
       # if the input option was provided.
@@ -60,3 +63,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy:
+    needs: [build-test, release]
+    if: needs.release.outputs.published == 'true'
+    uses: ./.github/workflows/deploy.yml
+    with:
+      apps: ${{ needs.build-test.outputs.affectedApps }}
+      production: true
+    secrets: inherit

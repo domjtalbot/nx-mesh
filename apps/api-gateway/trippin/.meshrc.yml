@@ -1,0 +1,13 @@
+sources:
+  - name: TripPin
+    handler:
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
+
+documents:
+  - example.graphql
+
+serve:
+  browser: false

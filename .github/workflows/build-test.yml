@@ -1,18 +1,6 @@
 name: 'Build & Test'
 
 on:
-  pull_request:
-    branches:
-      - main
-
-  workflow_dispatch:
-    inputs:
-      debug_enabled:
-        type: boolean
-        description: 'Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)'
-        required: false
-        default: false
-
   workflow_call:
     inputs:
       affected:
@@ -25,37 +13,50 @@ on:
         type: number
         required: false
         default: 3
+    outputs:
+      affectedApps:
+        description: 'The affected apps'
+        value: ${{ jobs.build-test.outputs.affectedApps }}
+    secrets:
+      NX__TRIPPIN__API_KEY:
+        description: 'The Trippin API Key'
+        required: true
+      NX__WEATHERBIT__API_KEY:
+        description: 'The Weatherbit API Key'
+        required: true
+      NX_CLOUD_TOKEN:
+        description: 'The NX Cloud API token'
+        required: true
 
 concurrency:
   group: build-test-${{ github.workflow }}-${{ github.ref }}
 
 env:
+  NX__TRIPPIN__API_KEY: ${{ secrets.NX__TRIPPIN__API_KEY }}
+  NX__WEATHERBIT__API_KEY: ${{ secrets.NX__WEATHERBIT__API_KEY }}
+  NX_CLOUD_TOKEN: ${{ secrets.NX_CLOUD_TOKEN }}
   NX_AFFECTED: ${{ inputs.affected == 'true' || true }}
   NX_PARALLEL: ${{ inputs.parallel || 3 }}
   NX_AFFECTED_COMMANDS: |
     pnpm nx-cloud record -- npx nx workspace-lint
     pnpm nx-cloud record -- npx nx format:check
     pnpm nx affected --target=lint --parallel=${{ inputs.parallel || 3 }}
-    pnpm nx affected --target=test --parallel=${{ inputs.parallel || 3 }} --ci --code-coverage
     pnpm nx affected --target=build --parallel=${{ inputs.parallel || 3 }}
+    pnpm nx affected --target=test --parallel=${{ inputs.parallel || 3 }} --ci --code-coverage
   NX_COMMANDS: |
     pnpm nx-cloud record -- npx nx workspace-lint
     pnpm nx-cloud record -- npx nx format:check
     pnpm nx run-many --target=lint --all --parallel=${{ inputs.parallel || 3 }}
-    pnpm nx run-many --target=test --all --parallel=${{ inputs.parallel || 3 }} --ci --code-coverage
     pnpm nx run-many --target=build --all --parallel=${{ inputs.parallel || 3 }}
+    pnpm nx run-many --target=test --all --parallel=${{ inputs.parallel || 3 }} --ci --code-coverage
 
 jobs:
   build-test:
     name: Build & Test
     runs-on: ubuntu-latest
+    outputs:
+      affectedApps: ${{ steps.affected-apps.outputs.apps }}
     steps:
-      # Enable tmate debugging of manually-triggered workflows
-      # if the input option was provided.
-      - name: Setup SSH debug session
-        uses: mxschmitt/action-tmate@8b4e4ac71822ed7e0ad5fb3d1c33483e9e8fb270 # tag=v3
-        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled }}
-
       - name: Check out repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
         with:
@@ -63,6 +64,11 @@ jobs:
 
       - name: Setup
         uses: ./.github/actions/setup
+
+      - name: Get Affected apps
+        id: affected-apps
+        run: |
+          echo ::set-output name=apps::$(pnpm nx affected:apps --plain)
 
       # https://github.com/nrwl/ci/blob/main/.github/workflows/nx-cloud-main.yml#L165
       - name: Create command utils
@@ -125,15 +131,19 @@ jobs:
         shell: bash
 
       - name: Affected E2E
+        timeout-minutes: 5
         if: ${{ env.NX_AFFECTED == 'true' }}
         uses: cypress-io/github-action@be2de7b1fe1cdafb4a3c8da0a3746476ef636b65 # tag=v4.1.0
         with:
           install: false
-          command: pnpm nx affected --target=e2e --parallel=${{ env.NX_PARALLEL }}
+          command: |
+            pnpm nx affected --target=e2e --parallel=${{ env.NX_PARALLEL }}
 
       - name: E2E
+        timeout-minutes: 5
         if: ${{ env.NX_AFFECTED == 'false' }}
         uses: cypress-io/github-action@be2de7b1fe1cdafb4a3c8da0a3746476ef636b65 # tag=v4.1.0
         with:
           install: false
-          command: pnpm nx run-many --target=e2e --all --parallel=${{ env.NX_PARALLEL }}
+          command: |
+            pnpm nx run-many --target=e2e --all --parallel=${{ env.NX_PARALLEL }}

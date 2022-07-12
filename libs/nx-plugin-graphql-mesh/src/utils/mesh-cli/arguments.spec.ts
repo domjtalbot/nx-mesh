@@ -34,7 +34,7 @@ describe('MeshCli Arguments', () => {
           port: 1234,
         },
         {
-          '--port': 1234,
+          '--port': '1234',
         },
       ],
       [
@@ -88,14 +88,14 @@ describe('MeshCli Arguments', () => {
       ],
       [
         {
-          '--port': 1234,
+          '--port': '1234',
         },
         ['--port', '1234'],
       ],
       [
         {
           '--dir': '/path/to/test',
-          '--port': 1234,
+          '--port': '1234',
           '--fileType': 'json',
           '--require': 'dotenv/config fake/init',
         },
