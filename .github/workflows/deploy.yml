@@ -69,7 +69,7 @@ jobs:
         if: contains(inputs.apps, 'nextjs-trippin-swc')
         uses: BetaHuhn/deploy-to-vercel-action@v1
         with:
-          GITHUB_DEPLOYMENT_ENV: nextjs/trippin ${{ steps.deploy-env.outputs.name }}
+          GITHUB_DEPLOYMENT_ENV: nextjs/trippin-swc ${{ steps.deploy-env.outputs.name }}
           GITHUB_DEPLOYMENT: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_LABELS: vercel
