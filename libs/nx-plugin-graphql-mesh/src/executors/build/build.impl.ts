@@ -11,6 +11,10 @@ export default async function* buildExecutor(
   options: BuildExecutorSchema,
   context: ExecutorContext
 ) {
+  if (options.dir === undefined) {
+    throw new Error("Please define the 'dir' value");
+  }
+
   const dir = resolve(context.root, options.dir);
   let success = false;
 

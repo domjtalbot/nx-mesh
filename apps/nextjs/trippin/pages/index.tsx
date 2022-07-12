@@ -19,6 +19,7 @@ export const getStaticProps: GetStaticProps<PageData> = async () => {
 export const Index: NextPage<PageData> = (props) => {
   return (
     <div className={styles.page}>
+      <h1>TripPin TSC</h1>
       <ul>
         {props.Airlines?.map((airline) => (
           <li key={airline.AirlineCode} data-airline={airline.Name}>

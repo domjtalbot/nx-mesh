@@ -26,16 +26,17 @@ export type CliEnv<TEnv extends Env = Env> = {
 export const getCliEnv = (options: Env): CliEnv => {
   const CliEnv: CliEnv = {};
 
-  Object.keys(options).forEach((key) => {
-    let value = options[key];
+  (Object.keys(options) as (keyof Env)[]).forEach((key) => {
+    const value = options[key];
+    const cliKey = key.toUpperCase() as keyof CliEnv;
 
     if (key === 'debug' && value !== undefined) {
-      value = (+value).toString();
+      CliEnv[cliKey] = (+value).toString() as typeof CliEnv['DEBUG'];
     }
 
-    if (value !== undefined) {
-      CliEnv[key.toUpperCase()] = value;
-    }
+    // if (value !== undefined) {
+    //   CliEnv[cliKey] = value;
+    // }
   });
 
   return CliEnv;

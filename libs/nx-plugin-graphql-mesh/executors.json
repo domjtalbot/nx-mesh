@@ -17,6 +17,12 @@
       "schema": "./src/executors/build-gateway/schema.json",
       "description": "Builds artifacts to be used as an API Gateway",
       "hasher": "./src/executors/build-gateway/hasher"
+    },
+    "build-swc": {
+      "implementation": "./src/executors/build-swc/build-swc.impl",
+      "schema": "./src/executors/build-swc/schema.json",
+      "description": "Builds artifacts using SWC.",
+      "hasher": "./src/executors/build-swc/hasher"
     }
   }
 }

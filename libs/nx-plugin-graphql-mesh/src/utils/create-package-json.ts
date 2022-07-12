@@ -1,5 +1,4 @@
 import type { ExecutorContext } from '@nrwl/devkit';
-import type { BuildExecutorSchema } from '../executors/build/schema';
 
 import { writeJsonFile } from '@nrwl/devkit';
 import { readCachedProjectGraph } from '@nrwl/devkit';
@@ -20,6 +19,10 @@ export async function createPackageJson(
   },
   context: ExecutorContext
 ) {
+  if (context.projectName === undefined) {
+    throw new Error('project name is undefined');
+  }
+
   const depGraph = readCachedProjectGraph();
 
   const packageJson = generatePackageJson(context.projectName, depGraph, {

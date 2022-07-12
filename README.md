@@ -35,7 +35,7 @@ This is the equivalent of using `graphql-mesh dev`, but with extra steps for pac
 
 ```json
 "targets": {
-  "dev": {
+  "build": {
     "executor": "@domjtalbot/nx-plugin-graphql-mesh:build",
     "options": {
       "dir": "libs/example-lib",
@@ -71,7 +71,7 @@ This is the equivalent of using `graphql-mesh build`, but with extra steps for c
 
 ```json
 "targets": {
-  "dev": {
+  "build": {
     "executor": "@domjtalbot/nx-plugin-graphql-mesh:build-gateway",
     "options": {
       "dir": "apps/example-app",
@@ -89,6 +89,44 @@ This is the equivalent of using `graphql-mesh build`, but with extra steps for c
 | **`dir`**      | `string`             | `true`   | -       | The path of the directory containing the GraphQL Mesh config.                               |
 | **`fileType`** | `json`, `ts` or `js` | `false`  | `ts`    | The filetype.                                                                               |
 | **`require`**  | `string[]`           | `false`  | `[]`    | Loads specific require.extensions before running the codegen and reading the configuration. |
+
+### `build`
+
+Builds artifacts for a GraphQL Mesh library.
+
+This is the equivalent of using `graphql-mesh dev`, but with extra steps for packaging the library.
+
+```json
+"targets": {
+  "build": {
+    "executor": "@domjtalbot/nx-plugin-graphql-mesh:build-swc",
+    "options": {
+      "dir": "libs/example-lib",
+      "outputPath": "dist/libs/example-lib",
+      "tsConfig": "libs/example-lib/tsconfig.lib.json",
+      "main": "libs/example-lib/src/index.ts"
+    },
+  },
+}
+```
+
+#### Options
+
+| Name                                          | Type                                 | Required | Default            | Description                                                                                                                      |
+| --------------------------------------------- | ------------------------------------ | -------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
+| **`assets`**                                  | `string[]`                           | `false`  | -                  | List of static assets.                                                                                                           |
+| **`buildableProjectDepsInPackageJsonType`**   | `dependencies` or `peerDependencies` | `false`  | `peerDependencies` | When `updateBuildableProjectDepsInPackageJson` is `true`, this adds dependencies to either `peerDependencies` or `dependencies`. |
+| **`debug`**                                   | `boolean`                            | `false`  | `false`            | Display debugging info by applying the `DEBUG` env variable.                                                                     |
+| **`dir`**                                     | `string`                             | `true`   | -                  | The path of the directory containing the GraphQL Mesh config.                                                                    |
+| **`fileType`**                                | `json`, `ts` or `js`                 | `false`  | `ts`               | The filetype.                                                                                                                    |
+| **`main`**                                    | `string`                             | `true`   | -                  | The name of the main entry-point file.                                                                                           |
+| **`outputPath`**                              | `string`                             | `true`   | -                  | The output path of the generated files.                                                                                          |
+| **`require`**                                 | `string[]`                           | `false`  | `[]`               | Loads specific require.extensions before running the codegen and reading the configuration.                                      |
+| **`skipTypeCheck`**                           | `boolean`                            | `false`  | `false`            | Whether to skip TypeScript type checking.                                                                                        |
+| **`swcrc`**                                   | `string`                             | `false`  | `.lib.swcrc`       | The path to the SWC configuration file.                                                                                          |
+| **`transformers`**                            | `string[]`                           | `false`  | -                  | List of TypeScript Transformer Plugins.                                                                                          |
+| **`tsConfig`**                                | `string`                             | `true`   | -                  | The path to the Typescript configuration file.                                                                                   |
+| **`updateBuildableProjectDepsInPackageJson`** | `boolean`                            | `false`  | `true`             | Whether to update the buildable project dependencies in `package.json`.                                                          |
 
 ### `dev`
 
@@ -130,11 +168,12 @@ This is the equifilent of using `graphql-mesh dev`.
 
 ### SDK
 
-| Name                            | Source Handler | Framework | Deployed                                                               |
-| ------------------------------- | -------------- | --------- | ---------------------------------------------------------------------- |
-| **`apps/nextjs/stackexchange`** | `openapi`      | `nextjs`  | -                                                                      |
-| **`apps/nextjs/trippin`**       | `odata`        | `nextjs`  | [Vercel](https://nx-plugin-graphql-mesh-trippin-domjtalbot.vercel.app) |
-| **`apps/nextjs/weatherbit`**    | `new-openapi`  | `nextjs`  | -                                                                      |
+| Name                            | Source Handler | Framework | Compiler | Deployed                                                               |
+| ------------------------------- | -------------- | --------- | -------- | ---------------------------------------------------------------------- |
+| **`apps/nextjs/stackexchange`** | `openapi`      | `nextjs`  | `tsc`    | -                                                                      |
+| **`apps/nextjs/trippin`**       | `odata`        | `nextjs`  | `tsc`    | [Vercel](https://nx-plugin-graphql-mesh-trippin-domjtalbot.vercel.app) |
+| **`apps/nextjs/trippin-swc`**   | `odata`        | `nextjs`  | `swc`    | -                                                                      |
+| **`apps/nextjs/weatherbit`**    | `new-openapi`  | `nextjs`  | `tsc`    | -                                                                      |
 
 <br/>
 <br/>

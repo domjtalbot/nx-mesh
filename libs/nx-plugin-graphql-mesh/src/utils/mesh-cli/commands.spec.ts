@@ -66,7 +66,7 @@ describe('MeshCli Command Options', () => {
         expect(result).toStrictEqual({
           args: {
             '--dir': '/path/to/test',
-            '--port': 1234,
+            '--port': '1234',
             '--require': 'dotenv/config fake/init',
           },
           env: {
@@ -138,7 +138,7 @@ describe('MeshCli Command Options', () => {
         expect(result).toStrictEqual({
           args: {
             '--dir': '/path/to/test',
-            '--port': 1234,
+            '--port': '1234',
             '--require': 'dotenv/config fake/init',
           },
           env: {

@@ -16,8 +16,11 @@ on:
       VERCEL_ORG_ID:
         description: 'The Vercel ORG ID'
         required: true
-      VERCEL_PROJECT_ID:
-        description: 'The Vercel Project Id'
+      NX__NEXTJS_TRIPPIN__VERCEL_PROJECT_ID:
+        description: 'The nextjs/trippin Vercel Project Id'
+        required: true
+      NX__NEXTJS_TRIPPIN_SWC__VERCEL_PROJECT_ID:
+        description: 'The nextjs/trippin-swc Vercel Project Id'
         required: true
       VERCEL_TOKEN:
         description: 'The Vercel API token'
@@ -59,5 +62,18 @@ jobs:
           PR_LABELS: vercel
           PRODUCTION: ${{ inputs.production }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.NX__NEXTJS_TRIPPIN__VERCEL_PROJECT_ID }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy to Vercel Action
+        if: contains(inputs.apps, 'nextjs-trippin-swc')
+        uses: BetaHuhn/deploy-to-vercel-action@v1
+        with:
+          GITHUB_DEPLOYMENT_ENV: nextjs/trippin ${{ steps.deploy-env.outputs.name }}
+          GITHUB_DEPLOYMENT: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_LABELS: vercel
+          PRODUCTION: ${{ inputs.production }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.NX__NEXTJS_TRIPPIN_SWC__VERCEL_PROJECT_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}

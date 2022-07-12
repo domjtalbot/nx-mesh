@@ -22,6 +22,9 @@
         "libs/sdk/stackexchange/src/index.ts"
       ],
       "@nx-plugin-graphql-mesh/sdk/trippin": ["libs/sdk/trippin/src/index.ts"],
+      "@nx-plugin-graphql-mesh/sdk/trippin-swc": [
+        "libs/sdk/trippin-swc/src/index.ts"
+      ],
       "@nx-plugin-graphql-mesh/sdk/weatherbit": [
         "libs/sdk/weatherbit/src/index.ts"
       ]
