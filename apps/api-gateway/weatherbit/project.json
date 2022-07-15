@@ -29,6 +29,25 @@
         }
       }
     },
+    "start": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:start",
+      "options": {
+        "dir": "dist/apps/api-gateway/weatherbit",
+        "port": 5300
+      },
+      "configurations": {
+        "e2e": {
+          "debug": false,
+          "port": 5301
+        }
+      },
+      "dependsOn": [
+        {
+          "projects": "self",
+          "target": "build"
+        }
+      ]
+    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],

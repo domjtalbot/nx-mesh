@@ -23,6 +23,12 @@
       "schema": "./src/executors/build-swc/schema.json",
       "description": "Builds artifacts using SWC.",
       "hasher": "./src/executors/build-swc/hasher"
+    },
+    "start": {
+      "implementation": "./src/executors/start/start.impl",
+      "schema": "./src/executors/start/schema.json",
+      "description": "Serves a GraphQL server with GraphQL interface based on your generated artifacts",
+      "hasher": "./src/executors/start/hasher"
     }
   }
 }

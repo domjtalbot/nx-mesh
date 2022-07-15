@@ -90,11 +90,11 @@ This is the equivalent of using `graphql-mesh build`, but with extra steps for c
 | **`fileType`** | `json`, `ts` or `js` | `false`  | `ts`    | The filetype.                                                                               |
 | **`require`**  | `string[]`           | `false`  | `[]`    | Loads specific require.extensions before running the codegen and reading the configuration. |
 
-### `build`
+### `build-swc`
 
 Builds artifacts for a GraphQL Mesh library.
 
-This is the equivalent of using `graphql-mesh dev`, but with extra steps for packaging the library.
+This is the equivalent of using `graphql-mesh build`, but with extra steps for packaging the library with SWC.
 
 ```json
 "targets": {
@@ -138,6 +138,32 @@ This is the equifilent of using `graphql-mesh dev`.
 "targets": {
   "dev": {
     "executor": "@domjtalbot/nx-plugin-graphql-mesh:dev",
+    "options": {
+      "dir": "path/to/app/or/lib",
+    },
+  },
+}
+```
+
+#### Options
+
+| Name          | Type       | Required | Default | Description                                                                                 |
+| ------------- | ---------- | -------- | ------- | ------------------------------------------------------------------------------------------- |
+| **`debug`**   | `boolean`  | `false`  | `false` | Display debugging info by applying the `DEBUG` env variable.                                |
+| **`dir`**     | `string`   | `true`   | -       | The path of the directory containing the GraphQL Mesh config.                               |
+| **`port`**    | `number`   | `false`  | `4000`  | The port number to run on.                                                                  |
+| **`require`** | `string[]` | `false`  | `[]`    | Loads specific require.extensions before running the codegen and reading the configuration. |
+
+### `start`
+
+Serves a GraphQL server with GraphQL interface based on your generated artifacts.
+
+This is the equifilent of using `graphql-mesh start`.
+
+```json
+"targets": {
+  "start": {
+    "executor": "@domjtalbot/nx-plugin-graphql-mesh:start",
     "options": {
       "dir": "path/to/app/or/lib",
     },

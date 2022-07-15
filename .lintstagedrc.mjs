@@ -8,4 +8,7 @@ export default {
     'nx affected --target=test',
     'nx affected --target=e2e',
   ],
+  'apps/api-gateway/**/*.*': () => [
+    'nx affected --target=e2e --configuration start',
+  ],
 };
