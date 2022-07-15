@@ -5,7 +5,7 @@
   "scripts": {
     "build": "nx run-many --target=build --all",
     "ci": "pnpm lint:fix && pnpm build && pnpm test && pnpm e2e",
-    "e2e": "nx run-many --target=e2e --all && nx",
+    "e2e": "nx run-many --target=e2e --all && nx run-many --target=e2e --all --configuration start",
     "lint:fix": "nx format:write && nx run-many --target=lint --all --fix",
     "lint": "nx workspace-lint && nx format && nx run-many --target=lint --all",
     "test": "nx run-many --target=test --all",

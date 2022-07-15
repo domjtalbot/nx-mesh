@@ -29,6 +29,25 @@
         }
       }
     },
+    "start": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:start",
+      "options": {
+        "dir": "dist/apps/api-gateway/stackexchange",
+        "port": 5200
+      },
+      "configurations": {
+        "e2e": {
+          "debug": false,
+          "port": 5201
+        }
+      },
+      "dependsOn": [
+        {
+          "projects": "self",
+          "target": "build"
+        }
+      ]
+    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],

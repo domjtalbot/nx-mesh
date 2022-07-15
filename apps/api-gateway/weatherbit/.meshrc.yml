@@ -8,12 +8,5 @@ sources:
 serve:
   browser: false
 
-plugins:
-  - responseCache:
-      ttlPerCoordinate:
-        # Forecast data might change, so we can cache it for 1 hour only
-        - coordinate: Query.forecast_daily_by_lat_by_lon
-          ttl: 3600
-
 documents:
   - ./*.graphql

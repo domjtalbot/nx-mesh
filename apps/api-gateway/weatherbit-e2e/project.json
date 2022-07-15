@@ -6,8 +6,16 @@
     "e2e": {
       "executor": "@nrwl/cypress:cypress",
       "options": {
-        "cypressConfig": "apps/api-gateway/weatherbit-e2e/cypress.json",
-        "devServerTarget": "api-gateway-weatherbit:dev:e2e"
+        "cypressConfig": "apps/api-gateway/weatherbit-e2e/cypress.json"
+      },
+      "defaultConfiguration": "dev",
+      "configurations": {
+        "dev": {
+          "devServerTarget": "api-gateway-weatherbit:dev:e2e"
+        },
+        "start": {
+          "devServerTarget": "api-gateway-weatherbit:start:e2e"
+        }
       }
     },
     "lint": {
