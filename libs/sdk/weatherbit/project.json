@@ -5,7 +5,7 @@
   "targets": {
     "build": {
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:build",
-      "outputs": ["{options.dir}/.mesh", "{options.outputPath}"],
+      "outputs": ["libs/sdk/weatherbit/.mesh", "{options.outputPath}"],
       "options": {
         "dir": "libs/sdk/weatherbit",
         "outputPath": "dist/libs/sdk/weatherbit",
@@ -16,12 +16,6 @@
         "e2e": {
           "debug": false
         }
-      }
-    },
-    "validate": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:validate",
-      "options": {
-        "dir": "libs/sdk/weatherbit"
       }
     },
     "lint": {
@@ -37,6 +31,12 @@
       "options": {
         "jestConfig": "libs/sdk/weatherbit/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "validate": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:validate",
+      "options": {
+        "dir": "libs/sdk/weatherbit"
       }
     }
   },
