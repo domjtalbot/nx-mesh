@@ -45,7 +45,7 @@
     "validate": [
       {
         "target": "build",
-        "projects": "dependencies"
+        "projects": "self"
       }
     ]
   },
