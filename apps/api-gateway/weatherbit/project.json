@@ -16,6 +16,12 @@
         }
       }
     },
+    "validate": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:validate",
+      "options": {
+        "dir": "apps/api-gateway/weatherbit"
+      }
+    },
     "dev": {
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:dev",
       "options": {

@@ -41,6 +41,12 @@
         "target": "build",
         "projects": "dependencies"
       }
+    ],
+    "validate": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
     ]
   },
   "generators": {

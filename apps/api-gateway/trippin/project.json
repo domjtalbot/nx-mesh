@@ -29,6 +29,12 @@
         }
       }
     },
+    "validate": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:validate",
+      "options": {
+        "dir": "apps/api-gateway/trippin"
+      }
+    },
     "start": {
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:start",
       "options": {
