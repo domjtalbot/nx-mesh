@@ -5,7 +5,7 @@
   "targets": {
     "build": {
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:build-gateway",
-      "outputs": ["{options.dir}/.mesh", "{options.outputPath}"],
+      "outputs": ["apps/api-gateway/trippin/.mesh", "{options.outputPath}"],
       "options": {
         "dir": "apps/api-gateway/trippin",
         "outputPath": "dist/apps/api-gateway/trippin"
@@ -61,6 +61,12 @@
       "options": {
         "jestConfig": "apps/api-gateway/trippin/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "validate": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:validate",
+      "options": {
+        "dir": "apps/api-gateway/trippin"
       }
     }
   },

@@ -63,6 +63,8 @@ This is the equivalent of using `graphql-mesh dev`, but with extra steps for pac
 | **`tsConfig`**                                | `string`                             | `true`   | -                  | The path to the Typescript configuration file.                                                                                   |
 | **`updateBuildableProjectDepsInPackageJson`** | `boolean`                            | `false`  | `true`             | Whether to update the buildable project dependencies in `package.json`.                                                          |
 
+<br/>
+
 ### `build-gateway`
 
 Builds artifacts for a GraphQL Mesh API Gateway app.
@@ -89,6 +91,8 @@ This is the equivalent of using `graphql-mesh build`, but with extra steps for c
 | **`dir`**      | `string`             | `true`   | -       | The path of the directory containing the GraphQL Mesh config.                               |
 | **`fileType`** | `json`, `ts` or `js` | `false`  | `ts`    | The filetype.                                                                               |
 | **`require`**  | `string[]`           | `false`  | `[]`    | Loads specific require.extensions before running the codegen and reading the configuration. |
+
+<br/>
 
 ### `build-swc`
 
@@ -128,6 +132,8 @@ This is the equivalent of using `graphql-mesh build`, but with extra steps for p
 | **`tsConfig`**                                | `string`                             | `true`   | -                  | The path to the Typescript configuration file.                                                                                   |
 | **`updateBuildableProjectDepsInPackageJson`** | `boolean`                            | `false`  | `true`             | Whether to update the buildable project dependencies in `package.json`.                                                          |
 
+<br/>
+
 ### `dev`
 
 Serves a GraphQL server with GraphQL interface by building artifacts on the fly.
@@ -154,6 +160,8 @@ This is the equifilent of using `graphql-mesh dev`.
 | **`port`**    | `number`   | `false`  | `4000`  | The port number to run on.                                                                  |
 | **`require`** | `string[]` | `false`  | `[]`    | Loads specific require.extensions before running the codegen and reading the configuration. |
 
+<br/>
+
 ### `start`
 
 Serves a GraphQL server with GraphQL interface based on your generated artifacts.
@@ -178,6 +186,33 @@ This is the equifilent of using `graphql-mesh start`.
 | **`debug`**   | `boolean`  | `false`  | `false` | Display debugging info by applying the `DEBUG` env variable.                                |
 | **`dir`**     | `string`   | `true`   | -       | The path of the directory containing the GraphQL Mesh config.                               |
 | **`port`**    | `number`   | `false`  | `4000`  | The port number to run on.                                                                  |
+| **`require`** | `string[]` | `false`  | `[]`    | Loads specific require.extensions before running the codegen and reading the configuration. |
+
+<br/>
+
+### `validate`
+
+Validates artifacts.
+
+This is the equifilent of using `graphql-mesh validate`.
+
+```json
+"targets": {
+  "validate": {
+    "executor": "@domjtalbot/nx-plugin-graphql-mesh:validate",
+    "options": {
+      "dir": "path/to/app/or/lib",
+    },
+  },
+}
+```
+
+#### Options
+
+| Name          | Type       | Required | Default | Description                                                                                 |
+| ------------- | ---------- | -------- | ------- | ------------------------------------------------------------------------------------------- |
+| **`debug`**   | `boolean`  | `false`  | `false` | Display debugging info by applying the `DEBUG` env variable.                                |
+| **`dir`**     | `string`   | `true`   | -       | The path of the directory containing the GraphQL Mesh config.                               |
 | **`require`** | `string[]` | `false`  | `[]`    | Loads specific require.extensions before running the codegen and reading the configuration. |
 
 <br/>

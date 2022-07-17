@@ -5,7 +5,7 @@
   "targets": {
     "build": {
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:build",
-      "outputs": ["{options.dir}/.mesh", "{options.outputPath}"],
+      "outputs": ["libs/sdk/trippin/.mesh", "{options.outputPath}"],
       "options": {
         "dir": "libs/sdk/trippin",
         "outputPath": "dist/libs/sdk/trippin",
@@ -31,6 +31,12 @@
       "options": {
         "jestConfig": "libs/sdk/trippin/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "validate": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:validate",
+      "options": {
+        "dir": "libs/sdk/trippin"
       }
     }
   },

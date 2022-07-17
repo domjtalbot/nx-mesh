@@ -3,12 +3,10 @@ export default {
   '{nx,workspace}.json': () => 'nx workspace-lint --fix',
   '**/*.{js,jsx,ts,tsx}': () => 'nx affected --target=lint --fix',
   '{apps,libs}/**/*.*': () => [
-    'nx format:write',
     'nx affected --target=build',
+    'nx affected --target=validate',
     'nx affected --target=test',
     'nx affected --target=e2e',
-  ],
-  'apps/api-gateway/**/*.*': () => [
     'nx affected --target=e2e --configuration start',
   ],
 };

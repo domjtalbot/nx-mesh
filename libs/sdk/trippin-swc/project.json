@@ -5,7 +5,7 @@
   "targets": {
     "build": {
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:build-swc",
-      "outputs": ["{options.dir}/.mesh", "{options.outputPath}"],
+      "outputs": ["libs/sdk/trippin-swc/.mesh", "{options.outputPath}"],
       "options": {
         "dir": "libs/sdk/trippin-swc",
         "outputPath": "dist/libs/sdk/trippin-swc",
@@ -31,6 +31,12 @@
       "options": {
         "jestConfig": "libs/sdk/trippin-swc/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "validate": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:validate",
+      "options": {
+        "dir": "libs/sdk/trippin-swc"
       }
     }
   },

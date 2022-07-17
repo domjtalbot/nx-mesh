@@ -22,10 +22,11 @@ runs:
         path: |
           ~/.cache/Cypress
           **/node_modules
+          !**/node_modules/.cache/nx
           ${{ steps.pnpm-cache-dir-path.outputs.dir }}
-        key: ${{ runner.os }}-pnpm-dep-cache-v1-${{ hashFiles('**/pnpm-lock.yaml') }}
+        key: ${{ runner.os }}-pnpm-dep-cache-v3-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
-          ${{ runner.os }}-pnpm-dep-cache-v1-
+          ${{ runner.os }}-pnpm-dep-cache-v3-
 
     - name: Install Node Dependencies
       if: steps.pnpm-cache.outputs.cache-hit != 'true'

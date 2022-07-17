@@ -5,7 +5,7 @@
   "targets": {
     "build": {
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:build-gateway",
-      "outputs": ["{options.dir}/.mesh", "{options.outputPath}"],
+      "outputs": ["apps/api-gateway/weatherbit/.mesh", "{options.outputPath}"],
       "options": {
         "dir": "apps/api-gateway/weatherbit",
         "outputPath": "dist/apps/api-gateway/weatherbit"
@@ -61,6 +61,12 @@
       "options": {
         "jestConfig": "apps/api-gateway/weatherbit/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "validate": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:validate",
+      "options": {
+        "dir": "apps/api-gateway/weatherbit"
       }
     }
   },

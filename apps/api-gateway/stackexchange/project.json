@@ -5,7 +5,10 @@
   "targets": {
     "build": {
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:build-gateway",
-      "outputs": ["{options.dir}/.mesh", "{options.outputPath}"],
+      "outputs": [
+        "apps/api-gateway/stackexchange/.mesh",
+        "{options.outputPath}"
+      ],
       "options": {
         "dir": "apps/api-gateway/stackexchange",
         "outputPath": "dist/apps/api-gateway/stackexchange"
@@ -61,6 +64,13 @@
       "options": {
         "jestConfig": "apps/api-gateway/stackexchange/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+
+    "validate": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:validate",
+      "options": {
+        "dir": "apps/api-gateway/stackexchange"
       }
     }
   },

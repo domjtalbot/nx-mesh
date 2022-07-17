@@ -29,6 +29,12 @@
       "schema": "./src/executors/start/schema.json",
       "description": "Serves a GraphQL server with GraphQL interface based on your generated artifacts",
       "hasher": "./src/executors/start/hasher"
+    },
+    "validate": {
+      "implementation": "./src/executors/validate/validate.impl",
+      "schema": "./src/executors/validate/schema.json",
+      "description": "Validates artifacts",
+      "hasher": "./src/executors/validate/hasher"
     }
   }
 }
