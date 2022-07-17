@@ -18,6 +18,12 @@
         }
       }
     },
+    "validate": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:validate",
+      "options": {
+        "dir": "libs/sdk/weatherbit"
+      }
+    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
@@ -31,12 +37,6 @@
       "options": {
         "jestConfig": "libs/sdk/weatherbit/jest.config.ts",
         "passWithNoTests": true
-      }
-    },
-    "validate": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:validate",
-      "options": {
-        "dir": "libs/sdk/weatherbit"
       }
     }
   },
