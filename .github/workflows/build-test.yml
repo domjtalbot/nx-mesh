@@ -24,7 +24,7 @@ on:
       NX__WEATHERBIT__API_KEY:
         description: 'The Weatherbit API Key'
         required: true
-      NX_CLOUD_TOKEN:
+      NX_CLOUD_ACCESS_TOKEN:
         description: 'The NX Cloud API token'
         required: true
 
@@ -34,7 +34,7 @@ concurrency:
 env:
   NX__TRIPPIN__API_KEY: ${{ secrets.NX__TRIPPIN__API_KEY }}
   NX__WEATHERBIT__API_KEY: ${{ secrets.NX__WEATHERBIT__API_KEY }}
-  NX_CLOUD_TOKEN: ${{ secrets.NX_CLOUD_TOKEN }}
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
   NX_AFFECTED: ${{ inputs.affected == 'true' || true }}
   NX_PARALLEL: ${{ inputs.parallel || 3 }}
   NX_AFFECTED_COMMANDS: |
