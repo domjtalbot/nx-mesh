@@ -18,12 +18,6 @@
         }
       }
     },
-    "validate": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:validate",
-      "options": {
-        "dir": "libs/sdk/stackexchange"
-      }
-    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
@@ -37,6 +31,12 @@
       "options": {
         "jestConfig": "libs/sdk/stackexchange/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "validate": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:validate",
+      "options": {
+        "dir": "libs/sdk/stackexchange"
       }
     }
   },
