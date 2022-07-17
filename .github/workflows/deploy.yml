@@ -54,7 +54,7 @@ jobs:
 
       - name: Deploy to Vercel Action
         if: contains(inputs.apps, 'nextjs-trippin')
-        uses: BetaHuhn/deploy-to-vercel-action@v1
+        uses: BetaHuhn/deploy-to-vercel-action@f5c4fe753b1c358345ae6794d4dde7df9b37a908 # tag=v1
         with:
           GITHUB_DEPLOYMENT_ENV: nextjs/trippin ${{ steps.deploy-env.outputs.name }}
           GITHUB_DEPLOYMENT: true
@@ -67,7 +67,7 @@ jobs:
 
       - name: Deploy to Vercel Action
         if: contains(inputs.apps, 'nextjs-trippin-swc')
-        uses: BetaHuhn/deploy-to-vercel-action@v1
+        uses: BetaHuhn/deploy-to-vercel-action@f5c4fe753b1c358345ae6794d4dde7df9b37a908 # tag=v1
         with:
           GITHUB_DEPLOYMENT_ENV: nextjs/trippin-swc ${{ steps.deploy-env.outputs.name }}
           GITHUB_DEPLOYMENT: true
