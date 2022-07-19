@@ -48,7 +48,7 @@ jobs:
         run: pnpm nx run-many --target=build --all --parallel=${{ env.NX_PARALLEL }}
 
       - name: Set GitHub Packages registry
-        uses: actions/setup-node@eeb10cff27034e7acf239c5d29f62154018672fd # tag=v3
+        uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93 # tag=v3
         with:
           registry-url: 'https://npm.pkg.github.com'
 
