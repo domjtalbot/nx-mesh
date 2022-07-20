@@ -11,4 +11,4 @@ serve:
 
 sdk:
   generateOperations:
-    selectionSetDepth: 6
+    selectionSetDepth: 5
