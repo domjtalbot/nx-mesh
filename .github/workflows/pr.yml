@@ -46,9 +46,9 @@ jobs:
         npx nx affected --target=test --parallel=3 --ci --code-coverage
         npx nx affected --target=validate --parallel=3
 
-  agents:
-    name: Nx Cloud - Agents
-    uses: ./.github/workflows/nx-cloud-agents.yml
-    secrets: inherit
-    with:
-      number-of-agents: 1
+  # agents:
+  #   name: Nx Cloud - Agents
+  #   uses: ./.github/workflows/nx-cloud-agents.yml
+  #   secrets: inherit
+  #   with:
+  #     number-of-agents: 1
