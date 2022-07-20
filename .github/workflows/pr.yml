@@ -33,10 +33,10 @@ concurrency:
 jobs:
   main:
     name: Nx Cloud - Main Job
-    uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.6
+    uses: ./.github/workflows/nx-cloud-main.yml
     secrets: inherit
     with:
-      number-of-agents: 3
+      number-of-agents: 1
       parallel-commands: |
         npx nx-cloud record -- npx nx workspace-lint
         npx nx-cloud record -- npx nx format:check
@@ -48,7 +48,7 @@ jobs:
 
   agents:
     name: Nx Cloud - Agents
-    uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.6
+    uses: ./.github/workflows/nx-cloud-agents.yml
     secrets: inherit
     with:
-      number-of-agents: 0
+      number-of-agents: 1
