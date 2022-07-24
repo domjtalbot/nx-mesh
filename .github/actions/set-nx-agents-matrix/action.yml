@@ -34,9 +34,9 @@ runs:
       with:
         script: |
           const { promisify } = require('util');
-          const { exec } = require('child_process');
+          const { exec: nodeExec } = require('child_process');
 
-          const execAsync = promisify(exec);
+          const execAsync = promisify(nodeExec);
 
           const getAffected = async () => {
             const [{ stdout: apps }, { stdout: libs }] = await Promise.all([
