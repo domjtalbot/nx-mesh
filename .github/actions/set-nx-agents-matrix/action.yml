@@ -33,8 +33,8 @@ runs:
       id: affected
       with:
         script: |
-          import { promisify } from 'util';
-          import { exec } from 'child_process';
+          const { promisify } = require('util');
+          const { exec } = require('child_process');
 
           const execAsync = promisify(exec);
 
@@ -95,5 +95,3 @@ runs:
           core.exportVariable('affected-apps-length', affectedApps.length);
           core.exportVariable('affected-libs', encodedAffectedLibs);
           core.exportVariable('affected-libs-length', affectedLibs.length);
-
-        result-encoding: string
