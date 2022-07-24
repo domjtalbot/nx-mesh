@@ -1,0 +1,99 @@
+name: 'Set NX agents matrix'
+description: 'Automatically scale the number of Nx agents'
+# inputs:
+#   who-to-greet:  # id of input
+#     description: 'Who to greet'
+#     required: true
+#     default: 'World'
+outputs:
+  affected:
+    description: 'Affected apps & libraries'
+    value: ${{ steps.affected.outputs.affected }}
+  affected-length:
+    description: 'Affected apps & libraries'
+    value: ${{ steps.affected.outputs.affected-length }}
+  affected-apps:
+    description: 'Affected apps & libraries'
+    value: ${{ steps.affected.outputs.affected-apps }}
+  affected-apps-length:
+    description: 'Affected apps & libraries'
+    value: ${{ steps.affected.outputs.affected-apps-length }}
+  affected-libs:
+    description: 'Affected apps & libraries'
+    value: ${{ steps.affected.outputs.affected-libs }}
+  affected-libs-length:
+    description: 'Affected apps & libraries'
+    value: ${{ steps.affected.outputs.affected-libs-length }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Process parallel commands configuration
+      uses: actions/github-script@v6
+      id: affected
+      with:
+        script: |
+          import { promisify } from 'util';
+          import { exec } from 'child_process';
+
+          const execAsync = promisify(exec);
+
+          const getAffected = async () => {
+            const [{ stdout: apps }, { stdout: libs }] = await Promise.all([
+              execAsync(`npx nx affected:apps --plain`),
+              execAsync(`npx nx affected:libs --plain`),
+            ]);
+
+            const affectedApps = apps.replace('\n', '').split(' ');
+            const affectedLibs = libs.replace('\n', '').split(' ');
+
+            const affected = [
+              ...apps.replace('\n', '').split(' '),
+              ...libs.replace('\n', '').split(' '),
+            ];
+
+            return {
+              affected,
+              affectedApps,
+              affectedLibs
+            };
+          };
+
+          const {
+              affected,
+              affectedApps,
+              affectedLibs
+          } = await getAffected();
+
+          const encodedAffected = JSON.stringify(affected).replace(
+            /%27/g,
+            "'\\''"
+          );
+
+          const encodedAffectedApps = JSON.stringify(affectedApps).replace(
+            /%27/g,
+            "'\\''"
+          );
+
+          const encodedAffectedLibs = JSON.stringify(affectedLibs).replace(
+            /%27/g,
+            "'\\''"
+          );
+
+          console.log({
+            affected: encodedAffected,
+            'affected-length': affected.length,
+            'affected-apps': encodedAffectedApps,
+            'affected-apps-length': affectedApps.length,
+            'affected-libs': encodedAffectedLibs,
+            'affected-libs-length': affectedLibs.length,
+          });
+
+          core.exportVariable('affected', encodedAffected);
+          core.exportVariable('affected-length', affected.length);
+          core.exportVariable('affected-apps', encodedAffectedApps);
+          core.exportVariable('affected-apps-length', affectedApps.length);
+          core.exportVariable('affected-libs', encodedAffectedLibs);
+          core.exportVariable('affected-libs-length', affectedLibs.length);
+
+        result-encoding: string

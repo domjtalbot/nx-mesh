@@ -32,19 +32,34 @@ concurrency:
 
 jobs:
   main:
-    name: Nx Cloud - Main Job
-    uses: ./.github/workflows/nx-cloud-main.yml
-    secrets: inherit
-    with:
-      number-of-agents: 1
-      parallel-commands: |
-        npx nx-cloud record -- npx nx workspace-lint
-        npx nx-cloud record -- npx nx format:check
-      parallel-commands-on-agents: |
-        npx nx affected --target=build --parallel=3
-        npx nx affected --target=lint --parallel=3
-        npx nx affected --target=test --parallel=3 --ci --code-coverage
-        npx nx affected --target=validate --parallel=3
+    name: Build & Test
+    runs-on: ubuntu-latest
+    outputs:
+      affectedApps: ${{ steps.affected-apps.outputs.apps }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Affected
+        uses: ./.github/actions/set-nx-agents-matrix
+    # name: Nx Cloud - Main Job
+    # uses: ./.github/workflows/nx-cloud-main.yml
+    # secrets: inherit
+    # with:
+    #   number-of-agents: 1
+    #   parallel-commands: |
+    #     npx nx-cloud record -- npx nx workspace-lint
+    #     npx nx-cloud record -- npx nx format:check
+    #   parallel-commands-on-agents: |
+    #     npx nx affected --target=build --parallel=3
+    #     npx nx affected --target=lint --parallel=3
+    #     npx nx affected --target=test --parallel=3 --ci --code-coverage
+    #     npx nx affected --target=validate --parallel=3
 
   # agents:
   #   name: Nx Cloud - Agents
