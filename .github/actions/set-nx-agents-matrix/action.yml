@@ -91,10 +91,13 @@ runs:
             "'\\''"
           );
 
-          const affectedPerAgent = core.getInput('affected-per-agent', { required: false }) ?? '2';
-          const maxAgents = core.getInput('max-agents', { required: false }) ?? '4';
+          const affectedPerAgent = core.getInput('affected-per-agent', { required: false });
+          const maxAgents = core.getInput('max-agents', { required: false });
 
-          console.log('affectedPerAgent', affectedPerAgent);
+          console.log('affectedPerAgent', {
+            affectedPerAgent,
+            type: typeof affectedPerAgent,
+          });
           console.log('maxAgents', maxAgents)
 
           const allAgents = affected.length * affectedPerAgent;
