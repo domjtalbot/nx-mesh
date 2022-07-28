@@ -106,7 +106,7 @@ runs:
           const allAgents = affected.length * affectedPerAgent;
           const agentsLength = allAgents > maxAgents ? maxAgents : allAgents;
 
-          const agents = [...Array(agentsLength).keys()];
+          const agents = [...Array(agentsLength + 1).keys()].shift();
 
           console.log({
             affected: encodedAffected,
