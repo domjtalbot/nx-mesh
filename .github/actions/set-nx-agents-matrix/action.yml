@@ -91,8 +91,11 @@ runs:
             "'\\''"
           );
 
-          const affectedPerAgent = parseInt(core.getInput('affected-per-agent', { required: false }));
-          const maxAgents = parseInt(core.getInput('max-agents', { required: false }));
+          const affectedPerAgent = parseInt(core.getInput('affected-per-agent', { required: false }) ?? '2');
+          const maxAgents = parseInt(core.getInput('max-agents', { required: false }) ?? '4');
+
+          console.log('affectedPerAgent', affectedPerAgent);
+          console.log('maxAgents', maxAgents)
 
           const allAgents = affected.length * affectedPerAgent;
           const agentsLength = allAgents > maxAgents ? maxAgents : allAgents;
