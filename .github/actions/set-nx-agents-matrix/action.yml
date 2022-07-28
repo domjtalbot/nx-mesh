@@ -1,10 +1,15 @@
 name: 'Set NX agents matrix'
 description: 'Automatically scale the number of Nx agents'
-# inputs:
-#   who-to-greet:  # id of input
-#     description: 'Who to greet'
-#     required: true
-#     default: 'World'
+inputs:
+  affected-per-agent:
+    description: How many affected apps or libraries per agent
+    required: false
+    default: '2'
+  max-agents:
+    description: The maximum number of agents to spawn
+    required: false
+    default: '4'
+
 outputs:
   affected:
     description: 'Affected apps & libraries'
@@ -24,6 +29,12 @@ outputs:
   affected-libs-length:
     description: 'Affected apps & libraries'
     value: ${{ steps.affected.outputs.affected-libs-length }}
+  agents:
+    description: 'The matrix of agents to spawn'
+    value: ${{ steps.affected.outputs.agents }}
+  agents-length:
+    description: 'The number of agents to spawn'
+    value: ${{ steps.affected.outputs.agents-length }}
 
 runs:
   using: 'composite'
@@ -80,6 +91,14 @@ runs:
             "'\\''"
           );
 
+          const affectedPerAgent = parseInt(core.getInput('affected-per-agent', { required: true }));
+          const maxAgents = parseInt(core.getInput('max-agents', { required: true }));
+
+          const allAgents = affected.length * affectedPerAgent;
+          const agentsLength = allAgents > maxAgents ? maxAgents : allAgents;
+
+          const agents = [...Array(agentsLength).keys()];
+
           console.log({
             affected: encodedAffected,
             'affected-length': affected.length,
@@ -87,6 +106,8 @@ runs:
             'affected-apps-length': affectedApps.length,
             'affected-libs': encodedAffectedLibs,
             'affected-libs-length': affectedLibs.length,
+            'agents': agents,
+            'agents-length': agentsLength,
           });
 
           core.exportVariable('affected', encodedAffected);
@@ -95,3 +116,5 @@ runs:
           core.exportVariable('affected-apps-length', affectedApps.length);
           core.exportVariable('affected-libs', encodedAffectedLibs);
           core.exportVariable('affected-libs-length', affectedLibs.length);
+          core.exportVariable('agents', agents);
+          core.exportVariable('agents-length', agentsLength);
