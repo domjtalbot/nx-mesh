@@ -1,10 +1,6 @@
 name: 'Setup the environment'
 description: 'Install Node, PNPM, project dependencies and get NX SHAs'
 inputs:
-  ignore-pnpm-global-cache:
-    description: Skip the restore of global PNPM cache (if cache is found)
-    required: false
-    default: 'false'
   ignore-cypress-cache:
     description: Skip the restore of global Cypress cache (if cache is found)
     required: false
@@ -15,15 +11,6 @@ runs:
   steps:
     - name: Setup Volta
       uses: volta-cli/action@76620aa011ba56028bb0bae35caa5f9b6118c8c7 # tag=v1.7.0
-
-    - uses: pnpm/action-setup@v2
-      with:
-        version: 7
-
-    - name: Get pnpm cache directory path
-      id: pnpm-cache-dir-path
-      shell: bash
-      run: echo "::set-output name=dir::$(pnpm store path)"
 
     - name: Cypress Cache
       uses: actions/cache@c3f1317a9e7b1ef106c153ac8c0f00fed3ddbc0d # tag=v3
@@ -47,10 +34,21 @@ runs:
         restore-keys: |
           ${{ runner.os }}-pnpm-dep-cache-v5-
 
+    - uses: pnpm/action-setup@v2
+      if: steps.pnpm-repo-cache.outputs.cache-hit != 'true'
+      with:
+        version: 7
+
+    - name: Get pnpm cache directory path
+      id: pnpm-cache-dir-path
+      if: steps.pnpm-repo-cache.outputs.cache-hit != 'true'
+      shell: bash
+      run: echo "::set-output name=dir::$(pnpm store path)"
+
     - name: PNPM Store Cache
       uses: actions/cache@c3f1317a9e7b1ef106c153ac8c0f00fed3ddbc0d # tag=v3
       id: pnpm-global-cache
-      if: steps.pnpm-repo-cache.outputs.cache-hit != 'true' && inputs.ignore-pnpm-global-cache != 'true'
+      if: steps.pnpm-repo-cache.outputs.cache-hit != 'true'
       with:
         path: |
           ${{ steps.pnpm-cache-dir-path.outputs.dir }}
