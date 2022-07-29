@@ -35,7 +35,6 @@ runs:
           ${{ runner.os }}-pnpm-dep-cache-v5-
 
     - uses: pnpm/action-setup@v2
-      if: steps.pnpm-repo-cache.outputs.cache-hit != 'true'
       with:
         version: 7
 
