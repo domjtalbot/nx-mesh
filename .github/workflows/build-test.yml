@@ -119,20 +119,20 @@ jobs:
     strategy:
       matrix:
         command:
-          - [Build, 'nx run-many --target=build --parallel=3']
+          - [Build, 'nx run-many --target=build --parallel=3 --all']
           - [
               Lint,
-              'nx-cloud record -- npx nx workspace-lint; pnpm nx-cloud record -- npx nx format:check; pnpm nx run-many --target=lint --parallel=3',
+              'nx-cloud record -- npx nx workspace-lint; pnpm nx-cloud record -- npx nx format:check; pnpm nx run-many --target=lint --parallel=3 --all',
             ]
           - [
               Test,
-              'nx run-many --target=test --parallel=3 --ci --code-coverage',
+              'nx run-many --target=test --parallel=3 --all --ci --code-coverage',
             ]
-          - [Validate, 'nx run-many --target=validate --parallel=3']
-          - [E2E, 'nx run-many --target=e2e --parallel=3']
+          - [Validate, 'nx run-many --target=validate --parallel=3 --all']
+          - [E2E, 'nx run-many --target=e2e --parallel=3 --all']
           - [
               'E2E (Start)',
-              'nx run-many --target=e2e --configuration=start --parallel=3',
+              'nx run-many --target=e2e --configuration=start --parallel=3 --all',
             ]
     steps:
       - name: Check out repository
