@@ -35,125 +35,47 @@ env:
   NX__TRIPPIN__API_KEY: ${{ secrets.NX__TRIPPIN__API_KEY }}
   NX__WEATHERBIT__API_KEY: ${{ secrets.NX__WEATHERBIT__API_KEY }}
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
-  NX_AFFECTED: ${{ inputs.affected == 'true' || true }}
-  NX_PARALLEL: ${{ inputs.parallel || 3 }}
-  NX_AFFECTED_COMMANDS: |
-    pnpm nx affected --target=build --parallel=${{ inputs.parallel || 1 }} --skip-nx-cache
-    pnpm nx affected --target=test --parallel=${{ inputs.parallel || 1 }} --ci --code-coverage --skip-nx-cache
-  NX_COMMANDS: |
-    pnpm nx-cloud record -- npx nx workspace-lint
-    pnpm nx-cloud record -- npx nx format:check
-    pnpm nx run-many --target=lint --all --parallel=${{ inputs.parallel || 2 }}
-    pnpm nx run-many --target=build --all --parallel=${{ inputs.parallel || 2 }}
-    pnpm nx run-many --target=test --all --parallel=${{ inputs.parallel || 2 }} --ci --code-coverage
 
 jobs:
-  build-test:
-    name: Build & Test
+  setup:
+    name: Setup
     runs-on: ubuntu-latest
     outputs:
-      affectedApps: ${{ steps.affected-apps.outputs.apps }}
+      affectedAgents: ${{ steps.affectedAgents.agents }}
+      hasAgents: ${{ steps.affectedAgents.hasAgents }}
     steps:
-      - name: Check out repository
-        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
-        with:
-          fetch-depth: 0
-
       - name: Setup
         uses: ./.github/actions/setup
 
-      - name: Get Affected apps
-        id: affected-apps
-        run: |
-          echo ::set-output name=apps::$(pnpm nx affected:apps --plain)
+      - name: Affected Agents Matrix
+        id: affectedAgents
+        uses: ./.github/actions/set-nx-agents-matrix
 
-      # https://github.com/nrwl/ci/blob/main/.github/workflows/nx-cloud-main.yml#L165
-      - name: Create command utils
-        uses: actions/github-script@7a5c598405937d486b0331594b5da2b14db670da # tag=v6
-        with:
-          script: |
-            const { writeFileSync } = require('fs');
-            const runCommandsInParallelScript = `
-              # Extract the provided commands from the stringified JSON array.
-              IFS=$'\n' read -d '' -a userCommands < <((jq -c -r '.[]') <<<"$1")
-              # Invoke the provided commands in parallel and collect their exit codes.
-              pids=()
-              for userCommand in "\${userCommands[@]}"; do
-                eval "$userCommand" & pids+=($!)
-              done
-              # If any one of the invoked commands exited with a non-zero exit code, exit the whole thing with code 1.
-              for pid in \${pids[*]}; do
-                if ! wait $pid; then
-                  exit 1
-                fi
-              done
-              # All the invoked commands must have exited with code zero.
-              exit 0
-            `;
-            writeFileSync('./.github/workflows/run-commands-in-parallel.sh', runCommandsInParallelScript);
+  nx:
+    name: Nx Affected
+    runs-on: ubuntu-latest
+    needs: [setup]
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        command:
+          - [build, nx affected --target=build --parallel=3]
+          - [
+              lint,
+              nx-cloud record -- npx nx workspace-lint; pnpm nx-cloud record -- npx nx format:check; pnpm nx affected --target=lint --parallel=3,
+            ]
+          - [test, nx affected --target=test --parallel=3 --ci --code-coverage]
+          - [validate, nx affected --target=validate --parallel=3]
+          - [e2e, nx affected --target=e2e --parallel=3]
+          - [
+              e2e-start,
+              nx affected --target=e2e --configuration=start --parallel=3,
+            ]
+    steps:
+      - name: Setup
+        uses: ./.github/actions/setup
 
-      - name: Prepare command utils
-        run: chmod +x ${{ github.workspace }}/.github/workflows/run-commands-in-parallel.sh
-
-      # https://github.com/nrwl/ci/blob/main/.github/workflows/nx-cloud-main.yml#L206
-      - name: Process Nx parallel commands
-        if: ${{ env.NX_AFFECTED == 'true' }}
-        uses: actions/github-script@7a5c598405937d486b0331594b5da2b14db670da # tag=v6
-        id: parallel_commands_config
-        env:
-          NX_AFFECTED: ${{ env.NX_AFFECTED }}
-        with:
-          script: |
-            const parallelCommandsOnMainStr = (process.env.NX_AFFECTED == 'true' ? process.env.NX_AFFECTED_COMMANDS : process.env.NX_COMMANDS) ?? '';
-            const parallelCommandsOnMain = parallelCommandsOnMainStr
-              .split('\n')
-              .map(command => command.trim())
-              .filter(command => command.length > 0)
-              .map(s => s.replace(/'/g, '%27'));
-            const formattedArrayOfCommands = [
-              ...parallelCommandsOnMain.map(s => s
-                .split(' && ')
-                .map(s => `NX_CLOUD_DISTRIBUTED_EXECUTION=false ${s}`)
-                .join(' && ')
-              ),
-            ];
-            const stringifiedEncodedArrayOfCommands = JSON.stringify(formattedArrayOfCommands)
-              .replace(/%27/g, "'\\''");
-            return stringifiedEncodedArrayOfCommands
-          result-encoding: string
-
-      # https://github.com/nrwl/ci/blob/main/.github/workflows/nx-cloud-main.yml#L246
-      - name: Nx Targets
-        run: |
-          ${{ github.workspace }}/.github/workflows/run-commands-in-parallel.sh '${{ steps.parallel_commands_config.outputs.result }}'
-        shell: bash
-
-      - name: Affected Validate
-        if: ${{ env.NX_AFFECTED == 'true' }}
+      - name: ${{ matrix.command[0] }}
         shell: bash
         run: |
-          pnpm nx affected --target=validate --parallel=${{ inputs.parallel || 3 }}
-
-      - name: Validate
-        if: ${{ env.NX_AFFECTED == 'false' }}
-        shell: bash
-        run: |
-          pnpm nx run-many --target=validate --all --parallel=${{ inputs.parallel || 3 }}
-
-      - name: Affected E2E
-        timeout-minutes: 5
-        if: ${{ env.NX_AFFECTED == 'true' }}
-        uses: cypress-io/github-action@be2de7b1fe1cdafb4a3c8da0a3746476ef636b65 # tag=v4.1.0
-        with:
-          install: false
-          command: |
-            pnpm nx affected --target=e2e --parallel=${{ env.NX_PARALLEL }}
-
-      - name: E2E
-        timeout-minutes: 5
-        if: ${{ env.NX_AFFECTED == 'false' }}
-        uses: cypress-io/github-action@be2de7b1fe1cdafb4a3c8da0a3746476ef636b65 # tag=v4.1.0
-        with:
-          install: false
-          command: |
-            pnpm nx run-many --target=e2e --all --parallel=${{ env.NX_PARALLEL }}
+          pnpm ${{ matrix.command[1] }}
