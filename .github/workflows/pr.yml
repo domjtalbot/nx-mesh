@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       affectedAgents: ${{ steps.affectedAgents.agents }}
-      affectedAgentsLength: ${{ steps.affectedAgents.agentsLength }}
+      hasAgents: ${{ steps.affectedAgents.hasAgents }}
     steps:
       - name: Check out repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
@@ -52,7 +52,7 @@ jobs:
 
   affected:
     name: Affected
-    if: needs.setup.outputs.affectedAgentsLength > 1
+    if: needs.setup.outputs.hasAgents == 'true'
     runs-on: ubuntu-latest
     needs: [setup]
     strategy:

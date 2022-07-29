@@ -5,6 +5,10 @@ inputs:
     description: How many affected apps or libraries per agent
     required: false
     default: '2'
+  min-required-agents:
+    description: The minimum number of agents required to trigger a matrix.
+    required: false
+    default: '1'
   max-agents:
     description: The maximum number of agents to spawn
     required: false
@@ -14,27 +18,30 @@ outputs:
   affected:
     description: 'Affected apps & libraries'
     value: ${{ steps.affected.outputs.affected }}
-  affected-length:
+  affectedLength:
     description: 'Affected apps & libraries'
-    value: ${{ steps.affected.outputs.affected-length }}
-  affected-apps:
+    value: ${{ steps.affected.outputs.affectedLength }}
+  affectedApps:
     description: 'Affected apps & libraries'
-    value: ${{ steps.affected.outputs.affected-apps }}
-  affected-apps-length:
+    value: ${{ steps.affected.outputs.affectedApps }}
+  affectedAppsLength:
     description: 'Affected apps & libraries'
-    value: ${{ steps.affected.outputs.affected-apps-length }}
-  affected-libs:
+    value: ${{ steps.affected.outputs.affectedAppsLength }}
+  affectedLibs:
     description: 'Affected apps & libraries'
-    value: ${{ steps.affected.outputs.affected-libs }}
-  affected-libs-length:
+    value: ${{ steps.affected.outputs.affectedLibs }}
+  affectedLibsLength:
     description: 'Affected apps & libraries'
-    value: ${{ steps.affected.outputs.affected-libs-length }}
+    value: ${{ steps.affected.outputs.affectedLibsLength }}
   agents:
     description: 'The matrix of agents to spawn'
     value: ${{ steps.affected.outputs.agents }}
-  agents-length:
+  agentsLength:
     description: 'The number of agents to spawn'
-    value: ${{ steps.affected.outputs.agents-length }}
+    value: ${{ steps.affected.outputs.agentsLength }}
+  hasAgents:
+    description: Has agents to create.
+    value: ${{ steps.affected.outputs.hasAgents }}
 
 runs:
   using: 'composite'
@@ -94,21 +101,25 @@ runs:
           const affectedPerAgentInput = core.getInput('affected-per-agent', { required: false });
           const affectedPerAgent = parseInt(affectedPerAgentInput === '' ? '2' : affectedPerAgentInput);
 
+          const minAgentsInput = core.getInput('min-required-agents', { required: false });
+          const minAgents = parseInt(minAgentsInput === '' ? '1' : minAgentsInput);
+
           const maxAgentsInput = core.getInput('max-agents', { required: false });
           const maxAgents = parseInt(maxAgentsInput === '' ? '4' : maxAgentsInput);
 
-          console.log('affectedPerAgent', {
-            affectedPerAgent,
-            type: typeof affectedPerAgent,
-          });
-          console.log('maxAgents', maxAgents)
+          // Agents in addition to the main job
+          const allAgents = (affected.length / affectedPerAgent) - 1;
+          let agentsLength = allAgents > maxAgents ? maxAgents : allAgents;
 
-          const allAgents = affected.length * affectedPerAgent;
-          const agentsLength = allAgents > maxAgents ? maxAgents : allAgents;
+          if (agentsLength < minAgentsInput) {
+            agentsLength = 0;
+          }
 
           const agents = [...Array(agentsLength + 1).keys()];
 
           agents.shift();
+
+          const hasAgents = agentsLength > 0;
 
           console.log({
             affected: encodedAffected,
@@ -119,6 +130,7 @@ runs:
             'affectedLibsLength': affectedLibs.length,
             'agents': agents,
             'agentsLength': agentsLength,
+            'hasAgents': hasAgents,
           });
 
           core.exportVariable('affected', encodedAffected);
@@ -129,3 +141,4 @@ runs:
           core.exportVariable('affectedLibsLength', affectedLibs.length);
           core.exportVariable('agents', agents);
           core.exportVariable('agentsLength', agentsLength);
+          core.exportVariable('hasAgents', hasAgents);
