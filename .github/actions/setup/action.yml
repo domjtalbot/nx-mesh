@@ -1,5 +1,15 @@
 name: 'Setup the environment'
 description: 'Install Node, PNPM, project dependencies and get NX SHAs'
+inputs:
+  ignore-pnpm-global-cache:
+    description: Skip the restore of global PNPM cache (if cache is found)
+    required: false
+    default: 'false'
+  ignore-cypress-cache:
+    description: Skip the restore of global Cypress cache (if cache is found)
+    required: false
+    default: 'false'
+
 runs:
   using: 'composite'
   steps:
@@ -18,6 +28,7 @@ runs:
     - name: Cypress Cache
       uses: actions/cache@c3f1317a9e7b1ef106c153ac8c0f00fed3ddbc0d # tag=v3
       id: cypress-cache
+      if: inputs.ignore-cypress-cache != 'true'
       with:
         path: |
           ~/.cache/Cypress
@@ -25,17 +36,27 @@ runs:
         restore-keys: |
           ${{ runner.os }}-cypress-dep-cache-v1-
 
-    - name: PNPM Cache
+    - name: PNPM Repo Cache
       uses: actions/cache@c3f1317a9e7b1ef106c153ac8c0f00fed3ddbc0d # tag=v3
-      id: pnpm-cache
+      id: pnpm-repo-cache
       with:
         path: |
           **/node_modules
-          ${{ steps.pnpm-cache-dir-path.outputs.dir }}
           !**/node_modules/.cache/nx
-        key: ${{ runner.os }}-pnpm-dep-cache-v4-${{ hashFiles('**/pnpm-lock.yaml') }}
+        key: ${{ runner.os }}-pnpm-dep-cache-v5-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
-          ${{ runner.os }}-pnpm-dep-cache-v4-
+          ${{ runner.os }}-pnpm-dep-cache-v5-
+
+    - name: PNPM Store Cache
+      uses: actions/cache@c3f1317a9e7b1ef106c153ac8c0f00fed3ddbc0d # tag=v3
+      id: pnpm-global-cache
+      if: steps.pnpm-cache.outputs.cache-hit != 'true' && inputs.ignore-pnpm-global-cache != 'true'
+      with:
+        path: |
+          ${{ steps.pnpm-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-pnpm-global-cache-v1-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-global-cache-v1-
 
     - name: Install Node Dependencies
       if: steps.pnpm-cache.outputs.cache-hit != 'true'
