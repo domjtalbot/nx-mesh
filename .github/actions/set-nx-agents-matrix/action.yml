@@ -133,12 +133,12 @@ runs:
             'hasAgents': hasAgents,
           });
 
-          core.exportVariable('affected', encodedAffected);
-          core.exportVariable('affectedLength', affected.length);
-          core.exportVariable('affectedApps', encodedAffectedApps);
-          core.exportVariable('affectedAppsLength', affectedApps.length);
-          core.exportVariable('affectedLibs', encodedAffectedLibs);
-          core.exportVariable('affectedLibsLength', affectedLibs.length);
-          core.exportVariable('agents', agents);
-          core.exportVariable('agentsLength', agentsLength);
-          core.exportVariable('hasAgents', hasAgents);
+          core.setOutput('affected', encodedAffected);
+          core.setOutput('affectedLength', affected.length);
+          core.setOutput('affectedApps', encodedAffectedApps);
+          core.setOutput('affectedAppsLength', affectedApps.length);
+          core.setOutput('affectedLibs', encodedAffectedLibs);
+          core.setOutput('affectedLibsLength', affectedLibs.length);
+          core.setOutput('agents', agents);
+          core.setOutput('agentsLength', agentsLength);
+          core.setOutput('hasAgents', hasAgents);
