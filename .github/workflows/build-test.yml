@@ -8,15 +8,25 @@ on:
         type: boolean
         required: false
         default: true
-      parallel:
-        description: Max number of parallel processes per Nx target
-        type: number
-        required: false
-        default: 3
     outputs:
+      affected:
+        description: 'Affected apps & libraries'
+        value: ${{ jobs.setup.outputs.affected }}
+      affectedLength:
+        description: 'Number of affected apps & libraries'
+        value: ${{ jobs.setup.outputs.affectedLength }}
       affectedApps:
-        description: 'The affected apps'
-        value: ${{ jobs.build-test.outputs.affectedApps }}
+        description: 'Affected apps'
+        value: ${{ jobs.setup.outputs.affectedApps }}
+      affectedAppsLength:
+        description: 'Number of affected apps'
+        value: ${{ jobs.setup.outputs.affectedAppsLength }}
+      affectedLibs:
+        description: 'Affected libraries'
+        value: ${{ jobs.setup.outputs.affectedLibs }}
+      affectedLibsLength:
+        description: 'Number of affected libraries'
+        value: ${{ jobs.setup.outputs.affectedLibsLength }}
     secrets:
       NX__TRIPPIN__API_KEY:
         description: 'The Trippin API Key'
@@ -41,8 +51,12 @@ jobs:
     name: Setup
     runs-on: ubuntu-latest
     outputs:
-      affectedAgents: ${{ steps.affectedAgents.agents }}
-      hasAgents: ${{ steps.affectedAgents.hasAgents }}
+      affected: ${{ steps.affected.affected }}
+      affectedLength: ${{ steps.affected.affectedLength }}
+      affectedApps: ${{ steps.affected.affectedApps }}
+      affectedAppsLength: ${{ steps.affected.affectedAppsLength }}
+      affectedLibs: ${{ steps.affected.affectedLibs }}
+      affectedLibsLength: ${{ steps.affected.affectedLibsLength }}
     steps:
       - name: Check out repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
@@ -52,13 +66,14 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
-      - name: Affected Agents Matrix
-        id: affectedAgents
-        uses: ./.github/actions/set-nx-agents-matrix
+      - name: Affected
+        id: affected
+        uses: ./.github/actions/nx-affected
 
-  nx:
+  nx-affected:
     name: Nx Affected
     runs-on: ubuntu-latest
+    if: inputs.affected == 'true'
     needs: [setup]
     timeout-minutes: 10
     strategy:
@@ -88,10 +103,49 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
         with:
-          ignore-pnpm-global-cache: true
           ignore-cypress-cache: ${{ !startsWith(matrix.command[0], 'E2E') }}
 
       - name: Affected ${{ matrix.command[0] }}
+        shell: bash
+        run: |
+          pnpm ${{ matrix.command[1] }}
+
+  nx:
+    name: Nx
+    runs-on: ubuntu-latest
+    if: inputs.affected != 'true'
+    needs: [setup]
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        command:
+          - [Build, 'nx run-many --target=build --parallel=3']
+          - [
+              Lint,
+              'nx-cloud record -- npx nx workspace-lint; pnpm nx-cloud record -- npx nx format:check; pnpm nx run-many --target=lint --parallel=3',
+            ]
+          - [
+              Test,
+              'nx run-many --target=test --parallel=3 --ci --code-coverage',
+            ]
+          - [Validate, 'nx run-many --target=validate --parallel=3']
+          - [E2E, 'nx run-many --target=e2e --parallel=3']
+          - [
+              'E2E (Start)',
+              'nx run-many --target=e2e --configuration=start --parallel=3',
+            ]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup
+        uses: ./.github/actions/setup
+        with:
+          ignore-cypress-cache: ${{ !startsWith(matrix.command[0], 'E2E') }}
+
+      - name: Nx ${{ matrix.command[0] }}
         shell: bash
         run: |
           pnpm ${{ matrix.command[1] }}

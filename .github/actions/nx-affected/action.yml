@@ -1,5 +1,5 @@
-name: 'Set NX agents matrix'
-description: 'Automatically scale the number of Nx agents'
+name: 'NX affected'
+description: 'Get Nx affected info'
 inputs:
   affected-per-agent:
     description: How many affected apps or libraries per agent
@@ -19,25 +19,25 @@ outputs:
     description: 'Affected apps & libraries'
     value: ${{ steps.affected.outputs.affected }}
   affectedLength:
-    description: 'Affected apps & libraries'
+    description: 'Number of affected apps & libraries'
     value: ${{ steps.affected.outputs.affectedLength }}
   affectedApps:
-    description: 'Affected apps & libraries'
+    description: 'Affected apps'
     value: ${{ steps.affected.outputs.affectedApps }}
   affectedAppsLength:
-    description: 'Affected apps & libraries'
+    description: 'Number of affected apps'
     value: ${{ steps.affected.outputs.affectedAppsLength }}
   affectedLibs:
-    description: 'Affected apps & libraries'
+    description: 'Affected libraries'
     value: ${{ steps.affected.outputs.affectedLibs }}
   affectedLibsLength:
-    description: 'Affected apps & libraries'
+    description: 'Number of affected libraries'
     value: ${{ steps.affected.outputs.affectedLibsLength }}
   agents:
     description: 'The matrix of agents to spawn'
     value: ${{ steps.affected.outputs.agents }}
   agentsLength:
-    description: 'The number of agents to spawn'
+    description: 'Number of agents to spawn'
     value: ${{ steps.affected.outputs.agentsLength }}
   hasAgents:
     description: Has agents to create.

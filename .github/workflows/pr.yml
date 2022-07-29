@@ -13,9 +13,9 @@ jobs:
     uses: ./.github/workflows/build-test.yml
     secrets: inherit
 
-  # deploy:
-  #   needs: [build-test]
-  #   uses: ./.github/workflows/deploy.yml
-  #   with:
-  #     apps: ${{ needs.build-test.outputs.affectedApps }}
-  #   secrets: inherit
+  deploy:
+    needs: [build-test]
+    uses: ./.github/workflows/deploy.yml
+    with:
+      apps: ${{ needs.build-test.outputs.affectedApps }}
+    secrets: inherit
