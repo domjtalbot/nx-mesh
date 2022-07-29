@@ -50,7 +50,7 @@ runs:
     - name: PNPM Store Cache
       uses: actions/cache@c3f1317a9e7b1ef106c153ac8c0f00fed3ddbc0d # tag=v3
       id: pnpm-global-cache
-      if: steps.pnpm-cache.outputs.cache-hit != 'true' && inputs.ignore-pnpm-global-cache != 'true'
+      if: steps.pnpm-repo-cache.outputs.cache-hit != 'true' && inputs.ignore-pnpm-global-cache != 'true'
       with:
         path: |
           ${{ steps.pnpm-cache-dir-path.outputs.dir }}
@@ -59,7 +59,7 @@ runs:
           ${{ runner.os }}-pnpm-global-cache-v1-
 
     - name: Install Node Dependencies
-      if: steps.pnpm-cache.outputs.cache-hit != 'true'
+      if: steps.pnpm-repo-cache.outputs.cache-hit != 'true'
       shell: bash
       run: pnpm install --frozen-lockfile
 
