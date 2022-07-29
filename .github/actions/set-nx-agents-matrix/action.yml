@@ -112,20 +112,20 @@ runs:
 
           console.log({
             affected: encodedAffected,
-            'affected-length': affected.length,
-            'affected-apps': encodedAffectedApps,
-            'affected-apps-length': affectedApps.length,
-            'affected-libs': encodedAffectedLibs,
-            'affected-libs-length': affectedLibs.length,
+            'affectedLength': affected.length,
+            'affectedApps': encodedAffectedApps,
+            'affectedAppsLength': affectedApps.length,
+            'affectedLibs': encodedAffectedLibs,
+            'affectedLibsLength': affectedLibs.length,
             'agents': agents,
-            'agents-length': agentsLength,
+            'agentsLength': agentsLength,
           });
 
           core.exportVariable('affected', encodedAffected);
-          core.exportVariable('affected-length', affected.length);
-          core.exportVariable('affected-apps', encodedAffectedApps);
-          core.exportVariable('affected-apps-length', affectedApps.length);
-          core.exportVariable('affected-libs', encodedAffectedLibs);
-          core.exportVariable('affected-libs-length', affectedLibs.length);
+          core.exportVariable('affectedLength', affected.length);
+          core.exportVariable('affectedApps', encodedAffectedApps);
+          core.exportVariable('affectedAppsLength', affectedApps.length);
+          core.exportVariable('affectedLibs', encodedAffectedLibs);
+          core.exportVariable('affectedLibsLength', affectedLibs.length);
           core.exportVariable('agents', agents);
-          core.exportVariable('agents-length', agentsLength);
+          core.exportVariable('agentsLength', agentsLength);

@@ -35,9 +35,8 @@ jobs:
     name: Setup
     runs-on: ubuntu-latest
     outputs:
-      affectedApps: ${{ steps.affected-apps.outputs.apps }}
-      affectedAgents: ${{ steps.affected-agents.agents }}
-      affectedAgentsLength: ${{ steps.affected-agents.agents-length }}
+      affectedAgents: ${{ steps.affectedAgents.agents }}
+      affectedAgentsLength: ${{ steps.affectedAgents.agentsLength }}
     steps:
       - name: Check out repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
@@ -48,7 +47,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Affected Agents Matrix
-        id: affected-agents
+        id: affectedAgents
         uses: ./.github/actions/set-nx-agents-matrix
 
   affected:
