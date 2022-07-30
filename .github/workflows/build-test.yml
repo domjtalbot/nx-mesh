@@ -77,6 +77,30 @@ jobs:
         if: matrix.node == 'lts'
         uses: ./.github/actions/nx-affected
 
+      - name: Workspace Lint
+        if: matrix.node == 'lts'
+        shell: bash
+        run: |
+          pnpm nx-cloud record -- npx nx workspace-lint
+
+      - name: Format
+        if: matrix.node == 'lts'
+        shell: bash
+        run: |
+          pnpm nx-cloud record -- npx nx format:check
+
+      - name: Affected Lint
+        if: inputs.affected == 'true' && matrix.node == 'lts'
+        shell: bash
+        run: |
+          pnpm nx affected --target=lint --parallel=3
+
+      - name: Lint
+        if: inputs.affected != 'true' && matrix.node == 'lts'
+        shell: bash
+        run: |
+          pnpm nx run-many --target=lint --all --parallel=3
+
   nx:
     runs-on: ubuntu-latest
     needs: [setup]
@@ -88,7 +112,7 @@ jobs:
       fail-fast: false
       matrix:
         node: [lts]
-        command: [build, lint, test, validate, e2e, e2e-start]
+        command: [build, test, validate, e2e, e2e-start]
         experimental: [false]
         include:
           - node: latest
@@ -104,7 +128,7 @@ jobs:
             command: e2e-start
             experimental: true
 
-    name: ${{ matrix.node }} - ${{ matrix.command }}
+    name: node-${{ matrix.node }} - ${{ matrix.command }}
     env:
       NX_CLOUD_ENV_NAME: node-${{ matrix.node }}
     steps:
@@ -130,18 +154,6 @@ jobs:
         shell: bash
         run: |
           pnpm nx run-many --target=build --all --parallel=3
-
-      - name: Affected Lint
-        if: inputs.affected == 'true' && matrix.command == 'lint'
-        shell: bash
-        run: |
-          pnpm nx-cloud record -- npx nx workspace-lint; pnpm nx-cloud record -- npx nx format:check; pnpm nx affected --target=lint --parallel=3
-
-      - name: Lint
-        if: inputs.affected != 'true' && matrix.command == 'lint'
-        shell: bash
-        run: |
-          pnpm nx-cloud record -- npx nx workspace-lint; pnpm nx-cloud record -- npx nx format:check; pnpm nx run-many --target=lint --all --parallel=3
 
       - name: Affected Test
         if: inputs.affected == 'true' && matrix.command == 'test'
