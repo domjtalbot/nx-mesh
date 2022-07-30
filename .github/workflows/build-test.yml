@@ -75,6 +75,7 @@ jobs:
 
       - name: Affected
         id: affected
+        if: matrix.node == 'lts'
         uses: ./.github/actions/nx-affected
 
   nx:
