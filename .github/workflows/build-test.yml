@@ -76,7 +76,7 @@ jobs:
     needs: [setup]
     timeout-minutes: 10
     strategy:
-      max-parallel: 4
+      # max-parallel: 4
       matrix:
         node: [lts, latest, 14]
         command: [build, lint, test, validate, e2e, e2e-start]
