@@ -18,6 +18,7 @@ runs:
       uses: volta-cli/action@76620aa011ba56028bb0bae35caa5f9b6118c8c7 # tag=v1.7.0
 
     - name: Setup Volta
+      if: inputs.node-version != 'config'
       uses: volta-cli/action@76620aa011ba56028bb0bae35caa5f9b6118c8c7 # tag=v1.7.0
       with:
         node-version: ${{ inputs.node-version }}
