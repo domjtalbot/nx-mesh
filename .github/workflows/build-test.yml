@@ -117,11 +117,13 @@ jobs:
           ignore-cypress-cache: ${{ !startsWith(matrix.command[0], 'E2E') }}
 
       - name: Affected ${{ matrix.command[0] }}
+        if: inputs.affected == 'true'
         shell: bash
         run: |
           pnpm $matrix.command[1] --parallel=4
 
       - name: ${{ matrix.command[0] }}
+        if: inputs.affected != 'true'
         shell: bash
         run: |
           pnpm $matrix.command[2] --parallel=4 --skip-nx-cache
