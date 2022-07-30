@@ -1,0 +1,150 @@
+name: 'NX affected'
+description: 'Get Nx affected info'
+inputs:
+  affected-per-agent:
+    description: How many affected apps or libraries per agent
+    required: false
+    default: '2'
+  min-required-agents:
+    description: The minimum number of agents required to trigger a matrix.
+    required: false
+    default: '1'
+  max-agents:
+    description: The maximum number of agents to spawn
+    required: false
+    default: '4'
+
+outputs:
+  affected:
+    description: 'Affected apps & libraries'
+    value: ${{ steps.affected.outputs.affected }}
+  affectedLength:
+    description: 'Number of affected apps & libraries'
+    value: ${{ steps.affected.outputs.affectedLength }}
+  affectedApps:
+    description: 'Affected apps'
+    value: ${{ steps.affected.outputs.affectedApps }}
+  affectedAppsLength:
+    description: 'Number of affected apps'
+    value: ${{ steps.affected.outputs.affectedAppsLength }}
+  affectedLibs:
+    description: 'Affected libraries'
+    value: ${{ steps.affected.outputs.affectedLibs }}
+  affectedLibsLength:
+    description: 'Number of affected libraries'
+    value: ${{ steps.affected.outputs.affectedLibsLength }}
+  hasAffected:
+    description: Has agents to create.
+    value: ${{ steps.affected.outputs.hasAffected }}
+  agents:
+    description: 'The matrix of agents to spawn'
+    value: ${{ steps.affected.outputs.agents }}
+  agentsLength:
+    description: 'Number of agents to spawn'
+    value: ${{ steps.affected.outputs.agentsLength }}
+  hasAgents:
+    description: Has agents to create.
+    value: ${{ steps.affected.outputs.hasAgents }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Process parallel commands configuration
+      uses: actions/github-script@v6
+      id: affected
+      with:
+        script: |
+          const { promisify } = require('util');
+          const { exec: nodeExec } = require('child_process');
+
+          const execAsync = promisify(nodeExec);
+
+          const getAffected = async () => {
+            const [{ stdout: apps }, { stdout: libs }] = await Promise.all([
+              execAsync(`npx nx affected:apps --plain`),
+              execAsync(`npx nx affected:libs --plain`),
+            ]);
+
+            const affectedApps = apps.replace('\n', '').split(' ');
+            const affectedLibs = libs.replace('\n', '').split(' ');
+
+            const affected = [
+              ...apps.replace('\n', '').split(' '),
+              ...libs.replace('\n', '').split(' '),
+            ];
+
+            return {
+              affected,
+              affectedApps,
+              affectedLibs
+            };
+          };
+
+          const {
+              affected,
+              affectedApps,
+              affectedLibs
+          } = await getAffected();
+
+          const encodedAffected = JSON.stringify(affected).replace(
+            /%27/g,
+            "'\\''"
+          );
+
+          const encodedAffectedApps = JSON.stringify(affectedApps).replace(
+            /%27/g,
+            "'\\''"
+          );
+
+          const encodedAffectedLibs = JSON.stringify(affectedLibs).replace(
+            /%27/g,
+            "'\\''"
+          );
+
+          const affectedPerAgentInput = core.getInput('affected-per-agent', { required: false });
+          const affectedPerAgent = parseInt(affectedPerAgentInput === '' ? '2' : affectedPerAgentInput);
+
+          const minAgentsInput = core.getInput('min-required-agents', { required: false });
+          const minAgents = parseInt(minAgentsInput === '' ? '1' : minAgentsInput);
+
+          const maxAgentsInput = core.getInput('max-agents', { required: false });
+          const maxAgents = parseInt(maxAgentsInput === '' ? '4' : maxAgentsInput);
+
+          // Agents in addition to the main job
+          const allAgents = (affected.length / affectedPerAgent) - 1;
+          let agentsLength = allAgents > maxAgents ? maxAgents : allAgents;
+
+          if (agentsLength < minAgentsInput) {
+            agentsLength = 0;
+          }
+
+          const agents = [...Array(agentsLength + 1).keys()];
+
+          agents.shift();
+
+          const hasAgents = agentsLength > 0;
+          const hasAffected = encodedAffected.length > 0;
+
+          console.log({
+            affected: encodedAffected,
+            'affectedLength': affected.length,
+            'affectedApps': encodedAffectedApps,
+            'affectedAppsLength': affectedApps.length,
+            'affectedLibs': encodedAffectedLibs,
+            'affectedLibsLength': affectedLibs.length,
+            'agents': agents,
+            'agentsLength': agentsLength,
+            'hasAgents': hasAgents,
+            'hasAffected': hasAffected,
+          });
+
+          core.setOutput('affected', encodedAffected);
+          core.setOutput('affectedLength', affected.length);
+          core.setOutput('affectedApps', encodedAffectedApps);
+          core.setOutput('affectedAppsLength', affectedApps.length);
+          core.setOutput('affectedLibs', encodedAffectedLibs);
+          core.setOutput('affectedLibsLength', affectedLibs.length);
+          core.setOutput('agents', agents);
+          core.setOutput('agentsLength', agentsLength);
+          core.setOutput('hasAgents', hasAgents);
+          core.setOutput('hasAffected', hasAffected);

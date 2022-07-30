@@ -30,8 +30,9 @@ concurrency:
   group: deploy-${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  deploy:
-    name: Deploy
+  deploy-nextjs-trippin:
+    name: Deploy NextJS Trippin
+    if: contains(inputs.apps, 'nextjs-trippin')
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -53,7 +54,6 @@ jobs:
           echo ::set-output name=name::$name
 
       - name: Deploy to Vercel Action
-        if: contains(inputs.apps, 'nextjs-trippin')
         uses: BetaHuhn/deploy-to-vercel-action@f5c4fe753b1c358345ae6794d4dde7df9b37a908 # tag=v1
         with:
           GITHUB_DEPLOYMENT_ENV: nextjs/trippin ${{ steps.deploy-env.outputs.name }}
@@ -65,8 +65,30 @@ jobs:
           VERCEL_PROJECT_ID: ${{ secrets.NX__NEXTJS_TRIPPIN__VERCEL_PROJECT_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
+  deploy-nextjs-trippin-swc:
+    name: Deploy NextJS Trippin SWC
+    runs-on: ubuntu-latest
+    if: contains(inputs.apps, 'nextjs-trippin-swc')
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
+        with:
+          fetch-depth: 0
+
+      - name: Deploy env
+        id: deploy-env
+        shell: bash
+        run: |
+          name=Preview
+
+          if [ ${{ inputs.production }} = true ]; then
+            name=Production
+          fi
+
+          echo The env is $name
+          echo ::set-output name=name::$name
+
       - name: Deploy to Vercel Action
-        if: contains(inputs.apps, 'nextjs-trippin-swc')
         uses: BetaHuhn/deploy-to-vercel-action@f5c4fe753b1c358345ae6794d4dde7df9b37a908 # tag=v1
         with:
           GITHUB_DEPLOYMENT_ENV: nextjs/trippin-swc ${{ steps.deploy-env.outputs.name }}

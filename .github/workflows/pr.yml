@@ -12,6 +12,8 @@ jobs:
   build-test:
     uses: ./.github/workflows/build-test.yml
     secrets: inherit
+    with:
+      affected: true
 
   deploy:
     needs: [build-test]
