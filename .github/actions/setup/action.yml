@@ -5,12 +5,22 @@ inputs:
     description: Skip the restore of global Cypress cache (if cache is found)
     required: false
     default: 'false'
+  node-version:
+    description: The node version to use.
+    required: false
+    default: 'config'
 
 runs:
   using: 'composite'
   steps:
     - name: Setup Volta
+      if: inputs.node-version == 'config'
       uses: volta-cli/action@76620aa011ba56028bb0bae35caa5f9b6118c8c7 # tag=v1.7.0
+
+    - name: Setup Volta
+      uses: volta-cli/action@76620aa011ba56028bb0bae35caa5f9b6118c8c7 # tag=v1.7.0
+      with:
+        node-version: ${{ inputs.node-version }}
 
     - name: Cypress Cache
       uses: actions/cache@c3f1317a9e7b1ef106c153ac8c0f00fed3ddbc0d # tag=v3

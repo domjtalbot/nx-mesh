@@ -78,37 +78,17 @@ jobs:
     strategy:
       max-parallel: 2
       matrix:
-        command:
-          - [
-              Build,
-              'nx affected --target=build --parallel=3',
-              'nx run-many --target=build --all --parallel=3',
-            ]
-          - [
-              Lint,
-              'nx-cloud record -- npx nx workspace-lint; pnpm nx-cloud record -- npx nx format:check; pnpm nx affected --target=lint --parallel=3',
-              'nx-cloud record -- npx nx workspace-lint; pnpm nx-cloud record -- npx nx format:check; pnpm nx run-many --target=lint --all --parallel=3',
-            ]
-          - [
-              Test,
-              'nx affected --target=test --ci --code-coverage --parallel=3',
-              'nx run-many --target=test --all --ci --code-coverage --parallel=3',
-            ]
-          - [
-              Validate,
-              'nx affected --target=validate --parallel=2',
-              'nx run-many --target=validate --all --parallel=2',
-            ]
-          - [
-              E2E,
-              'nx affected --target=e2e --parallel=3',
-              'nx run-many --target=e2e --all --parallel=3',
-            ]
-          - [
-              'E2E (Start)',
-              'nx affected --target=e2e --configuration=start --parallel=2',
-              'nx run-many --target=e2e --configuration=start --all --parallel=2',
-            ]
+        node: [lts, latest, 14]
+        command: [build, lint, test, validate, e2e, e2e-start]
+        exclude:
+          - node: 14
+            command: lint
+          - node: latest
+            command: lint
+          - node: 14
+            command: test
+          - node: latest
+            command: test
     steps:
       - name: Check out repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
@@ -120,14 +100,74 @@ jobs:
         with:
           ignore-cypress-cache: ${{ !startsWith(matrix.command[0], 'E2E') }}
 
-      - name: Affected ${{ matrix.command[0] }}
-        if: inputs.affected == 'true'
+      - name: Affected Build
+        if: inputs.affected == 'true' && matrix.command == 'build'
         shell: bash
         run: |
-          pnpm ${{ matrix.command[1] }}
+          pnpm nx affected --target=build --parallel=3
 
-      - name: ${{ matrix.command[0] }}
-        if: inputs.affected != 'true'
+      - name: Build
+        if: inputs.affected != 'true' && matrix.command == 'build'
         shell: bash
         run: |
-          pnpm ${{ matrix.command[2] }} --skip-nx-cache
+          pnpm nx run-many --target=build --all --parallel=3
+
+      - name: Affected Lint
+        if: inputs.affected == 'true' && matrix.command == 'lint'
+        shell: bash
+        run: |
+          pnpm nx-cloud record -- npx nx workspace-lint; pnpm nx-cloud record -- npx nx format:check; pnpm nx affected --target=lint --parallel=3
+
+      - name: Lint
+        if: inputs.affected != 'true' && matrix.command == 'lint'
+        shell: bash
+        run: |
+          pnpm nx-cloud record -- npx nx workspace-lint; pnpm nx-cloud record -- npx nx format:check; pnpm nx run-many --target=lint --all --parallel=3
+
+      - name: Affected Test
+        if: inputs.affected == 'true' && matrix.command == 'test'
+        shell: bash
+        run: |
+          pnpm nx affected --target=test --ci --code-coverage --parallel=3
+
+      - name: Test
+        if: inputs.affected != 'true' && matrix.command == 'test'
+        shell: bash
+        run: |
+          pnpm nx run-many --target=test --all --ci --code-coverage --parallel=3
+
+      - name: Affected Validate
+        if: inputs.affected == 'true' && matrix.command == 'validate'
+        shell: bash
+        run: |
+          pnpm nx affected --target=validate --parallel=2
+
+      - name: Validate
+        if: inputs.affected != 'true' && matrix.command == 'validate'
+        shell: bash
+        run: |
+          pnpm nx run-many --target=validate --all --parallel=2
+
+      - name: Affected E2E
+        if: inputs.affected == 'true' && matrix.command == 'e2e'
+        shell: bash
+        run: |
+          pnpm nx affected --target=e2e --parallel=3
+
+      - name: E2E
+        if: inputs.affected != 'true' && matrix.command == 'e2e'
+        shell: bash
+        run: |
+          pnpm nx run-many --target=e2e --all --parallel=3
+
+      - name: Affected E2E-Start
+        if: inputs.affected == 'true' && matrix.command == 'e2e-start'
+        shell: bash
+        run: |
+          pnpm nx affected --target=e2e --configuration=start --parallel=2
+
+      - name: E2E-Start
+        if: inputs.affected != 'true' && matrix.command == 'e2e-start'
+        shell: bash
+        run: |
+          pnpm nx run-many --target=e2e --configuration=start --all --parallel=2
