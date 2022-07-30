@@ -54,6 +54,8 @@ jobs:
     strategy:
       matrix:
         node: [lts, latest]
+    env:
+      NX_CLOUD_ENV_NAME: node-${{ matrix.node }}
     outputs:
       affected: ${{ steps.affected.affected }}
       affectedLength: ${{ steps.affected.affectedLength }}
