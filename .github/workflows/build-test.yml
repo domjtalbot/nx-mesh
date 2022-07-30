@@ -126,4 +126,4 @@ jobs:
         if: inputs.affected != 'true'
         shell: bash
         run: |
-          pnpm ${{ matrix.command[2] }} --parallel=4 --skip-nx-cache
+          pnpm ${{ matrix.command[2] }} --parallel=6 --skip-nx-cache
