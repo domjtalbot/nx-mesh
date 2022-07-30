@@ -70,29 +70,40 @@ jobs:
         id: affected
         uses: ./.github/actions/nx-affected
 
-  nx-affected:
-    name: Nx Affected
+  nx:
+    name: Nx
     runs-on: ubuntu-latest
-    if: inputs.affected == 'true'
     needs: [setup]
     timeout-minutes: 10
     strategy:
+      max-parallel: 2
       matrix:
         command:
-          - [Build, 'nx affected --target=build --parallel=3']
+          - [
+              Build,
+              'nx affected --target=build',
+              'nx run-many --target=build --all',
+            ]
           - [
               Lint,
-              'nx-cloud record -- npx nx workspace-lint; pnpm nx-cloud record -- npx nx format:check; pnpm nx affected --target=lint --parallel=3',
+              'nx-cloud record -- npx nx workspace-lint; pnpm nx-cloud record -- npx nx format:check; pnpm nx affected --target=lint',
+              'nx-cloud record -- npx nx workspace-lint; pnpm nx-cloud record -- npx nx format:check; pnpm nx run-many --target=lint --all',
             ]
           - [
               Test,
-              'nx affected --target=test --parallel=3 --ci --code-coverage',
+              'nx affected --target=test --ci --code-coverage',
+              'nx run-many --target=test --all --ci --code-coverage',
             ]
-          - [Validate, 'nx affected --target=validate --parallel=3']
-          - [E2E, 'nx affected --target=e2e --parallel=3']
+          - [
+              Validate,
+              'nx affected --target=validate',
+              'nx run-many --target=validate --all',
+            ]
+          - [E2E, 'nx affected --target=e2e', 'nx run-many --target=e2e --all']
           - [
               'E2E (Start)',
-              'nx affected --target=e2e --configuration=start --parallel=3',
+              'nx affected --target=e2e --configuration=start',
+              'nx run-many --target=e2e --configuration=start --all',
             ]
     steps:
       - name: Check out repository
@@ -108,44 +119,9 @@ jobs:
       - name: Affected ${{ matrix.command[0] }}
         shell: bash
         run: |
-          pnpm ${{ matrix.command[1] }}
+          pnpm $matrix.command[1] --parallel=4
 
-  nx:
-    name: Nx
-    runs-on: ubuntu-latest
-    if: inputs.affected != 'true'
-    needs: [setup]
-    timeout-minutes: 10
-    strategy:
-      matrix:
-        command:
-          - [Build, 'nx run-many --target=build --parallel=3 --all']
-          - [
-              Lint,
-              'nx-cloud record -- npx nx workspace-lint; pnpm nx-cloud record -- npx nx format:check; pnpm nx run-many --target=lint --parallel=3 --all',
-            ]
-          - [
-              Test,
-              'nx run-many --target=test --parallel=3 --all --ci --code-coverage',
-            ]
-          - [Validate, 'nx run-many --target=validate --parallel=3 --all']
-          - [E2E, 'nx run-many --target=e2e --parallel=3 --all']
-          - [
-              'E2E (Start)',
-              'nx run-many --target=e2e --configuration=start --parallel=3 --all',
-            ]
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
-        with:
-          fetch-depth: 0
-
-      - name: Setup
-        uses: ./.github/actions/setup
-        with:
-          ignore-cypress-cache: ${{ !startsWith(matrix.command[0], 'E2E') }}
-
-      - name: Nx ${{ matrix.command[0] }}
+      - name: ${{ matrix.command[0] }}
         shell: bash
         run: |
-          pnpm ${{ matrix.command[1] }}
+          pnpm $matrix.command[2] --parallel=4 --skip-nx-cache
