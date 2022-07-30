@@ -81,29 +81,33 @@ jobs:
         command:
           - [
               Build,
-              'nx affected --target=build',
-              'nx run-many --target=build --all',
+              'nx affected --target=build --parallel=3',
+              'nx run-many --target=build --all --parallel=3',
             ]
           - [
               Lint,
-              'nx-cloud record -- npx nx workspace-lint; pnpm nx-cloud record -- npx nx format:check; pnpm nx affected --target=lint',
-              'nx-cloud record -- npx nx workspace-lint; pnpm nx-cloud record -- npx nx format:check; pnpm nx run-many --target=lint --all',
+              'nx-cloud record -- npx nx workspace-lint; pnpm nx-cloud record -- npx nx format:check; pnpm nx affected --target=lint --parallel=3',
+              'nx-cloud record -- npx nx workspace-lint; pnpm nx-cloud record -- npx nx format:check; pnpm nx run-many --target=lint --all --parallel=3',
             ]
           - [
               Test,
-              'nx affected --target=test --ci --code-coverage',
-              'nx run-many --target=test --all --ci --code-coverage',
+              'nx affected --target=test --ci --code-coverage --parallel=3',
+              'nx run-many --target=test --all --ci --code-coverage --parallel=3',
             ]
           - [
               Validate,
-              'nx affected --target=validate',
-              'nx run-many --target=validate --all',
+              'nx affected --target=validate --parallel=2',
+              'nx run-many --target=validate --all --parallel=2',
             ]
-          - [E2E, 'nx affected --target=e2e', 'nx run-many --target=e2e --all']
+          - [
+              E2E,
+              'nx affected --target=e2e --parallel=3',
+              'nx run-many --target=e2e --all --parallel=3',
+            ]
           - [
               'E2E (Start)',
-              'nx affected --target=e2e --configuration=start',
-              'nx run-many --target=e2e --configuration=start --all',
+              'nx affected --target=e2e --configuration=start --parallel=2',
+              'nx run-many --target=e2e --configuration=start --all --parallel=2',
             ]
     steps:
       - name: Check out repository
@@ -120,10 +124,10 @@ jobs:
         if: inputs.affected == 'true'
         shell: bash
         run: |
-          pnpm ${{ matrix.command[1] }} --parallel=2
+          pnpm ${{ matrix.command[1] }}
 
       - name: ${{ matrix.command[0] }}
         if: inputs.affected != 'true'
         shell: bash
         run: |
-          pnpm ${{ matrix.command[2] }} --parallel=2 --skip-nx-cache
+          pnpm ${{ matrix.command[2] }} --skip-nx-cache
