@@ -120,10 +120,10 @@ jobs:
         if: inputs.affected == 'true'
         shell: bash
         run: |
-          pnpm ${{ matrix.command[1] }} --parallel=4
+          pnpm ${{ matrix.command[1] }} --parallel=2
 
       - name: ${{ matrix.command[0] }}
         if: inputs.affected != 'true'
         shell: bash
         run: |
-          pnpm ${{ matrix.command[2] }} --parallel=3 --skip-nx-cache
+          pnpm ${{ matrix.command[2] }} --parallel=2 --skip-nx-cache
