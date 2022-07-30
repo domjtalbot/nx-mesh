@@ -82,10 +82,12 @@ jobs:
     needs: [setup]
     timeout-minutes: 10
     strategy:
-      # max-parallel: 4
+      max-parallel: 4
+      fail-fast: false
       matrix:
-        node: [lts, latest, 14]
+        node: [14, lts]
         command: [build, lint, test, validate, e2e, e2e-start]
+        experimental: [false]
         exclude:
           - node: 14
             command: lint
@@ -93,8 +95,16 @@ jobs:
             command: lint
           - node: 14
             command: test
+        include:
           - node: latest
-            command: test
+            command: build
+          - node: latest
+            command: validate
+          - node: latest
+            command: e2e
+          - node: latest
+            command: e2e-start
+
     name: ${{ matrix.node }} - ${{ matrix.command }}
     steps:
       - name: Check out repository
