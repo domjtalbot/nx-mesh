@@ -33,6 +33,9 @@ outputs:
   affectedLibsLength:
     description: 'Number of affected libraries'
     value: ${{ steps.affected.outputs.affectedLibsLength }}
+  hasAffected:
+    description: Has agents to create.
+    value: ${{ steps.affected.outputs.hasAffected }}
   agents:
     description: 'The matrix of agents to spawn'
     value: ${{ steps.affected.outputs.agents }}
@@ -120,6 +123,7 @@ runs:
           agents.shift();
 
           const hasAgents = agentsLength > 0;
+          const hasAffected = encodedAffected.length > 0;
 
           console.log({
             affected: encodedAffected,
@@ -131,6 +135,7 @@ runs:
             'agents': agents,
             'agentsLength': agentsLength,
             'hasAgents': hasAgents,
+            'hasAffected': hasAffected,
           });
 
           core.setOutput('affected', encodedAffected);
@@ -142,3 +147,4 @@ runs:
           core.setOutput('agents', agents);
           core.setOutput('agentsLength', agentsLength);
           core.setOutput('hasAgents', hasAgents);
+          core.setOutput('hasAffected', hasAffected);
