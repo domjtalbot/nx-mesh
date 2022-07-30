@@ -104,70 +104,70 @@ jobs:
         if: inputs.affected == 'true' && matrix.command == 'build'
         shell: bash
         run: |
-          pnpm nx affected --target=build --parallel=3
+          pnpm nx affected --target=build --parallel=3 --skip-nx-cache
 
       - name: Build
         if: inputs.affected != 'true' && matrix.command == 'build'
         shell: bash
         run: |
-          pnpm nx run-many --target=build --all --parallel=3
+          pnpm nx run-many --target=build --all --parallel=3 --skip-nx-cache
 
       - name: Affected Lint
         if: inputs.affected == 'true' && matrix.command == 'lint'
         shell: bash
         run: |
-          pnpm nx-cloud record -- npx nx workspace-lint; pnpm nx-cloud record -- npx nx format:check; pnpm nx affected --target=lint --parallel=3
+          pnpm nx-cloud record -- npx nx workspace-lint; pnpm nx-cloud record -- npx nx format:check; pnpm nx affected --target=lint --parallel=3 --skip-nx-cache
 
       - name: Lint
         if: inputs.affected != 'true' && matrix.command == 'lint'
         shell: bash
         run: |
-          pnpm nx-cloud record -- npx nx workspace-lint; pnpm nx-cloud record -- npx nx format:check; pnpm nx run-many --target=lint --all --parallel=3
+          pnpm nx-cloud record -- npx nx workspace-lint; pnpm nx-cloud record -- npx nx format:check; pnpm nx run-many --target=lint --all --parallel=3 --skip-nx-cache
 
       - name: Affected Test
         if: inputs.affected == 'true' && matrix.command == 'test'
         shell: bash
         run: |
-          pnpm nx affected --target=test --ci --code-coverage --parallel=3
+          pnpm nx affected --target=test --ci --code-coverage --parallel=3 --skip-nx-cache
 
       - name: Test
         if: inputs.affected != 'true' && matrix.command == 'test'
         shell: bash
         run: |
-          pnpm nx run-many --target=test --all --ci --code-coverage --parallel=3
+          pnpm nx run-many --target=test --all --ci --code-coverage --parallel=3 --skip-nx-cache
 
       - name: Affected Validate
         if: inputs.affected == 'true' && matrix.command == 'validate'
         shell: bash
         run: |
-          pnpm nx affected --target=validate --parallel=2
+          pnpm nx affected --target=validate --parallel=2 --skip-nx-cache
 
       - name: Validate
         if: inputs.affected != 'true' && matrix.command == 'validate'
         shell: bash
         run: |
-          pnpm nx run-many --target=validate --all --parallel=2
+          pnpm nx run-many --target=validate --all --parallel=2 --skip-nx-cache
 
       - name: Affected E2E
         if: inputs.affected == 'true' && matrix.command == 'e2e'
         shell: bash
         run: |
-          pnpm nx affected --target=e2e --parallel=3
+          pnpm nx affected --target=e2e --parallel=3 --skip-nx-cache
 
       - name: E2E
         if: inputs.affected != 'true' && matrix.command == 'e2e'
         shell: bash
         run: |
-          pnpm nx run-many --target=e2e --all --parallel=3
+          pnpm nx run-many --target=e2e --all --parallel=3 --skip-nx-cache
 
       - name: Affected E2E-Start
         if: inputs.affected == 'true' && matrix.command == 'e2e-start'
         shell: bash
         run: |
-          pnpm nx affected --target=e2e --configuration=start --parallel=2
+          pnpm nx affected --target=e2e --configuration=start --parallel=2 --skip-nx-cache
 
       - name: E2E-Start
         if: inputs.affected != 'true' && matrix.command == 'e2e-start'
         shell: bash
         run: |
-          pnpm nx run-many --target=e2e --configuration=start --all --parallel=2
+          pnpm nx run-many --target=e2e --configuration=start --all --parallel=2 --skip-nx-cache
