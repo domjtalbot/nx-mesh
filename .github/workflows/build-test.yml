@@ -54,7 +54,7 @@ jobs:
     strategy:
       # max-parallel: 4
       matrix:
-        node: [lts, latest, 14]
+        node: [lts, latest]
     outputs:
       affected: ${{ steps.affected.affected }}
       affectedLength: ${{ steps.affected.affectedLength }}
@@ -86,16 +86,9 @@ jobs:
       max-parallel: 4
       fail-fast: false
       matrix:
-        node: [lts, 14]
+        node: [lts]
         command: [build, lint, test, validate, e2e, e2e-start]
         experimental: [false]
-        exclude:
-          - node: 14
-            command: lint
-          - node: latest
-            command: lint
-          - node: 14
-            command: test
         include:
           - node: latest
             command: build
