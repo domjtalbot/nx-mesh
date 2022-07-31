@@ -45,7 +45,7 @@
     "react-dom": "18.2.0",
     "regenerator-runtime": "0.13.9",
     "tslib": "2.4.0",
-    "type-fest": "2.13.0"
+    "type-fest": "2.18.0"
   },
   "devDependencies": {
     "@nrwl/cli": "14.4.3",

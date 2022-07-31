@@ -13,6 +13,6 @@
     "@nrwl/workspace": "14.1.9",
     "@types/fs-extra": "9.0.13",
     "fs-extra": "10.1.0",
-    "type-fest": "2.13.0"
+    "type-fest": "2.18.0"
   }
 }

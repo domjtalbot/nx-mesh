@@ -69,7 +69,7 @@ specifiers:
   ts-jest: 27.1.5
   ts-node: 10.8.2
   tslib: 2.4.0
-  type-fest: 2.13.0
+  type-fest: 2.18.0
   typescript: 4.7.4
 
 dependencies:
@@ -89,7 +89,7 @@ dependencies:
   '@graphql-yoga/node': 2.13.3_tguxomqdchinjc7y46blh4q5oy
   '@nrwl/devkit': 14.4.3_nx@14.4.3
   '@nrwl/js': 14.4.3_3nqmuj7xkzt7lf6lyfrecbm7my
-  '@nrwl/next': 14.4.3_twub7mfgy34dcw6yrkuzobuxda
+  '@nrwl/next': 14.4.3_canypt33g6gj6wnb5hwdwbhz3y
   '@nrwl/nx-plugin': 14.4.3_3nqmuj7xkzt7lf6lyfrecbm7my
   '@swc-node/register': 1.5.1_typescript@4.7.4
   '@swc/helpers': 0.4.3
@@ -101,7 +101,7 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
   regenerator-runtime: 0.13.9
   tslib: 2.4.0
-  type-fest: 2.13.0
+  type-fest: 2.18.0
 
 devDependencies:
   '@nrwl/cli': 14.4.3_bbl4g5ka7d7yr74jsvl47gmj2y
@@ -111,8 +111,8 @@ devDependencies:
   '@nrwl/linter': 14.4.3_gb3kusmqmljmwdelprrytukbra
   '@nrwl/node': 14.4.3_56eztqntfzvsjkb4grfrbwbvyu
   '@nrwl/nx-cloud': 14.2.0
-  '@nrwl/react': 14.4.3_uxo74legaf4bx2hdzp4wwcf5fy
-  '@nrwl/web': 14.4.3_vipqflbi7ni7kklcfytnfqtolq
+  '@nrwl/react': 14.4.3_kny2qhkenj7nkswi3xy2s5wjg4
+  '@nrwl/web': 14.4.3_vbakaha5f6ehliynycg33alyma
   '@nrwl/workspace': 14.4.3_duili7fvqiazx62cvy7ayqtsle
   '@swc/cli': 0.1.57_@swc+core@1.2.215
   '@swc/core': 1.2.215
@@ -4447,7 +4447,7 @@ packages:
       - typescript
       - utf-8-validate
 
-  /@nrwl/next/14.4.3_twub7mfgy34dcw6yrkuzobuxda:
+  /@nrwl/next/14.4.3_canypt33g6gj6wnb5hwdwbhz3y:
     resolution:
       {
         integrity: sha512-1dkP/GRw2oeetgRWYS4f3xyb/UAzU/fNhdLHw2SiDSv6kQFelnS8MdZnwHD0BmzqftYuAF8s+dLXpLgw77h+Lg==,
@@ -4460,8 +4460,8 @@ packages:
       '@nrwl/devkit': 14.4.3_nx@14.4.3
       '@nrwl/jest': 14.4.3_yi4yd3arhmqimh2vkjiighnlby
       '@nrwl/linter': 14.4.3_gb3kusmqmljmwdelprrytukbra
-      '@nrwl/react': 14.4.3_uxo74legaf4bx2hdzp4wwcf5fy
-      '@nrwl/web': 14.4.3_vipqflbi7ni7kklcfytnfqtolq
+      '@nrwl/react': 14.4.3_kny2qhkenj7nkswi3xy2s5wjg4
+      '@nrwl/web': 14.4.3_vbakaha5f6ehliynycg33alyma
       '@nrwl/workspace': 14.4.3_duili7fvqiazx62cvy7ayqtsle
       '@svgr/webpack': 6.2.1
       chalk: 4.1.0
@@ -4613,7 +4613,7 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@nrwl/react/14.4.3_uxo74legaf4bx2hdzp4wwcf5fy:
+  /@nrwl/react/14.4.3_kny2qhkenj7nkswi3xy2s5wjg4:
     resolution:
       {
         integrity: sha512-pX/aSDwj+SCDMkSBzUDR6aF0RJE0WHV8sxYSqLSkkiWDgnHX47puJlNMODDKxErfKjo6s0ljvjGPyyVZU96eIg==,
@@ -4627,9 +4627,9 @@ packages:
       '@nrwl/js': 14.4.3_3nqmuj7xkzt7lf6lyfrecbm7my
       '@nrwl/linter': 14.4.3_gb3kusmqmljmwdelprrytukbra
       '@nrwl/storybook': 14.4.3_xjdyttqewhkcg3r4yfmiuf4zmu
-      '@nrwl/web': 14.4.3_vipqflbi7ni7kklcfytnfqtolq
+      '@nrwl/web': 14.4.3_vbakaha5f6ehliynycg33alyma
       '@nrwl/workspace': 14.4.3_duili7fvqiazx62cvy7ayqtsle
-      '@pmmmwh/react-refresh-webpack-plugin': 0.5.7_226lhknfhukeeqmn7j55hs2koy
+      '@pmmmwh/react-refresh-webpack-plugin': 0.5.7_53y5rxojtpayztn7fibkyu3brm
       '@storybook/node-logger': 6.1.20
       '@svgr/webpack': 6.2.1
       chalk: 4.1.0
@@ -4729,7 +4729,7 @@ packages:
       - '@swc-node/register'
       - '@swc/core'
 
-  /@nrwl/web/14.4.3_vipqflbi7ni7kklcfytnfqtolq:
+  /@nrwl/web/14.4.3_vbakaha5f6ehliynycg33alyma:
     resolution:
       {
         integrity: sha512-iFGADIeRC9ZX/H4YJbLOdCE/Dzz3etEYzklXHQwz66Kd66k5eDIz2DGy1e383M3jnRcXWi1aEugDjn9cvzJjGw==,
@@ -4749,7 +4749,7 @@ packages:
       '@nrwl/js': 14.4.3_3nqmuj7xkzt7lf6lyfrecbm7my
       '@nrwl/linter': 14.4.3_gb3kusmqmljmwdelprrytukbra
       '@nrwl/workspace': 14.4.3_duili7fvqiazx62cvy7ayqtsle
-      '@pmmmwh/react-refresh-webpack-plugin': 0.5.7_ebudky7evz5eeaex3qjypfjwne
+      '@pmmmwh/react-refresh-webpack-plugin': 0.5.7_2aw4cr3ybtnlmum4siv5zebxvm
       '@rollup/plugin-babel': 5.3.1_3crms4j33zkfeqv7ozcuia3hfq
       '@rollup/plugin-commonjs': 20.0.0_rollup@2.77.0
       '@rollup/plugin-image': 2.1.1_rollup@2.77.0
@@ -4977,7 +4977,7 @@ packages:
       esquery: 1.4.0
       typescript: 4.7.4
 
-  /@pmmmwh/react-refresh-webpack-plugin/0.5.7_226lhknfhukeeqmn7j55hs2koy:
+  /@pmmmwh/react-refresh-webpack-plugin/0.5.7_2aw4cr3ybtnlmum4siv5zebxvm:
     resolution:
       {
         integrity: sha512-bcKCAzF0DV2IIROp9ZHkRJa6O4jy7NlnHdWL3GmcUxYWNjLXkK5kfELELwEfSP5hXPfVL/qOGMAROuMQb9GG8Q==,
@@ -5016,51 +5016,51 @@ packages:
       react-refresh: 0.10.0
       schema-utils: 3.1.1
       source-map: 0.7.4
-      type-fest: 2.13.0
-      webpack: 5.73.0_@swc+core@1.2.215
-
-  /@pmmmwh/react-refresh-webpack-plugin/0.5.7_ebudky7evz5eeaex3qjypfjwne:
-    resolution:
-      {
-        integrity: sha512-bcKCAzF0DV2IIROp9ZHkRJa6O4jy7NlnHdWL3GmcUxYWNjLXkK5kfELELwEfSP5hXPfVL/qOGMAROuMQb9GG8Q==,
-      }
-    engines: { node: '>= 10.13' }
-    peerDependencies:
-      '@types/webpack': 4.x || 5.x
-      react-refresh: '>=0.10.0 <1.0.0'
-      sockjs-client: ^1.4.0
-      type-fest: '>=0.17.0 <3.0.0'
-      webpack: '>=4.43.0 <6.0.0'
-      webpack-dev-server: 3.x || 4.x
-      webpack-hot-middleware: 2.x
-      webpack-plugin-serve: 0.x || 1.x
-    peerDependenciesMeta:
-      '@types/webpack':
-        optional: true
-      sockjs-client:
-        optional: true
-      type-fest:
-        optional: true
-      webpack-dev-server:
-        optional: true
-      webpack-hot-middleware:
-        optional: true
-      webpack-plugin-serve:
-        optional: true
-    dependencies:
-      ansi-html-community: 0.0.8
-      common-path-prefix: 3.0.0
-      core-js-pure: 3.23.4
-      error-stack-parser: 2.1.4
-      find-up: 5.0.0
-      html-entities: 2.3.3
-      loader-utils: 2.0.2
-      react-refresh: 0.10.0
-      schema-utils: 3.1.1
-      source-map: 0.7.4
-      type-fest: 2.13.0
+      type-fest: 2.18.0
       webpack: 5.73.0_@swc+core@1.2.215
       webpack-dev-server: 4.9.3_webpack@5.73.0
+
+  /@pmmmwh/react-refresh-webpack-plugin/0.5.7_53y5rxojtpayztn7fibkyu3brm:
+    resolution:
+      {
+        integrity: sha512-bcKCAzF0DV2IIROp9ZHkRJa6O4jy7NlnHdWL3GmcUxYWNjLXkK5kfELELwEfSP5hXPfVL/qOGMAROuMQb9GG8Q==,
+      }
+    engines: { node: '>= 10.13' }
+    peerDependencies:
+      '@types/webpack': 4.x || 5.x
+      react-refresh: '>=0.10.0 <1.0.0'
+      sockjs-client: ^1.4.0
+      type-fest: '>=0.17.0 <3.0.0'
+      webpack: '>=4.43.0 <6.0.0'
+      webpack-dev-server: 3.x || 4.x
+      webpack-hot-middleware: 2.x
+      webpack-plugin-serve: 0.x || 1.x
+    peerDependenciesMeta:
+      '@types/webpack':
+        optional: true
+      sockjs-client:
+        optional: true
+      type-fest:
+        optional: true
+      webpack-dev-server:
+        optional: true
+      webpack-hot-middleware:
+        optional: true
+      webpack-plugin-serve:
+        optional: true
+    dependencies:
+      ansi-html-community: 0.0.8
+      common-path-prefix: 3.0.0
+      core-js-pure: 3.23.4
+      error-stack-parser: 2.1.4
+      find-up: 5.0.0
+      html-entities: 2.3.3
+      loader-utils: 2.0.2
+      react-refresh: 0.10.0
+      schema-utils: 3.1.1
+      source-map: 0.7.4
+      type-fest: 2.18.0
+      webpack: 5.73.0_@swc+core@1.2.215
 
   /@repeaterjs/repeater/3.0.4:
     resolution:
@@ -17962,10 +17962,10 @@ packages:
     engines: { node: '>=8' }
     dev: false
 
-  /type-fest/2.13.0:
+  /type-fest/2.18.0:
     resolution:
       {
-        integrity: sha512-lPfAm42MxE4/456+QyIaaVBAwgpJb6xZ8PRu09utnhPdWwcyj9vgy6Sq0Z5yNbJ21EdxB5dRU/Qg8bsyAMtlcw==,
+        integrity: sha512-pRS+/yrW5TjPPHNOvxhbNZexr2bS63WjrMU8a+VzEBhUi9Tz1pZeD+vQz3ut0svZ46P+SRqMEPnJmk2XnvNzTw==,
       }
     engines: { node: '>=12.20' }
 
