@@ -19,6 +19,21 @@
         }
       }
     },
+    "serve": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:serve",
+      "options": {
+        "dir": "apps/api-gateway/stackexchange",
+        "port": 4700,
+        "dev": true
+      },
+      "configurations": {
+        "production": {
+          "dir": "dist/apps/api-gateway/stackexchange",
+          "dev": false,
+          "port": 5200
+        }
+      }
+    },
     "dev": {
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:dev",
       "options": {

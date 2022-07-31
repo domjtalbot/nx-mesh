@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "title": "Serve executor",
+  "description": "Serves a GraphQL server.",
+  "type": "object",
+  "properties": {
+    "dev": {
+      "type": "boolean",
+      "description": "Run the server in dev mode",
+      "default": false
+    },
+    "debug": {
+      "type": "boolean",
+      "description": "Display debugging info.",
+      "default": false
+    },
+    "dir": {
+      "description": "The directory containing built GraphQL Mesh assets (.mesh).",
+      "type": "string"
+    },
+    "port": {
+      "type": "integer",
+      "description": "The port number to run on.",
+      "default": 4000
+    },
+    "require": {
+      "type": "array",
+      "description": "Loads specific require.extensions before running the codegen and reading the configuration.",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    }
+  },
+  "required": ["dir"]
+}

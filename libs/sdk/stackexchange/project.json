@@ -18,6 +18,14 @@
         }
       }
     },
+    "serve": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:serve",
+      "options": {
+        "dir": "libs/sdk/stackexchange",
+        "port": 4610,
+        "dev": true
+      }
+    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],

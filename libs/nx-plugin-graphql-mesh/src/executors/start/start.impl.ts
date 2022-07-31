@@ -9,7 +9,7 @@ import { StartExecutorSchema } from './schema';
 
 const readyWhenMsg = 'Serving GraphQL Mesh:';
 
-export default async function* startExecutor(
+export async function* startExecutor(
   options: StartExecutorSchema,
   context: ExecutorContext
 ) {
@@ -64,3 +64,5 @@ export default async function* startExecutor(
     // This Promise intentionally never resolves, leaving the process running.
   });
 }
+
+export default startExecutor;

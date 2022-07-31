@@ -16,6 +16,21 @@
         }
       }
     },
+    "serve": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:serve",
+      "options": {
+        "dir": "apps/api-gateway/trippin",
+        "port": 5001,
+        "dev": true
+      },
+      "configurations": {
+        "production": {
+          "dir": "dist/apps/api-gateway/trippin",
+          "dev": false,
+          "port": 5100
+        }
+      }
+    },
     "dev": {
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:dev",
       "options": {

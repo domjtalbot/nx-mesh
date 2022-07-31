@@ -16,6 +16,21 @@
         }
       }
     },
+    "serve": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:serve",
+      "options": {
+        "dir": "apps/api-gateway/weatherbit",
+        "port": 4600,
+        "dev": true
+      },
+      "configurations": {
+        "production": {
+          "dir": "dist/apps/api-gateway/weatherbit",
+          "dev": false,
+          "port": 5300
+        }
+      }
+    },
     "dev": {
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:dev",
       "options": {

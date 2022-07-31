@@ -15,6 +15,12 @@
         },
         "start": {
           "devServerTarget": "api-gateway-weatherbit:start:e2e"
+        },
+        "serve-dev": {
+          "devServerTarget": "api-gateway-weatherbit:serve"
+        },
+        "serve": {
+          "devServerTarget": "api-gateway-weatherbit:serve:production"
         }
       }
     },

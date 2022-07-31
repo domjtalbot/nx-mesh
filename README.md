@@ -190,6 +190,41 @@ This is the equifilent of using `graphql-mesh start`.
 
 <br/>
 
+### `serve`
+
+Serves a GraphQL server.
+
+This combines `dev` & `start` via a `dev` option toggle.
+
+```json
+"targets": {
+  "serve": {
+    "executor": "@domjtalbot/nx-plugin-graphql-mesh:serve",
+    "options": {
+      "dir": "path/to/app/or/lib",
+      "dev": true,
+    },
+    "configuration": {
+      "production": {
+        "dev": false,
+      }
+    }
+  },
+}
+```
+
+#### Options
+
+| Name          | Type       | Required | Default | Description                                                                                 |
+| ------------- | ---------- | -------- | ------- | ------------------------------------------------------------------------------------------- |
+| **`debug`**   | `boolean`  | `false`  | `false` | Display debugging info by applying the `DEBUG` env variable.                                |
+| **`dev`**     | `string`   | `false`  | `false` | Run the server in dev or production mode.                                                   |
+| **`dir`**     | `string`   | `true`   | -       | The path of the directory containing the GraphQL Mesh config.                               |
+| **`port`**    | `number`   | `false`  | `4000`  | The port number to run on.                                                                  |
+| **`require`** | `string[]` | `false`  | `[]`    | Loads specific require.extensions before running the codegen and reading the configuration. |
+
+<br/>
+
 ### `validate`
 
 Validates artifacts.
