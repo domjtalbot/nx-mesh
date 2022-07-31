@@ -58,7 +58,7 @@ specifiers:
   graphql: 16.5.0
   husky: 8.0.1
   jest: 27.5.1
-  lint-staged: 13.0.0
+  lint-staged: 13.0.3
   next: 12.1.6
   nx: 14.4.3
   prettier: 2.7.1
@@ -138,7 +138,7 @@ devDependencies:
   fs-extra: 10.1.0
   husky: 8.0.1
   jest: 27.5.1_ts-node@10.8.2
-  lint-staged: 13.0.0
+  lint-staged: 13.0.3
   nx: 14.4.3_bbl4g5ka7d7yr74jsvl47gmj2y
   prettier: 2.7.1
   react-test-renderer: 18.2.0_react@18.2.0
@@ -13157,10 +13157,10 @@ packages:
         integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==,
       }
 
-  /lint-staged/13.0.0:
+  /lint-staged/13.0.3:
     resolution:
       {
-        integrity: sha512-vWban5utFt78VZohbosUxNIa46KKJ+KOQTDWTQ8oSl1DLEEVl9zhUtaQbiiydAmx+h2wKJK2d0+iMaRmknuWRQ==,
+        integrity: sha512-9hmrwSCFroTSYLjflGI8Uk+GWAwMB4OlpU4bMJEAT5d/llQwtYKoim4bLOyLCuWFAhWEupE0vkIFqtw/WIsPug==,
       }
     engines: { node: ^14.13.1 || >=16.0.0 }
     hasBin: true
@@ -13175,7 +13175,7 @@ packages:
       micromatch: 4.0.5
       normalize-path: 3.0.0
       object-inspect: 1.12.2
-      pidtree: 0.5.0
+      pidtree: 0.6.0
       string-argv: 0.3.1
       yaml: 2.1.1
     transitivePeerDependencies:
@@ -14860,10 +14860,10 @@ packages:
       }
     engines: { node: '>=8.6' }
 
-  /pidtree/0.5.0:
+  /pidtree/0.6.0:
     resolution:
       {
-        integrity: sha512-9nxspIM7OpZuhBxPg73Zvyq7j1QMPMPsGKTqRc2XOaFQauDvoNz9fM1Wdkjmeo7l9GXOZiRs97sPkuayl39wjA==,
+        integrity: sha512-eG2dWTVw5bzqGRztnHExczNxt5VGsE6OwTeCG3fdUf9KBsZzO3R5OIIIzWR+iZA0NtZ+RDVdaoE2dK1cn6jH4g==,
       }
     engines: { node: '>=0.10' }
     hasBin: true
@@ -18710,7 +18710,7 @@ packages:
         integrity: sha512-eDMORYaPNZ4sQIuuYPDHdQvf4gyCF9rEEV/yPxGfwPkRodwEgiMUUXTx/dex+Me0wxx53S+NgUHaP7y3MGlDmg==,
       }
     dependencies:
-      string-width: 1.0.2
+      string-width: 4.2.3
 
   /wildcard/2.0.0:
     resolution:
