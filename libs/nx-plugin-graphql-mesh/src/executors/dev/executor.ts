@@ -9,7 +9,7 @@ import { DevExecutorSchema } from './schema';
 
 const readyWhenMsg = 'Serving GraphQL Mesh:';
 
-export default async function* devExecutor(
+export async function* devExecutor(
   options: DevExecutorSchema,
   context: ExecutorContext
 ) {
@@ -60,3 +60,5 @@ export default async function* devExecutor(
     // This Promise intentionally never resolves, leaving the process running.
   });
 }
+
+export default devExecutor;

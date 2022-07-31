@@ -110,11 +110,12 @@ jobs:
     timeout-minutes: 10
     continue-on-error: ${{ matrix.experimental }}
     strategy:
-      max-parallel: 3
+      max-parallel: 2
       fail-fast: false
       matrix:
         node: [lts]
-        command: [build, test, validate, e2e, e2e-start]
+        command:
+          [build, test, validate, e2e, e2e-start, e2e-serve, e2e-serve-dev]
         experimental: [false]
         include:
           - node: latest
@@ -128,6 +129,12 @@ jobs:
             experimental: true
           - node: latest
             command: e2e-start
+            experimental: true
+          - node: latest
+            command: e2e-serve
+            experimental: true
+          - node: latest
+            command: e2e-serve-dev
             experimental: true
 
     name: node-${{ matrix.node }} - ${{ matrix.command }}
@@ -181,26 +188,83 @@ jobs:
         run: |
           pnpm nx run-many --target=validate --all --parallel=2
 
+      - name: E2E
+        timeout-minutes: 5
+        if: ${{ env.NX_AFFECTED == 'false' }}
+        uses: cypress-io/github-action@be2de7b1fe1cdafb4a3c8da0a3746476ef636b65 # tag=v4.1.0
+        with:
+          install: false
+          command: |
+            pnpm nx run-many --target=e2e --all --parallel=${{ env.NX_PARALLEL }}
+
       - name: Affected E2E
         if: inputs.affected == 'true' && matrix.command == 'e2e'
-        shell: bash
-        run: |
-          pnpm nx affected --target=e2e --parallel=3
+        uses: cypress-io/github-action@be2de7b1fe1cdafb4a3c8da0a3746476ef636b65
+        timeout-minutes: 5
+        with:
+          install: false
+          command: |
+            pnpm nx affected --target=e2e --parallel=3
 
       - name: E2E
         if: inputs.affected != 'true' && matrix.command == 'e2e'
-        shell: bash
-        run: |
-          pnpm nx run-many --target=e2e --all --parallel=3
+        uses: cypress-io/github-action@be2de7b1fe1cdafb4a3c8da0a3746476ef636b65
+        timeout-minutes: 5
+        with:
+          install: false
+          command: |
+            pnpm nx run-many --target=e2e --all --parallel=3
 
       - name: Affected E2E-Start
         if: inputs.affected == 'true' && matrix.command == 'e2e-start'
-        shell: bash
-        run: |
-          pnpm nx affected --target=e2e --configuration=start --parallel=2
+        uses: cypress-io/github-action@be2de7b1fe1cdafb4a3c8da0a3746476ef636b65
+        timeout-minutes: 5
+        with:
+          install: false
+          command: |
+            pnpm nx affected --target=e2e --configuration=start --parallel=3
 
       - name: E2E-Start
         if: inputs.affected != 'true' && matrix.command == 'e2e-start'
-        shell: bash
-        run: |
-          pnpm nx run-many --target=e2e --configuration=start --all --parallel=2
+        uses: cypress-io/github-action@be2de7b1fe1cdafb4a3c8da0a3746476ef636b65
+        timeout-minutes: 5
+        with:
+          install: false
+          command: |
+            pnpm nx run-many --target=e2e --configuration=start --all --parallel=3
+
+      - name: Affected E2E-Serve
+        if: inputs.affected == 'true' && matrix.command == 'e2e-serve'
+        uses: cypress-io/github-action@be2de7b1fe1cdafb4a3c8da0a3746476ef636b65
+        timeout-minutes: 5
+        with:
+          install: false
+          command: |
+            pnpm nx affected --target=e2e --configuration=serve --parallel=3
+
+      - name: E2E-Serve
+        if: inputs.affected != 'true' && matrix.command == 'e2e-serve'
+        uses: cypress-io/github-action@be2de7b1fe1cdafb4a3c8da0a3746476ef636b65
+        timeout-minutes: 5
+        with:
+          install: false
+          command: |
+            pnpm nx run-many --target=e2e --configuration=serve --all --parallel=3
+
+      - name: Affected E2E-Serve
+        if: inputs.affected == 'true' && matrix.command == 'e2e-serve-dev'
+        uses: cypress-io/github-action@be2de7b1fe1cdafb4a3c8da0a3746476ef636b65
+        timeout-minutes: 5
+        with:
+          install: false
+          command: |
+            pnpm nx affected --target=e2e --configuration=serve-dev --parallel=3
+
+      - name: E2E-Serve
+        if: inputs.affected != 'true' && matrix.command == 'e2e-serve-dev'
+        uses: cypress-io/github-action@be2de7b1fe1cdafb4a3c8da0a3746476ef636b65
+        timeout-minutes: 5
+        with:
+          install: false
+          command: |
+            pnpm nx run-many --target=e2e --configuration=serve-dev --all --parallel=3

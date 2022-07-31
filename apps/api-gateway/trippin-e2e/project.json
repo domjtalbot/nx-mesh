@@ -15,6 +15,12 @@
         },
         "start": {
           "devServerTarget": "api-gateway-trippin:start:e2e"
+        },
+        "serve-dev": {
+          "devServerTarget": "api-gateway-trippin:serve"
+        },
+        "serve": {
+          "devServerTarget": "api-gateway-trippin:serve:production"
         }
       }
     },

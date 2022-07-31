@@ -7,6 +7,8 @@ export default {
     'nx affected --target=validate',
     'nx affected --target=test',
     'nx affected --target=e2e',
-    'nx affected --target=e2e --configuration start',
+    'nx affected --target=e2e --configuration=start',
+    'nx affected --target=e2e --configuration=serve',
+    'nx affected --target=e2e --configuration=serve-dev',
   ],
 };
