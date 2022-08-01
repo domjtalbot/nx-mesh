@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Deactive Environment
-        uses: bobheadxi/deployments@11bd6447913c3ffeedb5552bcf6890d1668d9732 # tag=v1.2.0
+        uses: bobheadxi/deployments@9d4477fdaa4120020cd10ab7e97f68c801422e73 # tag=v1.3.0
         with:
           env: ${{ github.event.inputs.environment }}
           step: deactivate-env
