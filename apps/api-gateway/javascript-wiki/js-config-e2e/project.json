@@ -1,0 +1,30 @@
+{
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/api-gateway/javascript-wiki/js-config-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/api-gateway/javascript-wiki/js-config-e2e/cypress.json",
+        "devServerTarget": "api-gateway-javascript-wiki-js-config:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "api-gateway-javascript-wiki-js-config:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/api-gateway/javascript-wiki/js-config-e2e/**/*.{js,ts}"
+        ]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["api-gateway-javascript-wiki-js-config"]
+}

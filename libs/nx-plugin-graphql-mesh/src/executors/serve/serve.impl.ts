@@ -9,11 +9,6 @@ export async function* serveExecutor(
   options: ServeExecutorSchema,
   context: ExecutorContext
 ) {
-  console.log('serveExecutor', {
-    options,
-    context,
-  });
-
   if (options.dev) {
     return yield* devExecutor(options, context);
   }

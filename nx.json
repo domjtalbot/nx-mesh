@@ -60,6 +60,12 @@
         "style": "css",
         "linter": "eslint"
       }
+    },
+    "@domjtalbot/nx-plugin-graphql-mesh": {
+      "application": {
+        "meshConfig": "yml",
+        "linter": "eslint"
+      }
     }
   },
   "defaultProject": "nextjs-stackexchange"

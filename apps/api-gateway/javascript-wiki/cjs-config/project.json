@@ -1,0 +1,56 @@
+{
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/api-gateway/javascript-wiki/cjs-config/",
+  "targets": {
+    "build": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:build-gateway",
+      "outputs": [
+        "apps/api-gateway/javascript-wiki/cjs-config/.mesh",
+        "{options.outputPath}"
+      ],
+      "options": {
+        "dir": "apps/api-gateway/javascript-wiki/cjs-config",
+        "outputPath": "dist/apps/api-gateway/javascript-wiki/cjs-config"
+      }
+    },
+    "serve": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:serve",
+      "options": {
+        "dev": true,
+        "dir": "apps/api-gateway/javascript-wiki/cjs-config",
+        "port": 4800
+      },
+      "configurations": {
+        "production": {
+          "dev": false,
+          "dir": "dist/apps/api-gateway/javascript-wiki/cjs-config"
+        }
+      }
+    },
+    "validate": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:validate",
+      "options": {
+        "dir": "apps/api-gateway/javascript-wiki/cjs-config"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/api-gateway/javascript-wiki/cjs-config"],
+      "options": {
+        "jestConfig": "apps/api-gateway/javascript-wiki/cjs-config/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/api-gateway/javascript-wiki/cjs-config/**/*.ts"
+        ]
+      }
+    }
+  },
+  "tags": ["type:app"]
+}
