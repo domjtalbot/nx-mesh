@@ -16,14 +16,15 @@ export function setDefaults(host: Tree, options: NormalizedSchema) {
 
   if (workspace.tasksRunnerOptions?.['default']?.runner === '@nrwl/nx-cloud') {
     const cacheableOperations =
-      workspace.tasksRunnerOptions['default'].options?.cacheableOperations ??
-      [];
+      (workspace.tasksRunnerOptions['default'].options
+        ?.cacheableOperations as string[]) ?? [];
 
-    workspace.tasksRunnerOptions['default'].options = {
-      ...workspace.tasksRunnerOptions['default'].options,
-      cacheableOperations: [...cacheableOperations, 'validate'],
-    };
-    cacheableOperations;
+    if (!cacheableOperations.includes('validate')) {
+      workspace.tasksRunnerOptions['default'].options = {
+        ...workspace.tasksRunnerOptions['default'].options,
+        cacheableOperations: [...cacheableOperations, 'validate'],
+      };
+    }
   }
 
   if (workspace.targetDependencies) {
