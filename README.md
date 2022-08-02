@@ -25,6 +25,62 @@
 
 <br/>
 
+## Generators
+
+### `application`
+
+Create a GraphQL Mesh API Gateway application for Nx.
+
+```bash
+nx generate @domjtalbot/nx-plugin-graphql-mesh:application my-api-gateway
+
+# Shorthand
+nx generate @domjtalbot/nx-plugin-graphql-mesh:app my-api-gateway
+```
+
+#### Example Output
+
+```bash
+>  NX  Generating @domjtalbot/nx-plugin-graphql-mesh:application
+
+CREATE apps/my-api-gateway/.meshrc.yml
+CREATE apps/my-api-gateway/tsconfig.app.json
+CREATE apps/my-api-gateway/tsconfig.json
+CREATE apps/my-api-gateway/project.json
+UPDATE workspace.json
+CREATE apps/my-api-gateway-e2e/cypress.json
+CREATE apps/my-api-gateway-e2e/src/fixtures/example.json
+CREATE apps/my-api-gateway-e2e/src/integration/app.spec.ts
+CREATE apps/my-api-gateway-e2e/src/support/app.po.ts
+CREATE apps/my-api-gateway-e2e/src/support/commands.ts
+CREATE apps/my-api-gateway-e2e/src/support/index.ts
+CREATE apps/my-api-gateway-e2e/tsconfig.json
+CREATE apps/my-api-gateway-e2e/project.json
+CREATE apps/my-api-gateway-e2e/.eslintrc.json
+CREATE apps/my-api-gateway/jest.config.ts
+CREATE apps/my-api-gateway/tsconfig.spec.json
+CREATE apps/my-api-gateway/.eslintrc.json
+```
+
+#### Options
+
+| Name                          | Alias | Type                       | Required | Default   | Description                                                                                                                       |
+| ----------------------------- | ----- | -------------------------- | -------- | --------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| **`name`**                    | -     | `string`                   | `true`   | -         | What name would you like to use for the application?                                                                              |
+| **`directory`**               | `d`   | `string`                   | `false`  | `apps/`   | The directory of the new application.                                                                                             |
+| **`meshConfig`**              | `mc`  | `cjs`, `js`, `json`, `yml` | `false`  | `yml`     | Which config format would you like to use?                                                                                        |
+| **`linter`**                  | `-`   | `eslint`, `tslint`         | `false`  | `eslint`  | The tool to use for running lint checks                                                                                           |
+| **`babelJest`**               | `-`   | `boolean`                  | `false`  | `false`   | Use `babel` instead of `ts-jest`?                                                                                                 |
+| **`skipFormat`**              | `-`   | `boolean`                  | `false`  | `false`   | Skip formatting files.                                                                                                            |
+| **`skipWorkspaceJson`**       | `-`   | `boolean`                  | `false`  | `false`   | Skip updating `workspace.json` with default options based on values provided to this app (e.g. `babel`).                          |
+| **`unitTestRunner`**          | `-`   | `jest`, `none`             | `false`  | `jest`    | Test runner to use for unit tests.                                                                                                |
+| **`e2eTestRunner`**           | `-`   | `cypress`, `none`          | `false`  | `cypress` | Test runner to use for end to end (E2E) tests.                                                                                    |
+| **`tags`**                    | `t`   | `string`                   | `false`  | -         | Add tags to the application (used for linting).                                                                                   |
+| **`setParserOptionsProject`** | `-`   | `boolean`                  | `false`  | `false`   | Whether or not to configure the ESLint `parserOptions.project` option. We do not do this by default for lint performance reasons. |
+| **`standaloneConfig`**        | `-`   | `boolean`                  | `false`  | `false`   | Split the project configuration into `<projectRoot>/project.json` rather than including it inside `workspace.json`                |
+
+<br/>
+
 ## Executors
 
 ### `build`
