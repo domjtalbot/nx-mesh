@@ -14,6 +14,30 @@ export function setDefaults(host: Tree, options: NormalizedSchema) {
     workspace.defaultProject = options.projectName;
   }
 
+  if (workspace.tasksRunnerOptions?.['default']?.runner === '@nrwl/nx-cloud') {
+    const cacheableOperations =
+      workspace.tasksRunnerOptions['default'].options?.cacheableOperations ??
+      [];
+
+    workspace.tasksRunnerOptions['default'].options = {
+      ...workspace.tasksRunnerOptions['default'].options,
+      cacheableOperations: [...cacheableOperations, 'validate'],
+    };
+    cacheableOperations;
+  }
+
+  if (workspace.targetDependencies) {
+    workspace.targetDependencies = {
+      ...workspace.targetDependencies,
+      validate: [
+        {
+          target: 'build',
+          projects: 'self',
+        },
+      ],
+    };
+  }
+
   workspace.generators = workspace.generators || {};
   workspace.generators['@domjtalbot/nx-plugin-graphql-mesh'] =
     workspace.generators['@domjtalbot/nx-plugin-graphql-mesh'] || {};

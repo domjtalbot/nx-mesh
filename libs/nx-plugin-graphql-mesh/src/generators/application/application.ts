@@ -10,10 +10,10 @@ import { addJest } from './lib/add-jest';
 import { addLinting } from './lib/add-linting';
 import { addProject } from './lib/add-project';
 import { createApplicationFiles } from './lib/create-application-files';
+import { generateCypressTests } from './lib/generate-cypress-tests';
 import { meshInitGenerator } from '../init/init';
 import { normalizeOptions } from './lib/normalize-options';
 import { setDefaults } from './lib/set-defaults';
-// import { updateJestConfig } from './lib/update-jest-config';
 
 export async function applicationGenerator(
   host: Tree,
@@ -33,7 +33,7 @@ export async function applicationGenerator(
   const jestTask = await addJest(host, options);
   const lintTask = await addLinting(host, options);
 
-  // updateJestConfig(host, options);
+  generateCypressTests(host, options);
 
   setDefaults(host, options);
 

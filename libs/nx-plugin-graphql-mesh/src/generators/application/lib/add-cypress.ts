@@ -10,7 +10,7 @@ export async function addCypress(host: Tree, options: NormalizedSchema) {
     return () => {};
   }
 
-  return cypressProjectGenerator(host, {
+  return await cypressProjectGenerator(host, {
     ...options,
     directory: options.directory,
     linter: Linter.EsLint,
