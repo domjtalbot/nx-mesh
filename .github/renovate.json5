@@ -6,4 +6,15 @@
    * @link Shareable Config Presets - https://docs.renovatebot.com/config-presets/
    */
   extends: ['github>domjtalbot/renovate:nx.json5'],
+
+  /*
+   * Limit the number of concurrent branches and
+   * pull requests created by Renovate.
+   *
+   * This helps to reduce the noise of created
+   * pull requests.
+   *
+   * @link Documentation - https://docs.renovatebot.com/configuration-options/#prconcurrentlimit
+   */
+  prConcurrentLimit: 1,
 }
