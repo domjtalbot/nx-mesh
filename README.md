@@ -1,8 +1,8 @@
 <br/>
 
-<h1 align="center">Nx | GraphQL Mesh</h1>
+![Nx Mesh. GraphQL Mesh for Nx](./.github/banner.png)
 
-<p align="center">A <a href="http://nx.dev">Nx</a> plugin for <a href="http://graphql-mesh.com">GraphQL Mesh</a></p>
+<p align="center">A <a href="http://graphql-mesh.com">GraphQL Mesh</a> plugin for <a href="http://nx.dev">Nx</a>.</p>
 
 <div align="center">
   <p dir="auto">
