@@ -26,8 +26,8 @@ TBC
 
 | Name                    | Version    | Required | Auto-installed |
 | ----------------------- | ---------- | -------- | -------------- |
-| **`nx`**                | `>=14`     | &#10004; | -              |
-| **`@graphql-mesh/cli`** | `>=0.71.0` | &#10004; | &#10004;       |
+| **`nx`**                | `>=14`     | ✅       | -              |
+| **`@graphql-mesh/cli`** | `>=0.71.0` | ✅       | ✅             |
 
 <br/>
 
@@ -72,7 +72,7 @@ CREATE apps/my-api-gateway/.eslintrc.json
 
 | Name                          | Alias | Type                       | Required | Default   | Description                                                                                                                       |
 | ----------------------------- | ----- | -------------------------- | -------- | --------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| **`name`**                    | -     | `string`                   | &#10004; | -         | What name would you like to use for the application?                                                                              |
+| **`name`**                    | -     | `string`                   | ✅       | -         | What name would you like to use for the application?                                                                              |
 | **`directory`**               | `d`   | `string`                   | -        | `apps/`   | The directory of the new application.                                                                                             |
 | **`meshConfig`**              | `mc`  | `cjs`, `js`, `json`, `yml` | -        | `yml`     | Which config format would you like to use?                                                                                        |
 | **`linter`**                  | -     | `eslint`, `tslint`         | -        | `eslint`  | The tool to use for running lint checks                                                                                           |
@@ -116,13 +116,13 @@ This is the equivalent of using `graphql-mesh dev`, but with extra steps for pac
 | **`assets`**                                  | `string[]`                           | -        | -                  | List of static assets.                                                                                                           |
 | **`buildableProjectDepsInPackageJsonType`**   | `dependencies` or `peerDependencies` | -        | `peerDependencies` | When `updateBuildableProjectDepsInPackageJson` is `true`, this adds dependencies to either `peerDependencies` or `dependencies`. |
 | **`debug`**                                   | `boolean`                            | -        | `false`            | Display debugging info by applying the `DEBUG` env variable.                                                                     |
-| **`dir`**                                     | `string`                             | &#10004; | -                  | The path of the directory containing the GraphQL Mesh config.                                                                    |
+| **`dir`**                                     | `string`                             | ✅       | -                  | The path of the directory containing the GraphQL Mesh config.                                                                    |
 | **`fileType`**                                | `json`, `ts` or `js`                 | -        | `ts`               | The filetype.                                                                                                                    |
-| **`main`**                                    | `string`                             | &#10004; | -                  | The name of the main entry-point file.                                                                                           |
-| **`outputPath`**                              | `string`                             | &#10004; | -                  | The output path of the generated files.                                                                                          |
+| **`main`**                                    | `string`                             | ✅       | -                  | The name of the main entry-point file.                                                                                           |
+| **`outputPath`**                              | `string`                             | ✅       | -                  | The output path of the generated files.                                                                                          |
 | **`require`**                                 | `string[]`                           | -        | `[]`               | Loads specific require.extensions before running the codegen and reading the configuration.                                      |
 | **`transformers`**                            | `string[]`                           | -        | -                  | List of TypeScript Transformer Plugins.                                                                                          |
-| **`tsConfig`**                                | `string`                             | &#10004; | -                  | The path to the Typescript configuration file.                                                                                   |
+| **`tsConfig`**                                | `string`                             | ✅       | -                  | The path to the Typescript configuration file.                                                                                   |
 | **`updateBuildableProjectDepsInPackageJson`** | `boolean`                            | -        | `true`             | Whether to update the buildable project dependencies in `package.json`.                                                          |
 
 <br/>
@@ -150,7 +150,7 @@ This is the equivalent of using `graphql-mesh build`, but with extra steps for c
 | Name           | Type                 | Required | Default | Description                                                                                 |
 | -------------- | -------------------- | -------- | ------- | ------------------------------------------------------------------------------------------- |
 | **`debug`**    | `boolean`            | -        | `false` | Display debugging info by applying the `DEBUG` env variable.                                |
-| **`dir`**      | `string`             | &#10004; | -       | The path of the directory containing the GraphQL Mesh config.                               |
+| **`dir`**      | `string`             | ✅       | -       | The path of the directory containing the GraphQL Mesh config.                               |
 | **`fileType`** | `json`, `ts` or `js` | -        | `ts`    | The filetype.                                                                               |
 | **`require`**  | `string[]`           | -        | `[]`    | Loads specific require.extensions before running the codegen and reading the configuration. |
 
@@ -183,15 +183,15 @@ This is the equivalent of using `graphql-mesh build`, but with extra steps for p
 | **`assets`**                                  | `string[]`                           | -        | -                  | List of static assets.                                                                                                           |
 | **`buildableProjectDepsInPackageJsonType`**   | `dependencies` or `peerDependencies` | -        | `peerDependencies` | When `updateBuildableProjectDepsInPackageJson` is `true`, this adds dependencies to either `peerDependencies` or `dependencies`. |
 | **`debug`**                                   | `boolean`                            | -        | `false`            | Display debugging info by applying the `DEBUG` env variable.                                                                     |
-| **`dir`**                                     | `string`                             | &#10004; | -                  | The path of the directory containing the GraphQL Mesh config.                                                                    |
+| **`dir`**                                     | `string`                             | ✅       | -                  | The path of the directory containing the GraphQL Mesh config.                                                                    |
 | **`fileType`**                                | `json`, `ts` or `js`                 | -        | `ts`               | The filetype.                                                                                                                    |
-| **`main`**                                    | `string`                             | &#10004; | -                  | The name of the main entry-point file.                                                                                           |
-| **`outputPath`**                              | `string`                             | &#10004; | -                  | The output path of the generated files.                                                                                          |
+| **`main`**                                    | `string`                             | ✅       | -                  | The name of the main entry-point file.                                                                                           |
+| **`outputPath`**                              | `string`                             | ✅       | -                  | The output path of the generated files.                                                                                          |
 | **`require`**                                 | `string[]`                           | -        | `[]`               | Loads specific require.extensions before running the codegen and reading the configuration.                                      |
 | **`skipTypeCheck`**                           | `boolean`                            | -        | `false`            | Whether to skip TypeScript type checking.                                                                                        |
 | **`swcrc`**                                   | `string`                             | -        | `.lib.swcrc`       | The path to the SWC configuration file.                                                                                          |
 | **`transformers`**                            | `string[]`                           | -        | -                  | List of TypeScript Transformer Plugins.                                                                                          |
-| **`tsConfig`**                                | `string`                             | &#10004; | -                  | The path to the Typescript configuration file.                                                                                   |
+| **`tsConfig`**                                | `string`                             | ✅       | -                  | The path to the Typescript configuration file.                                                                                   |
 | **`updateBuildableProjectDepsInPackageJson`** | `boolean`                            | -        | `true`             | Whether to update the buildable project dependencies in `package.json`.                                                          |
 
 <br/>
@@ -218,7 +218,7 @@ This is the equifilent of using `graphql-mesh dev`.
 | Name          | Type       | Required | Default | Description                                                                                 |
 | ------------- | ---------- | -------- | ------- | ------------------------------------------------------------------------------------------- |
 | **`debug`**   | `boolean`  | -        | `false` | Display debugging info by applying the `DEBUG` env variable.                                |
-| **`dir`**     | `string`   | &#10004; | -       | The path of the directory containing the GraphQL Mesh config.                               |
+| **`dir`**     | `string`   | ✅       | -       | The path of the directory containing the GraphQL Mesh config.                               |
 | **`port`**    | `number`   | -        | `4000`  | The port number to run on.                                                                  |
 | **`require`** | `string[]` | -        | `[]`    | Loads specific require.extensions before running the codegen and reading the configuration. |
 
@@ -246,7 +246,7 @@ This is the equifilent of using `graphql-mesh start`.
 | Name          | Type       | Required | Default | Description                                                                                 |
 | ------------- | ---------- | -------- | ------- | ------------------------------------------------------------------------------------------- |
 | **`debug`**   | `boolean`  | -        | `false` | Display debugging info by applying the `DEBUG` env variable.                                |
-| **`dir`**     | `string`   | &#10004; | -       | The path of the directory containing the GraphQL Mesh config.                               |
+| **`dir`**     | `string`   | ✅       | -       | The path of the directory containing the GraphQL Mesh config.                               |
 | **`port`**    | `number`   | -        | `4000`  | The port number to run on.                                                                  |
 | **`require`** | `string[]` | -        | `[]`    | Loads specific require.extensions before running the codegen and reading the configuration. |
 
@@ -281,7 +281,7 @@ This combines `dev` & `start` via a `dev` option toggle.
 | ------------- | ---------- | -------- | ------- | ------------------------------------------------------------------------------------------- |
 | **`debug`**   | `boolean`  | -        | `false` | Display debugging info by applying the `DEBUG` env variable.                                |
 | **`dev`**     | `string`   | -        | `false` | Run the server in dev or production mode.                                                   |
-| **`dir`**     | `string`   | &#10004; | -       | The path of the directory containing the GraphQL Mesh config.                               |
+| **`dir`**     | `string`   | ✅       | -       | The path of the directory containing the GraphQL Mesh config.                               |
 | **`port`**    | `number`   | -        | `4000`  | The port number to run on.                                                                  |
 | **`require`** | `string[]` | -        | `[]`    | Loads specific require.extensions before running the codegen and reading the configuration. |
 
@@ -309,7 +309,7 @@ This is the equifilent of using `graphql-mesh validate`.
 | Name          | Type       | Required | Default | Description                                                                                 |
 | ------------- | ---------- | -------- | ------- | ------------------------------------------------------------------------------------------- |
 | **`debug`**   | `boolean`  | -        | `false` | Display debugging info by applying the `DEBUG` env variable.                                |
-| **`dir`**     | `string`   | &#10004; | -       | The path of the directory containing the GraphQL Mesh config.                               |
+| **`dir`**     | `string`   | ✅       | -       | The path of the directory containing the GraphQL Mesh config.                               |
 | **`require`** | `string[]` | -        | `[]`    | Loads specific require.extensions before running the codegen and reading the configuration. |
 
 <br/>
