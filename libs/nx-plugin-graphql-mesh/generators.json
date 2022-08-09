@@ -15,6 +15,13 @@
       "description": "Create a GraphQL Mesh API Gateway application for Nx",
       "x-type": "application",
       "aliases": ["app"]
+    },
+    "sdk": {
+      "factory": "./src/generators/sdk/sdk",
+      "schema": "./src/generators/sdk/schema.json",
+      "description": "Create a GraphQL Mesh SDK library for Nx",
+      "x-type": "library",
+      "aliases": ["library", "sdk-library"]
     }
   },
   "schematics": {
@@ -30,6 +37,13 @@
       "description": "Create a GraphQL Mesh API Gateway application for Nx",
       "x-type": "application",
       "aliases": ["app"]
+    },
+    "sdk": {
+      "factory": "./src/generators/sdk/sdk#sdkSchematic",
+      "schema": "./src/generators/sdk/schema.json",
+      "description": "Create a GraphQL Mesh SDK library for Nx",
+      "x-type": "library",
+      "aliases": ["library", "sdk-library"]
     }
   }
 }

@@ -20,6 +20,11 @@ module.exports = {
   serve: {
     browser: false,
   },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
 };
 
 `;
@@ -38,9 +43,13 @@ export const createJsonConfig = () => `
   ],
   "serve": {
     "browser": false
+  },
+  "sdk":{
+    "generateOperations": {
+      "selectionSetDepth": 6
+    }
   }
 }
-
 `;
 
 export const createYamlConfig = () => `
@@ -53,6 +62,9 @@ sources:
 serve:
   browser: false
 
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
 `;
 
 export const createMeshConfig = (config?: MeshConfigExtensions) => {

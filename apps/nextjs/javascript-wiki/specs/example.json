@@ -1,0 +1,63 @@
+{
+  "availability": {
+    "inTheNews": [
+      "test.wikipedia.org",
+      "bs.wikipedia.org",
+      "da.wikipedia.org",
+      "de.wikipedia.org",
+      "el.wikipedia.org",
+      "en.wikipedia.org",
+      "es.wikipedia.org",
+      "fi.wikipedia.org",
+      "fr.wikipedia.org",
+      "he.wikipedia.org",
+      "ko.wikipedia.org",
+      "no.wikipedia.org",
+      "pl.wikipedia.org",
+      "pt.wikipedia.org",
+      "ru.wikipedia.org",
+      "sco.wikipedia.org",
+      "sv.wikipedia.org",
+      "vi.wikipedia.org"
+    ],
+    "todaysFeaturedArticle": [
+      "bg.wikipedia.org",
+      "bn.wikipedia.org",
+      "bs.wikipedia.org",
+      "cs.wikipedia.org",
+      "de.wikipedia.org",
+      "el.wikipedia.org",
+      "en.wikipedia.org",
+      "fa.wikipedia.org",
+      "he.wikipedia.org",
+      "hu.wikipedia.org",
+      "it.wikipedia.org",
+      "ja.wikipedia.org",
+      "la.wikipedia.org",
+      "no.wikipedia.org",
+      "sco.wikipedia.org",
+      "sd.wikipedia.org",
+      "sv.wikipedia.org",
+      "tr.wikipedia.org",
+      "ur.wikipedia.org",
+      "vi.wikipedia.org",
+      "zh.wikipedia.org"
+    ],
+    "pictureOfTheDay": ["*.wikipedia.org"],
+    "onThisDay": [
+      "en.wikipedia.org",
+      "de.wikipedia.org",
+      "fr.wikipedia.org",
+      "sv.wikipedia.org",
+      "pt.wikipedia.org",
+      "ru.wikipedia.org",
+      "es.wikipedia.org",
+      "ar.wikipedia.org",
+      "bs.wikipedia.org",
+      "uk.wikipedia.org",
+      "it.wikipedia.org",
+      "tr.wikipedia.org"
+    ],
+    "mostRead": ["*.wikipedia.org"]
+  }
+}
