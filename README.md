@@ -40,7 +40,7 @@ Create a GraphQL Mesh API Gateway application for Nx.
 ```bash
 nx generate @domjtalbot/nx-plugin-graphql-mesh:application my-api-gateway
 
-# Shorthand
+# Alias
 nx generate @domjtalbot/nx-plugin-graphql-mesh:app my-api-gateway
 ```
 
@@ -75,15 +75,77 @@ CREATE apps/my-api-gateway/.eslintrc.json
 | **`name`**                    | -     | `string`                   |    ✅    | -         | What name would you like to use for the application?                                                                              |
 | **`directory`**               | `d`   | `string`                   |    -     | -         | The directory of the new application.                                                                                             |
 | **`meshConfig`**              | `mc`  | `cjs`, `js`, `json`, `yml` |    -     | `yml`     | Which config format would you like to use?                                                                                        |
-| **`linter`**                  | -     | `eslint`, `tslint`         |    -     | `eslint`  | The tool to use for running lint checks                                                                                           |
 | **`babelJest`**               | -     | `boolean`                  |    -     | `false`   | Use `babel` instead of `ts-jest`?                                                                                                 |
+| **`e2eTestRunner`**           | -     | `cypress`, `none`          |    -     | `cypress` | Test runner to use for end to end (E2E) tests.                                                                                    |
+| **`linter`**                  | -     | `eslint`, `tslint`         |    -     | `eslint`  | The tool to use for running lint checks                                                                                           |
+| **`setParserOptionsProject`** | -     | `boolean`                  |    -     | `false`   | Whether or not to configure the ESLint `parserOptions.project` option. We do not do this by default for lint performance reasons. |
 | **`skipFormat`**              | -     | `boolean`                  |    -     | `false`   | Skip formatting files.                                                                                                            |
 | **`skipWorkspaceJson`**       | -     | `boolean`                  |    -     | `false`   | Skip updating `workspace.json` with default options based on values provided to this app (e.g. `babel`).                          |
-| **`unitTestRunner`**          | -     | `jest`, `none`             |    -     | `jest`    | Test runner to use for unit tests.                                                                                                |
-| **`e2eTestRunner`**           | -     | `cypress`, `none`          |    -     | `cypress` | Test runner to use for end to end (E2E) tests.                                                                                    |
-| **`tags`**                    | `t`   | `string`                   |    -     | -         | Add tags to the application (used for linting).                                                                                   |
-| **`setParserOptionsProject`** | -     | `boolean`                  |    -     | `false`   | Whether or not to configure the ESLint `parserOptions.project` option. We do not do this by default for lint performance reasons. |
 | **`standaloneConfig`**        | -     | `boolean`                  |    -     | `false`   | Split the project configuration into `<projectRoot>/project.json` rather than including it inside `workspace.json`                |
+| **`tags`**                    | `t`   | `string`                   |    -     | -         | Add tags to the application (used for linting).                                                                                   |
+| **`unitTestRunner`**          | -     | `jest`, `none`             |    -     | `jest`    | Test runner to use for unit tests.                                                                                                |
+
+<br/>
+
+### `sdk`
+
+Create a GraphQL Mesh SDK library for Nx.
+
+```bash
+nx generate @domjtalbot/nx-plugin-graphql-mesh:sdk my-mesh-sdk
+
+# Alias
+nx generate @domjtalbot/nx-plugin-graphql-mesh:sdk-library my-mesh-sdk
+nx generate @domjtalbot/nx-plugin-graphql-mesh:library my-mesh-sdk
+```
+
+#### Example Output
+
+##### SDK
+
+```bash
+>  NX  Generating @domjtalbot/nx-plugin-graphql-mesh:sdk
+
+CREATE libs/my-mesh-sdk/README.md
+CREATE libs/my-mesh-sdk/.babelrc
+CREATE libs/my-mesh-sdk/package.json
+CREATE libs/my-mesh-sdk/src/index.ts
+CREATE libs/my-mesh-sdk/tsconfig.json
+CREATE libs/my-mesh-sdk/tsconfig.lib.json
+UPDATE tsconfig.base.json
+CREATE libs/my-mesh-sdk/project.json
+UPDATE workspace.json
+CREATE libs/my-mesh-sdk/.eslintrc.json
+CREATE libs/my-mesh-sdk/jest.config.ts
+CREATE libs/my-mesh-sdk/tsconfig.spec.json
+CREATE libs/my-mesh-sdk/.meshrc.yml
+CREATE libs/my-mesh-sdk/src/lib/sdk.ts
+UPDATE nx.json
+```
+
+#### Options
+
+| Name                          | Alias | Type                       | Required | Default  | Description                                                                                                                                            |
+| ----------------------------- | ----- | -------------------------- | :------: | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **`name`**                    | -     | `string`                   |    ✅    | -        | What name would you like to use?                                                                                                                       |
+| **`directory`**               | `d`   | `string`                   |    -     | -        | The directory of the new sdk.                                                                                                                          |
+| **`meshConfig`**              | `mc`  | `cjs`, `js`, `json`, `yml` |    -     | `yml`    | Which config format would you like to use?                                                                                                             |
+| **`babelJest`**               | -     | `boolean`                  |    -     | `false`  | Use `babel` instead of `ts-jest`.                                                                                                                      |
+| **`compiler`**                | -     | `tsc`, `swc`               |    -     | `tsc`    | The compiler used by the build and test targets.                                                                                                       |
+| **`importPath`**              | -     | `string`                   |    -     | -        | The library name used to import it, like `@myorg/my-awesome-lib`. Must be a valid npm name.                                                            |
+| **`js`**                      | -     | `boolean`                  |    -     | `false`  | Generate JavaScript files rather than TypeScript files.                                                                                                |
+| **`linter`**                  | -     | `eslint`, `tslint`         |    -     | `eslint` | The tool to use for running lint checks.?                                                                                                              |
+| **`pascalCaseFiles`**         | `p`   | `boolean`                  |    -     | `false`  | Use pascal case file names.                                                                                                                            |
+| **`rootDir`**                 | -     | `string`                   |    -     | -        | Sets the `rootDir` for TypeScript compilation. When not defined, it uses the project's root property, or `srcRootForCompilationRoot` if it is defined. |
+| **`setParserOptionsProject`** | -     | `boolean`                  |    -     | `false`  | Whether or not to configure the ESLint `parserOptions.project` option. We do not do this by default for lint performance reasons.                      |
+| **`simpleModuleName`**        | -     | `boolean`                  |    -     | `false`  | Keep the module name simple (when using `--directory`).                                                                                                |
+| **`skipFormat`**              | -     | `boolean`                  |    -     | `false`  | Skip formatting files.                                                                                                                                 |
+| **`skipTsConfig`**            | -     | `boolean`                  |    -     | `false`  | Do not update `tsconfig.base.json` for development experience.                                                                                         |
+| **`standaloneConfig`**        | -     | `boolean`                  |    -     | `false`  | Split the project configuration into `<projectRoot>/project.json` rather than including it inside `workspace.json`                                     |
+| **`strict`**                  | -     | `boolean`                  |    -     | `false`  | Whether to enable tsconfig strict mode or not.                                                                                                         |
+| **`tags`**                    | `t`   | `string`                   |    -     | -        | Add tags to the application (used for linting).                                                                                                        |
+| **`testEnvironment`**         | -     | `jsdom`, `none`            |    -     | `jsdom`  | The test environment to use if `unitTestRunner` is set to `jest`.                                                                                      |
+| **`unitTestRunner`**          | -     | `jest`, `none`             |    -     | `jest`   | Test runner to use for unit tests.                                                                                                                     |
 
 <br/>
 

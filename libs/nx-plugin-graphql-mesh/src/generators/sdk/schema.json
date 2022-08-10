@@ -15,7 +15,7 @@
       "x-prompt": "What name would you like to use?"
     },
     "directory": {
-      "description": "The directory of the new application.",
+      "description": "The directory of the new sdk.",
       "type": "string",
       "alias": "d"
     },
