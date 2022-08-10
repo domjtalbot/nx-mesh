@@ -1,20 +1,21 @@
-import type { TargetConfiguration, Tree } from '@nrwl/devkit';
+import type { Tree } from '@nrwl/devkit';
 
-import { updateProjectConfiguration } from '@nrwl/devkit';
+import type { NormalizedSchema } from './normalize-options';
 
-import { SdkGeneratorSchema } from '../schema';
+import {
+  readProjectConfiguration,
+  updateProjectConfiguration,
+} from '@nrwl/devkit';
+
 import { normalizeOptions } from './normalize-options';
 
-export function addProject(tree: Tree, options: SdkGeneratorSchema) {
-  const {
-    libProjectDist,
-    libProjectMesh,
-    libProjectRoot,
-    parsedTags,
-    projectName,
-  } = normalizeOptions(tree, options);
+export function addProject(tree: Tree, options: NormalizedSchema) {
+  const { libProjectDist, libProjectMesh, libProjectRoot, projectName } =
+    normalizeOptions(tree, options);
 
-  const targets: Record<string, TargetConfiguration<unknown>> = {};
+  const project = readProjectConfiguration(tree, options.libProjectName);
+
+  const targets = { ...project?.targets };
 
   targets['build'] = {
     executor: '@domjtalbot/nx-plugin-graphql-mesh:build',
@@ -43,13 +44,11 @@ export function addProject(tree: Tree, options: SdkGeneratorSchema) {
     },
   };
 
-  updateProjectConfiguration(tree, projectName, {
-    root: libProjectRoot,
-    projectType: 'library',
-    sourceRoot: `${libProjectRoot}/`,
-    targets,
-    tags: parsedTags,
-  });
+  if (project) {
+    project.targets = targets;
+  }
+
+  updateProjectConfiguration(tree, projectName, project);
 }
 
 export default addProject;

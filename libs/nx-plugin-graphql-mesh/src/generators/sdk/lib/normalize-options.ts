@@ -10,11 +10,10 @@ export interface NormalizedSchema
     NodeLibraryNormalizedSchema {
   e2eProjectName: string;
   e2eProjectRoot: string;
-  // fileName: string;
   libProjectDist: string;
   libProjectMesh: string;
+  libProjectName: string;
   libProjectRoot: string;
-  // parsedTags: string[];
   projectName: string;
 }
 
@@ -22,19 +21,19 @@ export function normalizeOptions(
   host: Tree,
   options: SdkGeneratorSchema
 ): NormalizedSchema {
-  const appDirectory = options.directory
+  const libDirectory = options.directory
     ? `${names(options.directory).fileName}/${names(options.name).fileName}`
     : names(options.name).fileName;
 
   const { libsDir, npmScope } = getWorkspaceLayout(host);
 
-  const libProjectName = appDirectory.replace(new RegExp('/', 'g'), '-');
+  const libProjectName = libDirectory.replace(new RegExp('/', 'g'), '-');
   const e2eProjectName = `${libProjectName}-e2e`;
 
-  const libProjectRoot = joinPathFragments(libsDir, appDirectory);
+  const libProjectRoot = joinPathFragments(libsDir, libDirectory);
   const libProjectDist = joinPathFragments('dist', libProjectRoot);
   const libProjectMesh = joinPathFragments(libProjectRoot, '.mesh');
-  const e2eProjectRoot = joinPathFragments(libsDir, `${appDirectory}-e2e`);
+  const e2eProjectRoot = joinPathFragments(libsDir, `${libDirectory}-e2e`);
 
   const parsedTags = options.tags
     ? options.tags.split(',').map((s) => s.trim())
@@ -63,6 +62,7 @@ export function normalizeOptions(
     importPath,
     libProjectDist,
     libProjectMesh,
+    libProjectName,
     libProjectRoot,
     meshConfig,
     name: names(options.name).fileName,

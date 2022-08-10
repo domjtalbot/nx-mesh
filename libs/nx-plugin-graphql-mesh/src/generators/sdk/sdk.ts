@@ -4,7 +4,6 @@ import type { SdkGeneratorSchema } from './schema';
 
 import { convertNxGenerator, formatFiles } from '@nrwl/devkit';
 import { libraryGenerator as nodeLibraryGenerator } from '@nrwl/node';
-import { runTasksInSerial } from '@nrwl/workspace/src/utilities/run-tasks-in-serial';
 
 import { createSdkFiles } from './lib/create-sdk-files';
 import { addLinting } from './lib/add-linting';
@@ -26,7 +25,7 @@ export async function sdkGenerator(tree: Tree, options: SdkGeneratorSchema) {
     await formatFiles(tree);
   }
 
-  return runTasksInSerial(libraryTask);
+  return libraryTask;
 }
 
 export const sdkSchematic = convertNxGenerator(sdkGenerator);
