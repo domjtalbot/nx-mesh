@@ -21,6 +21,9 @@
       "@nx-plugin-graphql-mesh/sdk/javascript-wiki": [
         "libs/sdk/javascript-wiki/src/index.ts"
       ],
+      "@nx-plugin-graphql-mesh/sdk/javascript-wiki-swc": [
+        "libs/sdk/javascript-wiki-swc/src/index.ts"
+      ],
       "@nx-plugin-graphql-mesh/sdk/stackexchange": [
         "libs/sdk/stackexchange/src/index.ts"
       ],
