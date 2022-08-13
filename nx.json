@@ -65,6 +65,10 @@
       "application": {
         "meshConfig": "yml",
         "linter": "eslint"
+      },
+      "sdk": {
+        "meshConfig": "json",
+        "linter": "eslint"
       }
     }
   },
