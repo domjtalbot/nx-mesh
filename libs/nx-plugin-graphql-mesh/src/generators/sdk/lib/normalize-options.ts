@@ -10,6 +10,7 @@ export interface NormalizedSchema
     NodeLibraryNormalizedSchema {
   e2eProjectName: string;
   e2eProjectRoot: string;
+  isSwc: boolean;
   libProjectDist: string;
   libProjectMesh: string;
   libProjectName: string;
@@ -49,6 +50,8 @@ export function normalizeOptions(
     ? options.compiler
     : 'tsc';
 
+  const isSwc = compiler === 'swc';
+
   const importPath = options.importPath ?? `${npmScope}/${options.name}`;
 
   return {
@@ -60,6 +63,7 @@ export function normalizeOptions(
     e2eProjectRoot,
     fileName,
     importPath,
+    isSwc,
     libProjectDist,
     libProjectMesh,
     libProjectName,

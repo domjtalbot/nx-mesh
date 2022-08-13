@@ -6,19 +6,26 @@ import {
   readProjectConfiguration,
   updateProjectConfiguration,
 } from '@nrwl/devkit';
+import { addSwcConfig } from '@nrwl/js/src/utils/swc/add-swc-config';
+import { addSwcDependencies } from '@nrwl/js/src/utils/swc/add-swc-dependencies';
 
 import { normalizeOptions } from './normalize-options';
 
 export function addProject(tree: Tree, options: NormalizedSchema) {
-  const { libProjectDist, libProjectMesh, libProjectRoot, projectName } =
+  const { isSwc, libProjectDist, libProjectMesh, libProjectRoot, projectName } =
     normalizeOptions(tree, options);
+
+  if (isSwc) {
+    addSwcDependencies(tree);
+    addSwcConfig(tree, options.projectRoot);
+  }
 
   const project = readProjectConfiguration(tree, options.libProjectName);
 
   const targets = { ...project?.targets };
 
   targets['build'] = {
-    executor: '@domjtalbot/nx-plugin-graphql-mesh:build',
+    executor: `@domjtalbot/nx-plugin-graphql-mesh:build${isSwc ? '-swc' : ''}`,
     outputs: [libProjectMesh, '{options.outputPath}'],
     options: {
       dir: libProjectRoot,

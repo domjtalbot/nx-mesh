@@ -365,6 +365,65 @@ describe('sdk', () => {
     });
   });
 
+  describe('--compiler=swc', () => {
+    it('should use swc for compiling', async () => {
+      await sdkGenerator(tree, {
+        name: 'myMeshSdk',
+        compiler: 'swc',
+      } as SdkGeneratorSchema);
+
+      const workspaceJson = readJson(tree, '/workspace.json');
+      const project = workspaceJson.projects['my-mesh-sdk'];
+
+      expect(project.root).toEqual('libs/my-mesh-sdk');
+
+      expect(project.architect).toEqual(
+        expect.objectContaining({
+          build: {
+            builder: '@domjtalbot/nx-plugin-graphql-mesh:build-swc',
+            outputs: ['libs/my-mesh-sdk/.mesh', '{options.outputPath}'],
+            options: {
+              dir: 'libs/my-mesh-sdk',
+              main: 'libs/my-mesh-sdk/src/index.ts',
+              outputPath: 'dist/libs/my-mesh-sdk',
+              tsConfig: 'libs/my-mesh-sdk/tsconfig.lib.json',
+            },
+          },
+        })
+      );
+
+      expect(tree.read(`libs/my-mesh-sdk/.lib.swcrc`, 'utf-8'))
+        .toMatchInlineSnapshot(`
+        "{
+          \\"jsc\\": {
+            \\"target\\": \\"es2017\\",
+            \\"parser\\": {
+              \\"syntax\\": \\"typescript\\",
+              \\"decorators\\": true,
+              \\"dynamicImport\\": true
+            },
+            \\"transform\\": {
+              \\"decoratorMetadata\\": true,
+              \\"legacyDecorator\\": true
+            },
+            \\"keepClassNames\\": true,
+            \\"externalHelpers\\": true,
+            \\"loose\\": true
+          },
+          \\"module\\": {
+            \\"type\\": \\"commonjs\\",
+            \\"strict\\": true,
+            \\"noInterop\\": true
+          },
+          \\"sourceMaps\\": true,
+          \\"exclude\\": [\\"jest.config.ts\\",\\".*.spec.tsx?$\\",\\".*.test.tsx?$\\",\\"./src/jest-setup.ts$\\",\\"./**/jest-setup.ts$\\",\\".*.js$\\"]
+        }"
+      `);
+
+      expect;
+    });
+  });
+
   describe('--skipFormat', () => {
     it('should format files by default', async () => {
       jest.spyOn(devkit, 'formatFiles');
