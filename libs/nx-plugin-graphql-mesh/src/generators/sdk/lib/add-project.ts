@@ -16,6 +16,7 @@ export function addProject(tree: Tree, options: NormalizedSchema) {
     normalizeOptions(tree, options);
 
   if (isSwc) {
+    tree.delete(`${options.libProjectRoot}/.babelrc`);
     addSwcDependencies(tree);
     addSwcConfig(tree, options.projectRoot);
   }
