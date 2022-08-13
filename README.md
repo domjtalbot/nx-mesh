@@ -101,7 +101,7 @@ nx generate @domjtalbot/nx-plugin-graphql-mesh:library my-mesh-sdk
 
 #### Example Output
 
-##### SDK
+##### TSC
 
 ```bash
 >  NX  Generating @domjtalbot/nx-plugin-graphql-mesh:sdk
@@ -121,6 +121,27 @@ CREATE libs/my-mesh-sdk/tsconfig.spec.json
 CREATE libs/my-mesh-sdk/.meshrc.yml
 CREATE libs/my-mesh-sdk/src/lib/sdk.ts
 UPDATE nx.json
+```
+
+##### SWC
+
+```bash
+>  NX  Generating @domjtalbot/nx-plugin-graphql-mesh:sdk
+
+CREATE libs/my-mesh-sdk/README.md
+CREATE libs/my-mesh-sdk/package.json
+CREATE libs/my-mesh-sdk/src/index.ts
+CREATE libs/my-mesh-sdk/tsconfig.json
+CREATE libs/my-mesh-sdk/tsconfig.lib.json
+UPDATE tsconfig.base.json
+CREATE libs/my-mesh-sdk/project.json
+UPDATE workspace.json
+CREATE libs/my-mesh-sdk/.eslintrc.json
+CREATE libs/my-mesh-sdk/jest.config.ts
+CREATE libs/my-mesh-sdk/tsconfig.spec.json
+CREATE libs/my-mesh-sdk/.lib.swcrc
+CREATE libs/my-mesh-sdk/.meshrc.json
+CREATE libs/my-mesh-sdk/src/lib/sdk.ts
 ```
 
 #### Options
