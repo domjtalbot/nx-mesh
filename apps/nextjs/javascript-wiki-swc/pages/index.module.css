@@ -1,0 +1,39 @@
+.page {
+  padding: 20px;
+}
+
+.headingWrapper {
+  padding-left: 20px;
+}
+
+.heading {
+  font-size: initial;
+}
+
+.subHeading {
+  font-size: initial;
+}
+
+.weatherList {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5rem;
+  list-style: none;
+  margin-top: 2.5rem;
+  padding-left: 0;
+}
+
+.weatherList__item {
+  width: 28ch;
+}
+
+.weatherList__item__list {
+}
+
+.weatherList__item__key {
+  font-weight: bold;
+}
+
+.weatherList__item__value {
+}

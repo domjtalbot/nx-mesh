@@ -5,8 +5,6 @@ import type { AppGeneratorSchema } from './schema';
 import { readJson, getProjects } from '@nrwl/devkit';
 import * as devkit from '@nrwl/devkit';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
-// import { overrideCollectionResolutionForTesting } from '@nrwl/devkit/ngcli-adapter';
-import { resolve } from 'path';
 
 import { applicationGenerator } from './application';
 

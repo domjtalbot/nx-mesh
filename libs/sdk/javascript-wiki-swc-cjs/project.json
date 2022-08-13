@@ -1,0 +1,50 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/sdk/javascript-wiki-swc-cjs/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:build-swc",
+      "outputs": [
+        "libs/sdk/javascript-wiki-swc-cjs/.mesh",
+        "{options.outputPath}"
+      ],
+      "options": {
+        "dir": "libs/sdk/javascript-wiki-swc-cjs",
+        "main": "libs/sdk/javascript-wiki-swc-cjs/src/index.ts",
+        "outputPath": "dist/libs/sdk/javascript-wiki-swc-cjs",
+        "tsConfig": "libs/sdk/javascript-wiki-swc-cjs/tsconfig.lib.json"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/sdk/javascript-wiki-swc-cjs/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/sdk/javascript-wiki-swc-cjs"],
+      "options": {
+        "jestConfig": "libs/sdk/javascript-wiki-swc-cjs/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "serve": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:serve",
+      "options": {
+        "dev": true,
+        "dir": "libs/sdk/javascript-wiki-swc-cjs",
+        "port": 4200
+      }
+    },
+    "validate": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:validate",
+      "options": {
+        "dir": "libs/sdk/javascript-wiki-swc-cjs"
+      }
+    }
+  },
+  "tags": []
+}

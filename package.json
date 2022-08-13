@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "build": "nx run-many --target=build --all",
-    "ci": "pnpm lint:fix && pnpm build && pnpm test && pnpm validate && pnpm e2e",
-    "e2e": "nx run-many --target=e2e --all && nx run-many --target=e2e --all --configuration=start && nx run-many --target=e2e --all --configuration=serve && nx run-many --target=e2e --all --configuration=serve-dev",
+    "ci": "pnpm lint:fix --parallel=1 && pnpm build --parallel=1 && pnpm test --parallel=1 && pnpm validate --parallel=1 && pnpm e2e --parallel=1",
+    "e2e": "nx run-many --target=e2e --all --parallel=1 && nx run-many --target=e2e --all --configuration=start --parallel=1 && nx run-many --target=e2e --all --configuration=serve --parallel=1 && nx run-many --target=e2e --all --configuration=serve-dev",
     "lint:fix": "nx format:write && nx run-many --target=lint --all --fix",
     "lint": "nx workspace-lint && nx format && nx run-many --target=lint --all",
     "test": "nx run-many --target=test --all",
@@ -53,6 +53,7 @@
     "@nrwl/devkit": "14.4.3",
     "@nrwl/eslint-plugin-nx": "14.4.3",
     "@nrwl/jest": "14.4.3",
+    "@nrwl/js": "14.4.3",
     "@nrwl/linter": "14.4.3",
     "@nrwl/node": "14.4.3",
     "@nrwl/nx-cloud": "14.2.0",

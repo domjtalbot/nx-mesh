@@ -55,7 +55,7 @@ serve:
 
 `;
 
-export const createMeshConfig = (config: MeshConfigExtensions) => {
+export const createMeshConfig = (config?: MeshConfigExtensions) => {
   switch (config) {
     case 'cjs':
     case 'js':

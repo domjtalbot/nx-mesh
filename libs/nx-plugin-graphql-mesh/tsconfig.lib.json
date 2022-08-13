@@ -5,6 +5,10 @@
     "declaration": true,
     "types": ["node"]
   },
-  "include": ["**/*.ts"],
+  "include": [
+    "**/*.ts",
+    "src/generators/sdk/files/src/lib/sdk.ts__tmpl__",
+    "src/generators/sdk/files/src/index.ts__tmpl__"
+  ],
   "exclude": ["jest.config.ts", "**/*.spec.ts", "**/*.test.ts"]
 }

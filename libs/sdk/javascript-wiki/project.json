@@ -1,0 +1,46 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/sdk/javascript-wiki/",
+  "targets": {
+    "build": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:build",
+      "outputs": ["libs/sdk/javascript-wiki/.mesh", "{options.outputPath}"],
+      "options": {
+        "dir": "libs/sdk/javascript-wiki",
+        "main": "libs/sdk/javascript-wiki/src/index.ts",
+        "outputPath": "dist/libs/sdk/javascript-wiki",
+        "tsConfig": "libs/sdk/javascript-wiki/tsconfig.lib.json"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/sdk/javascript-wiki/**/*.ts"]
+      }
+    },
+    "serve": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:serve",
+      "options": {
+        "dev": true,
+        "dir": "libs/sdk/javascript-wiki",
+        "port": 4200
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/sdk/javascript-wiki"],
+      "options": {
+        "jestConfig": "libs/sdk/javascript-wiki/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "validate": {
+      "executor": "@domjtalbot/nx-plugin-graphql-mesh:validate",
+      "options": {
+        "dir": "libs/sdk/javascript-wiki"
+      }
+    }
+  },
+  "tags": []
+}
