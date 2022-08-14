@@ -22,7 +22,7 @@
       "options": {
         "buildTarget": "nextjs-javascript-wiki:build",
         "dev": true,
-        "port": 4900
+        "port": 5000
       },
       "configurations": {
         "development": {
