@@ -30,8 +30,7 @@
         },
         "e2e": {
           "buildTarget": "nextjs-javascript-wiki-swc:build:production",
-          "dev": false,
-          "port": 4900
+          "dev": false
         },
         "production": {
           "buildTarget": "nextjs-javascript-wiki-swc:build:production",

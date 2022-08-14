@@ -56,7 +56,6 @@ describe('sdk', () => {
             options: {
               dev: true,
               dir: 'libs/my-mesh-sdk',
-              port: 4200,
             },
           },
         })

@@ -20,9 +20,25 @@
       "type": "string"
     },
     "port": {
-      "type": "integer",
-      "description": "The port number to run on.",
-      "default": 4000
+      "type": "object",
+      "properties": {
+        "auto": {
+          "type": "boolean",
+          "description": "Use the first available port.",
+          "default": true
+        },
+        "number": {
+          "type": "integer",
+          "description": "The port number to run on.",
+          "default": 4200
+        },
+        "fallback": {
+          "type": "string",
+          "enum": ["auto", "none"],
+          "description": "Fallback action to take if the define port is unavailable.",
+          "default": "auto"
+        }
+      }
     },
     "require": {
       "type": "array",

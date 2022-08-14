@@ -41,7 +41,6 @@ export function addProject(tree: Tree, options: NormalizedSchema) {
     options: {
       dev: true,
       dir: libProjectRoot,
-      port: 4200,
     },
   };
 

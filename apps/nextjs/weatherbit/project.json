@@ -30,8 +30,7 @@
         },
         "e2e": {
           "buildTarget": "nextjs-weatherbit:build:production",
-          "dev": false,
-          "port": 5003
+          "dev": false
         },
         "production": {
           "buildTarget": "nextjs-weatherbit:build:production",

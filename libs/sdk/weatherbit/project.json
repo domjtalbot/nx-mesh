@@ -22,7 +22,6 @@
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:serve",
       "options": {
         "dir": "libs/sdk/weatherbit",
-        "port": 4640,
         "dev": true
       }
     },

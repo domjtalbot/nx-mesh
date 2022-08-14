@@ -30,8 +30,7 @@
         },
         "e2e": {
           "buildTarget": "nextjs-trippin:build:production",
-          "dev": false,
-          "port": 4900
+          "dev": false
         },
         "production": {
           "buildTarget": "nextjs-trippin:build:production",

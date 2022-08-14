@@ -30,8 +30,7 @@
         },
         "e2e": {
           "buildTarget": "nextjs-stackexchange:build:production",
-          "dev": false,
-          "port": 5002
+          "dev": false
         },
         "production": {
           "buildTarget": "nextjs-stackexchange:build:production",

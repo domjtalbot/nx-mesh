@@ -20,40 +20,34 @@
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:serve",
       "options": {
         "dir": "apps/api-gateway/trippin",
-        "port": 5001,
         "dev": true
       },
       "configurations": {
         "production": {
           "dir": "dist/apps/api-gateway/trippin",
-          "dev": false,
-          "port": 5100
+          "dev": false
         }
       }
     },
     "dev": {
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:dev",
       "options": {
-        "dir": "apps/api-gateway/trippin",
-        "port": 4500
+        "dir": "apps/api-gateway/trippin"
       },
       "configurations": {
         "e2e": {
-          "debug": false,
-          "port": 5001
+          "debug": false
         }
       }
     },
     "start": {
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:start",
       "options": {
-        "dir": "dist/apps/api-gateway/trippin",
-        "port": 5100
+        "dir": "dist/apps/api-gateway/trippin"
       },
       "configurations": {
         "e2e": {
-          "debug": false,
-          "port": 5101
+          "debug": false
         }
       },
       "dependsOn": [

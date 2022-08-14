@@ -4,7 +4,7 @@ import { logger } from '@nrwl/devkit';
 import { resolve } from 'path';
 
 import { childProcess, runMeshCli } from '../../utils/mesh-cli';
-
+import getPort from './lib/get-port';
 import { StartExecutorSchema } from './schema';
 
 const readyWhenMsg = 'Serving GraphQL Mesh:';
@@ -17,7 +17,8 @@ export async function* startExecutor(
     throw new Error("Please define the 'dir' value");
   }
 
-  const baseUrl = `http://0.0.0.0:${options.port}`;
+  const port = await getPort(options);
+  const baseUrl = `http://0.0.0.0:${port}`;
 
   logger.info('Starting GraphQL Mesh start server...');
 
@@ -26,7 +27,7 @@ export async function* startExecutor(
     {
       args: {
         dir: resolve(context.root, options.dir),
-        port: options.port,
+        port,
         require: options.require,
       },
       env: {
