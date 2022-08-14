@@ -306,8 +306,8 @@ This is the equifilent of using `graphql-mesh dev`.
 | **`port.auto`**       | `boolean`      |    -     | `true`    | Use the first available port                                                                       |
 | **`port.number`**     | `number`       |    -     | `4200`    | Define the preferred port to use when `auto` is set to `false`                                     |
 | **`port.range`**      | `object`       |    -     | -         | The range of ports to select from.                                                                 |
-| **`port.range.from`** | `boolean`      |    -     | -         | The first port of the range. Must be in the range `1024`...`65535`                                 |
-| **`port.range.to`**   | `boolean`      |    -     | -         | The last port of the range. Must be in the range `1024`...`65535` and must be greater than `from`. |
+| **`port.range.from`** | `number`       |    -     | -         | The first port of the range. Must be in the range `1024`...`65535`                                 |
+| **`port.range.to`**   | `number`       |    -     | -         | The last port of the range. Must be in the range `1024`...`65535` and must be greater than `from`. |
 | **`port.fallback`**   | `auto`, `none` |    -     | `auto`    | The fallback strategy to use when the preferred port is unavailable.                               |
 | **`port.host`**       | `string`       |    -     | `0.0.0.0` | The host to listern on (only used for port number lookup).                                         |
 | **`require`**         | `string[]`     |    -     | `[]`      | Loads specific require.extensions before running the codegen and reading the configuration.        |
@@ -341,8 +341,8 @@ This is the equifilent of using `graphql-mesh start`.
 | **`port.auto`**       | `boolean`      |    -     | `true`    | Use the first available port                                                                       |
 | **`port.number`**     | `number`       |    -     | `4200`    | Define the preferred port to use when `auto` is set to `false`                                     |
 | **`port.range`**      | `object`       |    -     | -         | The range of ports to select from.                                                                 |
-| **`port.range.from`** | `boolean`      |    -     | -         | The first port of the range. Must be in the range `1024`...`65535`                                 |
-| **`port.range.to`**   | `boolean`      |    -     | -         | The last port of the range. Must be in the range `1024`...`65535` and must be greater than `from`. |
+| **`port.range.from`** | `number`       |    -     | -         | The first port of the range. Must be in the range `1024`...`65535`                                 |
+| **`port.range.to`**   | `number`       |    -     | -         | The last port of the range. Must be in the range `1024`...`65535` and must be greater than `from`. |
 | **`port.fallback`**   | `auto`, `none` |    -     | `auto`    | The fallback strategy to use when the preferred port is unavailable.                               |
 | **`port.host`**       | `string`       |    -     | `0.0.0.0` | The host to listern on (only used for port number lookup).                                         |
 | **`require`**         | `string[]`     |    -     | `[]`      | Loads specific require.extensions before running the codegen and reading the configuration.        |
@@ -383,8 +383,8 @@ This combines `dev` & `start` via a `dev` option toggle.
 | **`port.auto`**       | `boolean`      |    -     | `true`    | Use the first available port                                                                       |
 | **`port.number`**     | `number`       |    -     | `4200`    | Define the preferred port to use when `auto` is set to `false`                                     |
 | **`port.range`**      | `object`       |    -     | -         | The range of ports to select from.                                                                 |
-| **`port.range.from`** | `boolean`      |    -     | -         | The first port of the range. Must be in the range `1024`...`65535`                                 |
-| **`port.range.to`**   | `boolean`      |    -     | -         | The last port of the range. Must be in the range `1024`...`65535` and must be greater than `from`. |
+| **`port.range.from`** | `number`       |    -     | -         | The first port of the range. Must be in the range `1024`...`65535`                                 |
+| **`port.range.to`**   | `number`       |    -     | -         | The last port of the range. Must be in the range `1024`...`65535` and must be greater than `from`. |
 | **`port.fallback`**   | `auto`, `none` |    -     | `auto`    | The fallback strategy to use when the preferred port is unavailable.                               |
 | **`port.host`**       | `string`       |    -     | `0.0.0.0` | The host to listern on (only used for port number lookup).                                         |
 | **`require`**         | `string[]`     |    -     | `[]`      | Loads specific require.extensions before running the codegen and reading the configuration.        |
