@@ -21,7 +21,8 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "nextjs-trippin-swc:build",
-        "dev": true
+        "dev": true,
+        "port": 4500
       },
       "configurations": {
         "development": {
@@ -30,8 +31,7 @@
         },
         "e2e": {
           "buildTarget": "nextjs-trippin:build:production",
-          "dev": false,
-          "port": 4300
+          "dev": false
         },
         "production": {
           "buildTarget": "nextjs-trippin-swc:build:production",

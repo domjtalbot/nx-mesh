@@ -55,6 +55,7 @@ specifiers:
   eslint-plugin-react: 7.30.1
   eslint-plugin-react-hooks: 4.6.0
   fs-extra: 10.1.0
+  get-port: 5.1.1
   graphql: 16.5.0
   husky: 8.0.1
   jest: 27.5.1
@@ -95,6 +96,7 @@ dependencies:
   '@swc/helpers': 0.4.3
   core-js: 3.22.8
   encoding: 0.1.13
+  get-port: 5.1.1
   graphql: 16.5.0
   next: 12.1.6_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
@@ -10669,6 +10671,14 @@ packages:
         integrity: sha512-pjzuKtY64GYfWizNAJ0fr9VqttZkNiK2iS430LtIHzjBEr6bX8Am2zm4sW4Ro5wjWW5cAlRL1qAMTcXbjNAO2Q==,
       }
     engines: { node: '>=8.0.0' }
+
+  /get-port/5.1.1:
+    resolution:
+      {
+        integrity: sha512-g/Q1aTSDOxFpchXC4i8ZWvxA1lnPqx/JHqcpIw0/LX9T8x/GBbi6YnlN5nhaKIFkT8oFsscUKgDJYxfwfS6QsQ==,
+      }
+    engines: { node: '>=8' }
+    dev: false
 
   /get-stream/5.2.0:
     resolution:

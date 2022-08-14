@@ -35,8 +35,7 @@
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:serve",
       "options": {
         "dev": true,
-        "dir": "libs/sdk/javascript-wiki-swc-json",
-        "port": 4200
+        "dir": "libs/sdk/javascript-wiki-swc-json"
       }
     },
     "validate": {

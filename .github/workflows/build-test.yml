@@ -63,12 +63,13 @@ jobs:
     env:
       NX_CLOUD_ENV_NAME: node-${{ matrix.node }}
     outputs:
-      affected: ${{ steps.affected.affected }}
-      affectedLength: ${{ steps.affected.affectedLength }}
-      affectedApps: ${{ steps.affected.affectedApps }}
-      affectedAppsLength: ${{ steps.affected.affectedAppsLength }}
-      affectedLibs: ${{ steps.affected.affectedLibs }}
-      affectedLibsLength: ${{ steps.affected.affectedLibsLength }}
+      affected: ${{ steps.affected.outputs.affected }}
+      affectedLength: ${{ steps.affected.outputs.affectedLength }}
+      affectedApps: ${{ steps.affected.outputs.affectedApps }}
+      affectedAppsLength: ${{ steps.affected.outputs.affectedAppsLength }}
+      affectedLibs: ${{ steps.affected.outputs.affectedLibs }}
+      affectedLibsLength: ${{ steps.affected.outputs.affectedLibsLength }}
+      hasAffected: ${{ steps.affected.outputs.hasAffected }}
     steps:
       - name: Check out repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
@@ -82,7 +83,6 @@ jobs:
 
       - name: Affected
         id: affected
-        if: matrix.node == 'lts'
         uses: ./.github/actions/nx-affected
 
       - name: Workspace Lint

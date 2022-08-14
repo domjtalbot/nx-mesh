@@ -20,9 +20,44 @@
       "type": "string"
     },
     "port": {
-      "type": "integer",
-      "description": "The port number to run on.",
-      "default": 4000
+      "type": "object",
+      "properties": {
+        "auto": {
+          "type": "boolean",
+          "description": "Use the first available port.",
+          "default": true
+        },
+        "range": {
+          "type": "object",
+          "description": "The range of ports to select from.",
+          "properties": {
+            "from": {
+              "type": "number",
+              "description": "The first port of the range. Must be in the range `1024`...`65535`."
+            },
+            "to": {
+              "type": "number",
+              "description": "The last port of the range. Must be in the range `1024`...`65535` and must be greater than `from`."
+            }
+          }
+        },
+        "number": {
+          "type": "integer",
+          "description": "The port number to run on.",
+          "default": 4200
+        },
+        "fallback": {
+          "type": "string",
+          "enum": ["auto", "none"],
+          "description": "Fallback action to take if the define port is unavailable.",
+          "default": "auto"
+        },
+        "host": {
+          "type": "string",
+          "description": "The host to listern on.",
+          "default": "0.0.0.0"
+        }
+      }
     },
     "require": {
       "type": "array",

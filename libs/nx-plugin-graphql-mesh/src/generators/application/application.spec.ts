@@ -54,7 +54,6 @@ describe('app', () => {
             options: {
               dev: true,
               dir: 'apps/my-mesh-app',
-              port: 4200,
             },
             configurations: {
               production: {

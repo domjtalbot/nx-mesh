@@ -22,7 +22,6 @@
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:serve",
       "options": {
         "dir": "libs/sdk/trippin",
-        "port": 4620,
         "dev": true
       }
     },

@@ -18,8 +18,7 @@
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:serve",
       "options": {
         "dev": true,
-        "dir": "apps/api-gateway/javascript-wiki/yml-config",
-        "port": 4803
+        "dir": "apps/api-gateway/javascript-wiki/yml-config"
       },
       "configurations": {
         "production": {

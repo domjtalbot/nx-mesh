@@ -23,8 +23,7 @@
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:serve",
       "options": {
         "dev": true,
-        "dir": "libs/sdk/javascript-wiki",
-        "port": 4200
+        "dir": "libs/sdk/javascript-wiki"
       }
     },
     "test": {

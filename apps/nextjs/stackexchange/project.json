@@ -21,7 +21,8 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "nextjs-stackexchange:build",
-        "dev": true
+        "dev": true,
+        "port": 4700
       },
       "configurations": {
         "development": {
@@ -30,8 +31,7 @@
         },
         "e2e": {
           "buildTarget": "nextjs-stackexchange:build:production",
-          "dev": false,
-          "port": 5002
+          "dev": false
         },
         "production": {
           "buildTarget": "nextjs-stackexchange:build:production",

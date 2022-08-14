@@ -30,7 +30,6 @@ export function addProject(tree: Tree, options: AppGeneratorSchema) {
     options: {
       dev: true,
       dir: appProjectRoot,
-      port: 4200,
     },
     configurations: {
       production: {

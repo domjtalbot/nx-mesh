@@ -21,7 +21,8 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "nextjs-javascript-wiki-swc:build",
-        "dev": true
+        "dev": true,
+        "port": 4800
       },
       "configurations": {
         "development": {
@@ -30,8 +31,7 @@
         },
         "e2e": {
           "buildTarget": "nextjs-javascript-wiki-swc:build:production",
-          "dev": false,
-          "port": 4900
+          "dev": false
         },
         "production": {
           "buildTarget": "nextjs-javascript-wiki-swc:build:production",

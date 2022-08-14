@@ -4,7 +4,7 @@ import { logger } from '@nrwl/devkit';
 import { resolve } from 'path';
 
 import { childProcess, runMeshCli } from '../../utils/mesh-cli';
-
+import getServeLocation from './lib/get-serve-location';
 import { DevExecutorSchema } from './schema';
 
 const readyWhenMsg = 'Serving GraphQL Mesh:';
@@ -13,7 +13,7 @@ export async function* devExecutor(
   options: DevExecutorSchema,
   context: ExecutorContext
 ) {
-  const baseUrl = `http://0.0.0.0:${options.port}`;
+  const { baseUrl, port } = await getServeLocation(options);
 
   logger.info('Starting GraphQL Mesh dev server...');
 
@@ -22,7 +22,7 @@ export async function* devExecutor(
     {
       args: {
         dir: resolve(context.root, options.dir),
-        port: options.port,
+        port,
         require: options.require,
       },
       env: {
