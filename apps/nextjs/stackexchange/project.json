@@ -21,7 +21,8 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "nextjs-stackexchange:build",
-        "dev": true
+        "dev": true,
+        "port": 4700
       },
       "configurations": {
         "development": {

@@ -21,7 +21,8 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "nextjs-weatherbit:build",
-        "dev": true
+        "dev": true,
+        "port": 4400
       },
       "configurations": {
         "development": {
