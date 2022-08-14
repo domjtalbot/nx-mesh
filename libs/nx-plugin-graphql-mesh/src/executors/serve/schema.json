@@ -27,6 +27,20 @@
           "description": "Use the first available port.",
           "default": true
         },
+        "range": {
+          "type": "object",
+          "description": "The range of ports to select from.",
+          "properties": {
+            "from": {
+              "type": "number",
+              "description": "The first port of the range. Must be in the range `1024`...`65535`."
+            },
+            "to": {
+              "type": "number",
+              "description": "The last port of the range. Must be in the range `1024`...`65535` and must be greater than `from`."
+            }
+          }
+        },
         "number": {
           "type": "integer",
           "description": "The port number to run on.",

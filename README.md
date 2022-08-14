@@ -298,16 +298,19 @@ This is the equifilent of using `graphql-mesh dev`.
 
 #### Options
 
-| Name                | Type           | Required | Default   | Description                                                                                 |
-| ------------------- | -------------- | :------: | --------- | ------------------------------------------------------------------------------------------- |
-| **`debug`**         | `boolean`      |    -     | `false`   | Display debugging info by applying the `DEBUG` env variable.                                |
-| **`dir`**           | `string`       |    ✅    | -         | The path of the directory containing the GraphQL Mesh config.                               |
-| **`port`**          | `object`       |    -     | -         | Port selection settings                                                                     |
-| **`port.auto`**     | `boolean`      |    -     | `true`    | Use the first available port                                                                |
-| **`port.number`**   | `number`       |    -     | `4200`    | Define the preferred port to use when `auto` is set to `false`                              |
-| **`port.fallback`** | `auto`, `none` |    -     | `auto`    | The fallback strategy to use when the preferred port is unavailable.                        |
-| **`port.host`**     | `string`       |    -     | `0.0.0.0` | The host to listern on (only used for port number lookup).                                  |
-| **`require`**       | `string[]`     |    -     | `[]`      | Loads specific require.extensions before running the codegen and reading the configuration. |
+| Name                  | Type           | Required | Default   | Description                                                                                        |
+| --------------------- | -------------- | :------: | --------- | -------------------------------------------------------------------------------------------------- |
+| **`debug`**           | `boolean`      |    -     | `false`   | Display debugging info by applying the `DEBUG` env variable.                                       |
+| **`dir`**             | `string`       |    ✅    | -         | The path of the directory containing the GraphQL Mesh config.                                      |
+| **`port`**            | `object`       |    -     | -         | Port selection settings                                                                            |
+| **`port.auto`**       | `boolean`      |    -     | `true`    | Use the first available port                                                                       |
+| **`port.number`**     | `number`       |    -     | `4200`    | Define the preferred port to use when `auto` is set to `false`                                     |
+| **`port.range`**      | `object`       |    -     | -         | The range of ports to select from.                                                                 |
+| **`port.range.from`** | `boolean`      |    -     | -         | The first port of the range. Must be in the range `1024`...`65535`                                 |
+| **`port.range.to`**   | `boolean`      |    -     | -         | The last port of the range. Must be in the range `1024`...`65535` and must be greater than `from`. |
+| **`port.fallback`**   | `auto`, `none` |    -     | `auto`    | The fallback strategy to use when the preferred port is unavailable.                               |
+| **`port.host`**       | `string`       |    -     | `0.0.0.0` | The host to listern on (only used for port number lookup).                                         |
+| **`require`**         | `string[]`     |    -     | `[]`      | Loads specific require.extensions before running the codegen and reading the configuration.        |
 
 <br/>
 
@@ -330,16 +333,19 @@ This is the equifilent of using `graphql-mesh start`.
 
 #### Options
 
-| Name                | Type           | Required | Default   | Description                                                                                 |
-| ------------------- | -------------- | :------: | --------- | ------------------------------------------------------------------------------------------- |
-| **`debug`**         | `boolean`      |    -     | `false`   | Display debugging info by applying the `DEBUG` env variable.                                |
-| **`dir`**           | `string`       |    ✅    | -         | The path of the directory containing the GraphQL Mesh config.                               |
-| **`port`**          | `object`       |    -     | -         | Port selection settings                                                                     |
-| **`port.auto`**     | `boolean`      |    -     | `true`    | Use the first available port                                                                |
-| **`port.number`**   | `number`       |    -     | `4200`    | Define the preferred port to use when `auto` is set to `false`                              |
-| **`port.fallback`** | `auto`, `none` |    -     | `auto`    | The fallback strategy to use when the preferred port is unavailable.                        |
-| **`port.host`**     | `string`       |    -     | `0.0.0.0` | The host to listern on (only used for port number lookup).                                  |
-| **`require`**       | `string[]`     |    -     | `[]`      | Loads specific require.extensions before running the codegen and reading the configuration. |
+| Name                  | Type           | Required | Default   | Description                                                                                        |
+| --------------------- | -------------- | :------: | --------- | -------------------------------------------------------------------------------------------------- |
+| **`debug`**           | `boolean`      |    -     | `false`   | Display debugging info by applying the `DEBUG` env variable.                                       |
+| **`dir`**             | `string`       |    ✅    | -         | The path of the directory containing the GraphQL Mesh config.                                      |
+| **`port`**            | `object`       |    -     | -         | Port selection settings                                                                            |
+| **`port.auto`**       | `boolean`      |    -     | `true`    | Use the first available port                                                                       |
+| **`port.number`**     | `number`       |    -     | `4200`    | Define the preferred port to use when `auto` is set to `false`                                     |
+| **`port.range`**      | `object`       |    -     | -         | The range of ports to select from.                                                                 |
+| **`port.range.from`** | `boolean`      |    -     | -         | The first port of the range. Must be in the range `1024`...`65535`                                 |
+| **`port.range.to`**   | `boolean`      |    -     | -         | The last port of the range. Must be in the range `1024`...`65535` and must be greater than `from`. |
+| **`port.fallback`**   | `auto`, `none` |    -     | `auto`    | The fallback strategy to use when the preferred port is unavailable.                               |
+| **`port.host`**       | `string`       |    -     | `0.0.0.0` | The host to listern on (only used for port number lookup).                                         |
+| **`require`**         | `string[]`     |    -     | `[]`      | Loads specific require.extensions before running the codegen and reading the configuration.        |
 
 <br/>
 
@@ -368,17 +374,20 @@ This combines `dev` & `start` via a `dev` option toggle.
 
 #### Options
 
-| Name                | Type           | Required | Default   | Description                                                                                 |
-| ------------------- | -------------- | :------: | --------- | ------------------------------------------------------------------------------------------- |
-| **`debug`**         | `boolean`      |    -     | `false`   | Display debugging info by applying the `DEBUG` env variable.                                |
-| **`dev`**           | `string`       |    -     | `false`   | Run the server in dev or production mode.                                                   |
-| **`dir`**           | `string`       |    ✅    | -         | The path of the directory containing the GraphQL Mesh config.                               |
-| **`port`**          | `object`       |    -     | -         | Port selection settings                                                                     |
-| **`port.auto`**     | `boolean`      |    -     | `true`    | Use the first available port                                                                |
-| **`port.number`**   | `number`       |    -     | `4200`    | Define the preferred port to use when `auto` is set to `false`                              |
-| **`port.fallback`** | `auto`, `none` |    -     | `auto`    | The fallback strategy to use when the preferred port is unavailable.                        |
-| **`port.host`**     | `string`       |    -     | `0.0.0.0` | The host to listern on (only used for port number lookup).                                  |
-| **`require`**       | `string[]`     |    -     | `[]`      | Loads specific require.extensions before running the codegen and reading the configuration. |
+| Name                  | Type           | Required | Default   | Description                                                                                        |
+| --------------------- | -------------- | :------: | --------- | -------------------------------------------------------------------------------------------------- |
+| **`debug`**           | `boolean`      |    -     | `false`   | Display debugging info by applying the `DEBUG` env variable.                                       |
+| **`dev`**             | `string`       |    -     | `false`   | Run the server in dev or production mode.                                                          |
+| **`dir`**             | `string`       |    ✅    | -         | The path of the directory containing the GraphQL Mesh config.                                      |
+| **`port`**            | `object`       |    -     | -         | Port selection settings                                                                            |
+| **`port.auto`**       | `boolean`      |    -     | `true`    | Use the first available port                                                                       |
+| **`port.number`**     | `number`       |    -     | `4200`    | Define the preferred port to use when `auto` is set to `false`                                     |
+| **`port.range`**      | `object`       |    -     | -         | The range of ports to select from.                                                                 |
+| **`port.range.from`** | `boolean`      |    -     | -         | The first port of the range. Must be in the range `1024`...`65535`                                 |
+| **`port.range.to`**   | `boolean`      |    -     | -         | The last port of the range. Must be in the range `1024`...`65535` and must be greater than `from`. |
+| **`port.fallback`**   | `auto`, `none` |    -     | `auto`    | The fallback strategy to use when the preferred port is unavailable.                               |
+| **`port.host`**       | `string`       |    -     | `0.0.0.0` | The host to listern on (only used for port number lookup).                                         |
+| **`require`**         | `string[]`     |    -     | `[]`      | Loads specific require.extensions before running the codegen and reading the configuration.        |
 
 <br/>
 

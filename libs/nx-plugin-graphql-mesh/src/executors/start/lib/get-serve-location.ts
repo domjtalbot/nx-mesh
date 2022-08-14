@@ -4,14 +4,23 @@ import getPort = require('get-port');
 
 export async function getServeLocation(options: StartExecutorSchema) {
   let port = options.port.number ?? 4200;
+  const isRange = options.port.range !== undefined;
+  const range = getPort.makeRange(
+    options.port.range?.from ?? 1024,
+    options.port.range?.to ?? 65535
+  );
 
   if (options.port.auto) {
-    port = await getPort();
-  } else if (options.port.fallback === 'auto') {
     port = await getPort({
-      port: options.port.number,
-      host: options.port.host,
+      port: isRange ? range : undefined,
     });
+  } else {
+    if (options.port.fallback === 'auto') {
+      port = await getPort({
+        port: isRange ? range : options.port.number,
+        host: options.port.host,
+      });
+    }
   }
 
   return {
