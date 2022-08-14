@@ -63,13 +63,13 @@ jobs:
     env:
       NX_CLOUD_ENV_NAME: node-${{ matrix.node }}
     outputs:
-      affected: ${{ steps.affected.affected }}
-      affectedLength: ${{ steps.affected.affectedLength }}
-      affectedApps: ${{ steps.affected.affectedApps }}
-      affectedAppsLength: ${{ steps.affected.affectedAppsLength }}
-      affectedLibs: ${{ steps.affected.affectedLibs }}
-      affectedLibsLength: ${{ steps.affected.affectedLibsLength }}
-      hasAffected: ${{ steps.affected.hasAffected }}
+      affected: ${{ steps.affected-lts.affected }}
+      affectedLength: ${{ steps.affected-lts.affectedLength }}
+      affectedApps: ${{ steps.affected-lts.affectedApps }}
+      affectedAppsLength: ${{ steps.affected-lts.affectedAppsLength }}
+      affectedLibs: ${{ steps.affected-lts.affectedLibs }}
+      affectedLibsLength: ${{ steps.affected-lts.affectedLibsLength }}
+      hasAffected: ${{ steps.affected-lts.hasAffected }}
     steps:
       - name: Check out repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
@@ -82,7 +82,7 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: Affected
-        id: affected
+        id: affected-${{ matrix.node }}
         if: matrix.node == 'lts'
         uses: ./.github/actions/nx-affected
 
@@ -125,7 +125,7 @@ jobs:
   nx:
     runs-on: ubuntu-latest
     needs: [setup]
-    if: needs.setup.outputs.hasAffected == true || inputs.affected != true
+    if: needs.setup.outputs.hasAffected == 'true' || inputs.affected != true
     timeout-minutes: 10
     continue-on-error: ${{ matrix.experimental }}
     strategy:
