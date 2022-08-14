@@ -22,5 +22,10 @@ export type StartExecutorSchema = Omit<MeshStartSchema['args'], 'port'> &
        * The port number to run on.
        */
       number: number;
+
+      /**
+       * The host to listern on.
+       */
+      host: string;
     };
   };

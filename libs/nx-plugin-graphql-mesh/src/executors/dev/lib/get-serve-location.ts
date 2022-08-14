@@ -2,7 +2,7 @@ import type { DevExecutorSchema } from '../schema';
 
 import getPort = require('get-port');
 
-export async function port(options: DevExecutorSchema) {
+export async function getServeLocation(options: DevExecutorSchema) {
   let port = options.port.number ?? 4200;
 
   if (options.port.auto) {
@@ -10,11 +10,15 @@ export async function port(options: DevExecutorSchema) {
   } else if (options.port.fallback === 'auto') {
     port = await getPort({
       port: options.port.number,
-      host: '0.0.0.0',
+      host: options.port.host,
     });
   }
 
-  return port;
+  return {
+    baseUrl: `http://${options.port.host}:${port}`,
+    host: options.port.host,
+    port,
+  };
 }
 
-export default port;
+export default getServeLocation;

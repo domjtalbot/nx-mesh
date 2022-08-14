@@ -20,7 +20,10 @@
       "executor": "@domjtalbot/nx-plugin-graphql-mesh:serve",
       "options": {
         "dir": "apps/api-gateway/trippin",
-        "dev": true
+        "dev": true,
+        "port": {
+          "host": "localhost"
+        }
       },
       "configurations": {
         "production": {
