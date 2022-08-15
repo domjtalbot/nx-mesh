@@ -1,3 +1,6 @@
+# TODO
+# Add affected e2e apps for matrix output
+
 name: 'NX affected'
 description: 'Get Nx affected info'
 inputs:
@@ -24,6 +27,12 @@ outputs:
   affectedApps:
     description: 'Affected apps'
     value: ${{ steps.affected.outputs.affectedApps }}
+  affectedE2E:
+    description: 'Affected E2E apps'
+    value: ${{ steps.affected.outputs.affectedE2E }}
+  affectedNonE2E:
+    description: 'Affected apps excluding E2E apps'
+    value: ${{ steps.affected.outputs.affectedNonE2E }}
   affectedAppsLength:
     description: 'Number of affected apps'
     value: ${{ steps.affected.outputs.affectedAppsLength }}
@@ -101,6 +110,9 @@ runs:
             "'\\''"
           );
 
+          const affectedE2E = encodedAffectedApps.filter(app => app.endsWith('-e2e'));
+          const affectedNonE2E = encodedAffectedApps.filter(app => !app.endsWith('-e2e'))
+
           const affectedPerAgentInput = core.getInput('affected-per-agent', { required: false });
           const affectedPerAgent = parseInt(affectedPerAgentInput === '' ? '2' : affectedPerAgentInput);
 
@@ -136,6 +148,8 @@ runs:
             'agentsLength': agentsLength,
             'hasAgents': hasAgents,
             'hasAffected': hasAffected,
+            'affectedE2E': affectedE2E,
+            'affectedNonE2E': affectedNonE2E
           });
 
           core.setOutput('affected', encodedAffected);
@@ -148,3 +162,5 @@ runs:
           core.setOutput('agentsLength', agentsLength);
           core.setOutput('hasAgents', hasAgents);
           core.setOutput('hasAffected', hasAffected);
+          core.setOutput('affectedE2E', affectedE2E);
+          core.setOutput('affectedNonE2E', affectedNonE2E);
