@@ -110,8 +110,8 @@ runs:
             "'\\''"
           );
 
-          const affectedE2E = encodedAffectedApps.filter(app => app.endsWith('-e2e'));
-          const affectedNonE2E = encodedAffectedApps.filter(app => !app.endsWith('-e2e'))
+          const affectedE2E = JSON.stringify(affectedApps.filter(app => app.endsWith('-e2e')));
+          const affectedNonE2E = JSON.stringify(affectedApps.filter(app => !app.endsWith('-e2e')));
 
           const affectedPerAgentInput = core.getInput('affected-per-agent', { required: false });
           const affectedPerAgent = parseInt(affectedPerAgentInput === '' ? '2' : affectedPerAgentInput);
