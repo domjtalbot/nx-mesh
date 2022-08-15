@@ -54,6 +54,15 @@ outputs:
   hasAgents:
     description: Has agents to create.
     value: ${{ steps.affected.outputs.hasAgents }}
+  allE2E:
+    description: Has agents to create.
+    value: ${{ steps.affected.outputs.allE2E }}
+  allNonE2E:
+    description: Has agents to create.
+    value: ${{ steps.affected.outputs.allNonE2E }}
+  allLibs:
+    description: Has agents to create.
+    value: ${{ steps.affected.outputs.allLibs }}
 
 runs:
   using: 'composite'
@@ -69,30 +78,44 @@ runs:
           const execAsync = promisify(nodeExec);
 
           const getAffected = async () => {
-            const [{ stdout: apps }, { stdout: libs }] = await Promise.all([
+            const [
+              { stdout: rawApps },
+              { stdout: rawLibs },
+              { stdout: rawAllApps },
+              { stdout: rawAllLibs }
+            ] = await Promise.all([
               execAsync(`npx nx affected:apps --plain`),
               execAsync(`npx nx affected:libs --plain`),
+              execAsync(`npx nx affected:apps --plain --all`),
+              execAsync(`npx nx affected:libs --plain --all`),
             ]);
 
-            const affectedApps = apps.replace('\n', '').split(' ');
-            const affectedLibs = libs.replace('\n', '').split(' ');
+            const affectedApps = rawApps.replace('\n', '').split(' ');
+            const affectedLibs = rawLibs.replace('\n', '').split(' ');
+            const allApps = rawAllApps.replace('\n', '').split(' ');
+            const allLibs = rawAllLibs.replace('\n', '').split(' ');
 
             const affected = [
               ...apps.replace('\n', '').split(' '),
               ...libs.replace('\n', '').split(' '),
             ];
 
+
             return {
               affected,
               affectedApps,
-              affectedLibs
+              affectedLibs,
+              allApps,
+              allLibs
             };
           };
 
           const {
               affected,
               affectedApps,
-              affectedLibs
+              affectedLibs,
+              allApps,
+              allLibs,
           } = await getAffected();
 
           const encodedAffected = JSON.stringify(affected).replace(
@@ -110,13 +133,37 @@ runs:
             "'\\''"
           );
 
-          const affectedE2E = JSON.stringify(affectedApps.filter(app => app.endsWith('-e2e')));
-          const affectedNonE2E = JSON.stringify(affectedApps.filter(app => !app.endsWith('-e2e')));
+          const encodedAllE2E = JSON.stringify(allApps.filter(app => app.endsWith('-e2e'))).replace(
+            /%27/g,
+            "'\\''"
+          );
+
+          const encodedAllNonE2E = JSON.stringify(allApps.filter(app => !app.endsWith('-e2e'))).replace(
+            /%27/g,
+            "'\\''"
+          );
+
+          const encodedAllLibs = JSON.stringify(allLibs).replace(
+            /%27/g,
+            "'\\''"
+          );
+
+          const affectedE2E = JSON.stringify(affectedApps.filter(app => app.endsWith('-e2e'))).replace(
+            /%27/g,
+            "'\\''"
+          );
+
+          const affectedNonE2E = JSON.stringify(affectedApps.filter(app => !app.endsWith('-e2e'))).replace(
+            /%27/g,
+            "'\\''"
+          );
 
           const affectedPerAgentInput = core.getInput('affected-per-agent', { required: false });
+
           const affectedPerAgent = parseInt(affectedPerAgentInput === '' ? '2' : affectedPerAgentInput);
 
           const minAgentsInput = core.getInput('min-required-agents', { required: false });
+
           const minAgents = parseInt(minAgentsInput === '' ? '1' : minAgentsInput);
 
           const maxAgentsInput = core.getInput('max-agents', { required: false });
@@ -149,7 +196,10 @@ runs:
             'hasAgents': hasAgents,
             'hasAffected': hasAffected,
             'affectedE2E': affectedE2E,
-            'affectedNonE2E': affectedNonE2E
+            'affectedNonE2E': affectedNonE2E,
+            'allE2E': encodedAllE2E,
+            'allNonE2E': encodedAllNonE2E,
+            'allLibs': encodedAllLibs,
           });
 
           core.setOutput('affected', encodedAffected);
@@ -164,3 +214,6 @@ runs:
           core.setOutput('hasAffected', hasAffected);
           core.setOutput('affectedE2E', affectedE2E);
           core.setOutput('affectedNonE2E', affectedNonE2E);
+          core.setOutput('allE2E', encodedAllE2E);
+          core.setOutput('allNonE2E', encodedAllNonE2E);
+          core.setOutput('allLibs', encodedAllLibs);

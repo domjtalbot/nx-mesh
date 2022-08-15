@@ -72,6 +72,10 @@ jobs:
       affectedLibs: ${{ steps.affected.outputs.affectedLibs }}
       affectedLibsLength: ${{ steps.affected.outputs.affectedLibsLength }}
       hasAffected: ${{ steps.affected.outputs.hasAffected }}
+      allE2E: ${{ steps.affected.outputs.allE2E }}
+      allNonE2E: ${{ steps.affected.outputs.allNonE2E }}
+      allLibs: ${{ steps.affected.outputs.allLibs }}
+      e2e: ${{ steps.outputs.outputs.e2e }}
     steps:
       - name: Check out repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
@@ -86,6 +90,19 @@ jobs:
       - name: Affected
         id: affected
         uses: ./.github/actions/nx-affected
+
+      - name: Outputs
+        id: outputs
+        shell: bash
+        run: |
+          e2e=${{ steps.affected.outputs.allE2E }}
+
+          if [ ${{ inputs.affected }} = true ]; then
+            e2e=${{ steps.affected.outputs.affectedE2E }}
+          fi
+
+          echo e2e=$e2e
+          echo ::set-output name=e2e::$e2e
 
       - name: Workspace Lint
         if: matrix.node == 'lts'
@@ -190,7 +207,7 @@ jobs:
       fail-fast: false
       matrix:
         node: [lts]
-        app: ${{ needs.setup.outputs.affectedE2E }}
+        app: ${{ needs.setup.outputs.e2e }}
         command: [e2e, e2e-start, e2e-serve, e2e-serve-dev]
         experimental: [false]
         include:
