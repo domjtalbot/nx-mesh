@@ -63,6 +63,15 @@ outputs:
   allLibs:
     description: Has agents to create.
     value: ${{ steps.affected.outputs.allLibs }}
+  hasE2E:
+    description: Has agents to create.
+    value: ${{ steps.affected.outputs.hasE2E }}
+  hasNonE2E:
+    description: Has agents to create.
+    value: ${{ steps.affected.outputs.hasNonE2E }}
+  hasLibs:
+    description: Has agents to create.
+    value: ${{ steps.affected.outputs.hasLibs }}
 
 runs:
   using: 'composite'
@@ -183,6 +192,9 @@ runs:
 
           const hasAgents = agentsLength > 0;
           const hasAffected = encodedAffected.length > 0;
+          const hasE2E = encodedAllE2E !== '[]';
+          const hasNonE2E = encodedAllNonE2E !== '[]';
+          const hasLibs = encodedAllLibs !== '[]';
 
           console.log({
             affected: encodedAffected,
@@ -200,6 +212,9 @@ runs:
             'allE2E': encodedAllE2E,
             'allNonE2E': encodedAllNonE2E,
             'allLibs': encodedAllLibs,
+            'hasE2E': hasE2E,
+            'hasNonE2E': hasNonE2E,
+            'hasLibs': hasLibs
           });
 
           core.setOutput('affected', encodedAffected);
@@ -217,3 +232,6 @@ runs:
           core.setOutput('allE2E', encodedAllE2E);
           core.setOutput('allNonE2E', encodedAllNonE2E);
           core.setOutput('allLibs', encodedAllLibs);
+          core.setOutput('hasE2E', hasE2E);
+          core.setOutput('hasNonE2E', hasNonE2E);
+          core.setOutput('hasLibs', hasLibs);
