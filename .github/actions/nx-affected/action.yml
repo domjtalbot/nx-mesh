@@ -90,19 +90,27 @@ runs:
             const [
               { stdout: rawApps },
               { stdout: rawLibs },
-              { stdout: rawAllApps },
+              { stdout: rawAllAPIGatewayApps },
+              { stdout: rawAllNextjsApps },
               { stdout: rawAllLibs }
             ] = await Promise.all([
               execAsync(`npx nx affected:apps --plain`),
               execAsync(`npx nx affected:libs --plain`),
-              execAsync(`npx nx affected:apps --plain --all`),
-              execAsync(`npx nx affected:libs --plain --all`),
+              execAsync(`ls -m apps/api-gateway`),
+              execAsync(`ls -m apps/nextjs`),
+              execAsync(`ls -m libs/sdk`),
             ]);
 
             const affectedApps = rawApps.replace('\n', '').split(' ');
             const affectedLibs = rawLibs.replace('\n', '').split(' ');
-            const allApps = rawAllApps.replace('\n', '').split(' ');
-            const allLibs = rawAllLibs.replace('\n', '').split(' ');
+            const allApps = [
+              ...rawAllAPIGatewayApps.replace(',', '').split(' '),
+              ..rawAllNextjsApps.replace(',', '').split(' ')
+            ]
+            const allLibs = [
+              ...rawAllLibs.replace(',', '').split(' '),
+              'nx-plugin-graphql-mesh'
+            ];
 
             const affected = [
               ...rawApps.replace('\n', '').split(' '),
