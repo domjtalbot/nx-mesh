@@ -96,8 +96,8 @@ runs:
             const allLibs = rawAllLibs.replace('\n', '').split(' ');
 
             const affected = [
-              ...apps.replace('\n', '').split(' '),
-              ...libs.replace('\n', '').split(' '),
+              ...rawApps.replace('\n', '').split(' '),
+              ...rawLibs.replace('\n', '').split(' '),
             ];
 
 
