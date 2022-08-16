@@ -101,6 +101,14 @@ runs:
               execAsync(`ls -m libs/sdk`),
             ]);
 
+            console.log({
+              rawApps,
+              rawLibs,
+              rawAllAPIGatewayApps,
+              rawAllNextjsApps,
+              rawAllLibs,
+            });
+
             const affectedApps = rawApps.replace("\n", "").split(" ");
             const affectedLibs = rawLibs.replace("\n", "").split(" ");
             const allApps = [
@@ -108,12 +116,12 @@ runs:
                 .replace(",", "")
                 .replace("\n", "")
                 .split(" ")
-                .filter((app) => app !== '""'),
+                .filter((app) => app !== '""' && app !== ''),
               ...rawAllNextjsApps
                 .replace(",", "")
                 .replace("\n", "")
                 .split(" ")
-                .filter((app) => app !== '""'),
+                .filter((app) => app !== '""' && app !== ''),
             ];
             const allLibs = [
               ...rawAllLibs.replace(",", "").split(" "),
