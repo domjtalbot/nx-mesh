@@ -104,60 +104,60 @@ runs:
             const affectedApps = rawApps.replace("\n", "").split(" ");
             const affectedLibs = rawLibs.replace("\n", "").split(" ");
             const allApps = [
-              ...rawAllAPIGatewayApps.replace(",", "").split(" "),
-              ...rawAllNextjsApps.replace(",", "").split(" "),
+              ...rawAllAPIGatewayApps.replace(",", "").replace("\n", "").split(" "),
+              ...rawAllNextjsApps.replace(",", "").replace("\n", "").split(" "),
             ];
             const allLibs = [
               ...rawAllLibs.replace(",", "").split(" "),
               "nx-plugin-graphql-mesh",
             ];
+            const allE2E = allApps.filter((app) => app.endsWith("-e2e"));
+            const allNonE2e = allApps.filter((app) => !app.endsWith("-e2e"));
 
             const affected = [
               ...rawApps.replace("\n", "").split(" "),
               ...rawLibs.replace("\n", "").split(" "),
             ];
 
+            const affectedE2E = affected.filter((app) => app.endsWith("-e2e"));
+            const affectedNonE2E = affected.filter((app) => !app.endsWith("-e2e"));
+
+            const hasAffected = affected.length > 0;
+            const hasE2E = allE2E.length > 0;
+            const hasNonE2E = allNonE2e.length > 0;
+            const hasLibs = allLibs.length > 0;
+
+            const encoded = {
+              affected: JSON.stringify(affected).replace(/%27/g, "'\\''"),
+              affectedApps: JSON.stringify(affectedApps).replace(/%27/g, "'\\''"),
+              affectedE2E: JSON.stringify(affectedE2E).replace(/%27/g, "'\\''"),
+              affectedLibs: JSON.stringify(affectedLibs).replace(/%27/g, "'\\''"),
+              affectedNonE2E: JSON.stringify(affectedNonE2E).replace(/%27/g, "'\\''"),
+              allApps: JSON.stringify(allApps).replace(/%27/g, "'\\''"),
+              allE2E: JSON.stringify(allE2E).replace(/%27/g, "'\\''"),
+              allLibs: JSON.stringify(allLibs).replace(/%27/g, "'\\''"),
+              allNonE2e: JSON.stringify(allNonE2e).replace(/%27/g, "'\\''"),
+            };
+
             return {
               affected,
               affectedApps,
+              affectedE2E,
               affectedLibs,
+              affectedNonE2E,
               allApps,
+              allE2E,
               allLibs,
+              allNonE2e,
+              encoded,
+              hasAffected,
+              hasE2E,
+              hasNonE2E,
+              hasLibs,
             };
           };
 
-          const { affected, affectedApps, affectedLibs, allApps, allLibs } =
-            await getAffected();
-
-          const encodedAffected = JSON.stringify(affected).replace(/%27/g, "'\\''");
-
-          const encodedAffectedApps = JSON.stringify(affectedApps).replace(
-            /%27/g,
-            "'\\''"
-          );
-
-          const encodedAffectedLibs = JSON.stringify(affectedLibs).replace(
-            /%27/g,
-            "'\\''"
-          );
-
-          const encodedAllE2E = JSON.stringify(
-            allApps.filter((app) => app.endsWith("-e2e"))
-          ).replace(/%27/g, "'\\''");
-
-          const encodedAllNonE2E = JSON.stringify(
-            allApps.filter((app) => !app.endsWith("-e2e"))
-          ).replace(/%27/g, "'\\''");
-
-          const encodedAllLibs = JSON.stringify(allLibs).replace(/%27/g, "'\\''");
-
-          const affectedE2E = JSON.stringify(
-            affectedApps.filter((app) => app.endsWith("-e2e"))
-          ).replace(/%27/g, "'\\''");
-
-          const affectedNonE2E = JSON.stringify(
-            affectedApps.filter((app) => !app.endsWith("-e2e"))
-          ).replace(/%27/g, "'\\''");
+          const nx = await getAffected();
 
           const affectedPerAgentInput = core.getInput("affected-per-agent", {
             required: false,
@@ -177,10 +177,10 @@ runs:
           const maxAgents = parseInt(maxAgentsInput === "" ? "4" : maxAgentsInput);
 
           // Agents in addition to the main job
-          const allAgents = affected.length / affectedPerAgent - 1;
+          const allAgents = nx.affected.length / affectedPerAgent - 1;
           let agentsLength = allAgents > maxAgents ? maxAgents : allAgents;
 
-          if (agentsLength < minAgentsInput) {
+          if (agentsLength < minAgents) {
             agentsLength = 0;
           }
 
@@ -189,47 +189,27 @@ runs:
           agents.shift();
 
           const hasAgents = agentsLength > 0;
-          const hasAffected = encodedAffected.length > 0;
-          const hasE2E = encodedAllE2E !== "[]";
-          const hasNonE2E = encodedAllNonE2E !== "[]";
-          const hasLibs = encodedAllLibs !== "[]";
 
           console.log({
-            affected: encodedAffected,
-            affectedLength: affected.length,
-            affectedApps: encodedAffectedApps,
-            affectedAppsLength: affectedApps.length,
-            affectedLibs: encodedAffectedLibs,
-            affectedLibsLength: affectedLibs.length,
-            agents: agents,
-            agentsLength: agentsLength,
-            hasAgents: hasAgents,
-            hasAffected: hasAffected,
-            affectedE2E: affectedE2E,
-            affectedNonE2E: affectedNonE2E,
-            allE2E: encodedAllE2E,
-            allNonE2E: encodedAllNonE2E,
-            allLibs: encodedAllLibs,
-            hasE2E: hasE2E,
-            hasNonE2E: hasNonE2E,
-            hasLibs: hasLibs,
+            ...nx,
+            hasAgents,
           });
 
-          core.setOutput("affected", encodedAffected);
-          core.setOutput("affectedLength", affected.length);
-          core.setOutput("affectedApps", encodedAffectedApps);
-          core.setOutput("affectedAppsLength", affectedApps.length);
-          core.setOutput("affectedLibs", encodedAffectedLibs);
-          core.setOutput("affectedLibsLength", affectedLibs.length);
+          core.setOutput("affected", nx.encoded.affected);
+          core.setOutput("affectedApps", nx.encoded.affectedApps);
+          core.setOutput("affectedAppsLength", nx.affectedApps.length);
+          core.setOutput("affectedE2E", nx.affectedE2E);
+          core.setOutput("affectedLength", nx.affected.length);
+          core.setOutput("affectedLibs", nx.encoded.affectedLibs);
+          core.setOutput("affectedLibsLength", nx.affectedLibs.length);
+          core.setOutput("affectedNonE2E", nx.affectedNonE2E);
           core.setOutput("agents", agents);
           core.setOutput("agentsLength", agentsLength);
+          core.setOutput("allE2E", nx.encoded.allE2E);
+          core.setOutput("allLibs", nx.encoded.allLibs);
+          core.setOutput("allNonE2E", nx.encoded.allNonE2E);
+          core.setOutput("hasAffected", nx.hasAffected);
           core.setOutput("hasAgents", hasAgents);
-          core.setOutput("hasAffected", hasAffected);
-          core.setOutput("affectedE2E", affectedE2E);
-          core.setOutput("affectedNonE2E", affectedNonE2E);
-          core.setOutput("allE2E", encodedAllE2E);
-          core.setOutput("allNonE2E", encodedAllNonE2E);
-          core.setOutput("allLibs", encodedAllLibs);
-          core.setOutput("hasE2E", hasE2E);
-          core.setOutput("hasNonE2E", hasNonE2E);
-          core.setOutput("hasLibs", hasLibs);
+          core.setOutput("hasE2E", nx.hasE2E);
+          core.setOutput("hasLibs", nx.hasLibs);
+          core.setOutput("hasNonE2E", nx.hasNonE2E);
