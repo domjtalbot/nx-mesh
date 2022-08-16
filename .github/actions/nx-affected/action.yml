@@ -104,8 +104,16 @@ runs:
             const affectedApps = rawApps.replace("\n", "").split(" ");
             const affectedLibs = rawLibs.replace("\n", "").split(" ");
             const allApps = [
-              ...rawAllAPIGatewayApps.replace(",", "").replace("\n", "").split(" "),
-              ...rawAllNextjsApps.replace(",", "").replace("\n", "").split(" "),
+              ...rawAllAPIGatewayApps
+                .replace(",", "")
+                .replace("\n", "")
+                .split(" ")
+                .filter((app) => app !== '""'),
+              ...rawAllNextjsApps
+                .replace(",", "")
+                .replace("\n", "")
+                .split(" ")
+                .filter((app) => app !== '""'),
             ];
             const allLibs = [
               ...rawAllLibs.replace(",", "").split(" "),
