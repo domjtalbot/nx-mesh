@@ -81,8 +81,8 @@ runs:
       id: affected
       with:
         script: |
-          const { promisify } = require('util');
-          const { exec: nodeExec } = require('child_process');
+          const { promisify } = require("util");
+          const { exec: nodeExec } = require("child_process");
 
           const execAsync = promisify(nodeExec);
 
@@ -92,7 +92,7 @@ runs:
               { stdout: rawLibs },
               { stdout: rawAllAPIGatewayApps },
               { stdout: rawAllNextjsApps },
-              { stdout: rawAllLibs }
+              { stdout: rawAllLibs },
             ] = await Promise.all([
               execAsync(`npx nx affected:apps --plain`),
               execAsync(`npx nx affected:libs --plain`),
@@ -101,44 +101,35 @@ runs:
               execAsync(`ls -m libs/sdk`),
             ]);
 
-            const affectedApps = rawApps.replace('\n', '').split(' ');
-            const affectedLibs = rawLibs.replace('\n', '').split(' ');
+            const affectedApps = rawApps.replace("\n", "").split(" ");
+            const affectedLibs = rawLibs.replace("\n", "").split(" ");
             const allApps = [
-              ...rawAllAPIGatewayApps.replace(',', '').split(' '),
-              ..rawAllNextjsApps.replace(',', '').split(' ')
-            ]
+              ...rawAllAPIGatewayApps.replace(",", "").split(" "),
+              ...rawAllNextjsApps.replace(",", "").split(" "),
+            ];
             const allLibs = [
-              ...rawAllLibs.replace(',', '').split(' '),
-              'nx-plugin-graphql-mesh'
+              ...rawAllLibs.replace(",", "").split(" "),
+              "nx-plugin-graphql-mesh",
             ];
 
             const affected = [
-              ...rawApps.replace('\n', '').split(' '),
-              ...rawLibs.replace('\n', '').split(' '),
+              ...rawApps.replace("\n", "").split(" "),
+              ...rawLibs.replace("\n", "").split(" "),
             ];
-
 
             return {
               affected,
               affectedApps,
               affectedLibs,
               allApps,
-              allLibs
+              allLibs,
             };
           };
 
-          const {
-              affected,
-              affectedApps,
-              affectedLibs,
-              allApps,
-              allLibs,
-          } = await getAffected();
+          const { affected, affectedApps, affectedLibs, allApps, allLibs } =
+            await getAffected();
 
-          const encodedAffected = JSON.stringify(affected).replace(
-            /%27/g,
-            "'\\''"
-          );
+          const encodedAffected = JSON.stringify(affected).replace(/%27/g, "'\\''");
 
           const encodedAffectedApps = JSON.stringify(affectedApps).replace(
             /%27/g,
@@ -150,44 +141,43 @@ runs:
             "'\\''"
           );
 
-          const encodedAllE2E = JSON.stringify(allApps.filter(app => app.endsWith('-e2e'))).replace(
-            /%27/g,
-            "'\\''"
+          const encodedAllE2E = JSON.stringify(
+            allApps.filter((app) => app.endsWith("-e2e"))
+          ).replace(/%27/g, "'\\''");
+
+          const encodedAllNonE2E = JSON.stringify(
+            allApps.filter((app) => !app.endsWith("-e2e"))
+          ).replace(/%27/g, "'\\''");
+
+          const encodedAllLibs = JSON.stringify(allLibs).replace(/%27/g, "'\\''");
+
+          const affectedE2E = JSON.stringify(
+            affectedApps.filter((app) => app.endsWith("-e2e"))
+          ).replace(/%27/g, "'\\''");
+
+          const affectedNonE2E = JSON.stringify(
+            affectedApps.filter((app) => !app.endsWith("-e2e"))
+          ).replace(/%27/g, "'\\''");
+
+          const affectedPerAgentInput = core.getInput("affected-per-agent", {
+            required: false,
+          });
+
+          const affectedPerAgent = parseInt(
+            affectedPerAgentInput === "" ? "2" : affectedPerAgentInput
           );
 
-          const encodedAllNonE2E = JSON.stringify(allApps.filter(app => !app.endsWith('-e2e'))).replace(
-            /%27/g,
-            "'\\''"
-          );
+          const minAgentsInput = core.getInput("min-required-agents", {
+            required: false,
+          });
 
-          const encodedAllLibs = JSON.stringify(allLibs).replace(
-            /%27/g,
-            "'\\''"
-          );
+          const minAgents = parseInt(minAgentsInput === "" ? "1" : minAgentsInput);
 
-          const affectedE2E = JSON.stringify(affectedApps.filter(app => app.endsWith('-e2e'))).replace(
-            /%27/g,
-            "'\\''"
-          );
-
-          const affectedNonE2E = JSON.stringify(affectedApps.filter(app => !app.endsWith('-e2e'))).replace(
-            /%27/g,
-            "'\\''"
-          );
-
-          const affectedPerAgentInput = core.getInput('affected-per-agent', { required: false });
-
-          const affectedPerAgent = parseInt(affectedPerAgentInput === '' ? '2' : affectedPerAgentInput);
-
-          const minAgentsInput = core.getInput('min-required-agents', { required: false });
-
-          const minAgents = parseInt(minAgentsInput === '' ? '1' : minAgentsInput);
-
-          const maxAgentsInput = core.getInput('max-agents', { required: false });
-          const maxAgents = parseInt(maxAgentsInput === '' ? '4' : maxAgentsInput);
+          const maxAgentsInput = core.getInput("max-agents", { required: false });
+          const maxAgents = parseInt(maxAgentsInput === "" ? "4" : maxAgentsInput);
 
           // Agents in addition to the main job
-          const allAgents = (affected.length / affectedPerAgent) - 1;
+          const allAgents = affected.length / affectedPerAgent - 1;
           let agentsLength = allAgents > maxAgents ? maxAgents : allAgents;
 
           if (agentsLength < minAgentsInput) {
@@ -200,46 +190,46 @@ runs:
 
           const hasAgents = agentsLength > 0;
           const hasAffected = encodedAffected.length > 0;
-          const hasE2E = encodedAllE2E !== '[]';
-          const hasNonE2E = encodedAllNonE2E !== '[]';
-          const hasLibs = encodedAllLibs !== '[]';
+          const hasE2E = encodedAllE2E !== "[]";
+          const hasNonE2E = encodedAllNonE2E !== "[]";
+          const hasLibs = encodedAllLibs !== "[]";
 
           console.log({
             affected: encodedAffected,
-            'affectedLength': affected.length,
-            'affectedApps': encodedAffectedApps,
-            'affectedAppsLength': affectedApps.length,
-            'affectedLibs': encodedAffectedLibs,
-            'affectedLibsLength': affectedLibs.length,
-            'agents': agents,
-            'agentsLength': agentsLength,
-            'hasAgents': hasAgents,
-            'hasAffected': hasAffected,
-            'affectedE2E': affectedE2E,
-            'affectedNonE2E': affectedNonE2E,
-            'allE2E': encodedAllE2E,
-            'allNonE2E': encodedAllNonE2E,
-            'allLibs': encodedAllLibs,
-            'hasE2E': hasE2E,
-            'hasNonE2E': hasNonE2E,
-            'hasLibs': hasLibs
+            affectedLength: affected.length,
+            affectedApps: encodedAffectedApps,
+            affectedAppsLength: affectedApps.length,
+            affectedLibs: encodedAffectedLibs,
+            affectedLibsLength: affectedLibs.length,
+            agents: agents,
+            agentsLength: agentsLength,
+            hasAgents: hasAgents,
+            hasAffected: hasAffected,
+            affectedE2E: affectedE2E,
+            affectedNonE2E: affectedNonE2E,
+            allE2E: encodedAllE2E,
+            allNonE2E: encodedAllNonE2E,
+            allLibs: encodedAllLibs,
+            hasE2E: hasE2E,
+            hasNonE2E: hasNonE2E,
+            hasLibs: hasLibs,
           });
 
-          core.setOutput('affected', encodedAffected);
-          core.setOutput('affectedLength', affected.length);
-          core.setOutput('affectedApps', encodedAffectedApps);
-          core.setOutput('affectedAppsLength', affectedApps.length);
-          core.setOutput('affectedLibs', encodedAffectedLibs);
-          core.setOutput('affectedLibsLength', affectedLibs.length);
-          core.setOutput('agents', agents);
-          core.setOutput('agentsLength', agentsLength);
-          core.setOutput('hasAgents', hasAgents);
-          core.setOutput('hasAffected', hasAffected);
-          core.setOutput('affectedE2E', affectedE2E);
-          core.setOutput('affectedNonE2E', affectedNonE2E);
-          core.setOutput('allE2E', encodedAllE2E);
-          core.setOutput('allNonE2E', encodedAllNonE2E);
-          core.setOutput('allLibs', encodedAllLibs);
-          core.setOutput('hasE2E', hasE2E);
-          core.setOutput('hasNonE2E', hasNonE2E);
-          core.setOutput('hasLibs', hasLibs);
+          core.setOutput("affected", encodedAffected);
+          core.setOutput("affectedLength", affected.length);
+          core.setOutput("affectedApps", encodedAffectedApps);
+          core.setOutput("affectedAppsLength", affectedApps.length);
+          core.setOutput("affectedLibs", encodedAffectedLibs);
+          core.setOutput("affectedLibsLength", affectedLibs.length);
+          core.setOutput("agents", agents);
+          core.setOutput("agentsLength", agentsLength);
+          core.setOutput("hasAgents", hasAgents);
+          core.setOutput("hasAffected", hasAffected);
+          core.setOutput("affectedE2E", affectedE2E);
+          core.setOutput("affectedNonE2E", affectedNonE2E);
+          core.setOutput("allE2E", encodedAllE2E);
+          core.setOutput("allNonE2E", encodedAllNonE2E);
+          core.setOutput("allLibs", encodedAllLibs);
+          core.setOutput("hasE2E", hasE2E);
+          core.setOutput("hasNonE2E", hasNonE2E);
+          core.setOutput("hasLibs", hasLibs);
