@@ -71,10 +71,10 @@ jobs:
         id: outputs
         shell: bash
         run: |
-          e2e=${{ steps.affected.outputs.allE2E }}
+          e2e=${{ steps.affected.outputs.e2eApps }}
 
           if [ ${{ inputs.affected }} = true ]; then
-            e2e=${{ steps.affected.outputs.affectedE2E }}
+            e2e=${{ steps.affected.outputs.affectedE2eApps }}
           fi
 
           echo e2e=$e2e
