@@ -130,11 +130,11 @@ runs:
       id: affected
       with:
         script: |
-          const { exec } = require('child_process');
+          const { exec: nodeExec } = require('child_process');
           const { readFileSync } = require('fs');
           const { promisify } = require('util');
 
-          const execAsync = promisify(exec);
+          const execAsync = promisify(nodeExec);
 
           /**
           * Get Workspace file
