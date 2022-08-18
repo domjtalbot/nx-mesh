@@ -233,9 +233,7 @@ runs:
             };
 
             Object.entries(data).forEach(([name, value]) => {
-              console.log('');
-              console.log(`core.setOutput('${name}', ${value});`);
-              console.log('');
+              core.setOutput(name, value);
             });
           };
 
