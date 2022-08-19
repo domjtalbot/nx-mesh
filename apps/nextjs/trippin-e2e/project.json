@@ -7,7 +7,7 @@
       "executor": "@nrwl/cypress:cypress",
       "options": {
         "cypressConfig": "apps/nextjs/trippin-e2e/cypress.json",
-        "devServerTarget": "nextjs-trippin:serve:e2e"
+        "devServerTarget": "nextjs-trippin:serve:production"
       }
     },
     "lint": {

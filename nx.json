@@ -42,6 +42,12 @@
         "projects": "dependencies"
       }
     ],
+    "serve": [
+      {
+        "target": "build",
+        "projects": "self"
+      }
+    ],
     "validate": [
       {
         "target": "build",

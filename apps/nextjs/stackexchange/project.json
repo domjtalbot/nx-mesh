@@ -29,10 +29,6 @@
           "buildTarget": "nextjs-stackexchange:build:development",
           "dev": true
         },
-        "e2e": {
-          "buildTarget": "nextjs-stackexchange:build:production",
-          "dev": false
-        },
         "production": {
           "buildTarget": "nextjs-stackexchange:build:production",
           "dev": false

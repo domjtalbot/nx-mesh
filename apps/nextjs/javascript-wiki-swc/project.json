@@ -29,10 +29,6 @@
           "buildTarget": "nextjs-javascript-wiki-swc:build:development",
           "dev": true
         },
-        "e2e": {
-          "buildTarget": "nextjs-javascript-wiki-swc:build:production",
-          "dev": false
-        },
         "production": {
           "buildTarget": "nextjs-javascript-wiki-swc:build:production",
           "dev": false

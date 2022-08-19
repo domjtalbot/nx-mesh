@@ -1,3 +1,6 @@
+# TODO
+# Add affected e2e apps for matrix output
+
 name: 'NX affected'
 description: 'Get Nx affected info'
 inputs:
@@ -15,36 +18,109 @@ inputs:
     default: '4'
 
 outputs:
-  affected:
-    description: 'Affected apps & libraries'
-    value: ${{ steps.affected.outputs.affected }}
-  affectedLength:
-    description: 'Number of affected apps & libraries'
-    value: ${{ steps.affected.outputs.affectedLength }}
+  apps:
+    description: 'All apps'
+    value: ${{ steps.affected.outputs.apps }}
+
+  e2eApps:
+    description: 'All E2E apps'
+    value: ${{ steps.affected.outputs.e2eApps }}
+
+  nonE2EApps:
+    description: 'All Non-E2E apps'
+    value: ${{ steps.affected.outputs.nonE2EApps }}
+
+  libs:
+    description: 'All libs'
+    value: ${{ steps.affected.outputs.libs }}
+
+  numberOfApps:
+    description: 'The number of apps'
+    value: ${{ steps.affected.outputs.numberOfApps }}
+
+  numberOfE2eApps:
+    description: 'The number of E2E apps'
+    value: ${{ steps.affected.outputs.numberOfE2eApps }}
+
+  numberOfNonE2EApps:
+    description: 'The number of non-e2e apps'
+    value: ${{ steps.affected.outputs.numberOfNonE2EApps }}
+
+  numberOfLibs:
+    description: 'The number of libs'
+    value: ${{ steps.affected.outputs.numberOfLibs }}
+
+  hasApps:
+    description: 'Are there apps?'
+    value: ${{ steps.affected.outputs.hasApps }}
+
+  hasE2EApps:
+    description: 'Are there E2E apps?'
+    value: ${{ steps.affected.outputs.hasE2EApps }}
+
+  hasNonE2EApps:
+    description: 'Are there non-e2e apps?'
+    value: ${{ steps.affected.outputs.hasNonE2EApps }}
+
+  hasLibs:
+    description: 'Are there libs?'
+    value: ${{ steps.affected.outputs.hasLibs }}
+
+  hasProjects:
+    description: 'Are there apps or libs?'
+    value: ${{ steps.affected.outputs.hasProjects }}
+
   affectedApps:
     description: 'Affected apps'
     value: ${{ steps.affected.outputs.affectedApps }}
-  affectedAppsLength:
-    description: 'Number of affected apps'
-    value: ${{ steps.affected.outputs.affectedAppsLength }}
+
+  affectedE2eApps:
+    description: 'Affected E2E apps'
+    value: ${{ steps.affected.outputs.affectedE2eApps }}
+
+  affectedNonE2EApps:
+    description: 'Affected non-e2e apps'
+    value: ${{ steps.affected.outputs.affectedNonE2EApps }}
+
   affectedLibs:
-    description: 'Affected libraries'
+    description: 'Affected libs'
     value: ${{ steps.affected.outputs.affectedLibs }}
-  affectedLibsLength:
-    description: 'Number of affected libraries'
-    value: ${{ steps.affected.outputs.affectedLibsLength }}
+
+  numberOfAffectedApps:
+    description: 'The number of affected apps'
+    value: ${{ steps.affected.outputs.numberOfAffectedApps }}
+
+  numberOfAffectedE2eApps:
+    description: 'The number of affected E2E apps'
+    value: ${{ steps.affected.outputs.numberOfAffectedE2eApps }}
+
+  numberOfAffectedNonE2EApps:
+    description: 'The number of affected non-E2E apps'
+    value: ${{ steps.affected.outputs.numberOfAffectedNonE2EApps }}
+
+  numberOfAffectedLibs:
+    description: 'The number of affected libs'
+    value: ${{ steps.affected.outputs.numberOfAffectedLibs }}
+
+  hasAffectedApps:
+    description: 'Are there affected apps?'
+    value: ${{ steps.affected.outputs.hasAffectedApps }}
+
+  hasAffectedE2EApps:
+    description: 'Are there affected E2E apps?'
+    value: ${{ steps.affected.outputs.hasAffectedE2EApps }}
+
+  hasAffectedNonE2EApps:
+    description: 'Are there affected non-e2e apps?'
+    value: ${{ steps.affected.outputs.hasAffectedNonE2EApps }}
+
+  hasAffectedLibs:
+    description: 'Are there affected libs?'
+    value: ${{ steps.affected.outputs.hasAffectedLibs }}
+
   hasAffected:
-    description: Has agents to create.
+    description: 'Are there affected apps or libs?'
     value: ${{ steps.affected.outputs.hasAffected }}
-  agents:
-    description: 'The matrix of agents to spawn'
-    value: ${{ steps.affected.outputs.agents }}
-  agentsLength:
-    description: 'Number of agents to spawn'
-    value: ${{ steps.affected.outputs.agentsLength }}
-  hasAgents:
-    description: Has agents to create.
-    value: ${{ steps.affected.outputs.hasAgents }}
 
 runs:
   using: 'composite'
@@ -54,97 +130,112 @@ runs:
       id: affected
       with:
         script: |
-          const { promisify } = require('util');
           const { exec: nodeExec } = require('child_process');
+          const { readFileSync } = require('fs');
+          const { promisify } = require('util');
 
           const execAsync = promisify(nodeExec);
 
-          const getAffected = async () => {
-            const [{ stdout: apps }, { stdout: libs }] = await Promise.all([
-              execAsync(`npx nx affected:apps --plain`),
-              execAsync(`npx nx affected:libs --plain`),
-            ]);
+          /**
+          * Get Workspace file
+          */
 
-            const affectedApps = apps.replace('\n', '').split(' ');
-            const affectedLibs = libs.replace('\n', '').split(' ');
+          const workspaceFile = readFileSync('./workspace.json');
+          const workspace = JSON.parse(workspaceFile);
 
-            const affected = [
-              ...apps.replace('\n', '').split(' '),
-              ...libs.replace('\n', '').split(' '),
-            ];
+          const getProjectNames = (rootDir, workspace) => {
+            let names = [];
+
+            if (Object.prototype.hasOwnProperty.call(workspace, 'projects')) {
+              Object.entries(workspace['projects']).forEach(([name, path]) => {
+                if (path.startsWith(rootDir)) {
+                  names.push(name);
+                }
+              });
+            }
+
+            return names;
+          };
+
+          /**
+          * All apps & libs
+          */
+          const getWorkspaceProjects = () => {
+            const apps = getProjectNames('apps', workspace);
+            const e2eApps = apps.filter((name) => name.endsWith('-e2e'));
+            const nonE2EApps = apps.filter((name) => !name.endsWith('-e2e'));
+            const libs = getProjectNames('libs', workspace);
 
             return {
-              affected,
-              affectedApps,
-              affectedLibs
+              apps: JSON.stringify(apps),
+              e2eApps: JSON.stringify(e2eApps),
+              nonE2EApps: JSON.stringify(nonE2EApps),
+              libs: JSON.stringify(libs),
+              numberOfApps: apps.length,
+              numberOfE2eApps: e2eApps.length,
+              numberOfNonE2EApps: nonE2EApps.length,
+              numberOfLibs: libs.length,
+              hasApps: apps.length > 0,
+              hasE2EApps: e2eApps.length > 0,
+              hasNonE2EApps: nonE2EApps.length > 0,
+              hasLibs: libs.length > 0,
+              hasProjects: apps.length > 0 || libs.length > 0,
             };
           };
 
-          const {
-              affected,
-              affectedApps,
-              affectedLibs
-          } = await getAffected();
+          /**
+          * Affected
+          */
+          const getAffected = async (type) => {
+            const { stdout } = await execAsync(`npx nx affected:${type} --plain`);
 
-          const encodedAffected = JSON.stringify(affected).replace(
-            /%27/g,
-            "'\\''"
-          );
+            const affected = stdout
+              .replace(/\n/g, ' ')
+              .trim()
+              .split(' ')
+              .filter((name) => name != '');
 
-          const encodedAffectedApps = JSON.stringify(affectedApps).replace(
-            /%27/g,
-            "'\\''"
-          );
+            return affected;
+          };
 
-          const encodedAffectedLibs = JSON.stringify(affectedLibs).replace(
-            /%27/g,
-            "'\\''"
-          );
+          const getAffectedWorkspace = async () => {
+            const affectedApps = await getAffected('apps');
+            const affectedE2eApps = affectedApps.filter((name) => name.endsWith('-e2e'));
+            const affectedNonE2EApps = affectedApps.filter(
+              (name) => !name.endsWith('-e2e')
+            );
+            const affectedLibs = await getAffected('libs');
 
-          const affectedPerAgentInput = core.getInput('affected-per-agent', { required: false });
-          const affectedPerAgent = parseInt(affectedPerAgentInput === '' ? '2' : affectedPerAgentInput);
+            return {
+              affectedApps: JSON.stringify(affectedApps),
+              affectedE2eApps: JSON.stringify(affectedE2eApps),
+              affectedNonE2EApps: JSON.stringify(affectedNonE2EApps),
+              affectedLibs: JSON.stringify(affectedLibs),
+              numberOfAffectedApps: affectedApps.length,
+              numberOfAffectedE2eApps: affectedE2eApps.length,
+              numberOfAffectedNonE2EApps: affectedNonE2EApps.length,
+              numberOfAffectedLibs: affectedLibs.length,
+              hasAffectedApps: affectedApps.length > 0,
+              hasAffectedE2EApps: affectedE2eApps.length > 0,
+              hasAffectedNonE2EApps: affectedNonE2EApps.length > 0,
+              hasAffectedLibs: affectedLibs.length > 0,
+              hasAffected: affectedApps.length > 0 || affectedLibs.length > 0,
+            };
+          };
 
-          const minAgentsInput = core.getInput('min-required-agents', { required: false });
-          const minAgents = parseInt(minAgentsInput === '' ? '1' : minAgentsInput);
+          /**
+          * Nx Data
+          */
+          const getNxData = async () => {
+            const data = {
+              ...getWorkspaceProjects(),
+              ...(await getAffectedWorkspace()),
+            };
 
-          const maxAgentsInput = core.getInput('max-agents', { required: false });
-          const maxAgents = parseInt(maxAgentsInput === '' ? '4' : maxAgentsInput);
+            Object.entries(data).forEach(([name, value]) => {
+              console.log(name, value);
+              core.setOutput(name, value);
+            });
+          };
 
-          // Agents in addition to the main job
-          const allAgents = (affected.length / affectedPerAgent) - 1;
-          let agentsLength = allAgents > maxAgents ? maxAgents : allAgents;
-
-          if (agentsLength < minAgentsInput) {
-            agentsLength = 0;
-          }
-
-          const agents = [...Array(agentsLength + 1).keys()];
-
-          agents.shift();
-
-          const hasAgents = agentsLength > 0;
-          const hasAffected = encodedAffected.length > 0;
-
-          console.log({
-            affected: encodedAffected,
-            'affectedLength': affected.length,
-            'affectedApps': encodedAffectedApps,
-            'affectedAppsLength': affectedApps.length,
-            'affectedLibs': encodedAffectedLibs,
-            'affectedLibsLength': affectedLibs.length,
-            'agents': agents,
-            'agentsLength': agentsLength,
-            'hasAgents': hasAgents,
-            'hasAffected': hasAffected,
-          });
-
-          core.setOutput('affected', encodedAffected);
-          core.setOutput('affectedLength', affected.length);
-          core.setOutput('affectedApps', encodedAffectedApps);
-          core.setOutput('affectedAppsLength', affectedApps.length);
-          core.setOutput('affectedLibs', encodedAffectedLibs);
-          core.setOutput('affectedLibsLength', affectedLibs.length);
-          core.setOutput('agents', agents);
-          core.setOutput('agentsLength', agentsLength);
-          core.setOutput('hasAgents', hasAgents);
-          core.setOutput('hasAffected', hasAffected);
+          getNxData();

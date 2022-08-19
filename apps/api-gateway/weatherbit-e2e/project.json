@@ -11,10 +11,10 @@
       "defaultConfiguration": "dev",
       "configurations": {
         "dev": {
-          "devServerTarget": "api-gateway-weatherbit:dev:e2e"
+          "devServerTarget": "api-gateway-weatherbit:dev"
         },
         "start": {
-          "devServerTarget": "api-gateway-weatherbit:start:e2e"
+          "devServerTarget": "api-gateway-weatherbit:start"
         },
         "serve-dev": {
           "devServerTarget": "api-gateway-weatherbit:serve"
