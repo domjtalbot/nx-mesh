@@ -211,7 +211,6 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
         with:
-          ignore-cypress-cache: ${{ !startsWith(matrix.command, 'e2e') }}
           node-version: ${{ matrix.node }}
 
       - name: E2E
