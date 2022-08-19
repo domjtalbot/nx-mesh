@@ -220,7 +220,7 @@ jobs:
         with:
           install: false
           command: |
-            pnpm nx run ${{ matrix.app }}:${{ matrix.command }}
+            pnpm nx run ${{ matrix.app }}:e2e
 
       - name: E2E (Start)
         timeout-minutes: 8
@@ -229,7 +229,7 @@ jobs:
         with:
           install: false
           command: |
-            pnpm nx run ${{ matrix.app }}:${{ matrix.command }} --configuration=start
+            pnpm nx run ${{ matrix.app }}:e2e --configuration=start
 
       - name: E2E (Serve)
         timeout-minutes: 8
@@ -238,7 +238,7 @@ jobs:
         with:
           install: false
           command: |
-            pnpm nx run ${{ matrix.app }}:${{ matrix.command }} --configuration=serve
+            pnpm nx run ${{ matrix.app }}:e2e --configuration=serve
 
       - name: E2E (Serve Dev)
         timeout-minutes: 8
@@ -247,4 +247,4 @@ jobs:
         with:
           install: false
           command: |
-            pnpm nx run ${{ matrix.app }}:${{ matrix.command }} --configuration=serve-dev
+            pnpm nx run ${{ matrix.app }}:e2e --configuration=serve-dev
