@@ -211,7 +211,7 @@ jobs:
             app: nextjs-trippin-e2e
             command: e2e
             experimental: true
-    name: node-${{ matrix.node }} - ${{ matrix.command }}
+    name: ${{ matrix.node }}/${{ matrix.command }}/${{ matrix.app }}
     env:
       NX_CLOUD_ENV_NAME: node-${{ matrix.node }}
     steps:
