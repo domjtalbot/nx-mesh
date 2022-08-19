@@ -116,6 +116,18 @@ jobs:
         run: |
           pnpm nx run-many --target=build --all --parallel=3
 
+      - name: Affected Build Production
+        if: inputs.affected == true
+        shell: bash
+        run: |
+          pnpm nx affected --target=build --configuration=production --parallel=3
+
+      - name: Build Production
+        if: inputs.affected != true
+        shell: bash
+        run: |
+          pnpm nx run-many --target=build --configuration=production --all --parallel=3
+
   nx:
     runs-on: ubuntu-latest
     needs: [setup]
