@@ -7,7 +7,7 @@
       "executor": "@nrwl/cypress:cypress",
       "options": {
         "cypressConfig": "apps/nextjs/javascript-wiki-e2e/cypress.json",
-        "devServerTarget": "nextjs-javascript-wiki:serve:e2e"
+        "devServerTarget": "nextjs-javascript-wiki:serve:production"
       }
     },
     "lint": {

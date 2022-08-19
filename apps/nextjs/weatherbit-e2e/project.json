@@ -7,7 +7,7 @@
       "executor": "@nrwl/cypress:cypress",
       "options": {
         "cypressConfig": "apps/nextjs/weatherbit-e2e/cypress.json",
-        "devServerTarget": "nextjs-weatherbit:serve:e2e"
+        "devServerTarget": "nextjs-weatherbit:serve:production"
       }
     },
     "lint": {

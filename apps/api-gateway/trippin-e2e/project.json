@@ -11,10 +11,10 @@
       "defaultConfiguration": "dev",
       "configurations": {
         "dev": {
-          "devServerTarget": "api-gateway-trippin:dev:e2e"
+          "devServerTarget": "api-gateway-trippin:dev"
         },
         "start": {
-          "devServerTarget": "api-gateway-trippin:start:e2e"
+          "devServerTarget": "api-gateway-trippin:start"
         },
         "serve-dev": {
           "devServerTarget": "api-gateway-trippin:serve"

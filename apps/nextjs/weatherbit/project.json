@@ -29,10 +29,6 @@
           "buildTarget": "nextjs-weatherbit:build:development",
           "dev": true
         },
-        "e2e": {
-          "buildTarget": "nextjs-weatherbit:build:production",
-          "dev": false
-        },
         "production": {
           "buildTarget": "nextjs-weatherbit:build:production",
           "dev": false

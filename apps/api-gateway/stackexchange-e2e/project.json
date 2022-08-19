@@ -11,10 +11,10 @@
       "defaultConfiguration": "dev",
       "configurations": {
         "dev": {
-          "devServerTarget": "api-gateway-stackexchange:dev:e2e"
+          "devServerTarget": "api-gateway-stackexchange:dev"
         },
         "start": {
-          "devServerTarget": "api-gateway-stackexchange:start:e2e"
+          "devServerTarget": "api-gateway-stackexchange:start"
         },
         "serve-dev": {
           "devServerTarget": "api-gateway-stackexchange:serve"

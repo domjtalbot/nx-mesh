@@ -29,10 +29,6 @@
           "buildTarget": "nextjs-trippin-swc:build:development",
           "dev": true
         },
-        "e2e": {
-          "buildTarget": "nextjs-trippin:build:production",
-          "dev": false
-        },
         "production": {
           "buildTarget": "nextjs-trippin-swc:build:production",
           "dev": false
