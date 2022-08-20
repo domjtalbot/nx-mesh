@@ -15,7 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@domjtalbot/nx-mesh": ["libs/nx-mesh/src/index.ts"],
       "@nx-mesh/sdk/javascript-wiki": ["libs/sdk/javascript-wiki/src/index.ts"],
       "@nx-mesh/sdk/javascript-wiki-cjs": [
         "libs/sdk/javascript-wiki-cjs/src/index.ts"
@@ -41,7 +40,8 @@
       "@nx-mesh/sdk/stackexchange": ["libs/sdk/stackexchange/src/index.ts"],
       "@nx-mesh/sdk/trippin": ["libs/sdk/trippin/src/index.ts"],
       "@nx-mesh/sdk/trippin-swc": ["libs/sdk/trippin-swc/src/index.ts"],
-      "@nx-mesh/sdk/weatherbit": ["libs/sdk/weatherbit/src/index.ts"]
+      "@nx-mesh/sdk/weatherbit": ["libs/sdk/weatherbit/src/index.ts"],
+      "nx-mesh": ["libs/nx-mesh/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

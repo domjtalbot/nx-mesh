@@ -6,7 +6,7 @@
     "init": {
       "factory": "./src/generators/init/init",
       "schema": "./src/generators/init/schema.json",
-      "description": "Initialize the `@domjtalbot/nx-mesh` plugin.",
+      "description": "Initialize the `nx-mesh` plugin.",
       "hidden": true
     },
     "application": {
@@ -28,7 +28,7 @@
     "init": {
       "factory": "./src/generators/init/init#meshInitGenerator",
       "schema": "./src/generators/init/schema.json",
-      "description": "Initialize the `@domjtalbot/nx-mesh` plugin.",
+      "description": "Initialize the `nx-mesh` plugin.",
       "hidden": true
     },
     "application": {

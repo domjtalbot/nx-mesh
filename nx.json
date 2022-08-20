@@ -67,7 +67,7 @@
         "linter": "eslint"
       }
     },
-    "@domjtalbot/nx-mesh": {
+    "nx-mesh": {
       "application": {
         "meshConfig": "yml",
         "linter": "eslint"

@@ -37,7 +37,7 @@ describe('sdk', () => {
       expect(project.architect).toEqual(
         expect.objectContaining({
           build: {
-            builder: '@domjtalbot/nx-mesh:build',
+            builder: 'nx-mesh:build',
             outputs: ['libs/my-mesh-sdk/.mesh', '{options.outputPath}'],
             options: {
               dir: 'libs/my-mesh-sdk',
@@ -52,7 +52,7 @@ describe('sdk', () => {
       expect(project.architect).toEqual(
         expect.objectContaining({
           serve: {
-            builder: '@domjtalbot/nx-mesh:serve',
+            builder: 'nx-mesh:serve',
             options: {
               dev: true,
               dir: 'libs/my-mesh-sdk',
@@ -64,7 +64,7 @@ describe('sdk', () => {
       expect(project.architect).toEqual(
         expect.objectContaining({
           validate: {
-            builder: '@domjtalbot/nx-mesh:validate',
+            builder: 'nx-mesh:validate',
             options: {
               dir: 'libs/my-mesh-sdk',
             },
@@ -379,7 +379,7 @@ describe('sdk', () => {
       expect(project.architect).toEqual(
         expect.objectContaining({
           build: {
-            builder: '@domjtalbot/nx-mesh:build-swc',
+            builder: 'nx-mesh:build-swc',
             outputs: ['libs/my-mesh-sdk/.mesh', '{options.outputPath}'],
             options: {
               dir: 'libs/my-mesh-sdk',

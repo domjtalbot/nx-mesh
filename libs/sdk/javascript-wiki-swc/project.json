@@ -4,7 +4,7 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@domjtalbot/nx-mesh:build-swc",
+      "executor": "nx-mesh:build-swc",
       "outputs": ["libs/sdk/javascript-wiki-swc/.mesh", "{options.outputPath}"],
       "options": {
         "dir": "libs/sdk/javascript-wiki-swc",
@@ -29,14 +29,14 @@
       }
     },
     "serve": {
-      "executor": "@domjtalbot/nx-mesh:serve",
+      "executor": "nx-mesh:serve",
       "options": {
         "dev": true,
         "dir": "libs/sdk/javascript-wiki-swc"
       }
     },
     "validate": {
-      "executor": "@domjtalbot/nx-mesh:validate",
+      "executor": "nx-mesh:validate",
       "options": {
         "dir": "libs/sdk/javascript-wiki-swc"
       }

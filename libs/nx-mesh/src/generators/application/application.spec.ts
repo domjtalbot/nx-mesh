@@ -37,7 +37,7 @@ describe('app', () => {
       expect(project.architect).toEqual(
         expect.objectContaining({
           build: {
-            builder: '@domjtalbot/nx-mesh:build-gateway',
+            builder: 'nx-mesh:build-gateway',
             outputs: ['apps/my-mesh-app/.mesh', '{options.outputPath}'],
             options: {
               dir: 'apps/my-mesh-app',
@@ -50,7 +50,7 @@ describe('app', () => {
       expect(project.architect).toEqual(
         expect.objectContaining({
           serve: {
-            builder: '@domjtalbot/nx-mesh:serve',
+            builder: 'nx-mesh:serve',
             options: {
               dev: true,
               dir: 'apps/my-mesh-app',
@@ -68,7 +68,7 @@ describe('app', () => {
       expect(project.architect).toEqual(
         expect.objectContaining({
           validate: {
-            builder: '@domjtalbot/nx-mesh:validate',
+            builder: 'nx-mesh:validate',
             options: {
               dir: 'apps/my-mesh-app',
             },

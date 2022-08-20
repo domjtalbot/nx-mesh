@@ -4,7 +4,7 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@domjtalbot/nx-mesh:build",
+      "executor": "nx-mesh:build",
       "outputs": [
         "libs/sdk/javascript-wiki-json/.mesh",
         "{options.outputPath}"
@@ -32,14 +32,14 @@
       }
     },
     "serve": {
-      "executor": "@domjtalbot/nx-mesh:serve",
+      "executor": "nx-mesh:serve",
       "options": {
         "dev": true,
         "dir": "libs/sdk/javascript-wiki-json"
       }
     },
     "validate": {
-      "executor": "@domjtalbot/nx-mesh:validate",
+      "executor": "nx-mesh:validate",
       "options": {
         "dir": "libs/sdk/javascript-wiki-json"
       }

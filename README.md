@@ -38,16 +38,16 @@ TBC
 Create a GraphQL Mesh API Gateway application for Nx.
 
 ```bash
-nx generate @domjtalbot/nx-mesh:application my-api-gateway
+nx generate nx-mesh:application my-api-gateway
 
 # Alias
-nx generate @domjtalbot/nx-mesh:app my-api-gateway
+nx generate nx-mesh:app my-api-gateway
 ```
 
 #### Example Output
 
 ```bash
->  NX  Generating @domjtalbot/nx-mesh:application
+>  NX  Generating nx-mesh:application
 
 CREATE apps/my-api-gateway/.meshrc.yml
 CREATE apps/my-api-gateway/tsconfig.app.json
@@ -92,11 +92,11 @@ CREATE apps/my-api-gateway/.eslintrc.json
 Create a GraphQL Mesh SDK library for Nx.
 
 ```bash
-nx generate @domjtalbot/nx-mesh:sdk my-mesh-sdk
+nx generate nx-mesh:sdk my-mesh-sdk
 
 # Alias
-nx generate @domjtalbot/nx-mesh:sdk-library my-mesh-sdk
-nx generate @domjtalbot/nx-mesh:library my-mesh-sdk
+nx generate nx-mesh:sdk-library my-mesh-sdk
+nx generate nx-mesh:library my-mesh-sdk
 ```
 
 #### Example Output
@@ -104,7 +104,7 @@ nx generate @domjtalbot/nx-mesh:library my-mesh-sdk
 ##### TSC
 
 ```bash
->  NX  Generating @domjtalbot/nx-mesh:sdk
+>  NX  Generating nx-mesh:sdk
 
 CREATE libs/my-mesh-sdk/README.md
 CREATE libs/my-mesh-sdk/.babelrc
@@ -126,7 +126,7 @@ UPDATE nx.json
 ##### SWC
 
 ```bash
->  NX  Generating @domjtalbot/nx-mesh:sdk
+>  NX  Generating nx-mesh:sdk
 
 CREATE libs/my-mesh-sdk/README.md
 CREATE libs/my-mesh-sdk/package.json
@@ -181,7 +181,7 @@ This is the equivalent of using `graphql-mesh dev`, but with extra steps for pac
 ```json
 "targets": {
   "build": {
-    "executor": "@domjtalbot/nx-mesh:build",
+    "executor": "nx-mesh:build",
     "options": {
       "dir": "libs/example-lib",
       "outputPath": "dist/libs/example-lib",
@@ -219,7 +219,7 @@ This is the equivalent of using `graphql-mesh build`, but with extra steps for c
 ```json
 "targets": {
   "build": {
-    "executor": "@domjtalbot/nx-mesh:build-gateway",
+    "executor": "nx-mesh:build-gateway",
     "options": {
       "dir": "apps/example-app",
       "outputPath": "dist/apps/example-app"
@@ -248,7 +248,7 @@ This is the equivalent of using `graphql-mesh build`, but with extra steps for p
 ```json
 "targets": {
   "build": {
-    "executor": "@domjtalbot/nx-mesh:build-swc",
+    "executor": "nx-mesh:build-swc",
     "options": {
       "dir": "libs/example-lib",
       "outputPath": "dist/libs/example-lib",
@@ -288,7 +288,7 @@ This is the equifilent of using `graphql-mesh dev`.
 ```json
 "targets": {
   "dev": {
-    "executor": "@domjtalbot/nx-mesh:dev",
+    "executor": "nx-mesh:dev",
     "options": {
       "dir": "path/to/app/or/lib",
     },
@@ -323,7 +323,7 @@ This is the equifilent of using `graphql-mesh start`.
 ```json
 "targets": {
   "start": {
-    "executor": "@domjtalbot/nx-mesh:start",
+    "executor": "nx-mesh:start",
     "options": {
       "dir": "path/to/app/or/lib",
     },
@@ -358,7 +358,7 @@ This combines `dev` & `start` via a `dev` option toggle.
 ```json
 "targets": {
   "serve": {
-    "executor": "@domjtalbot/nx-mesh:serve",
+    "executor": "nx-mesh:serve",
     "options": {
       "dir": "path/to/app/or/lib",
       "dev": true,
@@ -400,7 +400,7 @@ This is the equifilent of using `graphql-mesh validate`.
 ```json
 "targets": {
   "validate": {
-    "executor": "@domjtalbot/nx-mesh:validate",
+    "executor": "nx-mesh:validate",
     "options": {
       "dir": "path/to/app/or/lib",
     },

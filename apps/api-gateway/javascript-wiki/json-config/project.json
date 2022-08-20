@@ -4,7 +4,7 @@
   "sourceRoot": "apps/api-gateway/javascript-wiki/json-config/",
   "targets": {
     "build": {
-      "executor": "@domjtalbot/nx-mesh:build-gateway",
+      "executor": "nx-mesh:build-gateway",
       "outputs": [
         "apps/api-gateway/javascript-wiki/json-config/.mesh",
         "{options.outputPath}"
@@ -15,7 +15,7 @@
       }
     },
     "serve": {
-      "executor": "@domjtalbot/nx-mesh:serve",
+      "executor": "nx-mesh:serve",
       "options": {
         "dev": true,
         "dir": "apps/api-gateway/javascript-wiki/json-config"
@@ -28,7 +28,7 @@
       }
     },
     "validate": {
-      "executor": "@domjtalbot/nx-mesh:validate",
+      "executor": "nx-mesh:validate",
       "options": {
         "dir": "apps/api-gateway/javascript-wiki/json-config"
       }

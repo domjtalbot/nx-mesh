@@ -4,7 +4,7 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@domjtalbot/nx-mesh:build",
+      "executor": "nx-mesh:build",
       "outputs": ["libs/sdk/trippin/.mesh", "{options.outputPath}"],
       "options": {
         "dir": "libs/sdk/trippin",
@@ -19,7 +19,7 @@
       }
     },
     "serve": {
-      "executor": "@domjtalbot/nx-mesh:serve",
+      "executor": "nx-mesh:serve",
       "options": {
         "dir": "libs/sdk/trippin",
         "dev": true
@@ -41,7 +41,7 @@
       }
     },
     "validate": {
-      "executor": "@domjtalbot/nx-mesh:validate",
+      "executor": "nx-mesh:validate",
       "options": {
         "dir": "libs/sdk/trippin"
       }
