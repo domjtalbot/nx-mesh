@@ -6,7 +6,7 @@
   ],
   "commit": false,
   "fixed": [],
-  "linked": [],
+  "linked": [["nx-mesh", "*"]],
   "access": "restricted",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
