@@ -30,9 +30,9 @@ runs:
       with:
         path: |
           ~/.cache/Cypress
-        key: ${{ runner.os }}-${{ inputs.node-version }}-cypress-dep-cache-v1-${{ hashFiles('**/pnpm-lock.yaml') }}
+        key: ${{ runner.os }}-${{ inputs.node-version }}-cypress-dep-cache-v2-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
-          ${{ runner.os }}-${{ inputs.node-version }}-cypress-dep-cache-v1-
+          ${{ runner.os }}-${{ inputs.node-version }}-cypress-dep-cache-v2-
 
     - name: PNPM Repo Cache
       uses: actions/cache@0865c47f36e68161719c5b124609996bb5c40129 # tag=v3
@@ -41,9 +41,9 @@ runs:
         path: |
           **/node_modules
           !**/node_modules/.cache/nx
-        key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-dep-cache-v1-${{ hashFiles('**/pnpm-lock.yaml') }}
+        key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-dep-cache-v2-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
-          ${{ runner.os }}-${{ inputs.node-version }}-pnpm-dep-cache-v1-
+          ${{ runner.os }}-${{ inputs.node-version }}-pnpm-dep-cache-v2-
 
     - uses: pnpm/action-setup@v2
       with:
@@ -62,9 +62,9 @@ runs:
       with:
         path: |
           ${{ steps.pnpm-cache-dir-path.outputs.dir }}
-        key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-global-cache-v1-${{ hashFiles('**/pnpm-lock.yaml') }}
+        key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-global-cache-v2-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
-          ${{ runner.os }}-${{ inputs.node-version }}-pnpm-global-cache-v1-
+          ${{ runner.os }}-${{ inputs.node-version }}-pnpm-global-cache-v2-
 
     - name: Install Node Dependencies
       if: steps.pnpm-repo-cache.outputs.cache-hit != 'true'

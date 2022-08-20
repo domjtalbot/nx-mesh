@@ -1,17 +1,14 @@
 import type { GetStaticProps, NextPage } from 'next';
-import type {
-  DailyForecastFragment,
-  Error,
-} from '@nx-plugin-graphql-mesh/sdk/weatherbit';
+import type { DailyForecastFragment, Error } from '@nx-mesh/sdk/weatherbit';
 
-import { isError as isSdkError } from '@nx-plugin-graphql-mesh/sdk/weatherbit';
+import { isError as isSdkError } from '@nx-mesh/sdk/weatherbit';
 
 import styles from './index.module.css';
 
 type PageData = DailyForecastFragment | Error;
 
 export const getStaticProps: GetStaticProps<PageData> = async () => {
-  const { getMeshSDK } = await import('@nx-plugin-graphql-mesh/sdk/weatherbit');
+  const { getMeshSDK } = await import('@nx-mesh/sdk/weatherbit');
 
   const data = await getMeshSDK().getDailyForecastByCoordinates({
     lat: 52.854347,

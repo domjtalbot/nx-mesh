@@ -40,19 +40,18 @@ export function setDefaults(host: Tree, options: NormalizedSchema) {
   }
 
   workspace.generators = workspace.generators || {};
-  workspace.generators['@domjtalbot/nx-plugin-graphql-mesh'] =
-    workspace.generators['@domjtalbot/nx-plugin-graphql-mesh'] || {};
+  workspace.generators['nx-mesh'] = workspace.generators['nx-mesh'] || {};
 
-  const prev = workspace.generators['@domjtalbot/nx-plugin-graphql-mesh'];
+  const prev = workspace.generators['nx-mesh'];
 
   workspace.generators = {
     ...workspace.generators,
-    '@domjtalbot/nx-plugin-graphql-mesh': {
+    'nx-mesh': {
       ...prev,
-      application: {
+      sdk: {
         meshConfig: options.meshConfig,
         linter: options.linter,
-        ...prev['application'],
+        ...prev['sdk'],
       },
     },
   };

@@ -1,5 +1,5 @@
 {
-  "name": "@nx-plugin-graphql-mesh/sdk/stackexchange",
+  "name": "@nx-mesh/sdk/stackexchange",
   "version": "0.0.1",
   "type": "commonjs"
 }

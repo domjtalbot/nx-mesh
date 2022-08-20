@@ -4,7 +4,7 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:build",
+      "executor": "nx-mesh:build",
       "outputs": ["libs/sdk/weatherbit/.mesh", "{options.outputPath}"],
       "options": {
         "dir": "libs/sdk/weatherbit",
@@ -19,7 +19,7 @@
       }
     },
     "serve": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:serve",
+      "executor": "nx-mesh:serve",
       "options": {
         "dir": "libs/sdk/weatherbit",
         "dev": true
@@ -41,7 +41,7 @@
       }
     },
     "validate": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:validate",
+      "executor": "nx-mesh:validate",
       "options": {
         "dir": "libs/sdk/weatherbit"
       }

@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'nx-plugin-graphql-mesh',
+  displayName: 'nx-mesh',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -11,5 +11,5 @@ export default {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/libs/nx-plugin-graphql-mesh',
+  coverageDirectory: '../../coverage/libs/nx-mesh',
 };

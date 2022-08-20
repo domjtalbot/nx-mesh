@@ -4,7 +4,7 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:build-swc",
+      "executor": "nx-mesh:build-swc",
       "outputs": [
         "libs/sdk/javascript-wiki-swc-json/.mesh",
         "{options.outputPath}"
@@ -32,14 +32,14 @@
       }
     },
     "serve": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:serve",
+      "executor": "nx-mesh:serve",
       "options": {
         "dev": true,
         "dir": "libs/sdk/javascript-wiki-swc-json"
       }
     },
     "validate": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:validate",
+      "executor": "nx-mesh:validate",
       "options": {
         "dir": "libs/sdk/javascript-wiki-swc-json"
       }

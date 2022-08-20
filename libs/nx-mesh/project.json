@@ -1,35 +1,35 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/nx-plugin-graphql-mesh/src",
+  "sourceRoot": "libs/nx-mesh/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/nx-plugin-graphql-mesh",
-        "main": "libs/nx-plugin-graphql-mesh/src/index.ts",
-        "tsConfig": "libs/nx-plugin-graphql-mesh/tsconfig.lib.json",
+        "outputPath": "dist/libs/nx-mesh",
+        "main": "libs/nx-mesh/src/index.ts",
+        "tsConfig": "libs/nx-mesh/tsconfig.lib.json",
         "assets": [
           "README.md",
-          "libs/nx-plugin-graphql-mesh/*.md",
+          "libs/nx-mesh/*.md",
           {
-            "input": "./libs/nx-plugin-graphql-mesh/src",
+            "input": "./libs/nx-mesh/src",
             "glob": "**/!(*.ts)",
             "output": "./src"
           },
           {
-            "input": "./libs/nx-plugin-graphql-mesh/src",
+            "input": "./libs/nx-mesh/src",
             "glob": "**/*.d.ts",
             "output": "./src"
           },
           {
-            "input": "./libs/nx-plugin-graphql-mesh",
+            "input": "./libs/nx-mesh",
             "glob": "generators.json",
             "output": "."
           },
           {
-            "input": "./libs/nx-plugin-graphql-mesh",
+            "input": "./libs/nx-mesh",
             "glob": "executors.json",
             "output": "."
           }
@@ -40,14 +40,14 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/nx-plugin-graphql-mesh/**/*.ts"]
+        "lintFilePatterns": ["libs/nx-mesh/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/nx-plugin-graphql-mesh"],
+      "outputs": ["coverage/libs/nx-mesh"],
       "options": {
-        "jestConfig": "libs/nx-plugin-graphql-mesh/jest.config.ts",
+        "jestConfig": "libs/nx-mesh/jest.config.ts",
         "passWithNoTests": true
       }
     }

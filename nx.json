@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "nx-plugin-graphql-mesh",
+  "npmScope": "nx-mesh",
   "affected": {
     "defaultBase": "main"
   },
@@ -19,7 +19,7 @@
       "runner": "@nrwl/nx-cloud",
       "options": {
         "cacheableOperations": ["build", "lint", "test", "e2e", "validate"],
-        "accessToken": "NmFhZGM3M2EtNmM2Yy00ODUyLWFkMzUtNzdhZjM1Y2ViZWMzfHJlYWQ="
+        "accessToken": "NzExMGIxYWUtZjdkYy00MjRjLWI5NjItMjlkYmU0OWRjNWY2fHJlYWQ="
       }
     }
   },
@@ -67,7 +67,7 @@
         "linter": "eslint"
       }
     },
-    "@domjtalbot/nx-plugin-graphql-mesh": {
+    "nx-mesh": {
       "application": {
         "meshConfig": "yml",
         "linter": "eslint"

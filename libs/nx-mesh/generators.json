@@ -1,12 +1,12 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "name": "nx-plugin-graphql-mesh",
+  "name": "nx-mesh",
   "version": "0.0.1",
   "generators": {
     "init": {
       "factory": "./src/generators/init/init",
       "schema": "./src/generators/init/schema.json",
-      "description": "Initialize the `@domjtalbot/nx-plugin-graphql-mesh` plugin.",
+      "description": "Initialize the `nx-mesh` plugin.",
       "hidden": true
     },
     "application": {
@@ -28,7 +28,7 @@
     "init": {
       "factory": "./src/generators/init/init#meshInitGenerator",
       "schema": "./src/generators/init/schema.json",
-      "description": "Initialize the `@domjtalbot/nx-plugin-graphql-mesh` plugin.",
+      "description": "Initialize the `nx-mesh` plugin.",
       "hidden": true
     },
     "application": {

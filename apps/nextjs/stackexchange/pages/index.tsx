@@ -1,14 +1,12 @@
 import type { GetStaticProps, NextPage } from 'next';
-import type { listFeaturedQuestions_queryQuery } from '@nx-plugin-graphql-mesh/sdk/stackexchange';
+import type { listFeaturedQuestions_queryQuery } from '@nx-mesh/sdk/stackexchange';
 
 import styles from './index.module.css';
 
 export const getStaticProps: GetStaticProps<
   listFeaturedQuestions_queryQuery
 > = async () => {
-  const { getMeshSDK } = await import(
-    '@nx-plugin-graphql-mesh/sdk/stackexchange'
-  );
+  const { getMeshSDK } = await import('@nx-mesh/sdk/stackexchange');
 
   const data = await getMeshSDK().listFeaturedQuestions_query();
 
