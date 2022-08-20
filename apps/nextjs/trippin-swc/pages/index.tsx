@@ -1,14 +1,12 @@
 import type { GetStaticProps, NextPage } from 'next';
-import type { Airlines_queryQuery } from '@nx-plugin-graphql-mesh/sdk/trippin-swc';
+import type { Airlines_queryQuery } from '@nx-mesh/sdk/trippin-swc';
 
 import styles from './index.module.css';
 
 type PageData = Airlines_queryQuery;
 
 export const getStaticProps: GetStaticProps<PageData> = async () => {
-  const { getMeshSDK } = await import(
-    '@nx-plugin-graphql-mesh/sdk/trippin-swc'
-  );
+  const { getMeshSDK } = await import('@nx-mesh/sdk/trippin-swc');
 
   const data = await getMeshSDK().Airlines_query();
 

@@ -26,7 +26,7 @@ export function addProject(tree: Tree, options: NormalizedSchema) {
   const targets = { ...project?.targets };
 
   targets['build'] = {
-    executor: `@domjtalbot/nx-plugin-graphql-mesh:build${isSwc ? '-swc' : ''}`,
+    executor: `@domjtalbot/nx-mesh:build${isSwc ? '-swc' : ''}`,
     outputs: [libProjectMesh, '{options.outputPath}'],
     options: {
       dir: libProjectRoot,
@@ -37,7 +37,7 @@ export function addProject(tree: Tree, options: NormalizedSchema) {
   };
 
   targets['serve'] = {
-    executor: '@domjtalbot/nx-plugin-graphql-mesh:serve',
+    executor: '@domjtalbot/nx-mesh:serve',
     options: {
       dev: true,
       dir: libProjectRoot,
@@ -45,7 +45,7 @@ export function addProject(tree: Tree, options: NormalizedSchema) {
   };
 
   targets['validate'] = {
-    executor: '@domjtalbot/nx-plugin-graphql-mesh:validate',
+    executor: '@domjtalbot/nx-mesh:validate',
     options: {
       dir: libProjectRoot,
     },

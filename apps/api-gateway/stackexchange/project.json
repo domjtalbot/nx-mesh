@@ -4,7 +4,7 @@
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:build-gateway",
+      "executor": "@domjtalbot/nx-mesh:build-gateway",
       "outputs": [
         "apps/api-gateway/stackexchange/.mesh",
         "{options.outputPath}"
@@ -20,7 +20,7 @@
       }
     },
     "serve": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:serve",
+      "executor": "@domjtalbot/nx-mesh:serve",
       "options": {
         "dir": "apps/api-gateway/stackexchange",
         "dev": true
@@ -33,13 +33,13 @@
       }
     },
     "dev": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:dev",
+      "executor": "@domjtalbot/nx-mesh:dev",
       "options": {
         "dir": "apps/api-gateway/stackexchange"
       }
     },
     "start": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:start",
+      "executor": "@domjtalbot/nx-mesh:start",
       "options": {
         "dir": "dist/apps/api-gateway/stackexchange"
       },
@@ -67,7 +67,7 @@
     },
 
     "validate": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:validate",
+      "executor": "@domjtalbot/nx-mesh:validate",
       "options": {
         "dir": "apps/api-gateway/stackexchange"
       }

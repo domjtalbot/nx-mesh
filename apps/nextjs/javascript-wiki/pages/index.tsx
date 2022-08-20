@@ -1,14 +1,12 @@
 import type { GetStaticProps, NextPage } from 'next';
-import type { availability_queryQuery } from '@nx-plugin-graphql-mesh/sdk/javascript-wiki';
+import type { availability_queryQuery } from '@nx-mesh/sdk/javascript-wiki';
 
 import styles from './index.module.css';
 
 type PageData = availability_queryQuery;
 
 export const getStaticProps: GetStaticProps<PageData> = async () => {
-  const { getMeshSDK } = await import(
-    '@nx-plugin-graphql-mesh/sdk/javascript-wiki'
-  );
+  const { getMeshSDK } = await import('@nx-mesh/sdk/javascript-wiki');
 
   const data = await getMeshSDK().availability_query();
 

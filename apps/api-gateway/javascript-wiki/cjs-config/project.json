@@ -4,7 +4,7 @@
   "sourceRoot": "apps/api-gateway/javascript-wiki/cjs-config/",
   "targets": {
     "build": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:build-gateway",
+      "executor": "@domjtalbot/nx-mesh:build-gateway",
       "outputs": [
         "apps/api-gateway/javascript-wiki/cjs-config/.mesh",
         "{options.outputPath}"
@@ -15,7 +15,7 @@
       }
     },
     "serve": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:serve",
+      "executor": "@domjtalbot/nx-mesh:serve",
       "options": {
         "dev": true,
         "dir": "apps/api-gateway/javascript-wiki/cjs-config"
@@ -28,7 +28,7 @@
       }
     },
     "validate": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:validate",
+      "executor": "@domjtalbot/nx-mesh:validate",
       "options": {
         "dir": "apps/api-gateway/javascript-wiki/cjs-config"
       }

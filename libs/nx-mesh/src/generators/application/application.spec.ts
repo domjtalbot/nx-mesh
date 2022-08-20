@@ -1,14 +1,14 @@
 import type { NxJsonConfiguration, Tree } from '@nrwl/devkit';
 
-import type { MeshConfigExtensions, SdkGeneratorSchema } from './schema';
+import type { AppGeneratorSchema } from './schema';
 
 import { readJson, getProjects } from '@nrwl/devkit';
 import * as devkit from '@nrwl/devkit';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 
-import { sdkGenerator } from './sdk';
+import { applicationGenerator } from './application';
 
-describe('sdk', () => {
+describe('app', () => {
   let tree: Tree;
 
   beforeEach(() => {
@@ -23,27 +23,25 @@ describe('sdk', () => {
 
   describe('not nested', () => {
     it('should update workspace.json', async () => {
-      await sdkGenerator(tree, {
-        name: 'myMeshSdk',
+      await applicationGenerator(tree, {
+        name: 'myMeshApp',
         standaloneConfig: false,
-        compiler: 'tsc',
+        e2eTestRunner: 'none',
       });
 
       const workspaceJson = readJson(tree, '/workspace.json');
       const nxJson = readJson<NxJsonConfiguration>(tree, 'nx.json');
-      const project = workspaceJson.projects['my-mesh-sdk'];
+      const project = workspaceJson.projects['my-mesh-app'];
 
-      expect(project.root).toEqual('libs/my-mesh-sdk');
+      expect(project.root).toEqual('apps/my-mesh-app');
       expect(project.architect).toEqual(
         expect.objectContaining({
           build: {
-            builder: '@domjtalbot/nx-plugin-graphql-mesh:build',
-            outputs: ['libs/my-mesh-sdk/.mesh', '{options.outputPath}'],
+            builder: '@domjtalbot/nx-mesh:build-gateway',
+            outputs: ['apps/my-mesh-app/.mesh', '{options.outputPath}'],
             options: {
-              dir: 'libs/my-mesh-sdk',
-              main: 'libs/my-mesh-sdk/src/index.ts',
-              outputPath: 'dist/libs/my-mesh-sdk',
-              tsConfig: 'libs/my-mesh-sdk/tsconfig.lib.json',
+              dir: 'apps/my-mesh-app',
+              outputPath: 'dist/apps/my-mesh-app',
             },
           },
         })
@@ -52,10 +50,16 @@ describe('sdk', () => {
       expect(project.architect).toEqual(
         expect.objectContaining({
           serve: {
-            builder: '@domjtalbot/nx-plugin-graphql-mesh:serve',
+            builder: '@domjtalbot/nx-mesh:serve',
             options: {
               dev: true,
-              dir: 'libs/my-mesh-sdk',
+              dir: 'apps/my-mesh-app',
+            },
+            configurations: {
+              production: {
+                dev: false,
+                dir: 'dist/apps/my-mesh-app',
+              },
             },
           },
         })
@@ -64,61 +68,67 @@ describe('sdk', () => {
       expect(project.architect).toEqual(
         expect.objectContaining({
           validate: {
-            builder: '@domjtalbot/nx-plugin-graphql-mesh:validate',
+            builder: '@domjtalbot/nx-mesh:validate',
             options: {
-              dir: 'libs/my-mesh-sdk',
+              dir: 'apps/my-mesh-app',
             },
           },
         })
       );
 
-      expect(workspaceJson.projects['my-mesh-sdk'].architect.lint).toEqual({
+      expect(workspaceJson.projects['my-mesh-app'].architect.lint).toEqual({
         builder: '@nrwl/linter:eslint',
         outputs: ['{options.outputFile}'],
         options: {
-          lintFilePatterns: ['libs/my-mesh-sdk/**/*.ts'],
+          lintFilePatterns: ['apps/my-mesh-app/**/*.ts'],
         },
       });
 
-      expect(nxJson.defaultProject).toEqual('my-mesh-sdk');
+      expect(workspaceJson.projects['my-mesh-app-e2e']).toBeUndefined();
+
+      expect(nxJson.defaultProject).toEqual('my-mesh-app');
     });
 
     it('should update tags', async () => {
-      await sdkGenerator(tree, {
-        name: 'myMeshSdk',
+      await applicationGenerator(tree, {
+        name: 'myMeshApp',
         tags: 'one,two',
         standaloneConfig: false,
-        compiler: 'tsc',
       });
 
       const projects = Object.fromEntries(getProjects(tree));
 
       expect(projects).toMatchObject({
-        'my-mesh-sdk': {
+        'my-mesh-app': {
           tags: ['one', 'two'],
         },
       });
     });
 
     it('should generate files', async () => {
-      await sdkGenerator(tree, {
-        name: 'myMeshSdk',
+      await applicationGenerator(tree, {
+        name: 'myMeshApp',
         standaloneConfig: false,
-        compiler: 'tsc',
       });
 
-      expect(tree.exists(`libs/my-mesh-sdk/jest.config.ts`)).toBeTruthy();
+      expect(tree.exists(`apps/my-mesh-app/jest.config.ts`)).toBeTruthy();
 
-      const tsconfig = readJson(tree, 'libs/my-mesh-sdk/tsconfig.json');
+      const tsconfig = readJson(tree, 'apps/my-mesh-app/tsconfig.json');
 
       expect(tsconfig).toMatchInlineSnapshot(`
         Object {
+          "compilerOptions": Object {
+            "types": Array [
+              "jest",
+              "node",
+            ],
+          },
           "extends": "../../tsconfig.base.json",
           "files": Array [],
           "include": Array [],
           "references": Array [
             Object {
-              "path": "./tsconfig.lib.json",
+              "path": "./tsconfig.app.json",
             },
             Object {
               "path": "./tsconfig.spec.json",
@@ -127,7 +137,7 @@ describe('sdk', () => {
         }
       `);
 
-      const tsconfigApp = readJson(tree, 'libs/my-mesh-sdk/tsconfig.lib.json');
+      const tsconfigApp = readJson(tree, 'apps/my-mesh-app/tsconfig.app.json');
 
       expect(tsconfigApp.compilerOptions.outDir).toEqual('../../dist/out-tsc');
 
@@ -139,7 +149,7 @@ describe('sdk', () => {
         '**/*.test.ts',
       ]);
 
-      const eslintrc = readJson(tree, 'libs/my-mesh-sdk/.eslintrc.json');
+      const eslintrc = readJson(tree, 'apps/my-mesh-app/.eslintrc.json');
 
       expect(eslintrc).toMatchInlineSnapshot(`
         Object {
@@ -182,13 +192,12 @@ describe('sdk', () => {
     it('should extend from root tsconfig.json when no tsconfig.base.json', async () => {
       tree.rename('tsconfig.base.json', 'tsconfig.json');
 
-      await sdkGenerator(tree, {
-        name: 'myMeshSdk',
+      await applicationGenerator(tree, {
+        name: 'myMeshApp',
         standaloneConfig: false,
-        compiler: 'tsc',
       });
 
-      const tsconfig = readJson(tree, 'libs/my-mesh-sdk/tsconfig.json');
+      const tsconfig = readJson(tree, 'apps/my-mesh-app/tsconfig.json');
 
       expect(tsconfig.extends).toBe('../../tsconfig.json');
     });
@@ -196,48 +205,47 @@ describe('sdk', () => {
 
   describe('nested', () => {
     it('should update workspace.json', async () => {
-      await sdkGenerator(tree, {
-        name: 'myMeshSdk',
+      await applicationGenerator(tree, {
+        name: 'myMeshApp',
         directory: 'myDir',
         standaloneConfig: false,
-        compiler: 'tsc',
+        e2eTestRunner: 'none',
       });
 
       const workspaceJson = readJson(tree, '/workspace.json');
 
       const nxJson = readJson<NxJsonConfiguration>(tree, 'nx.json');
 
-      expect(workspaceJson.projects['my-dir-my-mesh-sdk'].root).toEqual(
-        'libs/my-dir/my-mesh-sdk'
+      expect(workspaceJson.projects['my-dir-my-mesh-app'].root).toEqual(
+        'apps/my-dir/my-mesh-app'
       );
 
       expect(
-        workspaceJson.projects['my-dir-my-mesh-sdk'].architect.lint
+        workspaceJson.projects['my-dir-my-mesh-app'].architect.lint
       ).toEqual({
         builder: '@nrwl/linter:eslint',
         outputs: ['{options.outputFile}'],
         options: {
-          lintFilePatterns: ['libs/my-dir/my-mesh-sdk/**/*.ts'],
+          lintFilePatterns: ['apps/my-dir/my-mesh-app/**/*.ts'],
         },
       });
 
-      expect(workspaceJson.projects['my-dir-my-mesh-sdk-e2e']).toBeUndefined();
+      expect(workspaceJson.projects['my-dir-my-mesh-app-e2e']).toBeUndefined();
 
-      expect(nxJson.defaultProject).toEqual('my-dir-my-mesh-sdk');
+      expect(nxJson.defaultProject).toEqual('my-dir-my-mesh-app');
     });
 
     it('should update tags', async () => {
-      await sdkGenerator(tree, {
-        name: 'myMeshSdk',
+      await applicationGenerator(tree, {
+        name: 'myMeshApp',
         directory: 'myDir',
         tags: 'one,two',
         standaloneConfig: false,
-        compiler: 'tsc',
       });
 
       const projects = Object.fromEntries(getProjects(tree));
       expect(projects).toMatchObject({
-        'my-dir-my-mesh-sdk': {
+        'my-dir-my-mesh-app': {
           tags: ['one', 'two'],
         },
       });
@@ -258,37 +266,36 @@ describe('sdk', () => {
         expect(lookupFn(config)).toEqual(expectedValue);
       };
 
-      await sdkGenerator(tree, {
-        name: 'myMeshSdk',
+      await applicationGenerator(tree, {
+        name: 'myMeshApp',
         directory: 'myDir',
         standaloneConfig: false,
-        compiler: 'tsc',
       });
 
       // Make sure these exist
-      [`libs/my-dir/my-mesh-sdk/jest.config.ts`].forEach((path) => {
+      [`apps/my-dir/my-mesh-app/jest.config.ts`].forEach((path) => {
         expect(tree.exists(path)).toBeTruthy();
       });
 
       // Make sure these have properties
       [
         {
-          path: 'libs/my-dir/my-mesh-sdk/tsconfig.lib.json',
+          path: 'apps/my-dir/my-mesh-app/tsconfig.app.json',
           lookupFn: (json: any) => json.compilerOptions.outDir,
           expectedValue: '../../../dist/out-tsc',
         },
         {
-          path: 'libs/my-dir/my-mesh-sdk/tsconfig.lib.json',
+          path: 'apps/my-dir/my-mesh-app/tsconfig.app.json',
           lookupFn: (json: any) => json.compilerOptions.types,
           expectedValue: ['node'],
         },
         {
-          path: 'libs/my-dir/my-mesh-sdk/tsconfig.lib.json',
+          path: 'apps/my-dir/my-mesh-app/tsconfig.app.json',
           lookupFn: (json: any) => json.exclude,
           expectedValue: ['jest.config.ts', '**/*.spec.ts', '**/*.test.ts'],
         },
         {
-          path: 'libs/my-dir/my-mesh-sdk/.eslintrc.json',
+          path: 'apps/my-dir/my-mesh-app/.eslintrc.json',
           lookupFn: (json: any) => json.extends,
           expectedValue: ['../../../.eslintrc.json'],
         },
@@ -298,36 +305,35 @@ describe('sdk', () => {
 
   describe('--unit-test-runner none', () => {
     it('should not generate test configuration', async () => {
-      await sdkGenerator(tree, {
-        name: 'myMeshSdk',
+      await applicationGenerator(tree, {
+        name: 'myMeshApp',
         unitTestRunner: 'none',
         standaloneConfig: false,
-        compiler: 'tsc',
       });
 
       expect(tree.exists('jest.config.ts')).toBeFalsy();
 
-      expect(tree.exists('libs/my-mesh-sdk/src/test-setup.ts')).toBeFalsy();
+      expect(tree.exists('apps/my-mesh-app/src/test-setup.ts')).toBeFalsy();
 
-      expect(tree.exists('libs/my-mesh-sdk/src/test.ts')).toBeFalsy();
+      expect(tree.exists('apps/my-mesh-app/src/test.ts')).toBeFalsy();
 
-      expect(tree.exists('libs/my-mesh-sdk/tsconfig.spec.json')).toBeFalsy();
+      expect(tree.exists('apps/my-mesh-app/tsconfig.spec.json')).toBeFalsy();
 
-      expect(tree.exists('libs/my-mesh-sdk/jest.config.ts')).toBeFalsy();
+      expect(tree.exists('apps/my-mesh-app/jest.config.ts')).toBeFalsy();
 
       const workspaceJson = readJson(tree, 'workspace.json');
 
       expect(
-        workspaceJson.projects['my-mesh-sdk'].architect.test
+        workspaceJson.projects['my-mesh-app'].architect.test
       ).toBeUndefined();
 
-      expect(workspaceJson.projects['my-mesh-sdk'].architect.lint)
+      expect(workspaceJson.projects['my-mesh-app'].architect.lint)
         .toMatchInlineSnapshot(`
         Object {
           "builder": "@nrwl/linter:eslint",
           "options": Object {
             "lintFilePatterns": Array [
-              "libs/my-mesh-sdk/**/*.ts",
+              "apps/my-mesh-app/**/*.ts",
             ],
           },
           "outputs": Array [
@@ -340,86 +346,27 @@ describe('sdk', () => {
 
   describe('--babelJest', () => {
     it('should use babel for jest', async () => {
-      await sdkGenerator(tree, {
-        name: 'myMeshSdk',
+      await applicationGenerator(tree, {
+        name: 'myMeshApp',
         tags: 'one,two',
         babelJest: true,
-      } as SdkGeneratorSchema);
+      } as AppGeneratorSchema);
 
-      expect(tree.read(`libs/my-mesh-sdk/jest.config.ts`, 'utf-8'))
+      expect(tree.read(`apps/my-mesh-app/jest.config.ts`, 'utf-8'))
         .toMatchInlineSnapshot(`
         "/* eslint-disable */
         export default {
-          displayName: 'my-mesh-sdk',
+          displayName: 'my-mesh-app',
           preset: '../../jest.preset.js',
           testEnvironment: 'node',
           transform: {
-            '^.+\\\\\\\\.[tj]sx?$': 'babel-jest'
+            '^.+\\\\\\\\.[tj]s$': 'babel-jest'
           },
-          moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-          coverageDirectory: '../../coverage/libs/my-mesh-sdk'
+          moduleFileExtensions: ['ts', 'js', 'html'],
+          coverageDirectory: '../../coverage/apps/my-mesh-app'
         };
         "
       `);
-    });
-  });
-
-  describe('--compiler=swc', () => {
-    it('should use swc for compiling', async () => {
-      await sdkGenerator(tree, {
-        name: 'myMeshSdk',
-        compiler: 'swc',
-      } as SdkGeneratorSchema);
-
-      const workspaceJson = readJson(tree, '/workspace.json');
-      const project = workspaceJson.projects['my-mesh-sdk'];
-
-      expect(project.root).toEqual('libs/my-mesh-sdk');
-
-      expect(project.architect).toEqual(
-        expect.objectContaining({
-          build: {
-            builder: '@domjtalbot/nx-plugin-graphql-mesh:build-swc',
-            outputs: ['libs/my-mesh-sdk/.mesh', '{options.outputPath}'],
-            options: {
-              dir: 'libs/my-mesh-sdk',
-              main: 'libs/my-mesh-sdk/src/index.ts',
-              outputPath: 'dist/libs/my-mesh-sdk',
-              tsConfig: 'libs/my-mesh-sdk/tsconfig.lib.json',
-            },
-          },
-        })
-      );
-
-      expect(tree.read(`libs/my-mesh-sdk/.lib.swcrc`, 'utf-8'))
-        .toMatchInlineSnapshot(`
-        "{
-          \\"jsc\\": {
-            \\"target\\": \\"es2017\\",
-            \\"parser\\": {
-              \\"syntax\\": \\"typescript\\",
-              \\"decorators\\": true,
-              \\"dynamicImport\\": true
-            },
-            \\"transform\\": {
-              \\"decoratorMetadata\\": true,
-              \\"legacyDecorator\\": true
-            },
-            \\"keepClassNames\\": true,
-            \\"externalHelpers\\": true,
-            \\"loose\\": true
-          },
-          \\"module\\": {
-            \\"type\\": \\"commonjs\\",
-            \\"strict\\": true,
-            \\"noInterop\\": true
-          },
-          \\"sourceMaps\\": true,
-          \\"exclude\\": [\\"jest.config.ts\\",\\".*.spec.tsx?$\\",\\".*.test.tsx?$\\",\\"./src/jest-setup.ts$\\",\\"./**/jest-setup.ts$\\",\\".*.js$\\"]
-        }"
-      `);
-
-      expect;
     });
   });
 
@@ -427,10 +374,7 @@ describe('sdk', () => {
     it('should format files by default', async () => {
       jest.spyOn(devkit, 'formatFiles');
 
-      await sdkGenerator(tree, {
-        name: 'myMeshSdk',
-        compiler: 'tsc',
-      });
+      await applicationGenerator(tree, { name: 'myMeshApp' });
 
       expect(devkit.formatFiles).toHaveBeenCalled();
     });
@@ -438,11 +382,7 @@ describe('sdk', () => {
     it('should not format files when --skipFormat=true', async () => {
       jest.spyOn(devkit, 'formatFiles');
 
-      await sdkGenerator(tree, {
-        name: 'myMeshSdk',
-        skipFormat: true,
-        compiler: 'tsc',
-      });
+      await applicationGenerator(tree, { name: 'myMeshApp', skipFormat: true });
 
       expect(devkit.formatFiles).not.toHaveBeenCalled();
     });
@@ -450,16 +390,15 @@ describe('sdk', () => {
 
   describe('--meshConfig', () => {
     it('should create a YAML config by default', async () => {
-      await sdkGenerator(tree, {
-        name: 'myMeshSdk',
+      await applicationGenerator(tree, {
+        name: 'myMeshApp',
         unitTestRunner: 'none',
         standaloneConfig: false,
-        compiler: 'tsc',
       });
 
-      expect(tree.exists('libs/my-mesh-sdk/.meshrc.yml')).toBeTruthy();
+      expect(tree.exists('apps/my-mesh-app/.meshrc.yml')).toBeTruthy();
 
-      const meshConfig = tree.read('libs/my-mesh-sdk/.meshrc.yml', 'utf-8');
+      const meshConfig = tree.read('apps/my-mesh-app/.meshrc.yml', 'utf-8');
 
       expect(meshConfig).toMatchInlineSnapshot(`
         "
@@ -472,28 +411,24 @@ describe('sdk', () => {
         serve:
           browser: false
 
-        sdk:
-          generateOperations:
-            selectionSetDepth: 6
         "
       `);
     });
 
-    it.each<[string, MeshConfigExtensions]>([
+    it.each([
       ['CJS', 'cjs'],
       ['JS', 'js'],
     ])('should create a %s config when --meshConfig=%s', async (name, ext) => {
-      await sdkGenerator(tree, {
-        name: 'myMeshSdk',
+      await applicationGenerator(tree, {
+        name: 'myMeshApp',
         unitTestRunner: 'none',
         standaloneConfig: false,
         meshConfig: ext,
-        compiler: 'tsc',
       });
 
-      expect(tree.exists(`libs/my-mesh-sdk/.meshrc.${ext}`)).toBeTruthy();
+      expect(tree.exists(`apps/my-mesh-app/.meshrc.${ext}`)).toBeTruthy();
 
-      const meshConfig = tree.read(`libs/my-mesh-sdk/.meshrc.${ext}`, 'utf-8');
+      const meshConfig = tree.read(`apps/my-mesh-app/.meshrc.${ext}`, 'utf-8');
 
       expect(meshConfig).toMatchInlineSnapshot(`
         "
@@ -512,11 +447,6 @@ describe('sdk', () => {
           serve: {
             browser: false,
           },
-          sdk: {
-            generateOperations: {
-              selectionSetDepth: 6
-            }
-          }
         };
 
         "
@@ -524,25 +454,19 @@ describe('sdk', () => {
     });
 
     it('should create a JSON config when --meshConfig=json', async () => {
-      await sdkGenerator(tree, {
-        name: 'myMeshSdk',
+      await applicationGenerator(tree, {
+        name: 'myMeshApp',
         unitTestRunner: 'none',
         standaloneConfig: false,
         meshConfig: 'json',
-        compiler: 'tsc',
       });
 
-      expect(tree.exists('libs/my-mesh-sdk/.meshrc.json')).toBeTruthy();
+      expect(tree.exists('apps/my-mesh-app/.meshrc.json')).toBeTruthy();
 
-      const meshConfig = readJson(tree, 'libs/my-mesh-sdk/.meshrc.json');
+      const meshConfig = readJson(tree, 'apps/my-mesh-app/.meshrc.json');
 
       expect(meshConfig).toMatchInlineSnapshot(`
         Object {
-          "sdk": Object {
-            "generateOperations": Object {
-              "selectionSetDepth": 6,
-            },
-          },
           "serve": Object {
             "browser": false,
           },
@@ -561,17 +485,16 @@ describe('sdk', () => {
     });
 
     it('should create a YAML config when --meshConfig=yml', async () => {
-      await sdkGenerator(tree, {
-        name: 'myMeshSdk',
+      await applicationGenerator(tree, {
+        name: 'myMeshApp',
         unitTestRunner: 'none',
         standaloneConfig: false,
         meshConfig: 'yml',
-        compiler: 'tsc',
       });
 
-      expect(tree.exists('libs/my-mesh-sdk/.meshrc.yml')).toBeTruthy();
+      expect(tree.exists('apps/my-mesh-app/.meshrc.yml')).toBeTruthy();
 
-      const meshConfig = tree.read('libs/my-mesh-sdk/.meshrc.yml', 'utf-8');
+      const meshConfig = tree.read('apps/my-mesh-app/.meshrc.yml', 'utf-8');
 
       expect(meshConfig).toMatchInlineSnapshot(`
         "
@@ -584,9 +507,6 @@ describe('sdk', () => {
         serve:
           browser: false
 
-        sdk:
-          generateOperations:
-            selectionSetDepth: 6
         "
       `);
     });

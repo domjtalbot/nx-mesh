@@ -4,7 +4,7 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:build",
+      "executor": "@domjtalbot/nx-mesh:build",
       "outputs": ["libs/sdk/javascript-wiki-cjs/.mesh", "{options.outputPath}"],
       "options": {
         "dir": "libs/sdk/javascript-wiki-cjs",
@@ -29,14 +29,14 @@
       }
     },
     "serve": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:serve",
+      "executor": "@domjtalbot/nx-mesh:serve",
       "options": {
         "dev": true,
         "dir": "libs/sdk/javascript-wiki-cjs"
       }
     },
     "validate": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:validate",
+      "executor": "@domjtalbot/nx-mesh:validate",
       "options": {
         "dir": "libs/sdk/javascript-wiki-cjs"
       }

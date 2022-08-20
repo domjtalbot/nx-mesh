@@ -17,7 +17,7 @@ export function addProject(tree: Tree, options: AppGeneratorSchema) {
   const targets: Record<string, TargetConfiguration<unknown>> = {};
 
   targets['build'] = {
-    executor: '@domjtalbot/nx-plugin-graphql-mesh:build-gateway',
+    executor: '@domjtalbot/nx-mesh:build-gateway',
     outputs: [appProjectMesh, '{options.outputPath}'],
     options: {
       dir: appProjectRoot,
@@ -26,7 +26,7 @@ export function addProject(tree: Tree, options: AppGeneratorSchema) {
   };
 
   targets['serve'] = {
-    executor: '@domjtalbot/nx-plugin-graphql-mesh:serve',
+    executor: '@domjtalbot/nx-mesh:serve',
     options: {
       dev: true,
       dir: appProjectRoot,
@@ -40,7 +40,7 @@ export function addProject(tree: Tree, options: AppGeneratorSchema) {
   };
 
   targets['validate'] = {
-    executor: '@domjtalbot/nx-plugin-graphql-mesh:validate',
+    executor: '@domjtalbot/nx-mesh:validate',
     options: {
       dir: appProjectRoot,
     },

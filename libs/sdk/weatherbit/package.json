@@ -1,5 +1,5 @@
 {
-  "name": "@nx-plugin-graphql-mesh/sdk/weatherbit",
+  "name": "@nx-mesh/sdk/weatherbit",
   "version": "0.0.1",
   "type": "commonjs"
 }

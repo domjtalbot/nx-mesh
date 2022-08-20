@@ -4,7 +4,7 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:build-swc",
+      "executor": "@domjtalbot/nx-mesh:build-swc",
       "outputs": ["libs/sdk/trippin-swc/.mesh", "{options.outputPath}"],
       "options": {
         "dir": "libs/sdk/trippin-swc",
@@ -19,7 +19,7 @@
       }
     },
     "serve": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:serve",
+      "executor": "@domjtalbot/nx-mesh:serve",
       "options": {
         "dir": "libs/sdk/trippin-swc",
         "dev": true
@@ -41,7 +41,7 @@
       }
     },
     "validate": {
-      "executor": "@domjtalbot/nx-plugin-graphql-mesh:validate",
+      "executor": "@domjtalbot/nx-mesh:validate",
       "options": {
         "dir": "libs/sdk/trippin-swc"
       }

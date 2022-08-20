@@ -28,7 +28,7 @@
     "nextjs-trippin-swc-e2e": "apps/nextjs/trippin-swc-e2e",
     "nextjs-weatherbit": "apps/nextjs/weatherbit",
     "nextjs-weatherbit-e2e": "apps/nextjs/weatherbit-e2e",
-    "nx-plugin-graphql-mesh": "libs/nx-plugin-graphql-mesh",
+    "nx-mesh": "libs/nx-mesh",
     "sdk-javascript-wiki": "libs/sdk/javascript-wiki",
     "sdk-javascript-wiki-cjs": "libs/sdk/javascript-wiki-cjs",
     "sdk-javascript-wiki-js": "libs/sdk/javascript-wiki-js",

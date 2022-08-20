@@ -2,7 +2,7 @@ import { useDepthLimit as depthLimit } from '@envelop/depth-limit';
 import { useDisableIntrospection as disableIntrospection } from '@envelop/disable-introspection';
 import { createServer } from '@graphql-yoga/node';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getBuiltMesh } from '@nx-plugin-graphql-mesh/sdk/weatherbit';
+import { getBuiltMesh } from '@nx-mesh/sdk/weatherbit';
 
 async function buildServer() {
   // retrieve the mesh instance (with configured Envelop plugins)

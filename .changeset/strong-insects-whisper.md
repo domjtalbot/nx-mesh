@@ -1,5 +1,5 @@
 ---
-'nx-plugin-graphql-mesh': major
+'nx-mesh': major
 ---
 
 Add mesh `validate` executor

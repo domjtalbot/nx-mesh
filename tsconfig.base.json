@@ -15,43 +15,33 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@domjtalbot/nx-plugin-graphql-mesh": [
-        "libs/nx-plugin-graphql-mesh/src/index.ts"
-      ],
-      "@nx-plugin-graphql-mesh/sdk/javascript-wiki": [
-        "libs/sdk/javascript-wiki/src/index.ts"
-      ],
-      "@nx-plugin-graphql-mesh/sdk/javascript-wiki-cjs": [
+      "@domjtalbot/nx-mesh": ["libs/nx-mesh/src/index.ts"],
+      "@nx-mesh/sdk/javascript-wiki": ["libs/sdk/javascript-wiki/src/index.ts"],
+      "@nx-mesh/sdk/javascript-wiki-cjs": [
         "libs/sdk/javascript-wiki-cjs/src/index.ts"
       ],
-      "@nx-plugin-graphql-mesh/sdk/javascript-wiki-js": [
+      "@nx-mesh/sdk/javascript-wiki-js": [
         "libs/sdk/javascript-wiki-js/src/index.ts"
       ],
-      "@nx-plugin-graphql-mesh/sdk/javascript-wiki-json": [
+      "@nx-mesh/sdk/javascript-wiki-json": [
         "libs/sdk/javascript-wiki-json/src/index.ts"
       ],
-      "@nx-plugin-graphql-mesh/sdk/javascript-wiki-swc": [
+      "@nx-mesh/sdk/javascript-wiki-swc": [
         "libs/sdk/javascript-wiki-swc/src/index.ts"
       ],
-      "@nx-plugin-graphql-mesh/sdk/javascript-wiki-swc-cjs": [
+      "@nx-mesh/sdk/javascript-wiki-swc-cjs": [
         "libs/sdk/javascript-wiki-swc-cjs/src/index.ts"
       ],
-      "@nx-plugin-graphql-mesh/sdk/javascript-wiki-swc-js": [
+      "@nx-mesh/sdk/javascript-wiki-swc-js": [
         "libs/sdk/javascript-wiki-swc-js/src/index.ts"
       ],
-      "@nx-plugin-graphql-mesh/sdk/javascript-wiki-swc-json": [
+      "@nx-mesh/sdk/javascript-wiki-swc-json": [
         "libs/sdk/javascript-wiki-swc-json/src/index.ts"
       ],
-      "@nx-plugin-graphql-mesh/sdk/stackexchange": [
-        "libs/sdk/stackexchange/src/index.ts"
-      ],
-      "@nx-plugin-graphql-mesh/sdk/trippin": ["libs/sdk/trippin/src/index.ts"],
-      "@nx-plugin-graphql-mesh/sdk/trippin-swc": [
-        "libs/sdk/trippin-swc/src/index.ts"
-      ],
-      "@nx-plugin-graphql-mesh/sdk/weatherbit": [
-        "libs/sdk/weatherbit/src/index.ts"
-      ]
+      "@nx-mesh/sdk/stackexchange": ["libs/sdk/stackexchange/src/index.ts"],
+      "@nx-mesh/sdk/trippin": ["libs/sdk/trippin/src/index.ts"],
+      "@nx-mesh/sdk/trippin-swc": ["libs/sdk/trippin-swc/src/index.ts"],
+      "@nx-mesh/sdk/weatherbit": ["libs/sdk/weatherbit/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
