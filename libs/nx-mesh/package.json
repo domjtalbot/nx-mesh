@@ -9,13 +9,11 @@
     "nx": ">=14"
   },
   "dependencies": {
-    "@nrwl/devkit": "14.1.9",
-    "@nrwl/js": "14.1.9",
-    "@nrwl/workspace": "14.1.9",
-    "@types/fs-extra": "9.0.13",
+    "@nrwl/devkit": "14.4.3",
+    "@nrwl/js": "14.4.3",
+    "@nrwl/workspace": "14.4.3",
     "fs-extra": "10.1.0",
-    "get-port": "5.1.1",
-    "type-fest": "2.18.0"
+    "get-port": "5.1.1"
   },
   "repository": {
     "directory": "libs/nx-mesh",
