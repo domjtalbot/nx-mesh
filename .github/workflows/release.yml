@@ -72,9 +72,40 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  next:
+    name: Release
+    needs: [release]
+    if: needs.release.outputs.published != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Build
+        run: pnpm nx run-many --target=build --configuration=production --all
+
+      - name: Modify Workspace File
+        run: sed -e 's/libs\//dist\/libs\//g' pnpm-workspace.yaml > pnpm-workspace-dist.yaml && mv pnpm-workspace-dist.yaml pnpm-workspace.yaml
+
+      - name: Release Snapshot
+        id: snapshot
+        uses: the-guild-org/changesets-snapshot-action@v0.0.1
+        with:
+          tag: next
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   deploy:
-    needs: [build-test, release]
+    needs: [release]
     if: needs.release.outputs.published == 'true'
     uses: ./.github/workflows/deploy.yml
     with:
