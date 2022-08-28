@@ -43,7 +43,7 @@
 - Generate a GraphQL Mesh SDK
   - Supports deploying to Vercel as a NextJS route
 - Supports all GraphQL CLI commands (`build`, `dev`, `start`, `validate`)
-- Use SWC to compile a GraphQL Mesh SDK
+- Use [SWC](https://swc.rs/) to compile a GraphQL Mesh SDK
 - Automatically use the first available port when running `dev`, `start` or `serve`.
 - Supports E2E
 
@@ -290,7 +290,7 @@ This is the equivalent of using `graphql-mesh build`, but with extra steps for c
 
 Builds artifacts for a GraphQL Mesh library.
 
-This is the equivalent of using `graphql-mesh build`, but with extra steps for packaging the library with SWC.
+This is the equivalent of using `graphql-mesh build`, but with extra steps for packaging the library with [SWC](https://swc.rs/).
 
 ```json
 "targets": {
