@@ -1,6 +1,6 @@
 {
   "name": "nx-mesh",
-  "description": "A GraphQL Mesh plugin for Nx",
+  "description": "GraphQL Mesh support for Nx",
   "version": "0.0.0",
   "license": "MIT",
   "main": "src/index.js",
