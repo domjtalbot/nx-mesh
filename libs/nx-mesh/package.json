@@ -1,5 +1,6 @@
 {
   "name": "nx-mesh",
+  "description": "A GraphQL Mesh plugin for Nx",
   "version": "0.0.0",
   "main": "src/index.js",
   "generators": "./generators.json",
