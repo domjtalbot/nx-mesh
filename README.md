@@ -2,7 +2,7 @@
 
 <p align="center">A <a href="http://graphql-mesh.com">GraphQL Mesh</a> plugin for <a href="http://nx.dev">Nx</a>.</p>
 
-<div align="center">
+<div align="center">****
   <p dir="auto">
     <a href="https://github.com/sponsors/domjtalbot">
       <img src="https://img.shields.io/badge/Sponsor @domjtalbot-30363D?style=flat&logo=GitHub-Sponsors&logoColor=#EA4AAA" alt="Sponsor @domjtalbot on GitHub!" />
@@ -16,16 +16,24 @@
 
 ### Install
 
+```bash
+npm install -D nx-mesh
 ```
-TBC
+
+```bash
+yarn add -D nx-mesh
+```
+
+```bash
+pnpm add -D nx-mesh
 ```
 
 ### Peer Dependencies
 
-| Name                    | Version    | Required | Auto-installed |
-| ----------------------- | ---------- | :------: | :------------: |
-| **`nx`**                | `>=14`     |    ✅    |       -        |
-| **`@graphql-mesh/cli`** | `>=0.71.0` |    ✅    |       ✅       |
+| Name                    | Version    | Required | Auto-installed by generators |
+| ----------------------- | ---------- | :------: | :--------------------------: |
+| **`nx`**                | `>=14`     |    ✅    |              -               |
+| **`@graphql-mesh/cli`** | `>=0.71.0` |    ✅    |              ✅              |
 
 <br/>
 
