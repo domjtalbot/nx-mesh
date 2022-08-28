@@ -15,7 +15,7 @@ export function updateDependencies(host: Tree) {
     host,
     {
       '@graphql-mesh/cli': meshCliVersion,
-      '@graphql-mesh/new-openapi': meshOpenApiVersion,
+      '@graphql-mesh/openapi': meshOpenApiVersion,
       '@graphql-mesh/runtime': meshRuntimeVersion,
       '@graphql-mesh/utils': meshUtilsVersion,
       graphql: graphqlVersion,
