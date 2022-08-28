@@ -2,7 +2,7 @@
 
 <p align="center">A <a href="http://graphql-mesh.com">GraphQL Mesh</a> plugin for <a href="http://nx.dev">Nx</a>.</p>
 
-<div align="center">****
+<div align="center">
   <p dir="auto">
     <a href="https://github.com/sponsors/domjtalbot">
       <img src="https://img.shields.io/badge/Sponsor @domjtalbot-30363D?style=flat&logo=GitHub-Sponsors&logoColor=#EA4AAA" alt="Sponsor @domjtalbot on GitHub!" />
@@ -12,20 +12,61 @@
 
 <br/>
 
-## 📚 How to use
+## Contents
 
-### Install
+- [Features](#features)
+- [Installing](#installing)
+  - [Peer Dependencies](#peer-dependencies)
+- [Generators](#generators)
+  - [`application`](#application)
+  - [`sdk`](#sdk)
+- [Executors](#executors)
+  - [`build`](#build)
+  - [`build-gateway`](#build-gateway)
+  - [`build-swc`](#build-swc)
+  - [`dev`](#dev)
+  - [`start`](#start)
+  - [`serve`](#serve)
+  - [`validate`](#validate)
+- [Examples](#examples)
+  - [API Gateway](#api-gateway)
+  - [SDK](#sdk-1)
+- [Credits](#credits)
+
+<br/>
+
+## Features
+
+- Use GraphQL Mesh to combine multiple APIs into a single GraphQL API.
+- Generate a GraphQL Mesh API Gateway
+  - A standalone application for running GraphQL Mesh.
+- Generate a GraphQL Mesh SDK
+  - Supports deploying to Vercel as a NextJS route
+- Supports all GraphQL CLI commands (`build`, `dev`, `start`, `validate`)
+- Use SWC to compile a GraphQL Mesh SDK
+- Automatically use the first available port when running `dev`, `start` or `serve`.
+- Supports E2E
+
+<br/>
+
+## Installing
+
+Using [npm](https://npmjs.com):
 
 ```bash
 npm install -D nx-mesh
 ```
 
-```bash
-yarn add -D nx-mesh
-```
+Using [pnpm](http://pnpm.io):
 
 ```bash
 pnpm add -D nx-mesh
+```
+
+Using [yarn](http://yarnpkg.com):
+
+```bash
+yarn add -D nx-mesh
 ```
 
 ### Peer Dependencies
@@ -37,7 +78,7 @@ pnpm add -D nx-mesh
 
 <br/>
 
-## 🤖 Generators
+## Generators
 
 ### `application`
 
@@ -176,7 +217,7 @@ CREATE libs/my-mesh-sdk/src/lib/sdk.ts
 
 <br/>
 
-## 🏗️ Executors
+## Executors
 
 ### `build`
 
@@ -424,7 +465,7 @@ This is the equifilent of using `graphql-mesh validate`.
 
 <br/>
 
-## 🎁 Examples
+## Examples
 
 ### API Gateway
 
@@ -448,8 +489,14 @@ This is the equifilent of using `graphql-mesh validate`.
 | **`apps/nextjs/weatherbit`**    | `new-openapi`  | `nextjs`  | `tsc`    | -                                                           |
 
 <br/>
+
+## Credits
+
+[GraphQL Mesh](https://github.com/Urigo/graphql-mesh) is made by the awesome team at [The Guild](https://www.the-guild.dev).
+
+<br/>
 <br/>
 
-<p align="center">🕸️ ♥ 🐋</p>
+<p align="center">🌳 🦌 🌳</p>
 
 <br/>
