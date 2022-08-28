@@ -11,6 +11,7 @@
   "dependencies": {
     "@nrwl/devkit": "14.4.3",
     "@nrwl/js": "14.4.3",
+    "@nrwl/node": "14.4.3",
     "@nrwl/workspace": "14.4.3",
     "fs-extra": "10.1.0",
     "get-port": "5.1.1"
