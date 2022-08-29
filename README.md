@@ -9,6 +9,12 @@
     <a href="https://github.com/sponsors/domjtalbot">
       <img src="https://img.shields.io/badge/Sponsor @domjtalbot-30363D?style=flat&logo=GitHub-Sponsors&logoColor=#EA4AAA" alt="Sponsor @domjtalbot on GitHub!" />
     </a>
+    <a href="https://www.npmjs.org/package/nx-mesh">
+      <img src="https://img.shields.io/npm/v/nx-mesh?style=flat" alt="Nx Mesh package on NPM" />
+    </a>
+    <a href="https://www.npmjs.org/package/nx-mesh">
+      <img src="https://img.shields.io/npm/dm/nx-mesh" alt="Nx Mesh package downloads on NPM" aria-hidden="true" />
+    </a>
   </p>
 </div>
 
