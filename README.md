@@ -1,6 +1,6 @@
-<!-- ![Nx Mesh. GraphQL Mesh for Nx](https://github.com/domjtalbot/nx-mesh/raw/main/.github/banner.png) -->
+![Nx Mesh. GraphQL Mesh for Nx](https://github.com/domjtalbot/nx-mesh/raw/main/.github/banner.jpg)
 
-![Nx Mesh. GraphQL Mesh for Nx](.github/banner.jpg)
+<h1 align="center">Nx Mesh</h1>
 
 <p align="center"><a href="http://graphql-mesh.com">GraphQL Mesh</a> support for <a href="http://nx.dev">Nx</a>.</p>
 
