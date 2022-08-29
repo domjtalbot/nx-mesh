@@ -12,6 +12,8 @@
         "tsConfig": "libs/nx-mesh/tsconfig.lib.json",
         "assets": [
           "README.md",
+          "CHANGELOG.md",
+          "LICENSE",
           "libs/nx-mesh/*.md",
           {
             "input": "./libs/nx-mesh/src",
