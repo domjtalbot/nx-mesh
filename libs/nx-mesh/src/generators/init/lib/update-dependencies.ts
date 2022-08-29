@@ -7,6 +7,7 @@ import {
   meshCliVersion,
   meshRuntimeVersion,
   meshUtilsVersion,
+  meshOpenApiVersion,
 } from '../../../utils/versions';
 
 export function updateDependencies(host: Tree) {
@@ -14,6 +15,7 @@ export function updateDependencies(host: Tree) {
     host,
     {
       '@graphql-mesh/cli': meshCliVersion,
+      '@graphql-mesh/openapi': meshOpenApiVersion,
       '@graphql-mesh/runtime': meshRuntimeVersion,
       '@graphql-mesh/utils': meshUtilsVersion,
       graphql: graphqlVersion,

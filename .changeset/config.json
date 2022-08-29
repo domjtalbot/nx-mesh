@@ -5,10 +5,13 @@
     { "repo": "domjtalbot/nx-mesh" }
   ],
   "commit": false,
-  "fixed": [],
   "linked": [],
-  "access": "restricted",
+  "fixed": [["nx-mesh", "*"]],
+  "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": []
+  "ignore": [],
+  "snapshot": {
+    "useCalculatedVersion": true
+  }
 }

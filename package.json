@@ -1,19 +1,20 @@
 {
-  "name": "nx-mesh",
-  "version": "0.0.0",
-  "license": "MIT",
   "scripts": {
     "build": "nx run-many --target=build --all",
     "ci": "pnpm lint:fix --parallel=1 && pnpm build --parallel=1 && pnpm test --parallel=1 && pnpm validate --parallel=1 && pnpm e2e --parallel=1",
     "e2e": "nx run-many --target=e2e --all --parallel=1 && nx run-many --target=e2e --all --configuration=start --parallel=1 && nx run-many --target=e2e --all --configuration=serve --parallel=1 && nx run-many --target=e2e --all --configuration=serve-dev",
     "lint:fix": "nx format:write && nx run-many --target=lint --all --fix",
     "lint": "nx workspace-lint && nx format && nx run-many --target=lint --all",
+    "postinstall": "husky install",
     "test": "nx run-many --target=test --all",
-    "validate": "nx run-many --target=validate --all",
-    "postinstall": "husky install"
+    "validate": "nx run-many --target=validate --all"
   },
+  "license": "MIT",
   "engines": {
     "pnpm": ">=7"
+  },
+  "volta": {
+    "node": "16.16.0"
   },
   "private": true,
   "dependencies": {
@@ -93,8 +94,5 @@
     "ts-node": "10.8.2",
     "tslib": "2.4.0",
     "typescript": "4.7.4"
-  },
-  "volta": {
-    "node": "16.16.0"
   }
 }
