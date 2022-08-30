@@ -32,5 +32,9 @@
     "directory": "libs/nx-mesh",
     "type": "git",
     "url": "git://github.com/domjtalbot/nx-mesh.git"
+  },
+  "funding": {
+    "type": "GitHub",
+    "url": "https://github.com/sponsors/domjtalbot"
   }
 }
