@@ -18,6 +18,16 @@
     "fs-extra": "10.1.0",
     "get-port": "5.1.1"
   },
+  "keywords": [
+    "Monorepo",
+    "Node",
+    "Jest",
+    "Cypress",
+    "CLI",
+    "GraphQL",
+    "GraphQL-Mesh",
+    "Mesh"
+  ],
   "repository": {
     "directory": "libs/nx-mesh",
     "type": "git",
