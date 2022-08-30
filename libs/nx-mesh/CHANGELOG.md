@@ -1,5 +1,11 @@
 # nx-mesh
 
+## 1.0.1
+
+### Patch Changes
+
+- [#61](https://github.com/domjtalbot/nx-mesh/pull/61) [`73786d1`](https://github.com/domjtalbot/nx-mesh/commit/73786d15d386dcda526c86f1c0feb27a483fa6d7) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Add NPM package meta data
+
 ## 1.0.0
 
 ### Major Changes
