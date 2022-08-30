@@ -228,7 +228,7 @@ jobs:
       - name: E2E
         timeout-minutes: 8
         if: matrix.command == 'e2e'
-        uses: cypress-io/github-action@be2de7b1fe1cdafb4a3c8da0a3746476ef636b65 # tag=v4.1.0
+        uses: cypress-io/github-action@30008f1458a5a2c97054bfe118fe33d75976c482 # tag=v4.2.0
         with:
           install: false
           command: |
@@ -237,7 +237,7 @@ jobs:
       - name: E2E (Start)
         timeout-minutes: 8
         if: matrix.command == 'e2e-start'
-        uses: cypress-io/github-action@be2de7b1fe1cdafb4a3c8da0a3746476ef636b65 # tag=v4.1.0
+        uses: cypress-io/github-action@30008f1458a5a2c97054bfe118fe33d75976c482 # tag=v4.2.0
         with:
           install: false
           command: |
@@ -246,7 +246,7 @@ jobs:
       - name: E2E (Serve)
         timeout-minutes: 8
         if: matrix.command == 'e2e-serve'
-        uses: cypress-io/github-action@be2de7b1fe1cdafb4a3c8da0a3746476ef636b65 # tag=v4.1.0
+        uses: cypress-io/github-action@30008f1458a5a2c97054bfe118fe33d75976c482 # tag=v4.2.0
         with:
           install: false
           command: |
@@ -255,7 +255,7 @@ jobs:
       - name: E2E (Serve Dev)
         timeout-minutes: 8
         if: matrix.command == 'e2e-serve-dev'
-        uses: cypress-io/github-action@be2de7b1fe1cdafb4a3c8da0a3746476ef636b65 # tag=v4.1.0
+        uses: cypress-io/github-action@30008f1458a5a2c97054bfe118fe33d75976c482 # tag=v4.2.0
         with:
           install: false
           command: |
