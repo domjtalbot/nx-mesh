@@ -15,11 +15,11 @@ runs:
   steps:
     - name: Setup Volta
       if: inputs.node-version == 'config'
-      uses: volta-cli/action@76620aa011ba56028bb0bae35caa5f9b6118c8c7 # tag=v1.7.0
+      uses: volta-cli/action@485f6887c3c8b888e1bd55f0e0518423205fb2c5 # tag=v3.0.1
 
     - name: Setup Volta
       if: inputs.node-version != 'config'
-      uses: volta-cli/action@76620aa011ba56028bb0bae35caa5f9b6118c8c7 # tag=v1.7.0
+      uses: volta-cli/action@485f6887c3c8b888e1bd55f0e0518423205fb2c5 # tag=v3.0.1
       with:
         node-version: ${{ inputs.node-version }}
 
