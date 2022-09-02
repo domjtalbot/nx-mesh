@@ -11,10 +11,10 @@
     "nx": ">=14"
   },
   "dependencies": {
-    "@nrwl/devkit": "14.5.3",
-    "@nrwl/js": "14.5.3",
-    "@nrwl/node": "14.5.3",
-    "@nrwl/workspace": "14.5.3",
+    "@nrwl/devkit": "14.5.4",
+    "@nrwl/js": "14.5.4",
+    "@nrwl/node": "14.5.4",
+    "@nrwl/workspace": "14.5.4",
     "fs-extra": "10.1.0",
     "get-port": "5.1.1"
   },
