@@ -12,7 +12,9 @@
         "outputPath": "dist/apps/nextjs/javascript-wiki"
       },
       "configurations": {
-        "development": {},
+        "development": {
+          "outputPath": "apps/nextjs/javascript-wiki"
+        },
         "production": {}
       }
     },

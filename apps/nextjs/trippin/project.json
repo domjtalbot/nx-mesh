@@ -12,7 +12,9 @@
         "outputPath": "dist/apps/nextjs/trippin"
       },
       "configurations": {
-        "development": {},
+        "development": {
+          "outputPath": "apps/nextjs/trippin"
+        },
         "production": {}
       }
     },

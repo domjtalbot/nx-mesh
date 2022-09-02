@@ -12,7 +12,9 @@
         "outputPath": "dist/apps/nextjs/weatherbit"
       },
       "configurations": {
-        "development": {},
+        "development": {
+          "outputPath": "apps/nextjs/weatherbit"
+        },
         "production": {}
       }
     },

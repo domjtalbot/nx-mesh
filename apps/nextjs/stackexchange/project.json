@@ -12,7 +12,9 @@
         "outputPath": "dist/apps/nextjs/stackexchange"
       },
       "configurations": {
-        "development": {},
+        "development": {
+          "outputPath": "apps/nextjs/stackexchange"
+        },
         "production": {}
       }
     },

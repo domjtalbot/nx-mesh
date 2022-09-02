@@ -1,0 +1,20 @@
+{
+  "migrations": [
+    {
+      "cli": "nx",
+      "version": "14.5.3-beta.0",
+      "description": "Add .next folder to gitignore.",
+      "factory": "./src/migrations/update-14-5-3/add-gitignore-entry",
+      "package": "@nrwl/next",
+      "name": "add-gitignore-entry"
+    },
+    {
+      "cli": "nx",
+      "version": "14.5.3-beta.0",
+      "description": "Update development outputPath to the project root.",
+      "factory": "./src/migrations/update-14-5-3/update-dev-output-path",
+      "package": "@nrwl/next",
+      "name": "update-dev-output-path"
+    }
+  ]
+}
