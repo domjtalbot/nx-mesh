@@ -39,6 +39,15 @@ export function setDefaults(host: Tree, options: NormalizedOptions) {
     };
   }
 
+  if (workspace.targetDefaults) {
+    workspace.targetDefaults = {
+      ...workspace.targetDefaults,
+      validate: {
+        dependsOn: ['build'],
+      },
+    };
+  }
+
   workspace.generators = workspace.generators || {};
   workspace.generators['nx-mesh'] = workspace.generators['nx-mesh'] || {};
 
