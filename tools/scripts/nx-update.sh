@@ -58,6 +58,7 @@ function finish() {
 
 printf "\n\n$(yellowBackground "Updating Nx to ${version}.")\n\n"
 
+pnpm nx reset
 pnpm nx migrate @nrwl/workspace@${version}
 pnpm install
 pnpm update \
@@ -82,6 +83,8 @@ pnpm nx format:write --skip-nx-cache && \
   pnpm nx run nx-mesh:lint --fix --skip-nx-cache && \
   pnpm nx run nx-mesh:build --skip-nx-cache && \
   pnpm nx run nx-mesh:test --skip-nx-cache
+
+pnpm nx repair
 
 exitCode=$?
 
