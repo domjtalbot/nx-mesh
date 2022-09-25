@@ -36,29 +36,13 @@ function yellowBackground {
 }
 
 # Print the script duration time
-function timeDuration() {
+function timeDuration {
   timeEllapsed="$(($(date +%s)-$timeEllapsed))"
   printf "\n\nDuration: ${timeEllapsed} seconds."
 }
 
-function getInputVariables() {
-  while [ $# -gt 0 ]; do
-    if [[ $1 == *"--"* ]]; then
-      param="${1/--/}"
-
-      if [[ $2 = "" || $2 == *"--"* ]]; then
-        declare $param=true
-      else
-        declare $param="$2"
-      fi
-    fi
-
-    shift
-  done
-}
-
 # Display helpful information.
-function helpInfo() {
+function helpInfo {
   if [ $exitCode == 0 ]; then
     helpoptionsrows="\n  --%-30s %-40s"
 
@@ -78,7 +62,7 @@ function helpInfo() {
       printf "\n"
       printf "Options:"
       printf "\n"
-      printf "$helpoptionsrows" "version" "$1"
+      printf "$helpoptionsrows" "version" "$version"
       printf "$helpoptionsrows" "dry" "$dry"
       printf "\n\n"
     fi
@@ -86,7 +70,7 @@ function helpInfo() {
 }
 
 # The script has completed.
-function finish() {
+function finish {
   if [ $exitCode == 0 ]; then
     timeDuration
     printf "\n\n$(greenBackground "Successful.")\n\n"
@@ -98,16 +82,15 @@ function finish() {
 }
 
 # Reset Nx Cache
-function resetCache() {
+function resetCache {
   if [ $exitCode == 0 ]; then
-    pnpm nx reset && \
-      rm -R ./node_modules/.cache/nx
-    exitCode=$?
+    pnpm nx reset
+    rm -R node_modules/.cache/nx
   fi
 }
 
 # Get the Nx update details
-function getNxUpdate() {
+function getNxUpdate {
   if [ $exitCode == 0 ]; then
     pnpm nx migrate ${version}
     exitCode=$?
@@ -115,7 +98,7 @@ function getNxUpdate() {
 }
 
 # Install package updates
-function installUpdates() {
+function installUpdates {
   if [ $exitCode == 0 ]; then
     pnpm install && \
       pnpm update \
@@ -136,7 +119,7 @@ function installUpdates() {
   fi
 }
 
-function runMigrations() {
+function runMigrations {
   if [ $exitCode == 0 ]; then
     pnpm nx migrate --run-migrations && \
       pnpm install && \
@@ -146,7 +129,7 @@ function runMigrations() {
   fi
 }
 
-function testUpdate() {
+function testUpdate {
   if [ $exitCode == 0 ]; then
     pnpm nx format:write --skip-nx-cache && \
       pnpm nx run nx-mesh:lint --fix --skip-nx-cache && \
@@ -157,7 +140,7 @@ function testUpdate() {
   fi
 }
 
-function commit() {
+function commit {
   if [ $exitCode == 0 ] && [ "$dry" != true ]; then
     git add -A && \
       git commit --message "feat: upgrade nx to `${version}`"
@@ -170,7 +153,21 @@ function commit() {
 # Workflow
 # ---------------------------------------------------------
 
-getInputVariables
+# Get input arguments and assign to variables
+while [ $# -gt 0 ]; do
+  if [[ $1 == *"--"* ]]; then
+    param="${1/--/}"
+
+    if [[ $2 = "" || $2 == *"--"* ]]; then
+      declare $param=true
+    else
+      declare $param="$2"
+    fi
+  fi
+
+  shift
+done
+
 helpInfo
 
 resetCache
