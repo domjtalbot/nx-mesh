@@ -85,7 +85,6 @@ function finish {
 function resetCache {
   if [ $exitCode == 0 ]; then
     pnpm nx reset
-    rm -R node_modules/.cache/nx
   fi
 }
 
@@ -131,7 +130,7 @@ function runMigrations {
 
 function testUpdate {
   if [ $exitCode == 0 ]; then
-    pnpm nx format:write --skip-nx-cache && \
+    pnpm nx-cloud record -- nx format:write --skip-nx-cache && \
       pnpm nx run nx-mesh:lint --fix --skip-nx-cache && \
       pnpm nx run nx-mesh:build --skip-nx-cache && \
       pnpm nx run nx-mesh:test --skip-nx-cache
