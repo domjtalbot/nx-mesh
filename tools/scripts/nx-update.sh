@@ -11,6 +11,9 @@ timeEllapsed="$(date +%s)"
 
 # Version to update Nx to
 version=${1}
+dry=${dry}
+
+exitCode=0
 
 
 # ---------------------------------------------------------
@@ -33,16 +36,59 @@ function yellowBackground {
 }
 
 # Print the script duration time
-function timeDuration {
+function timeDuration() {
   timeEllapsed="$(($(date +%s)-$timeEllapsed))"
   printf "\n\nDuration: ${timeEllapsed} seconds."
 }
 
+function getInputVariables() {
+  while [ $# -gt 0 ]; do
+    if [[ $1 == *"--"* ]]; then
+      param="${1/--/}"
+
+      if [[ $2 = "" || $2 == *"--"* ]]; then
+        declare $param=true
+      else
+        declare $param="$2"
+      fi
+    fi
+
+    shift
+  done
+}
+
+# Display helpful information.
+function helpInfo() {
+  if [ $exitCode == 0 ]; then
+    helpoptionsrows="\n  --%-30s %-40s"
+
+    if [ "$help" = true ]; then
+      printf "\n"
+      printf "Usage: ./tools/scripts/nx-update.sh version [flags]"
+      printf "\n"
+      printf "       ./tools/scripts/nx-update.sh 14.5.6 --dry"
+      printf "\n\n"
+      printf "Options:"
+      printf "\n"
+      printf "$helpoptionsrows" "dry" "Run Nx update without commiting changes."
+      printf "$helpoptionsrows" "help" "Show help text."
+      printf "\n\n"
+      exit 0
+    else
+      printf "\n"
+      printf "Options:"
+      printf "\n"
+      printf "$helpoptionsrows" "version" "$1"
+      printf "$helpoptionsrows" "dry" "$dry"
+      printf "\n\n"
+    fi
+  fi
+}
+
 # The script has completed.
 function finish() {
-  timeDuration
-
   if [ $exitCode == 0 ]; then
+    timeDuration
     printf "\n\n$(greenBackground "Successful.")\n\n"
   else
     printf "\n\n$(redBackground "Failed with code $?.")\n\n"
@@ -51,48 +97,88 @@ function finish() {
   exit $exitCode
 }
 
+# Reset Nx Cache
+function resetCache() {
+  if [ $exitCode == 0 ]; then
+    pnpm nx reset && \
+      rm -R ./node_modules/.cache/nx
+    exitCode=$?
+  fi
+}
+
+# Get the Nx update details
+function getNxUpdate() {
+  if [ $exitCode == 0 ]; then
+    pnpm nx migrate ${version}
+    exitCode=$?
+  fi
+}
+
+# Install package updates
+function installUpdates() {
+  if [ $exitCode == 0 ]; then
+    pnpm install && \
+      pnpm update \
+        @nrwl/devkit@${version} \
+        @nrwl/js@${version} && \
+        cd libs/nx-mesh && \
+        pnpm update \
+          @nrwl/cypress@${version} \
+          @nrwl/devkit@${version} \
+          @nrwl/js@${version} \
+          @nrwl/linter@${version} \
+          @nrwl/node@${version} \
+          @nrwl/workspace@${version} && \
+        cd ../../ && \
+        pnpm install
+
+    exitCode=$?
+  fi
+}
+
+function runMigrations() {
+  if [ $exitCode == 0 ]; then
+    pnpm nx migrate --run-migrations && \
+      pnpm install && \
+      pnpm nx repair
+
+    exitCode=$?
+  fi
+}
+
+function testUpdate() {
+  if [ $exitCode == 0 ]; then
+    pnpm nx format:write --skip-nx-cache && \
+      pnpm nx run nx-mesh:lint --fix --skip-nx-cache && \
+      pnpm nx run nx-mesh:build --skip-nx-cache && \
+      pnpm nx run nx-mesh:test --skip-nx-cache
+
+    exitCode=$?
+  fi
+}
+
+function commit() {
+  if [ $exitCode == 0 ] && [ "$dry" != true ]; then
+    git add -A && \
+      git commit --message "feat: upgrade nx to `${version}`"
+
+    exitCode=$?
+  fi
+}
 
 # ---------------------------------------------------------
 # Workflow
 # ---------------------------------------------------------
 
-printf "\n\n$(yellowBackground "Updating Nx to ${version}.")\n\n"
+getInputVariables
+helpInfo
 
-pnpm nx reset
-pnpm nx migrate @nrwl/workspace@${version}
-pnpm install
-pnpm update \
-  @nrwl/devkit@${version} \
-  @nrwl/js@${version}
+resetCache
+getNxUpdate
+installUpdates
+runMigrations
+testUpdate
 
-cd libs/nx-mesh
-pnpm update \
-  @nrwl/cypress@${version} \
-  @nrwl/devkit@${version} \
-  @nrwl/js@${version} \
-  @nrwl/linter@${version} \
-  @nrwl/node@${version} \
-  @nrwl/workspace@${version}
-cd ../../
-
-pnpm install
-pnpm nx migrate --run-migrations
-pnpm install
-
-pnpm nx format:write --skip-nx-cache && \
-  pnpm nx run nx-mesh:lint --fix --skip-nx-cache && \
-  pnpm nx run nx-mesh:build --skip-nx-cache && \
-  pnpm nx run nx-mesh:test --skip-nx-cache
-
-pnpm nx repair
-
-exitCode=$?
-
-if [ $exitCode == 0 ]; then
-  git add -A
-  git commit --message "feat: upgrade nx to `${version}`"
-fi
-
-exitCode=$?
+commit
 
 finish
