@@ -3,7 +3,7 @@ import type { BaseOptions } from './schema';
 
 import * as devkit from '@nrwl/devkit';
 import { getProjects, readJson } from '@nrwl/devkit';
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
 import { Linter } from '@nrwl/linter';
 
 import { baseGenerator } from './base';
@@ -74,7 +74,7 @@ describe.each<
     let tree: Tree;
 
     beforeEach(() => {
-      tree = createTreeWithEmptyWorkspace();
+      tree = createTreeWithEmptyV1Workspace();
     });
 
     afterEach(() => {

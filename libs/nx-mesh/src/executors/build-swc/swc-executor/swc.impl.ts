@@ -118,7 +118,8 @@ export async function* swcExecutor(
   const swcHelperDependency = getHelperDependency(
     HelperDependency.swc,
     options.swcCliOptions.swcrcPath,
-    dependencies
+    dependencies,
+    context.projectGraph
   );
 
   if (swcHelperDependency) {
@@ -147,14 +148,12 @@ export async function* swcExecutor(
           !options.skipTypeCheck
         )
     );
-    process.on('exit', async () => {
+    const handleTermination = async () => {
       await disposeWatchAssetChanges();
       await disposePackageJsonChanges();
-    });
-    process.on('SIGTERM', async () => {
-      await disposeWatchAssetChanges();
-      await disposePackageJsonChanges();
-    });
+    };
+    process.on('SIGINT', () => handleTermination());
+    process.on('SIGTERM', () => handleTermination());
 
     return yield* compileSwcWatch(
       context,
