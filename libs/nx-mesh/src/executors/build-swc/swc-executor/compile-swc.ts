@@ -17,6 +17,7 @@ import {
   runTypeCheck,
   TypeCheckOptions,
 } from '@nrwl/js/src/utils/typescript/run-type-check';
+import { removeSync } from 'fs-extra';
 
 function getSwcCmd(
   { swcrcPath, srcPath, destPath }: SwcCliOptions,
@@ -55,6 +56,10 @@ export async function compileSwc(
 ) {
   logger.log(`Compiling with SWC for ${context.projectName}...`);
 
+  if (normalizedOptions.clean) {
+    removeSync(normalizedOptions.outputPath);
+  }
+
   const swcCmdLog = execSync(getSwcCmd(normalizedOptions.swcCliOptions), {
     cwd: normalizedOptions.swcCliOptions.swcCwd,
   }).toString();
@@ -92,6 +97,10 @@ export async function* compileSwcWatch(
 
   let typeCheckOptions: TypeCheckOptions;
   let initialPostCompile = true;
+
+  if (normalizedOptions.clean) {
+    removeSync(normalizedOptions.outputPath);
+  }
 
   return yield* createAsyncIterable<{ success: boolean; outfile: string }>(
     async ({ next, done }) => {
@@ -157,8 +166,11 @@ export async function* compileSwcWatch(
         }
       };
 
-      const stderrOnData = (err?: any) => {
+      const stderrOnData = (err?: unknown) => {
         process.stderr.write(err);
+        if (err.includes('Debugger attached.')) {
+          return;
+        }
         next(getResult(false));
       };
 

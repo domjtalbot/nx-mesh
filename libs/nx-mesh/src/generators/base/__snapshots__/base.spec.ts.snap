@@ -1,0 +1,1117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generators/base app directory --babelJest should use babel for jest 1`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-app',
+  preset: '../../jest.preset.js',
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]s$': 'babel-jest'
+  },
+  moduleFileExtensions: ['ts', 'js', 'html'],
+  coverageDirectory: '../../coverage/apps/my-mesh-app'
+};
+"
+`;
+
+exports[`generators/base app directory --linter should use eslint for linting 1`] = `
+"{
+  \\"extends\\": [
+    \\"../../.eslintrc.json\\"
+  ],
+  \\"ignorePatterns\\": [
+    \\"!**/*\\",
+    \\".mesh\\"
+  ],
+  \\"overrides\\": [
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\",
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    }
+  ]
+}
+"
+`;
+
+exports[`generators/base app directory --meshConfig should create a cjs config when --meshConfig=%s 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source:
+          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshConfig should create a js config when --meshConfig=%s 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source:
+          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshConfig should create a json config when --meshConfig=%s 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"JavaScript Wiki\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app directory --meshConfig should create a yml config by default 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshConfig should create a yml config when --meshConfig=%s 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --unitTestRunner should add a jest config if the unitTestRunner is jest 1`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-app',
+  preset: '../../jest.preset.js',
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+    }
+  },
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]s$': 'ts-jest'
+  },
+  moduleFileExtensions: ['ts', 'js', 'html'],
+  coverageDirectory: '../../coverage/apps/my-mesh-app'
+};
+"
+`;
+
+exports[`generators/base app with standalone config --babelJest should use babel for jest 1`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-app',
+  preset: '../../jest.preset.js',
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]s$': 'babel-jest'
+  },
+  moduleFileExtensions: ['ts', 'js', 'html'],
+  coverageDirectory: '../../coverage/apps/my-mesh-app'
+};
+"
+`;
+
+exports[`generators/base app with standalone config --linter should use eslint for linting 1`] = `
+"{
+  \\"extends\\": [
+    \\"../../.eslintrc.json\\"
+  ],
+  \\"ignorePatterns\\": [
+    \\"!**/*\\",
+    \\".mesh\\"
+  ],
+  \\"overrides\\": [
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\",
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    }
+  ]
+}
+"
+`;
+
+exports[`generators/base app with standalone config --meshConfig should create a cjs config when --meshConfig=%s 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source:
+          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app with standalone config --meshConfig should create a js config when --meshConfig=%s 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source:
+          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app with standalone config --meshConfig should create a json config when --meshConfig=%s 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"JavaScript Wiki\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app with standalone config --meshConfig should create a yml config by default 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app with standalone config --meshConfig should create a yml config when --meshConfig=%s 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app with standalone config --unitTestRunner should add a jest config if the unitTestRunner is jest 1`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-app',
+  preset: '../../jest.preset.js',
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+    }
+  },
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]s$': 'ts-jest'
+  },
+  moduleFileExtensions: ['ts', 'js', 'html'],
+  coverageDirectory: '../../coverage/apps/my-mesh-app'
+};
+"
+`;
+
+exports[`generators/base lib directory --babelJest should use babel for jest 1`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-lib',
+  preset: '../../jest.preset.js',
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]sx?$': 'babel-jest'
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+};
+"
+`;
+
+exports[`generators/base lib directory --linter should use eslint for linting 1`] = `
+"{
+  \\"extends\\": [
+    \\"../../.eslintrc.json\\"
+  ],
+  \\"ignorePatterns\\": [
+    \\"!**/*\\",
+    \\".mesh\\"
+  ],
+  \\"overrides\\": [
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\",
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    }
+  ]
+}
+"
+`;
+
+exports[`generators/base lib directory --meshConfig should create a cjs config when --meshConfig=%s 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source:
+          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshConfig should create a js config when --meshConfig=%s 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source:
+          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshConfig should create a json config when --meshConfig=%s 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"JavaScript Wiki\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib directory --meshConfig should create a yml config by default 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshConfig should create a yml config when --meshConfig=%s 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --unitTestRunner should add a jest config if the unitTestRunner is jest 1`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-lib',
+  preset: '../../jest.preset.js',
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+    }
+  },
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]sx?$': 'ts-jest'
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+};
+"
+`;
+
+exports[`generators/base lib with standalone config --babelJest should use babel for jest 1`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-lib',
+  preset: '../../jest.preset.js',
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]sx?$': 'babel-jest'
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+};
+"
+`;
+
+exports[`generators/base lib with standalone config --linter should use eslint for linting 1`] = `
+"{
+  \\"extends\\": [
+    \\"../../.eslintrc.json\\"
+  ],
+  \\"ignorePatterns\\": [
+    \\"!**/*\\",
+    \\".mesh\\"
+  ],
+  \\"overrides\\": [
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\",
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    }
+  ]
+}
+"
+`;
+
+exports[`generators/base lib with standalone config --meshConfig should create a cjs config when --meshConfig=%s 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source:
+          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib with standalone config --meshConfig should create a js config when --meshConfig=%s 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source:
+          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib with standalone config --meshConfig should create a json config when --meshConfig=%s 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"JavaScript Wiki\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib with standalone config --meshConfig should create a yml config by default 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib with standalone config --meshConfig should create a yml config when --meshConfig=%s 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib with standalone config --unitTestRunner should add a jest config if the unitTestRunner is jest 1`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-lib',
+  preset: '../../jest.preset.js',
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+    }
+  },
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]sx?$': 'ts-jest'
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+};
+"
+`;
+
+exports[`generators/base nested within app directory --babelJest should use babel for jest 1`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'test-my-mesh-app',
+  preset: '../../../jest.preset.js',
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]s$': 'babel-jest'
+  },
+  moduleFileExtensions: ['ts', 'js', 'html'],
+  coverageDirectory: '../../../coverage/apps/test/my-mesh-app'
+};
+"
+`;
+
+exports[`generators/base nested within app directory --linter should use eslint for linting 1`] = `
+"{
+  \\"extends\\": [
+    \\"../../../.eslintrc.json\\"
+  ],
+  \\"ignorePatterns\\": [
+    \\"!**/*\\",
+    \\".mesh\\"
+  ],
+  \\"overrides\\": [
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\",
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    }
+  ]
+}
+"
+`;
+
+exports[`generators/base nested within app directory --meshConfig should create a cjs config when --meshConfig=%s 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source:
+          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base nested within app directory --meshConfig should create a js config when --meshConfig=%s 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source:
+          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base nested within app directory --meshConfig should create a json config when --meshConfig=%s 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"JavaScript Wiki\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base nested within app directory --meshConfig should create a yml config by default 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base nested within app directory --meshConfig should create a yml config when --meshConfig=%s 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base nested within app directory --unitTestRunner should add a jest config if the unitTestRunner is jest 1`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'test-my-mesh-app',
+  preset: '../../../jest.preset.js',
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+    }
+  },
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]s$': 'ts-jest'
+  },
+  moduleFileExtensions: ['ts', 'js', 'html'],
+  coverageDirectory: '../../../coverage/apps/test/my-mesh-app'
+};
+"
+`;
+
+exports[`generators/base nested within lib directory --babelJest should use babel for jest 1`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'test-my-mesh-lib',
+  preset: '../../../jest.preset.js',
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]sx?$': 'babel-jest'
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  coverageDirectory: '../../../coverage/libs/test/my-mesh-lib'
+};
+"
+`;
+
+exports[`generators/base nested within lib directory --linter should use eslint for linting 1`] = `
+"{
+  \\"extends\\": [
+    \\"../../../.eslintrc.json\\"
+  ],
+  \\"ignorePatterns\\": [
+    \\"!**/*\\",
+    \\".mesh\\"
+  ],
+  \\"overrides\\": [
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\",
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    }
+  ]
+}
+"
+`;
+
+exports[`generators/base nested within lib directory --meshConfig should create a cjs config when --meshConfig=%s 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source:
+          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base nested within lib directory --meshConfig should create a js config when --meshConfig=%s 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source:
+          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base nested within lib directory --meshConfig should create a json config when --meshConfig=%s 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"JavaScript Wiki\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base nested within lib directory --meshConfig should create a yml config by default 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base nested within lib directory --meshConfig should create a yml config when --meshConfig=%s 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base nested within lib directory --unitTestRunner should add a jest config if the unitTestRunner is jest 1`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'test-my-mesh-lib',
+  preset: '../../../jest.preset.js',
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+    }
+  },
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]sx?$': 'ts-jest'
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  coverageDirectory: '../../../coverage/libs/test/my-mesh-lib'
+};
+"
+`;

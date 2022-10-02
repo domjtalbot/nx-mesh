@@ -65,7 +65,6 @@
         "passWithNoTests": true
       }
     },
-
     "validate": {
       "executor": "nx-mesh:validate",
       "options": {

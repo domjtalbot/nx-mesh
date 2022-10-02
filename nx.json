@@ -4,9 +4,6 @@
   "affected": {
     "defaultBase": "main"
   },
-  "cli": {
-    "defaultCollection": "@nrwl/next"
-  },
   "implicitDependencies": {
     "package.json": {
       "dependencies": "*",
@@ -22,38 +19,6 @@
         "accessToken": "NzExMGIxYWUtZjdkYy00MjRjLWI5NjItMjlkYmU0OWRjNWY2fHJlYWQ="
       }
     }
-  },
-  "targetDependencies": {
-    "build": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ],
-    "e2e": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ],
-    "test": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ],
-    "serve": [
-      {
-        "target": "build",
-        "projects": "self"
-      }
-    ],
-    "validate": [
-      {
-        "target": "build",
-        "projects": "self"
-      }
-    ]
   },
   "generators": {
     "@nrwl/react": {
@@ -78,5 +43,22 @@
       }
     }
   },
-  "defaultProject": "nextjs-stackexchange"
+  "defaultProject": "nx-mesh",
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"]
+    },
+    "e2e": {
+      "dependsOn": ["^build"]
+    },
+    "test": {
+      "dependsOn": ["^build"]
+    },
+    "serve": {
+      "dependsOn": ["build"]
+    },
+    "validate": {
+      "dependsOn": ["build"]
+    }
+  }
 }

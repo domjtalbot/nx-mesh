@@ -2,10 +2,10 @@
   "$schema": "http://json-schema.org/schema",
   "name": "nx-mesh",
   "generators": {
-    "init": {
-      "factory": "./src/generators/init/init",
-      "schema": "./src/generators/init/schema.json",
-      "description": "Initialize the `nx-mesh` plugin.",
+    "base": {
+      "factory": "./src/generators/base/base",
+      "schema": "./src/generators/base/schema.json",
+      "description": "Generate the foundation for a GraphQL Mesh project",
       "hidden": true
     },
     "application": {
@@ -24,10 +24,10 @@
     }
   },
   "schematics": {
-    "init": {
-      "factory": "./src/generators/init/init#meshInitGenerator",
-      "schema": "./src/generators/init/schema.json",
-      "description": "Initialize the `nx-mesh` plugin.",
+    "base": {
+      "factory": "./src/generators/base/base#baseGenerator",
+      "schema": "./src/generators/base/schema.json",
+      "description": "Create a GraphQL Mesh API Gateway application for Nx",
       "hidden": true
     },
     "application": {

@@ -12,7 +12,9 @@
         "outputPath": "dist/apps/nextjs/trippin-swc"
       },
       "configurations": {
-        "development": {},
+        "development": {
+          "outputPath": "apps/nextjs/trippin-swc"
+        },
         "production": {}
       }
     },
