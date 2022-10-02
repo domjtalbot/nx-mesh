@@ -2,4 +2,4 @@
 'nx-mesh': minor
 ---
 
-Update Nx
+Update Nx to `v14.5.10`
