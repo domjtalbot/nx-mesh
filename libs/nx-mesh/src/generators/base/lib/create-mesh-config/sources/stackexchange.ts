@@ -1,9 +1,9 @@
 import type { MeshSources } from '../types';
 
 export const handler = 'openapi';
-export const name = 'JavaScript Wiki';
+export const name = 'StackExchange';
 export const url =
-  'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml';
+  'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml';
 
 export const source: MeshSources = {
   js: `

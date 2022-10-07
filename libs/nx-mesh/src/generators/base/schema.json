@@ -43,6 +43,12 @@
         ]
       }
     },
+    "meshExampleProject": {
+      "description": "Which example project would you like to use?",
+      "type": "string",
+      "enum": ["javascriptWiki", "stackexchange", "trippin", "weatherbit"],
+      "default": "javascriptWiki"
+    },
     "e2eTestRunner": {
       "description": "Adds the specified e2e test runner.",
       "type": "string",

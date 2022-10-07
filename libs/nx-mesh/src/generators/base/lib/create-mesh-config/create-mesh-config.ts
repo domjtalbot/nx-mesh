@@ -48,18 +48,21 @@ sdk:
     selectionSetDepth: 6
 `;
 
-export const createMeshConfig = (config?: MeshConfigExtensions) => {
+export const createMeshConfig = (
+  config?: MeshConfigExtensions,
+  project?: SourceOptions
+) => {
   switch (config) {
     case 'cjs':
     case 'js':
-      return createJsConfig('javascriptWiki');
+      return createJsConfig(project ?? 'javascriptWiki');
 
     case 'json':
-      return createJsonConfig('javascriptWiki');
+      return createJsonConfig(project ?? 'javascriptWiki');
 
     case 'yml':
     default:
-      return createYamlConfig('javascriptWiki');
+      return createYamlConfig(project ?? 'javascriptWiki');
   }
 };
 

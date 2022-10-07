@@ -114,7 +114,9 @@ export function normalizeOptions(
       ? options.compiler
       : 'tsc') ?? 'tsc';
 
-  const meshConfigContent = createMeshConfig(meshConfigExt);
+  const meshExampleProject = options.meshExampleProject ?? 'javascriptWiki';
+
+  const meshConfigContent = createMeshConfig(meshConfigExt, meshExampleProject);
 
   const projectDirectory = joinPathFragments(
     isApp ? workspace.appsDir : workspace.libsDir,
@@ -154,6 +156,7 @@ export function normalizeOptions(
     isSwc: options.compiler === 'swc',
     meshConfigContent,
     meshConfigExt,
+    meshExampleProject,
     offsetFromRoot: offsetFromRoot(projectDirectory),
     projectDirectory,
     projectDistDirectory,

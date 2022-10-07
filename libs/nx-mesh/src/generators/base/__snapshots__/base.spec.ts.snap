@@ -61,8 +61,7 @@ module.exports = {
     name: 'JavaScript Wiki',
     handler: {
       openapi: {
-        source:
-          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
       },
     },
   }
@@ -88,8 +87,7 @@ module.exports = {
     name: 'JavaScript Wiki',
     handler: {
       openapi: {
-        source:
-          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
       },
     },
   }
@@ -156,6 +154,411 @@ sources:
     handler:
       openapi:
         source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki config by default 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"JavaScript Wiki\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki yml config 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a stackexchange cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a stackexchange js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a stackexchange json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"StackExchange\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a stackexchange yml config 1`] = `
+"
+sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a trippin cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        source: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a trippin js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        source: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a trippin json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"TripPin\\",
+    \\"handler\\": {
+      \\"odata\\": {
+        \\"source\\": \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+        \\"batch\\": \\"multipart\\",
+        \\"expandNavProps\\": true
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a trippin yml config 1`] = `
+"
+sources:
+  - name: TripPin
+    handler:
+      odata:
+        source: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a weatherbit cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'Weatherbit',
+    handler: {
+      newOpenapi: {
+        baseUrl: 'http://api.weatherbit.io/v2.0/',
+        oasFilePath: 'https://www.weatherbit.io/static/swagger.json',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a weatherbit js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'Weatherbit',
+    handler: {
+      newOpenapi: {
+        baseUrl: 'http://api.weatherbit.io/v2.0/',
+        oasFilePath: 'https://www.weatherbit.io/static/swagger.json',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a weatherbit json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"Weatherbit\\",
+    \\"handler\\": {
+      \\"newOpenapi\\": {
+        \\"baseUrl\\": \\"http://api.weatherbit.io/v2.0/\\",
+        \\"oasFilePath\\": \\"https://www.weatherbit.io/static/swagger.json\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a weatherbit yml config 1`] = `
+"
+sources:
+  - name: Weatherbit
+    handler:
+      newOpenapi:
+        baseUrl: http://api.weatherbit.io/v2.0/
+        oasFilePath: https://www.weatherbit.io/static/swagger.json
 
 serve:
   browser: false
@@ -247,8 +650,7 @@ module.exports = {
     name: 'JavaScript Wiki',
     handler: {
       openapi: {
-        source:
-          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
       },
     },
   }
@@ -274,8 +676,7 @@ module.exports = {
     name: 'JavaScript Wiki',
     handler: {
       openapi: {
-        source:
-          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
       },
     },
   }
@@ -342,6 +743,411 @@ sources:
     handler:
       openapi:
         source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app with standalone config --meshExampleProject should create a javascriptWiki cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app with standalone config --meshExampleProject should create a javascriptWiki config by default 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app with standalone config --meshExampleProject should create a javascriptWiki js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app with standalone config --meshExampleProject should create a javascriptWiki json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"JavaScript Wiki\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app with standalone config --meshExampleProject should create a javascriptWiki yml config 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app with standalone config --meshExampleProject should create a stackexchange cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app with standalone config --meshExampleProject should create a stackexchange js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app with standalone config --meshExampleProject should create a stackexchange json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"StackExchange\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app with standalone config --meshExampleProject should create a stackexchange yml config 1`] = `
+"
+sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app with standalone config --meshExampleProject should create a trippin cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        source: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app with standalone config --meshExampleProject should create a trippin js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        source: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app with standalone config --meshExampleProject should create a trippin json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"TripPin\\",
+    \\"handler\\": {
+      \\"odata\\": {
+        \\"source\\": \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+        \\"batch\\": \\"multipart\\",
+        \\"expandNavProps\\": true
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app with standalone config --meshExampleProject should create a trippin yml config 1`] = `
+"
+sources:
+  - name: TripPin
+    handler:
+      odata:
+        source: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app with standalone config --meshExampleProject should create a weatherbit cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'Weatherbit',
+    handler: {
+      newOpenapi: {
+        baseUrl: 'http://api.weatherbit.io/v2.0/',
+        oasFilePath: 'https://www.weatherbit.io/static/swagger.json',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app with standalone config --meshExampleProject should create a weatherbit js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'Weatherbit',
+    handler: {
+      newOpenapi: {
+        baseUrl: 'http://api.weatherbit.io/v2.0/',
+        oasFilePath: 'https://www.weatherbit.io/static/swagger.json',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app with standalone config --meshExampleProject should create a weatherbit json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"Weatherbit\\",
+    \\"handler\\": {
+      \\"newOpenapi\\": {
+        \\"baseUrl\\": \\"http://api.weatherbit.io/v2.0/\\",
+        \\"oasFilePath\\": \\"https://www.weatherbit.io/static/swagger.json\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app with standalone config --meshExampleProject should create a weatherbit yml config 1`] = `
+"
+sources:
+  - name: Weatherbit
+    handler:
+      newOpenapi:
+        baseUrl: http://api.weatherbit.io/v2.0/
+        oasFilePath: https://www.weatherbit.io/static/swagger.json
 
 serve:
   browser: false
@@ -433,8 +1239,7 @@ module.exports = {
     name: 'JavaScript Wiki',
     handler: {
       openapi: {
-        source:
-          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
       },
     },
   }
@@ -460,8 +1265,7 @@ module.exports = {
     name: 'JavaScript Wiki',
     handler: {
       openapi: {
-        source:
-          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
       },
     },
   }
@@ -528,6 +1332,411 @@ sources:
     handler:
       openapi:
         source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki config by default 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"JavaScript Wiki\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki yml config 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a stackexchange cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a stackexchange js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a stackexchange json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"StackExchange\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a stackexchange yml config 1`] = `
+"
+sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a trippin cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        source: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a trippin js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        source: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a trippin json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"TripPin\\",
+    \\"handler\\": {
+      \\"odata\\": {
+        \\"source\\": \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+        \\"batch\\": \\"multipart\\",
+        \\"expandNavProps\\": true
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a trippin yml config 1`] = `
+"
+sources:
+  - name: TripPin
+    handler:
+      odata:
+        source: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a weatherbit cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'Weatherbit',
+    handler: {
+      newOpenapi: {
+        baseUrl: 'http://api.weatherbit.io/v2.0/',
+        oasFilePath: 'https://www.weatherbit.io/static/swagger.json',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a weatherbit js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'Weatherbit',
+    handler: {
+      newOpenapi: {
+        baseUrl: 'http://api.weatherbit.io/v2.0/',
+        oasFilePath: 'https://www.weatherbit.io/static/swagger.json',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a weatherbit json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"Weatherbit\\",
+    \\"handler\\": {
+      \\"newOpenapi\\": {
+        \\"baseUrl\\": \\"http://api.weatherbit.io/v2.0/\\",
+        \\"oasFilePath\\": \\"https://www.weatherbit.io/static/swagger.json\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a weatherbit yml config 1`] = `
+"
+sources:
+  - name: Weatherbit
+    handler:
+      newOpenapi:
+        baseUrl: http://api.weatherbit.io/v2.0/
+        oasFilePath: https://www.weatherbit.io/static/swagger.json
 
 serve:
   browser: false
@@ -619,8 +1828,7 @@ module.exports = {
     name: 'JavaScript Wiki',
     handler: {
       openapi: {
-        source:
-          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
       },
     },
   }
@@ -646,8 +1854,7 @@ module.exports = {
     name: 'JavaScript Wiki',
     handler: {
       openapi: {
-        source:
-          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
       },
     },
   }
@@ -714,6 +1921,411 @@ sources:
     handler:
       openapi:
         source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib with standalone config --meshExampleProject should create a javascriptWiki cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib with standalone config --meshExampleProject should create a javascriptWiki config by default 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib with standalone config --meshExampleProject should create a javascriptWiki js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib with standalone config --meshExampleProject should create a javascriptWiki json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"JavaScript Wiki\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib with standalone config --meshExampleProject should create a javascriptWiki yml config 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib with standalone config --meshExampleProject should create a stackexchange cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib with standalone config --meshExampleProject should create a stackexchange js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib with standalone config --meshExampleProject should create a stackexchange json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"StackExchange\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib with standalone config --meshExampleProject should create a stackexchange yml config 1`] = `
+"
+sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib with standalone config --meshExampleProject should create a trippin cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        source: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib with standalone config --meshExampleProject should create a trippin js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        source: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib with standalone config --meshExampleProject should create a trippin json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"TripPin\\",
+    \\"handler\\": {
+      \\"odata\\": {
+        \\"source\\": \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+        \\"batch\\": \\"multipart\\",
+        \\"expandNavProps\\": true
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib with standalone config --meshExampleProject should create a trippin yml config 1`] = `
+"
+sources:
+  - name: TripPin
+    handler:
+      odata:
+        source: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib with standalone config --meshExampleProject should create a weatherbit cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'Weatherbit',
+    handler: {
+      newOpenapi: {
+        baseUrl: 'http://api.weatherbit.io/v2.0/',
+        oasFilePath: 'https://www.weatherbit.io/static/swagger.json',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib with standalone config --meshExampleProject should create a weatherbit js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'Weatherbit',
+    handler: {
+      newOpenapi: {
+        baseUrl: 'http://api.weatherbit.io/v2.0/',
+        oasFilePath: 'https://www.weatherbit.io/static/swagger.json',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib with standalone config --meshExampleProject should create a weatherbit json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"Weatherbit\\",
+    \\"handler\\": {
+      \\"newOpenapi\\": {
+        \\"baseUrl\\": \\"http://api.weatherbit.io/v2.0/\\",
+        \\"oasFilePath\\": \\"https://www.weatherbit.io/static/swagger.json\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib with standalone config --meshExampleProject should create a weatherbit yml config 1`] = `
+"
+sources:
+  - name: Weatherbit
+    handler:
+      newOpenapi:
+        baseUrl: http://api.weatherbit.io/v2.0/
+        oasFilePath: https://www.weatherbit.io/static/swagger.json
 
 serve:
   browser: false
@@ -805,8 +2417,7 @@ module.exports = {
     name: 'JavaScript Wiki',
     handler: {
       openapi: {
-        source:
-          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
       },
     },
   }
@@ -832,8 +2443,7 @@ module.exports = {
     name: 'JavaScript Wiki',
     handler: {
       openapi: {
-        source:
-          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
       },
     },
   }
@@ -900,6 +2510,411 @@ sources:
     handler:
       openapi:
         source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base nested within app directory --meshExampleProject should create a javascriptWiki cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base nested within app directory --meshExampleProject should create a javascriptWiki config by default 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base nested within app directory --meshExampleProject should create a javascriptWiki js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base nested within app directory --meshExampleProject should create a javascriptWiki json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"JavaScript Wiki\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base nested within app directory --meshExampleProject should create a javascriptWiki yml config 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base nested within app directory --meshExampleProject should create a stackexchange cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base nested within app directory --meshExampleProject should create a stackexchange js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base nested within app directory --meshExampleProject should create a stackexchange json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"StackExchange\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base nested within app directory --meshExampleProject should create a stackexchange yml config 1`] = `
+"
+sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base nested within app directory --meshExampleProject should create a trippin cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        source: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base nested within app directory --meshExampleProject should create a trippin js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        source: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base nested within app directory --meshExampleProject should create a trippin json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"TripPin\\",
+    \\"handler\\": {
+      \\"odata\\": {
+        \\"source\\": \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+        \\"batch\\": \\"multipart\\",
+        \\"expandNavProps\\": true
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base nested within app directory --meshExampleProject should create a trippin yml config 1`] = `
+"
+sources:
+  - name: TripPin
+    handler:
+      odata:
+        source: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base nested within app directory --meshExampleProject should create a weatherbit cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'Weatherbit',
+    handler: {
+      newOpenapi: {
+        baseUrl: 'http://api.weatherbit.io/v2.0/',
+        oasFilePath: 'https://www.weatherbit.io/static/swagger.json',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base nested within app directory --meshExampleProject should create a weatherbit js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'Weatherbit',
+    handler: {
+      newOpenapi: {
+        baseUrl: 'http://api.weatherbit.io/v2.0/',
+        oasFilePath: 'https://www.weatherbit.io/static/swagger.json',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base nested within app directory --meshExampleProject should create a weatherbit json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"Weatherbit\\",
+    \\"handler\\": {
+      \\"newOpenapi\\": {
+        \\"baseUrl\\": \\"http://api.weatherbit.io/v2.0/\\",
+        \\"oasFilePath\\": \\"https://www.weatherbit.io/static/swagger.json\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base nested within app directory --meshExampleProject should create a weatherbit yml config 1`] = `
+"
+sources:
+  - name: Weatherbit
+    handler:
+      newOpenapi:
+        baseUrl: http://api.weatherbit.io/v2.0/
+        oasFilePath: https://www.weatherbit.io/static/swagger.json
 
 serve:
   browser: false
@@ -991,8 +3006,7 @@ module.exports = {
     name: 'JavaScript Wiki',
     handler: {
       openapi: {
-        source:
-          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
       },
     },
   }
@@ -1018,8 +3032,7 @@ module.exports = {
     name: 'JavaScript Wiki',
     handler: {
       openapi: {
-        source:
-          'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
       },
     },
   }
@@ -1086,6 +3099,411 @@ sources:
     handler:
       openapi:
         source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base nested within lib directory --meshExampleProject should create a javascriptWiki cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base nested within lib directory --meshExampleProject should create a javascriptWiki config by default 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base nested within lib directory --meshExampleProject should create a javascriptWiki js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base nested within lib directory --meshExampleProject should create a javascriptWiki json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"JavaScript Wiki\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base nested within lib directory --meshExampleProject should create a javascriptWiki yml config 1`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base nested within lib directory --meshExampleProject should create a stackexchange cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base nested within lib directory --meshExampleProject should create a stackexchange js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base nested within lib directory --meshExampleProject should create a stackexchange json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"StackExchange\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base nested within lib directory --meshExampleProject should create a stackexchange yml config 1`] = `
+"
+sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base nested within lib directory --meshExampleProject should create a trippin cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        source: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base nested within lib directory --meshExampleProject should create a trippin js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        source: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base nested within lib directory --meshExampleProject should create a trippin json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"TripPin\\",
+    \\"handler\\": {
+      \\"odata\\": {
+        \\"source\\": \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+        \\"batch\\": \\"multipart\\",
+        \\"expandNavProps\\": true
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base nested within lib directory --meshExampleProject should create a trippin yml config 1`] = `
+"
+sources:
+  - name: TripPin
+    handler:
+      odata:
+        source: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base nested within lib directory --meshExampleProject should create a weatherbit cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'Weatherbit',
+    handler: {
+      newOpenapi: {
+        baseUrl: 'http://api.weatherbit.io/v2.0/',
+        oasFilePath: 'https://www.weatherbit.io/static/swagger.json',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base nested within lib directory --meshExampleProject should create a weatherbit js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'Weatherbit',
+    handler: {
+      newOpenapi: {
+        baseUrl: 'http://api.weatherbit.io/v2.0/',
+        oasFilePath: 'https://www.weatherbit.io/static/swagger.json',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base nested within lib directory --meshExampleProject should create a weatherbit json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"Weatherbit\\",
+    \\"handler\\": {
+      \\"newOpenapi\\": {
+        \\"baseUrl\\": \\"http://api.weatherbit.io/v2.0/\\",
+        \\"oasFilePath\\": \\"https://www.weatherbit.io/static/swagger.json\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base nested within lib directory --meshExampleProject should create a weatherbit yml config 1`] = `
+"
+sources:
+  - name: Weatherbit
+    handler:
+      newOpenapi:
+        baseUrl: http://api.weatherbit.io/v2.0/
+        oasFilePath: https://www.weatherbit.io/static/swagger.json
 
 serve:
   browser: false

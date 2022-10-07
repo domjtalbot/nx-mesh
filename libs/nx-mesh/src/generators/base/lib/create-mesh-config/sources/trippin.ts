@@ -1,9 +1,9 @@
 import type { MeshSources } from '../types';
 
-export const handler = 'openapi';
-export const name = 'JavaScript Wiki';
+export const handler = 'odata';
+export const name = 'TripPin';
 export const url =
-  'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml';
+  'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/';
 
 export const source: MeshSources = {
   js: `
@@ -12,6 +12,8 @@ export const source: MeshSources = {
     handler: {
       ${handler}: {
         source: '${url}',
+        batch: 'multipart',
+        expandNavProps: true,
       },
     },
   }
@@ -21,7 +23,9 @@ export const source: MeshSources = {
     "name": "${name}",
     "handler": {
       "${handler}": {
-        "source": "${url}"
+        "source": "${url}",
+        "batch": "multipart",
+        "expandNavProps": true
       }
     }
   }
@@ -31,6 +35,8 @@ export const source: MeshSources = {
     handler:
       ${handler}:
         source: ${url}
+        batch: multipart
+        expandNavProps: true
   `,
 };
 

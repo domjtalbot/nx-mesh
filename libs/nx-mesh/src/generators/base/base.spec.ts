@@ -158,6 +158,57 @@ describe.each<
         );
       });
 
+      describe('--meshExampleProject', () => {
+        it('should create a javascriptWiki config by default', async () => {
+          await baseGenerator(tree, config);
+
+          const meshConfig = tree.read(`${expectedPath}/.meshrc.yml`, 'utf-8');
+
+          expect(meshConfig).toMatchSnapshot();
+        });
+
+        it.each<[BaseOptions['meshExampleProject'], BaseOptions['meshConfig']]>(
+          [
+            ['javascriptWiki', 'cjs'],
+            ['javascriptWiki', 'js'],
+            ['javascriptWiki', 'json'],
+            ['javascriptWiki', 'yml'],
+            ['stackexchange', 'cjs'],
+            ['stackexchange', 'js'],
+            ['stackexchange', 'json'],
+            ['stackexchange', 'yml'],
+            ['trippin', 'cjs'],
+            ['trippin', 'js'],
+            ['trippin', 'json'],
+            ['trippin', 'yml'],
+            ['weatherbit', 'cjs'],
+            ['weatherbit', 'js'],
+            ['weatherbit', 'json'],
+            ['weatherbit', 'yml'],
+          ]
+        )(
+          'should create a %s %s config',
+          async (meshExampleProject, meshConfigType) => {
+            await baseGenerator(tree, {
+              ...config,
+              meshConfig: meshConfigType,
+              meshExampleProject,
+            });
+
+            expect(
+              tree.exists(`${expectedPath}/.meshrc.${meshConfigType}`)
+            ).toBeTruthy();
+
+            const meshConfig = tree.read(
+              `${expectedPath}/.meshrc.${meshConfigType}`,
+              'utf-8'
+            );
+
+            expect(meshConfig).toMatchSnapshot();
+          }
+        );
+      });
+
       describe('--skipFormat', () => {
         it('should format files by default', async () => {
           jest.spyOn(devkit, 'formatFiles');
