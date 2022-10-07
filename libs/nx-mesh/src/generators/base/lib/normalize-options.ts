@@ -95,14 +95,14 @@ export function normalizeOptions(
     : names(options.name).fileName;
   const projectName = directory.replace(new RegExp('/', 'g'), '-');
 
-  const e2eTestRunner = options.e2eTestRunner ?? 'cypress';
-  const e2eProjectName = `${projectName}-e2e`;
-
   const projectType = options.projectType ?? 'app';
   const unitTestRunner = options.unitTestRunner ?? 'jest';
 
   const isApp = projectType === 'app';
   const isLibrary = projectType === 'lib';
+
+  const e2eTestRunner = options.e2eTestRunner ?? isApp ? 'cypress' : 'none';
+  const e2eProjectName = `${projectName}-e2e`;
 
   const meshConfigExt =
     (/^(cjs|js|json|yml)$/.test(options.meshConfig ?? 'yml')

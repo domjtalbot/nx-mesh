@@ -95,8 +95,8 @@ describe.each<
         });
       });
 
-      if (config.projectType === 'app') {
-        describe('--e2eTestRunner', () => {
+      describe('--e2eTestRunner', () => {
+        if (config.projectType === 'app') {
           it('should use cypress for E2E', async () => {
             await baseGenerator(tree, {
               ...config,
@@ -109,8 +109,20 @@ describe.each<
               `${expectedPath}-e2e`
             );
           });
-        });
-      }
+        }
+
+        if (config.projectType === 'lib') {
+          it('should not create a E2E project', async () => {
+            await baseGenerator(tree, {
+              ...config,
+            });
+
+            const workspaceJson = readJson(tree, 'workspace.json');
+
+            expect(workspaceJson.projects[`${expectedName}-e2e`]).toBeFalsy();
+          });
+        }
+      });
 
       describe('--linter', () => {
         it('should use eslint for linting', async () => {
