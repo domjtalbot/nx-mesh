@@ -104,10 +104,15 @@ describe.each<
             });
 
             const workspaceJson = readJson(tree, 'workspace.json');
+            const e2eConfig = tree.read(
+              `${expectedPath}-e2e/src/integration/app.spec.ts`,
+              'utf-8'
+            );
 
             expect(workspaceJson.projects[`${expectedName}-e2e`].root).toEqual(
               `${expectedPath}-e2e`
             );
+            expect(e2eConfig).toMatchSnapshot();
           });
         }
 

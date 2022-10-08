@@ -15,6 +15,28 @@ export default {
 "
 `;
 
+exports[`generators/base app directory --e2eTestRunner should use cypress for E2E 1`] = `
+"
+describe('my-mesh-app', () => {
+  it('should start a mesh server', () => {
+    cy.request('/graphql/health').then((resp) => {
+      expect(resp.status).to.eq(200);
+      expect(resp.body).to.have.property('message', 'alive');
+    });
+  });
+
+  it('should still be running after 15 seconds', () => {
+    cy.wait(1000 * 15)
+      .request('/graphql/health')
+      .then((resp) => {
+        expect(resp.status).to.eq(200);
+        expect(resp.body).to.have.property('message', 'alive');
+      });
+  });
+});
+"
+`;
+
 exports[`generators/base app directory --linter should use eslint for linting 1`] = `
 "{
   \\"extends\\": [
@@ -601,6 +623,28 @@ export default {
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/apps/my-mesh-app'
 };
+"
+`;
+
+exports[`generators/base app with standalone config --e2eTestRunner should use cypress for E2E 1`] = `
+"
+describe('my-mesh-app', () => {
+  it('should start a mesh server', () => {
+    cy.request('/graphql/health').then((resp) => {
+      expect(resp.status).to.eq(200);
+      expect(resp.body).to.have.property('message', 'alive');
+    });
+  });
+
+  it('should still be running after 15 seconds', () => {
+    cy.wait(1000 * 15)
+      .request('/graphql/health')
+      .then((resp) => {
+        expect(resp.status).to.eq(200);
+        expect(resp.body).to.have.property('message', 'alive');
+      });
+  });
+});
 "
 `;
 
@@ -2368,6 +2412,28 @@ export default {
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../../coverage/apps/test/my-mesh-app'
 };
+"
+`;
+
+exports[`generators/base nested within app directory --e2eTestRunner should use cypress for E2E 1`] = `
+"
+describe('my-mesh-app', () => {
+  it('should start a mesh server', () => {
+    cy.request('/graphql/health').then((resp) => {
+      expect(resp.status).to.eq(200);
+      expect(resp.body).to.have.property('message', 'alive');
+    });
+  });
+
+  it('should still be running after 15 seconds', () => {
+    cy.wait(1000 * 15)
+      .request('/graphql/health')
+      .then((resp) => {
+        expect(resp.status).to.eq(200);
+        expect(resp.body).to.have.property('message', 'alive');
+      });
+  });
+});
 "
 `;
 
