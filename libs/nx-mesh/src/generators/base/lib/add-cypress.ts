@@ -11,7 +11,6 @@ export async function addCypress(host: Tree, options: NormalizedOptions) {
     linter: Linter.EsLint,
     name: `${options.name}-e2e`,
     project: options.projectName,
-    standaloneConfig: false,
   });
 
   const specFile = `${options.projectE2eDirectory}/src/integration/app.spec.${

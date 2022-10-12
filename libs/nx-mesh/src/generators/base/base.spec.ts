@@ -3,7 +3,7 @@ import type { BaseOptions } from './schema';
 
 import * as devkit from '@nrwl/devkit';
 import { getProjects, readJson } from '@nrwl/devkit';
-import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import { Linter } from '@nrwl/linter';
 
 import { baseGenerator } from './base';
@@ -74,7 +74,7 @@ describe.each<
     let tree: Tree;
 
     beforeEach(() => {
-      tree = createTreeWithEmptyV1Workspace();
+      tree = createTreeWithEmptyWorkspace();
     });
 
     afterEach(() => {
@@ -109,7 +109,7 @@ describe.each<
               'utf-8'
             );
 
-            expect(workspaceJson.projects[`${expectedName}-e2e`].root).toEqual(
+            expect(workspaceJson.projects[`${expectedName}-e2e`]).toEqual(
               `${expectedPath}-e2e`
             );
             expect(e2eConfig).toMatchSnapshot();
@@ -310,7 +310,7 @@ describe.each<
 
         const workspaceJson = readJson(tree, 'workspace.json');
 
-        expect(workspaceJson.projects[expectedName].root).toEqual(expectedPath);
+        expect(workspaceJson.projects[expectedName]).toEqual(expectedPath);
       });
     });
   }

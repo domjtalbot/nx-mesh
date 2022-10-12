@@ -7,7 +7,6 @@ import { formatFiles } from '@nrwl/devkit';
 import { runTasksInSerial } from '../../utils/run-tasks-in-serial';
 import {
   addCypress,
-  addCypressTests,
   addJest,
   addLinting,
   addMeshDependencies,
