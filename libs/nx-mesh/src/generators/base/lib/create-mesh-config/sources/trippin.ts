@@ -11,7 +11,7 @@ export const source: MeshSources = {
     name: '${name}',
     handler: {
       ${handler}: {
-        source: '${url}',
+        baseUrl: '${url}',
         batch: 'multipart',
         expandNavProps: true,
       },
@@ -23,7 +23,7 @@ export const source: MeshSources = {
     "name": "${name}",
     "handler": {
       "${handler}": {
-        "source": "${url}",
+        "baseUrl": "${url}",
         "batch": "multipart",
         "expandNavProps": true
       }
@@ -34,7 +34,7 @@ export const source: MeshSources = {
   - name: ${name}
     handler:
       ${handler}:
-        source: ${url}
+        baseUrl: ${url}
         batch: multipart
         expandNavProps: true
   `,
