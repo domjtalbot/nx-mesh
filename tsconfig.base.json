@@ -22,6 +22,9 @@
         "libs/example/sdk/stackexchange/src/index.ts"
       ],
       "@nx-mesh/example/sdk/trippin": ["libs/example/sdk/trippin/src/index.ts"],
+      "@nx-mesh/example/sdk/weatherbit": [
+        "libs/example/sdk/weatherbit/src/index.ts"
+      ],
       "nx-mesh": ["libs/nx-mesh/src/index.ts"]
     }
   },
