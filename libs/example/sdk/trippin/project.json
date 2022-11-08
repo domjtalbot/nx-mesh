@@ -1,0 +1,47 @@
+{
+  "name": "example-sdk-trippin",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/example/sdk/trippin/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/example/sdk/trippin/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/example/sdk/trippin/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "nx-mesh:build",
+      "outputs": ["libs/example/sdk/trippin/.mesh", "{options.outputPath}"],
+      "options": {
+        "dir": "libs/example/sdk/trippin",
+        "main": "libs/example/sdk/trippin/src/index.ts",
+        "outputPath": "dist/libs/example/sdk/trippin",
+        "tsConfig": "libs/example/sdk/trippin/tsconfig.lib.json"
+      }
+    },
+    "serve": {
+      "executor": "nx-mesh:serve",
+      "options": {
+        "dev": true,
+        "dir": "libs/example/sdk/trippin"
+      }
+    },
+    "validate": {
+      "executor": "nx-mesh:validate",
+      "options": {
+        "dir": "libs/example/sdk/trippin"
+      }
+    }
+  },
+  "tags": ["type:sdk", "type:example"]
+}
