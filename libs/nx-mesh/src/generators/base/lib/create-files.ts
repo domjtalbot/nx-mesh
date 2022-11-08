@@ -21,6 +21,26 @@ export function createFiles(tree: Tree, options: NormalizedOptions) {
       options
     );
   }
+
+  if (options.isLibrary) {
+    tree.delete(
+      `${options.projectDirectory}/src/lib/${options.projectName}.spec.ts`
+    );
+    tree.delete(
+      `${options.projectDirectory}/src/lib/${options.projectName}.ts`
+    );
+    tree.delete(`${options.projectDirectory}/src/index.ts`);
+
+    generateFiles(
+      tree,
+      path.join(__dirname, '../files/lib'),
+      options.projectDirectory,
+      {
+        ...options,
+        tmpl: '',
+      }
+    );
+  }
 }
 
 export default createFiles;

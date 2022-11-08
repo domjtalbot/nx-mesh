@@ -1,1 +1,1 @@
-export * from './lib/example-sdk-stackexchange';
+export * from './lib/sdk';
