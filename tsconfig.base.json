@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@nx-mesh/example/sdk/javascript-wiki": [
+        "libs/example/sdk/javascript-wiki/src/index.ts"
+      ],
       "@nx-mesh/example/sdk/stackexchange": [
         "libs/example/sdk/stackexchange/src/index.ts"
       ],
