@@ -6,6 +6,8 @@
     "example-api-gateway-javascript-wiki-e2e": "apps/example/api-gateway/javascript-wiki-e2e",
     "example-api-gateway-stackexchange": "apps/example/api-gateway/stackexchange",
     "example-api-gateway-stackexchange-e2e": "apps/example/api-gateway/stackexchange-e2e",
+    "example-nextjs-javascript-wiki": "apps/example/nextjs/javascript-wiki",
+    "example-nextjs-javascript-wiki-e2e": "apps/example/nextjs/javascript-wiki-e2e",
     "example-sdk-javascript-wiki": "libs/example/sdk/javascript-wiki",
     "example-sdk-stackexchange": "libs/example/sdk/stackexchange",
     "nx-mesh": "libs/nx-mesh"
