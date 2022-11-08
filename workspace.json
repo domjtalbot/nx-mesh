@@ -2,6 +2,8 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "example-api-gateway-javascript-wiki": "apps/example/api-gateway/javascript-wiki",
+    "example-api-gateway-javascript-wiki-e2e": "apps/example/api-gateway/javascript-wiki-e2e",
     "nx-mesh": "libs/nx-mesh"
   }
 }
