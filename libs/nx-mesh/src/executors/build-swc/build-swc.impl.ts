@@ -1,6 +1,5 @@
 import type { ExecutorContext } from '@nrwl/devkit';
 
-import { logger } from '@nrwl/devkit';
 import { resolve } from 'path';
 
 import { createPackageJson, runMeshCli } from '../../utils';
@@ -31,8 +30,6 @@ export default async function* buildExecutor(
     },
     context
   );
-
-  // logger.info('');
 
   const tsc = swcExecutor(
     {

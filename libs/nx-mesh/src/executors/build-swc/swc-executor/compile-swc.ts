@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable */
 
 // Modifed version of Nx SWC compiler
 // https://github.com/nrwl/nx/blob/master/packages/js/src/utils/swc/compile-swc.ts
@@ -26,7 +26,7 @@ function getSwcCmd(
   /**
    * Add `--include-dotfiles`
    */
-  const swcCmd = `npx swc ${srcPath} -d ${destPath} --no-swcrc --include-dotfiles --config-file=${swcrcPath}`;
+  const swcCmd = `npx swc ${srcPath} -d ${destPath} --no-swcrc --config-file=${swcrcPath} --include-dotfiles`;
   return watch ? swcCmd.concat(' --watch') : swcCmd;
 }
 
@@ -104,12 +104,17 @@ export async function* compileSwcWatch(
 
   return yield* createAsyncIterable<{ success: boolean; outfile: string }>(
     async ({ next, done }) => {
+      let processOnExit: () => void;
+      let stdoutOnData: () => void;
+      let stderrOnData: () => void;
+      let watcherOnExit: () => void;
+
       const swcWatcher = exec(
         getSwcCmd(normalizedOptions.swcCliOptions, true),
         { cwd: normalizedOptions.swcCliOptions.swcCwd }
       );
 
-      const processOnExit = () => {
+      processOnExit = () => {
         swcWatcher.kill();
         done();
         process.off('SIGINT', processOnExit);
@@ -117,7 +122,7 @@ export async function* compileSwcWatch(
         process.off('exit', processOnExit);
       };
 
-      const stdoutOnData = async (data?: string) => {
+      stdoutOnData = async (data?: string) => {
         process.stdout.write(data);
         if (!data.startsWith('Watching')) {
           const swcStatus = data.includes('Successfully');
@@ -166,7 +171,7 @@ export async function* compileSwcWatch(
         }
       };
 
-      const stderrOnData = (err?: unknown) => {
+      stderrOnData = (err?: any) => {
         process.stderr.write(err);
         if (err.includes('Debugger attached.')) {
           return;
@@ -174,7 +179,7 @@ export async function* compileSwcWatch(
         next(getResult(false));
       };
 
-      const watcherOnExit = () => {
+      watcherOnExit = () => {
         done();
         swcWatcher.off('exit', watcherOnExit);
       };

@@ -8,15 +8,15 @@
   "executors": "./executors.json",
   "peerDependencies": {
     "@graphql-mesh/cli": ">=0.71.0",
-    "nx": ">=14"
+    "nx": ">=14.8"
   },
   "dependencies": {
-    "@nrwl/cypress": "14.5.10",
-    "@nrwl/devkit": "14.5.10",
-    "@nrwl/js": "14.5.10",
-    "@nrwl/linter": "14.5.10",
-    "@nrwl/node": "14.5.10",
-    "@nrwl/workspace": "14.5.10",
+    "@nrwl/cypress": "14.8.6",
+    "@nrwl/devkit": "14.8.6",
+    "@nrwl/js": "14.8.6",
+    "@nrwl/linter": "14.8.6",
+    "@nrwl/node": "14.8.6",
+    "@nrwl/workspace": "14.8.6",
     "fs-extra": "10.1.0",
     "get-port": "5.1.1"
   },

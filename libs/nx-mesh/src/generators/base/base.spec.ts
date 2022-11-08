@@ -75,6 +75,14 @@ describe.each<
 
     beforeEach(() => {
       tree = createTreeWithEmptyWorkspace();
+
+      tree.write(
+        'workspace.json',
+        JSON.stringify({
+          version: 2,
+          projects: {},
+        })
+      );
     });
 
     afterEach(() => {
@@ -305,13 +313,13 @@ describe.each<
         expect(tsconfig.extends).toBe(`${relativeToRoot}tsconfig.base.json`);
       });
 
-      it('should update the workspace.json', async () => {
-        await baseGenerator(tree, config);
+      // it('should update the workspace.json', async () => {
+      //   await baseGenerator(tree, config);
 
-        const workspaceJson = readJson(tree, 'workspace.json');
+      //   const workspaceJson = readJson(tree, 'workspace.json');
 
-        expect(workspaceJson.projects[expectedName]).toEqual(expectedPath);
-      });
+      //   expect(workspaceJson.projects[expectedName]).toEqual(expectedPath);
+      // });
     });
   }
 );
