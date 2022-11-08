@@ -4,6 +4,8 @@
   "projects": {
     "example-api-gateway-javascript-wiki": "apps/example/api-gateway/javascript-wiki",
     "example-api-gateway-javascript-wiki-e2e": "apps/example/api-gateway/javascript-wiki-e2e",
+    "example-api-gateway-stackexchange": "apps/example/api-gateway/stackexchange",
+    "example-api-gateway-stackexchange-e2e": "apps/example/api-gateway/stackexchange-e2e",
     "nx-mesh": "libs/nx-mesh"
   }
 }
