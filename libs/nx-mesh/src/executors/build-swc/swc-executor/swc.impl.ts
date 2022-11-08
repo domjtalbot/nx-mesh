@@ -3,27 +3,32 @@
 // Modifed version of Nx SWC executor
 // https://github.com/nrwl/nx/blob/master/packages/js/src/executors/swc/swc.impl.ts
 // @ts-nocheck
-
 import { ExecutorContext } from '@nrwl/devkit';
 import {
   assetGlobsToFiles,
   FileInputOutput,
 } from '@nrwl/workspace/src/utilities/assets';
-import { join, relative, resolve } from 'path';
-
+import { removeSync } from 'fs-extra';
+import { dirname, join, relative, resolve } from 'path';
+import { copyAssets } from '@nrwl/js/src/utils/assets';
 import { checkDependencies } from '@nrwl/js/src/utils/check-dependencies';
 import {
   getHelperDependency,
   HelperDependency,
 } from '@nrwl/js/src/utils/compiler-helper-dependency';
 import {
+  handleInliningBuild,
+  isInlineGraphEmpty,
+  postProcessInlinedDependencies,
+} from '@nrwl/js/src/utils/inline';
+import { copyPackageJson } from '@nrwl/js/src/utils/package-json';
+import {
   NormalizedSwcExecutorOptions,
   SwcExecutorOptions,
 } from '@nrwl/js/src/utils/schema';
 import { compileSwc, compileSwcWatch } from './compile-swc';
 import { getSwcrcPath } from '@nrwl/js/src/utils/swc/get-swcrc-path';
-import { copyAssets } from '@nrwl/js/src/utils/assets';
-import { copyPackageJson } from '@nrwl/js/src/utils/package-json';
+import { generateTmpSwcrc } from '@nrwl/js/src/utils/swc/inline';
 
 export function normalizeOptions(
   options: SwcExecutorOptions,
@@ -39,6 +44,20 @@ export function normalizeOptions(
 
   if (options.watch == null) {
     options.watch = false;
+  }
+
+  // TODO: put back when inlining story is more stable
+  // if (options.external == null) {
+  //   options.external = 'all';
+  // } else if (Array.isArray(options.external) && options.external.length === 0) {
+  //   options.external = 'none';
+  // }
+
+  if (Array.isArray(options.external) && options.external.length > 0) {
+    const firstItem = options.external[0];
+    if (firstItem === 'all' || firstItem === 'none') {
+      options.external = firstItem;
+    }
   }
 
   const files: FileInputOutput[] = assetGlobsToFiles(
@@ -73,6 +92,7 @@ export function normalizeOptions(
     root: contextRoot,
     sourceRoot,
     projectRoot,
+    originalProjectRoot: projectRoot,
     outputPath,
     tsConfig: join(contextRoot, options.tsConfig),
     swcCliOptions,
@@ -105,6 +125,32 @@ export async function* swcExecutor(
     dependencies.push(swcHelperDependency);
   }
 
+  const inlineProjectGraph = handleInliningBuild(
+    context,
+    options,
+    options.tsConfig
+  );
+
+  if (!isInlineGraphEmpty(inlineProjectGraph)) {
+    options.projectRoot = '.'; // set to root of workspace to include other libs for type check
+
+    // remap paths for SWC compilation
+    options.swcCliOptions.srcPath = options.swcCliOptions.swcCwd;
+    options.swcCliOptions.swcCwd = '.';
+    options.swcCliOptions.destPath = options.swcCliOptions.destPath
+      .split('../')
+      .at(-1)
+      .concat('/', options.swcCliOptions.srcPath);
+
+    // tmp swcrc with dependencies to exclude
+    // - buildable libraries
+    // - other libraries that are not dependent on the current project
+    options.swcCliOptions.swcrcPath = generateTmpSwcrc(
+      inlineProjectGraph,
+      options.swcCliOptions.swcrcPath
+    );
+  }
+
   if (options.watch) {
     let disposeFn: () => void;
     process.on('SIGINT', () => disposeFn());
@@ -119,6 +165,7 @@ export async function* swcExecutor(
         },
         context
       );
+      removeTmpSwcrc(options.swcCliOptions.swcrcPath);
       disposeFn = () => {
         assetResult?.stop();
         packageJsonResult?.stop();
@@ -136,7 +183,19 @@ export async function* swcExecutor(
         },
         context
       );
+      removeTmpSwcrc(options.swcCliOptions.swcrcPath);
+      postProcessInlinedDependencies(
+        options.outputPath,
+        options.originalProjectRoot,
+        inlineProjectGraph
+      );
     });
+  }
+}
+
+function removeTmpSwcrc(swcrcPath: string) {
+  if (swcrcPath.startsWith('tmp/')) {
+    removeSync(dirname(swcrcPath));
   }
 }
 

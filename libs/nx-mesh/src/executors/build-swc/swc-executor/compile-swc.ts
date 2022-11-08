@@ -4,9 +4,9 @@
 // https://github.com/nrwl/nx/blob/master/packages/js/src/utils/swc/compile-swc.ts
 // @ts-nocheck
 
-import { ExecutorContext, logger } from '@nrwl/devkit';
+import { cacheDir, ExecutorContext, logger } from '@nrwl/devkit';
 import { exec, execSync } from 'child_process';
-import { cacheDir } from '@nrwl/devkit';
+import { removeSync } from 'fs-extra';
 import { createAsyncIterable } from '@nrwl/js/src/utils/create-async-iterable/create-async-iteratable';
 import {
   NormalizedSwcExecutorOptions,
@@ -17,7 +17,6 @@ import {
   runTypeCheck,
   TypeCheckOptions,
 } from '@nrwl/js/src/utils/typescript/run-type-check';
-import { removeSync } from 'fs-extra';
 
 function getSwcCmd(
   { swcrcPath, srcPath, destPath }: SwcCliOptions,
@@ -26,7 +25,7 @@ function getSwcCmd(
   /**
    * Add `--include-dotfiles`
    */
-  const swcCmd = `npx swc ${srcPath} -d ${destPath} --no-swcrc --config-file=${swcrcPath} --include-dotfiles`;
+  let swcCmd = `npx swc ${srcPath} -d ${destPath} --no-swcrc --config-file=${swcrcPath} --include-dotfiles`;
   return watch ? swcCmd.concat(' --watch') : swcCmd;
 }
 
@@ -66,9 +65,8 @@ export async function compileSwc(
   logger.log(swcCmdLog.replace(/\n/, ''));
   const isCompileSuccess = swcCmdLog.includes('Successfully compiled');
 
-  await postCompilationCallback();
-
   if (normalizedOptions.skipTypeCheck) {
+    await postCompilationCallback();
     return { success: isCompileSuccess };
   }
 
@@ -82,7 +80,11 @@ export async function compileSwc(
     await printDiagnostics(errors, warnings);
   }
 
-  return { success: !hasErrors && isCompileSuccess };
+  await postCompilationCallback();
+  return {
+    success: !hasErrors && isCompileSuccess,
+    outfile: normalizedOptions.mainOutputPath,
+  };
 }
 
 export async function* compileSwcWatch(
