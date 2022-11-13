@@ -1,9 +1,11 @@
-import type { MeshSources } from '../types';
+import type { MeshDependencies, MeshSources } from '../types';
 
-export const handler = 'openapi';
-export const name = 'JavaScript Wiki';
+export const handler = 'soap';
+export const name = 'country-info';
 export const url =
-  'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml';
+  'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL';
+
+export const dependencies: MeshDependencies = ['@graphql-mesh/soap'];
 
 export const source: MeshSources = {
   js: `
@@ -34,4 +36,10 @@ export const source: MeshSources = {
   `,
 };
 
-export default source;
+export default {
+  dependencies,
+  handler,
+  name,
+  source,
+  url,
+};

@@ -1,24 +1,30 @@
 import type { Tree } from '@nrwl/devkit';
 
+import type { NormalizedOptions } from './normalize-options';
+
 import { addDependenciesToPackageJson } from '@nrwl/devkit';
 
-import {
-  graphqlVersion,
-  meshCliVersion,
-  meshRuntimeVersion,
-  meshUtilsVersion,
-  meshOpenApiVersion,
-} from '../../../utils/versions';
+import { versions } from '../../../utils/versions';
+import { examples } from './create-mesh-config/examples';
 
-export function addMeshDependencies(tree: Tree) {
+export function addMeshDependencies(host: Tree, options: NormalizedOptions) {
+  let exampleDeps = {};
+
+  examples[options.meshExampleProject].dependencies.forEach((dep) => {
+    exampleDeps = {
+      ...exampleDeps,
+      ...versions[dep],
+    };
+  });
+
   return addDependenciesToPackageJson(
-    tree,
+    host,
     {
-      '@graphql-mesh/cli': meshCliVersion,
-      '@graphql-mesh/openapi': meshOpenApiVersion,
-      '@graphql-mesh/runtime': meshRuntimeVersion,
-      '@graphql-mesh/utils': meshUtilsVersion,
-      graphql: graphqlVersion,
+      ...exampleDeps,
+      ...versions['@graphql-mesh/cli'],
+      ...versions['@graphql-mesh/runtime'],
+      ...versions['@graphql-mesh/utils'],
+      ...versions['graphql'],
     },
     {}
   );

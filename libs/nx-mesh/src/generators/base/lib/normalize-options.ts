@@ -18,6 +18,7 @@ export interface NormalizedOptions
     | 'compiler'
     | 'directory'
     | 'e2eTestRunner'
+    | 'meshExampleProject'
     | 'projectType'
     | 'unitTestRunner'
   > {
@@ -64,6 +65,12 @@ export interface NormalizedOptions
    * The Mesh config file extension
    */
   meshConfigExt: MeshConfigExtensions;
+
+  meshExampleProject:
+    | 'countryInfo'
+    | 'javascriptWiki'
+    | 'stackexchange'
+    | 'trippin';
 
   workspace: ReturnType<typeof getWorkspaceLayout>;
 
@@ -114,7 +121,8 @@ export function normalizeOptions(
       ? options.compiler
       : 'tsc') ?? 'tsc';
 
-  const meshExampleProject = options.meshExampleProject ?? 'javascriptWiki';
+  const meshExampleProject: NormalizedOptions['meshExampleProject'] =
+    options.meshExampleProject ?? 'javascriptWiki';
 
   const meshConfigContent = createMeshConfig(meshConfigExt, meshExampleProject);
 

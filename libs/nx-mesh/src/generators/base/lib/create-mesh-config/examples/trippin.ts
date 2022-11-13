@@ -1,9 +1,11 @@
-import type { MeshSources } from '../types';
+import type { MeshDependencies, MeshSources } from '../types';
 
 export const handler = 'odata';
 export const name = 'TripPin';
 export const url =
   'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/';
+
+export const dependencies: MeshDependencies = ['@graphql-mesh/odata'];
 
 export const source: MeshSources = {
   js: `
@@ -40,4 +42,10 @@ export const source: MeshSources = {
   `,
 };
 
-export default source;
+export default {
+  dependencies,
+  handler,
+  name,
+  source,
+  url,
+};

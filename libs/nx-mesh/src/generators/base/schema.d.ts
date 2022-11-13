@@ -1,7 +1,7 @@
 import type { SetOptional } from 'type-fest';
 import type { Schema as NodeLibrarySchema } from '@nrwl/node/src/generators/library/schema';
 
-import type { SourceOptions } from './lib/create-mesh-config/sources';
+import type { SourceOptions } from './lib/create-mesh-config/examples';
 
 export type MeshConfigExtensions = 'cjs' | 'js' | 'json' | 'yml';
 

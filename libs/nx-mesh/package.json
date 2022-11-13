@@ -8,7 +8,7 @@
   "executors": "./executors.json",
   "peerDependencies": {
     "@graphql-mesh/cli": ">=0.71.0",
-    "nx": ">=14.8"
+    "nx": ">=15"
   },
   "dependencies": {
     "@nrwl/cypress": "15.0.4",

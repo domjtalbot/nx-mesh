@@ -1,12 +1,12 @@
 import type { MeshConfigExtensions } from '../../schema';
-import type { SourceOptions } from './sources';
+import type { ExampleOptions } from './examples';
 
-import { sources } from './sources';
+import { examples } from './examples';
 
-export const createJsConfig = (source: SourceOptions) => `
+export const createJsConfig = (source: ExampleOptions) => `
 module.exports = {
   sources: [
-    ${sources[source].js.trim()}
+    ${examples[source].source.js.trim()}
   ],
   serve: {
     browser: false,
@@ -20,10 +20,10 @@ module.exports = {
 
 `;
 
-export const createJsonConfig = (source: SourceOptions) => `
+export const createJsonConfig = (source: ExampleOptions) => `
 {
   "sources": [
-    ${sources[source].json.trim()}
+    ${examples[source].source.json.trim()}
   ],
   "serve": {
     "browser": false
@@ -36,9 +36,9 @@ export const createJsonConfig = (source: SourceOptions) => `
 }
 `;
 
-export const createYamlConfig = (source: SourceOptions) => `
+export const createYamlConfig = (source: ExampleOptions) => `
 sources:
-  ${sources[source].yml.trim()}
+  ${examples[source].source.yml.trim()}
 
 serve:
   browser: false
@@ -50,7 +50,7 @@ sdk:
 
 export const createMeshConfig = (
   config?: MeshConfigExtensions,
-  project?: SourceOptions
+  project?: ExampleOptions
 ) => {
   switch (config) {
     case 'cjs':

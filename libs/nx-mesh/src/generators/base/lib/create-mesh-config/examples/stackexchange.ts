@@ -1,9 +1,11 @@
-import type { MeshSources } from '../types';
+import type { MeshDependencies, MeshSources } from '../types';
 
 export const handler = 'openapi';
 export const name = 'StackExchange';
 export const url =
   'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml';
+
+export const dependencies: MeshDependencies = ['@graphql-mesh/openapi'];
 
 export const source: MeshSources = {
   js: `
@@ -34,4 +36,10 @@ export const source: MeshSources = {
   `,
 };
 
-export default source;
+export default {
+  dependencies,
+  handler,
+  name,
+  source,
+  url,
+};
