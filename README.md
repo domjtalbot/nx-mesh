@@ -483,7 +483,7 @@ This is the equivalent of using `graphql-mesh validate`.
 | `apps/api-gateway/javascript-wiki/yml-config`  | `openapi`      | `yml`  |
 | `apps/api-gateway/stackexchange`               | `openapi`      | `yml`  |
 | `apps/api-gateway/trippin`                     | `odata`        | `yml`  |
-| `apps/api-gateway/weatherbit`                  | `new-openapi`  | `yml`  |
+| `apps/api-gateway/country-info`                | `new-openapi`  | `yml`  |
 
 ### SDK
 
@@ -492,7 +492,7 @@ This is the equivalent of using `graphql-mesh validate`.
 | `apps/nextjs/stackexchange` | `openapi`      | `nextjs`  | `tsc`    | -                                                           |
 | `apps/nextjs/trippin`       | `odata`        | `nextjs`  | `tsc`    | [Vercel](https://nx-mesh-trippin-domjtalbot.vercel.app)     |
 | `apps/nextjs/trippin-swc`   | `odata`        | `nextjs`  | `swc`    | [Vercel](https://nx-mesh-trippin-swc-domjtalbot.vercel.app) |
-| `apps/nextjs/weatherbit`    | `new-openapi`  | `nextjs`  | `tsc`    | -                                                           |
+| `apps/nextjs/country-info`  | `new-openapi`  | `nextjs`  | `tsc`    | -                                                           |
 
 <br/>
 

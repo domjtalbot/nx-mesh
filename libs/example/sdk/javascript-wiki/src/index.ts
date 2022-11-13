@@ -1,1 +1,1 @@
-export * from './lib/sdk';
+export type { Types as JavascriptWiki } from './lib/types';

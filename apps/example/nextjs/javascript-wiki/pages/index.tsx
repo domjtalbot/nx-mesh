@@ -1,14 +1,17 @@
 import type { GetStaticProps, NextPage } from 'next';
-import type { availability_queryQuery } from '@nx-mesh/example/sdk/javascript-wiki';
+import type { JavascriptWiki } from '@nx-mesh/example/sdk/javascript-wiki';
+
+import { isAvailability } from '@nx-mesh/example/sdk/javascript-wiki/utils';
 
 import styles from './index.module.css';
 
-type PageData = availability_queryQuery;
+type PageData = JavascriptWiki.feed_availability_queryQuery;
 
 export const getStaticProps: GetStaticProps<PageData> = async () => {
-  const { getMeshSDK } = await import('@nx-mesh/example/sdk/javascript-wiki');
-
-  const data = await getMeshSDK().availability_query();
+  const { getMeshSDK } = await import(
+    '@nx-mesh/example/sdk/javascript-wiki/sdk'
+  );
+  const data = await getMeshSDK().feed_availability_query();
 
   return {
     props: data,
@@ -17,11 +20,15 @@ export const getStaticProps: GetStaticProps<PageData> = async () => {
 };
 
 export const Index: NextPage<PageData> = (props) => {
+  const inTheNews = isAvailability(props.feed_availability)
+    ? props.feed_availability?.in_the_news
+    : undefined;
+
   return (
     <div className={styles.page}>
       <h1>JavaScript Wiki</h1>
       <ul>
-        {props.availability?.inTheNews?.map((wiki) => (
+        {inTheNews?.map((wiki) => (
           <li key={wiki} data-wiki={wiki}>
             {wiki}
           </li>

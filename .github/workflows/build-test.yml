@@ -16,9 +16,6 @@ on:
       NX__TRIPPIN__API_KEY:
         description: 'The Trippin API Key'
         required: true
-      NX__WEATHERBIT__API_KEY:
-        description: 'The Weatherbit API Key'
-        required: true
       NX_CLOUD_ACCESS_TOKEN:
         description: 'The NX Cloud API token'
         required: true
@@ -28,7 +25,6 @@ concurrency:
 
 env:
   NX__TRIPPIN__API_KEY: ${{ secrets.NX__TRIPPIN__API_KEY }}
-  NX__WEATHERBIT__API_KEY: ${{ secrets.NX__WEATHERBIT__API_KEY }}
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
 
 jobs:

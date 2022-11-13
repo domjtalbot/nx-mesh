@@ -1,6 +1,6 @@
 {
-  "availability": {
-    "inTheNews": [
+  "feed_availability": {
+    "in_the_news": [
       "test.wikipedia.org",
       "bs.wikipedia.org",
       "da.wikipedia.org",
@@ -20,7 +20,7 @@
       "sv.wikipedia.org",
       "vi.wikipedia.org"
     ],
-    "todaysFeaturedArticle": [
+    "todays_featured_article": [
       "bg.wikipedia.org",
       "bn.wikipedia.org",
       "bs.wikipedia.org",
@@ -43,8 +43,8 @@
       "vi.wikipedia.org",
       "zh.wikipedia.org"
     ],
-    "pictureOfTheDay": ["*.wikipedia.org"],
-    "onThisDay": [
+    "picture_of_the_day": ["*.wikipedia.org"],
+    "on_this_day": [
       "en.wikipedia.org",
       "de.wikipedia.org",
       "fr.wikipedia.org",
@@ -58,6 +58,6 @@
       "it.wikipedia.org",
       "tr.wikipedia.org"
     ],
-    "mostRead": ["*.wikipedia.org"]
+    "most_read": ["*.wikipedia.org"]
   }
 }

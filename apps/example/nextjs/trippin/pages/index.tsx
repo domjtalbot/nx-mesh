@@ -1,14 +1,14 @@
 import type { GetStaticProps, NextPage } from 'next';
-import type { Airlines_queryQuery } from '@nx-mesh/example/sdk/trippin';
+import type { Trippin } from '@nx-mesh/example/sdk/trippin';
 
 import styles from './index.module.css';
 
-type PageData = Airlines_queryQuery;
+type PageData = Trippin.getAirportsQuery;
 
 export const getStaticProps: GetStaticProps<PageData> = async () => {
-  const { getMeshSDK } = await import('@nx-mesh/example/sdk/trippin');
+  const { getMeshSDK } = await import('@nx-mesh/example/sdk/trippin/sdk');
 
-  const data = await getMeshSDK().Airlines_query();
+  const data = await getMeshSDK().getAirports();
 
   return {
     props: data,
@@ -19,11 +19,12 @@ export const getStaticProps: GetStaticProps<PageData> = async () => {
 export const Index: NextPage<PageData> = (props) => {
   return (
     <div className={styles.page}>
-      <h1>TripPin TSC</h1>
+      <h1>TripPin</h1>
       <ul>
-        {props.Airlines?.map((airline) => (
-          <li key={airline.AirlineCode} data-airline={airline.Name}>
-            {airline.Name}
+        {props.Airports?.map(({ Name, Location }) => (
+          <li key={Name} data-airport={Name}>
+            {Name} - {Location.City?.Name}, {Location.City?.Region},{' '}
+            {Location.City?.CountryRegion}
           </li>
         ))}
       </ul>

@@ -206,10 +206,10 @@ describe.each<
             ['trippin', 'js'],
             ['trippin', 'json'],
             ['trippin', 'yml'],
-            ['weatherbit', 'cjs'],
-            ['weatherbit', 'js'],
-            ['weatherbit', 'json'],
-            ['weatherbit', 'yml'],
+            ['countryInfo', 'cjs'],
+            ['countryInfo', 'js'],
+            ['countryInfo', 'json'],
+            ['countryInfo', 'yml'],
           ]
         )(
           'should create a %s %s config',

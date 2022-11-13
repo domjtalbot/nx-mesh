@@ -15,16 +15,26 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@nx-mesh/example/sdk/country-info": [
+        "libs/example/sdk/country-info/src/index.ts"
+      ],
+      "@nx-mesh/example/sdk/country-info/*": [
+        "libs/example/sdk/country-info/src/lib/*"
+      ],
       "@nx-mesh/example/sdk/javascript-wiki": [
         "libs/example/sdk/javascript-wiki/src/index.ts"
+      ],
+      "@nx-mesh/example/sdk/javascript-wiki/*": [
+        "libs/example/sdk/javascript-wiki/src/lib/*"
       ],
       "@nx-mesh/example/sdk/stackexchange": [
         "libs/example/sdk/stackexchange/src/index.ts"
       ],
-      "@nx-mesh/example/sdk/trippin": ["libs/example/sdk/trippin/src/index.ts"],
-      "@nx-mesh/example/sdk/weatherbit": [
-        "libs/example/sdk/weatherbit/src/index.ts"
+      "@nx-mesh/example/sdk/stackexchange/*": [
+        "libs/example/sdk/stackexchange/src/lib/*"
       ],
+      "@nx-mesh/example/sdk/trippin": ["libs/example/sdk/trippin/src/index.ts"],
+      "@nx-mesh/example/sdk/trippin/*": ["libs/example/sdk/trippin/src/lib/*"],
       "nx-mesh": ["libs/nx-mesh/src/index.ts"]
     }
   },

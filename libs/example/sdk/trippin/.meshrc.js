@@ -1,7 +1,7 @@
 module.exports = {
   sources: [
     {
-      name: 'TripPin',
+      name: 'Trippin',
       handler: {
         odata: {
           baseUrl:
@@ -15,9 +15,5 @@ module.exports = {
   serve: {
     browser: false,
   },
-  sdk: {
-    generateOperations: {
-      selectionSetDepth: 6,
-    },
-  },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };

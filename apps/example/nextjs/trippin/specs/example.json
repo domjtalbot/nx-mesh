@@ -1,16 +1,59 @@
 {
-  "Airlines": [
+  "Airports": [
     {
-      "Name": "American Airlines",
-      "AirlineCode": "AA"
+      "Name": "San Francisco International Airport",
+      "Location": {
+        "Address": "South McDonnell Road, San Francisco, CA 94128",
+        "City": {
+          "Name": "San Francisco",
+          "Region": "California",
+          "CountryRegion": "United States"
+        }
+      }
     },
     {
-      "Name": "Shanghai Airline",
-      "AirlineCode": "FM"
+      "Name": "Los Angeles International Airport",
+      "Location": {
+        "Address": "1 World Way, Los Angeles, CA, 90045",
+        "City": {
+          "Name": "Los Angeles",
+          "Region": "California",
+          "CountryRegion": "United States"
+        }
+      }
     },
     {
-      "Name": "China Eastern Airlines",
-      "AirlineCode": "MU"
+      "Name": "Shanghai Hongqiao International Airport",
+      "Location": {
+        "Address": "Hongqiao Road 2550, Changning District",
+        "City": {
+          "Name": "Shanghai",
+          "Region": "Shanghai",
+          "CountryRegion": "China"
+        }
+      }
+    },
+    {
+      "Name": "Beijing Capital International Airport",
+      "Location": {
+        "Address": "Airport Road, Chaoyang District, Beijing, 100621",
+        "City": {
+          "Name": "Beijing",
+          "Region": "Beijing",
+          "CountryRegion": "China"
+        }
+      }
+    },
+    {
+      "Name": "John F. Kennedy International Airport",
+      "Location": {
+        "Address": "Jamaica, New York, NY 11430",
+        "City": {
+          "Name": "New York City",
+          "Region": "New York",
+          "CountryRegion": "United States"
+        }
+      }
     }
   ]
 }

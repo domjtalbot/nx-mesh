@@ -47,7 +47,7 @@
     "meshExampleProject": {
       "description": "Which example project would you like to use?",
       "type": "string",
-      "enum": ["javascriptWiki", "stackexchange", "trippin", "weatherbit"],
+      "enum": ["javascriptWiki", "stackexchange", "trippin", "country-info"],
       "default": "javascriptWiki"
     },
     "simpleModuleName": {
