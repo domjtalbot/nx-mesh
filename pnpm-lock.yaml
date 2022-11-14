@@ -14,10 +14,10 @@ importers:
       '@graphql-mesh/new-openapi': 0.8.2
       '@graphql-mesh/odata': 0.20.31
       '@graphql-mesh/openapi': 0.33.34
-      '@graphql-mesh/plugin-snapshot': ^0.0.10
+      '@graphql-mesh/plugin-snapshot': 0.0.10
       '@graphql-mesh/runtime': 0.44.31
-      '@graphql-mesh/soap': ^0.16.0
-      '@graphql-mesh/utils': ^0.42.6
+      '@graphql-mesh/soap': 0.16.0
+      '@graphql-mesh/utils': 0.42.6
       '@graphql-yoga/node': 2.13.13
       '@nrwl/cli': 15.0.4
       '@nrwl/cypress': 15.0.4
@@ -2574,7 +2574,7 @@ packages:
       lodash: 4.17.21
       md5: 2.3.0
       source-map: 0.6.1
-      webpack: 5.74.0_@swc+core@1.2.215
+      webpack: 5.74.0
       webpack-virtual-modules: 0.4.6
     transitivePeerDependencies:
       - supports-color
@@ -8309,7 +8309,7 @@ packages:
       loader-utils: 2.0.3
       make-dir: 3.1.0
       schema-utils: 2.7.1
-      webpack: 5.74.0_@swc+core@1.2.215
+      webpack: 5.74.0
 
   /babel-loader/8.3.0_webpack@5.74.0:
     resolution:
@@ -8325,7 +8325,7 @@ packages:
       loader-utils: 2.0.3
       make-dir: 3.1.0
       schema-utils: 2.7.1
-      webpack: 5.74.0_@swc+core@1.2.215
+      webpack: 5.74.0
 
   /babel-plugin-const-enum/1.2.0_@babel+core@7.20.2:
     resolution:
@@ -9440,7 +9440,7 @@ packages:
       normalize-path: 3.0.0
       schema-utils: 4.0.0
       serialize-javascript: 6.0.0
-      webpack: 5.74.0_@swc+core@1.2.215
+      webpack: 5.74.0
 
   /core-js-compat/3.26.0:
     resolution:
@@ -9633,7 +9633,7 @@ packages:
       schema-utils: 4.0.0
       serialize-javascript: 6.0.0
       source-map: 0.6.1
-      webpack: 5.74.0_@swc+core@1.2.215
+      webpack: 5.74.0
 
   /css-select/4.3.0:
     resolution:
@@ -11425,7 +11425,7 @@ packages:
     dependencies:
       loader-utils: 2.0.3
       schema-utils: 3.1.1
-      webpack: 5.74.0_@swc+core@1.2.215
+      webpack: 5.74.0
 
   /file-uri-to-path/2.0.0:
     resolution:
@@ -14388,7 +14388,7 @@ packages:
     dependencies:
       klona: 2.0.5
       less: 3.12.2
-      webpack: 5.74.0_@swc+core@1.2.215
+      webpack: 5.74.0
 
   /less/3.12.2:
     resolution:
@@ -14449,7 +14449,7 @@ packages:
       webpack-sources:
         optional: true
     dependencies:
-      webpack: 5.74.0_@swc+core@1.2.215
+      webpack: 5.74.0
       webpack-sources: 3.2.3
 
   /lie/3.1.1:
@@ -15059,7 +15059,7 @@ packages:
       webpack: ^5.0.0
     dependencies:
       schema-utils: 4.0.0
-      webpack: 5.74.0_@swc+core@1.2.215
+      webpack: 5.74.0
 
   /mini-svg-data-uri/1.4.4:
     resolution:
@@ -16359,7 +16359,7 @@ packages:
       klona: 2.0.5
       postcss: 8.4.18
       semver: 7.3.8
-      webpack: 5.74.0_@swc+core@1.2.215
+      webpack: 5.74.0
 
   /postcss-merge-longhand/5.1.7_postcss@8.4.18:
     resolution:
@@ -17000,7 +17000,7 @@ packages:
     dependencies:
       loader-utils: 2.0.3
       schema-utils: 3.1.1
-      webpack: 5.74.0_@swc+core@1.2.215
+      webpack: 5.74.0
 
   /react-dom/18.2.0_react@18.2.0:
     resolution:
@@ -17591,7 +17591,7 @@ packages:
       klona: 2.0.5
       neo-async: 2.6.2
       sass: 1.56.0
-      webpack: 5.74.0_@swc+core@1.2.215
+      webpack: 5.74.0
 
   /sass/1.56.0:
     resolution:
@@ -18002,7 +18002,7 @@ packages:
       abab: 2.0.6
       iconv-lite: 0.6.3
       source-map-js: 1.0.2
-      webpack: 5.74.0_@swc+core@1.2.215
+      webpack: 5.74.0
 
   /source-map-resolve/0.6.0:
     resolution:
@@ -18684,7 +18684,6 @@ packages:
       serialize-javascript: 6.0.0
       terser: 5.15.1
       webpack: 5.74.0
-    dev: false
 
   /terser/5.15.1:
     resolution:
@@ -19679,7 +19678,7 @@ packages:
       mime-types: 2.1.35
       range-parser: 1.2.1
       schema-utils: 4.0.0
-      webpack: 5.74.0_@swc+core@1.2.215
+      webpack: 5.74.0
 
   /webpack-dev-server/4.11.1_webpack@5.74.0:
     resolution:
@@ -19722,7 +19721,7 @@ packages:
       serve-index: 1.9.1
       sockjs: 0.3.24
       spdy: 4.0.2
-      webpack: 5.74.0_@swc+core@1.2.215
+      webpack: 5.74.0
       webpack-dev-middleware: 5.3.3_webpack@5.74.0
       ws: 8.11.0
     transitivePeerDependencies:
@@ -19769,7 +19768,7 @@ packages:
         optional: true
     dependencies:
       typed-assert: 1.0.9
-      webpack: 5.74.0_@swc+core@1.2.215
+      webpack: 5.74.0
 
   /webpack-virtual-modules/0.4.6:
     resolution:
@@ -19818,7 +19817,6 @@ packages:
       - '@swc/core'
       - esbuild
       - uglify-js
-    dev: false
 
   /webpack/5.74.0_@swc+core@1.2.215:
     resolution:
