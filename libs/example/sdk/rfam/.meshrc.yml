@@ -1,0 +1,14 @@
+sources:
+  - name: Rfam
+    handler:
+      mysql:
+        database: Rfam
+        host: mysql-rfam-public.ebi.ac.uk
+        port: 4497
+        user: rfamro
+
+documents:
+  - ./src/graphql/**/*.*.graphql
+
+serve:
+  playground: false

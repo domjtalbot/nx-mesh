@@ -12,6 +12,7 @@ importers:
       '@envelop/response-cache': 4.0.3
       '@graphql-mesh/cli': 0.79.3
       '@graphql-mesh/json-schema': ^0.35.33
+      '@graphql-mesh/mysql': ^0.17.30
       '@graphql-mesh/new-openapi': 0.8.2
       '@graphql-mesh/odata': 0.20.31
       '@graphql-mesh/openapi': 0.33.34
@@ -90,6 +91,7 @@ importers:
       '@envelop/response-cache': 4.0.3_graphql@16.6.0
       '@graphql-mesh/cli': 0.79.3_jql2lekzpqkgfammguafewxjji
       '@graphql-mesh/json-schema': 0.35.33_rjjjs2nwgns3bcvnnqb5eu5nry
+      '@graphql-mesh/mysql': 0.17.30_graphql@16.6.0
       '@graphql-mesh/new-openapi': 0.8.2_rjjjs2nwgns3bcvnnqb5eu5nry
       '@graphql-mesh/odata': 0.20.31_rjjjs2nwgns3bcvnnqb5eu5nry
       '@graphql-mesh/openapi': 0.33.34_rjjjs2nwgns3bcvnnqb5eu5nry
@@ -3185,6 +3187,33 @@ packages:
       '@graphql-tools/stitching-directives': 2.3.17_graphql@16.6.0
       '@graphql-tools/utils': 9.0.1_graphql@16.6.0
       graphql: 16.6.0
+      tslib: 2.4.1
+    transitivePeerDependencies:
+      - react-native
+      - react-native-windows
+    dev: false
+
+  /@graphql-mesh/mysql/0.17.30_graphql@16.6.0:
+    resolution:
+      {
+        integrity: sha512-c7L847uPTGNlTpQiW8KA/uUTKm0g5TqsqkUsU5UEnGfy8t2PQIBdVbQJje4K4eMFhHlC03ex+s0aoa+KU+00Pg==,
+      }
+    peerDependencies:
+      graphql: '*'
+    dependencies:
+      '@graphql-mesh/cross-helpers': 0.2.9_graphql@16.6.0
+      '@graphql-mesh/store': 0.8.62_graphql@16.6.0
+      '@graphql-mesh/string-interpolation': 0.3.3_graphql@16.6.0
+      '@graphql-mesh/types': 0.85.7_graphql@16.6.0
+      '@graphql-mesh/utils': 0.42.6_graphql@16.6.0
+      '@graphql-tools/delegate': 9.0.14_graphql@16.6.0
+      '@graphql-tools/utils': 9.0.1_graphql@16.6.0
+      graphql: 16.6.0
+      graphql-compose: 9.0.10_graphql@16.6.0
+      graphql-fields: 2.0.3
+      graphql-scalars: 1.20.0_graphql@16.6.0
+      mysql: 2.18.1
+      mysql-utilities: 1.1.4
       tslib: 2.4.1
     transitivePeerDependencies:
       - react-native
@@ -8706,6 +8735,13 @@ packages:
         integrity: sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==,
       }
 
+  /bignumber.js/9.0.0:
+    resolution:
+      {
+        integrity: sha512-t/OYhhJ2SD+YGBQcjY8GzzDHEk9f3nerxjtfa6tlMXfe7frs/WozhvCNoGvpM0P3bNf3Gq5ZRMlGr5f3r4/N8A==,
+      }
+    dev: false
+
   /binary-extensions/2.2.0:
     resolution:
       {
@@ -12185,6 +12221,13 @@ packages:
       graphql: 16.6.0
     dev: false
 
+  /graphql-fields/2.0.3:
+    resolution:
+      {
+        integrity: sha512-x3VE5lUcR4XCOxPIqaO4CE+bTK8u6gVouOdpQX9+EKHr+scqtK5Pp/l8nIGqIpN1TUlkKE6jDCCycm/WtLRAwA==,
+      }
+    dev: false
+
   /graphql-import-node/0.0.5_graphql@16.6.0:
     resolution:
       {
@@ -15256,6 +15299,29 @@ packages:
       dns-packet: 5.4.0
       thunky: 1.1.0
 
+  /mysql-utilities/1.1.4:
+    resolution:
+      {
+        integrity: sha512-obKFTf0pnHjWR7kqCNmLT/IybGE1WFePBDn2LgNHSVQJZ7+M3yviHY66DApddxEIL9D3PeUR5OEG+WOZH/W4aw==,
+      }
+    engines: { node: '>= 6.0.0' }
+    dependencies:
+      mysql: 2.18.1
+    dev: false
+
+  /mysql/2.18.1:
+    resolution:
+      {
+        integrity: sha512-Bca+gk2YWmqp2Uf6k5NFEurwY/0td0cpebAucFpY/3jhrwrVGuxU2uQFCHjU19SJfje0yQvi+rVWdq78hR5lig==,
+      }
+    engines: { node: '>= 0.6' }
+    dependencies:
+      bignumber.js: 9.0.0
+      readable-stream: 2.3.7
+      safe-buffer: 5.1.2
+      sqlstring: 2.3.1
+    dev: false
+
   /nanoid/3.3.4:
     resolution:
       {
@@ -18223,6 +18289,14 @@ packages:
       {
         integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==,
       }
+
+  /sqlstring/2.3.1:
+    resolution:
+      {
+        integrity: sha512-ooAzh/7dxIG5+uDik1z/Rd1vli0+38izZhGzSa34FwR7IbelPWCCKSNIl8jlL/F7ERvy8CB2jNeM1E9i9mXMAQ==,
+      }
+    engines: { node: '>= 0.6' }
+    dev: false
 
   /sshpk/1.17.0:
     resolution:

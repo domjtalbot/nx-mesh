@@ -1,0 +1,47 @@
+{
+  "name": "example-sdk-rfam",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/example/sdk/rfam/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/example/sdk/rfam/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/example/sdk/rfam/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "nx-mesh:build-swc",
+      "outputs": ["libs/example/sdk/rfam/.mesh", "{options.outputPath}"],
+      "options": {
+        "dir": "libs/example/sdk/rfam",
+        "main": "libs/example/sdk/rfam/src/index.ts",
+        "outputPath": "dist/libs/example/sdk/rfam",
+        "tsConfig": "libs/example/sdk/rfam/tsconfig.lib.json"
+      }
+    },
+    "serve": {
+      "executor": "nx-mesh:serve",
+      "options": {
+        "dev": true,
+        "dir": "libs/example/sdk/rfam"
+      }
+    },
+    "validate": {
+      "executor": "nx-mesh:validate",
+      "options": {
+        "dir": "libs/example/sdk/rfam"
+      }
+    }
+  },
+  "tags": ["type:example", "type:sdk"]
+}
