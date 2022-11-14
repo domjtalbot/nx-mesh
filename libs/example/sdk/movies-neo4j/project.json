@@ -1,0 +1,50 @@
+{
+  "name": "example-sdk-movies-neo4j",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/example/sdk/movies-neo4j/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/example/sdk/movies-neo4j/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/example/sdk/movies-neo4j/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "nx-mesh:build-swc",
+      "outputs": [
+        "libs/example/sdk/movies-neo4j/.mesh",
+        "{options.outputPath}"
+      ],
+      "options": {
+        "dir": "libs/example/sdk/movies-neo4j",
+        "main": "libs/example/sdk/movies-neo4j/src/index.ts",
+        "outputPath": "dist/libs/example/sdk/movies-neo4j",
+        "tsConfig": "libs/example/sdk/movies-neo4j/tsconfig.lib.json"
+      }
+    },
+    "serve": {
+      "executor": "nx-mesh:serve",
+      "options": {
+        "dev": true,
+        "dir": "libs/example/sdk/movies-neo4j"
+      }
+    },
+    "validate": {
+      "executor": "nx-mesh:validate",
+      "options": {
+        "dir": "libs/example/sdk/movies-neo4j"
+      }
+    }
+  },
+  "tags": ["type:sdk", "type:example"]
+}
