@@ -15,6 +15,66 @@ export default {
 "
 `;
 
+exports[`generators/base app directory --babelJest should use babel for jest 2`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-app',
+  preset: '../../jest.preset.js',
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]s$': 'babel-jest'
+  },
+  moduleFileExtensions: ['ts', 'js', 'html'],
+  coverageDirectory: '../../coverage/apps/my-mesh-app'
+};
+"
+`;
+
+exports[`generators/base app directory --babelJest should use babel for jest 3`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-app',
+  preset: '../../jest.preset.js',
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]s$': 'babel-jest'
+  },
+  moduleFileExtensions: ['ts', 'js', 'html'],
+  coverageDirectory: '../../coverage/apps/my-mesh-app'
+};
+"
+`;
+
+exports[`generators/base app directory --babelJest should use babel for jest 4`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-app',
+  preset: '../../jest.preset.js',
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]s$': 'babel-jest'
+  },
+  moduleFileExtensions: ['ts', 'js', 'html'],
+  coverageDirectory: '../../coverage/apps/my-mesh-app'
+};
+"
+`;
+
+exports[`generators/base app directory --babelJest should use babel for jest 5`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-app',
+  preset: '../../jest.preset.js',
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]s$': 'babel-jest'
+  },
+  moduleFileExtensions: ['ts', 'js', 'html'],
+  coverageDirectory: '../../coverage/apps/my-mesh-app'
+};
+"
+`;
+
 exports[`generators/base app directory --e2eTestRunner should use cypress for E2E 1`] = `
 "
 describe('my-mesh-app', () => {
@@ -37,7 +97,247 @@ describe('my-mesh-app', () => {
 "
 `;
 
+exports[`generators/base app directory --e2eTestRunner should use cypress for E2E 2`] = `
+"
+describe('my-mesh-app', () => {
+  it('should start a mesh server', () => {
+    cy.request('/graphql/health').then((resp) => {
+      expect(resp.status).to.eq(200);
+      expect(resp.body).to.have.property('message', 'alive');
+    });
+  });
+
+  it('should still be running after 15 seconds', () => {
+    cy.wait(1000 * 15)
+      .request('/graphql/health')
+      .then((resp) => {
+        expect(resp.status).to.eq(200);
+        expect(resp.body).to.have.property('message', 'alive');
+      });
+  });
+});
+"
+`;
+
+exports[`generators/base app directory --e2eTestRunner should use cypress for E2E 3`] = `
+"
+describe('my-mesh-app', () => {
+  it('should start a mesh server', () => {
+    cy.request('/graphql/health').then((resp) => {
+      expect(resp.status).to.eq(200);
+      expect(resp.body).to.have.property('message', 'alive');
+    });
+  });
+
+  it('should still be running after 15 seconds', () => {
+    cy.wait(1000 * 15)
+      .request('/graphql/health')
+      .then((resp) => {
+        expect(resp.status).to.eq(200);
+        expect(resp.body).to.have.property('message', 'alive');
+      });
+  });
+});
+"
+`;
+
+exports[`generators/base app directory --e2eTestRunner should use cypress for E2E 4`] = `
+"
+describe('my-mesh-app', () => {
+  it('should start a mesh server', () => {
+    cy.request('/graphql/health').then((resp) => {
+      expect(resp.status).to.eq(200);
+      expect(resp.body).to.have.property('message', 'alive');
+    });
+  });
+
+  it('should still be running after 15 seconds', () => {
+    cy.wait(1000 * 15)
+      .request('/graphql/health')
+      .then((resp) => {
+        expect(resp.status).to.eq(200);
+        expect(resp.body).to.have.property('message', 'alive');
+      });
+  });
+});
+"
+`;
+
+exports[`generators/base app directory --e2eTestRunner should use cypress for E2E 5`] = `
+"
+describe('my-mesh-app', () => {
+  it('should start a mesh server', () => {
+    cy.request('/graphql/health').then((resp) => {
+      expect(resp.status).to.eq(200);
+      expect(resp.body).to.have.property('message', 'alive');
+    });
+  });
+
+  it('should still be running after 15 seconds', () => {
+    cy.wait(1000 * 15)
+      .request('/graphql/health')
+      .then((resp) => {
+        expect(resp.status).to.eq(200);
+        expect(resp.body).to.have.property('message', 'alive');
+      });
+  });
+});
+"
+`;
+
 exports[`generators/base app directory --linter should use eslint for linting 1`] = `
+"{
+  \\"extends\\": [
+    \\"../../.eslintrc.json\\"
+  ],
+  \\"ignorePatterns\\": [
+    \\"!**/*\\",
+    \\".mesh\\"
+  ],
+  \\"overrides\\": [
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\",
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    }
+  ]
+}
+"
+`;
+
+exports[`generators/base app directory --linter should use eslint for linting 2`] = `
+"{
+  \\"extends\\": [
+    \\"../../.eslintrc.json\\"
+  ],
+  \\"ignorePatterns\\": [
+    \\"!**/*\\",
+    \\".mesh\\"
+  ],
+  \\"overrides\\": [
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\",
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    }
+  ]
+}
+"
+`;
+
+exports[`generators/base app directory --linter should use eslint for linting 3`] = `
+"{
+  \\"extends\\": [
+    \\"../../.eslintrc.json\\"
+  ],
+  \\"ignorePatterns\\": [
+    \\"!**/*\\",
+    \\".mesh\\"
+  ],
+  \\"overrides\\": [
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\",
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    }
+  ]
+}
+"
+`;
+
+exports[`generators/base app directory --linter should use eslint for linting 4`] = `
+"{
+  \\"extends\\": [
+    \\"../../.eslintrc.json\\"
+  ],
+  \\"ignorePatterns\\": [
+    \\"!**/*\\",
+    \\".mesh\\"
+  ],
+  \\"overrides\\": [
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\",
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    }
+  ]
+}
+"
+`;
+
+exports[`generators/base app directory --linter should use eslint for linting 5`] = `
 "{
   \\"extends\\": [
     \\"../../.eslintrc.json\\"
@@ -101,6 +401,112 @@ module.exports = {
 "
 `;
 
+exports[`generators/base app directory --meshConfig should create a cjs config when --meshConfig=%s 2`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'country-info',
+    handler: {
+      soap: {
+        source: 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshConfig should create a cjs config when --meshConfig=%s 3`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshConfig should create a cjs config when --meshConfig=%s 4`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshConfig should create a cjs config when --meshConfig=%s 5`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
 exports[`generators/base app directory --meshConfig should create a js config when --meshConfig=%s 1`] = `
 "
 module.exports = {
@@ -110,6 +516,112 @@ module.exports = {
     handler: {
       openapi: {
         source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshConfig should create a js config when --meshConfig=%s 2`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'country-info',
+    handler: {
+      soap: {
+        source: 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshConfig should create a js config when --meshConfig=%s 3`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshConfig should create a js config when --meshConfig=%s 4`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshConfig should create a js config when --meshConfig=%s 5`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
       },
     },
   }
@@ -152,6 +664,108 @@ exports[`generators/base app directory --meshConfig should create a json config 
 "
 `;
 
+exports[`generators/base app directory --meshConfig should create a json config when --meshConfig=%s 2`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"country-info\\",
+    \\"handler\\": {
+      \\"soap\\": {
+        \\"source\\": \\"http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app directory --meshConfig should create a json config when --meshConfig=%s 3`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"JavaScript Wiki\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app directory --meshConfig should create a json config when --meshConfig=%s 4`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"StackExchange\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app directory --meshConfig should create a json config when --meshConfig=%s 5`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"TripPin\\",
+    \\"handler\\": {
+      \\"odata\\": {
+        \\"baseUrl\\": \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+        \\"batch\\": \\"multipart\\",
+        \\"expandNavProps\\": true
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
 exports[`generators/base app directory --meshConfig should create a yml config by default 1`] = `
 "
 sources:
@@ -159,6 +773,76 @@ sources:
     handler:
       openapi:
         source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshConfig should create a yml config by default 2`] = `
+"
+sources:
+  - name: country-info
+    handler:
+      soap:
+        source: http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshConfig should create a yml config by default 3`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshConfig should create a yml config by default 4`] = `
+"
+sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshConfig should create a yml config by default 5`] = `
+"
+sources:
+  - name: TripPin
+    handler:
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
 
 serve:
   browser: false
@@ -186,7 +870,181 @@ sdk:
 "
 `;
 
+exports[`generators/base app directory --meshConfig should create a yml config when --meshConfig=%s 2`] = `
+"
+sources:
+  - name: country-info
+    handler:
+      soap:
+        source: http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshConfig should create a yml config when --meshConfig=%s 3`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshConfig should create a yml config when --meshConfig=%s 4`] = `
+"
+sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshConfig should create a yml config when --meshConfig=%s 5`] = `
+"
+sources:
+  - name: TripPin
+    handler:
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
 exports[`generators/base app directory --meshExampleProject should create a countryInfo cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'country-info',
+    handler: {
+      soap: {
+        source: 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a countryInfo cjs config 2`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'country-info',
+    handler: {
+      soap: {
+        source: 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a countryInfo cjs config 3`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'country-info',
+    handler: {
+      soap: {
+        source: 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a countryInfo cjs config 4`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'country-info',
+    handler: {
+      soap: {
+        source: 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a countryInfo cjs config 5`] = `
 "
 module.exports = {
   sources: [
@@ -238,6 +1096,110 @@ module.exports = {
 "
 `;
 
+exports[`generators/base app directory --meshExampleProject should create a countryInfo js config 2`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'country-info',
+    handler: {
+      soap: {
+        source: 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a countryInfo js config 3`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'country-info',
+    handler: {
+      soap: {
+        source: 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a countryInfo js config 4`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'country-info',
+    handler: {
+      soap: {
+        source: 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a countryInfo js config 5`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'country-info',
+    handler: {
+      soap: {
+        source: 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
 exports[`generators/base app directory --meshExampleProject should create a countryInfo json config 1`] = `
 "
 {
@@ -263,7 +1225,175 @@ exports[`generators/base app directory --meshExampleProject should create a coun
 "
 `;
 
+exports[`generators/base app directory --meshExampleProject should create a countryInfo json config 2`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"country-info\\",
+    \\"handler\\": {
+      \\"soap\\": {
+        \\"source\\": \\"http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a countryInfo json config 3`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"country-info\\",
+    \\"handler\\": {
+      \\"soap\\": {
+        \\"source\\": \\"http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a countryInfo json config 4`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"country-info\\",
+    \\"handler\\": {
+      \\"soap\\": {
+        \\"source\\": \\"http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a countryInfo json config 5`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"country-info\\",
+    \\"handler\\": {
+      \\"soap\\": {
+        \\"source\\": \\"http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
 exports[`generators/base app directory --meshExampleProject should create a countryInfo yml config 1`] = `
+"
+sources:
+  - name: country-info
+    handler:
+      soap:
+        source: http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a countryInfo yml config 2`] = `
+"
+sources:
+  - name: country-info
+    handler:
+      soap:
+        source: http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a countryInfo yml config 3`] = `
+"
+sources:
+  - name: country-info
+    handler:
+      soap:
+        source: http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a countryInfo yml config 4`] = `
+"
+sources:
+  - name: country-info
+    handler:
+      soap:
+        source: http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a countryInfo yml config 5`] = `
 "
 sources:
   - name: country-info
@@ -306,6 +1436,110 @@ module.exports = {
 "
 `;
 
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki cjs config 2`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki cjs config 3`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki cjs config 4`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki cjs config 5`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
 exports[`generators/base app directory --meshExampleProject should create a javascriptWiki config by default 1`] = `
 "
 sources:
@@ -323,7 +1557,181 @@ sdk:
 "
 `;
 
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki config by default 2`] = `
+"
+sources:
+  - name: country-info
+    handler:
+      soap:
+        source: http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki config by default 3`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki config by default 4`] = `
+"
+sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki config by default 5`] = `
+"
+sources:
+  - name: TripPin
+    handler:
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
 exports[`generators/base app directory --meshExampleProject should create a javascriptWiki js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki js config 2`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki js config 3`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki js config 4`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki js config 5`] = `
 "
 module.exports = {
   sources: [
@@ -374,6 +1782,106 @@ exports[`generators/base app directory --meshExampleProject should create a java
 "
 `;
 
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki json config 2`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"JavaScript Wiki\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki json config 3`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"JavaScript Wiki\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki json config 4`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"JavaScript Wiki\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki json config 5`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"JavaScript Wiki\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
 exports[`generators/base app directory --meshExampleProject should create a javascriptWiki yml config 1`] = `
 "
 sources:
@@ -391,7 +1899,179 @@ sdk:
 "
 `;
 
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki yml config 2`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki yml config 3`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki yml config 4`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a javascriptWiki yml config 5`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
 exports[`generators/base app directory --meshExampleProject should create a stackexchange cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a stackexchange cjs config 2`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a stackexchange cjs config 3`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a stackexchange cjs config 4`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a stackexchange cjs config 5`] = `
 "
 module.exports = {
   sources: [
@@ -443,7 +2123,211 @@ module.exports = {
 "
 `;
 
+exports[`generators/base app directory --meshExampleProject should create a stackexchange js config 2`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a stackexchange js config 3`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a stackexchange js config 4`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a stackexchange js config 5`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
 exports[`generators/base app directory --meshExampleProject should create a stackexchange json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"StackExchange\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a stackexchange json config 2`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"StackExchange\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a stackexchange json config 3`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"StackExchange\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a stackexchange json config 4`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"StackExchange\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a stackexchange json config 5`] = `
 "
 {
   \\"sources\\": [
@@ -485,7 +2369,187 @@ sdk:
 "
 `;
 
+exports[`generators/base app directory --meshExampleProject should create a stackexchange yml config 2`] = `
+"
+sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a stackexchange yml config 3`] = `
+"
+sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a stackexchange yml config 4`] = `
+"
+sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a stackexchange yml config 5`] = `
+"
+sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
 exports[`generators/base app directory --meshExampleProject should create a trippin cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a trippin cjs config 2`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a trippin cjs config 3`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a trippin cjs config 4`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a trippin cjs config 5`] = `
 "
 module.exports = {
   sources: [
@@ -541,7 +2605,227 @@ module.exports = {
 "
 `;
 
+exports[`generators/base app directory --meshExampleProject should create a trippin js config 2`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a trippin js config 3`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a trippin js config 4`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a trippin js config 5`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
 exports[`generators/base app directory --meshExampleProject should create a trippin json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"TripPin\\",
+    \\"handler\\": {
+      \\"odata\\": {
+        \\"baseUrl\\": \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+        \\"batch\\": \\"multipart\\",
+        \\"expandNavProps\\": true
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a trippin json config 2`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"TripPin\\",
+    \\"handler\\": {
+      \\"odata\\": {
+        \\"baseUrl\\": \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+        \\"batch\\": \\"multipart\\",
+        \\"expandNavProps\\": true
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a trippin json config 3`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"TripPin\\",
+    \\"handler\\": {
+      \\"odata\\": {
+        \\"baseUrl\\": \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+        \\"batch\\": \\"multipart\\",
+        \\"expandNavProps\\": true
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a trippin json config 4`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"TripPin\\",
+    \\"handler\\": {
+      \\"odata\\": {
+        \\"baseUrl\\": \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+        \\"batch\\": \\"multipart\\",
+        \\"expandNavProps\\": true
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a trippin json config 5`] = `
 "
 {
   \\"sources\\": [
@@ -587,6 +2871,82 @@ sdk:
 "
 `;
 
+exports[`generators/base app directory --meshExampleProject should create a trippin yml config 2`] = `
+"
+sources:
+  - name: TripPin
+    handler:
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a trippin yml config 3`] = `
+"
+sources:
+  - name: TripPin
+    handler:
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a trippin yml config 4`] = `
+"
+sources:
+  - name: TripPin
+    handler:
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base app directory --meshExampleProject should create a trippin yml config 5`] = `
+"
+sources:
+  - name: TripPin
+    handler:
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
 exports[`generators/base app directory --unitTestRunner should add a jest config if the unitTestRunner is jest 1`] = `
 "/* eslint-disable */
 export default {
@@ -605,6 +2965,131 @@ export default {
   coverageDirectory: '../../coverage/apps/my-mesh-app'
 };
 "
+`;
+
+exports[`generators/base app directory --unitTestRunner should add a jest config if the unitTestRunner is jest 2`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-app',
+  preset: '../../jest.preset.js',
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+    }
+  },
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]s$': 'ts-jest'
+  },
+  moduleFileExtensions: ['ts', 'js', 'html'],
+  coverageDirectory: '../../coverage/apps/my-mesh-app'
+};
+"
+`;
+
+exports[`generators/base app directory --unitTestRunner should add a jest config if the unitTestRunner is jest 3`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-app',
+  preset: '../../jest.preset.js',
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+    }
+  },
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]s$': 'ts-jest'
+  },
+  moduleFileExtensions: ['ts', 'js', 'html'],
+  coverageDirectory: '../../coverage/apps/my-mesh-app'
+};
+"
+`;
+
+exports[`generators/base app directory --unitTestRunner should add a jest config if the unitTestRunner is jest 4`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-app',
+  preset: '../../jest.preset.js',
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+    }
+  },
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]s$': 'ts-jest'
+  },
+  moduleFileExtensions: ['ts', 'js', 'html'],
+  coverageDirectory: '../../coverage/apps/my-mesh-app'
+};
+"
+`;
+
+exports[`generators/base app directory --unitTestRunner should add a jest config if the unitTestRunner is jest 5`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-app',
+  preset: '../../jest.preset.js',
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+    }
+  },
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]s$': 'ts-jest'
+  },
+  moduleFileExtensions: ['ts', 'js', 'html'],
+  coverageDirectory: '../../coverage/apps/my-mesh-app'
+};
+"
+`;
+
+exports[`generators/base app directory should add mesh dependencies to the workspace package.json 1`] = `
+Object {
+  "@graphql-mesh/cli": "0.79.3",
+  "@graphql-mesh/openapi": "0.33.34",
+  "@graphql-mesh/runtime": "0.44.31",
+  "@graphql-mesh/utils": "0.42.6",
+}
+`;
+
+exports[`generators/base app directory should add mesh dependencies to the workspace package.json 2`] = `
+Object {
+  "@graphql-mesh/cli": "0.79.3",
+  "@graphql-mesh/runtime": "0.44.31",
+  "@graphql-mesh/soap": "0.16.0",
+  "@graphql-mesh/utils": "0.42.6",
+}
+`;
+
+exports[`generators/base app directory should add mesh dependencies to the workspace package.json 3`] = `
+Object {
+  "@graphql-mesh/cli": "0.79.3",
+  "@graphql-mesh/openapi": "0.33.34",
+  "@graphql-mesh/runtime": "0.44.31",
+  "@graphql-mesh/utils": "0.42.6",
+}
+`;
+
+exports[`generators/base app directory should add mesh dependencies to the workspace package.json 4`] = `
+Object {
+  "@graphql-mesh/cli": "0.79.3",
+  "@graphql-mesh/openapi": "0.33.34",
+  "@graphql-mesh/runtime": "0.44.31",
+  "@graphql-mesh/utils": "0.42.6",
+}
+`;
+
+exports[`generators/base app directory should add mesh dependencies to the workspace package.json 5`] = `
+Object {
+  "@graphql-mesh/cli": "0.79.3",
+  "@graphql-mesh/odata": "0.20.31",
+  "@graphql-mesh/runtime": "0.44.31",
+  "@graphql-mesh/utils": "0.42.6",
+}
 `;
 
 exports[`generators/base app with standalone config --babelJest should use babel for jest 1`] = `
@@ -1214,6 +3699,15 @@ export default {
 "
 `;
 
+exports[`generators/base app with standalone config should add mesh dependencies to the workspace package.json 1`] = `
+Object {
+  "@graphql-mesh/cli": "0.79.3",
+  "@graphql-mesh/openapi": "0.33.34",
+  "@graphql-mesh/runtime": "0.44.31",
+  "@graphql-mesh/utils": "0.42.6",
+}
+`;
+
 exports[`generators/base lib directory --babelJest should use babel for jest 1`] = `
 "/* eslint-disable */
 export default {
@@ -1229,7 +3723,219 @@ export default {
 "
 `;
 
+exports[`generators/base lib directory --babelJest should use babel for jest 2`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-lib',
+  preset: '../../jest.preset.js',
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]sx?$': 'babel-jest'
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+};
+"
+`;
+
+exports[`generators/base lib directory --babelJest should use babel for jest 3`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-lib',
+  preset: '../../jest.preset.js',
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]sx?$': 'babel-jest'
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+};
+"
+`;
+
+exports[`generators/base lib directory --babelJest should use babel for jest 4`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-lib',
+  preset: '../../jest.preset.js',
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]sx?$': 'babel-jest'
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+};
+"
+`;
+
+exports[`generators/base lib directory --babelJest should use babel for jest 5`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-lib',
+  preset: '../../jest.preset.js',
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]sx?$': 'babel-jest'
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+};
+"
+`;
+
 exports[`generators/base lib directory --linter should use eslint for linting 1`] = `
+"{
+  \\"extends\\": [
+    \\"../../.eslintrc.json\\"
+  ],
+  \\"ignorePatterns\\": [
+    \\"!**/*\\",
+    \\".mesh\\"
+  ],
+  \\"overrides\\": [
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\",
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    }
+  ]
+}
+"
+`;
+
+exports[`generators/base lib directory --linter should use eslint for linting 2`] = `
+"{
+  \\"extends\\": [
+    \\"../../.eslintrc.json\\"
+  ],
+  \\"ignorePatterns\\": [
+    \\"!**/*\\",
+    \\".mesh\\"
+  ],
+  \\"overrides\\": [
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\",
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    }
+  ]
+}
+"
+`;
+
+exports[`generators/base lib directory --linter should use eslint for linting 3`] = `
+"{
+  \\"extends\\": [
+    \\"../../.eslintrc.json\\"
+  ],
+  \\"ignorePatterns\\": [
+    \\"!**/*\\",
+    \\".mesh\\"
+  ],
+  \\"overrides\\": [
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\",
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    }
+  ]
+}
+"
+`;
+
+exports[`generators/base lib directory --linter should use eslint for linting 4`] = `
+"{
+  \\"extends\\": [
+    \\"../../.eslintrc.json\\"
+  ],
+  \\"ignorePatterns\\": [
+    \\"!**/*\\",
+    \\".mesh\\"
+  ],
+  \\"overrides\\": [
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\",
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.ts\\",
+        \\"*.tsx\\"
+      ],
+      \\"rules\\": {}
+    },
+    {
+      \\"files\\": [
+        \\"*.js\\",
+        \\"*.jsx\\"
+      ],
+      \\"rules\\": {}
+    }
+  ]
+}
+"
+`;
+
+exports[`generators/base lib directory --linter should use eslint for linting 5`] = `
 "{
   \\"extends\\": [
     \\"../../.eslintrc.json\\"
@@ -1293,6 +3999,112 @@ module.exports = {
 "
 `;
 
+exports[`generators/base lib directory --meshConfig should create a cjs config when --meshConfig=%s 2`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'country-info',
+    handler: {
+      soap: {
+        source: 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshConfig should create a cjs config when --meshConfig=%s 3`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshConfig should create a cjs config when --meshConfig=%s 4`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshConfig should create a cjs config when --meshConfig=%s 5`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
 exports[`generators/base lib directory --meshConfig should create a js config when --meshConfig=%s 1`] = `
 "
 module.exports = {
@@ -1302,6 +4114,112 @@ module.exports = {
     handler: {
       openapi: {
         source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshConfig should create a js config when --meshConfig=%s 2`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'country-info',
+    handler: {
+      soap: {
+        source: 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshConfig should create a js config when --meshConfig=%s 3`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshConfig should create a js config when --meshConfig=%s 4`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshConfig should create a js config when --meshConfig=%s 5`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
       },
     },
   }
@@ -1344,6 +4262,108 @@ exports[`generators/base lib directory --meshConfig should create a json config 
 "
 `;
 
+exports[`generators/base lib directory --meshConfig should create a json config when --meshConfig=%s 2`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"country-info\\",
+    \\"handler\\": {
+      \\"soap\\": {
+        \\"source\\": \\"http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib directory --meshConfig should create a json config when --meshConfig=%s 3`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"JavaScript Wiki\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib directory --meshConfig should create a json config when --meshConfig=%s 4`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"StackExchange\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib directory --meshConfig should create a json config when --meshConfig=%s 5`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"TripPin\\",
+    \\"handler\\": {
+      \\"odata\\": {
+        \\"baseUrl\\": \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+        \\"batch\\": \\"multipart\\",
+        \\"expandNavProps\\": true
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
 exports[`generators/base lib directory --meshConfig should create a yml config by default 1`] = `
 "
 sources:
@@ -1351,6 +4371,76 @@ sources:
     handler:
       openapi:
         source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshConfig should create a yml config by default 2`] = `
+"
+sources:
+  - name: country-info
+    handler:
+      soap:
+        source: http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshConfig should create a yml config by default 3`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshConfig should create a yml config by default 4`] = `
+"
+sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshConfig should create a yml config by default 5`] = `
+"
+sources:
+  - name: TripPin
+    handler:
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
 
 serve:
   browser: false
@@ -1378,7 +4468,181 @@ sdk:
 "
 `;
 
+exports[`generators/base lib directory --meshConfig should create a yml config when --meshConfig=%s 2`] = `
+"
+sources:
+  - name: country-info
+    handler:
+      soap:
+        source: http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshConfig should create a yml config when --meshConfig=%s 3`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshConfig should create a yml config when --meshConfig=%s 4`] = `
+"
+sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshConfig should create a yml config when --meshConfig=%s 5`] = `
+"
+sources:
+  - name: TripPin
+    handler:
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
 exports[`generators/base lib directory --meshExampleProject should create a countryInfo cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'country-info',
+    handler: {
+      soap: {
+        source: 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a countryInfo cjs config 2`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'country-info',
+    handler: {
+      soap: {
+        source: 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a countryInfo cjs config 3`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'country-info',
+    handler: {
+      soap: {
+        source: 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a countryInfo cjs config 4`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'country-info',
+    handler: {
+      soap: {
+        source: 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a countryInfo cjs config 5`] = `
 "
 module.exports = {
   sources: [
@@ -1430,6 +4694,110 @@ module.exports = {
 "
 `;
 
+exports[`generators/base lib directory --meshExampleProject should create a countryInfo js config 2`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'country-info',
+    handler: {
+      soap: {
+        source: 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a countryInfo js config 3`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'country-info',
+    handler: {
+      soap: {
+        source: 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a countryInfo js config 4`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'country-info',
+    handler: {
+      soap: {
+        source: 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a countryInfo js config 5`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'country-info',
+    handler: {
+      soap: {
+        source: 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
 exports[`generators/base lib directory --meshExampleProject should create a countryInfo json config 1`] = `
 "
 {
@@ -1455,7 +4823,175 @@ exports[`generators/base lib directory --meshExampleProject should create a coun
 "
 `;
 
+exports[`generators/base lib directory --meshExampleProject should create a countryInfo json config 2`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"country-info\\",
+    \\"handler\\": {
+      \\"soap\\": {
+        \\"source\\": \\"http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a countryInfo json config 3`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"country-info\\",
+    \\"handler\\": {
+      \\"soap\\": {
+        \\"source\\": \\"http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a countryInfo json config 4`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"country-info\\",
+    \\"handler\\": {
+      \\"soap\\": {
+        \\"source\\": \\"http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a countryInfo json config 5`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"country-info\\",
+    \\"handler\\": {
+      \\"soap\\": {
+        \\"source\\": \\"http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
 exports[`generators/base lib directory --meshExampleProject should create a countryInfo yml config 1`] = `
+"
+sources:
+  - name: country-info
+    handler:
+      soap:
+        source: http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a countryInfo yml config 2`] = `
+"
+sources:
+  - name: country-info
+    handler:
+      soap:
+        source: http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a countryInfo yml config 3`] = `
+"
+sources:
+  - name: country-info
+    handler:
+      soap:
+        source: http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a countryInfo yml config 4`] = `
+"
+sources:
+  - name: country-info
+    handler:
+      soap:
+        source: http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a countryInfo yml config 5`] = `
 "
 sources:
   - name: country-info
@@ -1498,6 +5034,110 @@ module.exports = {
 "
 `;
 
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki cjs config 2`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki cjs config 3`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki cjs config 4`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki cjs config 5`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
 exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki config by default 1`] = `
 "
 sources:
@@ -1515,7 +5155,181 @@ sdk:
 "
 `;
 
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki config by default 2`] = `
+"
+sources:
+  - name: country-info
+    handler:
+      soap:
+        source: http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki config by default 3`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki config by default 4`] = `
+"
+sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki config by default 5`] = `
+"
+sources:
+  - name: TripPin
+    handler:
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
 exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki js config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki js config 2`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki js config 3`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki js config 4`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'JavaScript Wiki',
+    handler: {
+      openapi: {
+        source: 'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki js config 5`] = `
 "
 module.exports = {
   sources: [
@@ -1566,6 +5380,106 @@ exports[`generators/base lib directory --meshExampleProject should create a java
 "
 `;
 
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki json config 2`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"JavaScript Wiki\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki json config 3`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"JavaScript Wiki\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki json config 4`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"JavaScript Wiki\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki json config 5`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"JavaScript Wiki\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
 exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki yml config 1`] = `
 "
 sources:
@@ -1583,7 +5497,179 @@ sdk:
 "
 `;
 
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki yml config 2`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki yml config 3`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki yml config 4`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a javascriptWiki yml config 5`] = `
+"
+sources:
+  - name: JavaScript Wiki
+    handler:
+      openapi:
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
 exports[`generators/base lib directory --meshExampleProject should create a stackexchange cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a stackexchange cjs config 2`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a stackexchange cjs config 3`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a stackexchange cjs config 4`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a stackexchange cjs config 5`] = `
 "
 module.exports = {
   sources: [
@@ -1635,7 +5721,211 @@ module.exports = {
 "
 `;
 
+exports[`generators/base lib directory --meshExampleProject should create a stackexchange js config 2`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a stackexchange js config 3`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a stackexchange js config 4`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a stackexchange js config 5`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'StackExchange',
+    handler: {
+      openapi: {
+        source: 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
 exports[`generators/base lib directory --meshExampleProject should create a stackexchange json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"StackExchange\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a stackexchange json config 2`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"StackExchange\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a stackexchange json config 3`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"StackExchange\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a stackexchange json config 4`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"StackExchange\\",
+    \\"handler\\": {
+      \\"openapi\\": {
+        \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a stackexchange json config 5`] = `
 "
 {
   \\"sources\\": [
@@ -1677,7 +5967,187 @@ sdk:
 "
 `;
 
+exports[`generators/base lib directory --meshExampleProject should create a stackexchange yml config 2`] = `
+"
+sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a stackexchange yml config 3`] = `
+"
+sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a stackexchange yml config 4`] = `
+"
+sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a stackexchange yml config 5`] = `
+"
+sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
 exports[`generators/base lib directory --meshExampleProject should create a trippin cjs config 1`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a trippin cjs config 2`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a trippin cjs config 3`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a trippin cjs config 4`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a trippin cjs config 5`] = `
 "
 module.exports = {
   sources: [
@@ -1733,7 +6203,227 @@ module.exports = {
 "
 `;
 
+exports[`generators/base lib directory --meshExampleProject should create a trippin js config 2`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a trippin js config 3`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a trippin js config 4`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a trippin js config 5`] = `
+"
+module.exports = {
+  sources: [
+    {
+    name: 'TripPin',
+    handler: {
+      odata: {
+        baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+        batch: 'multipart',
+        expandNavProps: true,
+      },
+    },
+  }
+  ],
+  serve: {
+    browser: false,
+  },
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: 6
+    }
+  }
+};
+
+"
+`;
+
 exports[`generators/base lib directory --meshExampleProject should create a trippin json config 1`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"TripPin\\",
+    \\"handler\\": {
+      \\"odata\\": {
+        \\"baseUrl\\": \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+        \\"batch\\": \\"multipart\\",
+        \\"expandNavProps\\": true
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a trippin json config 2`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"TripPin\\",
+    \\"handler\\": {
+      \\"odata\\": {
+        \\"baseUrl\\": \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+        \\"batch\\": \\"multipart\\",
+        \\"expandNavProps\\": true
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a trippin json config 3`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"TripPin\\",
+    \\"handler\\": {
+      \\"odata\\": {
+        \\"baseUrl\\": \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+        \\"batch\\": \\"multipart\\",
+        \\"expandNavProps\\": true
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a trippin json config 4`] = `
+"
+{
+  \\"sources\\": [
+    {
+    \\"name\\": \\"TripPin\\",
+    \\"handler\\": {
+      \\"odata\\": {
+        \\"baseUrl\\": \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+        \\"batch\\": \\"multipart\\",
+        \\"expandNavProps\\": true
+      }
+    }
+  }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"sdk\\":{
+    \\"generateOperations\\": {
+      \\"selectionSetDepth\\": 6
+    }
+  }
+}
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a trippin json config 5`] = `
 "
 {
   \\"sources\\": [
@@ -1779,6 +6469,82 @@ sdk:
 "
 `;
 
+exports[`generators/base lib directory --meshExampleProject should create a trippin yml config 2`] = `
+"
+sources:
+  - name: TripPin
+    handler:
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a trippin yml config 3`] = `
+"
+sources:
+  - name: TripPin
+    handler:
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a trippin yml config 4`] = `
+"
+sources:
+  - name: TripPin
+    handler:
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
+exports[`generators/base lib directory --meshExampleProject should create a trippin yml config 5`] = `
+"
+sources:
+  - name: TripPin
+    handler:
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
+
+serve:
+  browser: false
+
+sdk:
+  generateOperations:
+    selectionSetDepth: 6
+"
+`;
+
 exports[`generators/base lib directory --unitTestRunner should add a jest config if the unitTestRunner is jest 1`] = `
 "/* eslint-disable */
 export default {
@@ -1797,6 +6563,131 @@ export default {
   coverageDirectory: '../../coverage/libs/my-mesh-lib'
 };
 "
+`;
+
+exports[`generators/base lib directory --unitTestRunner should add a jest config if the unitTestRunner is jest 2`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-lib',
+  preset: '../../jest.preset.js',
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+    }
+  },
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]sx?$': 'ts-jest'
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+};
+"
+`;
+
+exports[`generators/base lib directory --unitTestRunner should add a jest config if the unitTestRunner is jest 3`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-lib',
+  preset: '../../jest.preset.js',
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+    }
+  },
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]sx?$': 'ts-jest'
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+};
+"
+`;
+
+exports[`generators/base lib directory --unitTestRunner should add a jest config if the unitTestRunner is jest 4`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-lib',
+  preset: '../../jest.preset.js',
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+    }
+  },
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]sx?$': 'ts-jest'
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+};
+"
+`;
+
+exports[`generators/base lib directory --unitTestRunner should add a jest config if the unitTestRunner is jest 5`] = `
+"/* eslint-disable */
+export default {
+  displayName: 'my-mesh-lib',
+  preset: '../../jest.preset.js',
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+    }
+  },
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\\\\\\\.[tj]sx?$': 'ts-jest'
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+};
+"
+`;
+
+exports[`generators/base lib directory should add mesh dependencies to the workspace package.json 1`] = `
+Object {
+  "@graphql-mesh/cli": "0.79.3",
+  "@graphql-mesh/openapi": "0.33.34",
+  "@graphql-mesh/runtime": "0.44.31",
+  "@graphql-mesh/utils": "0.42.6",
+}
+`;
+
+exports[`generators/base lib directory should add mesh dependencies to the workspace package.json 2`] = `
+Object {
+  "@graphql-mesh/cli": "0.79.3",
+  "@graphql-mesh/runtime": "0.44.31",
+  "@graphql-mesh/soap": "0.16.0",
+  "@graphql-mesh/utils": "0.42.6",
+}
+`;
+
+exports[`generators/base lib directory should add mesh dependencies to the workspace package.json 3`] = `
+Object {
+  "@graphql-mesh/cli": "0.79.3",
+  "@graphql-mesh/openapi": "0.33.34",
+  "@graphql-mesh/runtime": "0.44.31",
+  "@graphql-mesh/utils": "0.42.6",
+}
+`;
+
+exports[`generators/base lib directory should add mesh dependencies to the workspace package.json 4`] = `
+Object {
+  "@graphql-mesh/cli": "0.79.3",
+  "@graphql-mesh/openapi": "0.33.34",
+  "@graphql-mesh/runtime": "0.44.31",
+  "@graphql-mesh/utils": "0.42.6",
+}
+`;
+
+exports[`generators/base lib directory should add mesh dependencies to the workspace package.json 5`] = `
+Object {
+  "@graphql-mesh/cli": "0.79.3",
+  "@graphql-mesh/odata": "0.20.31",
+  "@graphql-mesh/runtime": "0.44.31",
+  "@graphql-mesh/utils": "0.42.6",
+}
 `;
 
 exports[`generators/base lib with standalone config --babelJest should use babel for jest 1`] = `
@@ -2382,6 +7273,15 @@ export default {
   coverageDirectory: '../../coverage/libs/my-mesh-lib'
 };
 "
+`;
+
+exports[`generators/base lib with standalone config should add mesh dependencies to the workspace package.json 1`] = `
+Object {
+  "@graphql-mesh/cli": "0.79.3",
+  "@graphql-mesh/openapi": "0.33.34",
+  "@graphql-mesh/runtime": "0.44.31",
+  "@graphql-mesh/utils": "0.42.6",
+}
 `;
 
 exports[`generators/base nested within app directory --babelJest should use babel for jest 1`] = `
@@ -2991,6 +7891,15 @@ export default {
 "
 `;
 
+exports[`generators/base nested within app directory should add mesh dependencies to the workspace package.json 1`] = `
+Object {
+  "@graphql-mesh/cli": "0.79.3",
+  "@graphql-mesh/openapi": "0.33.34",
+  "@graphql-mesh/runtime": "0.44.31",
+  "@graphql-mesh/utils": "0.42.6",
+}
+`;
+
 exports[`generators/base nested within lib directory --babelJest should use babel for jest 1`] = `
 "/* eslint-disable */
 export default {
@@ -3574,4 +8483,13 @@ export default {
   coverageDirectory: '../../../coverage/libs/test/my-mesh-lib'
 };
 "
+`;
+
+exports[`generators/base nested within lib directory should add mesh dependencies to the workspace package.json 1`] = `
+Object {
+  "@graphql-mesh/cli": "0.79.3",
+  "@graphql-mesh/openapi": "0.33.34",
+  "@graphql-mesh/runtime": "0.44.31",
+  "@graphql-mesh/utils": "0.42.6",
+}
 `;

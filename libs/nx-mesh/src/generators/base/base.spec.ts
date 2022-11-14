@@ -17,13 +17,12 @@ describe.each<
   }
 >([
   {
-    describeName: 'nested within app directory',
-    directory: 'test',
-    expectedName: 'test-my-mesh-app',
-    expectedPath: 'apps/test/my-mesh-app',
+    describeName: 'app directory',
+    expectedName: 'my-mesh-app',
+    expectedPath: 'apps/my-mesh-app',
     name: 'my-mesh-app',
     projectType: 'app',
-    relativeToRoot: '../../../',
+    relativeToRoot: '../../',
   },
   {
     describeName: 'app directory',
@@ -32,6 +31,43 @@ describe.each<
     name: 'my-mesh-app',
     projectType: 'app',
     relativeToRoot: '../../',
+    meshExampleProject: 'countryInfo',
+  },
+  {
+    describeName: 'app directory',
+    expectedName: 'my-mesh-app',
+    expectedPath: 'apps/my-mesh-app',
+    name: 'my-mesh-app',
+    projectType: 'app',
+    relativeToRoot: '../../',
+    meshExampleProject: 'javascriptWiki',
+  },
+  {
+    describeName: 'app directory',
+    expectedName: 'my-mesh-app',
+    expectedPath: 'apps/my-mesh-app',
+    name: 'my-mesh-app',
+    projectType: 'app',
+    relativeToRoot: '../../',
+    meshExampleProject: 'stackexchange',
+  },
+  {
+    describeName: 'app directory',
+    expectedName: 'my-mesh-app',
+    expectedPath: 'apps/my-mesh-app',
+    name: 'my-mesh-app',
+    projectType: 'app',
+    relativeToRoot: '../../',
+    meshExampleProject: 'trippin',
+  },
+  {
+    describeName: 'nested within app directory',
+    directory: 'test',
+    expectedName: 'test-my-mesh-app',
+    expectedPath: 'apps/test/my-mesh-app',
+    name: 'my-mesh-app',
+    projectType: 'app',
+    relativeToRoot: '../../../',
   },
   {
     describeName: 'app with standalone config',
@@ -43,13 +79,12 @@ describe.each<
     relativeToRoot: '../../',
   },
   {
-    describeName: 'nested within lib directory',
-    directory: 'test',
-    expectedName: 'test-my-mesh-lib',
-    expectedPath: 'libs/test/my-mesh-lib',
+    describeName: 'lib directory',
+    expectedName: 'my-mesh-lib',
+    expectedPath: 'libs/my-mesh-lib',
     name: 'my-mesh-lib',
     projectType: 'lib',
-    relativeToRoot: '../../../',
+    relativeToRoot: '../../',
   },
   {
     describeName: 'lib directory',
@@ -58,6 +93,43 @@ describe.each<
     name: 'my-mesh-lib',
     projectType: 'lib',
     relativeToRoot: '../../',
+    meshExampleProject: 'countryInfo',
+  },
+  {
+    describeName: 'lib directory',
+    expectedName: 'my-mesh-lib',
+    expectedPath: 'libs/my-mesh-lib',
+    name: 'my-mesh-lib',
+    projectType: 'lib',
+    relativeToRoot: '../../',
+    meshExampleProject: 'javascriptWiki',
+  },
+  {
+    describeName: 'lib directory',
+    expectedName: 'my-mesh-lib',
+    expectedPath: 'libs/my-mesh-lib',
+    name: 'my-mesh-lib',
+    projectType: 'lib',
+    relativeToRoot: '../../',
+    meshExampleProject: 'stackexchange',
+  },
+  {
+    describeName: 'lib directory',
+    expectedName: 'my-mesh-lib',
+    expectedPath: 'libs/my-mesh-lib',
+    name: 'my-mesh-lib',
+    projectType: 'lib',
+    relativeToRoot: '../../',
+    meshExampleProject: 'trippin',
+  },
+  {
+    describeName: 'nested within lib directory',
+    directory: 'test',
+    expectedName: 'test-my-mesh-lib',
+    expectedPath: 'libs/test/my-mesh-lib',
+    name: 'my-mesh-lib',
+    projectType: 'lib',
+    relativeToRoot: '../../../',
   },
   {
     describeName: 'lib with standalone config',
@@ -300,9 +372,19 @@ describe.each<
 
         const packageJson = readJson(tree, 'package.json');
 
+        const meshPackages: Record<string, unknown> = {};
+
+        Object.entries(packageJson.dependencies)
+          .filter(([name]) => name.startsWith('@graphql-mesh/'))
+          .forEach(([name, version]) => {
+            meshPackages[name] = version;
+          });
+
+        expect(packageJson.dependencies['graphql']).toBeDefined();
         expect(packageJson.dependencies['@graphql-mesh/cli']).toBeDefined();
         expect(packageJson.dependencies['@graphql-mesh/runtime']).toBeDefined();
         expect(packageJson.dependencies['@graphql-mesh/utils']).toBeDefined();
+        expect(meshPackages).toMatchSnapshot();
       });
 
       it('should extend from root tsconfig.json when no tsconfig.base.json', async () => {
