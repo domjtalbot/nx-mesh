@@ -11,9 +11,11 @@ importers:
       '@envelop/disable-introspection': 4.0.3
       '@envelop/response-cache': 4.0.3
       '@graphql-mesh/cli': 0.79.3
+      '@graphql-mesh/json-schema': ^0.35.33
       '@graphql-mesh/new-openapi': 0.8.2
       '@graphql-mesh/odata': 0.20.31
       '@graphql-mesh/openapi': 0.33.34
+      '@graphql-mesh/plugin-mock': ^0.0.37
       '@graphql-mesh/plugin-snapshot': 0.0.10
       '@graphql-mesh/runtime': 0.44.31
       '@graphql-mesh/soap': 0.16.0
@@ -87,9 +89,11 @@ importers:
       '@envelop/disable-introspection': 4.0.3_graphql@16.6.0
       '@envelop/response-cache': 4.0.3_graphql@16.6.0
       '@graphql-mesh/cli': 0.79.3_jql2lekzpqkgfammguafewxjji
+      '@graphql-mesh/json-schema': 0.35.33_rjjjs2nwgns3bcvnnqb5eu5nry
       '@graphql-mesh/new-openapi': 0.8.2_rjjjs2nwgns3bcvnnqb5eu5nry
       '@graphql-mesh/odata': 0.20.31_rjjjs2nwgns3bcvnnqb5eu5nry
       '@graphql-mesh/openapi': 0.33.34_rjjjs2nwgns3bcvnnqb5eu5nry
+      '@graphql-mesh/plugin-mock': 0.0.37_graphql@16.6.0
       '@graphql-mesh/plugin-snapshot': 0.0.10_rjjjs2nwgns3bcvnnqb5eu5nry
       '@graphql-mesh/runtime': 0.44.31_rjjjs2nwgns3bcvnnqb5eu5nry
       '@graphql-mesh/soap': 0.16.0_graphql@16.6.0
@@ -2574,7 +2578,7 @@ packages:
       lodash: 4.17.21
       md5: 2.3.0
       source-map: 0.6.1
-      webpack: 5.74.0
+      webpack: 5.74.0_@swc+core@1.2.215
       webpack-virtual-modules: 0.4.6
     transitivePeerDependencies:
       - supports-color
@@ -3118,6 +3122,32 @@ packages:
       - react-native-windows
     dev: false
 
+  /@graphql-mesh/json-schema/0.35.33_rjjjs2nwgns3bcvnnqb5eu5nry:
+    resolution:
+      {
+        integrity: sha512-acHjXf3Q01XCKaU4Dg+8h5MlcoXSZsiWNzbIqNxGBWhxR1IdnT2vV9B9mOql1+myxfyhFoj0//GXSl3Pqb7iaw==,
+      }
+    peerDependencies:
+      graphql: '*'
+    dependencies:
+      '@graphql-mesh/cross-helpers': 0.2.9_graphql@16.6.0
+      '@graphql-mesh/store': 0.8.62_graphql@16.6.0
+      '@graphql-mesh/string-interpolation': 0.3.3_graphql@16.6.0
+      '@graphql-mesh/types': 0.85.7_graphql@16.6.0
+      '@graphql-mesh/utils': 0.42.6_graphql@16.6.0
+      '@graphql-tools/utils': 9.0.1_graphql@16.6.0
+      '@json-schema-tools/meta-schema': 1.7.0
+      '@omnigraph/json-schema': 0.36.6_rjjjs2nwgns3bcvnnqb5eu5nry
+      graphql: 16.6.0
+      graphql-compose: 9.0.10_graphql@16.6.0
+      json-machete: 0.16.1_rjjjs2nwgns3bcvnnqb5eu5nry
+      tslib: 2.4.1
+    transitivePeerDependencies:
+      - encoding
+      - react-native
+      - react-native-windows
+    dev: false
+
   /@graphql-mesh/merger-bare/0.15.46_graphql@16.6.0:
     resolution:
       {
@@ -3231,6 +3261,30 @@ packages:
       tslib: 2.4.1
     transitivePeerDependencies:
       - encoding
+      - react-native
+      - react-native-windows
+    dev: false
+
+  /@graphql-mesh/plugin-mock/0.0.37_graphql@16.6.0:
+    resolution:
+      {
+        integrity: sha512-VILD5339nw5qdAdx8QbTQlZyui1Q+eIx8pMfuUmWnZMNBg6Ji+tew+O1iy+Va7ScOwe8JrpfFL2NnvTevvOTIA==,
+      }
+    peerDependencies:
+      graphql: '*'
+    dependencies:
+      '@graphql-mesh/cross-helpers': 0.2.9_graphql@16.6.0
+      '@graphql-mesh/string-interpolation': 0.3.3_graphql@16.6.0
+      '@graphql-mesh/types': 0.85.7_graphql@16.6.0
+      '@graphql-mesh/utils': 0.42.6_graphql@16.6.0
+      '@graphql-tools/mock': 8.7.10_graphql@16.6.0
+      '@graphql-tools/schema': 9.0.8_graphql@16.6.0
+      '@graphql-tools/utils': 9.0.1_graphql@16.6.0
+      faker: 5.5.3
+      graphql: 16.6.0
+      graphql-scalars: 1.20.0_graphql@16.6.0
+      tslib: 2.4.1
+    transitivePeerDependencies:
       - react-native
       - react-native-windows
     dev: false
@@ -3663,6 +3717,21 @@ packages:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
     dependencies:
       '@graphql-tools/utils': 8.10.0_graphql@16.6.0
+      graphql: 16.6.0
+      tslib: 2.4.1
+    dev: false
+
+  /@graphql-tools/mock/8.7.10_graphql@16.6.0:
+    resolution:
+      {
+        integrity: sha512-PuRGfk6TQger7EfE08yO3+QCAcZ6nYo3kyoEmTPc27w4yiqKCwZIyD8vegzl/EQphEourjaOhO149te6qNEUeQ==,
+      }
+    peerDependencies:
+      graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
+    dependencies:
+      '@graphql-tools/schema': 9.0.8_graphql@16.6.0
+      '@graphql-tools/utils': 9.0.1_graphql@16.6.0
+      fast-json-stable-stringify: 2.1.0
       graphql: 16.6.0
       tslib: 2.4.1
     dev: false
@@ -8044,7 +8113,7 @@ packages:
       call-bind: 1.0.2
       define-properties: 1.1.4
       es-abstract: 1.20.1
-      get-intrinsic: 1.1.2
+      get-intrinsic: 1.1.3
       is-string: 1.0.7
     dev: true
 
@@ -8309,7 +8378,7 @@ packages:
       loader-utils: 2.0.3
       make-dir: 3.1.0
       schema-utils: 2.7.1
-      webpack: 5.74.0
+      webpack: 5.74.0_@swc+core@1.2.215
 
   /babel-loader/8.3.0_webpack@5.74.0:
     resolution:
@@ -8325,7 +8394,7 @@ packages:
       loader-utils: 2.0.3
       make-dir: 3.1.0
       schema-utils: 2.7.1
-      webpack: 5.74.0
+      webpack: 5.74.0_@swc+core@1.2.215
 
   /babel-plugin-const-enum/1.2.0_@babel+core@7.20.2:
     resolution:
@@ -9440,7 +9509,7 @@ packages:
       normalize-path: 3.0.0
       schema-utils: 4.0.0
       serialize-javascript: 6.0.0
-      webpack: 5.74.0
+      webpack: 5.74.0_@swc+core@1.2.215
 
   /core-js-compat/3.26.0:
     resolution:
@@ -9633,7 +9702,7 @@ packages:
       schema-utils: 4.0.0
       serialize-javascript: 6.0.0
       source-map: 0.6.1
-      webpack: 5.74.0
+      webpack: 5.74.0_@swc+core@1.2.215
 
   /css-select/4.3.0:
     resolution:
@@ -11275,6 +11344,13 @@ packages:
       }
     engines: { '0': node >=0.6.0 }
 
+  /faker/5.5.3:
+    resolution:
+      {
+        integrity: sha512-wLTv2a28wjUyWkbnX7u/ABZBkUkIF2fCd73V6P2oFqEGEktDfzWx4UxrSqtPRw0xPRAcjeAOIiJWqZm3pP4u3g==,
+      }
+    dev: false
+
   /fast-deep-equal/3.1.3:
     resolution:
       {
@@ -11425,7 +11501,7 @@ packages:
     dependencies:
       loader-utils: 2.0.3
       schema-utils: 3.1.1
-      webpack: 5.74.0
+      webpack: 5.74.0_@swc+core@1.2.215
 
   /file-uri-to-path/2.0.0:
     resolution:
@@ -11834,17 +11910,6 @@ packages:
         integrity: sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==,
       }
     engines: { node: 6.* || 8.* || >= 10.* }
-
-  /get-intrinsic/1.1.2:
-    resolution:
-      {
-        integrity: sha512-Jfm3OyCxHh9DJyc28qGk+JmfkpO41A4XkneDSujN9MDXrm4oDKdHvndhZ2dN94+ERNfkYJWDclW6k2L/ZGHjXA==,
-      }
-    dependencies:
-      function-bind: 1.1.1
-      has: 1.0.3
-      has-symbols: 1.0.3
-    dev: true
 
   /get-intrinsic/1.1.3:
     resolution:
@@ -14388,7 +14453,7 @@ packages:
     dependencies:
       klona: 2.0.5
       less: 3.12.2
-      webpack: 5.74.0
+      webpack: 5.74.0_@swc+core@1.2.215
 
   /less/3.12.2:
     resolution:
@@ -14449,7 +14514,7 @@ packages:
       webpack-sources:
         optional: true
     dependencies:
-      webpack: 5.74.0
+      webpack: 5.74.0_@swc+core@1.2.215
       webpack-sources: 3.2.3
 
   /lie/3.1.1:
@@ -15059,7 +15124,7 @@ packages:
       webpack: ^5.0.0
     dependencies:
       schema-utils: 4.0.0
-      webpack: 5.74.0
+      webpack: 5.74.0_@swc+core@1.2.215
 
   /mini-svg-data-uri/1.4.4:
     resolution:
@@ -16359,7 +16424,7 @@ packages:
       klona: 2.0.5
       postcss: 8.4.18
       semver: 7.3.8
-      webpack: 5.74.0
+      webpack: 5.74.0_@swc+core@1.2.215
 
   /postcss-merge-longhand/5.1.7_postcss@8.4.18:
     resolution:
@@ -17000,7 +17065,7 @@ packages:
     dependencies:
       loader-utils: 2.0.3
       schema-utils: 3.1.1
-      webpack: 5.74.0
+      webpack: 5.74.0_@swc+core@1.2.215
 
   /react-dom/18.2.0_react@18.2.0:
     resolution:
@@ -17591,7 +17656,7 @@ packages:
       klona: 2.0.5
       neo-async: 2.6.2
       sass: 1.56.0
-      webpack: 5.74.0
+      webpack: 5.74.0_@swc+core@1.2.215
 
   /sass/1.56.0:
     resolution:
@@ -18002,7 +18067,7 @@ packages:
       abab: 2.0.6
       iconv-lite: 0.6.3
       source-map-js: 1.0.2
-      webpack: 5.74.0
+      webpack: 5.74.0_@swc+core@1.2.215
 
   /source-map-resolve/0.6.0:
     resolution:
@@ -18684,6 +18749,7 @@ packages:
       serialize-javascript: 6.0.0
       terser: 5.15.1
       webpack: 5.74.0
+    dev: false
 
   /terser/5.15.1:
     resolution:
@@ -19678,7 +19744,7 @@ packages:
       mime-types: 2.1.35
       range-parser: 1.2.1
       schema-utils: 4.0.0
-      webpack: 5.74.0
+      webpack: 5.74.0_@swc+core@1.2.215
 
   /webpack-dev-server/4.11.1_webpack@5.74.0:
     resolution:
@@ -19721,7 +19787,7 @@ packages:
       serve-index: 1.9.1
       sockjs: 0.3.24
       spdy: 4.0.2
-      webpack: 5.74.0
+      webpack: 5.74.0_@swc+core@1.2.215
       webpack-dev-middleware: 5.3.3_webpack@5.74.0
       ws: 8.11.0
     transitivePeerDependencies:
@@ -19768,7 +19834,7 @@ packages:
         optional: true
     dependencies:
       typed-assert: 1.0.9
-      webpack: 5.74.0
+      webpack: 5.74.0_@swc+core@1.2.215
 
   /webpack-virtual-modules/0.4.6:
     resolution:
@@ -19817,6 +19883,7 @@ packages:
       - '@swc/core'
       - esbuild
       - uglify-js
+    dev: false
 
   /webpack/5.74.0_@swc+core@1.2.215:
     resolution:

@@ -1,0 +1,16 @@
+query getMe {
+  me {
+    firstName
+    lastName
+    jobTitle
+    company {
+      name
+      type
+      employers {
+        firstName
+        lastName
+        jobTitle
+      }
+    }
+  }
+}

@@ -13,6 +13,7 @@
     "example-nextjs-trippin": "apps/example/nextjs/trippin",
     "example-nextjs-trippin-e2e": "apps/example/nextjs/trippin-e2e",
     "example-sdk-country-info": "libs/example/sdk/country-info",
+    "example-sdk-fake-api": "libs/example/sdk/fake-api",
     "example-sdk-javascript-wiki": "libs/example/sdk/javascript-wiki",
     "example-sdk-stackexchange": "libs/example/sdk/stackexchange",
     "example-sdk-trippin": "libs/example/sdk/trippin",
