@@ -35,8 +35,6 @@
   - [`serve`](#serve)
   - [`validate`](#validate)
 - [Examples](#examples)
-  - [API Gateway](#api-gateway)
-  - [SDK](#sdk-1)
 - [Credits](#credits)
 
 <br/>
@@ -46,12 +44,14 @@
 - Use GraphQL Mesh to combine multiple APIs into a single GraphQL API.
 - Generate a GraphQL Mesh API Gateway
   - A standalone application for running GraphQL Mesh.
+  - Choose from multiple starter templates.
 - Generate a GraphQL Mesh SDK
-  - Supports deploying to Vercel as a NextJS route
+  - Supports deploying to Vercel as a NextJS route.
+  - Choose from multiple starter templates.
 - Supports all GraphQL CLI commands (`build`, `dev`, `start`, `validate`)
 - Use [SWC](https://swc.rs/) to compile a GraphQL Mesh SDK
 - Automatically use the first available port when running `dev`, `start`, or `serve`.
-- Supports E2E
+- Supports NX Cypress plugin
 
 <br/>
 
@@ -97,7 +97,8 @@ nx generate nx-mesh:application my-api-gateway
 nx generate nx-mesh:app my-api-gateway
 ```
 
-#### Example Output
+<details>
+  <summary>`application` generator output</summary>
 
 ```bash
 >  NX  Generating nx-mesh:application
@@ -121,7 +122,10 @@ CREATE apps/my-api-gateway/tsconfig.spec.json
 CREATE apps/my-api-gateway/.eslintrc.json
 ```
 
-#### Options
+</details>
+
+<details>
+  <summary>`application` generator options</summary>
 
 | Name                      | Alias | Type                       | Required | Default   | Description                                                                                                                       |
 | ------------------------- | ----- | -------------------------- | :------: | --------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -138,6 +142,8 @@ CREATE apps/my-api-gateway/.eslintrc.json
 | `tags`                    | `t`   | `string`                   |    -     | -         | Add tags to the application (used for linting).                                                                                   |
 | `unitTestRunner`          | -     | `jest`, `none`             |    -     | `jest`    | Test runner to use for unit tests.                                                                                                |
 
+</details>
+
 <br/>
 
 ### `sdk`
@@ -152,9 +158,8 @@ nx generate nx-mesh:sdk-library my-mesh-sdk
 nx generate nx-mesh:library my-mesh-sdk
 ```
 
-#### Example Output
-
-##### TSC
+<details>
+  <summary>Example `sdk` `tsc` generator output</summary>
 
 ```bash
 >  NX  Generating nx-mesh:sdk
@@ -176,7 +181,10 @@ CREATE libs/my-mesh-sdk/src/lib/sdk.ts
 UPDATE nx.json
 ```
 
-##### SWC
+</details>
+
+<details>
+  <summary>Example `sdk` `swc` generator output</summary>
 
 ```bash
 >  NX  Generating nx-mesh:sdk
@@ -197,7 +205,10 @@ CREATE libs/my-mesh-sdk/.meshrc.json
 CREATE libs/my-mesh-sdk/src/lib/sdk.ts
 ```
 
-#### Options
+</details>
+
+<details>
+  <summary>`sdk` generator options</summary>
 
 | Name                      | Alias | Type                       | Required | Default  | Description                                                                                                                                            |
 | ------------------------- | ----- | -------------------------- | :------: | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -220,6 +231,8 @@ CREATE libs/my-mesh-sdk/src/lib/sdk.ts
 | `tags`                    | `t`   | `string`                   |    -     | -        | Add tags to the application (used for linting).                                                                                                        |
 | `testEnvironment`         | -     | `jsdom`, `none`            |    -     | `jsdom`  | The test environment to use if `unitTestRunner` is set to `jest`.                                                                                      |
 | `unitTestRunner`          | -     | `jest`, `none`             |    -     | `jest`   | Test runner to use for unit tests.                                                                                                                     |
+
+</details>
 
 <br/>
 
@@ -245,7 +258,8 @@ This is the equivalent of using `graphql-mesh dev`, but with extra steps for pac
 }
 ```
 
-#### Options
+<details>
+  <summary>`build` executor options</summary>
 
 | Name                                      | Type                                 | Required | Default            | Description                                                                                                                      |
 | ----------------------------------------- | ------------------------------------ | :------: | ------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
@@ -260,6 +274,8 @@ This is the equivalent of using `graphql-mesh dev`, but with extra steps for pac
 | `transformers`                            | `string[]`                           |    -     | -                  | List of TypeScript Transformer Plugins.                                                                                          |
 | `tsConfig`                                | `string`                             |    ✅    | -                  | The path to the Typescript configuration file.                                                                                   |
 | `updateBuildableProjectDepsInPackageJson` | `boolean`                            |    -     | `true`             | Whether to update the buildable project dependencies in `package.json`.                                                          |
+
+</details>
 
 <br/>
 
@@ -281,7 +297,8 @@ This is the equivalent of using `graphql-mesh build`, but with extra steps for c
 }
 ```
 
-#### Options
+<details>
+  <summary>`build-gateway` executor options</summary>
 
 | Name       | Type                 | Required | Default | Description                                                                                 |
 | ---------- | -------------------- | :------: | ------- | ------------------------------------------------------------------------------------------- |
@@ -289,6 +306,8 @@ This is the equivalent of using `graphql-mesh build`, but with extra steps for c
 | `dir`      | `string`             |    ✅    | -       | The path of the directory containing the GraphQL Mesh config.                               |
 | `fileType` | `json`, `ts` or `js` |    -     | `ts`    | The filetype.                                                                               |
 | `require`  | `string[]`           |    -     | `[]`    | Loads specific require.extensions before running the codegen and reading the configuration. |
+
+</details>
 
 <br/>
 
@@ -312,7 +331,8 @@ This is the equivalent of using `graphql-mesh build`, but with extra steps for p
 }
 ```
 
-#### Options
+<details>
+  <summary>`build-swc` executor options</summary>
 
 | Name                                      | Type                                 | Required | Default            | Description                                                                                                                      |
 | ----------------------------------------- | ------------------------------------ | :------: | ------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
@@ -329,6 +349,8 @@ This is the equivalent of using `graphql-mesh build`, but with extra steps for p
 | `transformers`                            | `string[]`                           |    -     | -                  | List of TypeScript Transformer Plugins.                                                                                          |
 | `tsConfig`                                | `string`                             |    ✅    | -                  | The path to the Typescript configuration file.                                                                                   |
 | `updateBuildableProjectDepsInPackageJson` | `boolean`                            |    -     | `true`             | Whether to update the buildable project dependencies in `package.json`.                                                          |
+
+</details>
 
 <br/>
 
@@ -349,7 +371,8 @@ This is the equivalent of using `graphql-mesh dev`.
 }
 ```
 
-#### Options
+<details>
+  <summary>`dev` executor options</summary>
 
 | Name              | Type           | Required | Default   | Description                                                                                        |
 | ----------------- | -------------- | :------: | --------- | -------------------------------------------------------------------------------------------------- |
@@ -364,6 +387,8 @@ This is the equivalent of using `graphql-mesh dev`.
 | `port.fallback`   | `auto`, `none` |    -     | `auto`    | The fallback strategy to use when the preferred port is unavailable.                               |
 | `port.host`       | `string`       |    -     | `0.0.0.0` | The host to listen on (only used for port number lookup).                                          |
 | `require`         | `string[]`     |    -     | `[]`      | Loads specific require.extensions before running the codegen and reading the configuration.        |
+
+</details>
 
 <br/>
 
@@ -384,7 +409,8 @@ This is the equivalent of using `graphql-mesh start`.
 }
 ```
 
-#### Options
+<details>
+  <summary>`start` executor options</summary>
 
 | Name              | Type           | Required | Default   | Description                                                                                        |
 | ----------------- | -------------- | :------: | --------- | -------------------------------------------------------------------------------------------------- |
@@ -399,6 +425,8 @@ This is the equivalent of using `graphql-mesh start`.
 | `port.fallback`   | `auto`, `none` |    -     | `auto`    | The fallback strategy to use when the preferred port is unavailable.                               |
 | `port.host`       | `string`       |    -     | `0.0.0.0` | The host to listen on (only used for port number lookup).                                          |
 | `require`         | `string[]`     |    -     | `[]`      | Loads specific require.extensions before running the codegen and reading the configuration.        |
+
+</details>
 
 <br/>
 
@@ -425,7 +453,8 @@ This combines `dev` & `start` via a `dev` option toggle.
 }
 ```
 
-#### Options
+<details>
+  <summary>`serve` executor options</summary>
 
 | Name              | Type           | Required | Default   | Description                                                                                        |
 | ----------------- | -------------- | :------: | --------- | -------------------------------------------------------------------------------------------------- |
@@ -441,6 +470,8 @@ This combines `dev` & `start` via a `dev` option toggle.
 | `port.fallback`   | `auto`, `none` |    -     | `auto`    | The fallback strategy to use when the preferred port is unavailable.                               |
 | `port.host`       | `string`       |    -     | `0.0.0.0` | The host to listen on (only used for port number lookup).                                          |
 | `require`         | `string[]`     |    -     | `[]`      | Loads specific require.extensions before running the codegen and reading the configuration.        |
+
+</details>
 
 <br/>
 
@@ -461,7 +492,8 @@ This is the equivalent of using `graphql-mesh validate`.
 }
 ```
 
-#### Options
+<details>
+  <summary>`validate` executor options</summary>
 
 | Name      | Type       | Required | Default | Description                                                                                 |
 | --------- | ---------- | :------: | ------- | ------------------------------------------------------------------------------------------- |
@@ -469,36 +501,32 @@ This is the equivalent of using `graphql-mesh validate`.
 | `dir`     | `string`   |    ✅    | -       | The path of the directory containing the GraphQL Mesh config.                               |
 | `require` | `string[]` |    -     | `[]`    | Loads specific require.extensions before running the codegen and reading the configuration. |
 
+</details>
+
 <br/>
 
 ## Examples
 
-### API Gateway
-
-| Name                                           | Source Handler | Config |
-| ---------------------------------------------- | -------------- | ------ |
-| `apps/api-gateway/javascript-wiki/cjs-config`  | `openapi`      | `cjs`  |
-| `apps/api-gateway/javascript-wiki/js-config`   | `openapi`      | `js`   |
-| `apps/api-gateway/javascript-wiki/json-config` | `openapi`      | `json` |
-| `apps/api-gateway/javascript-wiki/yml-config`  | `openapi`      | `yml`  |
-| `apps/api-gateway/stackexchange`               | `openapi`      | `yml`  |
-| `apps/api-gateway/trippin`                     | `odata`        | `yml`  |
-| `apps/api-gateway/country-info`                | `new-openapi`  | `yml`  |
-
-### SDK
-
-| Name                        | Source Handler | Framework | Compiler | Deployed                                                    |
-| --------------------------- | -------------- | --------- | -------- | ----------------------------------------------------------- |
-| `apps/nextjs/stackexchange` | `openapi`      | `nextjs`  | `tsc`    | -                                                           |
-| `apps/nextjs/trippin`       | `odata`        | `nextjs`  | `tsc`    | [Vercel](https://nx-mesh-trippin-domjtalbot.vercel.app)     |
-| `apps/nextjs/trippin-swc`   | `odata`        | `nextjs`  | `swc`    | [Vercel](https://nx-mesh-trippin-swc-domjtalbot.vercel.app) |
-| `apps/nextjs/country-info`  | `new-openapi`  | `nextjs`  | `tsc`    | -                                                           |
+| Name                                                                | Type                                                     | Source Handler | Config |
+| ------------------------------------------------------------------- | -------------------------------------------------------- | -------------- | ------ |
+| [country-info](libs/example/sdk/mysql/country-info)                 | sdk                                                      | `soap`         | `cjs`  |
+| [country-info](libs/example/sdk/soap/country-info)                  | nextjs + [sdk](libs/example/sdk/soap/country-info)       | -              | -      |
+| [fake-api](libs/example/sdk/json-schema/fake-api)                   | sdk                                                      | `json-schema`  | `yml`  |
+| [javascript-wiki](apps/example/api-gateway/openapi/javascript-wiki) | gateway                                                  | `openapi`      | `json` |
+| [javascript-wiki](libs/example/sdk/mysql/javascript-wiki)           | sdk                                                      | `openapi`      | `yml`  |
+| [javascript-wiki](libs/example/sdk/openapi/javascript-wiki)         | nextjs + [sdk](libs/example/sdk/openapi/javascript-wiki) | -              | -      |
+| [movies](libs/example/sdk/mysql/movies)                             | sdk                                                      | `neo4j`        | `yml`  |
+| [rfam](libs/example/sdk/mysql/rfam)                                 | sdk                                                      | `mysql`        | `yml`  |
+| [stackexchange](libs/example/sdk/mysql/stackexchange)               | sdk                                                      | `openapi`      | `json` |
+| [star-wars-api](libs/example/sdk/graphql/star-wars-api)             | sdk                                                      | `graphql`      | `yml`  |
+| [trippin](libs/example/sdk/mysql/trippin)                           | sdk                                                      | `odata`        | `js`   |
+| [trippin](libs/example/sdk/mysql/trippin)                           | nextjs + [sdk](libs/example/sdk/mysql/trippin)           | -              | -      |
 
 <br/>
 
 ## Credits
 
-[GraphQL Mesh](https://github.com/Urigo/graphql-mesh) is made by the awesome team at [The Guild](https://www.the-guild.dev).
+[GraphQL Mesh](https://github.com/Urigo/graphql-mesh) is made by the awesome team at [The Guild](https://www.the-guild.dev). If you love GraphQL Mesh give them a ⭐!
 
 <br/>
 <br/>
