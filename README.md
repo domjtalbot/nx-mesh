@@ -507,20 +507,20 @@ This is the equivalent of using `graphql-mesh validate`.
 
 ## Examples
 
-| Name                                                                | Type                                                     | Source Handler | Config |
-| ------------------------------------------------------------------- | -------------------------------------------------------- | -------------- | ------ |
-| [country-info](libs/example/sdk/mysql/country-info)                 | sdk                                                      | `soap`         | `cjs`  |
-| [country-info](libs/example/sdk/soap/country-info)                  | nextjs + [sdk](libs/example/sdk/soap/country-info)       | -              | -      |
-| [fake-api](libs/example/sdk/json-schema/fake-api)                   | sdk                                                      | `json-schema`  | `yml`  |
-| [javascript-wiki](apps/example/api-gateway/openapi/javascript-wiki) | gateway                                                  | `openapi`      | `json` |
-| [javascript-wiki](libs/example/sdk/mysql/javascript-wiki)           | sdk                                                      | `openapi`      | `yml`  |
-| [javascript-wiki](libs/example/sdk/openapi/javascript-wiki)         | nextjs + [sdk](libs/example/sdk/openapi/javascript-wiki) | -              | -      |
-| [movies](libs/example/sdk/mysql/movies)                             | sdk                                                      | `neo4j`        | `yml`  |
-| [rfam](libs/example/sdk/mysql/rfam)                                 | sdk                                                      | `mysql`        | `yml`  |
-| [stackexchange](libs/example/sdk/mysql/stackexchange)               | sdk                                                      | `openapi`      | `json` |
-| [star-wars-api](libs/example/sdk/graphql/star-wars-api)             | sdk                                                      | `graphql`      | `yml`  |
-| [trippin](libs/example/sdk/mysql/trippin)                           | sdk                                                      | `odata`        | `js`   |
-| [trippin](libs/example/sdk/mysql/trippin)                           | nextjs + [sdk](libs/example/sdk/mysql/trippin)           | -              | -      |
+| Name                                                                  | Type                                                       | Source Handler | Config |
+| --------------------------------------------------------------------- | ---------------------------------------------------------- | -------------- | ------ |
+| [country-info](./libs/example/sdk/mysql/country-info)                 | sdk                                                        | `soap`         | `cjs`  |
+| [country-info](./libs/example/sdk/soap/country-info)                  | nextjs + [sdk](./libs/example/sdk/soap/country-info)       | -              | -      |
+| [fake-api](./libs/example/sdk/json-schema/fake-api)                   | sdk                                                        | `json-schema`  | `yml`  |
+| [javascript-wiki](./apps/example/api-gateway/openapi/javascript-wiki) | gateway                                                    | `openapi`      | `json` |
+| [javascript-wiki](./libs/example/sdk/mysql/javascript-wiki)           | sdk                                                        | `openapi`      | `yml`  |
+| [javascript-wiki](./libs/example/sdk/openapi/javascript-wiki)         | nextjs + [sdk](./libs/example/sdk/openapi/javascript-wiki) | -              | -      |
+| [movies](./libs/example/sdk/mysql/movies)                             | sdk                                                        | `neo4j`        | `yml`  |
+| [rfam](./libs/example/sdk/mysql/rfam)                                 | sdk                                                        | `mysql`        | `yml`  |
+| [stackexchange](./libs/example/sdk/mysql/stackexchange)               | sdk                                                        | `openapi`      | `json` |
+| [star-wars-api](./libs/example/sdk/graphql/star-wars-api)             | sdk                                                        | `graphql`      | `yml`  |
+| [trippin](./libs/example/sdk/mysql/trippin)                           | sdk                                                        | `odata`        | `js`   |
+| [trippin](./libs/example/sdk/mysql/trippin)                           | nextjs + [sdk](./libs/example/sdk/mysql/trippin)           | -              | -      |
 
 <br/>
 
