@@ -4,8 +4,6 @@
   "projects": {
     "example-api-gateway-openapi-javascript-wiki": "apps/example/api-gateway/openapi/javascript-wiki",
     "example-api-gateway-openapi-javascript-wiki-e2e": "apps/example/api-gateway/openapi/javascript-wiki-e2e",
-    "example-api-gateway-openapi-stackexchange": "apps/example/api-gateway/openapi/stackexchange",
-    "example-api-gateway-openapi-stackexchange-e2e": "apps/example/api-gateway/openapi/stackexchange-e2e",
     "example-nextjs-odata-trippin": "apps/example/nextjs/odata/trippin",
     "example-nextjs-odata-trippin-e2e": "apps/example/nextjs/odata/trippin-e2e",
     "example-nextjs-openapi-javascript-wiki": "apps/example/nextjs/openapi/javascript-wiki",
