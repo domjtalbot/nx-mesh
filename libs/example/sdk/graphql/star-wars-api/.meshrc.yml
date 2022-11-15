@@ -1,0 +1,11 @@
+sources:
+  - name: StarWarsApi
+    handler:
+      graphql:
+        endpoint: https://swapi-graphql.netlify.app/.netlify/functions/index
+
+serve:
+  browser: false
+
+documents:
+  - ./src/graphql/**/*.*.graphql

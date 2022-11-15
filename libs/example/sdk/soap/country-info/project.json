@@ -1,0 +1,44 @@
+{
+  "name": "example-sdk-soap-country-info",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/example/sdk/soap/country-info/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/example/sdk/soap/country-info/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/example/sdk/soap/country-info/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "nx-mesh:build-swc",
+      "outputs": [
+        "libs/example/sdk/soap/country-info/.mesh",
+        "{options.outputPath}"
+      ],
+      "options": {
+        "dir": "libs/example/sdk/soap/country-info",
+        "main": "libs/example/sdk/soap/country-info/src/index.ts",
+        "outputPath": "dist/libs/example/sdk/soap/country-info",
+        "tsConfig": "libs/example/sdk/soap/country-info/tsconfig.lib.json"
+      }
+    },
+    "serve": {
+      "executor": "nx-mesh:serve",
+      "options": {
+        "dev": true,
+        "dir": "libs/example/sdk/soap/country-info"
+      }
+    }
+  },
+  "tags": ["type:sdk", "type:example"]
+}
