@@ -1,0 +1,50 @@
+{
+  "name": "example-sdk-star-wars-api",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/example/sdk/star-wars-api/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/example/sdk/star-wars-api/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/example/sdk/star-wars-api/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "nx-mesh:build-swc",
+      "outputs": [
+        "libs/example/sdk/star-wars-api/.mesh",
+        "{options.outputPath}"
+      ],
+      "options": {
+        "dir": "libs/example/sdk/star-wars-api",
+        "main": "libs/example/sdk/star-wars-api/src/index.ts",
+        "outputPath": "dist/libs/example/sdk/star-wars-api",
+        "tsConfig": "libs/example/sdk/star-wars-api/tsconfig.lib.json"
+      }
+    },
+    "serve": {
+      "executor": "nx-mesh:serve",
+      "options": {
+        "dev": true,
+        "dir": "libs/example/sdk/star-wars-api"
+      }
+    },
+    "validate": {
+      "executor": "nx-mesh:validate",
+      "options": {
+        "dir": "libs/example/sdk/star-wars-api"
+      }
+    }
+  },
+  "tags": ["type:example", "type:sdk"]
+}

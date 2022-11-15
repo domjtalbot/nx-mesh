@@ -18,6 +18,7 @@
     "example-sdk-movies-neo4j": "libs/example/sdk/movies-neo4j",
     "example-sdk-rfam": "libs/example/sdk/rfam",
     "example-sdk-stackexchange": "libs/example/sdk/stackexchange",
+    "example-sdk-star-wars-api": "libs/example/sdk/star-wars-api",
     "example-sdk-trippin": "libs/example/sdk/trippin",
     "nx-mesh": "libs/nx-mesh"
   }

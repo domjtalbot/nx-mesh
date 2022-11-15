@@ -29,6 +29,7 @@
     "@envelop/response-cache": "4.0.3",
     "@graphql-mesh/cache-file": "^0.9.44",
     "@graphql-mesh/cli": "0.79.3",
+    "@graphql-mesh/graphql": "^0.31.31",
     "@graphql-mesh/json-schema": "^0.35.33",
     "@graphql-mesh/mysql": "^0.17.30",
     "@graphql-mesh/neo4j": "^0.20.34",

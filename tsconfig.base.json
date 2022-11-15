@@ -40,6 +40,9 @@
       "@nx-mesh/example/sdk/stackexchange/*": [
         "libs/example/sdk/stackexchange/src/lib/*"
       ],
+      "@nx-mesh/example/sdk/star-wars-api": [
+        "libs/example/sdk/star-wars-api/src/index.ts"
+      ],
       "@nx-mesh/example/sdk/trippin": ["libs/example/sdk/trippin/src/index.ts"],
       "@nx-mesh/example/sdk/trippin/*": ["libs/example/sdk/trippin/src/lib/*"],
       "nx-mesh": ["libs/nx-mesh/src/index.ts"]
