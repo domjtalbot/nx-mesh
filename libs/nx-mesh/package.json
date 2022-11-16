@@ -9,7 +9,21 @@
   "executors": "./executors.json",
   "peerDependencies": {
     "@graphql-mesh/cli": ">=0.71.0",
+    "@swc-node/register": "^1.5.1",
+    "@swc/core": "^0.1.55",
+    "@swc/helpers": "^0.4.11",
     "nx": ">=15"
+  },
+  "peerDependenciesMeta": {
+    "@swc-node/register": {
+      "optional": true
+    },
+    "@swc/core": {
+      "optional": true
+    },
+    "@swc/helpers": {
+      "optional": true
+    }
   },
   "dependencies": {
     "@nrwl/cypress": "15.0.4",
@@ -20,6 +34,7 @@
     "@nrwl/workspace": "15.0.4",
     "fs-extra": "10.1.0",
     "get-port": "5.1.1",
+    "tslib": "2.4.0",
     "type-fest": "2.18.0"
   },
   "keywords": [
