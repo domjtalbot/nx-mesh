@@ -1,5 +1,6 @@
 {
   "name": "nx-mesh",
+  "author": "Dom Talbot",
   "description": "GraphQL Mesh support for Nx",
   "version": "1.0.1",
   "license": "MIT",
@@ -18,7 +19,8 @@
     "@nrwl/node": "15.0.4",
     "@nrwl/workspace": "15.0.4",
     "fs-extra": "10.1.0",
-    "get-port": "5.1.1"
+    "get-port": "5.1.1",
+    "type-fest": "2.18.0"
   },
   "keywords": [
     "Monorepo",
@@ -30,6 +32,9 @@
     "GraphQL-Mesh",
     "Mesh"
   ],
+  "bugs": {
+    "url": "git://github.com/domjtalbot/nx-mesh/issues"
+  },
   "repository": {
     "directory": "libs/nx-mesh",
     "type": "git",
