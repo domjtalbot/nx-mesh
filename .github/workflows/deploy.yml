@@ -16,11 +16,8 @@ on:
       VERCEL_ORG_ID:
         description: 'The Vercel ORG ID'
         required: true
-      NX__NEXTJS_TRIPPIN__VERCEL_PROJECT_ID:
+      NX__NEXTJS__VERCEL_PROJECT_ID:
         description: 'The nextjs/trippin Vercel Project Id'
-        required: true
-      NX__NEXTJS_TRIPPIN_SWC__VERCEL_PROJECT_ID:
-        description: 'The nextjs/trippin-swc Vercel Project Id'
         required: true
       VERCEL_TOKEN:
         description: 'The Vercel API token'
@@ -30,9 +27,9 @@ concurrency:
   group: deploy-${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  deploy-nextjs-trippin:
-    name: Deploy NextJS Trippin
-    if: contains(inputs.apps, 'nextjs-trippin')
+  deploy-nextjs:
+    name: Deploy NextJS
+    if: contains(inputs.apps, 'nextjs')
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -56,46 +53,11 @@ jobs:
       - name: Deploy to Vercel Action
         uses: BetaHuhn/deploy-to-vercel-action@efa119c0d369199d2c7b836131caae430faf15ed # tag=v1
         with:
-          GITHUB_DEPLOYMENT_ENV: nextjs/trippin ${{ steps.deploy-env.outputs.name }}
+          GITHUB_DEPLOYMENT_ENV: nextjs ${{ steps.deploy-env.outputs.name }}
           GITHUB_DEPLOYMENT: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_LABELS: vercel
           PRODUCTION: ${{ inputs.production }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.NX__NEXTJS_TRIPPIN__VERCEL_PROJECT_ID }}
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-
-  deploy-nextjs-trippin-swc:
-    name: Deploy NextJS Trippin SWC
-    runs-on: ubuntu-latest
-    if: contains(inputs.apps, 'nextjs-trippin-swc')
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
-        with:
-          fetch-depth: 0
-
-      - name: Deploy env
-        id: deploy-env
-        shell: bash
-        run: |
-          name=Preview
-
-          if [ ${{ inputs.production }} = true ]; then
-            name=Production
-          fi
-
-          echo The env is $name
-          echo ::set-output name=name::$name
-
-      - name: Deploy to Vercel Action
-        uses: BetaHuhn/deploy-to-vercel-action@efa119c0d369199d2c7b836131caae430faf15ed # tag=v1
-        with:
-          GITHUB_DEPLOYMENT_ENV: nextjs/trippin-swc ${{ steps.deploy-env.outputs.name }}
-          GITHUB_DEPLOYMENT: true
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_LABELS: vercel
-          PRODUCTION: ${{ inputs.production }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.NX__NEXTJS_TRIPPIN_SWC__VERCEL_PROJECT_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.NX__NEXTJS__VERCEL_PROJECT_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
