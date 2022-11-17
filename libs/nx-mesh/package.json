@@ -26,12 +26,12 @@
     }
   },
   "dependencies": {
-    "@nrwl/cypress": "15.0.13",
-    "@nrwl/devkit": "15.0.13",
-    "@nrwl/js": "15.0.13",
-    "@nrwl/linter": "15.0.13",
-    "@nrwl/node": "15.0.13",
-    "@nrwl/workspace": "15.0.13",
+    "@nrwl/cypress": "^15.0.13",
+    "@nrwl/devkit": "^15.0.13",
+    "@nrwl/js": "^15.0.13",
+    "@nrwl/linter": "^15.0.13",
+    "@nrwl/node": "^15.0.13",
+    "@nrwl/workspace": "^15.0.13",
     "fs-extra": "^10.1.0",
     "get-port": "5.1.1",
     "tslib": "2.4.0",
