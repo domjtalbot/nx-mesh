@@ -507,20 +507,18 @@ This is the equivalent of using `graphql-mesh validate`.
 
 ## Examples
 
-| Name                                                                                                                | Type                                                                                                     | Source Handler | Config |
-| ------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------- | ------ |
-| [country-info](https://github.com/domjtalbot/nx-mesh/tree/main/libs/example/sdk/mysql/country-info)                 | sdk                                                                                                      | `soap`         | `cjs`  |
-| [country-info](https://github.com/domjtalbot/nx-mesh/tree/main/libs/example/sdk/soap/country-info)                  | nextjs + [sdk](https://github.com/domjtalbot/nx-mesh/tree/main/libs/example/sdk/soap/country-info)       | -              | -      |
-| [fake-api](https://github.com/domjtalbot/nx-mesh/tree/main/libs/example/sdk/json-schema/fake-api)                   | sdk                                                                                                      | `json-schema`  | `yml`  |
-| [javascript-wiki](https://github.com/domjtalbot/nx-mesh/tree/main/apps/example/api-gateway/openapi/javascript-wiki) | gateway                                                                                                  | `openapi`      | `json` |
-| [javascript-wiki](https://github.com/domjtalbot/nx-mesh/tree/main/libs/example/sdk/mysql/javascript-wiki)           | sdk                                                                                                      | `openapi`      | `yml`  |
-| [javascript-wiki](https://github.com/domjtalbot/nx-mesh/tree/main/libs/example/sdk/openapi/javascript-wiki)         | nextjs + [sdk](https://github.com/domjtalbot/nx-mesh/tree/main/libs/example/sdk/openapi/javascript-wiki) | -              | -      |
-| [movies](https://github.com/domjtalbot/nx-mesh/tree/main/libs/example/sdk/mysql/movies)                             | sdk                                                                                                      | `neo4j`        | `yml`  |
-| [rfam](https://github.com/domjtalbot/nx-mesh/tree/main/libs/example/sdk/mysql/rfam)                                 | sdk                                                                                                      | `mysql`        | `yml`  |
-| [stackexchange](https://github.com/domjtalbot/nx-mesh/tree/main/libs/example/sdk/mysql/stackexchange)               | sdk                                                                                                      | `openapi`      | `json` |
-| [star-wars-api](https://github.com/domjtalbot/nx-mesh/tree/main/libs/example/sdk/graphql/star-wars-api)             | sdk                                                                                                      | `graphql`      | `yml`  |
-| [trippin](https://github.com/domjtalbot/nx-mesh/tree/main/libs/example/sdk/mysql/trippin)                           | sdk                                                                                                      | `odata`        | `js`   |
-| [trippin](https://github.com/domjtalbot/nx-mesh/tree/main/libs/example/sdk/mysql/trippin)                           | nextjs + [sdk](https://github.com/domjtalbot/nx-mesh/tree/main/libs/example/sdk/mysql/trippin)           | -              | -      |
+| Name                                                                                                                | Type    | Source Handler | Config |
+| ------------------------------------------------------------------------------------------------------------------- | ------- | -------------- | ------ |
+| [country-info](https://github.com/domjtalbot/nx-mesh/tree/main/libs/example/sdk/mysql/country-info)                 | sdk     | `soap`         | `cjs`  |
+| [fake-api](https://github.com/domjtalbot/nx-mesh/tree/main/libs/example/sdk/json-schema/fake-api)                   | sdk     | `json-schema`  | `yml`  |
+| [javascript-wiki](https://github.com/domjtalbot/nx-mesh/tree/main/apps/example/api-gateway/openapi/javascript-wiki) | gateway | `openapi`      | `json` |
+| [javascript-wiki](https://github.com/domjtalbot/nx-mesh/tree/main/libs/example/sdk/mysql/javascript-wiki)           | sdk     | `openapi`      | `yml`  |
+| [movies](https://github.com/domjtalbot/nx-mesh/tree/main/libs/example/sdk/mysql/movies)                             | sdk     | `neo4j`        | `yml`  |
+| [nextjs with sdks](https://github.com/domjtalbot/nx-mesh/tree/main/apps/example/sdk/nextjs)                         | n-      | -              | -      |
+| [rfam](https://github.com/domjtalbot/nx-mesh/tree/main/libs/example/sdk/mysql/rfam)                                 | sdk     | `mysql`        | `yml`  |
+| [stackexchange](https://github.com/domjtalbot/nx-mesh/tree/main/libs/example/sdk/mysql/stackexchange)               | sdk     | `openapi`      | `json` |
+| [star-wars-api](https://github.com/domjtalbot/nx-mesh/tree/main/libs/example/sdk/graphql/star-wars-api)             | sdk     | `graphql`      | `yml`  |
+| [trippin](https://github.com/domjtalbot/nx-mesh/tree/main/libs/example/sdk/mysql/trippin)                           | sdk     | `odata`        | `js`   |
 
 <br/>
 
