@@ -21,10 +21,7 @@
     },
     "build": {
       "executor": "nx-mesh:build",
-      "outputs": [
-        "libs/example/sdk/odata/trippin/.mesh",
-        "{options.outputPath}"
-      ],
+      "outputs": ["{projectRoot}/.mesh", "{options.outputPath}"],
       "options": {
         "dir": "libs/example/sdk/odata/trippin",
         "main": "libs/example/sdk/odata/trippin/src/index.ts",

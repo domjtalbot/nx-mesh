@@ -21,10 +21,7 @@
     },
     "build": {
       "executor": "nx-mesh:build",
-      "outputs": [
-        "libs/example/sdk/openapi/stackexchange/.mesh",
-        "{options.outputPath}"
-      ],
+      "outputs": ["{projectRoot}/.mesh", "{options.outputPath}"],
       "options": {
         "dir": "libs/example/sdk/openapi/stackexchange",
         "main": "libs/example/sdk/openapi/stackexchange/src/index.ts",

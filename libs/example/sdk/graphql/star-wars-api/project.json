@@ -21,10 +21,7 @@
     },
     "build": {
       "executor": "nx-mesh:build-swc",
-      "outputs": [
-        "libs/example/sdk/graphql/star-wars-api/.mesh",
-        "{options.outputPath}"
-      ],
+      "outputs": ["{projectRoot}/.mesh", "{options.outputPath}"],
       "options": {
         "dir": "libs/example/sdk/graphql/star-wars-api",
         "main": "libs/example/sdk/graphql/star-wars-api/src/index.ts",

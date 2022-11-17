@@ -21,10 +21,7 @@
     },
     "build": {
       "executor": "nx-mesh:build-swc",
-      "outputs": [
-        "libs/example/sdk/openapi/javascript-wiki/.mesh",
-        "{options.outputPath}"
-      ],
+      "outputs": ["{projectRoot}/.mesh", "{options.outputPath}"],
       "options": {
         "dir": "libs/example/sdk/openapi/javascript-wiki",
         "main": "libs/example/sdk/openapi/javascript-wiki/src/index.ts",

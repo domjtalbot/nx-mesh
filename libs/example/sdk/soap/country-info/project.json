@@ -21,10 +21,7 @@
     },
     "build": {
       "executor": "nx-mesh:build-swc",
-      "outputs": [
-        "libs/example/sdk/soap/country-info/.mesh",
-        "{options.outputPath}"
-      ],
+      "outputs": ["{projectRoot}/.mesh", "{options.outputPath}"],
       "options": {
         "dir": "libs/example/sdk/soap/country-info",
         "main": "libs/example/sdk/soap/country-info/src/index.ts",

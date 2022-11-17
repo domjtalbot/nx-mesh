@@ -21,10 +21,7 @@
     },
     "build": {
       "executor": "nx-mesh:build-swc",
-      "outputs": [
-        "libs/example/sdk/json-schema/fake-api/.mesh",
-        "{options.outputPath}"
-      ],
+      "outputs": ["{projectRoot}/.mesh", "{options.outputPath}"],
       "options": {
         "dir": "libs/example/sdk/json-schema/fake-api",
         "main": "libs/example/sdk/json-schema/fake-api/src/index.ts",

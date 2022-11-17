@@ -6,10 +6,7 @@
   "targets": {
     "build": {
       "executor": "nx-mesh:build-gateway",
-      "outputs": [
-        "apps/example/api-gateway/openapi/javascript-wiki/.mesh",
-        "{options.outputPath}"
-      ],
+      "outputs": ["{projectRoot}/.mesh", "{options.outputPath}"],
       "options": {
         "dir": "apps/example/api-gateway/openapi/javascript-wiki",
         "main": "apps/example/api-gateway/openapi/javascript-wiki/src/index.ts",

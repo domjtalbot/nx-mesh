@@ -21,10 +21,7 @@
     },
     "build": {
       "executor": "nx-mesh:build-swc",
-      "outputs": [
-        "libs/example/sdk/neo4j/movies/.mesh",
-        "{options.outputPath}"
-      ],
+      "outputs": ["{projectRoot}/.mesh", "{options.outputPath}"],
       "options": {
         "dir": "libs/example/sdk/neo4j/movies",
         "main": "libs/example/sdk/neo4j/movies/src/index.ts",

@@ -21,7 +21,7 @@
     },
     "build": {
       "executor": "nx-mesh:build-swc",
-      "outputs": ["libs/example/sdk/mysql/rfam/.mesh", "{options.outputPath}"],
+      "outputs": ["{projectRoot}/.mesh", "{options.outputPath}"],
       "options": {
         "dir": "libs/example/sdk/mysql/rfam",
         "main": "libs/example/sdk/mysql/rfam/src/index.ts",
