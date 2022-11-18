@@ -26,7 +26,7 @@ export function addProjectConfig(tree: Tree, options: NormalizedOptions) {
   if (isLibrary && isSwc) {
     tree.delete(`${options.projectDirectory}/.babelrc`);
     addSwcDependencies(tree);
-    addSwcConfig(tree, options.directory);
+    addSwcConfig(tree, projectDirectory);
   }
 
   const project: ProjectConfiguration = isLibrary

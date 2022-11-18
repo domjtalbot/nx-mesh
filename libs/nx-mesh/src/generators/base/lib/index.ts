@@ -1,4 +1,3 @@
-export * from './add-cypress-tests';
 export * from './add-cypress';
 export * from './add-jest';
 export * from './add-linting';

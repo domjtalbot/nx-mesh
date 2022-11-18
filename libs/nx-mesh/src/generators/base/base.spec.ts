@@ -3,7 +3,7 @@ import type { BaseOptions } from './schema';
 
 import * as devkit from '@nrwl/devkit';
 import { getProjects, readJson } from '@nrwl/devkit';
-import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import { Linter } from '@nrwl/linter';
 
 import { baseGenerator } from './base';
@@ -17,13 +17,12 @@ describe.each<
   }
 >([
   {
-    describeName: 'nested within app directory',
-    directory: 'test',
-    expectedName: 'test-my-mesh-app',
-    expectedPath: 'apps/test/my-mesh-app',
+    describeName: 'app directory',
+    expectedName: 'my-mesh-app',
+    expectedPath: 'apps/my-mesh-app',
     name: 'my-mesh-app',
     projectType: 'app',
-    relativeToRoot: '../../../',
+    relativeToRoot: '../../',
   },
   {
     describeName: 'app directory',
@@ -32,6 +31,43 @@ describe.each<
     name: 'my-mesh-app',
     projectType: 'app',
     relativeToRoot: '../../',
+    meshExampleProject: 'countryInfo',
+  },
+  {
+    describeName: 'app directory',
+    expectedName: 'my-mesh-app',
+    expectedPath: 'apps/my-mesh-app',
+    name: 'my-mesh-app',
+    projectType: 'app',
+    relativeToRoot: '../../',
+    meshExampleProject: 'javascriptWiki',
+  },
+  {
+    describeName: 'app directory',
+    expectedName: 'my-mesh-app',
+    expectedPath: 'apps/my-mesh-app',
+    name: 'my-mesh-app',
+    projectType: 'app',
+    relativeToRoot: '../../',
+    meshExampleProject: 'stackexchange',
+  },
+  {
+    describeName: 'app directory',
+    expectedName: 'my-mesh-app',
+    expectedPath: 'apps/my-mesh-app',
+    name: 'my-mesh-app',
+    projectType: 'app',
+    relativeToRoot: '../../',
+    meshExampleProject: 'trippin',
+  },
+  {
+    describeName: 'nested within app directory',
+    directory: 'test',
+    expectedName: 'test-my-mesh-app',
+    expectedPath: 'apps/test/my-mesh-app',
+    name: 'my-mesh-app',
+    projectType: 'app',
+    relativeToRoot: '../../../',
   },
   {
     describeName: 'app with standalone config',
@@ -43,13 +79,12 @@ describe.each<
     relativeToRoot: '../../',
   },
   {
-    describeName: 'nested within lib directory',
-    directory: 'test',
-    expectedName: 'test-my-mesh-lib',
-    expectedPath: 'libs/test/my-mesh-lib',
+    describeName: 'lib directory',
+    expectedName: 'my-mesh-lib',
+    expectedPath: 'libs/my-mesh-lib',
     name: 'my-mesh-lib',
     projectType: 'lib',
-    relativeToRoot: '../../../',
+    relativeToRoot: '../../',
   },
   {
     describeName: 'lib directory',
@@ -58,6 +93,43 @@ describe.each<
     name: 'my-mesh-lib',
     projectType: 'lib',
     relativeToRoot: '../../',
+    meshExampleProject: 'countryInfo',
+  },
+  {
+    describeName: 'lib directory',
+    expectedName: 'my-mesh-lib',
+    expectedPath: 'libs/my-mesh-lib',
+    name: 'my-mesh-lib',
+    projectType: 'lib',
+    relativeToRoot: '../../',
+    meshExampleProject: 'javascriptWiki',
+  },
+  {
+    describeName: 'lib directory',
+    expectedName: 'my-mesh-lib',
+    expectedPath: 'libs/my-mesh-lib',
+    name: 'my-mesh-lib',
+    projectType: 'lib',
+    relativeToRoot: '../../',
+    meshExampleProject: 'stackexchange',
+  },
+  {
+    describeName: 'lib directory',
+    expectedName: 'my-mesh-lib',
+    expectedPath: 'libs/my-mesh-lib',
+    name: 'my-mesh-lib',
+    projectType: 'lib',
+    relativeToRoot: '../../',
+    meshExampleProject: 'trippin',
+  },
+  {
+    describeName: 'nested within lib directory',
+    directory: 'test',
+    expectedName: 'test-my-mesh-lib',
+    expectedPath: 'libs/test/my-mesh-lib',
+    name: 'my-mesh-lib',
+    projectType: 'lib',
+    relativeToRoot: '../../../',
   },
   {
     describeName: 'lib with standalone config',
@@ -74,7 +146,15 @@ describe.each<
     let tree: Tree;
 
     beforeEach(() => {
-      tree = createTreeWithEmptyV1Workspace();
+      tree = createTreeWithEmptyWorkspace();
+
+      tree.write(
+        'workspace.json',
+        JSON.stringify({
+          version: 2,
+          projects: {},
+        })
+      );
     });
 
     afterEach(() => {
@@ -95,8 +175,8 @@ describe.each<
         });
       });
 
-      if (config.projectType === 'app') {
-        describe('--e2eTestRunner', () => {
+      describe('--e2eTestRunner', () => {
+        if (config.projectType === 'app') {
           it('should use cypress for E2E', async () => {
             await baseGenerator(tree, {
               ...config,
@@ -104,13 +184,30 @@ describe.each<
             });
 
             const workspaceJson = readJson(tree, 'workspace.json');
+            const e2eConfig = tree.read(
+              `${expectedPath}-e2e/src/integration/app.spec.ts`,
+              'utf-8'
+            );
 
-            expect(workspaceJson.projects[`${expectedName}-e2e`].root).toEqual(
+            expect(workspaceJson.projects[`${expectedName}-e2e`]).toEqual(
               `${expectedPath}-e2e`
             );
+            expect(e2eConfig).toMatchSnapshot();
           });
-        });
-      }
+        }
+
+        if (config.projectType === 'lib') {
+          it('should not create a E2E project', async () => {
+            await baseGenerator(tree, {
+              ...config,
+            });
+
+            const workspaceJson = readJson(tree, 'workspace.json');
+
+            expect(workspaceJson.projects[`${expectedName}-e2e`]).toBeFalsy();
+          });
+        }
+      });
 
       describe('--linter', () => {
         it('should use eslint for linting', async () => {
@@ -142,6 +239,57 @@ describe.each<
             await baseGenerator(tree, {
               ...config,
               meshConfig: meshConfigType,
+            });
+
+            expect(
+              tree.exists(`${expectedPath}/.meshrc.${meshConfigType}`)
+            ).toBeTruthy();
+
+            const meshConfig = tree.read(
+              `${expectedPath}/.meshrc.${meshConfigType}`,
+              'utf-8'
+            );
+
+            expect(meshConfig).toMatchSnapshot();
+          }
+        );
+      });
+
+      describe('--meshExampleProject', () => {
+        it('should create a javascriptWiki config by default', async () => {
+          await baseGenerator(tree, config);
+
+          const meshConfig = tree.read(`${expectedPath}/.meshrc.yml`, 'utf-8');
+
+          expect(meshConfig).toMatchSnapshot();
+        });
+
+        it.each<[BaseOptions['meshExampleProject'], BaseOptions['meshConfig']]>(
+          [
+            ['javascriptWiki', 'cjs'],
+            ['javascriptWiki', 'js'],
+            ['javascriptWiki', 'json'],
+            ['javascriptWiki', 'yml'],
+            ['stackexchange', 'cjs'],
+            ['stackexchange', 'js'],
+            ['stackexchange', 'json'],
+            ['stackexchange', 'yml'],
+            ['trippin', 'cjs'],
+            ['trippin', 'js'],
+            ['trippin', 'json'],
+            ['trippin', 'yml'],
+            ['countryInfo', 'cjs'],
+            ['countryInfo', 'js'],
+            ['countryInfo', 'json'],
+            ['countryInfo', 'yml'],
+          ]
+        )(
+          'should create a %s %s config',
+          async (meshExampleProject, meshConfigType) => {
+            await baseGenerator(tree, {
+              ...config,
+              meshConfig: meshConfigType,
+              meshExampleProject,
             });
 
             expect(
@@ -224,9 +372,19 @@ describe.each<
 
         const packageJson = readJson(tree, 'package.json');
 
+        const meshPackages: Record<string, unknown> = {};
+
+        Object.entries(packageJson.dependencies)
+          .filter(([name]) => name.startsWith('@graphql-mesh/'))
+          .forEach(([name, version]) => {
+            meshPackages[name] = version;
+          });
+
+        expect(packageJson.dependencies['graphql']).toBeDefined();
         expect(packageJson.dependencies['@graphql-mesh/cli']).toBeDefined();
         expect(packageJson.dependencies['@graphql-mesh/runtime']).toBeDefined();
         expect(packageJson.dependencies['@graphql-mesh/utils']).toBeDefined();
+        expect(meshPackages).toMatchSnapshot();
       });
 
       it('should extend from root tsconfig.json when no tsconfig.base.json', async () => {
@@ -242,7 +400,7 @@ describe.each<
 
         const workspaceJson = readJson(tree, 'workspace.json');
 
-        expect(workspaceJson.projects[expectedName].root).toEqual(expectedPath);
+        expect(workspaceJson.projects[expectedName]).toEqual(expectedPath);
       });
     });
   }

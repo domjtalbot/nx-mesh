@@ -6,7 +6,7 @@ const utils = [
   '@graphql-mesh/store',
   '@graphql-mesh/types',
   '@graphql-mesh/utils',
-];
+] as const;
 
 const sources = [
   '@graphql-mesh/graphql',
@@ -22,7 +22,7 @@ const sources = [
   '@graphql-mesh/soap',
   '@graphql-mesh/thrift',
   '@graphql-mesh/tuql',
-];
+] as const;
 
 const transforms = [
   '@graphql-mesh/transform-cache',
@@ -38,18 +38,28 @@ const transforms = [
   '@graphql-mesh/transform-replace-field',
   '@graphql-mesh/transform-resolvers-composition',
   '@graphql-mesh/transform-snapshot',
-];
+] as const;
 
 const cache = [
   '@graphql-mesh/cache-file',
   '@graphql-mesh/cache-localforage',
   '@graphql-mesh/cache-redis',
-];
+] as const;
+
+const plugins = ['@graphql-mesh/plugin-snapshot'] as const;
 
 /**
  * A list of known GraphQL Mesh packages.
  * These packages can be automatically added to package.json files.
  */
-export const meshPackages = [...cache, ...sources, ...transforms, ...utils];
+export const meshPackages = [
+  ...cache,
+  ...plugins,
+  ...sources,
+  ...transforms,
+  ...utils,
+];
+
+export type MeshPackages = typeof meshPackages[number];
 
 export default meshPackages;

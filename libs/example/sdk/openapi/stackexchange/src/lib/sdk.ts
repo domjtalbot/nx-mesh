@@ -1,0 +1,1 @@
+export { getMeshSDK } from '../../.mesh';

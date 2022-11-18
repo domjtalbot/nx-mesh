@@ -7,7 +7,6 @@ import { formatFiles } from '@nrwl/devkit';
 import { runTasksInSerial } from '../../utils/run-tasks-in-serial';
 import {
   addCypress,
-  addCypressTests,
   addJest,
   addLinting,
   addMeshDependencies,
@@ -25,11 +24,9 @@ export async function baseGenerator(tree: Tree, baseOptions: BaseOptions) {
   const options = normalizeOptions(tree, baseOptions);
   const { isCypress, isApp, skipFormat } = options;
 
-  const tasks: GeneratorCallback[] = [
-    await nodeGenerator(tree, options),
-    addMeshDependencies(tree),
-  ];
+  const tasks: GeneratorCallback[] = [await nodeGenerator(tree, options)];
 
+  addMeshDependencies(tree, options);
   createFiles(tree, options);
   addProjectConfig(tree, options);
   setDefaults(tree, options);
@@ -40,7 +37,6 @@ export async function baseGenerator(tree: Tree, baseOptions: BaseOptions) {
 
   if (isCypress) {
     tasks.push(await addCypress(tree, options));
-    tasks.push(() => addCypressTests(tree, options));
   }
 
   if (options.linter) {
@@ -48,7 +44,7 @@ export async function baseGenerator(tree: Tree, baseOptions: BaseOptions) {
   }
 
   if (!skipFormat) {
-    tasks.push(() => formatFiles(tree));
+    formatFiles(tree);
   }
 
   return runTasksInSerial(...tasks);

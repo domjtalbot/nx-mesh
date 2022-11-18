@@ -1,0 +1,7 @@
+issues:
+  binScriptConfusion: false
+# enable/disable GitHub app pull request alert checks
+# pullRequestAlertsEnabled: true
+
+# enable/disable Github app project report checks
+# projectReportsEnabled: true

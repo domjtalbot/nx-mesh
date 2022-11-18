@@ -1,0 +1,8 @@
+{
+  "exports": {
+    "./sdk": "./src/lib/sdk",
+    "./server": "./src/lib/server",
+    "./types": "./src/lib/types",
+    "./utils": "./src/lib/utils"
+  }
+}

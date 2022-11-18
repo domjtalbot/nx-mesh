@@ -1,12 +1,12 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable */
 
 // Modifed version of Nx SWC compiler
 // https://github.com/nrwl/nx/blob/master/packages/js/src/utils/swc/compile-swc.ts
 // @ts-nocheck
 
-import { ExecutorContext, logger } from '@nrwl/devkit';
+import { cacheDir, ExecutorContext, logger } from '@nrwl/devkit';
 import { exec, execSync } from 'child_process';
-import { cacheDir } from '@nrwl/devkit';
+import { removeSync } from 'fs-extra';
 import { createAsyncIterable } from '@nrwl/js/src/utils/create-async-iterable/create-async-iteratable';
 import {
   NormalizedSwcExecutorOptions,
@@ -17,7 +17,6 @@ import {
   runTypeCheck,
   TypeCheckOptions,
 } from '@nrwl/js/src/utils/typescript/run-type-check';
-import { removeSync } from 'fs-extra';
 
 function getSwcCmd(
   { swcrcPath, srcPath, destPath }: SwcCliOptions,
@@ -26,7 +25,7 @@ function getSwcCmd(
   /**
    * Add `--include-dotfiles`
    */
-  const swcCmd = `npx swc ${srcPath} -d ${destPath} --no-swcrc --include-dotfiles --config-file=${swcrcPath}`;
+  let swcCmd = `npx swc ${srcPath} -d ${destPath} --no-swcrc --config-file=${swcrcPath} --include-dotfiles`;
   return watch ? swcCmd.concat(' --watch') : swcCmd;
 }
 
@@ -66,9 +65,8 @@ export async function compileSwc(
   logger.log(swcCmdLog.replace(/\n/, ''));
   const isCompileSuccess = swcCmdLog.includes('Successfully compiled');
 
-  await postCompilationCallback();
-
   if (normalizedOptions.skipTypeCheck) {
+    await postCompilationCallback();
     return { success: isCompileSuccess };
   }
 
@@ -82,7 +80,11 @@ export async function compileSwc(
     await printDiagnostics(errors, warnings);
   }
 
-  return { success: !hasErrors && isCompileSuccess };
+  await postCompilationCallback();
+  return {
+    success: !hasErrors && isCompileSuccess,
+    outfile: normalizedOptions.mainOutputPath,
+  };
 }
 
 export async function* compileSwcWatch(
@@ -104,12 +106,17 @@ export async function* compileSwcWatch(
 
   return yield* createAsyncIterable<{ success: boolean; outfile: string }>(
     async ({ next, done }) => {
+      let processOnExit: () => void;
+      let stdoutOnData: () => void;
+      let stderrOnData: () => void;
+      let watcherOnExit: () => void;
+
       const swcWatcher = exec(
         getSwcCmd(normalizedOptions.swcCliOptions, true),
         { cwd: normalizedOptions.swcCliOptions.swcCwd }
       );
 
-      const processOnExit = () => {
+      processOnExit = () => {
         swcWatcher.kill();
         done();
         process.off('SIGINT', processOnExit);
@@ -117,7 +124,7 @@ export async function* compileSwcWatch(
         process.off('exit', processOnExit);
       };
 
-      const stdoutOnData = async (data?: string) => {
+      stdoutOnData = async (data?: string) => {
         process.stdout.write(data);
         if (!data.startsWith('Watching')) {
           const swcStatus = data.includes('Successfully');
@@ -166,7 +173,7 @@ export async function* compileSwcWatch(
         }
       };
 
-      const stderrOnData = (err?: unknown) => {
+      stderrOnData = (err?: any) => {
         process.stderr.write(err);
         if (err.includes('Debugger attached.')) {
           return;
@@ -174,7 +181,7 @@ export async function* compileSwcWatch(
         next(getResult(false));
       };
 
-      const watcherOnExit = () => {
+      watcherOnExit = () => {
         done();
         swcWatcher.off('exit', watcherOnExit);
       };

@@ -18,6 +18,7 @@ export interface NormalizedOptions
     | 'compiler'
     | 'directory'
     | 'e2eTestRunner'
+    | 'meshExampleProject'
     | 'projectType'
     | 'unitTestRunner'
   > {
@@ -65,6 +66,12 @@ export interface NormalizedOptions
    */
   meshConfigExt: MeshConfigExtensions;
 
+  meshExampleProject:
+    | 'countryInfo'
+    | 'javascriptWiki'
+    | 'stackexchange'
+    | 'trippin';
+
   workspace: ReturnType<typeof getWorkspaceLayout>;
 
   projectParentDirectory?: string;
@@ -95,14 +102,14 @@ export function normalizeOptions(
     : names(options.name).fileName;
   const projectName = directory.replace(new RegExp('/', 'g'), '-');
 
-  const e2eTestRunner = options.e2eTestRunner ?? 'cypress';
-  const e2eProjectName = `${projectName}-e2e`;
-
   const projectType = options.projectType ?? 'app';
   const unitTestRunner = options.unitTestRunner ?? 'jest';
 
   const isApp = projectType === 'app';
   const isLibrary = projectType === 'lib';
+
+  const e2eTestRunner = options.e2eTestRunner ?? isApp ? 'cypress' : 'none';
+  const e2eProjectName = `${projectName}-e2e`;
 
   const meshConfigExt =
     (/^(cjs|js|json|yml)$/.test(options.meshConfig ?? 'yml')
@@ -114,7 +121,10 @@ export function normalizeOptions(
       ? options.compiler
       : 'tsc') ?? 'tsc';
 
-  const meshConfigContent = createMeshConfig(meshConfigExt);
+  const meshExampleProject: NormalizedOptions['meshExampleProject'] =
+    options.meshExampleProject ?? 'javascriptWiki';
+
+  const meshConfigContent = createMeshConfig(meshConfigExt, meshExampleProject);
 
   const projectDirectory = joinPathFragments(
     isApp ? workspace.appsDir : workspace.libsDir,
@@ -154,6 +164,7 @@ export function normalizeOptions(
     isSwc: options.compiler === 'swc',
     meshConfigContent,
     meshConfigExt,
+    meshExampleProject,
     offsetFromRoot: offsetFromRoot(projectDirectory),
     projectDirectory,
     projectDistDirectory,

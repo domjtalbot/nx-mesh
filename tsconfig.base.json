@@ -15,32 +15,42 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-mesh/sdk/javascript-wiki": ["libs/sdk/javascript-wiki/src/index.ts"],
-      "@nx-mesh/sdk/javascript-wiki-cjs": [
-        "libs/sdk/javascript-wiki-cjs/src/index.ts"
+      "@nx-mesh/example/sdk/graphql/star-wars-api": [
+        "libs/example/sdk/graphql/star-wars-api/src/index.ts"
       ],
-      "@nx-mesh/sdk/javascript-wiki-js": [
-        "libs/sdk/javascript-wiki-js/src/index.ts"
+      "@nx-mesh/example/sdk/json-schema/fake-api": [
+        "libs/example/sdk/json-schema/fake-api/src/index.ts"
       ],
-      "@nx-mesh/sdk/javascript-wiki-json": [
-        "libs/sdk/javascript-wiki-json/src/index.ts"
+      "@nx-mesh/example/sdk/mysql/rfam": [
+        "libs/example/sdk/mysql/rfam/src/index.ts"
       ],
-      "@nx-mesh/sdk/javascript-wiki-swc": [
-        "libs/sdk/javascript-wiki-swc/src/index.ts"
+      "@nx-mesh/example/sdk/neo4j/movies": [
+        "libs/example/sdk/neo4j/movies/src/index.ts"
       ],
-      "@nx-mesh/sdk/javascript-wiki-swc-cjs": [
-        "libs/sdk/javascript-wiki-swc-cjs/src/index.ts"
+      "@nx-mesh/example/sdk/odata/trippin": [
+        "libs/example/sdk/odata/trippin/src/index.ts"
       ],
-      "@nx-mesh/sdk/javascript-wiki-swc-js": [
-        "libs/sdk/javascript-wiki-swc-js/src/index.ts"
+      "@nx-mesh/example/sdk/odata/trippin/*": [
+        "libs/example/sdk/odata/trippin/src/lib/*"
       ],
-      "@nx-mesh/sdk/javascript-wiki-swc-json": [
-        "libs/sdk/javascript-wiki-swc-json/src/index.ts"
+      "@nx-mesh/example/sdk/openapi/javascript-wiki": [
+        "libs/example/sdk/openapi/javascript-wiki/src/index.ts"
       ],
-      "@nx-mesh/sdk/stackexchange": ["libs/sdk/stackexchange/src/index.ts"],
-      "@nx-mesh/sdk/trippin": ["libs/sdk/trippin/src/index.ts"],
-      "@nx-mesh/sdk/trippin-swc": ["libs/sdk/trippin-swc/src/index.ts"],
-      "@nx-mesh/sdk/weatherbit": ["libs/sdk/weatherbit/src/index.ts"],
+      "@nx-mesh/example/sdk/openapi/javascript-wiki/*": [
+        "libs/example/sdk/openapi/javascript-wiki/src/lib/*"
+      ],
+      "@nx-mesh/example/sdk/openapi/stackexchange": [
+        "libs/example/sdk/openapi/stackexchange/src/index.ts"
+      ],
+      "@nx-mesh/example/sdk/openapi/stackexchange/*": [
+        "libs/example/sdk/openapi/stackexchange/src/lib/*"
+      ],
+      "@nx-mesh/example/sdk/soap/country-info": [
+        "libs/example/sdk/soap/country-info/src/index.ts"
+      ],
+      "@nx-mesh/example/sdk/soap/country-info/*": [
+        "libs/example/sdk/soap/country-info/src/lib/*"
+      ],
       "nx-mesh": ["libs/nx-mesh/src/index.ts"]
     }
   },

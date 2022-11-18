@@ -1,31 +1,34 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable */
 
 // Modifed version of Nx SWC executor
 // https://github.com/nrwl/nx/blob/master/packages/js/src/executors/swc/swc.impl.ts
 // @ts-nocheck
-
-import { ExecutorContext, ProjectGraphProjectNode } from '@nrwl/devkit';
+import { ExecutorContext } from '@nrwl/devkit';
 import {
   assetGlobsToFiles,
   FileInputOutput,
 } from '@nrwl/workspace/src/utilities/assets';
-import { DependentBuildableProjectNode } from '@nrwl/workspace/src/utilities/buildable-libs-utils';
-import { join, relative, resolve } from 'path';
-
+import { removeSync } from 'fs-extra';
+import { dirname, join, relative, resolve } from 'path';
+import { copyAssets } from '@nrwl/js/src/utils/assets';
 import { checkDependencies } from '@nrwl/js/src/utils/check-dependencies';
 import {
   getHelperDependency,
   HelperDependency,
 } from '@nrwl/js/src/utils/compiler-helper-dependency';
-import { CopyAssetsHandler } from '@nrwl/js/src/utils/copy-assets-handler';
+import {
+  handleInliningBuild,
+  isInlineGraphEmpty,
+  postProcessInlinedDependencies,
+} from '@nrwl/js/src/utils/inline';
+import { copyPackageJson } from '@nrwl/js/src/utils/package-json';
 import {
   NormalizedSwcExecutorOptions,
   SwcExecutorOptions,
 } from '@nrwl/js/src/utils/schema';
 import { compileSwc, compileSwcWatch } from './compile-swc';
 import { getSwcrcPath } from '@nrwl/js/src/utils/swc/get-swcrc-path';
-import { updatePackageJson } from '@nrwl/js/src/utils/update-package-json';
-import { watchForSingleFileChanges } from '@nrwl/js/src/utils/watch-for-single-file-changes';
+import { generateTmpSwcrc } from '@nrwl/js/src/utils/swc/inline';
 
 export function normalizeOptions(
   options: SwcExecutorOptions,
@@ -41,6 +44,20 @@ export function normalizeOptions(
 
   if (options.watch == null) {
     options.watch = false;
+  }
+
+  // TODO: put back when inlining story is more stable
+  // if (options.external == null) {
+  //   options.external = 'all';
+  // } else if (Array.isArray(options.external) && options.external.length === 0) {
+  //   options.external = 'none';
+  // }
+
+  if (Array.isArray(options.external) && options.external.length > 0) {
+    const firstItem = options.external[0];
+    if (firstItem === 'all' || firstItem === 'none') {
+      options.external = firstItem;
+    }
   }
 
   const files: FileInputOutput[] = assetGlobsToFiles(
@@ -75,29 +92,11 @@ export function normalizeOptions(
     root: contextRoot,
     sourceRoot,
     projectRoot,
+    originalProjectRoot: projectRoot,
     outputPath,
     tsConfig: join(contextRoot, options.tsConfig),
     swcCliOptions,
   } as NormalizedSwcExecutorOptions;
-}
-
-function processAssetsAndPackageJsonOnce(
-  assetHandler: CopyAssetsHandler,
-  options: NormalizedSwcExecutorOptions,
-  context: ExecutorContext,
-  target: ProjectGraphProjectNode<any>,
-  dependencies: DependentBuildableProjectNode[]
-) {
-  return async () => {
-    await assetHandler.processAllAssetsOnce();
-    updatePackageJson(
-      options,
-      context,
-      target,
-      dependencies,
-      !options.skipTypeCheck
-    );
-  };
 }
 
 export async function* swcExecutor(
@@ -106,7 +105,7 @@ export async function* swcExecutor(
 ) {
   const { sourceRoot, root } = context.workspace.projects[context.projectName];
   const options = normalizeOptions(_options, context.root, sourceRoot, root);
-  const { tmpTsConfig, projectRoot, target, dependencies } = checkDependencies(
+  const { tmpTsConfig, dependencies } = checkDependencies(
     context,
     options.tsConfig
   );
@@ -126,58 +125,77 @@ export async function* swcExecutor(
     dependencies.push(swcHelperDependency);
   }
 
-  const assetHandler = new CopyAssetsHandler({
-    projectDir: projectRoot,
-    rootDir: context.root,
-    outputDir: options.outputPath,
-    assets: options.assets,
-  });
+  const inlineProjectGraph = handleInliningBuild(
+    context,
+    options,
+    options.tsConfig
+  );
+
+  if (!isInlineGraphEmpty(inlineProjectGraph)) {
+    options.projectRoot = '.'; // set to root of workspace to include other libs for type check
+
+    // remap paths for SWC compilation
+    options.swcCliOptions.srcPath = options.swcCliOptions.swcCwd;
+    options.swcCliOptions.swcCwd = '.';
+    options.swcCliOptions.destPath = options.swcCliOptions.destPath
+      .split('../')
+      .at(-1)
+      .concat('/', options.swcCliOptions.srcPath);
+
+    // tmp swcrc with dependencies to exclude
+    // - buildable libraries
+    // - other libraries that are not dependent on the current project
+    options.swcCliOptions.swcrcPath = generateTmpSwcrc(
+      inlineProjectGraph,
+      options.swcCliOptions.swcrcPath
+    );
+  }
 
   if (options.watch) {
-    const disposeWatchAssetChanges =
-      await assetHandler.watchAndProcessOnAssetChange();
-    const disposePackageJsonChanges = await watchForSingleFileChanges(
-      join(context.root, projectRoot),
-      'package.json',
-      () =>
-        updatePackageJson(
-          options,
-          context,
-          target,
-          dependencies,
-          !options.skipTypeCheck
-        )
-    );
-    const handleTermination = async () => {
-      await disposeWatchAssetChanges();
-      await disposePackageJsonChanges();
-    };
-    process.on('SIGINT', () => handleTermination());
-    process.on('SIGTERM', () => handleTermination());
+    let disposeFn: () => void;
+    process.on('SIGINT', () => disposeFn());
+    process.on('SIGTERM', () => disposeFn());
 
-    return yield* compileSwcWatch(
-      context,
-      options,
-      processAssetsAndPackageJsonOnce(
-        assetHandler,
-        options,
-        context,
-        target,
-        dependencies
-      )
-    );
+    return yield* compileSwcWatch(context, options, async () => {
+      const assetResult = await copyAssets(options, context);
+      const packageJsonResult = await copyPackageJson(
+        {
+          ...options,
+          skipTypings: !options.skipTypeCheck,
+        },
+        context
+      );
+      removeTmpSwcrc(options.swcCliOptions.swcrcPath);
+      disposeFn = () => {
+        assetResult?.stop();
+        packageJsonResult?.stop();
+      };
+    });
   } else {
-    return yield compileSwc(
-      context,
-      options,
-      processAssetsAndPackageJsonOnce(
-        assetHandler,
-        options,
-        context,
-        target,
-        dependencies
-      )
-    );
+    return yield compileSwc(context, options, async () => {
+      await copyAssets(options, context);
+      await copyPackageJson(
+        {
+          ...options,
+          generateExportsField: true,
+          skipTypings: !options.skipTypeCheck,
+          extraDependencies: swcHelperDependency ? [swcHelperDependency] : [],
+        },
+        context
+      );
+      removeTmpSwcrc(options.swcCliOptions.swcrcPath);
+      postProcessInlinedDependencies(
+        options.outputPath,
+        options.originalProjectRoot,
+        inlineProjectGraph
+      );
+    });
+  }
+}
+
+function removeTmpSwcrc(swcrcPath: string) {
+  if (swcrcPath.startsWith('tmp/')) {
+    removeSync(dirname(swcrcPath));
   }
 }
 

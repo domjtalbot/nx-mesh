@@ -51,6 +51,12 @@
         ]
       }
     },
+    "meshExampleProject": {
+      "description": "Which example project would you like to use?",
+      "type": "string",
+      "enum": ["javascriptWiki", "stackexchange", "trippin", "country-info"],
+      "default": "javascriptWiki"
+    },
     "linter": {
       "description": "The tool to use for running lint checks.",
       "type": "string",

@@ -1,5 +1,6 @@
 {
   "name": "nx-mesh",
+  "author": "Dom Talbot",
   "description": "GraphQL Mesh support for Nx",
   "version": "1.0.1",
   "license": "MIT",
@@ -8,17 +9,33 @@
   "executors": "./executors.json",
   "peerDependencies": {
     "@graphql-mesh/cli": ">=0.71.0",
-    "nx": ">=14"
+    "@swc-node/register": "^1.5.1",
+    "@swc/core": "^0.1.55",
+    "@swc/helpers": "^0.4.11",
+    "nx": ">=15"
+  },
+  "peerDependenciesMeta": {
+    "@swc-node/register": {
+      "optional": true
+    },
+    "@swc/core": {
+      "optional": true
+    },
+    "@swc/helpers": {
+      "optional": true
+    }
   },
   "dependencies": {
-    "@nrwl/cypress": "14.5.10",
-    "@nrwl/devkit": "14.5.10",
-    "@nrwl/js": "14.5.10",
-    "@nrwl/linter": "14.5.10",
-    "@nrwl/node": "14.5.10",
-    "@nrwl/workspace": "14.5.10",
-    "fs-extra": "10.1.0",
-    "get-port": "5.1.1"
+    "@nrwl/cypress": "^15.0.13",
+    "@nrwl/devkit": "^15.0.13",
+    "@nrwl/js": "^15.0.13",
+    "@nrwl/linter": "^15.0.13",
+    "@nrwl/node": "^15.0.13",
+    "@nrwl/workspace": "^15.0.13",
+    "fs-extra": "^10.1.0",
+    "get-port": "5.1.1",
+    "tslib": "2.4.0",
+    "type-fest": "^2.18.0"
   },
   "keywords": [
     "Monorepo",
@@ -30,6 +47,9 @@
     "GraphQL-Mesh",
     "Mesh"
   ],
+  "bugs": {
+    "url": "git://github.com/domjtalbot/nx-mesh/issues"
+  },
   "repository": {
     "directory": "libs/nx-mesh",
     "type": "git",

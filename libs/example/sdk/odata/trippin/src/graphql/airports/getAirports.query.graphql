@@ -1,0 +1,13 @@
+query getAirports {
+  Airports {
+    Name
+    Location {
+      Address
+      City {
+        Name
+        Region
+        CountryRegion
+      }
+    }
+  }
+}

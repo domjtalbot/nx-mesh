@@ -1,0 +1,72 @@
+sources:
+  - name: FakeAPI
+    handler:
+      jsonSchema:
+        baseUrl: https://not-existing-api.com/API
+        operations:
+          - type: Query
+            field: me
+            path: /me
+            method: GET
+            responseSchema: ./src/json-schemas/user.json#/definitions/User
+          - type: Query
+            field: company
+            path: /company/{args.id}
+            method: GET
+            responseSchema: ./src/json-schemas/company.json#/definitions/Company
+            argTypeMap:
+              id:
+                type: string
+                nullable: false
+          - type: Mutation
+            field: createUser
+            path: /user
+            method: PUT
+            requestSample: ./src/json-samples/user-input.json
+            requestTypeName: CreateUpdateUser
+            responseSchema: ./src/json-schemas/user.json#/definitions/User
+          - type: Mutation
+            field: updateUser
+            path: /user/{args.id}
+            argTypeMap:
+              id:
+                type: string
+                nullable: false
+            method: POST
+            requestSample: ./src/json-samples/user-input.json
+            requestTypeName: CreateUpdateUser
+            responseSchema: ./src/json-schemas/user.json#/definitions/User # This can be `responseSample` with a sample JSON file
+          - type: Mutation
+            field: deleteUser
+            path: /user/{args.id}
+            argTypeMap:
+              id:
+                type: string
+                nullable: false
+            method: DELETE
+
+additionalTypeDefs: |
+  extend type User {
+    company: Company
+  }
+  extend type Company {
+    employers: [User]
+  }
+
+plugins:
+  - mock:
+      mocks:
+        - apply: User.firstName
+          faker: '{{name.firstName}}'
+        - apply: User.lastName
+          faker: '{{name.lastName}}'
+        - apply: User.jobTitle
+          faker: '{{name.jobTitle}}'
+        - apply: Company.name
+          faker: '{{company.companyName}}'
+
+documents:
+  - ./src/graphql/**/*.*.graphql
+
+serve:
+  playground: false
