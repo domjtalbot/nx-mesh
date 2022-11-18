@@ -180,6 +180,33 @@ jobs:
         run: |
           pnpm nx run-many --target=validate --all --parallel=2
 
+  analyze:
+    runs-on: ubuntu-latest
+    needs: [nx]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup
+        uses: ./.github/actions/setup
+        with:
+          ignore-cypress-cache: ${{ !startsWith(matrix.command, 'e2e') }}
+          node-version: ${{ matrix.node }}
+
+      - name: Lint
+        if: inputs.affected != true && matrix.node == 'lts'
+        shell: bash
+        run: |
+          pnpm nx run-many --target=lint --all --parallel=3 --configuration=reports
+
+      - name: Test
+        if: inputs.affected != true && matrix.command == 'test'
+        shell: bash
+        run: |
+          pnpm nx run-many --target=test --all --ci --code-coverage --parallel=3
+
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@v1.7
         env:
