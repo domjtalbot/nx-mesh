@@ -196,15 +196,11 @@ jobs:
         experimental: [false]
         include:
           - node: latest
-            app: api-gateway-trippin-e2e
-            command: e2e-serve
-            experimental: true
-          - node: latest
-            app: api-gateway-trippin-e2e
+            app: example-api-gateway-openapi-javascript-wiki-e2e
             command: e2e-serve-dev
             experimental: true
           - node: latest
-            app: nextjs-trippin-e2e
+            app: example-sdk-nextjs-e2e
             command: e2e
             experimental: true
     name: ${{ matrix.node }} / ${{ matrix.command }} / ${{ matrix.app }}
