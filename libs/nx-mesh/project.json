@@ -50,7 +50,7 @@
       },
       "configurations": {
         "reports": {
-          "format": "json-with-metadata",
+          "format": "json",
           "outputFile": "reports/libs/nx-mesh/lint.json"
         }
       }
