@@ -33,10 +33,6 @@ export const getCliEnv = (options: Env): CliEnv => {
     if (key === 'debug' && value !== undefined) {
       CliEnv[cliKey] = (+value).toString() as typeof CliEnv['DEBUG'];
     }
-
-    // if (value !== undefined) {
-    //   CliEnv[cliKey] = value;
-    // }
   });
 
   return CliEnv;
