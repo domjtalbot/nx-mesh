@@ -41,8 +41,18 @@ export function addProjectConfig(tree: Tree, options: NormalizedOptions) {
 
   const targets = { ...project?.targets };
 
+  let buildExecutor = 'nx-mesh:build';
+
+  if (isApp) {
+    buildExecutor = `${buildExecutor}-gateway`;
+  }
+
+  if (isLibrary && isSwc) {
+    buildExecutor = `${buildExecutor}-swc`;
+  }
+
   targets['build'] = {
-    executor: `nx-mesh:build${isApp ? '-gateway' : isSwc ? '-swc' : ''}`,
+    executor: buildExecutor,
     outputs: [projectMeshDirectory, '{options.outputPath}'],
     options: {
       dir: projectDirectory,
