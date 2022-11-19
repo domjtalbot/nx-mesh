@@ -100,7 +100,7 @@ export function normalizeOptions(
   const directory = options.directory
     ? `${names(options.directory).fileName}/${names(options.name).fileName}`
     : names(options.name).fileName;
-  const projectName = directory.replace(new RegExp('/', 'g'), '-');
+  const projectName = directory.replace(/\//g, '-');
 
   const projectType = options.projectType ?? 'app';
   const unitTestRunner = options.unitTestRunner ?? 'jest';
