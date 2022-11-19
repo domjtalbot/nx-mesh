@@ -27,18 +27,6 @@ export function setDefaults(host: Tree, options: NormalizedOptions) {
     }
   }
 
-  if (workspace.targetDependencies) {
-    workspace.targetDependencies = {
-      ...workspace.targetDependencies,
-      validate: [
-        {
-          target: 'build',
-          projects: 'self',
-        },
-      ],
-    };
-  }
-
   if (workspace.targetDefaults) {
     workspace.targetDefaults = {
       ...workspace.targetDefaults,
