@@ -5,9 +5,7 @@ import { startHasher } from './hasher';
 describe('startHasher', () => {
   it('should generate hash', async () => {
     const mockHasher: Hasher = {
-      hashTaskWithDepsAndContext: jest
-        .fn()
-        .mockReturnValue({ value: 'hashed-task' }),
+      hashTask: jest.fn().mockReturnValue({ value: 'hashed-task' }),
     } as unknown as Hasher;
     const hash = await startHasher(
       {

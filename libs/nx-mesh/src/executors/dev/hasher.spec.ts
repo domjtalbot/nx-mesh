@@ -1,13 +1,13 @@
 import { Hasher, HasherContext } from '@nrwl/devkit';
 
-import { buildSwcHasher } from './hasher';
+import { devHasher } from './hasher';
 
-describe('buildSwcHasher', () => {
+describe('devHasher', () => {
   it('should generate hash', async () => {
     const mockHasher: Hasher = {
       hashTask: jest.fn().mockReturnValue({ value: 'hashed-task' }),
     } as unknown as Hasher;
-    const hash = await buildSwcHasher(
+    const hash = await devHasher(
       {
         id: 'my-task-id',
         target: {

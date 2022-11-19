@@ -3,6 +3,7 @@
   "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/example/sdk/json-schema/fake-api/src",
   "projectType": "library",
+  "implicitDependencies": ["nx-mesh"],
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
