@@ -41,9 +41,18 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}",
+        "{workspaceRoot}/reports/libs/nx-mesh"
+      ],
       "options": {
         "lintFilePatterns": ["libs/nx-mesh/**/*.ts"]
+      },
+      "configurations": {
+        "reports": {
+          "format": "json",
+          "outputFile": "reports/libs/nx-mesh/lint.json"
+        }
       }
     },
     "test": {
