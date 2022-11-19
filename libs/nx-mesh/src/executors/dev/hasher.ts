@@ -5,8 +5,8 @@ import { CustomHasher } from '@nrwl/devkit';
  * the default Nx hasher. If you need to extend the behavior,
  * you can consume workspace details from the context.
  */
-export const buildHasher: CustomHasher = async (task, context) => {
+export const devHasher: CustomHasher = async (task, context) => {
   return context.hasher.hashTask(task);
 };
 
-export default buildHasher;
+export default devHasher;

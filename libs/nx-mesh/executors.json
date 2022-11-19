@@ -4,7 +4,8 @@
     "dev": {
       "implementation": "./src/executors/dev/executor",
       "schema": "./src/executors/dev/schema.json",
-      "description": "Serves a GraphQL server with GraphQL interface by building artifacts on the fly"
+      "description": "Serves a GraphQL server with GraphQL interface by building artifacts on the fly",
+      "hasher": "./src/executors/validate/hasher"
     },
     "build": {
       "implementation": "./src/executors/build/build.impl",
