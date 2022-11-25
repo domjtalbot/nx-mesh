@@ -10,7 +10,7 @@ import {
   offsetFromRoot,
 } from '@nrwl/devkit';
 import { getRelativePathToRootTsConfig } from '../../../utils/typescript';
-import { createMeshConfig } from './create-mesh-config';
+import type { ExampleName } from '../../utils/create-mesh-example';
 
 export interface NormalizedOptions
   extends SetRequired<
@@ -18,7 +18,7 @@ export interface NormalizedOptions
     | 'compiler'
     | 'directory'
     | 'e2eTestRunner'
-    | 'meshExampleProject'
+    | 'example'
     | 'projectType'
     | 'unitTestRunner'
   > {
@@ -57,20 +57,11 @@ export interface NormalizedOptions
   isJest: boolean;
 
   /**
-   * The contents of the Mesh config
-   */
-  meshConfigContent: string;
-
-  /**
    * The Mesh config file extension
    */
   meshConfigExt: MeshConfigExtensions;
 
-  meshExampleProject:
-    | 'countryInfo'
-    | 'javascriptWiki'
-    | 'stackexchange'
-    | 'trippin';
+  example: ExampleName;
 
   workspace: ReturnType<typeof getWorkspaceLayout>;
 
@@ -121,10 +112,8 @@ export function normalizeOptions(
       ? options.compiler
       : 'tsc') ?? 'tsc';
 
-  const meshExampleProject: NormalizedOptions['meshExampleProject'] =
-    options.meshExampleProject ?? 'javascriptWiki';
-
-  const meshConfigContent = createMeshConfig(meshConfigExt, meshExampleProject);
+  const example: NormalizedOptions['example'] =
+    options.example ?? 'javascript-wiki';
 
   const projectDirectory = joinPathFragments(
     isApp ? workspace.appsDir : workspace.libsDir,
@@ -162,9 +151,8 @@ export function normalizeOptions(
     isJest: unitTestRunner === 'jest',
     isLibrary,
     isSwc: options.compiler === 'swc',
-    meshConfigContent,
     meshConfigExt,
-    meshExampleProject,
+    example,
     offsetFromRoot: offsetFromRoot(projectDirectory),
     projectDirectory,
     projectDistDirectory,

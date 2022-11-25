@@ -4,46 +4,50 @@ sources:
       jsonSchema:
         baseUrl: https://not-existing-api.com/API
         operations:
-          - type: Query
-            field: me
+          - field: me
+            method: GET
             path: /me
-            method: GET
             responseSchema: ./src/json-schemas/user.json#/definitions/User
-          - type: Query
-            field: company
+            type: Query
+
+          - field: company
+            method: GET
             path: /company/{args.id}
-            method: GET
             responseSchema: ./src/json-schemas/company.json#/definitions/Company
+            type: Query
             argTypeMap:
               id:
                 type: string
                 nullable: false
-          - type: Mutation
-            field: createUser
-            path: /user
+
+          - field: createUser
             method: PUT
+            path: /user
             requestSample: ./src/json-samples/user-input.json
             requestTypeName: CreateUpdateUser
             responseSchema: ./src/json-schemas/user.json#/definitions/User
-          - type: Mutation
-            field: updateUser
-            path: /user/{args.id}
-            argTypeMap:
-              id:
-                type: string
-                nullable: false
+            type: Mutation
+
+          - field: updateUser
             method: POST
+            path: /user/{args.id}
             requestSample: ./src/json-samples/user-input.json
             requestTypeName: CreateUpdateUser
-            responseSchema: ./src/json-schemas/user.json#/definitions/User # This can be `responseSample` with a sample JSON file
-          - type: Mutation
-            field: deleteUser
-            path: /user/{args.id}
+            responseSchema: ./src/json-schemas/user.json#/definitions/User
+            type: Mutation
             argTypeMap:
               id:
                 type: string
                 nullable: false
+
+          - field: deleteUser
             method: DELETE
+            path: /user/{args.id}
+            type: Mutation
+            argTypeMap:
+              id:
+                type: string
+                nullable: false
 
 additionalTypeDefs: |
   extend type User {
@@ -58,10 +62,13 @@ plugins:
       mocks:
         - apply: User.firstName
           faker: '{{name.firstName}}'
+
         - apply: User.lastName
           faker: '{{name.lastName}}'
+
         - apply: User.jobTitle
           faker: '{{name.jobTitle}}'
+
         - apply: Company.name
           faker: '{{company.companyName}}'
 

@@ -1,1 +1,1 @@
-export * from '../../.mesh';
+export { getMeshSDK } from '../../.mesh';

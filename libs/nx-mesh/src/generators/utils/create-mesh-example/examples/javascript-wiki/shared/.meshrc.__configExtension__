@@ -1,0 +1,77 @@
+<%
+// Test output in playground
+// https://ionicabizau.github.io/ejs-playground/
+
+// Input variables
+// const configExtension = 'yml';
+// const isSdk = true;
+
+// Inline variables
+const name = 'StackExchange';
+const handler = 'openapi'
+const source = 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml';
+const browser = false;
+const selectionSetDepth = 6;
+
+if (configExtension === 'cjs' || configExtension ==='js') { -%>
+module.exports = {
+  sources: [
+    {
+      name: '<%= name %>',
+      handler: {
+        <%= handler %>: {
+          source:
+            '<%= source %>',
+        },
+      },
+    },
+  ],
+  serve: {
+    browser: <%= browser %>,
+  },
+<% if (isSdk) { -%>
+  sdk: {
+    generateOperations: {
+      selectionSetDepth: <%= selectionSetDepth %>,
+    },
+  },
+<% } -%>
+};
+<% } else if (configExtension === 'json') { -%>
+{
+  "sources": [
+    {
+      "name": "<%= name %>",
+      "handler": {
+        "<%= handler %>": {
+          "source": "<%= source %>"
+        }
+      }
+    }
+  ],
+  "serve": {
+    "browser": <%= browser %>
+  }<% if (isSdk) { -%>,
+  "sdk": {
+    "generateOperations": {
+      "selectionSetDepth": <%= selectionSetDepth %>
+    }
+  }
+<% } -%>
+}
+<% } else if (configExtension === 'yml') { -%>
+sources:
+  - name: <%= name %>
+    handler:
+      <%= handler %>:
+        source: <%= source %>
+
+serve:
+  browser: false
+
+<% if (isSdk) { -%>
+sdk:
+  generateOperations:
+    selectionSetDepth: <%= selectionSetDepth %>
+<% } -%>
+<% }-%>
