@@ -1,5 +1,21 @@
 # nx-mesh
 
+## 2.0.0
+
+### Major Changes
+
+- [#71](https://github.com/domjtalbot/nx-mesh/pull/71) [`68d8a7c`](https://github.com/domjtalbot/nx-mesh/commit/68d8a7cf77e52e3c25caedf8f710d743481ee4f3) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Update Nx to 15 & GraphQL Mesh to 0.79
+
+### Minor Changes
+
+- [#68](https://github.com/domjtalbot/nx-mesh/pull/68) [`d23008b`](https://github.com/domjtalbot/nx-mesh/commit/d23008be01a36a1e4349410df1378f389af1c7e3) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Rebuild `base` generator used by `application` & `sdk` generators.
+
+  All shared files have been moved from `application` & `sdk` generators to the base. This creates a consistent foundation for other generators.
+
+- [#68](https://github.com/domjtalbot/nx-mesh/pull/68) [`d23008b`](https://github.com/domjtalbot/nx-mesh/commit/d23008be01a36a1e4349410df1378f389af1c7e3) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Update Nx to `v14.5.10`
+
+- [#71](https://github.com/domjtalbot/nx-mesh/pull/71) [`68d8a7c`](https://github.com/domjtalbot/nx-mesh/commit/68d8a7cf77e52e3c25caedf8f710d743481ee4f3) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Add an option for choosing the GraphQL Mesh example project. Users can select from `javascript-wiki` (default), `stackexchange`, `trippin` & `weatherbit`.
+
 ## 1.0.1
 
 ### Patch Changes
