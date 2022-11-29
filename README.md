@@ -15,6 +15,9 @@
     <a href="https://www.npmjs.org/package/nx-mesh">
       <img src="https://img.shields.io/npm/dm/nx-mesh" alt="Nx Mesh package downloads on NPM" aria-hidden="true" />
     </a>
+    <a href="https://sonarcloud.io/summary/new_code?id=domjtalbot_nx-mesh">
+      <img src="https://sonarcloud.io/api/project_badges/measure?project=domjtalbot_nx-mesh&metric=alert_status" alt="SonarCloud Quality Gate Status" aria-hidden="true" />
+    </a>
   </p>
 </div>
 
