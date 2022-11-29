@@ -1,0 +1,64 @@
+<%
+// Test output in playground
+// https://ionicabizau.github.io/ejs-playground/
+
+// Input variables
+// const configExtension = 'yml';
+// const isSdk = true;
+
+// Inline variables
+const name = 'CountryInfo';
+const handler = 'soap'
+const source = 'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL';
+const browser = false;
+const fileRoot = './src/';
+const documents = `${fileRoot}graphql/**/*.*.graphql`;
+
+if (configExtension === 'cjs' || configExtension ==='js') { -%>
+module.exports = {
+  sources: [
+    {
+      name: '<%= name %>',
+      handler: {
+        <%= handler %>: {
+          source:
+            '<%= source %>',
+        },
+      },
+    },
+  ],
+  serve: {
+    browser: <%= browser %>,
+  },
+  documents: ['<%= documents %>'],
+};
+<% } else if (configExtension === 'json') { -%>
+{
+  "sources": [
+    {
+      "name": "<%= name %>",
+      "handler": {
+        "<%= handler %>": {
+          "source": "<%= source %>"
+        }
+      }
+    }
+  ],
+  "serve": {
+    "browser": <%= browser %>
+  },
+  "documents": ['<%= documents %>']
+}
+<% } else if (configExtension === 'yml') { -%>
+sources:
+  - name: <%= name %>
+    handler:
+      <%= handler %>:
+        source: <%= source %>
+
+serve:
+  browser: false
+
+documents:
+    - <%= documents %>
+<% }-%>

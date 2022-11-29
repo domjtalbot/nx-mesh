@@ -6,13 +6,6 @@ import { generateFiles } from '@nrwl/devkit';
 import * as path from 'path';
 
 export function createFiles(tree: Tree, options: NormalizedOptions) {
-  generateFiles(
-    tree,
-    path.join(__dirname, '../files/shared'),
-    options.projectDirectory,
-    options
-  );
-
   if (options.isApp) {
     generateFiles(
       tree,

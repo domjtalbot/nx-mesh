@@ -1,0 +1,299 @@
+<%
+// Test output in playground
+// https://ionicabizau.github.io/ejs-playground/
+
+// Input variables
+const configExtension = 'js';
+const isSdk = true;
+
+// Inline variables
+const name = 'FakeAPI';
+const handler = 'jsonSchema'
+const baseUrl = 'https://not-existing-api.com/API';
+const browser = false;
+const fileRoot = './src/';
+const documents = `${fileRoot}graphql/**/*.*.graphql`;
+
+if (configExtension === 'cjs' || configExtension ==='js') { -%>
+module.exports = {
+  sources: [
+    {
+      name: "<%= name %>",
+      handler: {
+        <%= handler %>: {
+          baseUrl: "<%= baseUrl %>",
+          operations: [
+            {
+              field: "me",
+              method: "GET",
+              path: "/me",
+              responseSchema: "<%= fileRoot %>json-schemas/user.json#/definitions/User",
+              type: "Query",
+            },
+            {
+              field: "company",
+              method: "GET",
+              path: "/company/{args.id}",
+              responseSchema:
+                "<%= fileRoot %>json-schemas/company.json#/definitions/Company",
+              type: "Query",
+              argTypeMap: {
+                id: {
+                  type: "string",
+                  nullable: false,
+                },
+              },
+            },
+            {
+              field: "createUser",
+              method: "PUT",
+              path: "/user",
+              requestSample: "<%= fileRoot %>json-samples/user-input.json",
+              requestTypeName: "CreateUpdateUser",
+              responseSchema: "<%= fileRoot %>json-schemas/user.json#/definitions/User",
+              type: "Mutation",
+            },
+            {
+              field: "updateUser",
+              method: "POST",
+              path: "/user/{args.id}",
+              requestSample: "<%= fileRoot %>json-samples/user-input.json",
+              requestTypeName: "CreateUpdateUser",
+              responseSchema: "<%= fileRoot %>json-schemas/user.json#/definitions/User",
+              type: "Mutation",
+              argTypeMap: {
+                id: {
+                  type: "string",
+                  nullable: false,
+                },
+              },
+            },
+            {
+              field: "deleteUser",
+              method: "DELETE",
+              path: "/user/{args.id}",
+              type: "Mutation",
+              argTypeMap: {
+                id: {
+                  type: "string",
+                  nullable: false,
+                },
+              },
+            },
+          ],
+        },
+      },
+    },
+  ],
+  additionalTypeDefs:
+    "extend type User {\n  company: Company\n}\nextend type Company {\n  employers: [User]\n}\n",
+  plugins: [
+    {
+      mock: {
+        mocks: [
+          {
+            apply: "User.firstName",
+            faker: "{{name.firstName}}",
+          },
+          {
+            apply: "User.lastName",
+            faker: "{{name.lastName}}",
+          },
+          {
+            apply: "User.jobTitle",
+            faker: "{{name.jobTitle}}",
+          },
+          {
+            apply: "Company.name",
+            faker: "{{company.companyName}}",
+          },
+        ],
+      },
+    },
+  ],
+  documents: ["<%= documents %>"],
+  serve: {
+    browser: <%= browser %>,
+  },
+};
+<% } else if (configExtension === 'json') { -%>
+{
+  "sources": [
+    {
+      "name": "<%= name %>",
+      "handler": {
+        "<%= handler %>": {
+          "baseUrl": "<%= baseUrl %>",
+          "operations": [
+            {
+              "field": "me",
+              "method": "GET",
+              "path": "/me",
+              "responseSchema": "<%= fileRoot %>json-schemas/user.json#/definitions/User",
+              "type": "Query"
+            },
+            {
+              "field": "company",
+              "method": "GET",
+              "path": "/company/{args.id}",
+              "responseSchema": "<%= fileRoot %>json-schemas/company.json#/definitions/Company",
+              "type": "Query",
+              "argTypeMap": {
+                "id": {
+                  "type": "string",
+                  "nullable": false
+                }
+              }
+            },
+            {
+              "field": "createUser",
+              "method": "PUT",
+              "path": "/user",
+              "requestSample": "<%= fileRoot %>json-samples/user-input.json",
+              "requestTypeName": "CreateUpdateUser",
+              "responseSchema": "<%= fileRoot %>json-schemas/user.json#/definitions/User",
+              "type": "Mutation"
+            },
+            {
+              "field": "updateUser",
+              "method": "POST",
+              "path": "/user/{args.id}",
+              "requestSample": "<%= fileRoot %>json-samples/user-input.json",
+              "requestTypeName": "CreateUpdateUser",
+              "responseSchema": "<%= fileRoot %>json-schemas/user.json#/definitions/User",
+              "type": "Mutation",
+              "argTypeMap": {
+                "id": {
+                  "type": "string",
+                  "nullable": false
+                }
+              }
+            },
+            {
+              "field": "deleteUser",
+              "method": "DELETE",
+              "path": "/user/{args.id}",
+              "type": "Mutation",
+              "argTypeMap": {
+                "id": {
+                  "type": "string",
+                  "nullable": false
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "additionalTypeDefs": "extend type User {\n  company: Company\n}\nextend type Company {\n  employers: [User]\n}\n",
+  "plugins": [
+    {
+      "mock": {
+        "mocks": [
+          {
+            "apply": "User.firstName",
+            "faker": "{{name.firstName}}"
+          },
+          {
+            "apply": "User.lastName",
+            "faker": "{{name.lastName}}"
+          },
+          {
+            "apply": "User.jobTitle",
+            "faker": "{{name.jobTitle}}"
+          },
+          {
+            "apply": "Company.name",
+            "faker": "{{company.companyName}}"
+          }
+        ]
+      }
+    }
+  ],
+  "documents": ["<%= documents %>"],
+  "serve": {
+    "browser": <%= browser %>
+  }
+}
+<% } else if (configExtension === 'yml') { -%>
+sources:
+  - name: <%= name %>
+    handler:
+      <%= handler %>:
+        baseUrl: <%= baseUrl %>
+        operations:
+          - field: me
+            method: GET
+            path: /me
+            responseSchema: <%= fileRoot %>json-schemas/user.json#/definitions/User
+            type: Query
+
+          - field: company
+            method: GET
+            path: /company/{args.id}
+            responseSchema: <%= fileRoot %>json-schemas/company.json#/definitions/Company
+            type: Query
+            argTypeMap:
+              id:
+                type: string
+                nullable: false
+
+          - field: createUser
+            method: PUT
+            path: /user
+            requestSample: <%= fileRoot %>json-samples/user-input.json
+            requestTypeName: CreateUpdateUser
+            responseSchema: <%= fileRoot %>json-schemas/user.json#/definitions/User
+            type: Mutation
+
+          - field: updateUser
+            method: POST
+            path: /user/{args.id}
+            requestSample: <%= fileRoot %>json-samples/user-input.json
+            requestTypeName: CreateUpdateUser
+            responseSchema: <%= fileRoot %>json-schemas/user.json#/definitions/User
+            type: Mutation
+            argTypeMap:
+              id:
+                type: string
+                nullable: false
+
+          - field: deleteUser
+            method: DELETE
+            path: /user/{args.id}
+            type: Mutation
+            argTypeMap:
+              id:
+                type: string
+                nullable: false
+
+additionalTypeDefs: |
+  extend type User {
+    company: Company
+  }
+  extend type Company {
+    employers: [User]
+  }
+
+plugins:
+  - mock:
+      mocks:
+        - apply: User.firstName
+          faker: '{{name.firstName}}'
+
+        - apply: User.lastName
+          faker: '{{name.lastName}}'
+
+        - apply: User.jobTitle
+          faker: '{{name.jobTitle}}'
+
+        - apply: Company.name
+          faker: '{{company.companyName}}'
+
+documents:
+  - <%= documents %>
+
+serve:
+  browser: <%= browser %>
+<% }-%>

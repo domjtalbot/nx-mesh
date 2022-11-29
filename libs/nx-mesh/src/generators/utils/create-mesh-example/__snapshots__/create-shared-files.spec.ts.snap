@@ -1,0 +1,1041 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createSharedFiles country-info should create a src folder supplementary files 1`] = `
+"query GetLanguages {
+  CountryInfoService_CountryInfoService_CountryInfoServiceSoap_ListOfLanguagesByName {
+    ListOfLanguagesByNameResult {
+      tLanguage {
+        sISOCode
+        sName
+      }
+    }
+  }
+}
+"
+`;
+
+exports[`createSharedFiles fake-api should create a src folder supplementary files 1`] = `
+"query getMe {
+  me {
+    firstName
+    lastName
+    jobTitle
+    company {
+      name
+      type
+      employers {
+        firstName
+        lastName
+        jobTitle
+      }
+    }
+  }
+}
+"
+`;
+
+exports[`createSharedFiles fake-api should create a src folder supplementary files 2`] = `
+"{
+  \\"firstName\\": \\"John\\",
+  \\"lastName\\": \\"Doe\\",
+  \\"jobTitle\\": \\"Software Developer\\"
+}
+"
+`;
+
+exports[`createSharedFiles fake-api should create a src folder supplementary files 3`] = `
+"{
+  \\"definitions\\": {
+    \\"Company\\": {
+      \\"type\\": \\"object\\",
+      \\"title\\": \\"Company\\",
+      \\"description\\": \\"Fake Company\\",
+      \\"properties\\": {
+        \\"name\\": {
+          \\"type\\": \\"string\\"
+        },
+        \\"type\\": {
+          \\"type\\": \\"object\\",
+          \\"items\\": {
+            \\"$ref\\": \\"#/definitions/CompanyType\\"
+          }
+        }
+      }
+    },
+    \\"CompanyType\\": {
+      \\"type\\": \\"string\\",
+      \\"title\\": \\"CompanyType\\",
+      \\"enum\\": [\\"Public Limited\\", \\"Private Limited\\", \\"One Person\\"]
+    }
+  }
+}
+"
+`;
+
+exports[`createSharedFiles fake-api should create a src folder supplementary files 4`] = `
+"{
+  \\"definitions\\": {
+    \\"User\\": {
+      \\"type\\": \\"object\\",
+      \\"title\\": \\"User\\",
+      \\"description\\": \\"Fake User Object\\",
+      \\"properties\\": {
+        \\"firstName\\": {
+          \\"type\\": \\"string\\"
+        },
+        \\"lastName\\": {
+          \\"type\\": \\"string\\"
+        },
+        \\"jobTitle\\": {
+          \\"type\\": \\"string\\"
+        },
+        \\"companyId\\": {
+          \\"type\\": \\"string\\"
+        },
+        \\"birthDate\\": {
+          \\"type\\": \\"string\\",
+          \\"example\\": \\"1993-12-20\\"
+        },
+        \\"foos\\": {
+          \\"type\\": \\"array\\",
+          \\"items\\": {
+            \\"$ref\\": \\"user.json#/definitions/Foo\\"
+          }
+        }
+      }
+    },
+    \\"Foo\\": {
+      \\"type\\": \\"object\\",
+      \\"properties\\": {
+        \\"id\\": {
+          \\"type\\": \\"string\\"
+        }
+      }
+    }
+  }
+}
+"
+`;
+
+exports[`createSharedFiles meshConfig - country-info should create a cjs mesh config 1`] = `
+"module.exports = {
+  sources: [
+    {
+      name: 'CountryInfo',
+      handler: {
+        soap: {
+          source:
+            'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL',
+        },
+      },
+    },
+  ],
+  serve: {
+    browser: false,
+  },
+  documents: ['./src/graphql/**/*.*.graphql'],
+};
+"
+`;
+
+exports[`createSharedFiles meshConfig - country-info should create a js mesh config 1`] = `
+"module.exports = {
+  sources: [
+    {
+      name: 'CountryInfo',
+      handler: {
+        soap: {
+          source:
+            'http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL',
+        },
+      },
+    },
+  ],
+  serve: {
+    browser: false,
+  },
+  documents: ['./src/graphql/**/*.*.graphql'],
+};
+"
+`;
+
+exports[`createSharedFiles meshConfig - country-info should create a json mesh config 1`] = `
+"{
+  \\"sources\\": [
+    {
+      \\"name\\": \\"CountryInfo\\",
+      \\"handler\\": {
+        \\"soap\\": {
+          \\"source\\": \\"http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL\\"
+        }
+      }
+    }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  },
+  \\"documents\\": ['./src/graphql/**/*.*.graphql']
+}
+"
+`;
+
+exports[`createSharedFiles meshConfig - country-info should create a yml mesh config 1`] = `
+"sources:
+  - name: CountryInfo
+    handler:
+      soap:
+        source: http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL
+
+serve:
+  browser: false
+
+documents:
+    - ./src/graphql/**/*.*.graphql
+"
+`;
+
+exports[`createSharedFiles meshConfig - fake-api should create a cjs mesh config 1`] = `
+"module.exports = {
+  sources: [
+    {
+      name: \\"FakeAPI\\",
+      handler: {
+        jsonSchema: {
+          baseUrl: \\"https://not-existing-api.com/API\\",
+          operations: [
+            {
+              field: \\"me\\",
+              method: \\"GET\\",
+              path: \\"/me\\",
+              responseSchema: \\"./src/json-schemas/user.json#/definitions/User\\",
+              type: \\"Query\\",
+            },
+            {
+              field: \\"company\\",
+              method: \\"GET\\",
+              path: \\"/company/{args.id}\\",
+              responseSchema:
+                \\"./src/json-schemas/company.json#/definitions/Company\\",
+              type: \\"Query\\",
+              argTypeMap: {
+                id: {
+                  type: \\"string\\",
+                  nullable: false,
+                },
+              },
+            },
+            {
+              field: \\"createUser\\",
+              method: \\"PUT\\",
+              path: \\"/user\\",
+              requestSample: \\"./src/json-samples/user-input.json\\",
+              requestTypeName: \\"CreateUpdateUser\\",
+              responseSchema: \\"./src/json-schemas/user.json#/definitions/User\\",
+              type: \\"Mutation\\",
+            },
+            {
+              field: \\"updateUser\\",
+              method: \\"POST\\",
+              path: \\"/user/{args.id}\\",
+              requestSample: \\"./src/json-samples/user-input.json\\",
+              requestTypeName: \\"CreateUpdateUser\\",
+              responseSchema: \\"./src/json-schemas/user.json#/definitions/User\\",
+              type: \\"Mutation\\",
+              argTypeMap: {
+                id: {
+                  type: \\"string\\",
+                  nullable: false,
+                },
+              },
+            },
+            {
+              field: \\"deleteUser\\",
+              method: \\"DELETE\\",
+              path: \\"/user/{args.id}\\",
+              type: \\"Mutation\\",
+              argTypeMap: {
+                id: {
+                  type: \\"string\\",
+                  nullable: false,
+                },
+              },
+            },
+          ],
+        },
+      },
+    },
+  ],
+  additionalTypeDefs:
+    \\"extend type User {\\\\n  company: Company\\\\n}\\\\nextend type Company {\\\\n  employers: [User]\\\\n}\\\\n\\",
+  plugins: [
+    {
+      mock: {
+        mocks: [
+          {
+            apply: \\"User.firstName\\",
+            faker: \\"{{name.firstName}}\\",
+          },
+          {
+            apply: \\"User.lastName\\",
+            faker: \\"{{name.lastName}}\\",
+          },
+          {
+            apply: \\"User.jobTitle\\",
+            faker: \\"{{name.jobTitle}}\\",
+          },
+          {
+            apply: \\"Company.name\\",
+            faker: \\"{{company.companyName}}\\",
+          },
+        ],
+      },
+    },
+  ],
+  documents: [\\"./src/graphql/**/*.*.graphql\\"],
+  serve: {
+    browser: false,
+  },
+};
+"
+`;
+
+exports[`createSharedFiles meshConfig - fake-api should create a js mesh config 1`] = `
+"module.exports = {
+  sources: [
+    {
+      name: \\"FakeAPI\\",
+      handler: {
+        jsonSchema: {
+          baseUrl: \\"https://not-existing-api.com/API\\",
+          operations: [
+            {
+              field: \\"me\\",
+              method: \\"GET\\",
+              path: \\"/me\\",
+              responseSchema: \\"./src/json-schemas/user.json#/definitions/User\\",
+              type: \\"Query\\",
+            },
+            {
+              field: \\"company\\",
+              method: \\"GET\\",
+              path: \\"/company/{args.id}\\",
+              responseSchema:
+                \\"./src/json-schemas/company.json#/definitions/Company\\",
+              type: \\"Query\\",
+              argTypeMap: {
+                id: {
+                  type: \\"string\\",
+                  nullable: false,
+                },
+              },
+            },
+            {
+              field: \\"createUser\\",
+              method: \\"PUT\\",
+              path: \\"/user\\",
+              requestSample: \\"./src/json-samples/user-input.json\\",
+              requestTypeName: \\"CreateUpdateUser\\",
+              responseSchema: \\"./src/json-schemas/user.json#/definitions/User\\",
+              type: \\"Mutation\\",
+            },
+            {
+              field: \\"updateUser\\",
+              method: \\"POST\\",
+              path: \\"/user/{args.id}\\",
+              requestSample: \\"./src/json-samples/user-input.json\\",
+              requestTypeName: \\"CreateUpdateUser\\",
+              responseSchema: \\"./src/json-schemas/user.json#/definitions/User\\",
+              type: \\"Mutation\\",
+              argTypeMap: {
+                id: {
+                  type: \\"string\\",
+                  nullable: false,
+                },
+              },
+            },
+            {
+              field: \\"deleteUser\\",
+              method: \\"DELETE\\",
+              path: \\"/user/{args.id}\\",
+              type: \\"Mutation\\",
+              argTypeMap: {
+                id: {
+                  type: \\"string\\",
+                  nullable: false,
+                },
+              },
+            },
+          ],
+        },
+      },
+    },
+  ],
+  additionalTypeDefs:
+    \\"extend type User {\\\\n  company: Company\\\\n}\\\\nextend type Company {\\\\n  employers: [User]\\\\n}\\\\n\\",
+  plugins: [
+    {
+      mock: {
+        mocks: [
+          {
+            apply: \\"User.firstName\\",
+            faker: \\"{{name.firstName}}\\",
+          },
+          {
+            apply: \\"User.lastName\\",
+            faker: \\"{{name.lastName}}\\",
+          },
+          {
+            apply: \\"User.jobTitle\\",
+            faker: \\"{{name.jobTitle}}\\",
+          },
+          {
+            apply: \\"Company.name\\",
+            faker: \\"{{company.companyName}}\\",
+          },
+        ],
+      },
+    },
+  ],
+  documents: [\\"./src/graphql/**/*.*.graphql\\"],
+  serve: {
+    browser: false,
+  },
+};
+"
+`;
+
+exports[`createSharedFiles meshConfig - fake-api should create a json mesh config 1`] = `
+"module.exports = {
+  sources: [
+    {
+      name: \\"FakeAPI\\",
+      handler: {
+        jsonSchema: {
+          baseUrl: \\"https://not-existing-api.com/API\\",
+          operations: [
+            {
+              field: \\"me\\",
+              method: \\"GET\\",
+              path: \\"/me\\",
+              responseSchema: \\"./src/json-schemas/user.json#/definitions/User\\",
+              type: \\"Query\\",
+            },
+            {
+              field: \\"company\\",
+              method: \\"GET\\",
+              path: \\"/company/{args.id}\\",
+              responseSchema:
+                \\"./src/json-schemas/company.json#/definitions/Company\\",
+              type: \\"Query\\",
+              argTypeMap: {
+                id: {
+                  type: \\"string\\",
+                  nullable: false,
+                },
+              },
+            },
+            {
+              field: \\"createUser\\",
+              method: \\"PUT\\",
+              path: \\"/user\\",
+              requestSample: \\"./src/json-samples/user-input.json\\",
+              requestTypeName: \\"CreateUpdateUser\\",
+              responseSchema: \\"./src/json-schemas/user.json#/definitions/User\\",
+              type: \\"Mutation\\",
+            },
+            {
+              field: \\"updateUser\\",
+              method: \\"POST\\",
+              path: \\"/user/{args.id}\\",
+              requestSample: \\"./src/json-samples/user-input.json\\",
+              requestTypeName: \\"CreateUpdateUser\\",
+              responseSchema: \\"./src/json-schemas/user.json#/definitions/User\\",
+              type: \\"Mutation\\",
+              argTypeMap: {
+                id: {
+                  type: \\"string\\",
+                  nullable: false,
+                },
+              },
+            },
+            {
+              field: \\"deleteUser\\",
+              method: \\"DELETE\\",
+              path: \\"/user/{args.id}\\",
+              type: \\"Mutation\\",
+              argTypeMap: {
+                id: {
+                  type: \\"string\\",
+                  nullable: false,
+                },
+              },
+            },
+          ],
+        },
+      },
+    },
+  ],
+  additionalTypeDefs:
+    \\"extend type User {\\\\n  company: Company\\\\n}\\\\nextend type Company {\\\\n  employers: [User]\\\\n}\\\\n\\",
+  plugins: [
+    {
+      mock: {
+        mocks: [
+          {
+            apply: \\"User.firstName\\",
+            faker: \\"{{name.firstName}}\\",
+          },
+          {
+            apply: \\"User.lastName\\",
+            faker: \\"{{name.lastName}}\\",
+          },
+          {
+            apply: \\"User.jobTitle\\",
+            faker: \\"{{name.jobTitle}}\\",
+          },
+          {
+            apply: \\"Company.name\\",
+            faker: \\"{{company.companyName}}\\",
+          },
+        ],
+      },
+    },
+  ],
+  documents: [\\"./src/graphql/**/*.*.graphql\\"],
+  serve: {
+    browser: false,
+  },
+};
+"
+`;
+
+exports[`createSharedFiles meshConfig - fake-api should create a yml mesh config 1`] = `
+"module.exports = {
+  sources: [
+    {
+      name: \\"FakeAPI\\",
+      handler: {
+        jsonSchema: {
+          baseUrl: \\"https://not-existing-api.com/API\\",
+          operations: [
+            {
+              field: \\"me\\",
+              method: \\"GET\\",
+              path: \\"/me\\",
+              responseSchema: \\"./src/json-schemas/user.json#/definitions/User\\",
+              type: \\"Query\\",
+            },
+            {
+              field: \\"company\\",
+              method: \\"GET\\",
+              path: \\"/company/{args.id}\\",
+              responseSchema:
+                \\"./src/json-schemas/company.json#/definitions/Company\\",
+              type: \\"Query\\",
+              argTypeMap: {
+                id: {
+                  type: \\"string\\",
+                  nullable: false,
+                },
+              },
+            },
+            {
+              field: \\"createUser\\",
+              method: \\"PUT\\",
+              path: \\"/user\\",
+              requestSample: \\"./src/json-samples/user-input.json\\",
+              requestTypeName: \\"CreateUpdateUser\\",
+              responseSchema: \\"./src/json-schemas/user.json#/definitions/User\\",
+              type: \\"Mutation\\",
+            },
+            {
+              field: \\"updateUser\\",
+              method: \\"POST\\",
+              path: \\"/user/{args.id}\\",
+              requestSample: \\"./src/json-samples/user-input.json\\",
+              requestTypeName: \\"CreateUpdateUser\\",
+              responseSchema: \\"./src/json-schemas/user.json#/definitions/User\\",
+              type: \\"Mutation\\",
+              argTypeMap: {
+                id: {
+                  type: \\"string\\",
+                  nullable: false,
+                },
+              },
+            },
+            {
+              field: \\"deleteUser\\",
+              method: \\"DELETE\\",
+              path: \\"/user/{args.id}\\",
+              type: \\"Mutation\\",
+              argTypeMap: {
+                id: {
+                  type: \\"string\\",
+                  nullable: false,
+                },
+              },
+            },
+          ],
+        },
+      },
+    },
+  ],
+  additionalTypeDefs:
+    \\"extend type User {\\\\n  company: Company\\\\n}\\\\nextend type Company {\\\\n  employers: [User]\\\\n}\\\\n\\",
+  plugins: [
+    {
+      mock: {
+        mocks: [
+          {
+            apply: \\"User.firstName\\",
+            faker: \\"{{name.firstName}}\\",
+          },
+          {
+            apply: \\"User.lastName\\",
+            faker: \\"{{name.lastName}}\\",
+          },
+          {
+            apply: \\"User.jobTitle\\",
+            faker: \\"{{name.jobTitle}}\\",
+          },
+          {
+            apply: \\"Company.name\\",
+            faker: \\"{{company.companyName}}\\",
+          },
+        ],
+      },
+    },
+  ],
+  documents: [\\"./src/graphql/**/*.*.graphql\\"],
+  serve: {
+    browser: false,
+  },
+};
+"
+`;
+
+exports[`createSharedFiles meshConfig - javascript-wiki should create a cjs mesh config 1`] = `
+"module.exports = {
+  sources: [
+    {
+      name: 'StackExchange',
+      handler: {
+        openapi: {
+          source:
+            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        },
+      },
+    },
+  ],
+  serve: {
+    browser: false,
+  },
+};
+"
+`;
+
+exports[`createSharedFiles meshConfig - javascript-wiki should create a js mesh config 1`] = `
+"module.exports = {
+  sources: [
+    {
+      name: 'StackExchange',
+      handler: {
+        openapi: {
+          source:
+            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        },
+      },
+    },
+  ],
+  serve: {
+    browser: false,
+  },
+};
+"
+`;
+
+exports[`createSharedFiles meshConfig - javascript-wiki should create a json mesh config 1`] = `
+"{
+  \\"sources\\": [
+    {
+      \\"name\\": \\"StackExchange\\",
+      \\"handler\\": {
+        \\"openapi\\": {
+          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        }
+      }
+    }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  }}
+"
+`;
+
+exports[`createSharedFiles meshConfig - javascript-wiki should create a yml mesh config 1`] = `
+"sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+"
+`;
+
+exports[`createSharedFiles meshConfig - movies should create a cjs mesh config 1`] = `
+"module.exports = {
+  sources: [
+    {
+      name: 'StackExchange',
+      handler: {
+        openapi: {
+          source:
+            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        },
+      },
+    },
+  ],
+  serve: {
+    browser: false,
+  },
+};
+"
+`;
+
+exports[`createSharedFiles meshConfig - movies should create a js mesh config 1`] = `
+"module.exports = {
+  sources: [
+    {
+      name: 'StackExchange',
+      handler: {
+        openapi: {
+          source:
+            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        },
+      },
+    },
+  ],
+  serve: {
+    browser: false,
+  },
+};
+"
+`;
+
+exports[`createSharedFiles meshConfig - movies should create a json mesh config 1`] = `
+"{
+  \\"sources\\": [
+    {
+      \\"name\\": \\"StackExchange\\",
+      \\"handler\\": {
+        \\"openapi\\": {
+          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        }
+      }
+    }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  }}
+"
+`;
+
+exports[`createSharedFiles meshConfig - movies should create a yml mesh config 1`] = `
+"sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+"
+`;
+
+exports[`createSharedFiles meshConfig - rfam should create a cjs mesh config 1`] = `
+"module.exports = {
+  sources: [
+    {
+      name: 'StackExchange',
+      handler: {
+        openapi: {
+          source:
+            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        },
+      },
+    },
+  ],
+  serve: {
+    browser: false,
+  },
+};
+"
+`;
+
+exports[`createSharedFiles meshConfig - rfam should create a js mesh config 1`] = `
+"module.exports = {
+  sources: [
+    {
+      name: 'StackExchange',
+      handler: {
+        openapi: {
+          source:
+            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        },
+      },
+    },
+  ],
+  serve: {
+    browser: false,
+  },
+};
+"
+`;
+
+exports[`createSharedFiles meshConfig - rfam should create a json mesh config 1`] = `
+"{
+  \\"sources\\": [
+    {
+      \\"name\\": \\"StackExchange\\",
+      \\"handler\\": {
+        \\"openapi\\": {
+          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        }
+      }
+    }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  }}
+"
+`;
+
+exports[`createSharedFiles meshConfig - rfam should create a yml mesh config 1`] = `
+"sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+"
+`;
+
+exports[`createSharedFiles meshConfig - stackexchange should create a cjs mesh config 1`] = `
+"module.exports = {
+  sources: [
+    {
+      name: 'StackExchange',
+      handler: {
+        openapi: {
+          source:
+            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        },
+      },
+    },
+  ],
+  serve: {
+    browser: false,
+  },
+};
+"
+`;
+
+exports[`createSharedFiles meshConfig - stackexchange should create a js mesh config 1`] = `
+"module.exports = {
+  sources: [
+    {
+      name: 'StackExchange',
+      handler: {
+        openapi: {
+          source:
+            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        },
+      },
+    },
+  ],
+  serve: {
+    browser: false,
+  },
+};
+"
+`;
+
+exports[`createSharedFiles meshConfig - stackexchange should create a json mesh config 1`] = `
+"{
+  \\"sources\\": [
+    {
+      \\"name\\": \\"StackExchange\\",
+      \\"handler\\": {
+        \\"openapi\\": {
+          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        }
+      }
+    }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  }}
+"
+`;
+
+exports[`createSharedFiles meshConfig - stackexchange should create a yml mesh config 1`] = `
+"sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+"
+`;
+
+exports[`createSharedFiles meshConfig - star-wars-api should create a cjs mesh config 1`] = `
+"module.exports = {
+  sources: [
+    {
+      name: 'StackExchange',
+      handler: {
+        openapi: {
+          source:
+            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        },
+      },
+    },
+  ],
+  serve: {
+    browser: false,
+  },
+};
+"
+`;
+
+exports[`createSharedFiles meshConfig - star-wars-api should create a js mesh config 1`] = `
+"module.exports = {
+  sources: [
+    {
+      name: 'StackExchange',
+      handler: {
+        openapi: {
+          source:
+            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        },
+      },
+    },
+  ],
+  serve: {
+    browser: false,
+  },
+};
+"
+`;
+
+exports[`createSharedFiles meshConfig - star-wars-api should create a json mesh config 1`] = `
+"{
+  \\"sources\\": [
+    {
+      \\"name\\": \\"StackExchange\\",
+      \\"handler\\": {
+        \\"openapi\\": {
+          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        }
+      }
+    }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  }}
+"
+`;
+
+exports[`createSharedFiles meshConfig - star-wars-api should create a yml mesh config 1`] = `
+"sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+"
+`;
+
+exports[`createSharedFiles meshConfig - trippin should create a cjs mesh config 1`] = `
+"module.exports = {
+  sources: [
+    {
+      name: 'StackExchange',
+      handler: {
+        openapi: {
+          source:
+            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        },
+      },
+    },
+  ],
+  serve: {
+    browser: false,
+  },
+};
+"
+`;
+
+exports[`createSharedFiles meshConfig - trippin should create a js mesh config 1`] = `
+"module.exports = {
+  sources: [
+    {
+      name: 'StackExchange',
+      handler: {
+        openapi: {
+          source:
+            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        },
+      },
+    },
+  ],
+  serve: {
+    browser: false,
+  },
+};
+"
+`;
+
+exports[`createSharedFiles meshConfig - trippin should create a json mesh config 1`] = `
+"{
+  \\"sources\\": [
+    {
+      \\"name\\": \\"StackExchange\\",
+      \\"handler\\": {
+        \\"openapi\\": {
+          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        }
+      }
+    }
+  ],
+  \\"serve\\": {
+    \\"browser\\": false
+  }}
+"
+`;
+
+exports[`createSharedFiles meshConfig - trippin should create a yml mesh config 1`] = `
+"sources:
+  - name: StackExchange
+    handler:
+      openapi:
+        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+
+serve:
+  browser: false
+
+"
+`;

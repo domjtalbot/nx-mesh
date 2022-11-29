@@ -5,6 +5,7 @@ import type { BaseOptions } from './schema';
 import { formatFiles } from '@nrwl/devkit';
 
 import { runTasksInSerial } from '../../utils/run-tasks-in-serial';
+import { createMeshExample } from '../utils/create-mesh-example';
 import {
   addCypress,
   addJest,
@@ -22,7 +23,7 @@ import {
  */
 export async function baseGenerator(tree: Tree, baseOptions: BaseOptions) {
   const options = normalizeOptions(tree, baseOptions);
-  const { isCypress, isApp, skipFormat } = options;
+  const { isCypress, isApp, isLibrary, skipFormat } = options;
 
   const tasks: GeneratorCallback[] = [await nodeGenerator(tree, options)];
 
@@ -30,6 +31,12 @@ export async function baseGenerator(tree: Tree, baseOptions: BaseOptions) {
   createFiles(tree, options);
   addProjectConfig(tree, options);
   setDefaults(tree, options);
+  createMeshExample(tree, {
+    configExtension: options.meshConfigExt,
+    example: options.example,
+    isSdk: isLibrary,
+    projectDirectory: options.projectDirectory,
+  });
 
   if (isApp) {
     tasks.push(await addJest(tree, options));

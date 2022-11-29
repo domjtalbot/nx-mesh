@@ -31,7 +31,7 @@ describe.each<
     name: 'my-mesh-app',
     projectType: 'app',
     relativeToRoot: '../../',
-    meshExampleProject: 'countryInfo',
+    example: 'country-info',
   },
   {
     describeName: 'app directory',
@@ -40,7 +40,7 @@ describe.each<
     name: 'my-mesh-app',
     projectType: 'app',
     relativeToRoot: '../../',
-    meshExampleProject: 'javascriptWiki',
+    example: 'javascript-wiki',
   },
   {
     describeName: 'app directory',
@@ -49,7 +49,7 @@ describe.each<
     name: 'my-mesh-app',
     projectType: 'app',
     relativeToRoot: '../../',
-    meshExampleProject: 'stackexchange',
+    example: 'stackexchange',
   },
   {
     describeName: 'app directory',
@@ -58,7 +58,7 @@ describe.each<
     name: 'my-mesh-app',
     projectType: 'app',
     relativeToRoot: '../../',
-    meshExampleProject: 'trippin',
+    example: 'trippin',
   },
   {
     describeName: 'nested within app directory',
@@ -93,7 +93,7 @@ describe.each<
     name: 'my-mesh-lib',
     projectType: 'lib',
     relativeToRoot: '../../',
-    meshExampleProject: 'countryInfo',
+    example: 'country-info',
   },
   {
     describeName: 'lib directory',
@@ -102,7 +102,7 @@ describe.each<
     name: 'my-mesh-lib',
     projectType: 'lib',
     relativeToRoot: '../../',
-    meshExampleProject: 'javascriptWiki',
+    example: 'javascript-wiki',
   },
   {
     describeName: 'lib directory',
@@ -111,7 +111,7 @@ describe.each<
     name: 'my-mesh-lib',
     projectType: 'lib',
     relativeToRoot: '../../',
-    meshExampleProject: 'stackexchange',
+    example: 'stackexchange',
   },
   {
     describeName: 'lib directory',
@@ -120,7 +120,7 @@ describe.each<
     name: 'my-mesh-lib',
     projectType: 'lib',
     relativeToRoot: '../../',
-    meshExampleProject: 'trippin',
+    example: 'trippin',
   },
   {
     describeName: 'nested within lib directory',
@@ -255,7 +255,7 @@ describe.each<
         );
       });
 
-      describe('--meshExampleProject', () => {
+      describe('--example', () => {
         it('should create a javascriptWiki config by default', async () => {
           await baseGenerator(tree, config);
 
@@ -264,46 +264,41 @@ describe.each<
           expect(meshConfig).toMatchSnapshot();
         });
 
-        it.each<[BaseOptions['meshExampleProject'], BaseOptions['meshConfig']]>(
-          [
-            ['javascriptWiki', 'cjs'],
-            ['javascriptWiki', 'js'],
-            ['javascriptWiki', 'json'],
-            ['javascriptWiki', 'yml'],
-            ['stackexchange', 'cjs'],
-            ['stackexchange', 'js'],
-            ['stackexchange', 'json'],
-            ['stackexchange', 'yml'],
-            ['trippin', 'cjs'],
-            ['trippin', 'js'],
-            ['trippin', 'json'],
-            ['trippin', 'yml'],
-            ['countryInfo', 'cjs'],
-            ['countryInfo', 'js'],
-            ['countryInfo', 'json'],
-            ['countryInfo', 'yml'],
-          ]
-        )(
-          'should create a %s %s config',
-          async (meshExampleProject, meshConfigType) => {
-            await baseGenerator(tree, {
-              ...config,
-              meshConfig: meshConfigType,
-              meshExampleProject,
-            });
+        it.each<[BaseOptions['example'], BaseOptions['meshConfig']]>([
+          ['javascript-wiki', 'cjs'],
+          ['javascript-wiki', 'js'],
+          ['javascript-wiki', 'json'],
+          ['javascript-wiki', 'yml'],
+          ['stackexchange', 'cjs'],
+          ['stackexchange', 'js'],
+          ['stackexchange', 'json'],
+          ['stackexchange', 'yml'],
+          ['trippin', 'cjs'],
+          ['trippin', 'js'],
+          ['trippin', 'json'],
+          ['trippin', 'yml'],
+          ['country-info', 'cjs'],
+          ['country-info', 'js'],
+          ['country-info', 'json'],
+          ['country-info', 'yml'],
+        ])('should create a %s %s config', async (example, meshConfigType) => {
+          await baseGenerator(tree, {
+            ...config,
+            meshConfig: meshConfigType,
+            example,
+          });
 
-            expect(
-              tree.exists(`${expectedPath}/.meshrc.${meshConfigType}`)
-            ).toBeTruthy();
+          expect(
+            tree.exists(`${expectedPath}/.meshrc.${meshConfigType}`)
+          ).toBeTruthy();
 
-            const meshConfig = tree.read(
-              `${expectedPath}/.meshrc.${meshConfigType}`,
-              'utf-8'
-            );
+          const meshConfig = tree.read(
+            `${expectedPath}/.meshrc.${meshConfigType}`,
+            'utf-8'
+          );
 
-            expect(meshConfig).toMatchSnapshot();
-          }
-        );
+          expect(meshConfig).toMatchSnapshot();
+        });
       });
 
       describe('--skipFormat', () => {

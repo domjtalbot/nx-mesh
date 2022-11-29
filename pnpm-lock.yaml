@@ -12,14 +12,14 @@ importers:
       '@envelop/response-cache': 4.0.3
       '@graphql-mesh/cache-file': ^0.9.44
       '@graphql-mesh/cli': 0.79.3
-      '@graphql-mesh/graphql': ^0.31.31
+      '@graphql-mesh/graphql': 0.31.31
       '@graphql-mesh/json-schema': ^0.35.33
-      '@graphql-mesh/mysql': ^0.17.30
-      '@graphql-mesh/neo4j': ^0.20.34
+      '@graphql-mesh/mysql': 0.17.30
+      '@graphql-mesh/neo4j': 0.20.34
       '@graphql-mesh/new-openapi': 0.8.2
       '@graphql-mesh/odata': 0.20.31
       '@graphql-mesh/openapi': 0.33.34
-      '@graphql-mesh/plugin-mock': ^0.0.37
+      '@graphql-mesh/plugin-mock': 0.0.37
       '@graphql-mesh/plugin-snapshot': 0.0.10
       '@graphql-mesh/runtime': 0.44.31
       '@graphql-mesh/soap': 0.16.0

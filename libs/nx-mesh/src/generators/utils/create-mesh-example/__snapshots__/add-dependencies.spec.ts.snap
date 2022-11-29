@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`addDependencies should add country-info dependencies to the package.json 1`] = `
+"{
+  \\"name\\": \\"test-name\\",
+  \\"dependencies\\": {
+    \\"@graphql-mesh/soap\\": \\"0.16.0\\"
+  },
+  \\"devDependencies\\": {}
+}
+"
+`;
+
+exports[`addDependencies should add fake-api dependencies to the package.json 1`] = `
+"{
+  \\"name\\": \\"test-name\\",
+  \\"dependencies\\": {
+    \\"@graphql-mesh/json-schema\\": \\"0.35.33\\"
+  },
+  \\"devDependencies\\": {}
+}
+"
+`;
+
+exports[`addDependencies should add javascript-wiki dependencies to the package.json 1`] = `
+"{
+  \\"name\\": \\"test-name\\",
+  \\"dependencies\\": {
+    \\"@graphql-mesh/openapi\\": \\"0.33.34\\"
+  },
+  \\"devDependencies\\": {}
+}
+"
+`;
+
+exports[`addDependencies should add movies dependencies to the package.json 1`] = `
+"{
+  \\"name\\": \\"test-name\\",
+  \\"dependencies\\": {
+    \\"@graphql-mesh/neo4j\\": \\"0.20.34\\"
+  },
+  \\"devDependencies\\": {}
+}
+"
+`;
+
+exports[`addDependencies should add rfam dependencies to the package.json 1`] = `
+"{
+  \\"name\\": \\"test-name\\",
+  \\"dependencies\\": {
+    \\"@graphql-mesh/mysql\\": \\"0.17.30\\"
+  },
+  \\"devDependencies\\": {}
+}
+"
+`;
+
+exports[`addDependencies should add stackexchange dependencies to the package.json 1`] = `
+"{
+  \\"name\\": \\"test-name\\",
+  \\"dependencies\\": {
+    \\"@graphql-mesh/openapi\\": \\"0.33.34\\"
+  },
+  \\"devDependencies\\": {}
+}
+"
+`;
+
+exports[`addDependencies should add star-wars-api dependencies to the package.json 1`] = `
+"{
+  \\"name\\": \\"test-name\\",
+  \\"dependencies\\": {
+    \\"@graphql-mesh/graphql\\": \\"0.31.31\\"
+  },
+  \\"devDependencies\\": {}
+}
+"
+`;
+
+exports[`addDependencies should add trippin dependencies to the package.json 1`] = `
+"{
+  \\"name\\": \\"test-name\\",
+  \\"dependencies\\": {
+    \\"@graphql-mesh/odata\\": \\"0.20.31\\"
+  },
+  \\"devDependencies\\": {}
+}
+"
+`;
