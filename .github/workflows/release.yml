@@ -95,7 +95,7 @@ jobs:
 
       - name: Release Snapshot
         id: snapshot
-        uses: the-guild-org/changesets-snapshot-action@v0.0.1
+        uses: the-guild-org/changesets-snapshot-action@eeff4d8aecffd035c3d5513d9811f07893737425 # v0.0.1
         with:
           tag: next
         env:
