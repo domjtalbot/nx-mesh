@@ -20,6 +20,12 @@ jobs:
     with:
       affected: true
 
+  sonar:
+    needs: [build-test]
+    name: Sonar
+    uses: ./.github/workflows/sonar.yml
+    secrets: inherit
+
   deploy:
     needs: [build-test]
     uses: ./.github/workflows/deploy.yml

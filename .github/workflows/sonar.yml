@@ -1,0 +1,62 @@
+name: 'Sonar'
+
+on:
+  workflow_call:
+    secrets:
+      NX__TRIPPIN__API_KEY:
+        description: 'The Trippin API Key'
+        required: true
+      NX_CLOUD_ACCESS_TOKEN:
+        description: 'The NX Cloud API token'
+        required: true
+
+  workflow_dispatch:
+
+concurrency:
+  group: sonar-${{ github.workflow }}-${{ github.ref }}
+
+env:
+  NX__TRIPPIN__API_KEY: ${{ secrets.NX__TRIPPIN__API_KEY }}
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+  NX_CLOUD_ENV_NAME: node-lts
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup
+        uses: ./.github/actions/setup
+        with:
+          ignore-cypress-cache: ${{ !startsWith(matrix.command, 'e2e') }}
+          node-version: ${{ matrix.node }}
+
+      - name: Lint
+        shell: bash
+        run: |
+          pnpm nx run-many --target=lint --all --parallel=3 --configuration=reports
+
+      - name: Test
+        shell: bash
+        run: |
+          pnpm nx run-many --target=test --all --ci --code-coverage --parallel=3
+
+      - name: Get Nx-mesh version
+        id: version
+        uses: notiz-dev/github-action-json-property@v0.2.0
+        with:
+          path: 'libs/nx-mesh/package.json'
+          prop_path: 'version'
+
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@156db6fef3e168e4972abb76de0b32bbce8ec77a # v1.7
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectVersion=${{ steps.version.outputs.prop }}
