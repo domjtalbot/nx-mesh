@@ -205,11 +205,23 @@ jobs:
         run: |
           pnpm nx run-many --target=test --all --ci --code-coverage --parallel=3
 
+      - name: Get Nx-mesh version
+        id: version
+        uses: notiz-dev/github-action-json-property@v0.2.0
+        with:
+          path: 'libs/nx-mesh/package.json'
+          prop_path: 'version'
+
+      - run: echo ${{steps.version.outputs.prop}}
+
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@156db6fef3e168e4972abb76de0b32bbce8ec77a # v1.7
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectVersion=${{ steps.version.outputs.prop }}
 
   e2e:
     runs-on: ubuntu-latest
