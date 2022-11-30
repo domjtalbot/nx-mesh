@@ -1,13 +1,14 @@
 name: 'Sonar'
 
 on:
-  pull_request:
-    branches:
-      - main
-
-  push:
-    branches:
-      - main
+  workflow_call:
+    secrets:
+      NX__TRIPPIN__API_KEY:
+        description: 'The Trippin API Key'
+        required: true
+      NX_CLOUD_ACCESS_TOKEN:
+        description: 'The NX Cloud API token'
+        required: true
 
   workflow_dispatch:
 
