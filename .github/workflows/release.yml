@@ -28,6 +28,12 @@ jobs:
       affected: false
     secrets: inherit
 
+  sonar:
+    needs: [build-test]
+    name: Sonar
+    uses: ./.github/workflows/sonar.yml
+    secrets: inherit
+
   release:
     needs: [build-test]
     name: Release
