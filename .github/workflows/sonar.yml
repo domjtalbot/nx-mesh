@@ -52,13 +52,6 @@ jobs:
           path: 'libs/nx-mesh/package.json'
           prop_path: 'version'
 
-      - name: Get Nx-mesh description
-        id: description
-        uses: notiz-dev/github-action-json-property@v0.2.0
-        with:
-          path: 'libs/nx-mesh/package.json'
-          prop_path: 'description'
-
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@156db6fef3e168e4972abb76de0b32bbce8ec77a # v1.7
         env:
@@ -66,5 +59,4 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectDescription="${{ steps.description.outputs.prop }}"
             -Dsonar.projectVersion=${{ steps.version.outputs.prop }}
