@@ -66,5 +66,5 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectDescription=${{ steps.description.outputs.prop }}
+            -Dsonar.projectDescription="${{ steps.description.outputs.prop }}"
             -Dsonar.projectVersion=${{ steps.version.outputs.prop }}
