@@ -80,7 +80,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   next:
-    name: Release
+    name: Next Release
     needs: [release]
     if: needs.release.outputs.published != 'true'
     runs-on: ubuntu-latest
