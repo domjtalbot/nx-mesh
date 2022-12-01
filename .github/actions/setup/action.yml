@@ -24,7 +24,7 @@ runs:
         node-version: ${{ inputs.node-version }}
 
     - name: Cypress Cache
-      uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77 # tag=v3
+      uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7 # v3
       id: cypress-cache
       if: inputs.ignore-cypress-cache != 'true'
       with:
@@ -35,7 +35,7 @@ runs:
           ${{ runner.os }}-${{ inputs.node-version }}-cypress-dep-cache-v2-
 
     - name: PNPM Repo Cache
-      uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77 # tag=v3
+      uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7 # v3
       id: pnpm-repo-cache
       with:
         path: |
@@ -56,7 +56,7 @@ runs:
       run: echo "::set-output name=dir::$(pnpm store path)"
 
     - name: PNPM Store Cache
-      uses: actions/cache@fd5de65bc895cf536527842281bea11763fefd77 # tag=v3
+      uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7 # v3
       id: pnpm-global-cache
       if: steps.pnpm-repo-cache.outputs.cache-hit != 'true'
       with:
