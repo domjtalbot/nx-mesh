@@ -51,7 +51,7 @@ jobs:
           echo ::set-output name=name::$name
 
       - name: Deploy to Vercel Action
-        uses: BetaHuhn/deploy-to-vercel-action@efa119c0d369199d2c7b836131caae430faf15ed # tag=v1
+        uses: BetaHuhn/deploy-to-vercel-action@c591c553e1019605c70e88462de765f7416b9626 # v1
         with:
           GITHUB_DEPLOYMENT_ENV: nextjs ${{ steps.deploy-env.outputs.name }}
           GITHUB_DEPLOYMENT: true
