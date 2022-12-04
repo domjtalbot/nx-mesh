@@ -4,7 +4,11 @@ exports[`addDependencies should add country-info dependencies to the package.jso
 "{
   \\"name\\": \\"test-name\\",
   \\"dependencies\\": {
-    \\"@graphql-mesh/soap\\": \\"0.16.0\\"
+    \\"@graphql-mesh/cli\\": \\"0.79.3\\",
+    \\"@graphql-mesh/runtime\\": \\"0.44.31\\",
+    \\"@graphql-mesh/soap\\": \\"0.16.0\\",
+    \\"@graphql-mesh/utils\\": \\"0.42.6\\",
+    \\"graphql\\": \\"16.6.0\\"
   },
   \\"devDependencies\\": {}
 }
@@ -15,7 +19,11 @@ exports[`addDependencies should add fake-api dependencies to the package.json 1`
 "{
   \\"name\\": \\"test-name\\",
   \\"dependencies\\": {
-    \\"@graphql-mesh/json-schema\\": \\"0.35.33\\"
+    \\"@graphql-mesh/cli\\": \\"0.79.3\\",
+    \\"@graphql-mesh/json-schema\\": \\"0.35.33\\",
+    \\"@graphql-mesh/runtime\\": \\"0.44.31\\",
+    \\"@graphql-mesh/utils\\": \\"0.42.6\\",
+    \\"graphql\\": \\"16.6.0\\"
   },
   \\"devDependencies\\": {}
 }
@@ -26,7 +34,11 @@ exports[`addDependencies should add javascript-wiki dependencies to the package.
 "{
   \\"name\\": \\"test-name\\",
   \\"dependencies\\": {
-    \\"@graphql-mesh/openapi\\": \\"0.33.34\\"
+    \\"@graphql-mesh/cli\\": \\"0.79.3\\",
+    \\"@graphql-mesh/openapi\\": \\"0.33.34\\",
+    \\"@graphql-mesh/runtime\\": \\"0.44.31\\",
+    \\"@graphql-mesh/utils\\": \\"0.42.6\\",
+    \\"graphql\\": \\"16.6.0\\"
   },
   \\"devDependencies\\": {}
 }
@@ -37,7 +49,11 @@ exports[`addDependencies should add movies dependencies to the package.json 1`] 
 "{
   \\"name\\": \\"test-name\\",
   \\"dependencies\\": {
-    \\"@graphql-mesh/neo4j\\": \\"0.20.34\\"
+    \\"@graphql-mesh/cli\\": \\"0.79.3\\",
+    \\"@graphql-mesh/neo4j\\": \\"0.20.34\\",
+    \\"@graphql-mesh/runtime\\": \\"0.44.31\\",
+    \\"@graphql-mesh/utils\\": \\"0.42.6\\",
+    \\"graphql\\": \\"16.6.0\\"
   },
   \\"devDependencies\\": {}
 }
@@ -48,7 +64,11 @@ exports[`addDependencies should add rfam dependencies to the package.json 1`] = 
 "{
   \\"name\\": \\"test-name\\",
   \\"dependencies\\": {
-    \\"@graphql-mesh/mysql\\": \\"0.17.30\\"
+    \\"@graphql-mesh/cli\\": \\"0.79.3\\",
+    \\"@graphql-mesh/mysql\\": \\"0.17.30\\",
+    \\"@graphql-mesh/runtime\\": \\"0.44.31\\",
+    \\"@graphql-mesh/utils\\": \\"0.42.6\\",
+    \\"graphql\\": \\"16.6.0\\"
   },
   \\"devDependencies\\": {}
 }
@@ -59,7 +79,11 @@ exports[`addDependencies should add stackexchange dependencies to the package.js
 "{
   \\"name\\": \\"test-name\\",
   \\"dependencies\\": {
-    \\"@graphql-mesh/openapi\\": \\"0.33.34\\"
+    \\"@graphql-mesh/cli\\": \\"0.79.3\\",
+    \\"@graphql-mesh/openapi\\": \\"0.33.34\\",
+    \\"@graphql-mesh/runtime\\": \\"0.44.31\\",
+    \\"@graphql-mesh/utils\\": \\"0.42.6\\",
+    \\"graphql\\": \\"16.6.0\\"
   },
   \\"devDependencies\\": {}
 }
@@ -70,7 +94,11 @@ exports[`addDependencies should add star-wars-api dependencies to the package.js
 "{
   \\"name\\": \\"test-name\\",
   \\"dependencies\\": {
-    \\"@graphql-mesh/graphql\\": \\"0.31.31\\"
+    \\"@graphql-mesh/cli\\": \\"0.79.3\\",
+    \\"@graphql-mesh/graphql\\": \\"0.31.31\\",
+    \\"@graphql-mesh/runtime\\": \\"0.44.31\\",
+    \\"@graphql-mesh/utils\\": \\"0.42.6\\",
+    \\"graphql\\": \\"16.6.0\\"
   },
   \\"devDependencies\\": {}
 }
@@ -81,7 +109,11 @@ exports[`addDependencies should add trippin dependencies to the package.json 1`]
 "{
   \\"name\\": \\"test-name\\",
   \\"dependencies\\": {
-    \\"@graphql-mesh/odata\\": \\"0.20.31\\"
+    \\"@graphql-mesh/cli\\": \\"0.79.3\\",
+    \\"@graphql-mesh/odata\\": \\"0.20.31\\",
+    \\"@graphql-mesh/runtime\\": \\"0.44.31\\",
+    \\"@graphql-mesh/utils\\": \\"0.42.6\\",
+    \\"graphql\\": \\"16.6.0\\"
   },
   \\"devDependencies\\": {}
 }
