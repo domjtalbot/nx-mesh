@@ -66,7 +66,7 @@ describe('addDependencies', () => {
       }
     }
 
-    expect(dependenciesCount).toBeGreaterThan(0);
+    expect(dependenciesCount).toBeGreaterThan(4);
     expect(packageJson).toMatchSnapshot();
   });
 });

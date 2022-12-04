@@ -11,7 +11,12 @@ export function addDependencies(
   host: Tree,
   options: Pick<CreateMeshExampleOptions, 'example'>
 ) {
-  let exampleDeps = {};
+  let exampleDeps = {
+    ...versions['@graphql-mesh/cli'],
+    ...versions['@graphql-mesh/runtime'],
+    ...versions['@graphql-mesh/utils'],
+    ...versions['graphql'],
+  };
 
   examples[options.example].dependencies.forEach((dep) => {
     exampleDeps = {
