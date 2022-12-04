@@ -47,7 +47,7 @@ jobs:
 
       - name: Get Nx-mesh version
         id: version
-        uses: notiz-dev/github-action-json-property@v0.2.0
+        uses: notiz-dev/github-action-json-property@a5a9c668b16513c737c3e1f8956772c99c73f6e8 # v0.2.0
         with:
           path: 'libs/nx-mesh/package.json'
           prop_path: 'version'
