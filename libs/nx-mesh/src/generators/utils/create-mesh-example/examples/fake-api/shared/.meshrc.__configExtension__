@@ -3,8 +3,8 @@
 // https://ionicabizau.github.io/ejs-playground/
 
 // Input variables
-const configExtension = 'js';
-const isSdk = true;
+// const configExtension = 'js';
+// const isSdk = true;
 
 // Inline variables
 const name = 'FakeAPI';

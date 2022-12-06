@@ -7,11 +7,15 @@
 // const isSdk = true;
 
 // Inline variables
-const name = 'StackExchange';
-const handler = 'openapi'
-const source = 'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml';
+const name = 'Movies';
+const handler = 'neo4j';
+const database = 'movies';
+const password = 'movies';
+const username = 'movies';
+const url = 'bolt+s://demo.neo4jlabs.com:7687';
 const browser = false;
-const selectionSetDepth = 6;
+const fileRoot = './src/';
+const documents = `${fileRoot}graphql/**/*.*.graphql`;
 
 if (configExtension === 'cjs' || configExtension ==='js') { -%>
 module.exports = {
@@ -20,8 +24,10 @@ module.exports = {
       name: '<%= name %>',
       handler: {
         <%= handler %>: {
-          source:
-            '<%= source %>',
+          database: '<%= database %>',
+          password: '<%= password %>',
+          url: '<%= url %>',
+          username: '<%= username %>',
         },
       },
     },
@@ -29,13 +35,7 @@ module.exports = {
   serve: {
     browser: <%= browser %>,
   },
-<% if (isSdk) { -%>
-  sdk: {
-    generateOperations: {
-      selectionSetDepth: <%= selectionSetDepth %>,
-    },
-  },
-<% } -%>
+  documents: ['<%= documents %>'],
 };
 <% } else if (configExtension === 'json') { -%>
 {
@@ -44,34 +44,32 @@ module.exports = {
       "name": "<%= name %>",
       "handler": {
         "<%= handler %>": {
-          "source": "<%= source %>"
+          database: "<%= database %>",
+          password: "<%= password %>",
+          url: "<%= url %>",
+          username: "<%= username %>"
         }
       }
     }
   ],
   "serve": {
     "browser": <%= browser %>
-  }<% if (isSdk) { -%>,
-  "sdk": {
-    "generateOperations": {
-      "selectionSetDepth": <%= selectionSetDepth %>
-    }
-  }
-<% } -%>
+  },
+  "documents": ['<%= documents %>']
 }
 <% } else if (configExtension === 'yml') { -%>
 sources:
   - name: <%= name %>
     handler:
       <%= handler %>:
-        source: <%= source %>
+        database: <%= database %>
+        password: <%= password %>
+        url: <%= url %>
+        username: <%= username %>
 
 serve:
   browser: false
 
-<% if (isSdk) { -%>
-sdk:
-  generateOperations:
-    selectionSetDepth: <%= selectionSetDepth %>
-<% } -%>
+documents:
+    - <%= documents %>
 <% }-%>
