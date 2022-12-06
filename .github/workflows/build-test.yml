@@ -160,7 +160,6 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: Build Nx-mesh
-        if: inputs.affected != true
         shell: bash
         run: |
           pnpm nx run nx-mesh:build
@@ -173,7 +172,7 @@ jobs:
           --example=${{ matrix.example }} \
           --no-interactive
 
-      - name: Generate Example
+      - name: Build example
         shell: bash
         run: |
           pnpm nx run ${{ matrix.example }}:build
