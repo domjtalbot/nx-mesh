@@ -135,6 +135,7 @@ jobs:
       fail-fast: false
       matrix:
         node: [lts]
+        type: [application, sdk]
         example:
           - 'country-info'
           - 'fake-api'
@@ -168,7 +169,8 @@ jobs:
       - name: Generate Example
         shell: bash
         run: |
-          pnpm exec nx generate nx-mesh:sdk ${{ matrix.example }} \
+          pnpm exec nx generate nx-mesh:${{ matrix.type }} \
+          ${{ matrix.example }} \
           --example=${{ matrix.example }} \
           --no-interactive
 
