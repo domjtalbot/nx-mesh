@@ -129,7 +129,6 @@ jobs:
     needs: [setup]
     if: needs.setup.outputs.hasAffected == 'true' || inputs.affected != true
     timeout-minutes: 5
-    continue-on-error: ${{ matrix.experimental }}
     strategy:
       # max-parallel: 2
       fail-fast: false
@@ -145,7 +144,7 @@ jobs:
           - 'stackexchange'
           - 'star-wars-api'
           - 'trippin'
-    name: node-${{ matrix.node }} - ${{ matrix.example }}
+    name: node-${{ matrix.node }} - ${{ matrix.type }} - ${{ matrix.example }}
     env:
       NX_CLOUD_ENV_NAME: node-${{ matrix.node }}
     steps:
