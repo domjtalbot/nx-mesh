@@ -65,7 +65,7 @@ describe('createSharedFiles', () => {
 
   describe('country-info', () => {
     it('should create a src folder supplementary files', () => {
-      const expectedPaths = ['src/queries/GetLanguages.query.graphql'];
+      const expectedPaths = ['src/graphql/GetLanguages.query.graphql'];
 
       createSharedFiles(tree, {
         configExtension: 'yml',
@@ -97,6 +97,94 @@ describe('createSharedFiles', () => {
       createSharedFiles(tree, {
         configExtension: 'yml',
         example: 'fake-api',
+        isSdk: false,
+        projectDirectory,
+      });
+
+      expectedPaths.forEach((expectedPath) => {
+        const filePath = `${projectDirectory}/${expectedPath}`;
+        expect(tree.exists(filePath)).toBeTruthy();
+
+        const contents = tree.read(filePath, 'utf-8');
+
+        expect(contents).toMatchSnapshot();
+      });
+    });
+  });
+
+  describe('movies', () => {
+    it('should create a src folder supplementary files', () => {
+      const expectedPaths = ['src/graphql/example.query.graphql'];
+
+      createSharedFiles(tree, {
+        configExtension: 'yml',
+        example: 'movies',
+        isSdk: false,
+        projectDirectory,
+      });
+
+      expectedPaths.forEach((expectedPath) => {
+        const filePath = `${projectDirectory}/${expectedPath}`;
+        expect(tree.exists(filePath)).toBeTruthy();
+
+        const contents = tree.read(filePath, 'utf-8');
+
+        expect(contents).toMatchSnapshot();
+      });
+    });
+  });
+
+  describe('rfam', () => {
+    it('should create a src folder supplementary files', () => {
+      const expectedPaths = ['src/graphql/getAlignmentTree.query.graphql'];
+
+      createSharedFiles(tree, {
+        configExtension: 'yml',
+        example: 'rfam',
+        isSdk: false,
+        projectDirectory,
+      });
+
+      expectedPaths.forEach((expectedPath) => {
+        const filePath = `${projectDirectory}/${expectedPath}`;
+        expect(tree.exists(filePath)).toBeTruthy();
+
+        const contents = tree.read(filePath, 'utf-8');
+
+        expect(contents).toMatchSnapshot();
+      });
+    });
+  });
+
+  describe('star-wars-api', () => {
+    it('should create a src folder supplementary files', () => {
+      const expectedPaths = ['src/graphql/getMovies.query.graphql'];
+
+      createSharedFiles(tree, {
+        configExtension: 'yml',
+        example: 'star-wars-api',
+        isSdk: false,
+        projectDirectory,
+      });
+
+      expectedPaths.forEach((expectedPath) => {
+        const filePath = `${projectDirectory}/${expectedPath}`;
+        expect(tree.exists(filePath)).toBeTruthy();
+
+        const contents = tree.read(filePath, 'utf-8');
+
+        expect(contents).toMatchSnapshot();
+      });
+    });
+  });
+
+  describe('trippin', () => {
+    it('should create a src folder supplementary files', () => {
+      const expectedPaths = ['src/graphql/airports/getAirports.query.graphql'];
+
+      createSharedFiles(tree, {
+        configExtension: 'yml',
+        example: 'trippin',
         isSdk: false,
         projectDirectory,
       });

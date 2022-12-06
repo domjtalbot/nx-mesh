@@ -405,212 +405,188 @@ exports[`createSharedFiles meshConfig - fake-api should create a js mesh config 
 `;
 
 exports[`createSharedFiles meshConfig - fake-api should create a json mesh config 1`] = `
-"module.exports = {
-  sources: [
+"{
+  \\"sources\\": [
     {
-      name: \\"FakeAPI\\",
-      handler: {
-        jsonSchema: {
-          baseUrl: \\"https://not-existing-api.com/API\\",
-          operations: [
+      \\"name\\": \\"FakeAPI\\",
+      \\"handler\\": {
+        \\"jsonSchema\\": {
+          \\"baseUrl\\": \\"https://not-existing-api.com/API\\",
+          \\"operations\\": [
             {
-              field: \\"me\\",
-              method: \\"GET\\",
-              path: \\"/me\\",
-              responseSchema: \\"./src/json-schemas/user.json#/definitions/User\\",
-              type: \\"Query\\",
+              \\"field\\": \\"me\\",
+              \\"method\\": \\"GET\\",
+              \\"path\\": \\"/me\\",
+              \\"responseSchema\\": \\"./src/json-schemas/user.json#/definitions/User\\",
+              \\"type\\": \\"Query\\"
             },
             {
-              field: \\"company\\",
-              method: \\"GET\\",
-              path: \\"/company/{args.id}\\",
-              responseSchema:
-                \\"./src/json-schemas/company.json#/definitions/Company\\",
-              type: \\"Query\\",
-              argTypeMap: {
-                id: {
-                  type: \\"string\\",
-                  nullable: false,
-                },
-              },
+              \\"field\\": \\"company\\",
+              \\"method\\": \\"GET\\",
+              \\"path\\": \\"/company/{args.id}\\",
+              \\"responseSchema\\": \\"./src/json-schemas/company.json#/definitions/Company\\",
+              \\"type\\": \\"Query\\",
+              \\"argTypeMap\\": {
+                \\"id\\": {
+                  \\"type\\": \\"string\\",
+                  \\"nullable\\": false
+                }
+              }
             },
             {
-              field: \\"createUser\\",
-              method: \\"PUT\\",
-              path: \\"/user\\",
-              requestSample: \\"./src/json-samples/user-input.json\\",
-              requestTypeName: \\"CreateUpdateUser\\",
-              responseSchema: \\"./src/json-schemas/user.json#/definitions/User\\",
-              type: \\"Mutation\\",
+              \\"field\\": \\"createUser\\",
+              \\"method\\": \\"PUT\\",
+              \\"path\\": \\"/user\\",
+              \\"requestSample\\": \\"./src/json-samples/user-input.json\\",
+              \\"requestTypeName\\": \\"CreateUpdateUser\\",
+              \\"responseSchema\\": \\"./src/json-schemas/user.json#/definitions/User\\",
+              \\"type\\": \\"Mutation\\"
             },
             {
-              field: \\"updateUser\\",
-              method: \\"POST\\",
-              path: \\"/user/{args.id}\\",
-              requestSample: \\"./src/json-samples/user-input.json\\",
-              requestTypeName: \\"CreateUpdateUser\\",
-              responseSchema: \\"./src/json-schemas/user.json#/definitions/User\\",
-              type: \\"Mutation\\",
-              argTypeMap: {
-                id: {
-                  type: \\"string\\",
-                  nullable: false,
-                },
-              },
+              \\"field\\": \\"updateUser\\",
+              \\"method\\": \\"POST\\",
+              \\"path\\": \\"/user/{args.id}\\",
+              \\"requestSample\\": \\"./src/json-samples/user-input.json\\",
+              \\"requestTypeName\\": \\"CreateUpdateUser\\",
+              \\"responseSchema\\": \\"./src/json-schemas/user.json#/definitions/User\\",
+              \\"type\\": \\"Mutation\\",
+              \\"argTypeMap\\": {
+                \\"id\\": {
+                  \\"type\\": \\"string\\",
+                  \\"nullable\\": false
+                }
+              }
             },
             {
-              field: \\"deleteUser\\",
-              method: \\"DELETE\\",
-              path: \\"/user/{args.id}\\",
-              type: \\"Mutation\\",
-              argTypeMap: {
-                id: {
-                  type: \\"string\\",
-                  nullable: false,
-                },
-              },
-            },
-          ],
-        },
-      },
-    },
+              \\"field\\": \\"deleteUser\\",
+              \\"method\\": \\"DELETE\\",
+              \\"path\\": \\"/user/{args.id}\\",
+              \\"type\\": \\"Mutation\\",
+              \\"argTypeMap\\": {
+                \\"id\\": {
+                  \\"type\\": \\"string\\",
+                  \\"nullable\\": false
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
   ],
-  additionalTypeDefs:
-    \\"extend type User {\\\\n  company: Company\\\\n}\\\\nextend type Company {\\\\n  employers: [User]\\\\n}\\\\n\\",
-  plugins: [
+  \\"additionalTypeDefs\\": \\"extend type User {\\\\n  company: Company\\\\n}\\\\nextend type Company {\\\\n  employers: [User]\\\\n}\\\\n\\",
+  \\"plugins\\": [
     {
-      mock: {
-        mocks: [
+      \\"mock\\": {
+        \\"mocks\\": [
           {
-            apply: \\"User.firstName\\",
-            faker: \\"{{name.firstName}}\\",
+            \\"apply\\": \\"User.firstName\\",
+            \\"faker\\": \\"{{name.firstName}}\\"
           },
           {
-            apply: \\"User.lastName\\",
-            faker: \\"{{name.lastName}}\\",
+            \\"apply\\": \\"User.lastName\\",
+            \\"faker\\": \\"{{name.lastName}}\\"
           },
           {
-            apply: \\"User.jobTitle\\",
-            faker: \\"{{name.jobTitle}}\\",
+            \\"apply\\": \\"User.jobTitle\\",
+            \\"faker\\": \\"{{name.jobTitle}}\\"
           },
           {
-            apply: \\"Company.name\\",
-            faker: \\"{{company.companyName}}\\",
-          },
-        ],
-      },
-    },
+            \\"apply\\": \\"Company.name\\",
+            \\"faker\\": \\"{{company.companyName}}\\"
+          }
+        ]
+      }
+    }
   ],
-  documents: [\\"./src/graphql/**/*.*.graphql\\"],
-  serve: {
-    browser: false,
-  },
-};
+  \\"documents\\": [\\"./src/graphql/**/*.*.graphql\\"],
+  \\"serve\\": {
+    \\"browser\\": false
+  }
+}
 "
 `;
 
 exports[`createSharedFiles meshConfig - fake-api should create a yml mesh config 1`] = `
-"module.exports = {
-  sources: [
-    {
-      name: \\"FakeAPI\\",
-      handler: {
-        jsonSchema: {
-          baseUrl: \\"https://not-existing-api.com/API\\",
-          operations: [
-            {
-              field: \\"me\\",
-              method: \\"GET\\",
-              path: \\"/me\\",
-              responseSchema: \\"./src/json-schemas/user.json#/definitions/User\\",
-              type: \\"Query\\",
-            },
-            {
-              field: \\"company\\",
-              method: \\"GET\\",
-              path: \\"/company/{args.id}\\",
-              responseSchema:
-                \\"./src/json-schemas/company.json#/definitions/Company\\",
-              type: \\"Query\\",
-              argTypeMap: {
-                id: {
-                  type: \\"string\\",
-                  nullable: false,
-                },
-              },
-            },
-            {
-              field: \\"createUser\\",
-              method: \\"PUT\\",
-              path: \\"/user\\",
-              requestSample: \\"./src/json-samples/user-input.json\\",
-              requestTypeName: \\"CreateUpdateUser\\",
-              responseSchema: \\"./src/json-schemas/user.json#/definitions/User\\",
-              type: \\"Mutation\\",
-            },
-            {
-              field: \\"updateUser\\",
-              method: \\"POST\\",
-              path: \\"/user/{args.id}\\",
-              requestSample: \\"./src/json-samples/user-input.json\\",
-              requestTypeName: \\"CreateUpdateUser\\",
-              responseSchema: \\"./src/json-schemas/user.json#/definitions/User\\",
-              type: \\"Mutation\\",
-              argTypeMap: {
-                id: {
-                  type: \\"string\\",
-                  nullable: false,
-                },
-              },
-            },
-            {
-              field: \\"deleteUser\\",
-              method: \\"DELETE\\",
-              path: \\"/user/{args.id}\\",
-              type: \\"Mutation\\",
-              argTypeMap: {
-                id: {
-                  type: \\"string\\",
-                  nullable: false,
-                },
-              },
-            },
-          ],
-        },
-      },
-    },
-  ],
-  additionalTypeDefs:
-    \\"extend type User {\\\\n  company: Company\\\\n}\\\\nextend type Company {\\\\n  employers: [User]\\\\n}\\\\n\\",
-  plugins: [
-    {
-      mock: {
-        mocks: [
-          {
-            apply: \\"User.firstName\\",
-            faker: \\"{{name.firstName}}\\",
-          },
-          {
-            apply: \\"User.lastName\\",
-            faker: \\"{{name.lastName}}\\",
-          },
-          {
-            apply: \\"User.jobTitle\\",
-            faker: \\"{{name.jobTitle}}\\",
-          },
-          {
-            apply: \\"Company.name\\",
-            faker: \\"{{company.companyName}}\\",
-          },
-        ],
-      },
-    },
-  ],
-  documents: [\\"./src/graphql/**/*.*.graphql\\"],
-  serve: {
-    browser: false,
-  },
-};
+"sources:
+  - name: FakeAPI
+    handler:
+      jsonSchema:
+        baseUrl: https://not-existing-api.com/API
+        operations:
+          - field: me
+            method: GET
+            path: /me
+            responseSchema: ./src/json-schemas/user.json#/definitions/User
+            type: Query
+
+          - field: company
+            method: GET
+            path: /company/{args.id}
+            responseSchema: ./src/json-schemas/company.json#/definitions/Company
+            type: Query
+            argTypeMap:
+              id:
+                type: string
+                nullable: false
+
+          - field: createUser
+            method: PUT
+            path: /user
+            requestSample: ./src/json-samples/user-input.json
+            requestTypeName: CreateUpdateUser
+            responseSchema: ./src/json-schemas/user.json#/definitions/User
+            type: Mutation
+
+          - field: updateUser
+            method: POST
+            path: /user/{args.id}
+            requestSample: ./src/json-samples/user-input.json
+            requestTypeName: CreateUpdateUser
+            responseSchema: ./src/json-schemas/user.json#/definitions/User
+            type: Mutation
+            argTypeMap:
+              id:
+                type: string
+                nullable: false
+
+          - field: deleteUser
+            method: DELETE
+            path: /user/{args.id}
+            type: Mutation
+            argTypeMap:
+              id:
+                type: string
+                nullable: false
+
+additionalTypeDefs: |
+  extend type User {
+    company: Company
+  }
+  extend type Company {
+    employers: [User]
+  }
+
+plugins:
+  - mock:
+      mocks:
+        - apply: User.firstName
+          faker: '{{name.firstName}}'
+
+        - apply: User.lastName
+          faker: '{{name.lastName}}'
+
+        - apply: User.jobTitle
+          faker: '{{name.jobTitle}}'
+
+        - apply: Company.name
+          faker: '{{company.companyName}}'
+
+documents:
+  - ./src/graphql/**/*.*.graphql
+
+serve:
+  browser: false
 "
 `;
 
@@ -618,11 +594,11 @@ exports[`createSharedFiles meshConfig - javascript-wiki should create a cjs mesh
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -638,11 +614,11 @@ exports[`createSharedFiles meshConfig - javascript-wiki should create a js mesh 
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -658,10 +634,10 @@ exports[`createSharedFiles meshConfig - javascript-wiki should create a json mes
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"JavaScript Wiki\\",
       \\"handler\\": {
         \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+          \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
         }
       }
     }
@@ -674,10 +650,10 @@ exports[`createSharedFiles meshConfig - javascript-wiki should create a json mes
 
 exports[`createSharedFiles meshConfig - javascript-wiki should create a yml mesh config 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -689,11 +665,13 @@ exports[`createSharedFiles meshConfig - movies should create a cjs mesh config 1
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Movies',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        neo4j: {
+          database: 'movies',
+          password: 'movies',
+          url: 'bolt+s://demo.neo4jlabs.com:7687',
+          username: 'movies',
         },
       },
     },
@@ -701,6 +679,7 @@ exports[`createSharedFiles meshConfig - movies should create a cjs mesh config 1
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -709,11 +688,13 @@ exports[`createSharedFiles meshConfig - movies should create a js mesh config 1`
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Movies',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        neo4j: {
+          database: 'movies',
+          password: 'movies',
+          url: 'bolt+s://demo.neo4jlabs.com:7687',
+          username: 'movies',
         },
       },
     },
@@ -721,6 +702,7 @@ exports[`createSharedFiles meshConfig - movies should create a js mesh config 1`
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -729,30 +711,40 @@ exports[`createSharedFiles meshConfig - movies should create a json mesh config 
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"Movies\\",
       \\"handler\\": {
-        \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        \\"neo4j\\": {
+          database: \\"movies\\",
+          password: \\"movies\\",
+          url: \\"bolt+s://demo.neo4jlabs.com:7687\\",
+          username: \\"movies\\"
         }
       }
     }
   ],
   \\"serve\\": {
     \\"browser\\": false
-  }}
+  },
+  \\"documents\\": ['./src/graphql/**/*.*.graphql']
+}
 "
 `;
 
 exports[`createSharedFiles meshConfig - movies should create a yml mesh config 1`] = `
 "sources:
-  - name: StackExchange
+  - name: Movies
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      neo4j:
+        database: movies
+        password: movies
+        url: bolt+s://demo.neo4jlabs.com:7687
+        username: movies
 
 serve:
   browser: false
 
+documents:
+    - ./src/graphql/**/*.*.graphql
 "
 `;
 
@@ -760,11 +752,13 @@ exports[`createSharedFiles meshConfig - rfam should create a cjs mesh config 1`]
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Rfam',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        mysql: {
+          database: 'Rfam',
+          port: 4497,
+          host: 'mysql-rfam-public.ebi.ac.uk',
+          user: 'rfamro',
         },
       },
     },
@@ -772,6 +766,7 @@ exports[`createSharedFiles meshConfig - rfam should create a cjs mesh config 1`]
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -780,11 +775,13 @@ exports[`createSharedFiles meshConfig - rfam should create a js mesh config 1`] 
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Rfam',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        mysql: {
+          database: 'Rfam',
+          port: 4497,
+          host: 'mysql-rfam-public.ebi.ac.uk',
+          user: 'rfamro',
         },
       },
     },
@@ -792,6 +789,7 @@ exports[`createSharedFiles meshConfig - rfam should create a js mesh config 1`] 
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -800,30 +798,40 @@ exports[`createSharedFiles meshConfig - rfam should create a json mesh config 1`
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"Rfam\\",
       \\"handler\\": {
-        \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        \\"mysql\\": {
+          database: \\"Rfam\\",
+          port: 4497,
+          host: \\"mysql-rfam-public.ebi.ac.uk\\",
+          user: \\"rfamro\\"
         }
       }
     }
   ],
   \\"serve\\": {
     \\"browser\\": false
-  }}
+  },
+  \\"documents\\": ['./src/graphql/**/*.*.graphql']
+}
 "
 `;
 
 exports[`createSharedFiles meshConfig - rfam should create a yml mesh config 1`] = `
 "sources:
-  - name: StackExchange
+  - name: Rfam
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      mysql:
+        database: Rfam
+        port: 4497
+        host: mysql-rfam-public.ebi.ac.uk
+        user: rfamro
 
 serve:
   browser: false
 
+documents:
+    - ./src/graphql/**/*.*.graphql
 "
 `;
 
@@ -902,11 +910,11 @@ exports[`createSharedFiles meshConfig - star-wars-api should create a cjs mesh c
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'StarWarsApi',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        graphql: {
+          endpoint:
+            'https://swapi-graphql.netlify.app/.netlify/functions/index',
         },
       },
     },
@@ -914,6 +922,7 @@ exports[`createSharedFiles meshConfig - star-wars-api should create a cjs mesh c
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -922,11 +931,11 @@ exports[`createSharedFiles meshConfig - star-wars-api should create a js mesh co
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'StarWarsApi',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        graphql: {
+          endpoint:
+            'https://swapi-graphql.netlify.app/.netlify/functions/index',
         },
       },
     },
@@ -934,6 +943,7 @@ exports[`createSharedFiles meshConfig - star-wars-api should create a js mesh co
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -942,30 +952,34 @@ exports[`createSharedFiles meshConfig - star-wars-api should create a json mesh 
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"StarWarsApi\\",
       \\"handler\\": {
-        \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        \\"graphql\\": {
+          \\"endpoint\\": \\"https://swapi-graphql.netlify.app/.netlify/functions/index\\"
         }
       }
     }
   ],
   \\"serve\\": {
     \\"browser\\": false
-  }}
+  },
+  \\"documents\\": ['./src/graphql/**/*.*.graphql']
+}
 "
 `;
 
 exports[`createSharedFiles meshConfig - star-wars-api should create a yml mesh config 1`] = `
 "sources:
-  - name: StackExchange
+  - name: StarWarsApi
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      graphql:
+        endpoint: https://swapi-graphql.netlify.app/.netlify/functions/index
 
 serve:
   browser: false
 
+documents:
+    - ./src/graphql/**/*.*.graphql
 "
 `;
 
@@ -973,11 +987,12 @@ exports[`createSharedFiles meshConfig - trippin should create a cjs mesh config 
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -985,6 +1000,7 @@ exports[`createSharedFiles meshConfig - trippin should create a cjs mesh config 
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -993,11 +1009,12 @@ exports[`createSharedFiles meshConfig - trippin should create a js mesh config 1
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -1005,6 +1022,7 @@ exports[`createSharedFiles meshConfig - trippin should create a js mesh config 1
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -1013,29 +1031,106 @@ exports[`createSharedFiles meshConfig - trippin should create a json mesh config
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"Trippin\\",
       \\"handler\\": {
-        \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        \\"odata\\": {
+          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          batch: \\"multipart\\",
+          expandNavProps: true
         }
       }
     }
   ],
   \\"serve\\": {
     \\"browser\\": false
-  }}
+  },
+  \\"documents\\": ['./src/graphql/**/*.*.graphql']
+}
 "
 `;
 
 exports[`createSharedFiles meshConfig - trippin should create a yml mesh config 1`] = `
 "sources:
-  - name: StackExchange
+  - name: Trippin
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
 
 serve:
   browser: false
 
+documents:
+    - ./src/graphql/**/*.*.graphql
+"
+`;
+
+exports[`createSharedFiles movies should create a src folder supplementary files 1`] = `
+"query MovieWithActedIn {
+  movies(options: { limit: 2 }) {
+    title
+    released
+    tagline
+    peopleActedIn(options: { limit: 2 }) {
+      name
+    }
+  }
+}
+"
+`;
+
+exports[`createSharedFiles rfam should create a src folder supplementary files 1`] = `
+"query getAlignmentTree {
+  alignment_and_tree(limit: 5) {
+    rfam_acc
+    family(limit: 1) {
+      type
+      description
+      comment
+      author
+      created
+    }
+  }
+}
+"
+`;
+
+exports[`createSharedFiles star-wars-api should create a src folder supplementary files 1`] = `
+"query getMovies {
+  allFilms {
+    films {
+      title
+      director
+      releaseDate
+      speciesConnection {
+        species {
+          name
+          classification
+          homeworld {
+            name
+          }
+        }
+      }
+    }
+  }
+}
+"
+`;
+
+exports[`createSharedFiles trippin should create a src folder supplementary files 1`] = `
+"query getAirports {
+  Airports {
+    Name
+    Location {
+      Address
+      City {
+        Name
+        Region
+        CountryRegion
+      }
+    }
+  }
+}
 "
 `;

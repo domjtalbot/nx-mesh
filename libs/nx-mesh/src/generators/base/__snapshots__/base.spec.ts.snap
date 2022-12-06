@@ -574,11 +574,11 @@ exports[`generators/base app directory --example should create a javascript-wiki
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -594,11 +594,11 @@ exports[`generators/base app directory --example should create a javascript-wiki
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -614,11 +614,11 @@ exports[`generators/base app directory --example should create a javascript-wiki
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -634,11 +634,11 @@ exports[`generators/base app directory --example should create a javascript-wiki
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -654,11 +654,11 @@ exports[`generators/base app directory --example should create a javascript-wiki
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -674,11 +674,11 @@ exports[`generators/base app directory --example should create a javascript-wiki
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -694,11 +694,11 @@ exports[`generators/base app directory --example should create a javascript-wiki
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -714,11 +714,11 @@ exports[`generators/base app directory --example should create a javascript-wiki
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -734,11 +734,11 @@ exports[`generators/base app directory --example should create a javascript-wiki
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -754,11 +754,11 @@ exports[`generators/base app directory --example should create a javascript-wiki
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -774,10 +774,10 @@ exports[`generators/base app directory --example should create a javascript-wiki
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"JavaScript Wiki\\",
       \\"handler\\": {
         \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+          \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
         }
       }
     }
@@ -792,10 +792,10 @@ exports[`generators/base app directory --example should create a javascript-wiki
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"JavaScript Wiki\\",
       \\"handler\\": {
         \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+          \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
         }
       }
     }
@@ -810,10 +810,10 @@ exports[`generators/base app directory --example should create a javascript-wiki
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"JavaScript Wiki\\",
       \\"handler\\": {
         \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+          \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
         }
       }
     }
@@ -828,10 +828,10 @@ exports[`generators/base app directory --example should create a javascript-wiki
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"JavaScript Wiki\\",
       \\"handler\\": {
         \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+          \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
         }
       }
     }
@@ -846,10 +846,10 @@ exports[`generators/base app directory --example should create a javascript-wiki
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"JavaScript Wiki\\",
       \\"handler\\": {
         \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+          \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
         }
       }
     }
@@ -862,10 +862,10 @@ exports[`generators/base app directory --example should create a javascript-wiki
 
 exports[`generators/base app directory --example should create a javascript-wiki yml config 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -875,10 +875,10 @@ serve:
 
 exports[`generators/base app directory --example should create a javascript-wiki yml config 2`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -888,10 +888,10 @@ serve:
 
 exports[`generators/base app directory --example should create a javascript-wiki yml config 3`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -901,10 +901,10 @@ serve:
 
 exports[`generators/base app directory --example should create a javascript-wiki yml config 4`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -914,10 +914,10 @@ serve:
 
 exports[`generators/base app directory --example should create a javascript-wiki yml config 5`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -927,10 +927,10 @@ serve:
 
 exports[`generators/base app directory --example should create a javascriptWiki config by default 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -955,10 +955,10 @@ documents:
 
 exports[`generators/base app directory --example should create a javascriptWiki config by default 3`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -981,14 +981,18 @@ serve:
 
 exports[`generators/base app directory --example should create a javascriptWiki config by default 5`] = `
 "sources:
-  - name: StackExchange
+  - name: Trippin
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
 
 serve:
   browser: false
 
+documents:
+    - ./src/graphql/**/*.*.graphql
 "
 `;
 
@@ -1351,11 +1355,12 @@ exports[`generators/base app directory --example should create a trippin cjs con
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -1363,6 +1368,7 @@ exports[`generators/base app directory --example should create a trippin cjs con
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -1371,11 +1377,12 @@ exports[`generators/base app directory --example should create a trippin cjs con
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -1383,6 +1390,7 @@ exports[`generators/base app directory --example should create a trippin cjs con
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -1391,11 +1399,12 @@ exports[`generators/base app directory --example should create a trippin cjs con
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -1403,6 +1412,7 @@ exports[`generators/base app directory --example should create a trippin cjs con
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -1411,11 +1421,12 @@ exports[`generators/base app directory --example should create a trippin cjs con
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -1423,6 +1434,7 @@ exports[`generators/base app directory --example should create a trippin cjs con
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -1431,11 +1443,12 @@ exports[`generators/base app directory --example should create a trippin cjs con
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -1443,6 +1456,7 @@ exports[`generators/base app directory --example should create a trippin cjs con
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -1451,11 +1465,12 @@ exports[`generators/base app directory --example should create a trippin js conf
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -1463,6 +1478,7 @@ exports[`generators/base app directory --example should create a trippin js conf
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -1471,11 +1487,12 @@ exports[`generators/base app directory --example should create a trippin js conf
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -1483,6 +1500,7 @@ exports[`generators/base app directory --example should create a trippin js conf
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -1491,11 +1509,12 @@ exports[`generators/base app directory --example should create a trippin js conf
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -1503,6 +1522,7 @@ exports[`generators/base app directory --example should create a trippin js conf
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -1511,11 +1531,12 @@ exports[`generators/base app directory --example should create a trippin js conf
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -1523,6 +1544,7 @@ exports[`generators/base app directory --example should create a trippin js conf
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -1531,11 +1553,12 @@ exports[`generators/base app directory --example should create a trippin js conf
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -1543,6 +1566,7 @@ exports[`generators/base app directory --example should create a trippin js conf
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -1551,17 +1575,21 @@ exports[`generators/base app directory --example should create a trippin json co
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"Trippin\\",
       \\"handler\\": {
-        \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        \\"odata\\": {
+          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          batch: \\"multipart\\",
+          expandNavProps: true
         }
       }
     }
   ],
   \\"serve\\": {
     \\"browser\\": false
-  }}
+  },
+  \\"documents\\": ['./src/graphql/**/*.*.graphql']
+}
 "
 `;
 
@@ -1569,17 +1597,21 @@ exports[`generators/base app directory --example should create a trippin json co
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"Trippin\\",
       \\"handler\\": {
-        \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        \\"odata\\": {
+          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          batch: \\"multipart\\",
+          expandNavProps: true
         }
       }
     }
   ],
   \\"serve\\": {
     \\"browser\\": false
-  }}
+  },
+  \\"documents\\": ['./src/graphql/**/*.*.graphql']
+}
 "
 `;
 
@@ -1587,17 +1619,21 @@ exports[`generators/base app directory --example should create a trippin json co
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"Trippin\\",
       \\"handler\\": {
-        \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        \\"odata\\": {
+          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          batch: \\"multipart\\",
+          expandNavProps: true
         }
       }
     }
   ],
   \\"serve\\": {
     \\"browser\\": false
-  }}
+  },
+  \\"documents\\": ['./src/graphql/**/*.*.graphql']
+}
 "
 `;
 
@@ -1605,17 +1641,21 @@ exports[`generators/base app directory --example should create a trippin json co
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"Trippin\\",
       \\"handler\\": {
-        \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        \\"odata\\": {
+          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          batch: \\"multipart\\",
+          expandNavProps: true
         }
       }
     }
   ],
   \\"serve\\": {
     \\"browser\\": false
-  }}
+  },
+  \\"documents\\": ['./src/graphql/**/*.*.graphql']
+}
 "
 `;
 
@@ -1623,82 +1663,106 @@ exports[`generators/base app directory --example should create a trippin json co
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"Trippin\\",
       \\"handler\\": {
-        \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        \\"odata\\": {
+          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          batch: \\"multipart\\",
+          expandNavProps: true
         }
       }
     }
   ],
   \\"serve\\": {
     \\"browser\\": false
-  }}
+  },
+  \\"documents\\": ['./src/graphql/**/*.*.graphql']
+}
 "
 `;
 
 exports[`generators/base app directory --example should create a trippin yml config 1`] = `
 "sources:
-  - name: StackExchange
+  - name: Trippin
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
 
 serve:
   browser: false
 
+documents:
+    - ./src/graphql/**/*.*.graphql
 "
 `;
 
 exports[`generators/base app directory --example should create a trippin yml config 2`] = `
 "sources:
-  - name: StackExchange
+  - name: Trippin
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
 
 serve:
   browser: false
 
+documents:
+    - ./src/graphql/**/*.*.graphql
 "
 `;
 
 exports[`generators/base app directory --example should create a trippin yml config 3`] = `
 "sources:
-  - name: StackExchange
+  - name: Trippin
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
 
 serve:
   browser: false
 
+documents:
+    - ./src/graphql/**/*.*.graphql
 "
 `;
 
 exports[`generators/base app directory --example should create a trippin yml config 4`] = `
 "sources:
-  - name: StackExchange
+  - name: Trippin
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
 
 serve:
   browser: false
 
+documents:
+    - ./src/graphql/**/*.*.graphql
 "
 `;
 
 exports[`generators/base app directory --example should create a trippin yml config 5`] = `
 "sources:
-  - name: StackExchange
+  - name: Trippin
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
 
 serve:
   browser: false
 
+documents:
+    - ./src/graphql/**/*.*.graphql
 "
 `;
 
@@ -1896,11 +1960,11 @@ exports[`generators/base app directory --meshConfig should create a cjs config w
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -1937,11 +2001,11 @@ exports[`generators/base app directory --meshConfig should create a cjs config w
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -1977,11 +2041,12 @@ exports[`generators/base app directory --meshConfig should create a cjs config w
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -1989,6 +2054,7 @@ exports[`generators/base app directory --meshConfig should create a cjs config w
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -1997,11 +2063,11 @@ exports[`generators/base app directory --meshConfig should create a js config wh
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -2038,11 +2104,11 @@ exports[`generators/base app directory --meshConfig should create a js config wh
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -2078,11 +2144,12 @@ exports[`generators/base app directory --meshConfig should create a js config wh
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -2090,6 +2157,7 @@ exports[`generators/base app directory --meshConfig should create a js config wh
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -2098,10 +2166,10 @@ exports[`generators/base app directory --meshConfig should create a json config 
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"JavaScript Wiki\\",
       \\"handler\\": {
         \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+          \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
         }
       }
     }
@@ -2136,10 +2204,10 @@ exports[`generators/base app directory --meshConfig should create a json config 
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"JavaScript Wiki\\",
       \\"handler\\": {
         \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+          \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
         }
       }
     }
@@ -2172,26 +2240,30 @@ exports[`generators/base app directory --meshConfig should create a json config 
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"Trippin\\",
       \\"handler\\": {
-        \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        \\"odata\\": {
+          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          batch: \\"multipart\\",
+          expandNavProps: true
         }
       }
     }
   ],
   \\"serve\\": {
     \\"browser\\": false
-  }}
+  },
+  \\"documents\\": ['./src/graphql/**/*.*.graphql']
+}
 "
 `;
 
 exports[`generators/base app directory --meshConfig should create a yml config by default 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -2216,10 +2288,10 @@ documents:
 
 exports[`generators/base app directory --meshConfig should create a yml config by default 3`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -2242,23 +2314,27 @@ serve:
 
 exports[`generators/base app directory --meshConfig should create a yml config by default 5`] = `
 "sources:
-  - name: StackExchange
+  - name: Trippin
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
 
 serve:
   browser: false
 
+documents:
+    - ./src/graphql/**/*.*.graphql
 "
 `;
 
 exports[`generators/base app directory --meshConfig should create a yml config when --meshConfig=%s 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -2283,10 +2359,10 @@ documents:
 
 exports[`generators/base app directory --meshConfig should create a yml config when --meshConfig=%s 3`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -2309,14 +2385,18 @@ serve:
 
 exports[`generators/base app directory --meshConfig should create a yml config when --meshConfig=%s 5`] = `
 "sources:
-  - name: StackExchange
+  - name: Trippin
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
 
 serve:
   browser: false
 
+documents:
+    - ./src/graphql/**/*.*.graphql
 "
 `;
 
@@ -2583,11 +2663,11 @@ exports[`generators/base app with standalone config --example should create a ja
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -2603,11 +2683,11 @@ exports[`generators/base app with standalone config --example should create a ja
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -2623,10 +2703,10 @@ exports[`generators/base app with standalone config --example should create a ja
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"JavaScript Wiki\\",
       \\"handler\\": {
         \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+          \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
         }
       }
     }
@@ -2639,10 +2719,10 @@ exports[`generators/base app with standalone config --example should create a ja
 
 exports[`generators/base app with standalone config --example should create a javascript-wiki yml config 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -2652,10 +2732,10 @@ serve:
 
 exports[`generators/base app with standalone config --example should create a javascriptWiki config by default 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -2738,11 +2818,12 @@ exports[`generators/base app with standalone config --example should create a tr
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -2750,6 +2831,7 @@ exports[`generators/base app with standalone config --example should create a tr
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -2758,11 +2840,12 @@ exports[`generators/base app with standalone config --example should create a tr
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -2770,6 +2853,7 @@ exports[`generators/base app with standalone config --example should create a tr
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -2778,30 +2862,38 @@ exports[`generators/base app with standalone config --example should create a tr
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"Trippin\\",
       \\"handler\\": {
-        \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        \\"odata\\": {
+          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          batch: \\"multipart\\",
+          expandNavProps: true
         }
       }
     }
   ],
   \\"serve\\": {
     \\"browser\\": false
-  }}
+  },
+  \\"documents\\": ['./src/graphql/**/*.*.graphql']
+}
 "
 `;
 
 exports[`generators/base app with standalone config --example should create a trippin yml config 1`] = `
 "sources:
-  - name: StackExchange
+  - name: Trippin
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
 
 serve:
   browser: false
 
+documents:
+    - ./src/graphql/**/*.*.graphql
 "
 `;
 
@@ -2847,11 +2939,11 @@ exports[`generators/base app with standalone config --meshConfig should create a
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -2867,11 +2959,11 @@ exports[`generators/base app with standalone config --meshConfig should create a
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -2887,10 +2979,10 @@ exports[`generators/base app with standalone config --meshConfig should create a
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"JavaScript Wiki\\",
       \\"handler\\": {
         \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+          \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
         }
       }
     }
@@ -2903,10 +2995,10 @@ exports[`generators/base app with standalone config --meshConfig should create a
 
 exports[`generators/base app with standalone config --meshConfig should create a yml config by default 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -2916,10 +3008,10 @@ serve:
 
 exports[`generators/base app with standalone config --meshConfig should create a yml config when --meshConfig=%s 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -3420,11 +3512,11 @@ exports[`generators/base lib directory --example should create a javascript-wiki
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -3445,11 +3537,11 @@ exports[`generators/base lib directory --example should create a javascript-wiki
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -3470,11 +3562,11 @@ exports[`generators/base lib directory --example should create a javascript-wiki
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -3495,11 +3587,11 @@ exports[`generators/base lib directory --example should create a javascript-wiki
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -3520,11 +3612,11 @@ exports[`generators/base lib directory --example should create a javascript-wiki
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -3545,11 +3637,11 @@ exports[`generators/base lib directory --example should create a javascript-wiki
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -3570,11 +3662,11 @@ exports[`generators/base lib directory --example should create a javascript-wiki
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -3595,11 +3687,11 @@ exports[`generators/base lib directory --example should create a javascript-wiki
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -3620,11 +3712,11 @@ exports[`generators/base lib directory --example should create a javascript-wiki
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -3645,11 +3737,11 @@ exports[`generators/base lib directory --example should create a javascript-wiki
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -3670,10 +3762,10 @@ exports[`generators/base lib directory --example should create a javascript-wiki
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"JavaScript Wiki\\",
       \\"handler\\": {
         \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+          \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
         }
       }
     }
@@ -3694,10 +3786,10 @@ exports[`generators/base lib directory --example should create a javascript-wiki
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"JavaScript Wiki\\",
       \\"handler\\": {
         \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+          \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
         }
       }
     }
@@ -3718,10 +3810,10 @@ exports[`generators/base lib directory --example should create a javascript-wiki
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"JavaScript Wiki\\",
       \\"handler\\": {
         \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+          \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
         }
       }
     }
@@ -3742,10 +3834,10 @@ exports[`generators/base lib directory --example should create a javascript-wiki
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"JavaScript Wiki\\",
       \\"handler\\": {
         \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+          \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
         }
       }
     }
@@ -3766,10 +3858,10 @@ exports[`generators/base lib directory --example should create a javascript-wiki
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"JavaScript Wiki\\",
       \\"handler\\": {
         \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+          \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
         }
       }
     }
@@ -3788,10 +3880,10 @@ exports[`generators/base lib directory --example should create a javascript-wiki
 
 exports[`generators/base lib directory --example should create a javascript-wiki yml config 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -3804,10 +3896,10 @@ sdk:
 
 exports[`generators/base lib directory --example should create a javascript-wiki yml config 2`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -3820,10 +3912,10 @@ sdk:
 
 exports[`generators/base lib directory --example should create a javascript-wiki yml config 3`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -3836,10 +3928,10 @@ sdk:
 
 exports[`generators/base lib directory --example should create a javascript-wiki yml config 4`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -3852,10 +3944,10 @@ sdk:
 
 exports[`generators/base lib directory --example should create a javascript-wiki yml config 5`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -3868,10 +3960,10 @@ sdk:
 
 exports[`generators/base lib directory --example should create a javascriptWiki config by default 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -3899,10 +3991,10 @@ documents:
 
 exports[`generators/base lib directory --example should create a javascriptWiki config by default 3`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -3931,17 +4023,18 @@ sdk:
 
 exports[`generators/base lib directory --example should create a javascriptWiki config by default 5`] = `
 "sources:
-  - name: StackExchange
+  - name: Trippin
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
 
 serve:
   browser: false
 
-sdk:
-  generateOperations:
-    selectionSetDepth: 6
+documents:
+    - ./src/graphql/**/*.*.graphql
 "
 `;
 
@@ -4399,11 +4492,12 @@ exports[`generators/base lib directory --example should create a trippin cjs con
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -4411,11 +4505,7 @@ exports[`generators/base lib directory --example should create a trippin cjs con
   serve: {
     browser: false,
   },
-  sdk: {
-    generateOperations: {
-      selectionSetDepth: 6,
-    },
-  },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -4424,11 +4514,12 @@ exports[`generators/base lib directory --example should create a trippin cjs con
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -4436,11 +4527,7 @@ exports[`generators/base lib directory --example should create a trippin cjs con
   serve: {
     browser: false,
   },
-  sdk: {
-    generateOperations: {
-      selectionSetDepth: 6,
-    },
-  },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -4449,11 +4536,12 @@ exports[`generators/base lib directory --example should create a trippin cjs con
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -4461,11 +4549,7 @@ exports[`generators/base lib directory --example should create a trippin cjs con
   serve: {
     browser: false,
   },
-  sdk: {
-    generateOperations: {
-      selectionSetDepth: 6,
-    },
-  },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -4474,11 +4558,12 @@ exports[`generators/base lib directory --example should create a trippin cjs con
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -4486,11 +4571,7 @@ exports[`generators/base lib directory --example should create a trippin cjs con
   serve: {
     browser: false,
   },
-  sdk: {
-    generateOperations: {
-      selectionSetDepth: 6,
-    },
-  },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -4499,11 +4580,12 @@ exports[`generators/base lib directory --example should create a trippin cjs con
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -4511,11 +4593,7 @@ exports[`generators/base lib directory --example should create a trippin cjs con
   serve: {
     browser: false,
   },
-  sdk: {
-    generateOperations: {
-      selectionSetDepth: 6,
-    },
-  },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -4524,11 +4602,12 @@ exports[`generators/base lib directory --example should create a trippin js conf
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -4536,11 +4615,7 @@ exports[`generators/base lib directory --example should create a trippin js conf
   serve: {
     browser: false,
   },
-  sdk: {
-    generateOperations: {
-      selectionSetDepth: 6,
-    },
-  },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -4549,11 +4624,12 @@ exports[`generators/base lib directory --example should create a trippin js conf
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -4561,11 +4637,7 @@ exports[`generators/base lib directory --example should create a trippin js conf
   serve: {
     browser: false,
   },
-  sdk: {
-    generateOperations: {
-      selectionSetDepth: 6,
-    },
-  },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -4574,11 +4646,12 @@ exports[`generators/base lib directory --example should create a trippin js conf
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -4586,11 +4659,7 @@ exports[`generators/base lib directory --example should create a trippin js conf
   serve: {
     browser: false,
   },
-  sdk: {
-    generateOperations: {
-      selectionSetDepth: 6,
-    },
-  },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -4599,11 +4668,12 @@ exports[`generators/base lib directory --example should create a trippin js conf
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -4611,11 +4681,7 @@ exports[`generators/base lib directory --example should create a trippin js conf
   serve: {
     browser: false,
   },
-  sdk: {
-    generateOperations: {
-      selectionSetDepth: 6,
-    },
-  },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -4624,11 +4690,12 @@ exports[`generators/base lib directory --example should create a trippin js conf
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -4636,11 +4703,7 @@ exports[`generators/base lib directory --example should create a trippin js conf
   serve: {
     browser: false,
   },
-  sdk: {
-    generateOperations: {
-      selectionSetDepth: 6,
-    },
-  },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -4649,10 +4712,12 @@ exports[`generators/base lib directory --example should create a trippin json co
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"Trippin\\",
       \\"handler\\": {
-        \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        \\"odata\\": {
+          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          batch: \\"multipart\\",
+          expandNavProps: true
         }
       }
     }
@@ -4660,11 +4725,7 @@ exports[`generators/base lib directory --example should create a trippin json co
   \\"serve\\": {
     \\"browser\\": false
   },
-  \\"sdk\\": {
-    \\"generateOperations\\": {
-      \\"selectionSetDepth\\": 6
-    }
-  }
+  \\"documents\\": ['./src/graphql/**/*.*.graphql']
 }
 "
 `;
@@ -4673,10 +4734,12 @@ exports[`generators/base lib directory --example should create a trippin json co
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"Trippin\\",
       \\"handler\\": {
-        \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        \\"odata\\": {
+          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          batch: \\"multipart\\",
+          expandNavProps: true
         }
       }
     }
@@ -4684,11 +4747,7 @@ exports[`generators/base lib directory --example should create a trippin json co
   \\"serve\\": {
     \\"browser\\": false
   },
-  \\"sdk\\": {
-    \\"generateOperations\\": {
-      \\"selectionSetDepth\\": 6
-    }
-  }
+  \\"documents\\": ['./src/graphql/**/*.*.graphql']
 }
 "
 `;
@@ -4697,10 +4756,12 @@ exports[`generators/base lib directory --example should create a trippin json co
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"Trippin\\",
       \\"handler\\": {
-        \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        \\"odata\\": {
+          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          batch: \\"multipart\\",
+          expandNavProps: true
         }
       }
     }
@@ -4708,11 +4769,7 @@ exports[`generators/base lib directory --example should create a trippin json co
   \\"serve\\": {
     \\"browser\\": false
   },
-  \\"sdk\\": {
-    \\"generateOperations\\": {
-      \\"selectionSetDepth\\": 6
-    }
-  }
+  \\"documents\\": ['./src/graphql/**/*.*.graphql']
 }
 "
 `;
@@ -4721,10 +4778,12 @@ exports[`generators/base lib directory --example should create a trippin json co
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"Trippin\\",
       \\"handler\\": {
-        \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        \\"odata\\": {
+          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          batch: \\"multipart\\",
+          expandNavProps: true
         }
       }
     }
@@ -4732,11 +4791,7 @@ exports[`generators/base lib directory --example should create a trippin json co
   \\"serve\\": {
     \\"browser\\": false
   },
-  \\"sdk\\": {
-    \\"generateOperations\\": {
-      \\"selectionSetDepth\\": 6
-    }
-  }
+  \\"documents\\": ['./src/graphql/**/*.*.graphql']
 }
 "
 `;
@@ -4745,10 +4800,12 @@ exports[`generators/base lib directory --example should create a trippin json co
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"Trippin\\",
       \\"handler\\": {
-        \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        \\"odata\\": {
+          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          batch: \\"multipart\\",
+          expandNavProps: true
         }
       }
     }
@@ -4756,92 +4813,93 @@ exports[`generators/base lib directory --example should create a trippin json co
   \\"serve\\": {
     \\"browser\\": false
   },
-  \\"sdk\\": {
-    \\"generateOperations\\": {
-      \\"selectionSetDepth\\": 6
-    }
-  }
+  \\"documents\\": ['./src/graphql/**/*.*.graphql']
 }
 "
 `;
 
 exports[`generators/base lib directory --example should create a trippin yml config 1`] = `
 "sources:
-  - name: StackExchange
+  - name: Trippin
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
 
 serve:
   browser: false
 
-sdk:
-  generateOperations:
-    selectionSetDepth: 6
+documents:
+    - ./src/graphql/**/*.*.graphql
 "
 `;
 
 exports[`generators/base lib directory --example should create a trippin yml config 2`] = `
 "sources:
-  - name: StackExchange
+  - name: Trippin
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
 
 serve:
   browser: false
 
-sdk:
-  generateOperations:
-    selectionSetDepth: 6
+documents:
+    - ./src/graphql/**/*.*.graphql
 "
 `;
 
 exports[`generators/base lib directory --example should create a trippin yml config 3`] = `
 "sources:
-  - name: StackExchange
+  - name: Trippin
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
 
 serve:
   browser: false
 
-sdk:
-  generateOperations:
-    selectionSetDepth: 6
+documents:
+    - ./src/graphql/**/*.*.graphql
 "
 `;
 
 exports[`generators/base lib directory --example should create a trippin yml config 4`] = `
 "sources:
-  - name: StackExchange
+  - name: Trippin
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
 
 serve:
   browser: false
 
-sdk:
-  generateOperations:
-    selectionSetDepth: 6
+documents:
+    - ./src/graphql/**/*.*.graphql
 "
 `;
 
 exports[`generators/base lib directory --example should create a trippin yml config 5`] = `
 "sources:
-  - name: StackExchange
+  - name: Trippin
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
 
 serve:
   browser: false
 
-sdk:
-  generateOperations:
-    selectionSetDepth: 6
+documents:
+    - ./src/graphql/**/*.*.graphql
 "
 `;
 
@@ -5039,11 +5097,11 @@ exports[`generators/base lib directory --meshConfig should create a cjs config w
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -5085,11 +5143,11 @@ exports[`generators/base lib directory --meshConfig should create a cjs config w
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -5135,11 +5193,12 @@ exports[`generators/base lib directory --meshConfig should create a cjs config w
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -5147,11 +5206,7 @@ exports[`generators/base lib directory --meshConfig should create a cjs config w
   serve: {
     browser: false,
   },
-  sdk: {
-    generateOperations: {
-      selectionSetDepth: 6,
-    },
-  },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -5160,11 +5215,11 @@ exports[`generators/base lib directory --meshConfig should create a js config wh
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -5206,11 +5261,11 @@ exports[`generators/base lib directory --meshConfig should create a js config wh
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -5256,11 +5311,12 @@ exports[`generators/base lib directory --meshConfig should create a js config wh
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -5268,11 +5324,7 @@ exports[`generators/base lib directory --meshConfig should create a js config wh
   serve: {
     browser: false,
   },
-  sdk: {
-    generateOperations: {
-      selectionSetDepth: 6,
-    },
-  },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -5281,10 +5333,10 @@ exports[`generators/base lib directory --meshConfig should create a json config 
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"JavaScript Wiki\\",
       \\"handler\\": {
         \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+          \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
         }
       }
     }
@@ -5325,10 +5377,10 @@ exports[`generators/base lib directory --meshConfig should create a json config 
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"JavaScript Wiki\\",
       \\"handler\\": {
         \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+          \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
         }
       }
     }
@@ -5373,10 +5425,12 @@ exports[`generators/base lib directory --meshConfig should create a json config 
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"Trippin\\",
       \\"handler\\": {
-        \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        \\"odata\\": {
+          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          batch: \\"multipart\\",
+          expandNavProps: true
         }
       }
     }
@@ -5384,21 +5438,17 @@ exports[`generators/base lib directory --meshConfig should create a json config 
   \\"serve\\": {
     \\"browser\\": false
   },
-  \\"sdk\\": {
-    \\"generateOperations\\": {
-      \\"selectionSetDepth\\": 6
-    }
-  }
+  \\"documents\\": ['./src/graphql/**/*.*.graphql']
 }
 "
 `;
 
 exports[`generators/base lib directory --meshConfig should create a yml config by default 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -5426,10 +5476,10 @@ documents:
 
 exports[`generators/base lib directory --meshConfig should create a yml config by default 3`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -5458,26 +5508,27 @@ sdk:
 
 exports[`generators/base lib directory --meshConfig should create a yml config by default 5`] = `
 "sources:
-  - name: StackExchange
+  - name: Trippin
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
 
 serve:
   browser: false
 
-sdk:
-  generateOperations:
-    selectionSetDepth: 6
+documents:
+    - ./src/graphql/**/*.*.graphql
 "
 `;
 
 exports[`generators/base lib directory --meshConfig should create a yml config when --meshConfig=%s 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -5505,10 +5556,10 @@ documents:
 
 exports[`generators/base lib directory --meshConfig should create a yml config when --meshConfig=%s 3`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -5537,17 +5588,18 @@ sdk:
 
 exports[`generators/base lib directory --meshConfig should create a yml config when --meshConfig=%s 5`] = `
 "sources:
-  - name: StackExchange
+  - name: Trippin
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
 
 serve:
   browser: false
 
-sdk:
-  generateOperations:
-    selectionSetDepth: 6
+documents:
+    - ./src/graphql/**/*.*.graphql
 "
 `;
 
@@ -5792,11 +5844,11 @@ exports[`generators/base lib with standalone config --example should create a ja
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -5817,11 +5869,11 @@ exports[`generators/base lib with standalone config --example should create a ja
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -5842,10 +5894,10 @@ exports[`generators/base lib with standalone config --example should create a ja
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"JavaScript Wiki\\",
       \\"handler\\": {
         \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+          \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
         }
       }
     }
@@ -5864,10 +5916,10 @@ exports[`generators/base lib with standalone config --example should create a ja
 
 exports[`generators/base lib with standalone config --example should create a javascript-wiki yml config 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -5880,10 +5932,10 @@ sdk:
 
 exports[`generators/base lib with standalone config --example should create a javascriptWiki config by default 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -5988,11 +6040,12 @@ exports[`generators/base lib with standalone config --example should create a tr
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -6000,11 +6053,7 @@ exports[`generators/base lib with standalone config --example should create a tr
   serve: {
     browser: false,
   },
-  sdk: {
-    generateOperations: {
-      selectionSetDepth: 6,
-    },
-  },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -6013,11 +6062,12 @@ exports[`generators/base lib with standalone config --example should create a tr
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -6025,11 +6075,7 @@ exports[`generators/base lib with standalone config --example should create a tr
   serve: {
     browser: false,
   },
-  sdk: {
-    generateOperations: {
-      selectionSetDepth: 6,
-    },
-  },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -6038,10 +6084,12 @@ exports[`generators/base lib with standalone config --example should create a tr
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"Trippin\\",
       \\"handler\\": {
-        \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        \\"odata\\": {
+          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          batch: \\"multipart\\",
+          expandNavProps: true
         }
       }
     }
@@ -6049,28 +6097,25 @@ exports[`generators/base lib with standalone config --example should create a tr
   \\"serve\\": {
     \\"browser\\": false
   },
-  \\"sdk\\": {
-    \\"generateOperations\\": {
-      \\"selectionSetDepth\\": 6
-    }
-  }
+  \\"documents\\": ['./src/graphql/**/*.*.graphql']
 }
 "
 `;
 
 exports[`generators/base lib with standalone config --example should create a trippin yml config 1`] = `
 "sources:
-  - name: StackExchange
+  - name: Trippin
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
 
 serve:
   browser: false
 
-sdk:
-  generateOperations:
-    selectionSetDepth: 6
+documents:
+    - ./src/graphql/**/*.*.graphql
 "
 `;
 
@@ -6116,11 +6161,11 @@ exports[`generators/base lib with standalone config --meshConfig should create a
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -6141,11 +6186,11 @@ exports[`generators/base lib with standalone config --meshConfig should create a
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -6166,10 +6211,10 @@ exports[`generators/base lib with standalone config --meshConfig should create a
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"JavaScript Wiki\\",
       \\"handler\\": {
         \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+          \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
         }
       }
     }
@@ -6188,10 +6233,10 @@ exports[`generators/base lib with standalone config --meshConfig should create a
 
 exports[`generators/base lib with standalone config --meshConfig should create a yml config by default 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -6204,10 +6249,10 @@ sdk:
 
 exports[`generators/base lib with standalone config --meshConfig should create a yml config when --meshConfig=%s 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -6365,11 +6410,11 @@ exports[`generators/base nested within app directory --example should create a j
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -6385,11 +6430,11 @@ exports[`generators/base nested within app directory --example should create a j
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -6405,10 +6450,10 @@ exports[`generators/base nested within app directory --example should create a j
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"JavaScript Wiki\\",
       \\"handler\\": {
         \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+          \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
         }
       }
     }
@@ -6421,10 +6466,10 @@ exports[`generators/base nested within app directory --example should create a j
 
 exports[`generators/base nested within app directory --example should create a javascript-wiki yml config 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -6434,10 +6479,10 @@ serve:
 
 exports[`generators/base nested within app directory --example should create a javascriptWiki config by default 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -6520,11 +6565,12 @@ exports[`generators/base nested within app directory --example should create a t
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -6532,6 +6578,7 @@ exports[`generators/base nested within app directory --example should create a t
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -6540,11 +6587,12 @@ exports[`generators/base nested within app directory --example should create a t
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -6552,6 +6600,7 @@ exports[`generators/base nested within app directory --example should create a t
   serve: {
     browser: false,
   },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -6560,30 +6609,38 @@ exports[`generators/base nested within app directory --example should create a t
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"Trippin\\",
       \\"handler\\": {
-        \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        \\"odata\\": {
+          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          batch: \\"multipart\\",
+          expandNavProps: true
         }
       }
     }
   ],
   \\"serve\\": {
     \\"browser\\": false
-  }}
+  },
+  \\"documents\\": ['./src/graphql/**/*.*.graphql']
+}
 "
 `;
 
 exports[`generators/base nested within app directory --example should create a trippin yml config 1`] = `
 "sources:
-  - name: StackExchange
+  - name: Trippin
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
 
 serve:
   browser: false
 
+documents:
+    - ./src/graphql/**/*.*.graphql
 "
 `;
 
@@ -6629,11 +6686,11 @@ exports[`generators/base nested within app directory --meshConfig should create 
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -6649,11 +6706,11 @@ exports[`generators/base nested within app directory --meshConfig should create 
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -6669,10 +6726,10 @@ exports[`generators/base nested within app directory --meshConfig should create 
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"JavaScript Wiki\\",
       \\"handler\\": {
         \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+          \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
         }
       }
     }
@@ -6685,10 +6742,10 @@ exports[`generators/base nested within app directory --meshConfig should create 
 
 exports[`generators/base nested within app directory --meshConfig should create a yml config by default 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -6698,10 +6755,10 @@ serve:
 
 exports[`generators/base nested within app directory --meshConfig should create a yml config when --meshConfig=%s 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -6834,11 +6891,11 @@ exports[`generators/base nested within lib directory --example should create a j
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -6859,11 +6916,11 @@ exports[`generators/base nested within lib directory --example should create a j
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -6884,10 +6941,10 @@ exports[`generators/base nested within lib directory --example should create a j
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"JavaScript Wiki\\",
       \\"handler\\": {
         \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+          \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
         }
       }
     }
@@ -6906,10 +6963,10 @@ exports[`generators/base nested within lib directory --example should create a j
 
 exports[`generators/base nested within lib directory --example should create a javascript-wiki yml config 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -6922,10 +6979,10 @@ sdk:
 
 exports[`generators/base nested within lib directory --example should create a javascriptWiki config by default 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -7030,11 +7087,12 @@ exports[`generators/base nested within lib directory --example should create a t
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -7042,11 +7100,7 @@ exports[`generators/base nested within lib directory --example should create a t
   serve: {
     browser: false,
   },
-  sdk: {
-    generateOperations: {
-      selectionSetDepth: 6,
-    },
-  },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -7055,11 +7109,12 @@ exports[`generators/base nested within lib directory --example should create a t
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'Trippin',
       handler: {
-        openapi: {
-          source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+        odata: {
+          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          batch: 'multipart',
+          expandNavProps: true,
         },
       },
     },
@@ -7067,11 +7122,7 @@ exports[`generators/base nested within lib directory --example should create a t
   serve: {
     browser: false,
   },
-  sdk: {
-    generateOperations: {
-      selectionSetDepth: 6,
-    },
-  },
+  documents: ['./src/graphql/**/*.*.graphql'],
 };
 "
 `;
@@ -7080,10 +7131,12 @@ exports[`generators/base nested within lib directory --example should create a t
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"Trippin\\",
       \\"handler\\": {
-        \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+        \\"odata\\": {
+          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          batch: \\"multipart\\",
+          expandNavProps: true
         }
       }
     }
@@ -7091,28 +7144,25 @@ exports[`generators/base nested within lib directory --example should create a t
   \\"serve\\": {
     \\"browser\\": false
   },
-  \\"sdk\\": {
-    \\"generateOperations\\": {
-      \\"selectionSetDepth\\": 6
-    }
-  }
+  \\"documents\\": ['./src/graphql/**/*.*.graphql']
 }
 "
 `;
 
 exports[`generators/base nested within lib directory --example should create a trippin yml config 1`] = `
 "sources:
-  - name: StackExchange
+  - name: Trippin
     handler:
-      openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+      odata:
+        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        batch: multipart
+        expandNavProps: true
 
 serve:
   browser: false
 
-sdk:
-  generateOperations:
-    selectionSetDepth: 6
+documents:
+    - ./src/graphql/**/*.*.graphql
 "
 `;
 
@@ -7158,11 +7208,11 @@ exports[`generators/base nested within lib directory --meshConfig should create 
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -7183,11 +7233,11 @@ exports[`generators/base nested within lib directory --meshConfig should create 
 "module.exports = {
   sources: [
     {
-      name: 'StackExchange',
+      name: 'JavaScript Wiki',
       handler: {
         openapi: {
           source:
-            'https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml',
+            'https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml',
         },
       },
     },
@@ -7208,10 +7258,10 @@ exports[`generators/base nested within lib directory --meshConfig should create 
 "{
   \\"sources\\": [
     {
-      \\"name\\": \\"StackExchange\\",
+      \\"name\\": \\"JavaScript Wiki\\",
       \\"handler\\": {
         \\"openapi\\": {
-          \\"source\\": \\"https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml\\"
+          \\"source\\": \\"https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml\\"
         }
       }
     }
@@ -7230,10 +7280,10 @@ exports[`generators/base nested within lib directory --meshConfig should create 
 
 exports[`generators/base nested within lib directory --meshConfig should create a yml config by default 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
@@ -7246,10 +7296,10 @@ sdk:
 
 exports[`generators/base nested within lib directory --meshConfig should create a yml config when --meshConfig=%s 1`] = `
 "sources:
-  - name: StackExchange
+  - name: JavaScript Wiki
     handler:
       openapi:
-        source: https://raw.githubusercontent.com/grokify/api-specs/master/stackexchange/stackexchange-api-v2.2_openapi-v3.0.yaml
+        source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
 
 serve:
   browser: false
