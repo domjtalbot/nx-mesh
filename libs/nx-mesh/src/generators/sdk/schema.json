@@ -45,10 +45,23 @@
       }
     },
     "example": {
-      "description": "Which example project would you like to use?",
+      "description": "Which example project would you like to start with?",
       "type": "string",
-      "enum": ["javascriptWiki", "stackexchange", "trippin", "country-info"],
-      "default": "javascriptWiki"
+      "default": "star-wars-api",
+      "x-prompt": {
+        "message": "Which example project would you like to start with?",
+        "type": "list",
+        "items": [
+          { "value": "country-info", "label": "Country Info (SOAP)" },
+          { "value": "fake-api", "label": "Fake API (JSON Schema)" },
+          { "value": "javascript-wiki", "label": "JavaScript Wiki (OpenAPI)" },
+          { "value": "movies", "label": "Movies (Neo4j)" },
+          { "value": "rfam", "label": "RFam (MySQL)" },
+          { "value": "stackexchange", "label": "StackExchange (OpenAPI)" },
+          { "value": "star-wars-api", "label": "Star Wars API (GraphQL)" },
+          { "value": "trippin", "label": "Trip Pin (odata)" }
+        ]
+      }
     },
     "simpleModuleName": {
       "description": "Keep the module name simple (when using `--directory`).",
