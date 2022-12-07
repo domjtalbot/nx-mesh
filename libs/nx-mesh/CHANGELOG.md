@@ -1,5 +1,15 @@
 # nx-mesh
 
+## 2.0.1
+
+### Patch Changes
+
+- [#97](https://github.com/domjtalbot/nx-mesh/pull/97) [`fd8de91`](https://github.com/domjtalbot/nx-mesh/commit/fd8de91ef964635b5819eab436a8042346e4e54d) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Fix the output of generated examples.
+
+- [#93](https://github.com/domjtalbot/nx-mesh/pull/93) [`65ce611`](https://github.com/domjtalbot/nx-mesh/commit/65ce6114c3a3f00b9f980df64ea1cdc73a5c8a0b) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Mesh examples share base dependencies
+
+- [#96](https://github.com/domjtalbot/nx-mesh/pull/96) [`ee49b12`](https://github.com/domjtalbot/nx-mesh/commit/ee49b127cb269d3eaa84156f7e3e637fccfe597d) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Fix `application` & `sdk` generators showing outdated examples
+
 ## 2.0.0
 
 ### Major Changes
