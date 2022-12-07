@@ -46,7 +46,10 @@ const cache = [
   '@graphql-mesh/cache-redis',
 ] as const;
 
-const plugins = ['@graphql-mesh/plugin-snapshot'] as const;
+const plugins = [
+  '@graphql-mesh/plugin-mock',
+  '@graphql-mesh/plugin-snapshot',
+] as const;
 
 /**
  * A list of known GraphQL Mesh packages.

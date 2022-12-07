@@ -27,6 +27,9 @@ export const versions: MeshPackageVersions = {
   '@graphql-mesh/new-openapi': { '@graphql-mesh/new-openapi': '0.8.2' },
   '@graphql-mesh/odata': { '@graphql-mesh/odata': '0.20.31' },
   '@graphql-mesh/openapi': { '@graphql-mesh/openapi': '0.33.34' },
+  '@graphql-mesh/plugin-mock': {
+    '@graphql-mesh/plugin-mock': '0.0.37',
+  },
   '@graphql-mesh/plugin-snapshot': {
     '@graphql-mesh/plugin-snapshot': '0.0.10',
   },
