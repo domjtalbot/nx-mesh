@@ -53,6 +53,7 @@
   - Choose from multiple starter templates.
 - Supports all GraphQL CLI commands (`build`, `dev`, `start`, `validate`)
 - Use [SWC](https://swc.rs/) to compile a GraphQL Mesh SDK
+- Use [`graphql-codegen`](https://the-guild.dev/graphql/codegen) to build custom SDKs from GraphQL Mesh.
 - Automatically use the first available port when running `dev`, `start`, or `serve`.
 - Supports NX Cypress plugin
 
