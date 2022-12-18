@@ -35,6 +35,21 @@ export default async function* buildExecutor(
     context
   );
 
+  if (options.codegen?.config) {
+    logger.info('');
+    logger.info('Running GraphQL Codegen...');
+
+    await runCodegenCli(
+      {
+        ...options.codegen,
+        debug: options.debug,
+        verbose: true,
+        watch: options.watch,
+      },
+      context
+    );
+  }
+
   logger.info('');
   logger.info('Running Typescript compiler...');
 
@@ -63,21 +78,6 @@ export default async function* buildExecutor(
         dir: options.dir,
         outputPath: options.outputPath,
         projectRoot: options.outputPath,
-      },
-      context
-    );
-  }
-
-  if (options.codegen?.config) {
-    logger.info('');
-    logger.info('Running GraphQL Codegen...');
-
-    await runCodegenCli(
-      {
-        ...options.codegen,
-        debug: options.debug,
-        verbose: true,
-        watch: options.watch,
       },
       context
     );
