@@ -4,7 +4,10 @@ import { logger } from '@nrwl/devkit';
 import { tscExecutor } from '@nrwl/js/src/executors/tsc/tsc.impl';
 import { resolve } from 'path';
 
-import { createPackageJson, runMeshCli } from '../../utils';
+import { createPackageJson } from '../../utils';
+import { runCodegenCli } from '../../utils/graphql-codegen-cli';
+import { runMeshCli } from '../../utils/mesh-cli';
+
 import { BuildExecutorSchema } from './schema';
 
 export default async function* buildExecutor(
@@ -33,6 +36,7 @@ export default async function* buildExecutor(
   );
 
   logger.info('');
+  logger.info('Running Typescript compiler...');
 
   const tsc = tscExecutor(
     {
@@ -51,11 +55,29 @@ export default async function* buildExecutor(
   }
 
   if (success) {
+    logger.info('');
+    logger.info('Creating package.json...');
+
     await createPackageJson(
       {
         dir: options.dir,
         outputPath: options.outputPath,
         projectRoot: options.outputPath,
+      },
+      context
+    );
+  }
+
+  if (options.codegen?.config) {
+    logger.info('');
+    logger.info('Running GraphQL Codegen...');
+
+    await runCodegenCli(
+      {
+        ...options.codegen,
+        debug: options.debug,
+        verbose: true,
+        watch: options.watch,
       },
       context
     );

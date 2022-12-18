@@ -10,7 +10,7 @@ importers:
       '@envelop/depth-limit': 2.0.3
       '@envelop/disable-introspection': 4.0.3
       '@envelop/response-cache': 4.0.3
-      '@graphql-codegen/cli': ^2.16.1
+      '@graphql-codegen/cli': 2.16.1
       '@graphql-codegen/client-preset': ^1.2.3
       '@graphql-mesh/cache-file': ^0.9.44
       '@graphql-mesh/cli': 0.79.3
@@ -26,6 +26,7 @@ importers:
       '@graphql-mesh/runtime': 0.44.31
       '@graphql-mesh/soap': 0.16.0
       '@graphql-mesh/utils': 0.42.6
+      '@graphql-typed-document-node/core': ^3.1.1
       '@graphql-yoga/node': 2.13.13
       '@nrwl/cli': 15.0.13
       '@nrwl/cypress': 15.0.13
@@ -115,6 +116,7 @@ importers:
       '@graphql-mesh/runtime': 0.44.31_rjjjs2nwgns3bcvnnqb5eu5nry
       '@graphql-mesh/soap': 0.16.0_graphql@16.6.0
       '@graphql-mesh/utils': 0.42.6_graphql@16.6.0
+      '@graphql-typed-document-node/core': 3.1.1_graphql@16.6.0
       '@graphql-yoga/node': 2.13.13_rjjjs2nwgns3bcvnnqb5eu5nry
       '@nrwl/devkit': 15.0.13_dtuttet22dxzt73ll2oxv2ugvu
       '@nrwl/js': 15.0.13_5gjrzncoru3qx5of6aykrhb35m
@@ -2906,9 +2908,9 @@ packages:
       '@graphql-tools/json-file-loader': 7.4.14_graphql@16.6.0
       '@graphql-tools/load': 7.8.0_graphql@16.6.0
       '@graphql-tools/prisma-loader': 7.2.46_b3mrw6czvahatuezxxzysmh2q4
-      '@graphql-tools/url-loader': 7.16.11_b3mrw6czvahatuezxxzysmh2q4
+      '@graphql-tools/url-loader': 7.16.26_b3mrw6czvahatuezxxzysmh2q4
       '@graphql-tools/utils': 8.13.1_graphql@16.6.0
-      '@whatwg-node/fetch': 0.5.1_encoding@0.1.13
+      '@whatwg-node/fetch': 0.5.3_encoding@0.1.13
       chalk: 4.1.2
       chokidar: 3.5.3
       cosmiconfig: 7.0.1
@@ -2977,7 +2979,7 @@ packages:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
       '@graphql-codegen/plugin-helpers': 2.7.2_graphql@16.6.0
-      '@graphql-tools/schema': 9.0.8_graphql@16.6.0
+      '@graphql-tools/schema': 9.0.12_graphql@16.6.0
       '@graphql-tools/utils': 9.0.0_graphql@16.6.0
       graphql: 16.6.0
       tslib: 2.4.1
@@ -2992,8 +2994,8 @@ packages:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
       '@graphql-codegen/plugin-helpers': 3.1.1_graphql@16.6.0
-      '@graphql-tools/schema': 9.0.8_graphql@16.6.0
-      '@graphql-tools/utils': 9.1.1_graphql@16.6.0
+      '@graphql-tools/schema': 9.0.12_graphql@16.6.0
+      '@graphql-tools/utils': 9.1.3_graphql@16.6.0
       graphql: 16.6.0
       tslib: 2.4.1
     dev: false
@@ -3409,7 +3411,7 @@ packages:
       '@graphql-tools/graphql-file-loader': 7.5.9_graphql@16.6.0
       '@graphql-tools/load': 7.8.4_graphql@16.6.0
       '@graphql-tools/utils': 9.0.1_graphql@16.6.0
-      '@whatwg-node/fetch': 0.5.1_encoding@0.1.13
+      '@whatwg-node/fetch': 0.5.3_encoding@0.1.13
       camel-case: 4.1.2
       graphql: 16.6.0
       param-case: 3.0.4
@@ -3495,7 +3497,7 @@ packages:
       '@graphql-mesh/runtime': 0.44.31_rjjjs2nwgns3bcvnnqb5eu5nry
       '@graphql-mesh/types': 0.85.7_graphql@16.6.0
       '@graphql-mesh/utils': 0.42.6_graphql@16.6.0
-      '@whatwg-node/fetch': 0.5.1_encoding@0.1.13
+      '@whatwg-node/fetch': 0.5.3_encoding@0.1.13
       '@whatwg-node/server': 0.4.14_6g4xlh77qkmky7kw4we5vmcsbe
       graphql: 16.6.0
       graphql-yoga: 3.0.0-next.10_b3mrw6czvahatuezxxzysmh2q4
@@ -3967,7 +3969,7 @@ packages:
     dependencies:
       '@ardatan/sync-fetch': 0.0.1_encoding@0.1.13
       '@graphql-tools/utils': 9.1.3_graphql@16.6.0
-      '@whatwg-node/fetch': 0.5.1_encoding@0.1.13
+      '@whatwg-node/fetch': 0.5.3_encoding@0.1.13
       graphql: 16.6.0
       tslib: 2.4.1
     transitivePeerDependencies:
@@ -4249,7 +4251,7 @@ packages:
       '@ardatan/sync-fetch': 0.0.1_encoding@0.1.13
       '@graphql-tools/graphql-tag-pluck': 7.4.2_graphql@16.6.0
       '@graphql-tools/utils': 9.1.3_graphql@16.6.0
-      '@whatwg-node/fetch': 0.5.1_encoding@0.1.13
+      '@whatwg-node/fetch': 0.5.3_encoding@0.1.13
       graphql: 16.6.0
       tslib: 2.4.1
     transitivePeerDependencies:
@@ -4652,7 +4654,7 @@ packages:
       '@graphql-tools/utils': 9.0.1_graphql@16.6.0
       '@graphql-tools/wrap': 9.2.10_graphql@16.6.0
       '@types/ws': 8.5.3
-      '@whatwg-node/fetch': 0.5.1_encoding@0.1.13
+      '@whatwg-node/fetch': 0.5.3_encoding@0.1.13
       dset: 3.1.2
       extract-files: 11.0.0
       graphql: 16.6.0
@@ -4685,7 +4687,7 @@ packages:
       '@graphql-tools/utils': 9.1.3_graphql@16.6.0
       '@graphql-tools/wrap': 9.2.21_graphql@16.6.0
       '@types/ws': 8.5.3
-      '@whatwg-node/fetch': 0.5.1_encoding@0.1.13
+      '@whatwg-node/fetch': 0.5.3_encoding@0.1.13
       graphql: 16.6.0
       isomorphic-ws: 5.0.0_ws@8.11.0
       tslib: 2.4.1
@@ -4848,7 +4850,7 @@ packages:
       '@envelop/core': 2.6.0_graphql@16.6.0
       '@envelop/parser-cache': 4.7.0_4hr55tbjlvoppd2sokdhrbpreq
       '@envelop/validation-cache': 4.7.0_4hr55tbjlvoppd2sokdhrbpreq
-      '@graphql-tools/schema': 9.0.8_graphql@16.6.0
+      '@graphql-tools/schema': 9.0.12_graphql@16.6.0
       '@graphql-tools/utils': 8.13.1_graphql@16.6.0
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.6.0
       '@graphql-yoga/subscription': 2.2.3
@@ -5471,7 +5473,7 @@ packages:
       graphql: ^16.0.0
       neo4j-driver: ^4.1.0 || ^5.0.0
     dependencies:
-      '@graphql-tools/merge': 8.3.10_graphql@16.6.0
+      '@graphql-tools/merge': 8.3.14_graphql@16.6.0
       '@graphql-tools/resolvers-composition': 6.5.12_graphql@16.6.0
       '@graphql-tools/schema': 9.0.6_graphql@16.6.0
       '@graphql-tools/utils': 8.13.1_graphql@16.6.0
@@ -7074,7 +7076,7 @@ packages:
       '@graphql-mesh/utils': 0.42.6_graphql@16.6.0
       '@graphql-tools/utils': 9.0.1_graphql@16.6.0
       '@json-schema-tools/meta-schema': 1.7.0
-      '@whatwg-node/fetch': 0.5.1_encoding@0.1.13
+      '@whatwg-node/fetch': 0.5.3_encoding@0.1.13
       ajv: 8.11.0
       ajv-formats: 2.1.1
       graphql: 16.6.0
@@ -13539,7 +13541,7 @@ packages:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 3.0.5
+      minimatch: 3.1.2
       once: 1.4.0
       path-is-absolute: 1.0.1
 
@@ -13707,7 +13709,7 @@ packages:
       '@graphql-tools/json-file-loader': 7.4.14_graphql@16.6.0
       '@graphql-tools/load': 7.8.4_graphql@16.6.0
       '@graphql-tools/merge': 8.3.14_graphql@16.6.0
-      '@graphql-tools/url-loader': 7.16.11_b3mrw6czvahatuezxxzysmh2q4
+      '@graphql-tools/url-loader': 7.16.26_b3mrw6czvahatuezxxzysmh2q4
       '@graphql-tools/utils': 8.13.1_graphql@16.6.0
       cosmiconfig: 7.0.1
       cosmiconfig-toml-loader: 1.0.0
@@ -13877,8 +13879,8 @@ packages:
       '@envelop/parser-cache': 5.0.3_pbptz7adnmiijjca652cpfgxr4
       '@envelop/validation-cache': 5.0.3_pbptz7adnmiijjca652cpfgxr4
       '@graphql-tools/executor': 0.0.6_graphql@16.6.0
-      '@graphql-tools/schema': 9.0.8_graphql@16.6.0
-      '@graphql-tools/utils': 9.1.1_graphql@16.6.0
+      '@graphql-tools/schema': 9.0.12_graphql@16.6.0
+      '@graphql-tools/utils': 9.1.3_graphql@16.6.0
       '@graphql-typed-document-node/core': 3.1.1_graphql@16.6.0
       '@graphql-yoga/subscription': 3.0.0-next.0
       '@whatwg-node/fetch': 0.5.1_encoding@0.1.13
@@ -15963,7 +15965,7 @@ packages:
       '@graphql-mesh/utils': 0.42.6_graphql@16.6.0
       '@graphql-tools/utils': 9.0.1_graphql@16.6.0
       '@json-schema-tools/meta-schema': 1.7.0
-      '@whatwg-node/fetch': 0.5.1_encoding@0.1.13
+      '@whatwg-node/fetch': 0.5.3_encoding@0.1.13
       json-pointer: 0.6.2
       to-json-schema: 0.2.5
       tslib: 2.4.1

@@ -80,10 +80,11 @@ yarn add -D nx-mesh
 
 ### Peer Dependencies
 
-| Name                | Version    | Required | Auto-installed by generators |
-| ------------------- | ---------- | :------: | :--------------------------: |
-| `nx`                | `>=15`     |    ✅    |              -               |
-| `@graphql-mesh/cli` | `>=0.71.0` |    ✅    |              ✅              |
+| Name                  | Version    | Required | Auto-installed by generators |
+| --------------------- | ---------- | :------: | :--------------------------: |
+| `nx`                  | `>=15`     |    ✅    |              -               |
+| `@graphql-mesh/cli`   | `>=0.71.0` |    ✅    |              ✅              |
+| `@graphql-codgen/cli` | `>=2.16.1` |    ✅    |              -               |
 
 <br/>
 
@@ -270,6 +271,14 @@ This is the equivalent of using `graphql-mesh dev`, but with extra steps for pac
 | ----------------------------------------- | ------------------------------------ | :------: | ------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
 | `assets`                                  | `string[]`                           |    -     | -                  | List of static assets.                                                                                                           |
 | `buildableProjectDepsInPackageJsonType`   | `dependencies` or `peerDependencies` |    -     | `peerDependencies` | When `updateBuildableProjectDepsInPackageJson` is `true`, this adds dependencies to either `peerDependencies` or `dependencies`. |
+| `codegen`                                 | `object`                             |    -     | -                  | GraphQL Codegen settings                                                                                                         |
+| `codegen.config`                          | `string`                             |    ✅    | -                  | Path to GraphQL codegen YAML config file, defaults to `codegen.yml` on the current directory.                                    |
+| `codegen.overwrite`                       | `boolean`                            |    -     | `true`             | Overwrites existing files.                                                                                                       |
+| `codegen.profile`                         | `boolean`                            |    -     | `false`            | Use profiler to measure performance.                                                                                             |
+| `codegen.project`                         | `string`                             |    -     | ``                 | Name of a project in GraphQL Config.                                                                                             |
+| `codegen.require`                         | `string[]`                           |    -     | `[]`               | Loads specific require.extensions before running the codegen and reading the configuration.                                      |
+| `codegen.silent`                          | `boolean`                            |    -     | `false`            | Suppresses printing errors.                                                                                                      |
+| `codegen.watch`                           | `boolean`                            |    -     | `false`            | Watch for changes and execute generation automatically.                                                                          |
 | `debug`                                   | `boolean`                            |    -     | `false`            | Display debugging info by applying the `DEBUG` env variable.                                                                     |
 | `dir`                                     | `string`                             |    ✅    | -                  | The path of the directory containing the GraphQL Mesh config.                                                                    |
 | `fileType`                                | `json`, `ts` or `js`                 |    -     | `ts`               | The filetype.                                                                                                                    |
@@ -343,6 +352,14 @@ This is the equivalent of using `graphql-mesh build`, but with extra steps for p
 | ----------------------------------------- | ------------------------------------ | :------: | ------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
 | `assets`                                  | `string[]`                           |    -     | -                  | List of static assets.                                                                                                           |
 | `buildableProjectDepsInPackageJsonType`   | `dependencies` or `peerDependencies` |    -     | `peerDependencies` | When `updateBuildableProjectDepsInPackageJson` is `true`, this adds dependencies to either `peerDependencies` or `dependencies`. |
+| `codegen`                                 | `object`                             |    -     | -                  | GraphQL Codegen settings                                                                                                         |
+| `codegen.config`                          | `string`                             |    ✅    | -                  | Path to GraphQL codegen YAML config file, defaults to `codegen.yml` on the current directory.                                    |
+| `codegen.overwrite`                       | `boolean`                            |    -     | `true`             | Overwrites existing files.                                                                                                       |
+| `codegen.profile`                         | `boolean`                            |    -     | `false`            | Use profiler to measure performance.                                                                                             |
+| `codegen.project`                         | `string`                             |    -     | ``                 | Name of a project in GraphQL Config.                                                                                             |
+| `codegen.require`                         | `string[]`                           |    -     | `[]`               | Loads specific require.extensions before running the codegen and reading the configuration.                                      |
+| `codegen.silent`                          | `boolean`                            |    -     | `false`            | Suppresses printing errors.                                                                                                      |
+| `codegen.watch`                           | `boolean`                            |    -     | `false`            | Watch for changes and execute generation automatically.                                                                          |
 | `debug`                                   | `boolean`                            |    -     | `false`            | Display debugging info by applying the `DEBUG` env variable.                                                                     |
 | `dir`                                     | `string`                             |    ✅    | -                  | The path of the directory containing the GraphQL Mesh config.                                                                    |
 | `fileType`                                | `json`, `ts` or `js`                 |    -     | `ts`               | The filetype.                                                                                                                    |

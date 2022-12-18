@@ -67,6 +67,48 @@
     "outputPath": {
       "type": "string",
       "description": "The output path of the generated files."
+    },
+    "codegen": {
+      "type": "object",
+      "properties": {
+        "config": {
+          "type": "string",
+          "description": "Path to GraphQL codegen YAML config file, defaults to `codegen.yml` on the current directory."
+        },
+        "overwrite": {
+          "type": "boolean",
+          "description": "Overwrites existing files.",
+          "default": true
+        },
+        "profile": {
+          "type": "boolean",
+          "description": "Use profiler to measure performance",
+          "default": false
+        },
+        "project": {
+          "type": "string",
+          "description": "Name of a project in GraphQL Config",
+          "default": ""
+        },
+        "require": {
+          "type": "array",
+          "description": "Loads specific require.extensions before running the codegen and reading the configuration.",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "silent": {
+          "type": "boolean",
+          "description": "Suppresses printing errors",
+          "default": false
+        },
+        "watch": {
+          "type": "boolean",
+          "description": "Watch for changes and execute generation automatically.",
+          "default": false
+        }
+      }
     }
   },
   "required": ["main", "dir", "outputPath", "tsConfig"],

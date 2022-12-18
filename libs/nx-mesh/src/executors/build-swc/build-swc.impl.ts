@@ -1,8 +1,11 @@
 import type { ExecutorContext } from '@nrwl/devkit';
 
+import { logger } from '@nrwl/devkit';
 import { resolve } from 'path';
 
-import { createPackageJson, runMeshCli } from '../../utils';
+import { createPackageJson } from '../../utils';
+import { runCodegenCli } from '../../utils/graphql-codegen-cli';
+import { runMeshCli } from '../../utils/mesh-cli';
 import { swcExecutor } from './swc-executor/swc.impl';
 import { BuildSWCExecutorSchema } from './schema';
 
@@ -31,6 +34,9 @@ export default async function* buildExecutor(
     context
   );
 
+  logger.info('');
+  logger.info('Running SWC compiler...');
+
   const tsc = swcExecutor(
     {
       assets: [...options.assets],
@@ -50,11 +56,29 @@ export default async function* buildExecutor(
   }
 
   if (success) {
+    logger.info('');
+    logger.info('Creating package.json...');
+
     await createPackageJson(
       {
         dir: options.dir,
         outputPath: options.outputPath,
         projectRoot: options.outputPath,
+      },
+      context
+    );
+  }
+
+  if (options.codegen?.config) {
+    logger.info('');
+    logger.info('Running GraphQL Codegen...');
+
+    await runCodegenCli(
+      {
+        ...options.codegen,
+        debug: options.debug,
+        verbose: true,
+        watch: options.watch,
       },
       context
     );

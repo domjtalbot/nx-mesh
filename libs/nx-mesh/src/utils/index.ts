@@ -1,4 +1,3 @@
-export * from './mesh-cli';
 export * from './create-package-json';
 export * from './get-mesh-packages';
 export * from './get-package-versions';

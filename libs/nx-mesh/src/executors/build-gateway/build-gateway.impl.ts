@@ -1,10 +1,12 @@
 import type { ExecutorContext } from '@nrwl/devkit';
 
+import { logger } from '@nrwl/devkit';
 import { directoryExists } from '@nrwl/workspace/src/utilities/fileutils';
 import { copySync, mkdir } from 'fs-extra';
 import { join, resolve } from 'path';
 
-import { createPackageJson, runMeshCli } from '../../utils';
+import { createPackageJson } from '../../utils';
+import { runMeshCli } from '../../utils/mesh-cli';
 import { BuildGatewayExecutorSchema } from './schema';
 
 export default async function* buildExecutor(
@@ -38,6 +40,9 @@ export default async function* buildExecutor(
   );
 
   copySync(join(dir, '.mesh'), join(options.outputPath, '.mesh'));
+
+  logger.info('');
+  logger.info('Creating package.json...');
 
   await createPackageJson(
     {
