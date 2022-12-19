@@ -20,7 +20,7 @@
         "passWithNoTests": true
       }
     },
-    "build": {
+    "disabled-build": {
       "executor": "nx-mesh:build-swc",
       "outputs": ["{projectRoot}/.mesh", "{options.outputPath}"],
       "options": {
@@ -30,14 +30,14 @@
         "tsConfig": "libs/example/sdk/neo4j/movies/tsconfig.lib.json"
       }
     },
-    "serve": {
+    "disabled-serve": {
       "executor": "nx-mesh:serve",
       "options": {
         "dev": true,
         "dir": "libs/example/sdk/neo4j/movies"
       }
     },
-    "validate": {
+    "disabled-validate": {
       "executor": "nx-mesh:validate",
       "options": {
         "dir": "libs/example/sdk/neo4j/movies"
