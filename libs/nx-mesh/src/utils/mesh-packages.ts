@@ -51,18 +51,25 @@ const plugins = [
   '@graphql-mesh/plugin-snapshot',
 ] as const;
 
+const codegen = [
+  '@graphql-codegen/cli',
+  '@graphql-codegen/client-preset',
+] as const;
+
 /**
  * A list of known GraphQL Mesh packages.
  * These packages can be automatically added to package.json files.
  */
 export const meshPackages = [
   ...cache,
+  ...codegen,
   ...plugins,
   ...sources,
   ...transforms,
   ...utils,
 ];
 
+export type CodegenPackages = typeof codegen[number];
 export type MeshPackages = typeof meshPackages[number];
 
 export default meshPackages;

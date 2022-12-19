@@ -184,6 +184,8 @@ CREATE libs/my-mesh-sdk/jest.config.ts
 CREATE libs/my-mesh-sdk/tsconfig.spec.json
 CREATE libs/my-mesh-sdk/.meshrc.yml
 CREATE libs/my-mesh-sdk/src/lib/sdk.ts
+CREATE libs/my-mesh-sdk/codegen.ts
+CREATE libs/my-mesh-sdk/src/lib/client.ts
 UPDATE nx.json
 ```
 
@@ -209,6 +211,8 @@ CREATE libs/my-mesh-sdk/tsconfig.spec.json
 CREATE libs/my-mesh-sdk/.lib.swcrc
 CREATE libs/my-mesh-sdk/.meshrc.json
 CREATE libs/my-mesh-sdk/src/lib/sdk.ts
+CREATE libs/my-mesh-sdk/codegen.ts
+CREATE libs/my-mesh-sdk/src/lib/client.ts
 ```
 
 </details>
@@ -222,6 +226,7 @@ CREATE libs/my-mesh-sdk/src/lib/sdk.ts
 | `directory`               | `d`   | `string`                                                    |    -     | -                 | The directory of the new sdk.                                                                                                                          |
 | `meshConfig`              | `mc`  | `cjs`, `js`, `json`, `yml`                                  |    -     | `yml`             | Which config format would you like to use?                                                                                                             |
 | `example`                 | -     | `javascriptWiki`, `stackexchange`, `trippin`, `countryInfo` |    -     | `javascript-wiki` | Which example project would you like to use?                                                                                                           |
+| `codegen`                 | -     | `boolean`                                                   |    -     | `true`            | Use `graphql-codegen` to generate custom files from the GraphQL Mesh schema.                                                                           |
 | `babelJest`               | -     | `boolean`                                                   |    -     | `false`           | Use `babel` instead of `ts-jest`.                                                                                                                      |
 | `compiler`                | -     | `tsc`, `swc`                                                |    -     | `tsc`             | The compiler used by the build and test targets.                                                                                                       |
 | `importPath`              | -     | `string`                                                    |    -     | -                 | The library name used to import it, like `@myorg/my-awesome-lib`. Must be a valid npm name.                                                            |

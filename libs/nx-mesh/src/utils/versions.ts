@@ -9,6 +9,12 @@ export type MeshPackageVersions = {
 };
 
 export const versions: MeshPackageVersions = {
+  '@graphql-codegen/cli': {
+    '@graphql-codegen/cli': '2.16.1',
+  },
+  '@graphql-codegen/client-preset': {
+    '@graphql-codegen/client-preset': '1.2.3',
+  },
   '@graphql-mesh/cli': {
     '@graphql-mesh/cli': '0.79.3',
   },

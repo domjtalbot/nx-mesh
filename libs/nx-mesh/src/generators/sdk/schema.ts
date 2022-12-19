@@ -3,5 +3,6 @@ import type { Schema as NodeLibrarySchema } from '@nrwl/node/src/generators/libr
 export type MeshConfigExtensions = 'cjs' | 'js' | 'json' | 'yml';
 
 export interface SdkGeneratorSchema extends NodeLibrarySchema {
+  codegen?: boolean;
   meshConfig?: MeshConfigExtensions;
 }

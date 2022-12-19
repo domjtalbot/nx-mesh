@@ -62,6 +62,11 @@
         ]
       }
     },
+    "codegen": {
+      "description": "Use `graphql-codegen` to generate custom files from the GraphQL Mesh schema.",
+      "type": "boolean",
+      "default": true
+    },
     "e2eTestRunner": {
       "description": "Adds the specified e2e test runner.",
       "type": "string",

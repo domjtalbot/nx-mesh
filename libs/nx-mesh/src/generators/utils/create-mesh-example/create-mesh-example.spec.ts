@@ -5,6 +5,7 @@ import { getWorkspaceLayout, joinPathFragments } from '@nrwl/devkit';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 
 import * as addDependencies from './add-dependencies';
+import * as createCodegenFiles from './create-codegen-files';
 import { createMeshExample } from './create-mesh-example';
 import * as createSharedFiles from './create-shared-files';
 
@@ -48,6 +49,28 @@ describe('createMeshExample', () => {
     createMeshExample(tree, options);
 
     expect(spyCreateSharedFiles).toBeCalledWith(
+      expect.objectContaining(tree),
+      expect.objectContaining(options)
+    );
+  });
+
+  it('should create codegen files', () => {
+    const spyCreateCodegenFiles = jest.spyOn(
+      createCodegenFiles,
+      'createCodegenFiles'
+    );
+
+    const options: CreateMeshExampleOptions = {
+      codegen: true,
+      configExtension: 'js',
+      example: 'star-wars-api',
+      isSdk: true,
+      projectDirectory,
+    };
+
+    createMeshExample(tree, options);
+
+    expect(spyCreateCodegenFiles).toBeCalledWith(
       expect.objectContaining(tree),
       expect.objectContaining(options)
     );
