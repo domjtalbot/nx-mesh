@@ -27,7 +27,10 @@
         "dir": "libs/example/sdk/mysql/rfam",
         "main": "libs/example/sdk/mysql/rfam/src/index.ts",
         "outputPath": "dist/libs/example/sdk/mysql/rfam",
-        "tsConfig": "libs/example/sdk/mysql/rfam/tsconfig.lib.json"
+        "tsConfig": "libs/example/sdk/mysql/rfam/tsconfig.lib.json",
+        "codegen": {
+          "config": "libs/example/sdk/mysql/rfam/codegen.ts"
+        }
       }
     },
     "serve": {

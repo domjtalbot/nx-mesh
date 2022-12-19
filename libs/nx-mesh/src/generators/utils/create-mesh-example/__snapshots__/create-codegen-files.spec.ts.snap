@@ -95,6 +95,9 @@ const config: CodegenConfig = {
     'libs/test/.codegen/': {
       preset: 'client',
       plugins: [],
+      config: {
+        enumsAsTypes: true,
+      },
     },
   },
 };

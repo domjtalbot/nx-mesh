@@ -18,6 +18,9 @@ const config: CodegenConfig = {
     '<%= projectDirectory %>/.codegen/': {
       preset: 'client',
       plugins: [],
+      config: {
+        enumsAsTypes: true,
+      },
     },
   },
 };
