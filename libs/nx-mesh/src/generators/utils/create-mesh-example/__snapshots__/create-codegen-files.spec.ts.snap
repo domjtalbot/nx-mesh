@@ -49,8 +49,6 @@ import type { CodegenConfig } from '@graphql-codegen/cli';
 const config: CodegenConfig = {
   overwrite: true,
   schema: 'libs/test/.mesh/schema.graphql',
-  documents:
-    'libs/test/src/graphql/**/*.*.graphql',
   generates: {
     'libs/test/.codegen/': {
       preset: 'client',
@@ -112,8 +110,6 @@ import type { CodegenConfig } from '@graphql-codegen/cli';
 const config: CodegenConfig = {
   overwrite: true,
   schema: 'libs/test/.mesh/schema.graphql',
-  documents:
-    'libs/test/src/graphql/**/*.*.graphql',
   generates: {
     'libs/test/.codegen/': {
       preset: 'client',
