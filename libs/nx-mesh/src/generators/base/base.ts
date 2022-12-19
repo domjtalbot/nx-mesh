@@ -30,6 +30,7 @@ export async function baseGenerator(tree: Tree, baseOptions: BaseOptions) {
   addProjectConfig(tree, options);
   setDefaults(tree, options);
   createMeshExample(tree, {
+    codegen: options.codegen,
     configExtension: options.meshConfigExt,
     example: options.example,
     isSdk: isLibrary,

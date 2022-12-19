@@ -63,6 +63,11 @@
         ]
       }
     },
+    "codegen": {
+      "description": "Use `graphql-codegen` to generate custom files from the GraphQL Mesh schema.",
+      "type": "boolean",
+      "default": true
+    },
     "simpleModuleName": {
       "description": "Keep the module name simple (when using `--directory`).",
       "type": "boolean",

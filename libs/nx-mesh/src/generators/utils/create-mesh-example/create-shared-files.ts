@@ -17,6 +17,7 @@ export function createSharedFiles(
     {
       configExtension: options.configExtension,
       isSdk: options.isSdk,
+      projectDirectory: options.projectDirectory,
       tmpl: '',
     }
   );

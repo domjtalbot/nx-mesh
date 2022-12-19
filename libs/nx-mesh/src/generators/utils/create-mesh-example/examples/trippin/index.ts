@@ -1,8 +1,9 @@
 import type { ExampleDependencies } from '../../types';
 
-import { dependencies } from './dependencies';
+import { codegenDependencies, dependencies } from './dependencies';
 
 export const config: ExampleDependencies = {
+  codegenDependencies,
   dependencies,
 };
 

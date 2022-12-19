@@ -22,12 +22,19 @@
     },
     "build": {
       "executor": "nx-mesh:build-swc",
-      "outputs": ["{projectRoot}/.mesh", "{options.outputPath}"],
+      "outputs": [
+        "{projectRoot}/.codegen",
+        "{projectRoot}/.mesh",
+        "{options.outputPath}"
+      ],
       "options": {
         "dir": "libs/example/sdk/graphql/star-wars-api",
         "main": "libs/example/sdk/graphql/star-wars-api/src/index.ts",
         "outputPath": "dist/libs/example/sdk/graphql/star-wars-api",
-        "tsConfig": "libs/example/sdk/graphql/star-wars-api/tsconfig.lib.json"
+        "tsConfig": "libs/example/sdk/graphql/star-wars-api/tsconfig.lib.json",
+        "codegen": {
+          "config": "libs/example/sdk/graphql/star-wars-api/codegen.ts"
+        }
       }
     },
     "serve": {

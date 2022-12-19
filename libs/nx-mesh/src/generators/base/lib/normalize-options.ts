@@ -139,9 +139,12 @@ export function normalizeOptions(
     projectDirectory
   );
 
+  const codegen = isLibrary ? options.codegen ?? true : false;
+
   return {
     ...options,
     _raw: options,
+    codegen,
     compiler,
     directory,
     e2eProjectName,

@@ -1,4 +1,4 @@
-import type { Options } from '../../utils';
+import type { Options } from '../../utils/mesh-cli';
 
 type MeshStartSchema = Options<'start'>;
 

@@ -1,0 +1,28 @@
+<%
+// Test output in playground
+// https://ionicabizau.github.io/ejs-playground/
+
+// Input variables
+// const projectDirectory = '';
+
+-%>
+
+import type { CodegenConfig } from '@graphql-codegen/cli';
+
+const config: CodegenConfig = {
+  overwrite: true,
+  schema: '<%= projectDirectory %>/.mesh/schema.graphql',
+  documents:
+    '<%= projectDirectory %>/src/graphql/**/*.*.graphql',
+  generates: {
+    '<%= projectDirectory %>/.codegen/': {
+      preset: 'client',
+      plugins: [],
+      config: {
+        enumsAsTypes: true,
+      },
+    },
+  },
+};
+
+export default config;

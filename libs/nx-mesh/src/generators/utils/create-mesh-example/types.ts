@@ -1,4 +1,6 @@
-import type { MeshPackages } from '../../../utils';
+import type { CodegenPackages, MeshPackages } from '../../../utils';
+
+export type CodegenDependencies = CodegenPackages[];
 
 export type MeshDependencies = MeshPackages[];
 
@@ -14,11 +16,13 @@ export type ExampleName =
 
 export type ExampleDependencies = {
   dependencies: MeshDependencies;
+  codegenDependencies: CodegenDependencies;
 };
 
 export type ExampleConfig = Record<ExampleName, ExampleDependencies>;
 
 export type CreateMeshExampleOptions = {
+  codegen?: boolean;
   configExtension: 'cjs' | 'js' | 'json' | 'yml';
   example: ExampleName;
   isSdk: boolean;

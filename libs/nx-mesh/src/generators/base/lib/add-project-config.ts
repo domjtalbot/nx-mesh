@@ -13,6 +13,7 @@ import { addSwcDependencies } from '@nrwl/js/src/utils/swc/add-swc-dependencies'
 
 export function addProjectConfig(tree: Tree, options: NormalizedOptions) {
   const {
+    codegen,
     isApp,
     isLibrary,
     isSwc,
@@ -51,15 +52,32 @@ export function addProjectConfig(tree: Tree, options: NormalizedOptions) {
     buildExecutor = `${buildExecutor}-swc`;
   }
 
+  let buildOptions: {
+    codegen?: Record<string, unknown>;
+    dir: string;
+    main: string;
+    outputPath: string;
+    tsConfig: string;
+  } = {
+    dir: projectDirectory,
+    main: `${projectDirectory}/src/index.ts`,
+    outputPath: projectDistDirectory,
+    tsConfig: `${projectDirectory}/tsconfig.lib.json`,
+  };
+
+  if (isLibrary && codegen) {
+    buildOptions = {
+      ...buildOptions,
+      codegen: {
+        config: `${projectDirectory}/codegen.ts`,
+      },
+    };
+  }
+
   targets['build'] = {
     executor: buildExecutor,
     outputs: [projectMeshDirectory, '{options.outputPath}'],
-    options: {
-      dir: projectDirectory,
-      main: `${projectDirectory}/src/index.ts`,
-      outputPath: projectDistDirectory,
-      tsConfig: `${projectDirectory}/tsconfig.lib.json`,
-    },
+    options: buildOptions,
   };
 
   targets['serve'] = {

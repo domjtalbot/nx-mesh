@@ -139,7 +139,7 @@ jobs:
           - 'country-info'
           - 'fake-api'
           - 'javascript-wiki'
-          - 'movies'
+          # - 'movies'
           - 'rfam'
           - 'stackexchange'
           - 'star-wars-api'

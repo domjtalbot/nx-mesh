@@ -7,9 +7,10 @@ export type MeshConfigExtensions = 'cjs' | 'js' | 'json' | 'yml';
 
 export interface BaseOptions
   extends SetOptional<NodeLibrarySchema, 'compiler'> {
+  codegen?: boolean;
   e2eTestRunner?: 'cypress' | 'none';
+  example?: ExampleName;
   meshConfig?: MeshConfigExtensions;
   projectType?: 'app' | 'lib';
   skipWorkspaceJson?: boolean;
-  example?: ExampleName;
 }

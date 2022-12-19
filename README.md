@@ -53,6 +53,7 @@
   - Choose from multiple starter templates.
 - Supports all GraphQL CLI commands (`build`, `dev`, `start`, `validate`)
 - Use [SWC](https://swc.rs/) to compile a GraphQL Mesh SDK
+- Use [`graphql-codegen`](https://the-guild.dev/graphql/codegen) to build custom SDKs from GraphQL Mesh.
 - Automatically use the first available port when running `dev`, `start`, or `serve`.
 - Supports NX Cypress plugin
 
@@ -80,10 +81,11 @@ yarn add -D nx-mesh
 
 ### Peer Dependencies
 
-| Name                | Version    | Required | Auto-installed by generators |
-| ------------------- | ---------- | :------: | :--------------------------: |
-| `nx`                | `>=15`     |    ✅    |              -               |
-| `@graphql-mesh/cli` | `>=0.71.0` |    ✅    |              ✅              |
+| Name                  | Version    | Required | Auto-installed by generators |
+| --------------------- | ---------- | :------: | :--------------------------: |
+| `nx`                  | `>=15`     |    ✅    |              -               |
+| `@graphql-mesh/cli`   | `>=0.71.0` |    ✅    |              ✅              |
+| `@graphql-codgen/cli` | `>=2.16.1` |    ✅    |              -               |
 
 <br/>
 
@@ -182,6 +184,8 @@ CREATE libs/my-mesh-sdk/jest.config.ts
 CREATE libs/my-mesh-sdk/tsconfig.spec.json
 CREATE libs/my-mesh-sdk/.meshrc.yml
 CREATE libs/my-mesh-sdk/src/lib/sdk.ts
+CREATE libs/my-mesh-sdk/codegen.ts
+CREATE libs/my-mesh-sdk/src/lib/client.ts
 UPDATE nx.json
 ```
 
@@ -207,6 +211,8 @@ CREATE libs/my-mesh-sdk/tsconfig.spec.json
 CREATE libs/my-mesh-sdk/.lib.swcrc
 CREATE libs/my-mesh-sdk/.meshrc.json
 CREATE libs/my-mesh-sdk/src/lib/sdk.ts
+CREATE libs/my-mesh-sdk/codegen.ts
+CREATE libs/my-mesh-sdk/src/lib/client.ts
 ```
 
 </details>
@@ -220,6 +226,7 @@ CREATE libs/my-mesh-sdk/src/lib/sdk.ts
 | `directory`               | `d`   | `string`                                                    |    -     | -                 | The directory of the new sdk.                                                                                                                          |
 | `meshConfig`              | `mc`  | `cjs`, `js`, `json`, `yml`                                  |    -     | `yml`             | Which config format would you like to use?                                                                                                             |
 | `example`                 | -     | `javascriptWiki`, `stackexchange`, `trippin`, `countryInfo` |    -     | `javascript-wiki` | Which example project would you like to use?                                                                                                           |
+| `codegen`                 | -     | `boolean`                                                   |    -     | `true`            | Use `graphql-codegen` to generate custom files from the GraphQL Mesh schema.                                                                           |
 | `babelJest`               | -     | `boolean`                                                   |    -     | `false`           | Use `babel` instead of `ts-jest`.                                                                                                                      |
 | `compiler`                | -     | `tsc`, `swc`                                                |    -     | `tsc`             | The compiler used by the build and test targets.                                                                                                       |
 | `importPath`              | -     | `string`                                                    |    -     | -                 | The library name used to import it, like `@myorg/my-awesome-lib`. Must be a valid npm name.                                                            |
@@ -270,6 +277,14 @@ This is the equivalent of using `graphql-mesh dev`, but with extra steps for pac
 | ----------------------------------------- | ------------------------------------ | :------: | ------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
 | `assets`                                  | `string[]`                           |    -     | -                  | List of static assets.                                                                                                           |
 | `buildableProjectDepsInPackageJsonType`   | `dependencies` or `peerDependencies` |    -     | `peerDependencies` | When `updateBuildableProjectDepsInPackageJson` is `true`, this adds dependencies to either `peerDependencies` or `dependencies`. |
+| `codegen`                                 | `object`                             |    -     | -                  | GraphQL Codegen settings                                                                                                         |
+| `codegen.config`                          | `string`                             |    ✅    | -                  | Path to GraphQL codegen YAML config file, defaults to `codegen.yml` on the current directory.                                    |
+| `codegen.overwrite`                       | `boolean`                            |    -     | `true`             | Overwrites existing files.                                                                                                       |
+| `codegen.profile`                         | `boolean`                            |    -     | `false`            | Use profiler to measure performance.                                                                                             |
+| `codegen.project`                         | `string`                             |    -     | ``                 | Name of a project in GraphQL Config.                                                                                             |
+| `codegen.require`                         | `string[]`                           |    -     | `[]`               | Loads specific require.extensions before running the codegen and reading the configuration.                                      |
+| `codegen.silent`                          | `boolean`                            |    -     | `false`            | Suppresses printing errors.                                                                                                      |
+| `codegen.watch`                           | `boolean`                            |    -     | `false`            | Watch for changes and execute generation automatically.                                                                          |
 | `debug`                                   | `boolean`                            |    -     | `false`            | Display debugging info by applying the `DEBUG` env variable.                                                                     |
 | `dir`                                     | `string`                             |    ✅    | -                  | The path of the directory containing the GraphQL Mesh config.                                                                    |
 | `fileType`                                | `json`, `ts` or `js`                 |    -     | `ts`               | The filetype.                                                                                                                    |
@@ -343,6 +358,14 @@ This is the equivalent of using `graphql-mesh build`, but with extra steps for p
 | ----------------------------------------- | ------------------------------------ | :------: | ------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
 | `assets`                                  | `string[]`                           |    -     | -                  | List of static assets.                                                                                                           |
 | `buildableProjectDepsInPackageJsonType`   | `dependencies` or `peerDependencies` |    -     | `peerDependencies` | When `updateBuildableProjectDepsInPackageJson` is `true`, this adds dependencies to either `peerDependencies` or `dependencies`. |
+| `codegen`                                 | `object`                             |    -     | -                  | GraphQL Codegen settings                                                                                                         |
+| `codegen.config`                          | `string`                             |    ✅    | -                  | Path to GraphQL codegen YAML config file, defaults to `codegen.yml` on the current directory.                                    |
+| `codegen.overwrite`                       | `boolean`                            |    -     | `true`             | Overwrites existing files.                                                                                                       |
+| `codegen.profile`                         | `boolean`                            |    -     | `false`            | Use profiler to measure performance.                                                                                             |
+| `codegen.project`                         | `string`                             |    -     | ``                 | Name of a project in GraphQL Config.                                                                                             |
+| `codegen.require`                         | `string[]`                           |    -     | `[]`               | Loads specific require.extensions before running the codegen and reading the configuration.                                      |
+| `codegen.silent`                          | `boolean`                            |    -     | `false`            | Suppresses printing errors.                                                                                                      |
+| `codegen.watch`                           | `boolean`                            |    -     | `false`            | Watch for changes and execute generation automatically.                                                                          |
 | `debug`                                   | `boolean`                            |    -     | `false`            | Display debugging info by applying the `DEBUG` env variable.                                                                     |
 | `dir`                                     | `string`                             |    ✅    | -                  | The path of the directory containing the GraphQL Mesh config.                                                                    |
 | `fileType`                                | `json`, `ts` or `js`                 |    -     | `ts`               | The filetype.                                                                                                                    |

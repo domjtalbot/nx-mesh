@@ -30,7 +30,7 @@ describe('addDependencies', () => {
     jest.restoreAllMocks();
   });
 
-  it.each<CreateMeshExampleOptions['example']>([
+  describe.each<CreateMeshExampleOptions['example']>([
     'country-info',
     'fake-api',
     'javascript-wiki',
@@ -39,34 +39,97 @@ describe('addDependencies', () => {
     'stackexchange',
     'star-wars-api',
     'trippin',
-  ])(`should add %s dependencies to the package.json`, (example) => {
-    addDependencies(tree, {
-      example,
+  ])('%s', (example) => {
+    it(`should add dependencies to the package.json`, () => {
+      addDependencies(tree, {
+        example,
+      });
+
+      expect(tree.exists('package.json')).toBeTruthy();
+
+      let hasMeshPackages = false;
+
+      const packageJson = tree.read('package.json', 'utf-8');
+
+      if (packageJson) {
+        const parsedPackageJson = JSON.parse(packageJson);
+
+        if (
+          Object.prototype.hasOwnProperty.call(
+            parsedPackageJson,
+            'dependencies'
+          ) &&
+          typeof parsedPackageJson['dependencies'] === 'object'
+        ) {
+          hasMeshPackages = Object.keys(parsedPackageJson['dependencies']).some(
+            (name) => name.startsWith('@graphql-mesh')
+          );
+        }
+      }
+
+      expect(hasMeshPackages).toBeTruthy();
     });
 
-    expect(tree.exists('package.json')).toBeTruthy();
+    it(`should add codegen dependencies to the package.json`, () => {
+      addDependencies(tree, {
+        codegen: true,
+        example,
+      });
 
-    let dependenciesCount = 0;
+      expect(tree.exists('package.json')).toBeTruthy();
 
-    const packageJson = tree.read('package.json', 'utf-8');
+      let hasCodegenPackages = false;
 
-    if (packageJson) {
-      const parsedPackageJson = JSON.parse(packageJson);
+      const packageJson = tree.read('package.json', 'utf-8');
 
-      if (
-        Object.prototype.hasOwnProperty.call(
-          parsedPackageJson,
-          'dependencies'
-        ) &&
-        typeof parsedPackageJson['dependencies'] === 'object'
-      ) {
-        dependenciesCount = Object.keys(
-          parsedPackageJson['dependencies']
-        ).length;
+      if (packageJson) {
+        const parsedPackageJson = JSON.parse(packageJson);
+
+        if (
+          Object.prototype.hasOwnProperty.call(
+            parsedPackageJson,
+            'dependencies'
+          ) &&
+          typeof parsedPackageJson['dependencies'] === 'object'
+        ) {
+          hasCodegenPackages = Object.keys(
+            parsedPackageJson['dependencies']
+          ).some((name) => name.startsWith('@graphql-codegen'));
+        }
       }
-    }
 
-    expect(dependenciesCount).toBeGreaterThan(4);
-    expect(packageJson).toMatchSnapshot();
+      expect(hasCodegenPackages).toBeTruthy();
+    });
+
+    it(`should not add codegen dependencies to the package.json`, () => {
+      addDependencies(tree, {
+        codegen: false,
+        example,
+      });
+
+      expect(tree.exists('package.json')).toBeTruthy();
+
+      let hasCodegenPackages = false;
+
+      const packageJson = tree.read('package.json', 'utf-8');
+
+      if (packageJson) {
+        const parsedPackageJson = JSON.parse(packageJson);
+
+        if (
+          Object.prototype.hasOwnProperty.call(
+            parsedPackageJson,
+            'dependencies'
+          ) &&
+          typeof parsedPackageJson['dependencies'] === 'object'
+        ) {
+          hasCodegenPackages = Object.keys(
+            parsedPackageJson['dependencies']
+          ).some((name) => name.startsWith('@graphql-codegen'));
+        }
+      }
+
+      expect(hasCodegenPackages).toBeFalsy();
+    });
   });
 });

@@ -2,6 +2,7 @@ import type { Tree } from '@nrwl/devkit';
 import type { CreateMeshExampleOptions } from './types';
 
 import { addDependencies } from './add-dependencies';
+import { createCodegenFiles } from './create-codegen-files';
 import { createSharedFiles } from './create-shared-files';
 
 export function createMeshExample(
@@ -13,6 +14,10 @@ export function createMeshExample(
   addDependencies(tree, {
     example: options.example,
   });
+
+  if (options.isSdk && options.codegen) {
+    createCodegenFiles(tree, options);
+  }
 }
 
 export default createMeshExample;
