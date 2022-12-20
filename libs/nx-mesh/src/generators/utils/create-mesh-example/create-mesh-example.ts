@@ -12,6 +12,7 @@ export function createMeshExample(
   createSharedFiles(tree, options);
 
   addDependencies(tree, {
+    codegen: options.codegen,
     example: options.example,
   });
 
