@@ -1,5 +1,13 @@
 # nx-mesh
 
+## 2.2.0
+
+### Minor Changes
+
+- [#105](https://github.com/domjtalbot/nx-mesh/pull/105) [`3c7d953`](https://github.com/domjtalbot/nx-mesh/commit/3c7d953d980a33229cc68ffbc3dee2ccefd610c1) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Add preset generator
+
+  Create a new Nx workspace with GraphQL Mesh as the preset!
+
 ## 2.1.0
 
 ### Minor Changes
