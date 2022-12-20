@@ -23,7 +23,7 @@
       "aliases": ["library", "sdk-library"]
     },
     "preset": {
-      "factory": "./src/generators/preset/generator",
+      "factory": "./src/generators/preset/preset",
       "schema": "./src/generators/preset/schema.json",
       "description": "Create a GraphQL Mesh SDK in an empty workspace.",
       "hidden": true
@@ -49,6 +49,12 @@
       "description": "Create a GraphQL Mesh SDK library for Nx",
       "x-type": "library",
       "aliases": ["library", "sdk-library"]
+    },
+    "preset": {
+      "factory": "./src/generators/preset/preset#presetGenerator",
+      "schema": "./src/generators/preset/schema.json",
+      "description": "Create a GraphQL Mesh SDK in an empty workspace.",
+      "hidden": true
     }
   }
 }
