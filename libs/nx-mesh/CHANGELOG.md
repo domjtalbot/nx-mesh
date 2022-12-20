@@ -1,5 +1,11 @@
 # nx-mesh
 
+## 2.2.1
+
+### Patch Changes
+
+- [`5109f68`](https://github.com/domjtalbot/nx-mesh/commit/5109f68ecd4e74a71f480cabf5c5450908581a06) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Fix preset generator schema
+
 ## 2.2.0
 
 ### Minor Changes
