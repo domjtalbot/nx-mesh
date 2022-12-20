@@ -80,7 +80,7 @@
     "@nrwl/workspace": "15.0.13",
     "@swc/cli": "0.1.55",
     "@swc/core": "1.2.173",
-    "@swc/jest": "0.2.20",
+    "@swc/jest": "0.2.24",
     "@testing-library/react": "13.4.0",
     "@types/fs-extra": "9.0.13",
     "@types/jest": "28.1.8",
