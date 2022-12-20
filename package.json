@@ -20,8 +20,8 @@
   },
   "private": true,
   "dependencies": {
-    "@changesets/changelog-github": "0.4.5",
-    "@changesets/cli": "2.25.2",
+    "@changesets/changelog-github": "0.4.8",
+    "@changesets/cli": "2.26.0",
     "@commitlint/cli": "17.0.2",
     "@commitlint/config-angular": "17.0.0",
     "@envelop/depth-limit": "2.0.3",
