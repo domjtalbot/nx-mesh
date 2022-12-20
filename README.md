@@ -26,6 +26,7 @@
 - [Features](#features)
 - [Installing](#installing)
   - [Peer Dependencies](#peer-dependencies)
+- [Preset](#preset)
 - [Generators](#generators)
   - [`application`](#application)
   - [`sdk`](#sdk)
@@ -45,6 +46,7 @@
 ## Features
 
 - Use GraphQL Mesh to combine multiple APIs into a single GraphQL API.
+- Create a new Nx workspace with a GraphQL Mesh preset.
 - Generate a GraphQL Mesh API Gateway
   - A standalone application for running GraphQL Mesh.
   - Choose from multiple starter templates.
@@ -86,6 +88,18 @@ yarn add -D nx-mesh
 | `nx`                  | `>=15`     |    ✅    |              -               |
 | `@graphql-mesh/cli`   | `>=0.71.0` |    ✅    |              ✅              |
 | `@graphql-codgen/cli` | `>=2.16.1` |    ✅    |              ✅              |
+
+<br/>
+
+## Preset
+
+Create a new Nx workspace with a GraphQL Mesh SDK!
+
+```bash
+npx create-nx-workspace@latest myorg --preset=nx-mesh
+```
+
+See the [`sdk` generator](#sdk) for available options.
 
 <br/>
 
