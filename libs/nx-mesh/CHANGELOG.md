@@ -1,5 +1,11 @@
 # nx-mesh
 
+## 2.2.3
+
+### Patch Changes
+
+- [`20d1f1a`](https://github.com/domjtalbot/nx-mesh/commit/20d1f1aa69393e790f2832b9dd3e52a340ef9f86) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Remove additional preset option
+
 ## 2.2.2
 
 ### Patch Changes
