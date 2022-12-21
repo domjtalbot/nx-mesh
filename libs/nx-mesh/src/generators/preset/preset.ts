@@ -10,9 +10,7 @@ export async function presetGenerator(
   tree: Tree,
   options: PresetGeneratorSchema
 ) {
-  const { sdkName, ...config } = options;
-
-  return await sdkGenerator(tree, { ...config, name: sdkName });
+  return await sdkGenerator(tree, options);
 }
 
 export const presetSchematic = convertNxGenerator(presetGenerator);

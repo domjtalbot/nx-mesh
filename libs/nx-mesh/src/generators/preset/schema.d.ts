@@ -1,5 +1,3 @@
 import type { SdkGeneratorSchema } from '../sdk/schema';
 
-export interface PresetGeneratorSchema extends SdkGeneratorSchema {
-  sdkName: string;
-}
+export type PresetGeneratorSchema = SdkGeneratorSchema;

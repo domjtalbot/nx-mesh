@@ -22,8 +22,7 @@ describe('generators/preset', () => {
 
   it('should create a workspace with the graphql-mesh sdk preset', async () => {
     await presetGenerator(tree, {
-      name: 'myorg',
-      sdkName: 'hello-world',
+      name: 'hello-world',
       compiler: 'tsc',
     });
 
