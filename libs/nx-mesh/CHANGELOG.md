@@ -1,5 +1,15 @@
 # nx-mesh
 
+## 2.2.2
+
+### Patch Changes
+
+- [`dea3c22`](https://github.com/domjtalbot/nx-mesh/commit/dea3c22a1041ac6722f6b913344775318fe1f4ee) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Fix graphql-codegen dependencies not being added
+
+- [`ff9b664`](https://github.com/domjtalbot/nx-mesh/commit/ff9b6649563f5c4f2ea92173cb2567f953617240) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Fix preset SDK name
+
+  The SDK preset will ask for an SDK name, rather than using the org name passed by Nx.
+
 ## 2.2.1
 
 ### Patch Changes
