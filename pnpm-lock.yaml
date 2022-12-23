@@ -73,11 +73,11 @@ importers:
       fs-extra: 10.1.0
       get-port: 5.1.1
       graphql: 16.6.0
-      husky: 8.0.1
+      husky: 8.0.2
       jest: 28.1.3
       jest-environment-jsdom: 29.3.0
       jsonc-eslint-parser: ^2.1.0
-      lint-staged: 13.0.3
+      lint-staged: 13.1.0
       next: 13.0.0
       nx: 15.0.13
       prettier: 2.7.1
@@ -173,10 +173,10 @@ importers:
       eslint-plugin-react: 7.31.8_eslint@8.15.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.15.0
       fs-extra: 10.1.0
-      husky: 8.0.1
+      husky: 8.0.2
       jest: 28.1.3_sgupjgtkb76w4hsvieap2xky7i
       jsonc-eslint-parser: 2.1.0
-      lint-staged: 13.0.3
+      lint-staged: 13.1.0
       nx: 15.0.13_zhrgkbtg447ekvrhgcqluapfue
       prettier: 2.7.1
       react-test-renderer: 18.2.0_react@18.2.0
@@ -10671,10 +10671,10 @@ packages:
       }
     engines: { node: '>= 10' }
 
-  /commander/9.4.0:
+  /commander/9.4.1:
     resolution:
       {
-        integrity: sha512-sRPT+umqkz90UA8M1yqYfnHlZA7fF6nSphDtxeywPZ49ysjxDQybzk13CL+mXekDRG92skbcqCLVovuCusNmFw==,
+        integrity: sha512-5EEkTNyHNGFPD2H+c/dXXfQZYa/scCKasxWcXJaWnNJ99pnQN9Vnmqow+p+PlFPE63Q6mThaZws1T+HxfpgtPw==,
       }
     engines: { node: ^12.20.0 || >=14 }
     dev: true
@@ -14203,10 +14203,10 @@ packages:
     engines: { node: '>=12.20.0' }
     dev: true
 
-  /husky/8.0.1:
+  /husky/8.0.2:
     resolution:
       {
-        integrity: sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==,
+        integrity: sha512-Tkv80jtvbnkK3mYWxPZePGFpQ/tT3HNSs/sasF9P2YfkMezDl3ON37YN6jUUI4eTg5LcyVynlb6r4eyvOmspvg==,
       }
     engines: { node: '>=14' }
     hasBin: true
@@ -14414,7 +14414,7 @@ packages:
       mute-stream: 0.0.8
       ora: 5.4.1
       run-async: 2.4.1
-      rxjs: 7.5.6
+      rxjs: 7.8.0
       string-width: 4.2.3
       strip-ansi: 6.0.1
       through: 2.3.8
@@ -16288,14 +16288,6 @@ packages:
       immediate: 3.0.6
     dev: false
 
-  /lilconfig/2.0.5:
-    resolution:
-      {
-        integrity: sha512-xaYmXZtTHPAw5m+xLN8ab9C+3a8YmV3asNSPOATITbtwrfbwaLJj8h66H1WMIpALCkqsIzK3h7oQ+PdX+LQ9Eg==,
-      }
-    engines: { node: '>=10' }
-    dev: true
-
   /lilconfig/2.0.6:
     resolution:
       {
@@ -16309,27 +16301,27 @@ packages:
         integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==,
       }
 
-  /lint-staged/13.0.3:
+  /lint-staged/13.1.0:
     resolution:
       {
-        integrity: sha512-9hmrwSCFroTSYLjflGI8Uk+GWAwMB4OlpU4bMJEAT5d/llQwtYKoim4bLOyLCuWFAhWEupE0vkIFqtw/WIsPug==,
+        integrity: sha512-pn/sR8IrcF/T0vpWLilih8jmVouMlxqXxKuAojmbiGX5n/gDnz+abdPptlj0vYnbfE0SQNl3CY/HwtM0+yfOVQ==,
       }
     engines: { node: ^14.13.1 || >=16.0.0 }
     hasBin: true
     dependencies:
       cli-truncate: 3.1.0
       colorette: 2.0.19
-      commander: 9.4.0
+      commander: 9.4.1
       debug: 4.3.4
       execa: 6.1.0
-      lilconfig: 2.0.5
-      listr2: 4.0.5
+      lilconfig: 2.0.6
+      listr2: 5.0.6
       micromatch: 4.0.5
       normalize-path: 3.0.0
       object-inspect: 1.12.2
       pidtree: 0.6.0
       string-argv: 0.3.1
-      yaml: 2.1.1
+      yaml: 2.2.0
     transitivePeerDependencies:
       - enquirer
       - supports-color
@@ -16353,7 +16345,7 @@ packages:
       log-update: 4.0.0
       p-map: 4.0.0
       rfdc: 1.3.0
-      rxjs: 7.5.6
+      rxjs: 7.8.0
       through: 2.3.8
       wrap-ansi: 7.0.0
 
@@ -16374,9 +16366,32 @@ packages:
       log-update: 4.0.0
       p-map: 4.0.0
       rfdc: 1.3.0
-      rxjs: 7.5.6
+      rxjs: 7.8.0
       through: 2.3.8
       wrap-ansi: 7.0.0
+    dev: false
+
+  /listr2/5.0.6:
+    resolution:
+      {
+        integrity: sha512-u60KxKBy1BR2uLJNTWNptzWQ1ob/gjMzIJPZffAENzpZqbMZ/5PrXXOomDcevIS/+IB7s1mmCEtSlT2qHWMqag==,
+      }
+    engines: { node: ^14.13.1 || >=16.0.0 }
+    peerDependencies:
+      enquirer: '>= 2.3.0 < 3'
+    peerDependenciesMeta:
+      enquirer:
+        optional: true
+    dependencies:
+      cli-truncate: 2.1.0
+      colorette: 2.0.19
+      log-update: 4.0.0
+      p-map: 4.0.0
+      rfdc: 1.3.0
+      rxjs: 7.8.0
+      through: 2.3.8
+      wrap-ansi: 7.0.0
+    dev: true
 
   /load-yaml-file/0.2.0:
     resolution:
@@ -17172,7 +17187,7 @@ packages:
       '@babel/runtime': 7.20.1
       neo4j-driver-bolt-connection: 5.2.0
       neo4j-driver-core: 5.2.0
-      rxjs: 7.5.6
+      rxjs: 7.8.0
     dev: false
 
   /next/13.0.0_biqbaboplfbrettd7655fr4n2y:
@@ -19547,10 +19562,10 @@ packages:
     dependencies:
       tslib: 1.14.1
 
-  /rxjs/7.5.6:
+  /rxjs/7.8.0:
     resolution:
       {
-        integrity: sha512-dnyv2/YsXhnm461G+R/Pe5bWP41Nm6LBXEYWI6eiFP4fiwx6WRI/CD0zbdVAudd9xwLEF2IDcKXLHit0FYjUzw==,
+        integrity: sha512-F2+gxDshqmIub1KdvZkaEfGDwLNpPvk9Fs6LD/MyQxNgMds/WH9OdDDXOmxUZpME+iSK3rQCctkL0DYyytUqMg==,
       }
     dependencies:
       tslib: 2.4.1
@@ -22213,10 +22228,10 @@ packages:
       }
     engines: { node: '>= 6' }
 
-  /yaml/2.1.1:
+  /yaml/2.2.0:
     resolution:
       {
-        integrity: sha512-o96x3OPo8GjWeSLF+wOAbrPfhFOGY0W00GNaxCDv+9hkcDJEnev1yh8S7pgHF0ik6zc8sQLuL8hjHjJULZp8bw==,
+        integrity: sha512-auf7Gi6QwO7HW//GA9seGvTXVGWl1CM/ADWh1+RxtXr6XOxnT65ovDl9fTi4e0monEyJxCHqDpF6QnFDXmJE4g==,
       }
     engines: { node: '>= 14' }
     dev: true
