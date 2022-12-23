@@ -3,7 +3,7 @@
   "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/example/api-gateway/openapi/javascript-wiki-e2e/src",
   "projectType": "application",
-  "implicitDependencies": ["nx-mesh"],
+  "implicitDependencies": ["example-api-gateway-openapi-javascript-wiki"],
   "targets": {
     "e2e": {
       "executor": "@nrwl/cypress:cypress",
@@ -28,6 +28,5 @@
       }
     }
   },
-  "tags": [],
-  "implicitDependencies": ["example-api-gateway-openapi-javascript-wiki"]
+  "tags": []
 }
