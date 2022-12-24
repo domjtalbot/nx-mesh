@@ -1,7 +1,10 @@
 import type { ExecutorContext } from '@nrwl/devkit';
 
-import { readCachedProjectGraph, writeJsonFile } from '@nrwl/devkit';
-import { createPackageJson as generatePackageJson } from 'nx/src/utils/create-package-json';
+import {
+  createPackageJson as generatePackageJson,
+  readCachedProjectGraph,
+  writeJsonFile,
+} from '@nrwl/devkit';
 import { join } from 'path';
 
 import { meshPackages } from './mesh-packages';

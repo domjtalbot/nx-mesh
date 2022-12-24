@@ -1,5 +1,5 @@
 import type { Tree } from '@nrwl/devkit';
-import type { ProjectConfiguration } from 'nx/src/config/workspace-json-project-json';
+import type { ProjectConfiguration } from '@nrwl/devkit';
 
 import type { NormalizedOptions } from './normalize-options';
 
