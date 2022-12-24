@@ -83,11 +83,11 @@ yarn add -D nx-mesh
 
 ### Peer Dependencies
 
-| Name                  | Version    | Required | Auto-installed by generators |
-| --------------------- | ---------- | :------: | :--------------------------: |
-| `nx`                  | `>=15`     |    ✅    |              -               |
-| `@graphql-mesh/cli`   | `>=0.71.0` |    ✅    |              ✅              |
-| `@graphql-codgen/cli` | `>=2.16.1` |    ✅    |              ✅              |
+| Name                  | Version       | Required | Auto-installed by generators |
+| --------------------- | ------------- | :------: | :--------------------------: |
+| `nx`                  | `>= 14 <= 16` |    ✅    |              -               |
+| `@graphql-mesh/cli`   | `>=0.71.0`    |    ✅    |              ✅              |
+| `@graphql-codgen/cli` | `>=2.16.1`    |    ✅    |              ✅              |
 
 <br/>
 

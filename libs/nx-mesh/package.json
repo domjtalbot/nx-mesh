@@ -12,7 +12,7 @@
     "@swc-node/register": "^1.5.1",
     "@swc/core": "^0.1.55",
     "@swc/helpers": "^0.4.11",
-    "nx": ">=15"
+    "nx": ">= 14 <= 16"
   },
   "peerDependenciesMeta": {
     "@swc-node/register": {
