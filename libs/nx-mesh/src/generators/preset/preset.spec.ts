@@ -29,6 +29,6 @@ describe('generators/preset', () => {
     const config = readProjectConfiguration(tree, 'hello-world');
 
     expect(config).toBeDefined();
-    expect(tree.exists('/libs/hello-world/.meshrc.yml')).toBe(true);
+    expect(tree.exists('hello-world/.meshrc.yml')).toBe(true);
   });
 });

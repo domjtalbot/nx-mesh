@@ -1,4 +1,4 @@
-import type { ProjectGraphExternalNode } from 'nx/src/config/project-graph';
+import type { ProjectGraphExternalNode } from '@nrwl/devkit';
 
 import { meshPackages } from './mesh-packages';
 

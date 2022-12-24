@@ -7,7 +7,7 @@
 import { cacheDir, ExecutorContext, logger } from '@nrwl/devkit';
 import { exec, execSync } from 'child_process';
 import { removeSync } from 'fs-extra';
-import { createAsyncIterable } from '@nrwl/js/src/utils/create-async-iterable/create-async-iteratable';
+import { createAsyncIterable } from '@nrwl/devkit/src/utils/async-iterable';
 import {
   NormalizedSwcExecutorOptions,
   SwcCliOptions,

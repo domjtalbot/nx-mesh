@@ -6,11 +6,11 @@ import type { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
   overwrite: true,
-  schema: 'libs/test/.mesh/schema.graphql',
+  schema: 'test/.mesh/schema.graphql',
   documents:
-    'libs/test/src/graphql/**/*.*.graphql',
+    'test/src/graphql/**/*.*.graphql',
   generates: {
-    'libs/test/.codegen/': {
+    'test/.codegen/': {
       preset: 'client',
       plugins: [],
     },
@@ -27,11 +27,11 @@ import type { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
   overwrite: true,
-  schema: 'libs/test/.mesh/schema.graphql',
+  schema: 'test/.mesh/schema.graphql',
   documents:
-    'libs/test/src/graphql/**/*.*.graphql',
+    'test/src/graphql/**/*.*.graphql',
   generates: {
-    'libs/test/.codegen/': {
+    'test/.codegen/': {
       preset: 'client',
       plugins: [],
     },
@@ -48,9 +48,9 @@ import type { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
   overwrite: true,
-  schema: 'libs/test/.mesh/schema.graphql',
+  schema: 'test/.mesh/schema.graphql',
   generates: {
-    'libs/test/.codegen/': {
+    'test/.codegen/': {
       preset: 'client',
       plugins: [],
     },
@@ -67,11 +67,11 @@ import type { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
   overwrite: true,
-  schema: 'libs/test/.mesh/schema.graphql',
+  schema: 'test/.mesh/schema.graphql',
   documents:
-    'libs/test/src/graphql/**/*.*.graphql',
+    'test/src/graphql/**/*.*.graphql',
   generates: {
-    'libs/test/.codegen/': {
+    'test/.codegen/': {
       preset: 'client',
       plugins: [],
     },
@@ -88,11 +88,11 @@ import type { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
   overwrite: true,
-  schema: 'libs/test/.mesh/schema.graphql',
+  schema: 'test/.mesh/schema.graphql',
   documents:
-    'libs/test/src/graphql/**/*.*.graphql',
+    'test/src/graphql/**/*.*.graphql',
   generates: {
-    'libs/test/.codegen/': {
+    'test/.codegen/': {
       preset: 'client',
       plugins: [],
       config: {
@@ -112,9 +112,9 @@ import type { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
   overwrite: true,
-  schema: 'libs/test/.mesh/schema.graphql',
+  schema: 'test/.mesh/schema.graphql',
   generates: {
-    'libs/test/.codegen/': {
+    'test/.codegen/': {
       preset: 'client',
       plugins: [],
     },
@@ -131,11 +131,11 @@ import type { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
   overwrite: true,
-  schema: 'libs/test/.mesh/schema.graphql',
+  schema: 'test/.mesh/schema.graphql',
   documents:
-    'libs/test/src/graphql/**/*.*.graphql',
+    'test/src/graphql/**/*.*.graphql',
   generates: {
-    'libs/test/.codegen/': {
+    'test/.codegen/': {
       preset: 'client',
       plugins: [],
     },
@@ -152,11 +152,11 @@ import type { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
   overwrite: true,
-  schema: 'libs/test/.mesh/schema.graphql',
+  schema: 'test/.mesh/schema.graphql',
   documents:
-    'libs/test/src/graphql/**/*.*.graphql',
+    'test/src/graphql/**/*.*.graphql',
   generates: {
-    'libs/test/.codegen/': {
+    'test/.codegen/': {
       preset: 'client',
       plugins: [],
     },

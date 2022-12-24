@@ -12,7 +12,7 @@
     "@swc-node/register": "^1.5.1",
     "@swc/core": "^0.1.55",
     "@swc/helpers": "^0.4.11",
-    "nx": ">=15"
+    "nx": ">= 14 <= 16"
   },
   "peerDependenciesMeta": {
     "@swc-node/register": {
@@ -26,12 +26,12 @@
     }
   },
   "dependencies": {
-    "@nrwl/cypress": "^15.0.13",
-    "@nrwl/devkit": "^15.0.13",
-    "@nrwl/js": "^15.0.13",
-    "@nrwl/linter": "^15.0.13",
-    "@nrwl/node": "^15.0.13",
-    "@nrwl/workspace": "^15.0.13",
+    "@nrwl/cypress": "15.4.1",
+    "@nrwl/devkit": "15.4.1",
+    "@nrwl/js": "15.4.1",
+    "@nrwl/linter": "15.4.1",
+    "@nrwl/node": "15.4.1",
+    "@nrwl/workspace": "15.4.1",
     "fs-extra": "^10.1.0",
     "get-port": "5.1.1",
     "tslib": "2.4.0",

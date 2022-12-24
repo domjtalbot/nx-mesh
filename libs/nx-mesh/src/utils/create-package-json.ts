@@ -1,7 +1,10 @@
 import type { ExecutorContext } from '@nrwl/devkit';
 
-import { readCachedProjectGraph, writeJsonFile } from '@nrwl/devkit';
-import { createPackageJson as generatePackageJson } from '@nrwl/workspace/src/utilities/create-package-json';
+import {
+  createPackageJson as generatePackageJson,
+  readCachedProjectGraph,
+  writeJsonFile,
+} from '@nrwl/devkit';
 import { join } from 'path';
 
 import { meshPackages } from './mesh-packages';
@@ -26,9 +29,9 @@ export async function createPackageJson(
 
   const packageJson = generatePackageJson(context.projectName, depGraph, {
     root: context.root,
-    projectRoot:
-      options.projectRoot ??
-      context.workspace.projects[context.projectName].sourceRoot,
+    // projectRoot:
+    //   options.projectRoot ??
+    //   context.workspace.projects[context.projectName].sourceRoot,
   });
 
   if (!packageJson.name) {
@@ -39,7 +42,7 @@ export async function createPackageJson(
     packageJson.scripts = {};
   }
 
-  packageJson.scripts.start = 'graphql-mesh start';
+  packageJson.scripts['start'] = 'graphql-mesh start';
 
   if (!packageJson.devDependencies) {
     packageJson.devDependencies = {};
@@ -50,12 +53,15 @@ export async function createPackageJson(
     root: context.root,
   });
 
-  const packages = [
+  let packages = [
     '@graphql-mesh/cli',
     'graphql',
-    ...getWildcardPackages(packageJson.dependencies),
     ...getMeshPackages(sourceFile, meshPackages),
   ];
+
+  if (packageJson.dependencies) {
+    packages = [...packages, ...getWildcardPackages(packageJson.dependencies)];
+  }
 
   packageJson.dependencies = {
     ...packageJson.dependencies,
