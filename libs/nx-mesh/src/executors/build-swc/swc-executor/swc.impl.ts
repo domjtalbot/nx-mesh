@@ -3,6 +3,7 @@
 // Modifed version of Nx SWC executor
 // https://github.com/nrwl/nx/blob/master/packages/js/src/executors/swc/swc.impl.ts
 // @ts-nocheck
+
 import { ExecutorContext } from '@nrwl/devkit';
 import {
   assetGlobsToFiles,

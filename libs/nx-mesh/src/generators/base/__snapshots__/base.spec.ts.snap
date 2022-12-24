@@ -4,13 +4,13 @@ exports[`generators/base app directory --babelJest should use babel for jest 1`]
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-app',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\\\\\\\.[tj]s$': 'babel-jest'
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/apps/my-mesh-app'
+  coverageDirectory: '../coverage/my-mesh-app'
 };
 "
 `;
@@ -19,13 +19,13 @@ exports[`generators/base app directory --babelJest should use babel for jest 2`]
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-app',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\\\\\\\.[tj]s$': 'babel-jest'
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/apps/my-mesh-app'
+  coverageDirectory: '../coverage/my-mesh-app'
 };
 "
 `;
@@ -34,13 +34,13 @@ exports[`generators/base app directory --babelJest should use babel for jest 3`]
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-app',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\\\\\\\.[tj]s$': 'babel-jest'
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/apps/my-mesh-app'
+  coverageDirectory: '../coverage/my-mesh-app'
 };
 "
 `;
@@ -49,13 +49,13 @@ exports[`generators/base app directory --babelJest should use babel for jest 4`]
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-app',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\\\\\\\.[tj]s$': 'babel-jest'
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/apps/my-mesh-app'
+  coverageDirectory: '../coverage/my-mesh-app'
 };
 "
 `;
@@ -64,13 +64,13 @@ exports[`generators/base app directory --babelJest should use babel for jest 5`]
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-app',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\\\\\\\.[tj]s$': 'babel-jest'
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/apps/my-mesh-app'
+  coverageDirectory: '../coverage/my-mesh-app'
 };
 "
 `;
@@ -1769,7 +1769,7 @@ documents:
 exports[`generators/base app directory --linter should use eslint for linting 1`] = `
 "{
   \\"extends\\": [
-    \\"../../.eslintrc.json\\"
+    \\"../.eslintrc.json\\"
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
@@ -1807,7 +1807,7 @@ exports[`generators/base app directory --linter should use eslint for linting 1`
 exports[`generators/base app directory --linter should use eslint for linting 2`] = `
 "{
   \\"extends\\": [
-    \\"../../.eslintrc.json\\"
+    \\"../.eslintrc.json\\"
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
@@ -1845,7 +1845,7 @@ exports[`generators/base app directory --linter should use eslint for linting 2`
 exports[`generators/base app directory --linter should use eslint for linting 3`] = `
 "{
   \\"extends\\": [
-    \\"../../.eslintrc.json\\"
+    \\"../.eslintrc.json\\"
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
@@ -1883,7 +1883,7 @@ exports[`generators/base app directory --linter should use eslint for linting 3`
 exports[`generators/base app directory --linter should use eslint for linting 4`] = `
 "{
   \\"extends\\": [
-    \\"../../.eslintrc.json\\"
+    \\"../.eslintrc.json\\"
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
@@ -1921,7 +1921,7 @@ exports[`generators/base app directory --linter should use eslint for linting 4`
 exports[`generators/base app directory --linter should use eslint for linting 5`] = `
 "{
   \\"extends\\": [
-    \\"../../.eslintrc.json\\"
+    \\"../.eslintrc.json\\"
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
@@ -2404,7 +2404,7 @@ exports[`generators/base app directory --unitTestRunner should add a jest config
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-app',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -2415,7 +2415,7 @@ export default {
     '^.+\\\\\\\\.[tj]s$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/apps/my-mesh-app'
+  coverageDirectory: '../coverage/my-mesh-app'
 };
 "
 `;
@@ -2424,7 +2424,7 @@ exports[`generators/base app directory --unitTestRunner should add a jest config
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-app',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -2435,7 +2435,7 @@ export default {
     '^.+\\\\\\\\.[tj]s$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/apps/my-mesh-app'
+  coverageDirectory: '../coverage/my-mesh-app'
 };
 "
 `;
@@ -2444,7 +2444,7 @@ exports[`generators/base app directory --unitTestRunner should add a jest config
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-app',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -2455,7 +2455,7 @@ export default {
     '^.+\\\\\\\\.[tj]s$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/apps/my-mesh-app'
+  coverageDirectory: '../coverage/my-mesh-app'
 };
 "
 `;
@@ -2464,7 +2464,7 @@ exports[`generators/base app directory --unitTestRunner should add a jest config
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-app',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -2475,7 +2475,7 @@ export default {
     '^.+\\\\\\\\.[tj]s$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/apps/my-mesh-app'
+  coverageDirectory: '../coverage/my-mesh-app'
 };
 "
 `;
@@ -2484,7 +2484,7 @@ exports[`generators/base app directory --unitTestRunner should add a jest config
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-app',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -2495,7 +2495,7 @@ export default {
     '^.+\\\\\\\\.[tj]s$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/apps/my-mesh-app'
+  coverageDirectory: '../coverage/my-mesh-app'
 };
 "
 `;
@@ -2549,13 +2549,13 @@ exports[`generators/base app with standalone config --babelJest should use babel
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-app',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\\\\\\\.[tj]s$': 'babel-jest'
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/apps/my-mesh-app'
+  coverageDirectory: '../coverage/my-mesh-app'
 };
 "
 `;
@@ -2900,7 +2900,7 @@ documents:
 exports[`generators/base app with standalone config --linter should use eslint for linting 1`] = `
 "{
   \\"extends\\": [
-    \\"../../.eslintrc.json\\"
+    \\"../.eslintrc.json\\"
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
@@ -3023,7 +3023,7 @@ exports[`generators/base app with standalone config --unitTestRunner should add 
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-app',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -3034,7 +3034,7 @@ export default {
     '^.+\\\\\\\\.[tj]s$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/apps/my-mesh-app'
+  coverageDirectory: '../coverage/my-mesh-app'
 };
 "
 `;
@@ -3052,13 +3052,13 @@ exports[`generators/base lib directory --babelJest should use babel for jest 1`]
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-lib',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\\\\\\\.[tj]sx?$': 'babel-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+  coverageDirectory: '../coverage/my-mesh-lib'
 };
 "
 `;
@@ -3067,13 +3067,13 @@ exports[`generators/base lib directory --babelJest should use babel for jest 2`]
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-lib',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\\\\\\\.[tj]sx?$': 'babel-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+  coverageDirectory: '../coverage/my-mesh-lib'
 };
 "
 `;
@@ -3082,13 +3082,13 @@ exports[`generators/base lib directory --babelJest should use babel for jest 3`]
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-lib',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\\\\\\\.[tj]sx?$': 'babel-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+  coverageDirectory: '../coverage/my-mesh-lib'
 };
 "
 `;
@@ -3097,13 +3097,13 @@ exports[`generators/base lib directory --babelJest should use babel for jest 4`]
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-lib',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\\\\\\\.[tj]sx?$': 'babel-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+  coverageDirectory: '../coverage/my-mesh-lib'
 };
 "
 `;
@@ -3112,13 +3112,13 @@ exports[`generators/base lib directory --babelJest should use babel for jest 5`]
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-lib',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\\\\\\\.[tj]sx?$': 'babel-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+  coverageDirectory: '../coverage/my-mesh-lib'
 };
 "
 `;
@@ -4906,7 +4906,7 @@ documents:
 exports[`generators/base lib directory --linter should use eslint for linting 1`] = `
 "{
   \\"extends\\": [
-    \\"../../.eslintrc.json\\"
+    \\"../.eslintrc.json\\"
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
@@ -4944,7 +4944,7 @@ exports[`generators/base lib directory --linter should use eslint for linting 1`
 exports[`generators/base lib directory --linter should use eslint for linting 2`] = `
 "{
   \\"extends\\": [
-    \\"../../.eslintrc.json\\"
+    \\"../.eslintrc.json\\"
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
@@ -4982,7 +4982,7 @@ exports[`generators/base lib directory --linter should use eslint for linting 2`
 exports[`generators/base lib directory --linter should use eslint for linting 3`] = `
 "{
   \\"extends\\": [
-    \\"../../.eslintrc.json\\"
+    \\"../.eslintrc.json\\"
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
@@ -5020,7 +5020,7 @@ exports[`generators/base lib directory --linter should use eslint for linting 3`
 exports[`generators/base lib directory --linter should use eslint for linting 4`] = `
 "{
   \\"extends\\": [
-    \\"../../.eslintrc.json\\"
+    \\"../.eslintrc.json\\"
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
@@ -5058,7 +5058,7 @@ exports[`generators/base lib directory --linter should use eslint for linting 4`
 exports[`generators/base lib directory --linter should use eslint for linting 5`] = `
 "{
   \\"extends\\": [
-    \\"../../.eslintrc.json\\"
+    \\"../.eslintrc.json\\"
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
@@ -5607,7 +5607,7 @@ exports[`generators/base lib directory --unitTestRunner should add a jest config
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-lib',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -5618,7 +5618,7 @@ export default {
     '^.+\\\\\\\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+  coverageDirectory: '../coverage/my-mesh-lib'
 };
 "
 `;
@@ -5627,7 +5627,7 @@ exports[`generators/base lib directory --unitTestRunner should add a jest config
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-lib',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -5638,7 +5638,7 @@ export default {
     '^.+\\\\\\\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+  coverageDirectory: '../coverage/my-mesh-lib'
 };
 "
 `;
@@ -5647,7 +5647,7 @@ exports[`generators/base lib directory --unitTestRunner should add a jest config
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-lib',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -5658,7 +5658,7 @@ export default {
     '^.+\\\\\\\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+  coverageDirectory: '../coverage/my-mesh-lib'
 };
 "
 `;
@@ -5667,7 +5667,7 @@ exports[`generators/base lib directory --unitTestRunner should add a jest config
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-lib',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -5678,7 +5678,7 @@ export default {
     '^.+\\\\\\\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+  coverageDirectory: '../coverage/my-mesh-lib'
 };
 "
 `;
@@ -5687,7 +5687,7 @@ exports[`generators/base lib directory --unitTestRunner should add a jest config
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-lib',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -5698,7 +5698,7 @@ export default {
     '^.+\\\\\\\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+  coverageDirectory: '../coverage/my-mesh-lib'
 };
 "
 `;
@@ -5752,13 +5752,13 @@ exports[`generators/base lib with standalone config --babelJest should use babel
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-lib',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\\\\\\\.[tj]sx?$': 'babel-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+  coverageDirectory: '../coverage/my-mesh-lib'
 };
 "
 `;
@@ -6122,7 +6122,7 @@ documents:
 exports[`generators/base lib with standalone config --linter should use eslint for linting 1`] = `
 "{
   \\"extends\\": [
-    \\"../../.eslintrc.json\\"
+    \\"../.eslintrc.json\\"
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
@@ -6267,7 +6267,7 @@ exports[`generators/base lib with standalone config --unitTestRunner should add 
 "/* eslint-disable */
 export default {
   displayName: 'my-mesh-lib',
-  preset: '../../jest.preset.js',
+  preset: '../jest.preset.js',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -6278,7 +6278,7 @@ export default {
     '^.+\\\\\\\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/my-mesh-lib'
+  coverageDirectory: '../coverage/my-mesh-lib'
 };
 "
 `;
@@ -6296,13 +6296,13 @@ exports[`generators/base nested within app directory --babelJest should use babe
 "/* eslint-disable */
 export default {
   displayName: 'test-my-mesh-app',
-  preset: '../../../jest.preset.js',
+  preset: '../../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\\\\\\\.[tj]s$': 'babel-jest'
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../../coverage/apps/test/my-mesh-app'
+  coverageDirectory: '../../coverage/test/my-mesh-app'
 };
 "
 `;
@@ -6647,7 +6647,7 @@ documents:
 exports[`generators/base nested within app directory --linter should use eslint for linting 1`] = `
 "{
   \\"extends\\": [
-    \\"../../../.eslintrc.json\\"
+    \\"../../.eslintrc.json\\"
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
@@ -6770,7 +6770,7 @@ exports[`generators/base nested within app directory --unitTestRunner should add
 "/* eslint-disable */
 export default {
   displayName: 'test-my-mesh-app',
-  preset: '../../../jest.preset.js',
+  preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -6781,7 +6781,7 @@ export default {
     '^.+\\\\\\\\.[tj]s$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../../coverage/apps/test/my-mesh-app'
+  coverageDirectory: '../../coverage/test/my-mesh-app'
 };
 "
 `;
@@ -6799,13 +6799,13 @@ exports[`generators/base nested within lib directory --babelJest should use babe
 "/* eslint-disable */
 export default {
   displayName: 'test-my-mesh-lib',
-  preset: '../../../jest.preset.js',
+  preset: '../../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\\\\\\\.[tj]sx?$': 'babel-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../../coverage/libs/test/my-mesh-lib'
+  coverageDirectory: '../../coverage/test/my-mesh-lib'
 };
 "
 `;
@@ -7169,7 +7169,7 @@ documents:
 exports[`generators/base nested within lib directory --linter should use eslint for linting 1`] = `
 "{
   \\"extends\\": [
-    \\"../../../.eslintrc.json\\"
+    \\"../../.eslintrc.json\\"
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
@@ -7314,7 +7314,7 @@ exports[`generators/base nested within lib directory --unitTestRunner should add
 "/* eslint-disable */
 export default {
   displayName: 'test-my-mesh-lib',
-  preset: '../../../jest.preset.js',
+  preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -7325,7 +7325,7 @@ export default {
     '^.+\\\\\\\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../../coverage/libs/test/my-mesh-lib'
+  coverageDirectory: '../../coverage/test/my-mesh-lib'
 };
 "
 `;
