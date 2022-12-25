@@ -93,7 +93,6 @@ runs:
 
     - name: Save Cypress Cache
       uses: actions/cache/save@3.2.1 # v3
-      id: cypress-cache
       if: inputs.save-cache == 'true'
       with:
         path: |
@@ -102,7 +101,6 @@ runs:
 
     - name: Save PNPM global cache
       uses: actions/cache/save@3.2.1 # v3
-      id: pnpm-global-cache
       if: inputs.save-cache == 'true'
       with:
         path: |
@@ -112,7 +110,6 @@ runs:
     - name: Save local node_modules cache
       uses: actions/cache/save@3.2.1 # v3
       if: inputs.save-cache == 'true'
-      id: pnpm-repo-cache
       with:
         path: |
           **/node_modules
