@@ -56,7 +56,7 @@ runs:
           ${{ runner.os }}-${{ inputs.node-version }}-cypress-dep-cache-v2-
 
     - name: Restore PNPM global cache
-      uses: actions/cache/restore@3.2.1 # v3
+      uses: actions/cache/restore@v3.2.1 # v3
       id: pnpm-global-cache
       if: steps.pnpm-repo-cache.outputs.cache-hit != 'true'
       with:
@@ -67,7 +67,7 @@ runs:
           ${{ runner.os }}-${{ inputs.node-version }}-pnpm-global-cache-v2-
 
     - name: Restore local node_modules cache
-      uses: actions/cache/restore@3.2.1 # v3
+      uses: actions/cache/restore@v3.2.1 # v3
       id: pnpm-repo-cache
       with:
         path: |
@@ -92,7 +92,7 @@ runs:
     # Save Cache
 
     - name: Save Cypress Cache
-      uses: actions/cache/save@3.2.1 # v3
+      uses: actions/cache/save@v3.2.1 # v3
       if: inputs.save-cache == 'true'
       with:
         path: |
@@ -100,7 +100,7 @@ runs:
         key: ${{ runner.os }}-${{ inputs.node-version }}-cypress-dep-cache-v2-${{ hashFiles('**/pnpm-lock.yaml') }}
 
     - name: Save PNPM global cache
-      uses: actions/cache/save@3.2.1 # v3
+      uses: actions/cache/save@v3.2.1 # v3
       if: inputs.save-cache == 'true'
       with:
         path: |
@@ -108,7 +108,7 @@ runs:
         key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-global-cache-v2-${{ hashFiles('**/pnpm-lock.yaml') }}
 
     - name: Save local node_modules cache
-      uses: actions/cache/save@3.2.1 # v3
+      uses: actions/cache/save@v3.2.1 # v3
       if: inputs.save-cache == 'true'
       with:
         path: |
