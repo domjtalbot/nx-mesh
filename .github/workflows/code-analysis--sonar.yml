@@ -1,4 +1,4 @@
-name: 'Sonar'
+name: 'Code Analysis - Sonar'
 
 on:
   workflow_call:
