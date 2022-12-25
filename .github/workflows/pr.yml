@@ -20,10 +20,10 @@ jobs:
     with:
       affected: true
 
-  sonar:
+  code-analysis:
     needs: [build-test]
-    name: Sonar
-    uses: ./.github/workflows/sonar.yml
+    name: Code Analysis
+    uses: ./.github/workflows/code-analysis.yml
     secrets: inherit
 
   deploy:

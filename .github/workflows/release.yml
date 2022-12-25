@@ -28,10 +28,10 @@ jobs:
       affected: false
     secrets: inherit
 
-  sonar:
+  code-analysis:
     needs: [build-test]
-    name: Sonar
-    uses: ./.github/workflows/sonar.yml
+    name: Code Analysis
+    uses: ./.github/workflows/code-analysis.yml
     secrets: inherit
 
   release:
