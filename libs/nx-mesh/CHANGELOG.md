@@ -1,5 +1,11 @@
 # nx-mesh
 
+## 3.0.0
+
+### Major Changes
+
+- [#111](https://github.com/domjtalbot/nx-mesh/pull/111) [`6b496d7`](https://github.com/domjtalbot/nx-mesh/commit/6b496d766e93d2a820bf73b205c8286f9aa439fc) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Update Nx to `15.4.1`
+
 ## 2.2.3
 
 ### Patch Changes
