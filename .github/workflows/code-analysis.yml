@@ -23,5 +23,5 @@ env:
 jobs:
   sonar:
     name: Sonar
-    uses: ./.github/code-analysis/sonar.yml
+    uses: ./.github/workflows/code-analysis--sonar.yml
     secrets: inherit
