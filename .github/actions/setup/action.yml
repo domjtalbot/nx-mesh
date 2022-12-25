@@ -9,10 +9,16 @@ inputs:
     description: The node version to use.
     required: false
     default: 'config'
+  save-cache:
+    description: Save cache
+    required: false
+    default: 'false'
 
 runs:
   using: 'composite'
   steps:
+    # Node
+
     - name: Setup Volta
       if: inputs.node-version == 'config'
       uses: volta-cli/action@25888009cd70dbe17a140f1c56d93f8c09f7bcef # v4.0.0
@@ -23,7 +29,22 @@ runs:
       with:
         node-version: ${{ inputs.node-version }}
 
-    - name: Cypress Cache
+    # pnpm
+
+    - uses: pnpm/action-setup@v2.2.4
+      with:
+        version: 7
+        run_install: false
+
+    - name: Get pnpm cache directory path
+      id: pnpm-cache-dir-path
+      if: steps.pnpm-repo-cache.outputs.cache-hit != 'true'
+      shell: bash
+      run: echo "::set-output name=dir::$(pnpm store path)"
+
+    # Restore Cache
+
+    - name: Restore Cypress Cache
       uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7 # v3
       id: cypress-cache
       if: inputs.ignore-cypress-cache != 'true'
@@ -34,29 +55,8 @@ runs:
         restore-keys: |
           ${{ runner.os }}-${{ inputs.node-version }}-cypress-dep-cache-v2-
 
-    - name: PNPM Repo Cache
-      uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7 # v3
-      id: pnpm-repo-cache
-      with:
-        path: |
-          **/node_modules
-          !**/node_modules/.cache/nx
-        key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-dep-cache-v2-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-${{ inputs.node-version }}-pnpm-dep-cache-v2-
-
-    - uses: pnpm/action-setup@v2
-      with:
-        version: 7
-
-    - name: Get pnpm cache directory path
-      id: pnpm-cache-dir-path
-      if: steps.pnpm-repo-cache.outputs.cache-hit != 'true'
-      shell: bash
-      run: echo "::set-output name=dir::$(pnpm store path)"
-
-    - name: PNPM Store Cache
-      uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7 # v3
+    - name: Restore PNPM global cache
+      uses: actions/cache/restore@3.2.1 # v3
       id: pnpm-global-cache
       if: steps.pnpm-repo-cache.outputs.cache-hit != 'true'
       with:
@@ -66,10 +66,55 @@ runs:
         restore-keys: |
           ${{ runner.os }}-${{ inputs.node-version }}-pnpm-global-cache-v2-
 
+    - name: Restore local node_modules cache
+      uses: actions/cache/restore@3.2.1 # v3
+      id: pnpm-repo-cache
+      with:
+        path: |
+          **/node_modules
+          !**/node_modules/.cache/nx
+        key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-dep-cache-v2-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-${{ inputs.node-version }}-pnpm-dep-cache-v2-
+
+    # Install
+
     - name: Install Node Dependencies
       if: steps.pnpm-repo-cache.outputs.cache-hit != 'true'
       shell: bash
       run: pnpm install --frozen-lockfile
 
+    # Nx
+
     - name: Nx Shas
       uses: nrwl/nx-set-shas@a80e36fdf700047d299324529b0f0eadc1a38cb2 # tag=v2.2.2
+
+    # Save Cache
+
+    - name: Save Cypress Cache
+      uses: actions/cache/save@3.2.1 # v3
+      id: cypress-cache
+      if: inputs.save-cache == 'true'
+      with:
+        path: |
+          ~/.cache/Cypress
+        key: ${{ runner.os }}-${{ inputs.node-version }}-cypress-dep-cache-v2-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+    - name: Save PNPM global cache
+      uses: actions/cache/save@3.2.1 # v3
+      id: pnpm-global-cache
+      if: inputs.save-cache == 'true'
+      with:
+        path: |
+          ${{ steps.pnpm-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-global-cache-v2-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+    - name: Save local node_modules cache
+      uses: actions/cache/save@3.2.1 # v3
+      if: inputs.save-cache == 'true'
+      id: pnpm-repo-cache
+      with:
+        path: |
+          **/node_modules
+          !**/node_modules/.cache/nx
+        key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-dep-cache-v2-${{ hashFiles('**/pnpm-lock.yaml') }}
