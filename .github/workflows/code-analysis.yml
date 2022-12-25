@@ -21,6 +21,11 @@ env:
   NX_CLOUD_ENV_NAME: node-lts
 
 jobs:
+  codeql:
+    name: Sonar
+    uses: ./.github/workflows/code-analysis--codeql.yml
+    secrets: inherit
+
   sonar:
     name: Sonar
     uses: ./.github/workflows/code-analysis--sonar.yml
