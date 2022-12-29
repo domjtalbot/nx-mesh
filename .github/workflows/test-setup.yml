@@ -38,8 +38,6 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3
-        with:
-          fetch-depth: 0
 
       # Node
 
@@ -57,14 +55,14 @@ jobs:
 
       - uses: pnpm/action-setup@v2.2.4
         with:
-          version: 7
           run_install: false
 
       - name: Get pnpm cache directory path
         id: pnpm-cache-dir-path
         if: steps.pnpm-repo-cache.outputs.cache-hit != 'true'
         shell: bash
-        run: echo "::set-output name=dir::$(pnpm store path)"
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
       # Restore Cache
 
@@ -85,7 +83,7 @@ jobs:
         if: steps.pnpm-repo-cache.outputs.cache-hit != 'true'
         with:
           path: |
-            ${{ steps.pnpm-cache-dir-path.outputs.dir }}
+            ${{ steps.pnpm-cache.outputs.STORE_PATH }}
           key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-global-cache-v2-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-${{ inputs.node-version }}-pnpm-global-cache-v2-
@@ -104,9 +102,9 @@ jobs:
       # Install
 
       - name: Install Node Dependencies
-        if: steps.pnpm-repo-cache.outputs.cache-hit != 'true'
         shell: bash
-        run: pnpm install --frozen-lockfile
+        run: |
+          pnpm install --frozen-lockfile
 
       # Nx
 
