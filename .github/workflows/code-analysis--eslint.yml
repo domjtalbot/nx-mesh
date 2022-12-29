@@ -47,7 +47,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup
-        uses: ./.github/workflows/job-setup.yml
+        uses: ./.github/workflows/setup.yml
         with:
           node-version: lts
           save-cache: true
