@@ -14,6 +14,12 @@ env:
   NX_CLOUD_ENV_NAME: node-lts
 
 jobs:
+  setup:
+    uses: ./.github/workflows/test-setup.yml
+    secrets: inherit
+    with:
+      save-cache: true
+
   build-test:
     uses: ./.github/workflows/build-test.yml
     secrets: inherit
@@ -45,7 +51,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup
-        uses: ./.github/workflows/_setup.yml
+        uses: ./.github/actions/setup.yml
 
       - name: Build
         run: pnpm nx run-many --target=build --configuration=production --all

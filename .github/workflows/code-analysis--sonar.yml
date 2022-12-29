@@ -30,7 +30,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup
-        uses: ./.github/workflows/_setup.yml
+        uses: ./.github/actions/setup.yml
         with:
           ignore-cypress-cache: ${{ !startsWith(matrix.command, 'e2e') }}
           node-version: ${{ matrix.node }}
