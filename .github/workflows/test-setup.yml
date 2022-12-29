@@ -83,7 +83,7 @@ jobs:
         if: steps.pnpm-repo-cache.outputs.cache-hit != 'true'
         with:
           path: |
-            ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+            ${{ steps.pnpm-cache-dir-path.outputs.STORE_PATH }}
           key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-global-cache-v2-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-${{ inputs.node-version }}-pnpm-global-cache-v2-
