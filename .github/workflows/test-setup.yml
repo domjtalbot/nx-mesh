@@ -126,7 +126,7 @@ jobs:
       - name: Install Node Dependencies
         shell: bash
         run: |
-          pnpm install
+          pnpm install --no-frozen-lockfile
 
       # Nx
 
