@@ -90,16 +90,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{ inputs.node-version }}-pnpm-global-cache-v2-
 
-      - name: Restore local node_modules cache
-        uses: actions/cache/restore@v3.2.1 # v3
-        id: pnpm-repo-cache
-        with:
-          path: |
-            **/node_modules
-            !**/node_modules/.cache/nx
-          key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-dep-cache-v2-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ inputs.node-version }}-pnpm-dep-cache-v2-
+      # - name: Restore local node_modules cache
+      #   uses: actions/cache/restore@v3.2.1 # v3
+      #   id: pnpm-repo-cache
+      #   with:
+      #     path: |
+      #       **/node_modules
+      #       !**/node_modules/.cache/nx
+      #     key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-dep-cache-v2-${{ hashFiles('**/pnpm-lock.yaml') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-${{ inputs.node-version }}-pnpm-dep-cache-v2-
 
       # Install
 
@@ -131,11 +131,11 @@ jobs:
             ${{ steps.pnpm-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-global-cache-v2-${{ hashFiles('**/pnpm-lock.yaml') }}
 
-      - name: Save local node_modules cache
-        uses: actions/cache/save@v3.2.1 # v3
-        if: inputs.save-cache == true
-        with:
-          path: |
-            **/node_modules
-            !**/node_modules/.cache/nx
-          key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-dep-cache-v2-${{ hashFiles('**/pnpm-lock.yaml') }}
+      # - name: Save local node_modules cache
+      #   uses: actions/cache/save@v3.2.1 # v3
+      #   if: inputs.save-cache == true
+      #   with:
+      #     path: |
+      #       **/node_modules
+      #       !**/node_modules/.cache/nx
+      #     key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-dep-cache-v2-${{ hashFiles('**/pnpm-lock.yaml') }}

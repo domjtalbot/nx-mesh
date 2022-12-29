@@ -20,51 +20,51 @@ jobs:
     with:
       save-cache: true
 
-  build-test:
-    uses: ./.github/workflows/build-test.yml
-    secrets: inherit
-    with:
-      affected: true
+  # build-test:
+  #   uses: ./.github/workflows/build-test.yml
+  #   secrets: inherit
+  #   with:
+  #     affected: true
 
-  code-analysis:
-    needs: [build-test]
-    name: Code Analysis
-    uses: ./.github/workflows/code-analysis.yml
-    secrets: inherit
+  # code-analysis:
+  #   needs: [build-test]
+  #   name: Code Analysis
+  #   uses: ./.github/workflows/code-analysis.yml
+  #   secrets: inherit
 
-  deploy:
-    needs: [build-test]
-    uses: ./.github/workflows/deploy.yml
-    with:
-      apps: ${{ needs.build-test.outputs.affectedApps }}
-    secrets: inherit
+  # deploy:
+  #   needs: [build-test]
+  #   uses: ./.github/workflows/deploy.yml
+  #   with:
+  #     apps: ${{ needs.build-test.outputs.affectedApps }}
+  #   secrets: inherit
 
-  alpha:
-    name: Release Alpha
-    needs: [build-test]
-    if: (${{ github.event.pull_request.head.repo.full_name }} == ${{ github.repository }}) && ${{ !startsWith(github.event.pull_request.head.ref,'changeset-release') }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3
-        with:
-          fetch-depth: 0
+  # alpha:
+  #   name: Release Alpha
+  #   needs: [build-test]
+  #   if: (${{ github.event.pull_request.head.repo.full_name }} == ${{ github.repository }}) && ${{ !startsWith(github.event.pull_request.head.ref,'changeset-release') }}
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Check out repository
+  #       uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3
+  #       with:
+  #         fetch-depth: 0
 
-      - name: Setup
-        uses: ./.github/actions/setup.yml
+  #     - name: Setup
+  #       uses: ./.github/actions/setup.yml
 
-      - name: Build
-        run: pnpm nx run-many --target=build --configuration=production --all
+  #     - name: Build
+  #       run: pnpm nx run-many --target=build --configuration=production --all
 
-      - name: Modify Workspace File
-        run: sed -e 's/libs\//dist\/libs\//g' pnpm-workspace.yaml > pnpm-workspace-dist.yaml && mv pnpm-workspace-dist.yaml pnpm-workspace.yaml
+  #     - name: Modify Workspace File
+  #       run: sed -e 's/libs\//dist\/libs\//g' pnpm-workspace.yaml > pnpm-workspace-dist.yaml && mv pnpm-workspace-dist.yaml pnpm-workspace.yaml
 
-      - name: Release Alpha Snapshot
-        id: snapshot
-        uses: the-guild-org/changesets-snapshot-action@eeff4d8aecffd035c3d5513d9811f07893737425 # v0.0.1
-        with:
-          tag: alpha
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  #     - name: Release Alpha Snapshot
+  #       id: snapshot
+  #       uses: the-guild-org/changesets-snapshot-action@eeff4d8aecffd035c3d5513d9811f07893737425 # v0.0.1
+  #       with:
+  #         tag: alpha
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
