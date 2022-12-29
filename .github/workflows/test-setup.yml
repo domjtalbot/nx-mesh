@@ -88,16 +88,16 @@ jobs:
 
       # Restore Cache
 
-      - name: Restore Cypress Cache
-        uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7 # v3
-        id: cypress-cache
-        if: inputs.cypress == true
-        with:
-          path: |
-            ~/.cache/Cypress
-          key: ${{ runner.os }}-${{ inputs.node-version }}-cypress-dep-cache-v2-${{ steps.pnpm-hash.outputs.HASH }}
-          restore-keys: |
-            ${{ runner.os }}-${{ inputs.node-version }}-cypress-dep-cache-v2-
+      # - name: Restore Cypress Cache
+      #   uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7 # v3
+      #   id: cypress-cache
+      #   if: inputs.cypress == true
+      #   with:
+      #     path: |
+      #       ~/.cache/Cypress
+      #     key: ${{ runner.os }}-${{ inputs.node-version }}-cypress-dep-cache-v2-${{ steps.pnpm-hash.outputs.HASH }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-${{ inputs.node-version }}-cypress-dep-cache-v2-
 
       - name: Restore PNPM global cache
         uses: actions/cache/restore@v3.2.1 # v3
@@ -135,13 +135,13 @@ jobs:
 
       # Save Cache
 
-      - name: Save Cypress Cache
-        uses: actions/cache/save@v3.2.1 # v3
-        if: inputs.save-cache == true && inputs.cypress == true
-        with:
-          path: |
-            ~/.cache/Cypress
-          key: ${{ runner.os }}-${{ inputs.node-version }}-cypress-dep-cache-v2-${{ steps.pnpm-hash.outputs.HASH }}
+      # - name: Save Cypress Cache
+      #   uses: actions/cache/save@v3.2.1 # v3
+      #   if: inputs.save-cache == true && inputs.cypress == true
+      #   with:
+      #     path: |
+      #       ~/.cache/Cypress
+      #     key: ${{ runner.os }}-${{ inputs.node-version }}-cypress-dep-cache-v2-${{ steps.pnpm-hash.outputs.HASH }}
 
       - name: Save PNPM global cache
         uses: actions/cache/save@v3.2.1 # v3
