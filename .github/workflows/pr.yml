@@ -20,6 +20,14 @@ jobs:
     with:
       save-cache: true
 
+  setup-cypress:
+    needs: [setup]
+    uses: ./.github/workflows/test-setup.yml
+    secrets: inherit
+    with:
+      cypress: true
+      save-cache: true
+
   # build-test:
   #   uses: ./.github/workflows/build-test.yml
   #   secrets: inherit

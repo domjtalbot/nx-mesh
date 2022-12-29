@@ -8,6 +8,11 @@ on:
         required: false
         default: false
         type: boolean
+      cypress:
+        description: Set up Cypress?
+        required: false
+        default: false
+        type: boolean
       node-version:
         description: The node version to use.
         required: false
@@ -39,6 +44,21 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3
 
+      - name: Get lockfile hash
+        id: pnpm-hash
+        shell: bash
+        run: |
+          echo "HASH=${{ hashFiles('**/pnpm-lock.yaml') }}" >> $GITHUB_OUTPUT
+
+      - name: Disable Cypress install
+        if: inputs.cypress == false
+        uses: jossef/action-set-json-field@v2
+        with:
+          file: package.json
+          field: pnpm.neverBuiltDependencies
+          value: '["cypress"]'
+          parse_json: true
+
       # Node
 
       - name: Setup Volta
@@ -69,11 +89,11 @@ jobs:
       - name: Restore Cypress Cache
         uses: actions/cache@9b0c1fce7a93df8e3bb8926b0d6e9d89e92f20a7 # v3
         id: cypress-cache
-        if: inputs.ignore-cypress-cache != true
+        if: inputs.cypress == true
         with:
           path: |
             ~/.cache/Cypress
-          key: ${{ runner.os }}-${{ inputs.node-version }}-cypress-dep-cache-v2-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-${{ inputs.node-version }}-cypress-dep-cache-v2-${{ steps.pnpm-hash.outputs.HASH }}
           restore-keys: |
             ${{ runner.os }}-${{ inputs.node-version }}-cypress-dep-cache-v2-
 
@@ -84,7 +104,7 @@ jobs:
         with:
           path: |
             ${{ steps.pnpm-cache-dir-path.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-global-cache-v2-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-global-cache-v2-${{ steps.pnpm-hash.outputs.HASH }}
           restore-keys: |
             ${{ runner.os }}-${{ inputs.node-version }}-pnpm-global-cache-v2-
 
@@ -95,7 +115,7 @@ jobs:
       #     path: |
       #       **/node_modules
       #       !**/node_modules/.cache/nx
-      #     key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-dep-cache-v2-${{ hashFiles('**/pnpm-lock.yaml') }}
+      #     key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-dep-cache-v2-${{ steps.pnpm-hash.outputs.HASH }}
       #     restore-keys: |
       #       ${{ runner.os }}-${{ inputs.node-version }}-pnpm-dep-cache-v2-
 
@@ -104,7 +124,7 @@ jobs:
       - name: Install Node Dependencies
         shell: bash
         run: |
-          pnpm install --frozen-lockfile
+          pnpm install
 
       # Nx
 
@@ -115,11 +135,11 @@ jobs:
 
       - name: Save Cypress Cache
         uses: actions/cache/save@v3.2.1 # v3
-        if: inputs.save-cache == true
+        if: inputs.save-cache == true && inputs.cypress == true
         with:
           path: |
             ~/.cache/Cypress
-          key: ${{ runner.os }}-${{ inputs.node-version }}-cypress-dep-cache-v2-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-${{ inputs.node-version }}-cypress-dep-cache-v2-${{ steps.pnpm-hash.outputs.HASH }}
 
       - name: Save PNPM global cache
         uses: actions/cache/save@v3.2.1 # v3
@@ -127,7 +147,7 @@ jobs:
         with:
           path: |
             ${{ steps.pnpm-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-global-cache-v2-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-global-cache-v2-${{ steps.pnpm-hash.outputs.HASH }}
 
       # - name: Save local node_modules cache
       #   uses: actions/cache/save@v3.2.1 # v3
@@ -136,4 +156,4 @@ jobs:
       #     path: |
       #       **/node_modules
       #       !**/node_modules/.cache/nx
-      #     key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-dep-cache-v2-${{ hashFiles('**/pnpm-lock.yaml') }}
+      #     key: ${{ runner.os }}-${{ inputs.node-version }}-pnpm-dep-cache-v2-${{ steps.pnpm-hash.outputs.HASH }}
