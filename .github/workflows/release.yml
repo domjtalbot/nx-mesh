@@ -53,7 +53,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup
-        uses: ./.github/workflows/setup.yml
+        uses: ./.github/workflows/job-setup.yml
 
       - name: Build
         run: pnpm nx run-many --target=build --configuration=production --all
@@ -91,7 +91,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup
-        uses: ./.github/workflows/setup.yml
+        uses: ./.github/workflows/job-setup.yml
 
       - name: Build
         run: pnpm nx run-many --target=build --configuration=production --all
