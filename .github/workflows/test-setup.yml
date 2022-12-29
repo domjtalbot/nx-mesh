@@ -56,6 +56,7 @@ jobs:
       - uses: pnpm/action-setup@v2.2.4
         with:
           run_install: false
+          version: 7
 
       - name: Get pnpm cache directory path
         id: pnpm-cache-dir-path
