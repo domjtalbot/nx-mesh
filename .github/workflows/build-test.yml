@@ -57,8 +57,8 @@ jobs:
       - name: Setup Job
         uses: ./.github/actions/setup-job
         with:
-          node-version: ${{ matrix.node }}
-          save-cache: true
+          node_version: ${{ matrix.node }}
+          save_cache: true
 
       - name: Affected
         id: affected

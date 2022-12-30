@@ -24,35 +24,35 @@ inputs:
     default: 'false'
 
 outputs:
-  cache-hit:
+  cache_hit:
     description: >
       A boolean value to indicate an exact match was found for the primary key
     value: ${{ steps.pnpm-global-cache.outputs.cache-hit }}
-  cache-key:
+  cache_key:
     description: >
       The cache key used to suffix node cache keys
     value: ${{ steps.cache_key.outputs.key }}
-  node-version:
+  node_version:
     description: The installed node version.
     value: ${{ steps.node.outputs.version }}
-  nx-base:
+  nx_base:
     description: >
       The value intended for use with --base or NX_BASE in all subsequent
       `nx affected` commands within the current workflow.
     value: ${{ steps.nx_shas.outputs.base }}
-  nx-head:
+  nx_head:
     description: >
       The value intended for use with --head or NX_HEAD in all subsequent
       `nx affected` commands within the current workflow.
     value: ${{ steps.nx_shas.outputs.head }}
-  pnpm-version:
+  pnpm_version:
     description: The installed pnpm version.
     value: ${{ steps.pnpm.outputs.version }}
-  restore-cache-key:
+  restore_cache_key:
     description: >
       The restore cache key used to suffix node restore cache keys
     value: ${{ steps.restore_cache_key.outputs.key }}
-  volta-version:
+  volta_version:
     description: The installed volta version.
     value: ${{ steps.volta.outputs.version }}
 
