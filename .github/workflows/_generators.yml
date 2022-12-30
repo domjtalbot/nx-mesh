@@ -62,8 +62,8 @@ jobs:
       - name: Setup Job
         uses: ./.github/actions/setup-job
         with:
-          node-version: ${{ inputs.node_version }}
-          save-cache: '${{ inputs.save_cache }}'
+          node_version: ${{ inputs.node_version }}
+          save_cache: '${{ inputs.save_cache }}'
 
       - name: Build Nx-mesh
         shell: bash

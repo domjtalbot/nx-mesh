@@ -58,8 +58,8 @@ jobs:
         uses: ./.github/actions/setup-job
         with:
           browsers: 'true'
-          node-version: ${{ inputs.node_version }}
-          save-cache: '${{ inputs.save_cache }}'
+          node_version: ${{ inputs.node_version }}
+          save_cache: '${{ inputs.save_cache }}'
 
       - name: Affected ${{ matrix.e2e }}
         if: inputs.affected == true
