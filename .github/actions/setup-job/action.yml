@@ -188,6 +188,13 @@ runs:
       run: |
         pnpm install --no-frozen-lockfile
 
+    # Clean up
+
+    - name: Git Clean
+      shell: bash
+      run: |
+        git clean -f
+
     # Save Cache
 
     - name: Save Cypress cache
