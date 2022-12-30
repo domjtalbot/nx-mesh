@@ -129,12 +129,6 @@ runs:
 
     # Checkout
 
-    - name: Check out repository with fetch depth ${{ inputs.fetch_depth }}
-      if: inputs.fetch_depth > 0
-      uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3
-      with:
-        fetch-depth: ${{ inputs.fetch_depth }}
-
     - name: Disable Cypress install
       if: inputs.browsers != 'true'
       uses: jossef/action-set-json-field@v2
@@ -188,13 +182,6 @@ runs:
       run: |
         pnpm install --no-frozen-lockfile
 
-    # Clean up
-
-    - name: Git Clean
-      shell: bash
-      run: |
-        git clean -f
-
     # Save Cache
 
     - name: Save Cypress cache
@@ -224,3 +211,10 @@ runs:
     #       !**/node_modules/.cache/nx
     #     key: |
     #       pnpm-local--${{ steps.cache_key.outputs.key }}
+
+    # Clean up
+
+    - name: Check out repository with fetch depth ${{ inputs.fetch_depth }}
+      uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3
+      with:
+        fetch-depth: ${{ inputs.fetch_depth }}
