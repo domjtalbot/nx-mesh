@@ -74,7 +74,7 @@ runs:
       if: inputs.node_version != 'config'
       uses: volta-cli/action@v4
       with:
-        node_version: ${{ inputs.node_version }}
+        node-version: ${{ inputs.node_version }}
 
     # pnpm
 
