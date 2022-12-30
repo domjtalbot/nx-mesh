@@ -1,0 +1,219 @@
+name: 'Set up the job'
+description: 'Install Node, PNPM, project dependencies and get NX SHAs'
+
+inputs:
+  browsers:
+    description: Set up Node with Cypress browsers?
+    required: false
+    default: 'false'
+  fetch_depth:
+    description: >
+      Number of commits to fetch.
+      0 indicates all history for all branches and tags.
+    default: '1'
+  node_version:
+    description: >
+      Optionally define the version of Node to install via Volta.
+
+      Pass `config` (default value) to use the Volta config.
+    required: false
+    default: 'config'
+  save_cache:
+    description: Should the cache be saved upon completion?
+    required: false
+    default: 'false'
+
+outputs:
+  cache-hit:
+    description: >
+      A boolean value to indicate an exact match was found for the primary key
+    value: ${{ steps.pnpm-global-cache.outputs.cache-hit }}
+  cache-key:
+    description: >
+      The cache key used to suffix node cache keys
+    value: ${{ steps.cache_key.outputs.key }}
+  node-version:
+    description: The installed node version.
+    value: ${{ steps.node.outputs.version }}
+  nx-base:
+    description: >
+      The value intended for use with --base or NX_BASE in all subsequent
+      `nx affected` commands within the current workflow.
+    value: ${{ steps.nx_shas.outputs.base }}
+  nx-head:
+    description: >
+      The value intended for use with --head or NX_HEAD in all subsequent
+      `nx affected` commands within the current workflow.
+    value: ${{ steps.nx_shas.outputs.head }}
+  pnpm-version:
+    description: The installed pnpm version.
+    value: ${{ steps.pnpm.outputs.version }}
+  restore-cache-key:
+    description: >
+      The restore cache key used to suffix node restore cache keys
+    value: ${{ steps.restore_cache_key.outputs.key }}
+  volta-version:
+    description: The installed volta version.
+    value: ${{ steps.volta.outputs.version }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    # Volta
+
+    - name: Setup Volta
+      if: inputs.node_version == 'config'
+      uses: volta-cli/action@v4
+
+    - name: Setup Volta
+      if: inputs.node_version != 'config'
+      uses: volta-cli/action@v4
+      with:
+        node-version: ${{ inputs.node_version }}
+
+    # pnpm
+
+    - uses: pnpm/action-setup@v2
+      with:
+        run_install: false
+        version: latest
+
+    # Utils
+
+    - name: Volta version
+      id: volta
+      shell: bash
+      run: |
+        echo "node_version=$(node --version)" >> $GITHUB_OUTPUT
+        echo "version=$(volta --version)" >> $GITHUB_OUTPUT
+
+    - name: Node version
+      id: node
+      shell: bash
+      run: |
+        echo "version=$(node --version)" >> $GITHUB_OUTPUT
+
+    - name: PNPM version
+      id: pnpm
+      shell: bash
+      run: |
+        echo "cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+        echo "version=$(pnpm --version)" >> $GITHUB_OUTPUT
+
+    - name: NX Cloud Envs
+      id: nx-cloud
+      shell: bash
+      run: |
+        echo "NX_CLOUD_ENV_NAME=node_${{ steps.node.outputs.version }}__pnpm_${{ steps.pnpm.outputs.version }}" >> $GITHUB_ENV
+
+    - name: Create restore cache key
+      id: restore_cache_key
+      shell: bash
+      run: |
+        echo "key=cache-version-1--os-${{ runner.os }}--volta-${{ steps.volta.outputs.version }}--node-${{ steps.node.outputs.version }}--pnpm-${{ steps.pnpm.outputs.version }}" >> $GITHUB_OUTPUT
+
+    - name: Create cache key
+      id: cache_key
+      shell: bash
+      run: |
+        echo "key=${{ steps.restore_cache_key.outputs.key }}--lockfile-${{ hashFiles('**/pnpm-lock.yaml') }}" >> $GITHUB_OUTPUT
+
+    - name: Nx Shas
+      id: nx_shas
+      uses: nrwl/nx-set-shas@v3
+
+    # Checkout
+
+    - name: Check out repository with fetch depth ${{ inputs.fetch_depth }}
+      if: inputs.fetch_depth > 0
+      uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3
+      with:
+        fetch-depth: ${{ inputs.fetch_depth }}
+
+    - name: Disable Cypress install
+      if: inputs.browsers != 'true'
+      uses: jossef/action-set-json-field@v2
+      with:
+        file: package.json
+        field: pnpm.neverBuiltDependencies
+        value: '["cypress"]'
+        parse_json: true
+
+    # Restore Cache
+
+    - name: Restore Cypress Cache
+      uses: actions/cache@v3
+      id: cypress-cache
+      if: inputs.browsers == 'true'
+      with:
+        path: |
+          ~/.cache/Cypress
+        key: |
+          browsers--${{ steps.cache_key.outputs.key }}
+        restore-keys: |
+          browsers--${{ steps.restore_cache_key.outputs.key }}
+
+    - name: Restore PNPM global cache
+      uses: actions/cache/restore@v3
+      id: pnpm-global-cache
+      with:
+        path: |
+          ${{ steps.pnpm.outputs.cache_dir }}
+        key: |
+          pnpm-global--${{ steps.cache_key.outputs.key }}
+        restore-keys: |
+          pnpm-global--${{ steps.restore_cache_key.outputs.key }}
+
+    # - name: Restore local node_modules cache
+    #   uses: actions/cache/restore@v3
+    #   id: pnpm-local-cache
+    #   with:
+    #     path: |
+    #       **/node_modules
+    #       !**/node_modules/.cache/nx
+    #     key: |
+    #       pnpm-local--${{ steps.cache_key.outputs.key }}
+    #     restore-keys: |
+    #       pnpm-local--${{ steps.restore_cache_key.outputs.key }}
+
+    # Install
+
+    - name: Install Node Dependencies
+      shell: bash
+      run: |
+        pnpm install --no-frozen-lockfile
+
+    # Save Cache
+
+    - name: Save Cypress cache
+      uses: actions/cache/save@v3
+      if: inputs.save_cache == 'true' && inputs.browsers == 'true'
+      with:
+        path: |
+          ~/.cache/Cypress
+        key: |
+          browsers--${{ steps.cache_key.outputs.key }}
+
+    - name: Save PNPM global cache
+      uses: actions/cache/save@v3
+      if: inputs.save_cache == 'true'
+      with:
+        path: |
+          ${{ steps.pnpm.outputs.cache_dir }}
+        key: |
+          pnpm-global--${{ steps.cache_key.outputs.key }}
+
+    # - name: Save local node_modules cache
+    #   uses: actions/cache/save@v3
+    #   if: inputs.save_cache == 'true'
+    #   with:
+    #     path: |
+    #       **/node_modules
+    #       !**/node_modules/.cache/nx
+    #     key: |
+    #       pnpm-local--${{ steps.cache_key.outputs.key }}

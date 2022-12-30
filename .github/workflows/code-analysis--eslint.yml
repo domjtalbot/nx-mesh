@@ -46,8 +46,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup
-        uses: ./.github/actions/setup.yml
+      - name: Setup Job
+        uses: ./.github/actions/setup-job.yml
         with:
           node-version: lts
           save-cache: true

@@ -1,0 +1,85 @@
+name: 'Build'
+
+on:
+  workflow_call:
+    inputs:
+      affected:
+        description: >
+          Run for affected projects.
+        required: false
+        default: true
+        type: boolean
+      node_version:
+        description: >
+          Optionally define the version of Node to install via Volta.
+
+          Pass `config` (default value) to use the Volta config.
+        required: false
+        default: 'config'
+        type: string
+      save_cache:
+        description: >
+          Should the cache be saved upon completion?
+        required: false
+        default: false
+        type: boolean
+    secrets:
+      NX_CLOUD_ACCESS_TOKEN:
+        description: 'The NX Cloud API token'
+        required: true
+      NX__TRIPPIN__API_KEY:
+        description: 'The Trippin API Key'
+        required: true
+
+concurrency:
+  group: build--${{ github.workflow }}--${{ github.ref }}
+
+env:
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+  NX__TRIPPIN__API_KEY: ${{ secrets.NX__TRIPPIN__API_KEY }}
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Setup Job
+        uses: ./.github/actions/setup-job.yml
+        with:
+          node-version: ${{ inputs.node_version }}
+          save-cache: '${{ inputs.save_cache }}'
+
+      - name: Affected Build
+        if: inputs.affected == true
+        run: |
+          pnpm nx affected \
+            --target=build \
+            --parallel=2
+
+      - name: Build
+        if: inputs.affected != true
+        run: |
+          pnpm nx run-many \
+            --target=build \
+            --parallel=2 \
+            --all
+
+      - name: Affected Production Build
+        if: inputs.affected == true
+        run: |
+          pnpm nx affected \
+            --target=build \
+            --parallel=2 \
+            --configuration=production
+
+      - name: Build Production
+        if: inputs.affected != true
+        run: |
+          pnpm nx run-many \
+            --target=build \
+            --parallel=2 \
+            --all \
+            --configuration=production

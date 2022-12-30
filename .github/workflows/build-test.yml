@@ -54,8 +54,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup
-        uses: ./.github/actions/setup.yml
+      - name: Setup Job
+        uses: ./.github/actions/setup-job.yml
         with:
           node-version: ${{ matrix.node }}
           save-cache: true
@@ -154,8 +154,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup
-        uses: ./.github/actions/setup.yml
+      - name: Setup Job
+        uses: ./.github/actions/setup-job.yml
         with:
           ignore-cypress-cache: ${{ !startsWith(matrix.command, 'e2e') }}
           node-version: ${{ matrix.node }}
@@ -204,8 +204,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup
-        uses: ./.github/actions/setup.yml
+      - name: Setup Job
+        uses: ./.github/actions/setup-job.yml
         with:
           ignore-cypress-cache: ${{ !startsWith(matrix.command, 'e2e') }}
           node-version: ${{ matrix.node }}
@@ -266,8 +266,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup
-        uses: ./.github/actions/setup.yml
+      - name: Setup Job
+        uses: ./.github/actions/setup-job.yml
         with:
           node-version: ${{ matrix.node }}
 

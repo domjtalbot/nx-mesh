@@ -2,31 +2,54 @@ name: 'Pull Request'
 
 on:
   pull_request:
-    branches:
-      - main
 
 concurrency:
-  group: pr-${{ github.workflow }}-${{ github.ref }}
+  group: pr--${{ github.workflow }}--${{ github.ref }}
 
 env:
   NX__TRIPPIN__API_KEY: ${{ secrets.NX__TRIPPIN__API_KEY }}
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
-  NX_CLOUD_ENV_NAME: node-lts
 
 jobs:
-  setup:
-    uses: ./.github/workflows/test-setup.yml
+  lint:
+    uses: ./.github/workflows/_lint.yml
     secrets: inherit
     with:
-      save-cache: true
+      affected: true
+      node_version: lts
+      save_cache: true
 
-  setup-cypress:
-    needs: [setup]
-    uses: ./.github/workflows/test-setup.yml
+  build:
+    needs: [lint]
+    uses: ./.github/workflows/_build.yml
     secrets: inherit
     with:
-      cypress: true
-      save-cache: true
+      affected: true
+      node_version: lts
+
+  test:
+    needs: [build]
+    uses: ./.github/workflows/_test.yml
+    secrets: inherit
+    with:
+      affected: true
+      node_version: lts
+
+  e2e:
+    needs: [build]
+    uses: ./.github/workflows/_e2e.yml
+    secrets: inherit
+    with:
+      affected: true
+      node_version: lts
+
+  generators:
+    needs: [build]
+    uses: ./.github/workflows/_generators.yml
+    secrets: inherit
+    with:
+      affected: true
+      node_version: lts
 
   # build-test:
   #   uses: ./.github/workflows/build-test.yml
@@ -58,8 +81,8 @@ jobs:
   #       with:
   #         fetch-depth: 0
 
-  #     - name: Setup
-  #       uses: ./.github/actions/setup.yml
+  #     - name: Setup Job
+  #       uses: ./.github/actions/setup-job.yml
 
   #     - name: Build
   #       run: pnpm nx run-many --target=build --configuration=production --all
