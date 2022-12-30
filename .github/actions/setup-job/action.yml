@@ -190,10 +190,12 @@ runs:
 
     # Clean up
 
-    - name: Git Clean
+    - name: Reset changed files
       shell: bash
       run: |
-        git clean -ffdx && git reset --hard HEAD
+        git restore \
+          package.json \
+          pnpm-lock.yaml
 
     # Save Cache
 
