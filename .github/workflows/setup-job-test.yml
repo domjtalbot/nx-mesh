@@ -115,20 +115,21 @@ jobs:
 
       - name: Restore local node_modules cache
         uses: actions/cache/restore@v3
-        id: pnpm-local-cache
+        id: pnpm-cache
         with:
           path: |
             **/node_modules
             !**/node_modules/.cache/nx
+            ${{ steps.pnpm.outputs.cache_dir }}
           key: |
-            pnpm-local--${{ steps.cache_key.outputs.key }}
+            pnpm--${{ steps.cache_key.outputs.key }}
           restore-keys: |
-            pnpm-local--${{ steps.restore_cache_key.outputs.key }}
+            pnpm--${{ steps.restore_cache_key.outputs.key }}
 
       # Toggle Cypress install
 
       # - name: Disable Cypress install
-      #   if: inputs.browsers != 'true' && steps.pnpm-local-cache.outputs.cache-hit != 'true'
+      #   if: inputs.browsers != 'true' && steps.pnpm-cache.outputs.cache-hit != 'true'
       #   uses: jossef/action-set-json-field@v2
       #   with:
       #     file: package.json
@@ -150,30 +151,30 @@ jobs:
           restore-keys: |
             browsers--${{ steps.restore_cache_key.outputs.key }}
 
-      - name: Restore PNPM global cache
-        uses: actions/cache/restore@v3
-        id: pnpm-global-cache
-        if: steps.pnpm-local-cache.outputs.cache-hit != 'true'
-        with:
-          path: |
-            ${{ steps.pnpm.outputs.cache_dir }}
-          key: |
-            pnpm-global--${{ steps.cache_key.outputs.key }}
-          restore-keys: |
-            pnpm-global--${{ steps.restore_cache_key.outputs.key }}
+      # - name: Restore PNPM global cache
+      #   uses: actions/cache/restore@v3
+      #   id: pnpm-global-cache
+      #   if: steps.pnpm-cache.outputs.cache-hit != 'true'
+      #   with:
+      #     path: |
+      #       ${{ steps.pnpm.outputs.cache_dir }}
+      #     key: |
+      #       pnpm-global--${{ steps.cache_key.outputs.key }}
+      #     restore-keys: |
+      #       pnpm-global--${{ steps.restore_cache_key.outputs.key }}
 
       # Install
 
       - name: Install Node Dependencies
-        if: steps.pnpm-local-cache.outputs.cache-hit != 'true'
+        if: steps.pnpm-cache.outputs.cache-hit != 'true'
         shell: bash
         run: |
-          pnpm install --no-frozen-lockfile
+          pnpm install --frozen-lockfile
 
       # Clean up
 
       # - name: Reset changed files
-      #   if: inputs.browsers != 'true' && steps.pnpm-local-cache.outputs.cache-hit != 'true'
+      #   if: inputs.browsers != 'true' && steps.pnpm-cache.outputs.cache-hit != 'true'
       #   shell: bash
       #   run: |
       #     git restore \
@@ -184,28 +185,29 @@ jobs:
 
       - name: Save Cypress cache
         uses: actions/cache/save@v3
-        if: inputs.save_cache == 'true' && steps.pnpm-local-cache.outputs.cache-hit != 'true'
+        if: inputs.save_cache == 'true' && steps.pnpm-cache.outputs.cache-hit != 'true'
         with:
           path: |
             ~/.cache/Cypress
           key: |
             browsers--${{ steps.cache_key.outputs.key }}
 
-      - name: Save PNPM global cache
-        uses: actions/cache/save@v3
-        if: inputs.save_cache == 'true' && steps.pnpm-local-cache.outputs.cache-hit != 'true'
-        with:
-          path: |
-            ${{ steps.pnpm.outputs.cache_dir }}
-          key: |
-            pnpm-global--${{ steps.cache_key.outputs.key }}
+      # - name: Save PNPM global cache
+      #   uses: actions/cache/save@v3
+      #   if: inputs.save_cache == 'true' && steps.pnpm-cache.outputs.cache-hit != 'true'
+      #   with:
+      #     path: |
+      #       ${{ steps.pnpm.outputs.cache_dir }}
+      #     key: |
+      #       pnpm-global--${{ steps.cache_key.outputs.key }}
 
       - name: Save local node_modules cache
         uses: actions/cache/save@v3
-        if: inputs.save_cache == 'true' && steps.pnpm-local-cache.outputs.cache-hit != 'true'
+        if: inputs.save_cache == 'true' && steps.pnpm-cache.outputs.cache-hit != 'true'
         with:
           path: |
             **/node_modules
             !**/node_modules/.cache/nx
+            ${{ steps.pnpm.outputs.cache_dir }}
           key: |
-            pnpm-local--${{ steps.cache_key.outputs.key }}
+            pnpm--${{ steps.cache_key.outputs.key }}
