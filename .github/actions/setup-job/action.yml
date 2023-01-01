@@ -127,16 +127,24 @@ runs:
       id: nx_shas
       uses: nrwl/nx-set-shas@v3
 
-    # Checkout
+    # Restore Node_modules Cache
 
-    # - name: Check out repository with fetch depth ${{ inputs.fetch_depth }}
-    #   if: inputs.fetch_depth > 0
-    #   uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3
-    #   with:
-    #     fetch-depth: ${{ inputs.fetch_depth }}
+    - name: Restore local node_modules cache
+      uses: actions/cache/restore@v3
+      id: pnpm-local-cache
+      with:
+        path: |
+          **/node_modules
+          !**/node_modules/.cache/nx
+        key: |
+          pnpm-local--${{ steps.cache_key.outputs.key }}
+        restore-keys: |
+          pnpm-local--${{ steps.restore_cache_key.outputs.key }}
+
+    # Toggle Cypress install
 
     - name: Disable Cypress install
-      if: inputs.browsers != 'true'
+      if: inputs.browsers != 'true' && steps.pnpm-local-cache.outputs.cache-hit != 'true'
       uses: jossef/action-set-json-field@v2
       with:
         file: package.json
@@ -144,7 +152,7 @@ runs:
         value: '["cypress"]'
         parse_json: true
 
-    # Restore Cache
+    # Restore global caches
 
     - name: Restore Cypress Cache
       uses: actions/cache@v3
@@ -161,6 +169,7 @@ runs:
     - name: Restore PNPM global cache
       uses: actions/cache/restore@v3
       id: pnpm-global-cache
+      if: steps.pnpm-local-cache.outputs.cache-hit != 'true'
       with:
         path: |
           ${{ steps.pnpm.outputs.cache_dir }}
@@ -169,21 +178,10 @@ runs:
         restore-keys: |
           pnpm-global--${{ steps.restore_cache_key.outputs.key }}
 
-    # - name: Restore local node_modules cache
-    #   uses: actions/cache/restore@v3
-    #   id: pnpm-local-cache
-    #   with:
-    #     path: |
-    #       **/node_modules
-    #       !**/node_modules/.cache/nx
-    #     key: |
-    #       pnpm-local--${{ steps.cache_key.outputs.key }}
-    #     restore-keys: |
-    #       pnpm-local--${{ steps.restore_cache_key.outputs.key }}
-
     # Install
 
     - name: Install Node Dependencies
+      if: steps.pnpm-local-cache.outputs.cache-hit != 'true'
       shell: bash
       run: |
         pnpm install --no-frozen-lockfile
@@ -191,6 +189,7 @@ runs:
     # Clean up
 
     - name: Reset changed files
+      if: inputs.browsers != 'true' && steps.pnpm-local-cache.outputs.cache-hit != 'true'
       shell: bash
       run: |
         git restore \
@@ -201,7 +200,7 @@ runs:
 
     - name: Save Cypress cache
       uses: actions/cache/save@v3
-      if: inputs.save_cache == 'true' && inputs.browsers == 'true'
+      if: inputs.save_cache == 'true' && inputs.browsers == 'true' && steps.pnpm-local-cache.outputs.cache-hit != 'true'
       with:
         path: |
           ~/.cache/Cypress
@@ -210,19 +209,19 @@ runs:
 
     - name: Save PNPM global cache
       uses: actions/cache/save@v3
-      if: inputs.save_cache == 'true'
+      if: inputs.save_cache == 'true' && steps.pnpm-local-cache.outputs.cache-hit != 'true'
       with:
         path: |
           ${{ steps.pnpm.outputs.cache_dir }}
         key: |
           pnpm-global--${{ steps.cache_key.outputs.key }}
 
-    # - name: Save local node_modules cache
-    #   uses: actions/cache/save@v3
-    #   if: inputs.save_cache == 'true'
-    #   with:
-    #     path: |
-    #       **/node_modules
-    #       !**/node_modules/.cache/nx
-    #     key: |
-    #       pnpm-local--${{ steps.cache_key.outputs.key }}
+    - name: Save local node_modules cache
+      uses: actions/cache/save@v3
+      if: inputs.save_cache == 'true' && steps.pnpm-local-cache.outputs.cache-hit != 'true'
+      with:
+        path: |
+          **/node_modules
+          !**/node_modules/.cache/nx
+        key: |
+          pnpm-local--${{ steps.cache_key.outputs.key }}
