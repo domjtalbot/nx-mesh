@@ -11,45 +11,53 @@ env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
 
 jobs:
-  lint:
-    uses: ./.github/workflows/_lint.yml
+  setup:
+    uses: ./.github/workflows/setup-job-test.yml
     secrets: inherit
     with:
       affected: true
       node_version: lts
       save_cache: true
 
-  build:
-    needs: [lint]
-    uses: ./.github/workflows/_build.yml
-    secrets: inherit
-    with:
-      affected: true
-      node_version: lts
+  # lint:
+  #   uses: ./.github/workflows/_lint.yml
+  #   secrets: inherit
+  #   with:
+  #     affected: true
+  #     node_version: lts
+  #     save_cache: true
 
-  test:
-    needs: [build]
-    uses: ./.github/workflows/_test.yml
-    secrets: inherit
-    with:
-      affected: true
-      node_version: lts
+  # build:
+  #   needs: [lint]
+  #   uses: ./.github/workflows/_build.yml
+  #   secrets: inherit
+  #   with:
+  #     affected: true
+  #     node_version: lts
 
-  e2e:
-    needs: [build]
-    uses: ./.github/workflows/_e2e.yml
-    secrets: inherit
-    with:
-      affected: true
-      node_version: lts
+  # test:
+  #   needs: [build]
+  #   uses: ./.github/workflows/_test.yml
+  #   secrets: inherit
+  #   with:
+  #     affected: true
+  #     node_version: lts
 
-  generators:
-    needs: [build]
-    uses: ./.github/workflows/_generators.yml
-    secrets: inherit
-    with:
-      affected: true
-      node_version: lts
+  # e2e:
+  #   needs: [build]
+  #   uses: ./.github/workflows/_e2e.yml
+  #   secrets: inherit
+  #   with:
+  #     affected: true
+  #     node_version: lts
+
+  # generators:
+  #   needs: [build]
+  #   uses: ./.github/workflows/_generators.yml
+  #   secrets: inherit
+  #   with:
+  #     affected: true
+  #     node_version: lts
 
   # build-test:
   #   uses: ./.github/workflows/build-test.yml
