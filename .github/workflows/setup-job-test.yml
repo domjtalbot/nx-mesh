@@ -118,9 +118,9 @@ jobs:
         id: pnpm-cache
         with:
           path: |
+            ${{ steps.pnpm.outputs.cache_dir }}
             **/node_modules
             !**/node_modules/.cache/nx
-            ${{ steps.pnpm.outputs.cache_dir }}
           key: |
             pnpm--${{ steps.cache_key.outputs.key }}
           restore-keys: |
@@ -206,8 +206,8 @@ jobs:
         if: inputs.save_cache == 'true' && steps.pnpm-cache.outputs.cache-hit != 'true'
         with:
           path: |
+            ${{ steps.pnpm.outputs.cache_dir }}
             **/node_modules
             !**/node_modules/.cache/nx
-            ${{ steps.pnpm.outputs.cache_dir }}
           key: |
             pnpm--${{ steps.cache_key.outputs.key }}
