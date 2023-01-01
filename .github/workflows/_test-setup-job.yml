@@ -1,4 +1,4 @@
-name: 'Setup Job Test'
+name: 'Test setup-job action'
 
 on:
   workflow_call:
@@ -111,7 +111,7 @@ jobs:
         id: nx_shas
         uses: nrwl/nx-set-shas@v3
 
-      # Restore Node_modules Cache
+      # Restore Cache
 
       - name: Restore PNPM cache
         uses: actions/cache/restore@v3
@@ -126,19 +126,6 @@ jobs:
           restore-keys: |
             pnpm--${{ steps.restore_cache_key.outputs.key }}
 
-      # Toggle Cypress install
-
-      # - name: Disable Cypress install
-      #   if: inputs.browsers != 'true' && steps.pnpm-cache.outputs.cache-hit != 'true'
-      #   uses: jossef/action-set-json-field@v2
-      #   with:
-      #     file: package.json
-      #     field: pnpm.neverBuiltDependencies
-      #     value: '["cypress"]'
-      #     parse_json: true
-
-      # Restore global caches
-
       - name: Restore Cypress Cache
         uses: actions/cache@v3
         id: cypress-cache
@@ -151,18 +138,6 @@ jobs:
           restore-keys: |
             browsers--${{ steps.restore_cache_key.outputs.key }}
 
-      # - name: Restore PNPM global cache
-      #   uses: actions/cache/restore@v3
-      #   id: pnpm-global-cache
-      #   if: steps.pnpm-cache.outputs.cache-hit != 'true'
-      #   with:
-      #     path: |
-      #       ${{ steps.pnpm.outputs.cache_dir }}
-      #     key: |
-      #       pnpm-global--${{ steps.cache_key.outputs.key }}
-      #     restore-keys: |
-      #       pnpm-global--${{ steps.restore_cache_key.outputs.key }}
-
       # Install
 
       - name: Install Node Dependencies
@@ -170,16 +145,6 @@ jobs:
         shell: bash
         run: |
           pnpm install --frozen-lockfile
-
-      # Clean up
-
-      # - name: Reset changed files
-      #   if: inputs.browsers != 'true' && steps.pnpm-cache.outputs.cache-hit != 'true'
-      #   shell: bash
-      #   run: |
-      #     git restore \
-      #       package.json \
-      #       pnpm-lock.yaml
 
       # Save Cache
 
@@ -191,15 +156,6 @@ jobs:
             ~/.cache/Cypress
           key: |
             browsers--${{ steps.cache_key.outputs.key }}
-
-      # - name: Save PNPM global cache
-      #   uses: actions/cache/save@v3
-      #   if: inputs.save_cache == 'true' && steps.pnpm-cache.outputs.cache-hit != 'true'
-      #   with:
-      #     path: |
-      #       ${{ steps.pnpm.outputs.cache_dir }}
-      #     key: |
-      #       pnpm-global--${{ steps.cache_key.outputs.key }}
 
       - name: Save PNPM cache
         uses: actions/cache/save@v3

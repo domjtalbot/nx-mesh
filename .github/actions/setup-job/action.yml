@@ -115,44 +115,32 @@ runs:
       id: restore_cache_key
       shell: bash
       run: |
-        echo "key=cache-version-1--os-${{ runner.os }}--volta-${{ steps.volta.outputs.version }}--node-${{ steps.node.outputs.version }}--pnpm-${{ steps.pnpm.outputs.version }}" >> $GITHUB_OUTPUT
+        echo "key=cache-version-3--os-${{ runner.os }}--volta-${{ steps.volta.outputs.version }}--node-${{ steps.node.outputs.version }}--pnpm-${{ steps.pnpm.outputs.version }}" >> $GITHUB_OUTPUT
 
     - name: Create cache key
       id: cache_key
       shell: bash
       run: |
-        echo "key=${{ steps.restore_cache_key.outputs.key }}--lockfile-${{ hashFiles('**/pnpm-lock.yaml') }}" >> $GITHUB_OUTPUT
+        echo "key=${{ steps.restore_cache_key.outputs.key }}--lockfile-${{ hashFiles('*/pnpm-lock.yaml') }}" >> $GITHUB_OUTPUT
 
     - name: Nx Shas
       id: nx_shas
       uses: nrwl/nx-set-shas@v3
 
-    # Restore Node_modules Cache
+    # Restore Cache
 
-    - name: Restore local node_modules cache
+    - name: Restore PNPM cache
       uses: actions/cache/restore@v3
-      id: pnpm-local-cache
+      id: pnpm-cache
       with:
         path: |
-          **/node_modules
-          !**/node_modules/.cache/nx
+          ${{ steps.pnpm.outputs.cache_dir }}
+          */node_modules
+          !*/node_modules/.cache/nx
         key: |
-          pnpm-local--${{ steps.cache_key.outputs.key }}
+          pnpm--${{ steps.cache_key.outputs.key }}
         restore-keys: |
-          pnpm-local--${{ steps.restore_cache_key.outputs.key }}
-
-    # Toggle Cypress install
-
-    - name: Disable Cypress install
-      if: inputs.browsers != 'true' && steps.pnpm-local-cache.outputs.cache-hit != 'true'
-      uses: jossef/action-set-json-field@v2
-      with:
-        file: package.json
-        field: pnpm.neverBuiltDependencies
-        value: '["cypress"]'
-        parse_json: true
-
-    # Restore global caches
+          pnpm--${{ steps.restore_cache_key.outputs.key }}
 
     - name: Restore Cypress Cache
       uses: actions/cache@v3
@@ -166,62 +154,32 @@ runs:
         restore-keys: |
           browsers--${{ steps.restore_cache_key.outputs.key }}
 
-    - name: Restore PNPM global cache
-      uses: actions/cache/restore@v3
-      id: pnpm-global-cache
-      if: steps.pnpm-local-cache.outputs.cache-hit != 'true'
-      with:
-        path: |
-          ${{ steps.pnpm.outputs.cache_dir }}
-        key: |
-          pnpm-global--${{ steps.cache_key.outputs.key }}
-        restore-keys: |
-          pnpm-global--${{ steps.restore_cache_key.outputs.key }}
-
     # Install
 
     - name: Install Node Dependencies
-      if: steps.pnpm-local-cache.outputs.cache-hit != 'true'
+      if: steps.pnpm-cache.outputs.cache-hit != 'true'
       shell: bash
       run: |
-        pnpm install --no-frozen-lockfile
-
-    # Clean up
-
-    - name: Reset changed files
-      if: inputs.browsers != 'true' && steps.pnpm-local-cache.outputs.cache-hit != 'true'
-      shell: bash
-      run: |
-        git restore \
-          package.json \
-          pnpm-lock.yaml
+        pnpm install --frozen-lockfile
 
     # Save Cache
 
     - name: Save Cypress cache
       uses: actions/cache/save@v3
-      if: inputs.save_cache == 'true' && inputs.browsers == 'true' && steps.pnpm-local-cache.outputs.cache-hit != 'true'
+      if: inputs.save_cache == 'true' && steps.pnpm-cache.outputs.cache-hit != 'true'
       with:
         path: |
           ~/.cache/Cypress
         key: |
           browsers--${{ steps.cache_key.outputs.key }}
 
-    - name: Save PNPM global cache
+    - name: Save PNPM cache
       uses: actions/cache/save@v3
-      if: inputs.save_cache == 'true' && steps.pnpm-local-cache.outputs.cache-hit != 'true'
+      if: inputs.save_cache == 'true' && steps.pnpm-cache.outputs.cache-hit != 'true'
       with:
         path: |
           ${{ steps.pnpm.outputs.cache_dir }}
+          */node_modules
+          !*/node_modules/.cache/nx
         key: |
-          pnpm-global--${{ steps.cache_key.outputs.key }}
-
-    - name: Save local node_modules cache
-      uses: actions/cache/save@v3
-      if: inputs.save_cache == 'true' && steps.pnpm-local-cache.outputs.cache-hit != 'true'
-      with:
-        path: |
-          **/node_modules
-          !**/node_modules/.cache/nx
-        key: |
-          pnpm-local--${{ steps.cache_key.outputs.key }}
+          pnpm--${{ steps.cache_key.outputs.key }}
