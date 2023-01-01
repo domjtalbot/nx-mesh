@@ -15,7 +15,6 @@ jobs:
     uses: ./.github/workflows/setup-job-test.yml
     secrets: inherit
     with:
-      affected: true
       node_version: lts
       save_cache: true
 
