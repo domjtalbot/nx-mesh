@@ -127,14 +127,14 @@ jobs:
 
       # Toggle Cypress install
 
-      - name: Disable Cypress install
-        if: inputs.browsers != 'true' && steps.pnpm-local-cache.outputs.cache-hit != 'true'
-        uses: jossef/action-set-json-field@v2
-        with:
-          file: package.json
-          field: pnpm.neverBuiltDependencies
-          value: '["cypress"]'
-          parse_json: true
+      # - name: Disable Cypress install
+      #   if: inputs.browsers != 'true' && steps.pnpm-local-cache.outputs.cache-hit != 'true'
+      #   uses: jossef/action-set-json-field@v2
+      #   with:
+      #     file: package.json
+      #     field: pnpm.neverBuiltDependencies
+      #     value: '["cypress"]'
+      #     parse_json: true
 
       # Restore global caches
 
@@ -172,19 +172,19 @@ jobs:
 
       # Clean up
 
-      - name: Reset changed files
-        if: inputs.browsers != 'true' && steps.pnpm-local-cache.outputs.cache-hit != 'true'
-        shell: bash
-        run: |
-          git restore \
-            package.json \
-            pnpm-lock.yaml
+      # - name: Reset changed files
+      #   if: inputs.browsers != 'true' && steps.pnpm-local-cache.outputs.cache-hit != 'true'
+      #   shell: bash
+      #   run: |
+      #     git restore \
+      #       package.json \
+      #       pnpm-lock.yaml
 
       # Save Cache
 
       - name: Save Cypress cache
         uses: actions/cache/save@v3
-        if: inputs.save_cache == 'true' && inputs.browsers == 'true' && steps.pnpm-local-cache.outputs.cache-hit != 'true'
+        if: inputs.save_cache == 'true' && steps.pnpm-local-cache.outputs.cache-hit != 'true'
         with:
           path: |
             ~/.cache/Cypress
