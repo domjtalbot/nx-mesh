@@ -99,13 +99,13 @@ jobs:
         id: restore_cache_key
         shell: bash
         run: |
-          echo "key=cache-version-2--os-${{ runner.os }}--volta-${{ steps.volta.outputs.version }}--node-${{ steps.node.outputs.version }}--pnpm-${{ steps.pnpm.outputs.version }}" >> $GITHUB_OUTPUT
+          echo "key=cache-version-3--os-${{ runner.os }}--volta-${{ steps.volta.outputs.version }}--node-${{ steps.node.outputs.version }}--pnpm-${{ steps.pnpm.outputs.version }}" >> $GITHUB_OUTPUT
 
       - name: Create cache key
         id: cache_key
         shell: bash
         run: |
-          echo "key=${{ steps.restore_cache_key.outputs.key }}--lockfile-${{ hashFiles('**/pnpm-lock.yaml') }}" >> $GITHUB_OUTPUT
+          echo "key=${{ steps.restore_cache_key.outputs.key }}--lockfile-${{ hashFiles('*/pnpm-lock.yaml') }}" >> $GITHUB_OUTPUT
 
       - name: Nx Shas
         id: nx_shas
@@ -119,8 +119,8 @@ jobs:
         with:
           path: |
             ${{ steps.pnpm.outputs.cache_dir }}
-            **/node_modules
-            !**/node_modules/.cache/nx
+            */node_modules
+            !*/node_modules/.cache/nx
           key: |
             pnpm--${{ steps.cache_key.outputs.key }}
           restore-keys: |
@@ -207,7 +207,7 @@ jobs:
         with:
           path: |
             ${{ steps.pnpm.outputs.cache_dir }}
-            **/node_modules
-            !**/node_modules/.cache/nx
+            */node_modules
+            !*/node_modules/.cache/nx
           key: |
             pnpm--${{ steps.cache_key.outputs.key }}
