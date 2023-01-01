@@ -201,7 +201,7 @@ jobs:
       #     key: |
       #       pnpm-global--${{ steps.cache_key.outputs.key }}
 
-      - name: Save local node_modules cache
+      - name: Save PNPM cache
         uses: actions/cache/save@v3
         if: inputs.save_cache == 'true' && steps.pnpm-cache.outputs.cache-hit != 'true'
         with:
