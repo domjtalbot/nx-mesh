@@ -167,3 +167,7 @@ jobs:
             !*/node_modules/.cache/nx
           key: |
             pnpm--${{ steps.cache_key.outputs.key }}
+
+      - name: Workspace Lint
+        run: |
+          pnpm nx-cloud record -- npx nx workspace-lint
