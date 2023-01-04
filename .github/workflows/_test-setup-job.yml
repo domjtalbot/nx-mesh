@@ -181,3 +181,7 @@ jobs:
       - name: Workspace Lint
         run: |
           pnpm nx-cloud record -- npx nx workspace-lint
+
+      - name: Workspace Lint
+        run: |
+          pnpm nx-cloud record -- npx nx workspace-lint
