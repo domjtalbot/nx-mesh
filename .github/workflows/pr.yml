@@ -3,6 +3,14 @@ name: 'Pull Request'
 on:
   pull_request:
 
+  workflow_dispatch:
+    inputs:
+      debug_enabled:
+        type: boolean
+        description: 'Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)'
+        required: false
+        default: false
+
 concurrency:
   group: pr--${{ github.workflow }}--${{ github.ref }}
 
@@ -17,6 +25,7 @@ jobs:
     with:
       node_version: lts
       save_cache: true
+      debug_enabled: ${{ inputs.debug_enabled }}
 
   # lint:
   #   uses: ./.github/workflows/_lint.yml
