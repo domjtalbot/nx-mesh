@@ -186,6 +186,9 @@ jobs:
           echo ""
           echo "pnpm"
           pnpm --version
+          echo ""
+          echo ""
+          pwd
 
       - name: Workspace Lint
         run: |
