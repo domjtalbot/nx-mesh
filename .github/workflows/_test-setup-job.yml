@@ -189,6 +189,9 @@ jobs:
           echo ""
           echo ""
           pwd
+          echo ""
+          echo ""
+          echo "${{ steps.pnpm.outputs.cache_dir }}"
 
       - name: Workspace Lint
         run: |
