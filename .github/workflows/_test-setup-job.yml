@@ -104,7 +104,7 @@ jobs:
         id: restore_cache_key
         shell: bash
         run: |
-          echo "key=cache-version-4--os-${{ runner.os }}--volta-${{ steps.volta.outputs.version }}--node-${{ steps.node.outputs.version }}--pnpm-${{ steps.pnpm.outputs.version }}" >> $GITHUB_OUTPUT
+          echo "key=cache-version-5--os-${{ runner.os }}--volta-${{ steps.volta.outputs.version }}--node-${{ steps.node.outputs.version }}--pnpm-${{ steps.pnpm.outputs.version }}" >> $GITHUB_OUTPUT
 
       - name: Create cache key
         id: cache_key
@@ -124,8 +124,8 @@ jobs:
         with:
           path: |
             ${{ steps.pnpm.outputs.cache_dir }}
-            **/node_modules
-            !**/node_modules/.cache/nx
+            */node_modules
+            !*/node_modules/.cache/nx
           key: |
             pnpm--${{ steps.cache_key.outputs.key }}
           restore-keys: |
@@ -173,14 +173,15 @@ jobs:
           key: |
             pnpm--${{ steps.cache_key.outputs.key }}
 
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-        if: ${{ inputs.debug_enabled }}
-        timeout-minutes: 15
+      # - name: Setup tmate session
+      #   uses: mxschmitt/action-tmate@v3
+      #   if: ${{ inputs.debug_enabled }}
+      #   timeout-minutes: 15
 
-      - name: Workspace Lint
+      - name: Details
         run: |
-          pnpm nx-cloud record -- npx nx workspace-lint
+          ls -1a
+          pnpm --version
 
       - name: Workspace Lint
         run: |
