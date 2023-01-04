@@ -178,6 +178,11 @@ jobs:
           key: |
             pnpm--${{ steps.cache_key.outputs.key }}
 
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        if: ${{ inputs.debug_enabled }}
+        timeout-minutes: 15
+
       - name: Workspace Lint
         run: |
           pnpm nx-cloud record -- npx nx workspace-lint
