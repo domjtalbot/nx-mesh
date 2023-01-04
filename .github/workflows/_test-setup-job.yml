@@ -74,6 +74,12 @@ jobs:
 
       # Utils
 
+      - name: Directory
+        id: directory
+        shell: bash
+        run: |
+          echo "path=$(pwd)" >> $GITHUB_OUTPUT
+
       - name: Volta version
         id: volta
         shell: bash
@@ -124,8 +130,8 @@ jobs:
         with:
           path: |
             ${{ steps.pnpm.outputs.cache_dir }}
-            */node_modules
-            !*/node_modules/.cache/nx
+            ${{ steps.directory.outputs.path }}/node_modules
+            !${{ steps.directory.outputs.path }}/node_modules/.cache/nx
           key: |
             pnpm--${{ steps.cache_key.outputs.key }}
           restore-keys: |
@@ -168,8 +174,8 @@ jobs:
         with:
           path: |
             ${{ steps.pnpm.outputs.cache_dir }}
-            */node_modules
-            !*/node_modules/.cache/nx
+            ${{ steps.directory.outputs.path }}/node_modules
+            !${{ steps.directory.outputs.path }}/node_modules/.cache/nx
           key: |
             pnpm--${{ steps.cache_key.outputs.key }}
 
@@ -192,6 +198,7 @@ jobs:
           echo ""
           echo ""
           echo "${{ steps.pnpm.outputs.cache_dir }}"
+          echo "${{ steps.directory.outputs.path }}"
 
       - name: Workspace Lint
         run: |
