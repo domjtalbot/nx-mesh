@@ -110,7 +110,7 @@ jobs:
         id: restore_cache_key
         shell: bash
         run: |
-          echo "key=cache-version-5--os-${{ runner.os }}--volta-${{ steps.volta.outputs.version }}--node-${{ steps.node.outputs.version }}--pnpm-${{ steps.pnpm.outputs.version }}" >> $GITHUB_OUTPUT
+          echo "key=cache-version-7--os-${{ runner.os }}--volta-${{ steps.volta.outputs.version }}--node-${{ steps.node.outputs.version }}--pnpm-${{ steps.pnpm.outputs.version }}" >> $GITHUB_OUTPUT
 
       - name: Create cache key
         id: cache_key
@@ -199,7 +199,3 @@ jobs:
           echo ""
           echo "${{ steps.pnpm.outputs.cache_dir }}"
           echo "${{ steps.directory.outputs.path }}"
-
-      - name: Workspace Lint
-        run: |
-          pnpm nx-cloud record -- npx nx workspace-lint
