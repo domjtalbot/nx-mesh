@@ -25,7 +25,7 @@ jobs:
     with:
       node_version: lts
       save_cache: true
-      debug_enabled: ${{ inputs.debug_enabled }}
+      debug_enabled: ${{ inputs.debug_enabled || false }}
 
   # lint:
   #   uses: ./.github/workflows/_lint.yml
