@@ -180,7 +180,11 @@ jobs:
 
       - name: Details
         run: |
+          echo "list"
           ls -1a
+          echo ""
+          echo ""
+          echo "pnpm"
           pnpm --version
 
       - name: Workspace Lint
