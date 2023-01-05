@@ -55,6 +55,84 @@ outputs:
   volta_version:
     description: The installed volta version.
     value: ${{ steps.volta.outputs.version }}
+  apps:
+    description: 'All apps'
+    value: ${{ steps.affected.outputs.apps }}
+  e2eApps:
+    description: 'All E2E apps'
+    value: ${{ steps.affected.outputs.e2eApps }}
+  nonE2EApps:
+    description: 'All Non-E2E apps'
+    value: ${{ steps.affected.outputs.nonE2EApps }}
+  libs:
+    description: 'All libs'
+    value: ${{ steps.affected.outputs.libs }}
+  numberOfApps:
+    description: 'The number of apps'
+    value: ${{ steps.affected.outputs.numberOfApps }}
+  numberOfE2eApps:
+    description: 'The number of E2E apps'
+    value: ${{ steps.affected.outputs.numberOfE2eApps }}
+  numberOfNonE2EApps:
+    description: 'The number of non-e2e apps'
+    value: ${{ steps.affected.outputs.numberOfNonE2EApps }}
+  numberOfLibs:
+    description: 'The number of libs'
+    value: ${{ steps.affected.outputs.numberOfLibs }}
+  hasApps:
+    description: 'Are there apps?'
+    value: ${{ steps.affected.outputs.hasApps }}
+  hasE2EApps:
+    description: 'Are there E2E apps?'
+    value: ${{ steps.affected.outputs.hasE2EApps }}
+  hasNonE2EApps:
+    description: 'Are there non-e2e apps?'
+    value: ${{ steps.affected.outputs.hasNonE2EApps }}
+  hasLibs:
+    description: 'Are there libs?'
+    value: ${{ steps.affected.outputs.hasLibs }}
+  hasProjects:
+    description: 'Are there apps or libs?'
+    value: ${{ steps.affected.outputs.hasProjects }}
+  affectedApps:
+    description: 'Affected apps'
+    value: ${{ steps.affected.outputs.affectedApps }}
+  affectedE2eApps:
+    description: 'Affected E2E apps'
+    value: ${{ steps.affected.outputs.affectedE2eApps }}
+  affectedNonE2EApps:
+    description: 'Affected non-e2e apps'
+    value: ${{ steps.affected.outputs.affectedNonE2EApps }}
+  affectedLibs:
+    description: 'Affected libs'
+    value: ${{ steps.affected.outputs.affectedLibs }}
+  numberOfAffectedApps:
+    description: 'The number of affected apps'
+    value: ${{ steps.affected.outputs.numberOfAffectedApps }}
+  numberOfAffectedE2eApps:
+    description: 'The number of affected E2E apps'
+    value: ${{ steps.affected.outputs.numberOfAffectedE2eApps }}
+  numberOfAffectedNonE2EApps:
+    description: 'The number of affected non-E2E apps'
+    value: ${{ steps.affected.outputs.numberOfAffectedNonE2EApps }}
+  numberOfAffectedLibs:
+    description: 'The number of affected libs'
+    value: ${{ steps.affected.outputs.numberOfAffectedLibs }}
+  hasAffectedApps:
+    description: 'Are there affected apps?'
+    value: ${{ steps.affected.outputs.hasAffectedApps }}
+  hasAffectedE2EApps:
+    description: 'Are there affected E2E apps?'
+    value: ${{ steps.affected.outputs.hasAffectedE2EApps }}
+  hasAffectedNonE2EApps:
+    description: 'Are there affected non-e2e apps?'
+    value: ${{ steps.affected.outputs.hasAffectedNonE2EApps }}
+  hasAffectedLibs:
+    description: 'Are there affected libs?'
+    value: ${{ steps.affected.outputs.hasAffectedLibs }}
+  hasAffected:
+    description: 'Are there affected apps or libs?'
+    value: ${{ steps.affected.outputs.hasAffected }}
 
 runs:
   using: 'composite'
@@ -162,6 +240,12 @@ runs:
       shell: bash
       run: |
         pnpm install --frozen-lockfile
+
+    # Affected
+
+    - name: Affected
+      id: affected
+      uses: ./.github/actions/nx-affected
 
     # Save Cache
 
