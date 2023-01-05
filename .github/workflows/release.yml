@@ -19,7 +19,6 @@ concurrency:
 env:
   NX__TRIPPIN__API_KEY: ${{ secrets.NX__TRIPPIN__API_KEY }}
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
-  NX_CLOUD_ENV_NAME: node-lts
 
 jobs:
   build-test:

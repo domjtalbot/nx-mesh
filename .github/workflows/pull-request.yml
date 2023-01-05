@@ -19,14 +19,6 @@ env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
 
 jobs:
-  # setup:
-  #   uses: ./.github/workflows/_test-setup-job.yml
-  #   secrets: inherit
-  #   with:
-  #     node_version: lts
-  #     save_cache: true
-  #     debug_enabled: true
-
   lint:
     uses: ./.github/workflows/_lint.yml
     secrets: inherit
@@ -45,7 +37,7 @@ jobs:
       node_version: lts
 
   test:
-    needs: [build]
+    needs: [lint, build]
     if: needs.lint.outputs.hasAffected == 'true'
     uses: ./.github/workflows/_test.yml
     secrets: inherit
@@ -54,8 +46,8 @@ jobs:
       node_version: lts
 
   e2e:
-    needs: [build]
-    if: needs.lint.outputs.hasAffectedApps == 'true' || needs.lint.outputs.isNxMeshAffected == 'true'
+    needs: [lint, build]
+    if: needs.lint.outputs.hasAffectedApps == 'true'
     uses: ./.github/workflows/_e2e.yml
     secrets: inherit
     with:
@@ -63,7 +55,7 @@ jobs:
       node_version: lts
 
   generators:
-    needs: [build]
+    needs: [lint, build]
     if: needs.lint.outputs.isNxMeshAffected == 'true'
     uses: ./.github/workflows/_generators.yml
     secrets: inherit
@@ -71,18 +63,19 @@ jobs:
       affected: true
       node_version: lts
 
-  # code-analysis:
-  #   needs: [build-test]
-  #   name: Code Analysis
-  #   uses: ./.github/workflows/code-analysis.yml
-  #   secrets: inherit
+  code-analysis:
+    needs: [lint, build, test]
+    name: Code Analysis
+    uses: ./.github/workflows/code-analysis.yml
+    secrets: inherit
 
-  # deploy:
-  #   needs: [build-test]
-  #   uses: ./.github/workflows/deploy.yml
-  #   with:
-  #     apps: ${{ needs.build-test.outputs.affectedApps }}
-  #   secrets: inherit
+  deploy:
+    needs: [lint, build, test, e2e, generators]
+    name: Deploy
+    uses: ./.github/workflows/_deploy.yml
+    secrets: inherit
+    with:
+      affected: true
 
   # alpha:
   #   name: Release Alpha

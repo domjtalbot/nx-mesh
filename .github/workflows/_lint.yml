@@ -57,10 +57,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     outputs:
-      isNxMeshAffected: ${{ contains(steps.affected.outputs.affectedLibs, 'nx-mesh') }}
-      hasAffected: ${{ steps.affected.outputs.hasAffected }}
-      hasAffectedApps: ${{ steps.affected.outputs.hasAffectedApps }}
-      hasAffectedLibs: ${{ steps.affected.outputs.hasAffectedLibs }}
+      isNxMeshAffected: ${{ contains(steps.setup.outputs.affectedLibs, 'nx-mesh') }}
+      hasAffected: ${{ steps.setup.outputs.hasAffected }}
+      hasAffectedApps: ${{ steps.setup.outputs.hasAffectedApps }}
+      hasAffectedLibs: ${{ steps.setup.outputs.hasAffectedLibs }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
@@ -68,14 +68,11 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Job
+        id: setup
         uses: ./.github/actions/setup-job
         with:
           node_version: ${{ inputs.node_version }}
           save_cache: '${{ inputs.save_cache }}'
-
-      - name: Affected
-        id: affected
-        uses: ./.github/actions/nx-affected
 
       - name: Workspace Lint
         run: |
@@ -92,6 +89,14 @@ jobs:
             --target=lint \
             --parallel=4
 
+      - name: Affected Lint Reports
+        if: inputs.affected == true
+        run: |
+          pnpm nx affected \
+            --target=lint \
+            --parallel=4 \
+            --configuration=reports
+
       - name: Lint
         if: inputs.affected != true
         run: |
@@ -99,3 +104,12 @@ jobs:
             --target=lint \
             --parallel=4 \
             --all
+
+      - name: Lint Reports
+        if: inputs.affected != true
+        run: |
+          pnpm nx run-many \
+            --target=lint \
+            --parallel=4 \
+            --all \
+            --configuration=reports

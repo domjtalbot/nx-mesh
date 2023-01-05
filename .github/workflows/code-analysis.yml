@@ -18,20 +18,19 @@ concurrency:
 env:
   NX__TRIPPIN__API_KEY: ${{ secrets.NX__TRIPPIN__API_KEY }}
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
-  NX_CLOUD_ENV_NAME: node-lts
 
 jobs:
   codeql:
     name: CodeQL
-    uses: ./.github/workflows/code-analysis--codeql.yml
+    uses: ./.github/workflows/_code-analysis--codeql.yml
     secrets: inherit
 
   eslint:
     name: ESLint
-    uses: ./.github/workflows/code-analysis--eslint.yml
+    uses: ./.github/workflows/_code-analysis--eslint.yml
     secrets: inherit
 
   sonar:
     name: Sonar
-    uses: ./.github/workflows/code-analysis--sonar.yml
+    uses: ./.github/workflows/_code-analysis--sonar.yml
     secrets: inherit

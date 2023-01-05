@@ -1,0 +1,60 @@
+name: 'Deploy'
+
+on:
+  workflow_call:
+    inputs:
+      affected:
+        description: >
+          Run for affected projects.
+        required: false
+        default: true
+        type: boolean
+      production:
+        description: Deploy production?
+        type: boolean
+        required: false
+        default: false
+    secrets:
+      VERCEL_ORG_ID:
+        description: 'The Vercel ORG ID'
+        required: true
+      NX__NEXTJS__VERCEL_PROJECT_ID:
+        description: 'The nextjs/trippin Vercel Project Id'
+        required: true
+      VERCEL_TOKEN:
+        description: 'The Vercel API token'
+        required: true
+
+concurrency:
+  group: deploy-${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  setup:
+    name: Setup
+    runs-on: ubuntu-latest
+    outputs:
+      isNxMeshAffected: ${{ contains(steps.setup.outputs.affectedLibs, 'nx-mesh') }}
+      affectedApps: ${{ steps.setup.outputs.affectedApps }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Job
+        id: setup
+        uses: ./.github/actions/setup-job
+
+  vercel-example-sdk-nextjs:
+    name: Vercel - example-sdk-nextjs
+    needs: [setup]
+    if: ${{ (inputs.affected == true && contains(needs.setup.outputs.affectedApps, 'example-sdk-nextjs')) || inputs.affected == false }}
+    uses: ./.github/workflows/_deploy-vercel.yml
+    with:
+      name: example-sdk-nextjs
+      environment: sdk-nextjs
+      production: ${{ inputs.production }}
+    secrets:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.NX__NEXTJS__VERCEL_PROJECT_ID }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}

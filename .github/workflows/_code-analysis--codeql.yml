@@ -3,8 +3,6 @@ name: 'Code Analysis - CodeQL'
 on:
   workflow_call:
 
-  workflow_dispatch:
-
 concurrency:
   group: code-analysis--codeql-${{ github.workflow }}-${{ github.ref }}
 

@@ -7,14 +7,11 @@ on:
         description: 'The NX Cloud API token'
         required: true
 
-  workflow_dispatch:
-
 concurrency:
   group: code-analysis--eslint-${{ github.workflow }}-${{ github.ref }}
 
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
-  NX_CLOUD_ENV_NAME: node-lts
 
 jobs:
   eslint:
@@ -38,8 +35,6 @@ jobs:
           - example-sdk-openapi-stackexchange
           - example-sdk-soap-country-info
           - nx-mesh
-    env:
-      NX_CLOUD_ENV_NAME: node-lts
     steps:
       - name: Check out repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3
@@ -48,16 +43,13 @@ jobs:
 
       - name: Setup Job
         uses: ./.github/actions/setup-job
-        with:
-          node-version: lts
-          save-cache: true
 
       - name: Lint ${{ matrix.project }}
         continue-on-error: true
         run: |
           pnpm nx run nx-mesh:lint \
-          --format @microsoft/eslint-formatter-sarif \
-          --output-file ${{ matrix.project }}-eslint-results.sarif
+            --format @microsoft/eslint-formatter-sarif \
+            --output-file ${{ matrix.project }}-eslint-results.sarif
 
       - name: Upload ${{ matrix.project }} lint results to GitHub
         uses: github/codeql-action/upload-sarif@v2

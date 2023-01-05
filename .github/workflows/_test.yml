@@ -61,6 +61,14 @@ jobs:
             --target=test \
             --parallel=3
 
+      - name: Affected Test Reports
+        if: inputs.affected == true
+        run: |
+          pnpm nx affected \
+            --target=test \
+            --parallel=3 \
+            --configuration=reports
+
       - name: Test
         if: inputs.affected != true
         run: |
@@ -68,3 +76,12 @@ jobs:
             --target=test \
             --parallel=3 \
             --all
+
+      - name: Test Reports
+        if: inputs.affected != true
+        run: |
+          pnpm nx run-many \
+            --target=test \
+            --parallel=3 \
+            --all \
+            --configuration=reports
