@@ -31,10 +31,17 @@ on:
 concurrency:
   group: deploy-vercel--${{ github.workflow }}-${{ github.ref }}--${{ inputs.name }}--${{ inputs.production }}--${{ inputs.environment }}
 
+permissions:
+  contents: read
+  deployments: write
+
 jobs:
   deploy:
     name: Deploy ${{ inputs.name }} to Vercel (Production = ${{ inputs.production }})
     runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.environment }} (${{ steps.deploy-env.outputs.name }})
+      url: ${{ steps.vercel.outputs.PREVIEW_URL }}
     steps:
       - name: Check out repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3
@@ -55,6 +62,7 @@ jobs:
           echo ::set-output name=name::$name
 
       - name: Deploy to Vercel
+        id: vercel
         uses: BetaHuhn/deploy-to-vercel-action@8aec30fa2a289649346e38660b9eb1f011bb4a65 # v1
         with:
           GITHUB_DEPLOYMENT_ENV: ${{ inputs.environment }} (${{ steps.deploy-env.outputs.name }})
