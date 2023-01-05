@@ -28,6 +28,8 @@ jobs:
 
       - name: Setup Job
         uses: ./.github/actions/setup-job
+        with:
+          node_version: lts
 
       - name: Lint
         shell: bash

@@ -43,11 +43,13 @@ jobs:
 
       - name: Setup Job
         uses: ./.github/actions/setup-job
+        with:
+          node_version: lts
 
       - name: Lint ${{ matrix.project }}
         continue-on-error: true
         run: |
-          pnpm nx run nx-mesh:lint \
+          pnpm nx run ${{ matrix.project }}:lint \
             --format @microsoft/eslint-formatter-sarif \
             --output-file ${{ matrix.project }}-eslint-results.sarif
 

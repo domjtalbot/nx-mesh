@@ -44,6 +44,8 @@ jobs:
       - name: Setup Job
         id: setup
         uses: ./.github/actions/setup-job
+        with:
+          node_version: lts
 
   vercel-example-sdk-nextjs:
     name: Vercel - example-sdk-nextjs
