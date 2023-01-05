@@ -35,6 +35,7 @@ jobs:
     outputs:
       isNxMeshAffected: ${{ contains(steps.setup.outputs.affectedLibs, 'nx-mesh') }}
       affectedApps: ${{ steps.setup.outputs.affectedApps }}
+      suffix: ${{ steps.suffix.outputs.name }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
@@ -47,14 +48,26 @@ jobs:
         with:
           node_version: lts
 
+      - name: Environment suffix
+        id: suffix
+        shell: bash
+        run: |
+          name="-preview"
+
+          if [ ${{ inputs.production }} = true ]; then
+            name=""
+          fi
+
+          echo The env is $name
+          echo ::set-output name=name::$name
+
   vercel-example-sdk-nextjs:
     name: Vercel - example-sdk-nextjs
     needs: [setup]
     if: ${{ (inputs.affected == true && contains(needs.setup.outputs.affectedApps, 'example-sdk-nextjs')) || inputs.affected == false }}
     uses: ./.github/workflows/_deploy-vercel.yml
     with:
-      name: example-sdk-nextjs
-      environment: sdk-nextjs
+      name: example-sdk-nextjs${{ needs.setup.outputs.suffix }}
       production: ${{ inputs.production }}
     secrets:
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
