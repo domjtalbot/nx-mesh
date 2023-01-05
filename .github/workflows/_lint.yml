@@ -27,19 +27,19 @@ on:
       isNxMeshAffected:
         description: >
           Is the nx-mesh lib affected?
-        value: ${{ contains(steps.affected.outputs.affectedLibs, 'nx-mesh') }}
+        value: ${{ jobs.lint.outputs.isNxMeshAffected }}
       hasAffected:
         description: >
           Are there affected apps or libs?
-        value: ${{ steps.affected.outputs.hasAffected }}
+        value: ${{ jobs.lint.outputs.hasAffected }}
       hasAffectedApps:
         description: >
           Are there affected apps?
-        value: ${{ steps.affected.outputs.hasAffectedApps }}
+        value: ${{ jobs.lint.outputs.hasAffectedApps }}
       hasAffectedLibs:
         description: >
           Are there affected libs?
-        value: ${{ steps.affected.outputs.hasAffectedLibs }}
+        value: ${{ jobs.lint.outputs.hasAffectedLibs }}
     secrets:
       NX_CLOUD_ACCESS_TOKEN:
         description: 'The NX Cloud API token'
@@ -56,6 +56,11 @@ jobs:
     name: Lint & Prettier
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    outputs:
+      isNxMeshAffected: ${{ contains(steps.affected.outputs.affectedLibs, 'nx-mesh') }}
+      hasAffected: ${{ steps.affected.outputs.hasAffected }}
+      hasAffectedApps: ${{ steps.affected.outputs.hasAffectedApps }}
+      hasAffectedLibs: ${{ steps.affected.outputs.hasAffectedLibs }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
