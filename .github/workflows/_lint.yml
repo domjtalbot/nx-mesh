@@ -23,6 +23,23 @@ on:
         required: false
         default: false
         type: boolean
+    outputs:
+      isNxMeshAffected:
+        description: >
+          Is the nx-mesh lib affected?
+        value: ${{ contains(steps.affected.outputs.affectedLibs, 'nx-mesh') }}
+      hasAffected:
+        description: >
+          Are there affected apps or libs?
+        value: ${{ steps.affected.outputs.hasAffected }}
+      hasAffectedApps:
+        description: >
+          Are there affected apps?
+        value: ${{ steps.affected.outputs.hasAffectedApps }}
+      hasAffectedLibs:
+        description: >
+          Are there affected libs?
+        value: ${{ steps.affected.outputs.hasAffectedLibs }}
     secrets:
       NX_CLOUD_ACCESS_TOKEN:
         description: 'The NX Cloud API token'
@@ -50,6 +67,10 @@ jobs:
         with:
           node_version: ${{ inputs.node_version }}
           save_cache: '${{ inputs.save_cache }}'
+
+      - name: Affected
+        id: affected
+        uses: ./.github/actions/nx-affected
 
       - name: Workspace Lint
         run: |

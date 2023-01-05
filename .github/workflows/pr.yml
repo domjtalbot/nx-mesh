@@ -37,6 +37,7 @@ jobs:
 
   build:
     needs: [lint]
+    if: needs.lint.outputs.hasAffected == 'true'
     uses: ./.github/workflows/_build.yml
     secrets: inherit
     with:
@@ -45,6 +46,7 @@ jobs:
 
   test:
     needs: [build]
+    if: needs.lint.outputs.hasAffected == 'true'
     uses: ./.github/workflows/_test.yml
     secrets: inherit
     with:
@@ -53,6 +55,7 @@ jobs:
 
   e2e:
     needs: [build]
+    if: needs.lint.outputs.hasAffectedApps == 'true' || needs.lint.outputs.isNxMeshAffected == 'true'
     uses: ./.github/workflows/_e2e.yml
     secrets: inherit
     with:
@@ -61,6 +64,7 @@ jobs:
 
   generators:
     needs: [build]
+    if: needs.lint.outputs.isNxMeshAffected == 'true'
     uses: ./.github/workflows/_generators.yml
     secrets: inherit
     with:
