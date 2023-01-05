@@ -49,6 +49,10 @@
         "lintFilePatterns": ["libs/nx-mesh/**/*.ts"]
       },
       "configurations": {
+        "codeql": {
+          "format": "@microsoft/eslint-formatter-sarif",
+          "outputFile": "reports/libs/nx-mesh/lint.sarif"
+        },
         "reports": {
           "format": "json",
           "outputFile": "reports/libs/nx-mesh/lint.json"
