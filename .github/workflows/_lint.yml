@@ -113,3 +113,16 @@ jobs:
             --parallel=4 \
             --all \
             --configuration=reports
+
+      - name: Nx-mesh Lint CodeQL
+        if: (inputs.affected == true && contains(steps.setup.outputs.affectedLibs, 'nx-mesh')) || inputs.affected == false
+        run: |
+          pnpm nx run nx-mesh:lint \
+            --configuration=codeql
+
+      - name: Upload Lint CodeQL
+        if: (inputs.affected == true && contains(steps.setup.outputs.affectedLibs, 'nx-mesh')) || inputs.affected == false
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: reports/libs/nx-mesh/lint.sarif
+          wait-for-processing: true

@@ -25,10 +25,10 @@ jobs:
     uses: ./.github/workflows/_code-analysis--codeql.yml
     secrets: inherit
 
-  eslint:
-    name: ESLint
-    uses: ./.github/workflows/_code-analysis--eslint.yml
-    secrets: inherit
+  # eslint:
+  #   name: ESLint
+  #   uses: ./.github/workflows/_code-analysis--eslint.yml
+  #   secrets: inherit
 
   sonar:
     name: Sonar
