@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3
+        with:
+          fetch-depth: 0
 
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
@@ -38,3 +40,20 @@ jobs:
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
+
+      - name: Setup Job
+        id: setup
+        uses: ./.github/actions/setup-job
+        with:
+          node_version: lts
+
+      - name: Nx-mesh Lint CodeQL
+        run: |
+          pnpm nx run nx-mesh:lint \
+            --configuration=codeql
+
+      - name: Upload Lint CodeQL
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: reports/libs/nx-mesh/lint.sarif
+          wait-for-processing: true

@@ -31,7 +31,7 @@ jobs:
         with:
           node_version: lts
 
-      - name: Lint
+      - name: Lint Reports
         shell: bash
         run: |
           pnpm nx run-many \
@@ -40,7 +40,7 @@ jobs:
             --all \
             --configuration=reports
 
-      - name: Test
+      - name: Test Reports
         shell: bash
         run: |
           pnpm nx run-many \
