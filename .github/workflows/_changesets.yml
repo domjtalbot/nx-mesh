@@ -36,7 +36,7 @@ env:
 
 jobs:
   release:
-    name: Release (${{ inputs.type }})
+    name: Release (${{ inputs.snapshot_tag }})
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
