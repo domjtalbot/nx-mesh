@@ -59,7 +59,7 @@ jobs:
           fi
 
           echo The env is $name
-          echo "name={name}" >> $GITHUB_OUTPUT
+          echo "name=$name" >> $GITHUB_OUTPUT
 
   vercel-example-sdk-nextjs:
     name: Vercel - example-sdk-nextjs
