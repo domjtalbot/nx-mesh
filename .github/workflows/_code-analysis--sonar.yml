@@ -1,4 +1,4 @@
-name: 'Sonar'
+name: 'Code Analysis - Sonar'
 
 on:
   workflow_call:
@@ -10,18 +10,15 @@ on:
         description: 'The NX Cloud API token'
         required: true
 
-  workflow_dispatch:
-
 concurrency:
-  group: sonar-${{ github.workflow }}-${{ github.ref }}
+  group: code-analysis--sonar-${{ github.workflow }}-${{ github.ref }}
 
 env:
   NX__TRIPPIN__API_KEY: ${{ secrets.NX__TRIPPIN__API_KEY }}
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
-  NX_CLOUD_ENV_NAME: node-lts
 
 jobs:
-  analyze:
+  sonar:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -29,21 +26,28 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup
-        uses: ./.github/actions/setup
+      - name: Setup Job
+        uses: ./.github/actions/setup-job
         with:
-          ignore-cypress-cache: ${{ !startsWith(matrix.command, 'e2e') }}
-          node-version: ${{ matrix.node }}
+          node_version: lts
 
-      - name: Lint
+      - name: Lint Reports
         shell: bash
         run: |
-          pnpm nx run-many --target=lint --all --parallel=3 --configuration=reports
+          pnpm nx run-many \
+            --target=lint \
+            --parallel=4 \
+            --all \
+            --configuration=reports
 
-      - name: Test
+      - name: Test Reports
         shell: bash
         run: |
-          pnpm nx run-many --target=test --all --ci --code-coverage --parallel=3
+          pnpm nx run-many \
+            --target=test \
+            --parallel=3 \
+            --all \
+            --configuration=reports
 
       - name: Get Nx-mesh version
         id: version

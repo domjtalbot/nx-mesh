@@ -9,6 +9,7 @@
 .mesh
 .next
 .nuxt
+.sarif
 .vercel
 .vuepress/dist
 dist

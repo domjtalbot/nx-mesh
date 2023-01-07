@@ -1,0 +1,102 @@
+name: 'Changesets'
+
+on:
+  workflow_call:
+    inputs:
+      affected:
+        description: >
+          Run for affected projects.
+        required: false
+        default: false
+        type: boolean
+      release:
+        description: >
+          Prepare changesets release or publish packages.
+
+          Action is determined by Changesets.
+        required: false
+        default: false
+        type: boolean
+      snapshot_tag:
+        description: >
+          What should the snapshot tag be?
+        required: false
+        default: 'latest'
+        type: string
+    outputs:
+      released:
+        description: >
+          Has the next version been releaed?
+        value: ${{ jobs.changesets.outputs.released == 'true' }}
+    secrets:
+      NX_CLOUD_ACCESS_TOKEN:
+        description: 'The NX Cloud API token'
+        required: true
+
+concurrency:
+  group: changesets--${{ inputs.release }}--${{ inputs.snapshot_tag }}--${{ github.workflow }}--${{ github.ref }}
+
+env:
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+
+jobs:
+  release:
+    name: Release (${{ inputs.snapshot_tag }})
+    runs-on: ubuntu-latest
+    outputs:
+      released: ${{ steps.changesets.outputs.published == 'true' }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Job
+        uses: ./.github/actions/setup-job
+        with:
+          node_version: lts
+
+      - name: Affected Production Build
+        if: inputs.affected == true
+        run: |
+          pnpm nx affected \
+            --target=build \
+            --parallel=2 \
+            --configuration=production
+
+      - name: Build
+        if: inputs.affected != true
+        run: |
+          pnpm nx run-many \
+            --target=build \
+            --parallel=2 \
+            --all
+
+      - name: Modify Workspace File
+        run: |
+          sed -e 's/libs\//dist\/libs\//g' pnpm-workspace.yaml > pnpm-workspace-dist.yaml
+          mv pnpm-workspace-dist.yaml pnpm-workspace.yaml
+
+      - name: Create Release Pull Request or Publish packages
+        if: ${{ inputs.release == true }}
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          # This expects you to have a script called release which does a build for your packages and calls changeset publish
+          publish: pnpm changeset publish
+          commit: 'ci(changesets): version packages'
+          title: 'ci(changesets): version packages'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Snapshot (${{ inputs.snapshot_tag }})
+        if: ${{ inputs.snapshot_tag != 'latest' && steps.changesets.outputs.published != 'true' }}
+        uses: the-guild-org/changesets-snapshot-action@eeff4d8aecffd035c3d5513d9811f07893737425 # v0.0.1
+        with:
+          tag: ${{ inputs.snapshot_tag }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

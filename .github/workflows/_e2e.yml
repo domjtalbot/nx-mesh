@@ -1,0 +1,85 @@
+name: 'E2E'
+
+on:
+  workflow_call:
+    inputs:
+      affected:
+        description: >
+          Run for affected projects.
+        required: false
+        default: true
+        type: boolean
+      node_version:
+        description: >
+          Optionally define the version of Node to install via Volta.
+
+          Pass `config` (default value) to use the Volta config.
+        required: false
+        default: 'config'
+        type: string
+      save_cache:
+        description: >
+          Should the cache be saved upon completion?
+        required: false
+        default: false
+        type: boolean
+    secrets:
+      NX_CLOUD_ACCESS_TOKEN:
+        description: 'The NX Cloud API token'
+        required: true
+      NX__TRIPPIN__API_KEY:
+        description: 'The Trippin API Key'
+        required: true
+
+concurrency:
+  group: e2e--${{ github.workflow }}--${{ github.ref }}
+
+env:
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+  NX__TRIPPIN__API_KEY: ${{ secrets.NX__TRIPPIN__API_KEY }}
+
+jobs:
+  e2e:
+    name: E2E - ${{ matrix.e2e }}
+    strategy:
+      max-parallel: 4
+      matrix:
+        e2e:
+          - e2e
+          - e2e-serve
+          - e2e-serve-dev
+          - e2e-start
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Job
+        uses: ./.github/actions/setup-job
+        with:
+          browsers: 'true'
+          node_version: ${{ inputs.node_version }}
+          save_cache: '${{ inputs.save_cache }}'
+
+      - name: Affected ${{ matrix.e2e }}
+        if: inputs.affected == true
+        uses: cypress-io/github-action@v5
+        with:
+          install: false
+          command: |
+            pnpm nx affected \
+              --target=${{ matrix.e2e }} \
+              --parallel=1
+
+      - name: ${{ matrix.e2e }}
+        if: inputs.affected != true
+        uses: cypress-io/github-action@v5
+        with:
+          install: false
+          command: |
+            pnpm nx run-many \
+              --target=${{ matrix.e2e }} \
+              --parallel=1 \
+              --all

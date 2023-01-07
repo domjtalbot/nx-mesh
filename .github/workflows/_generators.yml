@@ -1,0 +1,86 @@
+name: 'Generators'
+
+on:
+  workflow_call:
+    inputs:
+      affected:
+        description: >
+          Run for affected projects.
+        required: false
+        default: true
+        type: boolean
+      node_version:
+        description: >
+          Optionally define the version of Node to install via Volta.
+
+          Pass `config` (default value) to use the Volta config.
+        required: false
+        default: 'config'
+        type: string
+      save_cache:
+        description: >
+          Should the cache be saved upon completion?
+        required: false
+        default: false
+        type: boolean
+    secrets:
+      NX_CLOUD_ACCESS_TOKEN:
+        description: 'The NX Cloud API token'
+        required: true
+      NX__TRIPPIN__API_KEY:
+        description: 'The Trippin API Key'
+        required: true
+
+concurrency:
+  group: generators--${{ github.workflow }}--${{ github.ref }}
+
+env:
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+  NX__TRIPPIN__API_KEY: ${{ secrets.NX__TRIPPIN__API_KEY }}
+
+jobs:
+  generator:
+    name: Generator - ${{ matrix.type }}/${{ matrix.example }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        type: [application, sdk, preset]
+        example:
+          - 'country-info'
+          - 'fake-api'
+          - 'javascript-wiki'
+          # - 'movies'
+          - 'rfam'
+          - 'stackexchange'
+          - 'star-wars-api'
+          - 'trippin'
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Job
+        uses: ./.github/actions/setup-job
+        with:
+          node_version: ${{ inputs.node_version }}
+          save_cache: '${{ inputs.save_cache }}'
+
+      - name: Build Nx-mesh
+        shell: bash
+        run: |
+          pnpm nx run nx-mesh:build
+
+      - name: Generate Example
+        shell: bash
+        run: |
+          pnpm exec nx generate nx-mesh:${{ matrix.type }} \
+            ${{ matrix.example }} \
+            --example=${{ matrix.example }} \
+            --no-interactive
+
+      - name: Build example
+        shell: bash
+        run: |
+          pnpm nx run ${{ matrix.example }}:build

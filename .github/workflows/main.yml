@@ -1,0 +1,84 @@
+name: 'Main'
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+concurrency:
+  group: main--${{ github.workflow }}--${{ github.ref }}
+
+env:
+  NX__TRIPPIN__API_KEY: ${{ secrets.NX__TRIPPIN__API_KEY }}
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+
+jobs:
+  lint:
+    uses: ./.github/workflows/_lint.yml
+    secrets: inherit
+    with:
+      affected: true
+      node_version: lts
+      save_cache: true
+
+  build:
+    needs: [lint]
+    if: needs.lint.outputs.hasAffected == 'true'
+    uses: ./.github/workflows/_build.yml
+    secrets: inherit
+    with:
+      affected: true
+      node_version: lts
+
+  test:
+    needs: [lint, build]
+    if: needs.lint.outputs.hasAffected == 'true'
+    uses: ./.github/workflows/_test.yml
+    secrets: inherit
+    with:
+      affected: true
+      node_version: lts
+
+  e2e:
+    needs: [lint, build]
+    if: needs.lint.outputs.hasAffectedApps == 'true'
+    uses: ./.github/workflows/_e2e.yml
+    secrets: inherit
+    with:
+      affected: true
+      node_version: lts
+
+  generators:
+    needs: [lint, build]
+    if: needs.lint.outputs.isNxMeshAffected == 'true'
+    uses: ./.github/workflows/_generators.yml
+    secrets: inherit
+    with:
+      affected: true
+      node_version: lts
+
+  code-analysis:
+    needs: [lint, build, test, e2e, generators]
+    name: Code Analysis
+    uses: ./.github/workflows/code-analysis.yml
+    secrets: inherit
+
+  changesets:
+    needs: [lint, build, test, e2e, generators]
+    name: Changesets
+    uses: ./.github/workflows/_changesets.yml
+    secrets: inherit
+    with:
+      release: true
+      snapshot_tag: next
+
+  deploy:
+    needs: [lint, build, test, e2e, generators, changesets]
+    name: Deploy
+    uses: ./.github/workflows/_deploy.yml
+    secrets: inherit
+    with:
+      affected: true
+      production: ${{ needs.changesets.outputs.released == 'true' }}

@@ -1,0 +1,270 @@
+name: 'Set up the job'
+description: 'Install Node, PNPM, project dependencies and get NX SHAs'
+
+inputs:
+  browsers:
+    description: Set up Node with Cypress browsers?
+    required: false
+    default: 'false'
+  fetch_depth:
+    description: >
+      Number of commits to fetch.
+      0 indicates all history for all branches and tags.
+    default: '1'
+  node_version:
+    description: >
+      Optionally define the version of Node to install via Volta.
+
+      Pass `config` (default value) to use the Volta config.
+    required: false
+    default: 'config'
+  save_cache:
+    description: Should the cache be saved upon completion?
+    required: false
+    default: 'false'
+
+outputs:
+  cache_hit:
+    description: >
+      A boolean value to indicate an exact match was found for the primary key
+    value: ${{ steps.pnpm-global-cache.outputs.cache-hit }}
+  cache_key:
+    description: >
+      The cache key used to suffix node cache keys
+    value: ${{ steps.cache_key.outputs.key }}
+  node_version:
+    description: The installed node version.
+    value: ${{ steps.node.outputs.version }}
+  nx_base:
+    description: >
+      The value intended for use with --base or NX_BASE in all subsequent
+      `nx affected` commands within the current workflow.
+    value: ${{ steps.nx_shas.outputs.base }}
+  nx_head:
+    description: >
+      The value intended for use with --head or NX_HEAD in all subsequent
+      `nx affected` commands within the current workflow.
+    value: ${{ steps.nx_shas.outputs.head }}
+  pnpm_version:
+    description: The installed pnpm version.
+    value: ${{ steps.pnpm.outputs.version }}
+  restore_cache_key:
+    description: >
+      The restore cache key used to suffix node restore cache keys
+    value: ${{ steps.restore_cache_key.outputs.key }}
+  volta_version:
+    description: The installed volta version.
+    value: ${{ steps.volta.outputs.version }}
+  apps:
+    description: 'All apps'
+    value: ${{ steps.affected.outputs.apps }}
+  e2eApps:
+    description: 'All E2E apps'
+    value: ${{ steps.affected.outputs.e2eApps }}
+  nonE2EApps:
+    description: 'All Non-E2E apps'
+    value: ${{ steps.affected.outputs.nonE2EApps }}
+  libs:
+    description: 'All libs'
+    value: ${{ steps.affected.outputs.libs }}
+  numberOfApps:
+    description: 'The number of apps'
+    value: ${{ steps.affected.outputs.numberOfApps }}
+  numberOfE2eApps:
+    description: 'The number of E2E apps'
+    value: ${{ steps.affected.outputs.numberOfE2eApps }}
+  numberOfNonE2EApps:
+    description: 'The number of non-e2e apps'
+    value: ${{ steps.affected.outputs.numberOfNonE2EApps }}
+  numberOfLibs:
+    description: 'The number of libs'
+    value: ${{ steps.affected.outputs.numberOfLibs }}
+  hasApps:
+    description: 'Are there apps?'
+    value: ${{ steps.affected.outputs.hasApps }}
+  hasE2EApps:
+    description: 'Are there E2E apps?'
+    value: ${{ steps.affected.outputs.hasE2EApps }}
+  hasNonE2EApps:
+    description: 'Are there non-e2e apps?'
+    value: ${{ steps.affected.outputs.hasNonE2EApps }}
+  hasLibs:
+    description: 'Are there libs?'
+    value: ${{ steps.affected.outputs.hasLibs }}
+  hasProjects:
+    description: 'Are there apps or libs?'
+    value: ${{ steps.affected.outputs.hasProjects }}
+  affectedApps:
+    description: 'Affected apps'
+    value: ${{ steps.affected.outputs.affectedApps }}
+  affectedE2eApps:
+    description: 'Affected E2E apps'
+    value: ${{ steps.affected.outputs.affectedE2eApps }}
+  affectedNonE2EApps:
+    description: 'Affected non-e2e apps'
+    value: ${{ steps.affected.outputs.affectedNonE2EApps }}
+  affectedLibs:
+    description: 'Affected libs'
+    value: ${{ steps.affected.outputs.affectedLibs }}
+  numberOfAffectedApps:
+    description: 'The number of affected apps'
+    value: ${{ steps.affected.outputs.numberOfAffectedApps }}
+  numberOfAffectedE2eApps:
+    description: 'The number of affected E2E apps'
+    value: ${{ steps.affected.outputs.numberOfAffectedE2eApps }}
+  numberOfAffectedNonE2EApps:
+    description: 'The number of affected non-E2E apps'
+    value: ${{ steps.affected.outputs.numberOfAffectedNonE2EApps }}
+  numberOfAffectedLibs:
+    description: 'The number of affected libs'
+    value: ${{ steps.affected.outputs.numberOfAffectedLibs }}
+  hasAffectedApps:
+    description: 'Are there affected apps?'
+    value: ${{ steps.affected.outputs.hasAffectedApps }}
+  hasAffectedE2EApps:
+    description: 'Are there affected E2E apps?'
+    value: ${{ steps.affected.outputs.hasAffectedE2EApps }}
+  hasAffectedNonE2EApps:
+    description: 'Are there affected non-e2e apps?'
+    value: ${{ steps.affected.outputs.hasAffectedNonE2EApps }}
+  hasAffectedLibs:
+    description: 'Are there affected libs?'
+    value: ${{ steps.affected.outputs.hasAffectedLibs }}
+  hasAffected:
+    description: 'Are there affected apps or libs?'
+    value: ${{ steps.affected.outputs.hasAffected }}
+
+runs:
+  using: 'composite'
+  steps:
+    # Volta
+
+    - name: Setup Volta
+      if: inputs.node_version == 'config'
+      uses: volta-cli/action@v4
+
+    - name: Setup Volta
+      if: inputs.node_version != 'config'
+      uses: volta-cli/action@v4
+      with:
+        node-version: ${{ inputs.node_version }}
+
+    # pnpm
+
+    - uses: pnpm/action-setup@v2
+      with:
+        run_install: false
+        version: latest
+
+    # Utils
+
+    - name: Directory
+      id: directory
+      shell: bash
+      run: |
+        echo "path=$(pwd)" >> $GITHUB_OUTPUT
+
+    - name: Volta version
+      id: volta
+      shell: bash
+      run: |
+        echo "node_version=$(node --version)" >> $GITHUB_OUTPUT
+        echo "version=$(volta --version)" >> $GITHUB_OUTPUT
+
+    - name: Node version
+      id: node
+      shell: bash
+      run: |
+        echo "version=$(node --version)" >> $GITHUB_OUTPUT
+
+    - name: PNPM version
+      id: pnpm
+      shell: bash
+      run: |
+        echo "cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+        echo "version=$(pnpm --version)" >> $GITHUB_OUTPUT
+
+    - name: NX Cloud Envs
+      id: nx-cloud
+      shell: bash
+      run: |
+        echo "NX_CLOUD_ENV_NAME=node_${{ steps.node.outputs.version }}__pnpm_${{ steps.pnpm.outputs.version }}" >> $GITHUB_ENV
+
+    - name: Create restore cache key
+      id: restore_cache_key
+      shell: bash
+      run: |
+        echo "key=cache-version-7--os-${{ runner.os }}--volta-${{ steps.volta.outputs.version }}--node-${{ steps.node.outputs.version }}--pnpm-${{ steps.pnpm.outputs.version }}" >> $GITHUB_OUTPUT
+
+    - name: Create cache key
+      id: cache_key
+      shell: bash
+      run: |
+        echo "key=${{ steps.restore_cache_key.outputs.key }}--lockfile-${{ hashFiles('*/pnpm-lock.yaml') }}" >> $GITHUB_OUTPUT
+
+    - name: Nx Shas
+      id: nx_shas
+      uses: nrwl/nx-set-shas@v3
+
+    # Restore Cache
+
+    - name: Restore PNPM cache
+      uses: actions/cache/restore@v3
+      id: pnpm-cache
+      with:
+        path: |
+          ${{ steps.pnpm.outputs.cache_dir }}
+          ${{ steps.directory.outputs.path }}/node_modules
+          !${{ steps.directory.outputs.path }}/node_modules/.cache/nx
+        key: |
+          pnpm--${{ steps.cache_key.outputs.key }}
+        restore-keys: |
+          pnpm--${{ steps.restore_cache_key.outputs.key }}
+
+    - name: Restore Cypress Cache
+      uses: actions/cache@v3
+      id: cypress-cache
+      if: inputs.browsers == 'true'
+      with:
+        path: |
+          ~/.cache/Cypress
+        key: |
+          browsers--${{ steps.cache_key.outputs.key }}
+        restore-keys: |
+          browsers--${{ steps.restore_cache_key.outputs.key }}
+
+    # Install
+
+    - name: Install Node Dependencies
+      if: steps.pnpm-cache.outputs.cache-hit != 'true'
+      shell: bash
+      run: |
+        pnpm install --frozen-lockfile
+
+    # Affected
+
+    - name: Affected
+      id: affected
+      uses: ./.github/actions/nx-affected
+
+    # Save Cache
+
+    - name: Save Cypress cache
+      uses: actions/cache/save@v3
+      if: inputs.save_cache == 'true' && steps.pnpm-cache.outputs.cache-hit != 'true'
+      with:
+        path: |
+          ~/.cache/Cypress
+        key: |
+          browsers--${{ steps.cache_key.outputs.key }}
+
+    - name: Save PNPM cache
+      uses: actions/cache/save@v3
+      if: inputs.save_cache == 'true' && steps.pnpm-cache.outputs.cache-hit != 'true'
+      with:
+        path: |
+          ${{ steps.pnpm.outputs.cache_dir }}
+          ${{ steps.directory.outputs.path }}/node_modules
+          !${{ steps.directory.outputs.path }}/node_modules/.cache/nx
+        key: |
+          pnpm--${{ steps.cache_key.outputs.key }}

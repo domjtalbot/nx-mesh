@@ -1,0 +1,87 @@
+name: 'Test'
+
+on:
+  workflow_call:
+    inputs:
+      affected:
+        description: >
+          Run for affected projects.
+        required: false
+        default: true
+        type: boolean
+      node_version:
+        description: >
+          Optionally define the version of Node to install via Volta.
+
+          Pass `config` (default value) to use the Volta config.
+        required: false
+        default: 'config'
+        type: string
+      save_cache:
+        description: >
+          Should the cache be saved upon completion?
+        required: false
+        default: false
+        type: boolean
+    secrets:
+      NX_CLOUD_ACCESS_TOKEN:
+        description: 'The NX Cloud API token'
+        required: true
+      NX__TRIPPIN__API_KEY:
+        description: 'The Trippin API Key'
+        required: true
+
+concurrency:
+  group: build--${{ github.workflow }}--${{ github.ref }}
+
+env:
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+  NX__TRIPPIN__API_KEY: ${{ secrets.NX__TRIPPIN__API_KEY }}
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Job
+        uses: ./.github/actions/setup-job
+        with:
+          node_version: ${{ inputs.node_version }}
+          save_cache: '${{ inputs.save_cache }}'
+
+      - name: Affected Test
+        if: inputs.affected == true
+        run: |
+          pnpm nx affected \
+            --target=test \
+            --parallel=3
+
+      - name: Affected Test Reports
+        if: inputs.affected == true
+        run: |
+          pnpm nx affected \
+            --target=test \
+            --parallel=3 \
+            --configuration=reports
+
+      - name: Test
+        if: inputs.affected != true
+        run: |
+          pnpm nx run-many \
+            --target=test \
+            --parallel=3 \
+            --all
+
+      - name: Test Reports
+        if: inputs.affected != true
+        run: |
+          pnpm nx run-many \
+            --target=test \
+            --parallel=3 \
+            --all \
+            --configuration=reports

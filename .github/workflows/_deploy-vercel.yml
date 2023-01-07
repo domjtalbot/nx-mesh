@@ -1,10 +1,11 @@
-name: 'Deploy'
+name: 'Deploy to Vercel'
 
 on:
   workflow_call:
     inputs:
-      apps:
-        description: The apps to deploy
+      name:
+        description: >
+          GitHub environment name
         type: string
         required: true
       production:
@@ -16,48 +17,43 @@ on:
       VERCEL_ORG_ID:
         description: 'The Vercel ORG ID'
         required: true
-      NX__NEXTJS__VERCEL_PROJECT_ID:
-        description: 'The nextjs/trippin Vercel Project Id'
+      VERCEL_PROJECT_ID:
+        description: 'The Vercel Project Id'
         required: true
       VERCEL_TOKEN:
         description: 'The Vercel API token'
         required: true
 
 concurrency:
-  group: deploy-${{ github.workflow }}-${{ github.ref }}
+  group: deploy-vercel--${{ github.workflow }}-${{ github.ref }}--${{ inputs.name }}
+
+permissions:
+  contents: read
+  deployments: write
+  pull-requests: write
 
 jobs:
-  deploy-nextjs:
-    name: Deploy NextJS
-    if: contains(inputs.apps, 'nextjs')
+  deploy:
+    name: Deploy ${{ inputs.name }} to Vercel (Production = ${{ inputs.production }})
     runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.name }}
+      url: ${{ steps.vercel.outputs.PREVIEW_URL }}
     steps:
       - name: Check out repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3
         with:
           fetch-depth: 0
 
-      - name: Deploy env
-        id: deploy-env
-        shell: bash
-        run: |
-          name=Preview
-
-          if [ ${{ inputs.production }} = true ]; then
-            name=Production
-          fi
-
-          echo The env is $name
-          echo ::set-output name=name::$name
-
-      - name: Deploy to Vercel Action
+      - name: Deploy to Vercel
+        id: vercel
         uses: BetaHuhn/deploy-to-vercel-action@8aec30fa2a289649346e38660b9eb1f011bb4a65 # v1
         with:
-          GITHUB_DEPLOYMENT_ENV: nextjs ${{ steps.deploy-env.outputs.name }}
+          GITHUB_DEPLOYMENT_ENV: ${{ inputs.name }}
           GITHUB_DEPLOYMENT: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_LABELS: vercel
           PRODUCTION: ${{ inputs.production }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.NX__NEXTJS__VERCEL_PROJECT_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}

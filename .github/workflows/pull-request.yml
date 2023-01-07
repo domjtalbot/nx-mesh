@@ -1,0 +1,97 @@
+name: 'Pull Request'
+
+on:
+  pull_request:
+
+  workflow_dispatch:
+
+concurrency:
+  group: pull-request--${{ github.workflow }}--${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NX__TRIPPIN__API_KEY: ${{ secrets.NX__TRIPPIN__API_KEY }}
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+
+jobs:
+  lint:
+    uses: ./.github/workflows/_lint.yml
+    secrets: inherit
+    strategy:
+      matrix:
+        node_version: [lts, latest]
+    with:
+      affected: true
+      node_version: ${{ matrix.node_version }}
+      save_cache: true
+
+  build:
+    needs: [lint]
+    if: needs.lint.outputs.hasAffected == 'true'
+    uses: ./.github/workflows/_build.yml
+    secrets: inherit
+    strategy:
+      matrix:
+        node_version: [lts, latest]
+    with:
+      affected: true
+      node_version: ${{ matrix.node_version }}
+
+  test:
+    needs: [lint, build]
+    if: needs.lint.outputs.hasAffected == 'true'
+    uses: ./.github/workflows/_test.yml
+    secrets: inherit
+    strategy:
+      matrix:
+        node_version: [lts, latest]
+    with:
+      affected: true
+      node_version: ${{ matrix.node_version }}
+
+  e2e:
+    needs: [lint, build]
+    if: needs.lint.outputs.hasAffectedApps == 'true'
+    uses: ./.github/workflows/_e2e.yml
+    secrets: inherit
+    strategy:
+      matrix:
+        node_version: [lts, latest]
+    with:
+      affected: true
+      node_version: ${{ matrix.node_version }}
+
+  generators:
+    needs: [lint, build]
+    if: needs.lint.outputs.isNxMeshAffected == 'true'
+    uses: ./.github/workflows/_generators.yml
+    secrets: inherit
+    strategy:
+      matrix:
+        node_version: [lts, latest]
+    with:
+      affected: true
+      node_version: ${{ matrix.node_version }}
+
+  code-analysis:
+    needs: [lint, build, test, e2e, generators]
+    name: Code Analysis
+    uses: ./.github/workflows/code-analysis.yml
+    secrets: inherit
+
+  deploy:
+    needs: [lint, build, test, e2e, generators]
+    name: Deploy
+    uses: ./.github/workflows/_deploy.yml
+    secrets: inherit
+    with:
+      affected: true
+
+  changesets:
+    needs: [lint, build, test, e2e, generators]
+    name: Changesets
+    uses: ./.github/workflows/_changesets.yml
+    secrets: inherit
+    with:
+      affected: true
+      snapshot_tag: alpha
