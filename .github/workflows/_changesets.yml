@@ -23,6 +23,11 @@ on:
         required: false
         default: 'latest'
         type: string
+    outputs:
+      released:
+        description: >
+          Has the next version been releaed?
+        value: ${{ jobs.changesets.outputs.released == 'true' }}
     secrets:
       NX_CLOUD_ACCESS_TOKEN:
         description: 'The NX Cloud API token'
@@ -38,6 +43,8 @@ jobs:
   release:
     name: Release (${{ inputs.snapshot_tag }})
     runs-on: ubuntu-latest
+    outputs:
+      released: ${{ steps.changesets.outputs.published == 'true' }}
     steps:
       - name: Check out repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3

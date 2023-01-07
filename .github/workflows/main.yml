@@ -65,14 +65,6 @@ jobs:
     uses: ./.github/workflows/code-analysis.yml
     secrets: inherit
 
-  deploy:
-    needs: [lint, build, test, e2e, generators]
-    name: Deploy
-    uses: ./.github/workflows/_deploy.yml
-    secrets: inherit
-    with:
-      affected: true
-
   changesets:
     needs: [lint, build, test, e2e, generators]
     name: Changesets
@@ -81,3 +73,12 @@ jobs:
     with:
       release: true
       snapshot_tag: next
+
+  deploy:
+    needs: [lint, build, test, e2e, generators, changesets]
+    name: Deploy
+    uses: ./.github/workflows/_deploy.yml
+    secrets: inherit
+    with:
+      affected: true
+      production: ${{ needs.changesets.outputs.released == 'true' }}
