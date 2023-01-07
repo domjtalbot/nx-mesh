@@ -1,12 +1,14 @@
-name: 'Pull Request'
+name: 'Main'
 
 on:
-  pull_request:
+  push:
+    branches:
+      - main
 
   workflow_dispatch:
 
 concurrency:
-  group: pull-request--${{ github.workflow }}--${{ github.ref }}
+  group: main--${{ github.workflow }}--${{ github.ref }}
 
 env:
   NX__TRIPPIN__API_KEY: ${{ secrets.NX__TRIPPIN__API_KEY }}
@@ -77,5 +79,5 @@ jobs:
     uses: ./.github/workflows/_changesets.yml
     secrets: inherit
     with:
-      affected: true
-      snapshot_tag: alpha
+      release: true
+      snapshot_tag: next
