@@ -44,7 +44,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     strategy:
-      max-parallel: 10
       matrix:
         type: [application, sdk, preset]
         example:
