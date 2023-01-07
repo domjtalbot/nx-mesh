@@ -18,9 +18,12 @@ jobs:
   lint:
     uses: ./.github/workflows/_lint.yml
     secrets: inherit
+    strategy:
+      matrix:
+        node_version: [lts, latest]
     with:
       affected: true
-      node_version: lts
+      node_version: ${{ matrix.node_version }}
       save_cache: true
 
   build:
@@ -28,36 +31,48 @@ jobs:
     if: needs.lint.outputs.hasAffected == 'true'
     uses: ./.github/workflows/_build.yml
     secrets: inherit
+    strategy:
+      matrix:
+        node_version: [lts, latest]
     with:
       affected: true
-      node_version: lts
+      node_version: ${{ matrix.node_version }}
 
   test:
     needs: [lint, build]
     if: needs.lint.outputs.hasAffected == 'true'
     uses: ./.github/workflows/_test.yml
     secrets: inherit
+    strategy:
+      matrix:
+        node_version: [lts, latest]
     with:
       affected: true
-      node_version: lts
+      node_version: ${{ matrix.node_version }}
 
   e2e:
     needs: [lint, build]
     if: needs.lint.outputs.hasAffectedApps == 'true'
     uses: ./.github/workflows/_e2e.yml
     secrets: inherit
+    strategy:
+      matrix:
+        node_version: [lts, latest]
     with:
       affected: true
-      node_version: lts
+      node_version: ${{ matrix.node_version }}
 
   generators:
     needs: [lint, build]
     if: needs.lint.outputs.isNxMeshAffected == 'true'
     uses: ./.github/workflows/_generators.yml
     secrets: inherit
+    strategy:
+      matrix:
+        node_version: [lts, latest]
     with:
       affected: true
-      node_version: lts
+      node_version: ${{ matrix.node_version }}
 
   code-analysis:
     needs: [lint, build, test, e2e, generators]
