@@ -43,6 +43,12 @@
         "dev": true,
         "dir": "libs/example/sdk/graphql/star-wars-api"
       }
+    },
+    "validate": {
+      "executor": "nx-mesh:validate",
+      "options": {
+        "dir": "libs/example/sdk/graphql/star-wars-api"
+      }
     }
   },
   "tags": ["type:example", "type:sdk"]
