@@ -18,12 +18,9 @@ jobs:
   lint:
     uses: ./.github/workflows/_lint.yml
     secrets: inherit
-    strategy:
-      matrix:
-        node_version: [lts, latest]
     with:
       affected: true
-      node_version: ${{ matrix.node_version }}
+      node_version: lts
       save_cache: true
 
   build:
@@ -37,6 +34,7 @@ jobs:
     with:
       affected: true
       node_version: ${{ matrix.node_version }}
+      save_cache: ${{ matrix.node_version == 'latest' }}
 
   test:
     needs: [lint, build]
