@@ -57,10 +57,10 @@ jobs:
           - 'trippin'
         nx_version: [latest, 15.4, 15.3, 15.2, 15.1, 15.0, 14]
     steps:
-      # - name: Check out repository
-      #   uses: actions/checkout@v3
-      #   with:
-      #     fetch-depth: 0
+      - name: Check out repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Setup Job
         uses: ./.github/actions/setup-job
@@ -87,6 +87,8 @@ jobs:
         shell: bash
         run: |
           ls -1a
+          cd ../
+          ls -1a
           pnpm dlx create-nx-workspace@${{ matrix.nx_version }} \
             --name=generator \
             --appName=${{ matrix.nx_version }} \
@@ -95,7 +97,8 @@ jobs:
             --nxCloud=false \
             --style=css
           cd generator
-          pnpm add ../dist/libs/nx-mesh/
+          ls -1a
+          pnpm add ../project/dist/libs/nx-mesh/
 
       - name: Generate Example
         shell: bash
