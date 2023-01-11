@@ -32,7 +32,7 @@ on:
         required: true
 
 concurrency:
-  group: build--${{ github.workflow }}--${{ github.ref }}
+  group: build--${{ github.workflow }}--${{ github.ref }}--node-${{ inputs.node_version }}--affected-${{ inputs.affected }}--save_cache-${{ inputs.save_cache }}
 
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
