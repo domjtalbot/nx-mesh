@@ -55,22 +55,47 @@ jobs:
           - 'stackexchange'
           - 'star-wars-api'
           - 'trippin'
+        nx_version: [latest, 15.4, 15.3, 15.2, 15.1, 15.0, 14]
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+      # - name: Check out repository
+      #   uses: actions/checkout@v3
+      #   with:
+      #     fetch-depth: 0
 
       - name: Setup Job
         uses: ./.github/actions/setup-job
+        id: setup
         with:
           node_version: ${{ inputs.node_version }}
-          save_cache: '${{ inputs.save_cache }}'
+          skip_node_cache: 'true'
 
-      - name: Build Nx-mesh
+      - name: Restore PNPM cache
+        uses: actions/cache/restore@v3
+        id: pnpm-cache
+        with:
+          path: |
+            ${{ steps.setup.outputs.pnpm_directory }}
+          key: |
+            generators--pnpm--nx-${{ matrix.nx_version }}--type-${{ matrix.type }}--example-${{ matrix.example }}
+
+      - name: Download Nx Mesh
+        uses: actions/download-artifact@v3
+        with:
+          name: nx-mesh
+
+      - name: Generate repo
         shell: bash
         run: |
-          pnpm nx run nx-mesh:build
+          ls -1a
+          pnpm dlx create-nx-workspace@${{ matrix.nx_version }} \
+            --name=generator \
+            --appName=${{ matrix.nx_version }} \
+            --preset=ts \
+            --interactive=false \
+            --nxCloud=false \
+            --style=css
+          cd generator
+          pnpm add ../dist/libs/nx-mesh/
 
       - name: Generate Example
         shell: bash
@@ -84,3 +109,12 @@ jobs:
         shell: bash
         run: |
           pnpm nx run ${{ matrix.example }}:build
+
+      - name: Save PNPM cache
+        uses: actions/cache/save@v3
+        if: inputs.save_cache == 'true' && steps.pnpm-cache.outputs.cache-hit != 'true' && inputs.skip_node_cache == 'false'
+        with:
+          path: |
+            ${{ steps.setup.outputs.pnpm_directory }}
+          key: |
+            generators--pnpm--nx-${{ matrix.nx_version }}--type-${{ matrix.type }}--example-${{ matrix.example }}

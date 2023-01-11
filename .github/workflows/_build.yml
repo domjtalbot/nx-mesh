@@ -85,3 +85,12 @@ jobs:
             --parallel=2 \
             --all \
             --configuration=production
+
+      - name: Upload Nx-mesh build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: nx-mesh
+          retention-days: 2
+          path: |
+            dist/libs/nx-mesh/
+            !dist/libs/nx-mesh/node_modules

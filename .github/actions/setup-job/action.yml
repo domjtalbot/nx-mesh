@@ -18,6 +18,11 @@ inputs:
       Pass `config` (default value) to use the Volta config.
     required: false
     default: 'config'
+  skip_node_cache:
+    description: >
+      Should node_modules cahce be skipped?
+    required: false
+    default: 'false'
   save_cache:
     description: Should the cache be saved upon completion?
     required: false
@@ -45,6 +50,9 @@ outputs:
       The value intended for use with --head or NX_HEAD in all subsequent
       `nx affected` commands within the current workflow.
     value: ${{ steps.nx_shas.outputs.head }}
+  pnpm_directory:
+    description: The installed pnpm directory.
+    value: ${{ steps.directory.outputs.path }}
   pnpm_version:
     description: The installed pnpm version.
     value: ${{ steps.pnpm.outputs.version }}
@@ -192,24 +200,28 @@ runs:
 
     - name: Create restore cache key
       id: restore_cache_key
+      if: inputs.skip_node_cache == 'false'
       shell: bash
       run: |
         echo "key=cache-version-7--os-${{ runner.os }}--volta-${{ steps.volta.outputs.version }}--node-${{ steps.node.outputs.version }}--pnpm-${{ steps.pnpm.outputs.version }}" >> $GITHUB_OUTPUT
 
     - name: Create cache key
       id: cache_key
+      if: inputs.skip_node_cache == 'false'
       shell: bash
       run: |
         echo "key=${{ steps.restore_cache_key.outputs.key }}--lockfile-${{ hashFiles('*/pnpm-lock.yaml') }}" >> $GITHUB_OUTPUT
 
     - name: Nx Shas
       id: nx_shas
+      if: inputs.skip_node_cache == 'false'
       uses: nrwl/nx-set-shas@v3
 
     # Restore Cache
 
     - name: Restore PNPM cache
       uses: actions/cache/restore@v3
+      if: inputs.skip_node_cache == 'false'
       id: pnpm-cache
       with:
         path: |
@@ -224,7 +236,7 @@ runs:
     - name: Restore Cypress Cache
       uses: actions/cache@v3
       id: cypress-cache
-      if: inputs.browsers == 'true'
+      if: inputs.browsers == 'true' && inputs.skip_node_cache == 'false'
       with:
         path: |
           ~/.cache/Cypress
@@ -236,7 +248,7 @@ runs:
     # Install
 
     - name: Install Node Dependencies
-      if: steps.pnpm-cache.outputs.cache-hit != 'true'
+      if: steps.pnpm-cache.outputs.cache-hit != 'true' && inputs.skip_node_cache == 'false'
       shell: bash
       run: |
         pnpm install --frozen-lockfile
@@ -245,13 +257,14 @@ runs:
 
     - name: Affected
       id: affected
+      if: inputs.skip_node_cache == 'false'
       uses: ./.github/actions/nx-affected
 
     # Save Cache
 
     - name: Save Cypress cache
       uses: actions/cache/save@v3
-      if: inputs.save_cache == 'true' && steps.pnpm-cache.outputs.cache-hit != 'true'
+      if: inputs.save_cache == 'true' && steps.pnpm-cache.outputs.cache-hit != 'true' && inputs.skip_node_cache == 'false'
       with:
         path: |
           ~/.cache/Cypress
@@ -260,7 +273,7 @@ runs:
 
     - name: Save PNPM cache
       uses: actions/cache/save@v3
-      if: inputs.save_cache == 'true' && steps.pnpm-cache.outputs.cache-hit != 'true'
+      if: inputs.save_cache == 'true' && steps.pnpm-cache.outputs.cache-hit != 'true' && inputs.skip_node_cache == 'false'
       with:
         path: |
           ${{ steps.pnpm.outputs.cache_dir }}
