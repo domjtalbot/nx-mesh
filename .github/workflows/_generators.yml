@@ -88,7 +88,6 @@ jobs:
         shell: bash
         run: |
           ls -1a
-          ls -1a nx-mesh
           cd ../
           ls -1a
           pnpm dlx create-nx-workspace@${{ matrix.nx_version }} \
@@ -101,7 +100,7 @@ jobs:
             --skipGit
           cd generator
           ls -1a
-          pnpm add ../nx-mesh/nx-mesh/
+          pnpm add /home/runner/work/nx-mesh/nx-mesh
           ls -1a
           pnpm exec nx generate nx-mesh:${{ matrix.type }} ${{ matrix.example }} \
             --example=${{ matrix.example }} \
