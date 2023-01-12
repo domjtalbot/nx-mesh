@@ -90,7 +90,7 @@ jobs:
           cd ../
           pnpm dlx create-nx-workspace@${{ matrix.nx_version }} \
             --name=generator \
-            --appName=${{ matrix.nx_version }} \
+            --appName=${{ matrix.example }} \
             --preset=next \
             --interactive=false \
             --nxCloud=false \
