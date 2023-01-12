@@ -86,16 +86,15 @@ jobs:
       - name: Generate repo
         shell: bash
         run: |
-          ls -1a
           cd ../
-          ls -1a
           pnpm dlx create-nx-workspace@${{ matrix.nx_version }} \
             --name=generator \
             --appName=${{ matrix.nx_version }} \
             --preset=ts \
             --interactive=false \
             --nxCloud=false \
-            --style=css
+            --style=css \
+            --skipGit
           cd generator
           ls -1a
           pnpm add ../project/dist/libs/nx-mesh/
