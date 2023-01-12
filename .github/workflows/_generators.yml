@@ -98,7 +98,7 @@ jobs:
             --skipGit
           cd generator
           ls -1a
-          pnpm add ../project/dist/libs/nx-mesh/
+          pnpm add ../nx-mesh/dist/libs/nx-mesh/
           ls -1a
           pnpm exec nx generate nx-mesh:${{ matrix.type }} ${{ matrix.example }} \
             --example=${{ matrix.example }} \
