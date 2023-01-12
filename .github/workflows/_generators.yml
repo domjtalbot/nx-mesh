@@ -87,7 +87,11 @@ jobs:
       - name: Generate repo with example
         shell: bash
         run: |
+          ls -1a
+          ls -1a dist
+          ls -1a dist/libs/nx-mesh
           cd ../
+          ls -1a
           pnpm dlx create-nx-workspace@${{ matrix.nx_version }} \
             --name=generator \
             --appName=${{ matrix.nx_version }} \
