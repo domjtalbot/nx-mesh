@@ -45,16 +45,17 @@ jobs:
     timeout-minutes: 10
     strategy:
       matrix:
-        type: [application, sdk, preset]
+        type: [application]
+        # type: [application, sdk, preset]
         example:
           - 'country-info'
-          - 'fake-api'
-          - 'javascript-wiki'
-          # - 'movies'
-          - 'rfam'
-          - 'stackexchange'
-          - 'star-wars-api'
-          - 'trippin'
+          # - 'fake-api'
+          # - 'javascript-wiki'
+          # # - 'movies'
+          # - 'rfam'
+          # - 'stackexchange'
+          # - 'star-wars-api'
+          # - 'trippin'
         nx_version: [15.4]
     steps:
       - name: Check out repository
@@ -102,6 +103,7 @@ jobs:
       - name: Generate Example
         shell: bash
         run: |
+          ls -1a
           pnpm exec nx generate nx-mesh:${{ matrix.type }} ${{ matrix.example }} \
             --example=${{ matrix.example }} \
             --no-interactive
