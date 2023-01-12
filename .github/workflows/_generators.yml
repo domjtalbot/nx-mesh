@@ -87,32 +87,25 @@ jobs:
       - name: Generate repo with example
         shell: bash
         run: |
-          ls -1a
           cd ../
-          ls -1a
           pnpm dlx create-nx-workspace@${{ matrix.nx_version }} \
             --name=generator \
             --appName=${{ matrix.nx_version }} \
-            --preset=ts \
+            --preset=next \
             --interactive=false \
             --nxCloud=false \
             --style=css \
             --skipGit
           cd generator
-          ls -1a
           pnpm add /home/runner/work/nx-mesh/nx-mesh
-          ls -1a
           pnpm exec nx generate nx-mesh:${{ matrix.type }} ${{ matrix.example }} \
             --example=${{ matrix.example }} \
             --no-interactive
-          ls -1a
 
       - name: Build example
         shell: bash
         run: |
-          ls -1a
           cd generator/${{ matrix.example }}
-          ls -1a
           pnpm nx run ${{ matrix.example }}:build
 
       - name: Save PNPM cache
