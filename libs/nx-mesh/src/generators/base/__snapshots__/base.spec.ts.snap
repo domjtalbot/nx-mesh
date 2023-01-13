@@ -1773,7 +1773,8 @@ exports[`generators/base app directory --linter should use eslint for linting 1`
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
-    \\".mesh\\"
+    \\".mesh\\",
+    \\".codegen\\"
   ],
   \\"overrides\\": [
     {
@@ -1811,7 +1812,8 @@ exports[`generators/base app directory --linter should use eslint for linting 2`
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
-    \\".mesh\\"
+    \\".mesh\\",
+    \\".codegen\\"
   ],
   \\"overrides\\": [
     {
@@ -1849,7 +1851,8 @@ exports[`generators/base app directory --linter should use eslint for linting 3`
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
-    \\".mesh\\"
+    \\".mesh\\",
+    \\".codegen\\"
   ],
   \\"overrides\\": [
     {
@@ -1887,7 +1890,8 @@ exports[`generators/base app directory --linter should use eslint for linting 4`
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
-    \\".mesh\\"
+    \\".mesh\\",
+    \\".codegen\\"
   ],
   \\"overrides\\": [
     {
@@ -1925,7 +1929,8 @@ exports[`generators/base app directory --linter should use eslint for linting 5`
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
-    \\".mesh\\"
+    \\".mesh\\",
+    \\".codegen\\"
   ],
   \\"overrides\\": [
     {
@@ -2904,7 +2909,8 @@ exports[`generators/base app with standalone config --linter should use eslint f
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
-    \\".mesh\\"
+    \\".mesh\\",
+    \\".codegen\\"
   ],
   \\"overrides\\": [
     {
@@ -4910,7 +4916,8 @@ exports[`generators/base lib directory --linter should use eslint for linting 1`
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
-    \\".mesh\\"
+    \\".mesh\\",
+    \\".codegen\\"
   ],
   \\"overrides\\": [
     {
@@ -4948,7 +4955,8 @@ exports[`generators/base lib directory --linter should use eslint for linting 2`
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
-    \\".mesh\\"
+    \\".mesh\\",
+    \\".codegen\\"
   ],
   \\"overrides\\": [
     {
@@ -4986,7 +4994,8 @@ exports[`generators/base lib directory --linter should use eslint for linting 3`
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
-    \\".mesh\\"
+    \\".mesh\\",
+    \\".codegen\\"
   ],
   \\"overrides\\": [
     {
@@ -5024,7 +5033,8 @@ exports[`generators/base lib directory --linter should use eslint for linting 4`
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
-    \\".mesh\\"
+    \\".mesh\\",
+    \\".codegen\\"
   ],
   \\"overrides\\": [
     {
@@ -5062,7 +5072,8 @@ exports[`generators/base lib directory --linter should use eslint for linting 5`
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
-    \\".mesh\\"
+    \\".mesh\\",
+    \\".codegen\\"
   ],
   \\"overrides\\": [
     {
@@ -6126,7 +6137,8 @@ exports[`generators/base lib with standalone config --linter should use eslint f
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
-    \\".mesh\\"
+    \\".mesh\\",
+    \\".codegen\\"
   ],
   \\"overrides\\": [
     {
@@ -6651,7 +6663,8 @@ exports[`generators/base nested within app directory --linter should use eslint 
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
-    \\".mesh\\"
+    \\".mesh\\",
+    \\".codegen\\"
   ],
   \\"overrides\\": [
     {
@@ -7173,7 +7186,8 @@ exports[`generators/base nested within lib directory --linter should use eslint 
   ],
   \\"ignorePatterns\\": [
     \\"!**/*\\",
-    \\".mesh\\"
+    \\".mesh\\",
+    \\".codegen\\"
   ],
   \\"overrides\\": [
     {
