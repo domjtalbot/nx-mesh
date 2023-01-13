@@ -3,12 +3,18 @@ import { MeshPackages } from './mesh-packages';
 export type MeshPackageVersions = {
   [P in MeshPackages]?: Record<P, string>;
 } & {
+  '@graphql-typed-document-node/core': {
+    '@graphql-typed-document-node/core': string;
+  };
   graphql: {
     graphql: string;
   };
 };
 
 export const versions: MeshPackageVersions = {
+  '@graphql-typed-document-node/core': {
+    '@graphql-typed-document-node/core': '^3.1.1',
+  },
   '@graphql-codegen/cli': {
     '@graphql-codegen/cli': '2.16.1',
   },

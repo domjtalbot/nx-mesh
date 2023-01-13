@@ -16,6 +16,7 @@ export function addDependencies(
     ...versions['@graphql-mesh/runtime'],
     ...versions['@graphql-mesh/utils'],
     ...versions['graphql'],
+    ...versions['@graphql-typed-document-node/core'],
   };
 
   examples[options.example].dependencies.forEach((dep) => {
