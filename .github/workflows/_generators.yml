@@ -97,7 +97,7 @@ jobs:
             --style=css \
             --skipGit
           cd generator
-          pnpm add /home/runner/work/nx-mesh/nx-mesh
+          pnpm add /home/runner/work/nx-mesh/nx-mesh.tar.gz
           pnpm exec nx generate nx-mesh:${{ matrix.type }} ${{ matrix.example }} \
             --example=${{ matrix.example }} \
             --no-interactive

@@ -86,11 +86,17 @@ jobs:
             --all \
             --configuration=production
 
-      - name: Upload Nx-mesh build artifact
+      - name: Create build artifact tar
+        if: inputs.node_version == 'lts'
+        shell: bash
+        run: |
+          tar cvzf nx-mesh.tar.gz dist/libs/nx-mesh/
+
+      - name: Upload build artifact
         uses: actions/upload-artifact@v3
+        if: inputs.node_version == 'lts'
         with:
           name: nx-mesh
           retention-days: 2
           path: |
-            dist/libs/nx-mesh/
-            !dist/libs/nx-mesh/node_modules
+            nx-mesh.tar.gz
