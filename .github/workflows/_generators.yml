@@ -48,13 +48,13 @@ jobs:
         type: [application, sdk, preset]
         example:
           - 'country-info'
-          # - 'fake-api'
-          # - 'javascript-wiki'
-          # # - 'movies'
-          # - 'rfam'
-          # - 'stackexchange'
-          # - 'star-wars-api'
-          # - 'trippin'
+          - 'fake-api'
+          - 'javascript-wiki'
+          # - 'movies'
+          - 'rfam'
+          - 'stackexchange'
+          - 'star-wars-api'
+          - 'trippin'
         nx_version: [15.4]
     steps:
       - name: Check out repository
@@ -83,7 +83,7 @@ jobs:
         with:
           name: nx-mesh
 
-      - name: Test Generator - (nx-${{ matrix.nx_version }}/${{ matrix.type }}-${{ matrix.example }})
+      - name: Test Generator - (node-${{ inputs.node_version }}/nx-${{ matrix.nx_version }}/${{ matrix.type }}-${{ matrix.example }})
         shell: bash
         run: |
           cd ../
