@@ -90,7 +90,9 @@ jobs:
         if: inputs.node_version == 'lts'
         shell: bash
         run: |
-          tar cvzf nx-mesh.tar.gz dist/libs/nx-mesh/
+          cd dist/libs
+          tar cvzf nx-mesh.tar.gz nx-mesh
+          mv nx-mesh.tar.gz ../../
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v3
