@@ -84,7 +84,7 @@ jobs:
         with:
           name: nx-mesh
 
-      - name: Generate repo with example
+      - name: Test Generator - (nx-${{ matrix.nx_version }}/${{ matrix.type }}-${{ matrix.example }})
         shell: bash
         run: |
           cd ../
@@ -98,15 +98,10 @@ jobs:
             --skipGit
           cd generator
           pnpm add ../nx-mesh/nx-mesh.tar.gz
-          pnpm exec nx generate nx-mesh:${{ matrix.type }} ${{ matrix.example }} \
+          pnpm exec nx generate nx-mesh:${{ matrix.type }} \
+            ${{ matrix.example }} \
             --example=${{ matrix.example }} \
             --no-interactive
-
-      - name: Build example
-        shell: bash
-        run: |
-          ls -1a
-          cd ../generator/${{ matrix.example }}
           pnpm nx run ${{ matrix.example }}:build
 
       - name: Save PNPM cache
