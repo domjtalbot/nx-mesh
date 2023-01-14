@@ -55,7 +55,14 @@ jobs:
           - 'stackexchange'
           - 'star-wars-api'
           - 'trippin'
-        nx_version: [15.4]
+        nx_version:
+          - 14.8
+          - 15
+          - 15.1
+          - 15.2
+          - 15.3
+          - 15.4
+          - latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
