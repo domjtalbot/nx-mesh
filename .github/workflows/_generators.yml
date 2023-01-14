@@ -45,8 +45,7 @@ jobs:
     timeout-minutes: 10
     strategy:
       matrix:
-        type: [application]
-        # type: [application, sdk, preset]
+        type: [application, sdk, preset]
         example:
           - 'country-info'
           # - 'fake-api'
@@ -106,7 +105,6 @@ jobs:
 
       - name: Save PNPM cache
         uses: actions/cache/save@v3
-        if: inputs.save_cache == 'true' && steps.pnpm-cache.outputs.cache-hit != 'true' && inputs.skip_node_cache == 'false'
         with:
           path: |
             ${{ steps.setup.outputs.pnpm_directory }}
