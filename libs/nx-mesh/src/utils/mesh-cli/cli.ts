@@ -3,11 +3,10 @@ import type { ChildProcess, ForkOptions } from 'child_process';
 
 import type { Command, Options } from './commands';
 
-import { fork } from 'child_process';
+import { spawn } from 'child_process';
 
 import { flatternCliArguments } from './arguments';
 import { getCommandOptions } from './commands';
-import { resolveCliPath } from './path';
 
 export let childProcess: ChildProcess;
 
@@ -20,13 +19,12 @@ export async function runMeshCli<
   context: ExecutorContext,
   processOptions?: Pick<ForkOptions, 'stdio'>
 ) {
-  const cliPath = resolveCliPath(context.root);
   const { args, env } = getCommandOptions<TCommand>(options);
   const cliArgs = flatternCliArguments(args);
 
   return new Promise((resolve, reject) => {
-    childProcess = fork(cliPath, [command, ...cliArgs], {
-      stdio: processOptions?.stdio,
+    childProcess = spawn(`npx`, ['graphql-mesh', command, ...cliArgs], {
+      stdio: processOptions?.stdio ?? [0, 1, 2],
       cwd: context.root,
       env: {
         ...process.env,
