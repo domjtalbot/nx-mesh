@@ -1,5 +1,15 @@
 # nx-mesh
 
+## 3.0.1
+
+### Patch Changes
+
+- [#119](https://github.com/domjtalbot/nx-mesh/pull/119) [`bdb85d1`](https://github.com/domjtalbot/nx-mesh/commit/bdb85d142e58aec8b6394a4e985a0c39609174fa) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Fix peer dependency ranges
+
+- [#116](https://github.com/domjtalbot/nx-mesh/pull/116) [`a76a8ad`](https://github.com/domjtalbot/nx-mesh/commit/a76a8ade64cdfa32330e3a9d7bf94808206657ef) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Don't cache validate executor
+
+- [#121](https://github.com/domjtalbot/nx-mesh/pull/121) [`86322bd`](https://github.com/domjtalbot/nx-mesh/commit/86322bd48e3a4adf21270feb6e46cb85c9376c6a) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Use the `node_modules` bin symlink to run `graphql-mesh` & `graphql-codegen`
+
 ## 3.0.0
 
 ### Major Changes
