@@ -32,7 +32,7 @@ on:
         required: true
 
 concurrency:
-  group: build--${{ github.workflow }}--${{ github.ref }}
+  group: build--${{ github.workflow }}--${{ github.ref }}--node-${{ inputs.node_version }}--affected-${{ inputs.affected }}--save_cache-${{ inputs.save_cache }}
 
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
@@ -85,3 +85,20 @@ jobs:
             --parallel=2 \
             --all \
             --configuration=production
+
+      - name: Create build artifact tar
+        if: inputs.node_version == 'lts'
+        shell: bash
+        run: |
+          cd dist/libs
+          tar cvzf nx-mesh.tar.gz nx-mesh
+          mv nx-mesh.tar.gz ../../
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        if: inputs.node_version == 'lts'
+        with:
+          name: nx-mesh
+          retention-days: 2
+          path: |
+            nx-mesh.tar.gz

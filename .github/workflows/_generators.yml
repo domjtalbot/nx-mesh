@@ -40,10 +40,11 @@ env:
 
 jobs:
   generator:
-    name: Generator - ${{ matrix.type }}/${{ matrix.example }}
+    name: Generator - nx-${{ matrix.nx_version }}/${{ matrix.type }}/${{ matrix.example }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     strategy:
+      fail-fast: false
       matrix:
         type: [application, sdk, preset]
         example:
@@ -55,6 +56,10 @@ jobs:
           - 'stackexchange'
           - 'star-wars-api'
           - 'trippin'
+        nx_version:
+          - 15.4
+          - 15.5
+          - latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
@@ -63,24 +68,49 @@ jobs:
 
       - name: Setup Job
         uses: ./.github/actions/setup-job
+        id: setup
         with:
           node_version: ${{ inputs.node_version }}
-          save_cache: '${{ inputs.save_cache }}'
+          skip_node_cache: 'true'
 
-      - name: Build Nx-mesh
+      - name: Restore PNPM cache
+        uses: actions/cache/restore@v3
+        id: pnpm-cache
+        with:
+          path: |
+            ${{ steps.setup.outputs.pnpm_directory }}
+          key: |
+            generators--pnpm--nx-${{ matrix.nx_version }}--type-${{ matrix.type }}--example-${{ matrix.example }}
+
+      - name: Download Nx Mesh
+        uses: actions/download-artifact@v3
+        with:
+          name: nx-mesh
+
+      - name: Test Generator - (node-${{ inputs.node_version }}/nx-${{ matrix.nx_version }}/${{ matrix.type }}-${{ matrix.example }})
         shell: bash
         run: |
-          pnpm nx run nx-mesh:build
-
-      - name: Generate Example
-        shell: bash
-        run: |
+          cd ../
+          pnpm dlx create-nx-workspace@${{ matrix.nx_version }} \
+            --name=generator \
+            --appName=${{ matrix.example }} \
+            --preset=apps \
+            --interactive=false \
+            --nxCloud=false \
+            --style=css \
+            --skipGit
+          cd generator
+          pnpm add ../nx-mesh/nx-mesh.tar.gz
           pnpm exec nx generate nx-mesh:${{ matrix.type }} \
             ${{ matrix.example }} \
             --example=${{ matrix.example }} \
             --no-interactive
-
-      - name: Build example
-        shell: bash
-        run: |
           pnpm nx run ${{ matrix.example }}:build
+
+      - name: Save PNPM cache
+        uses: actions/cache/save@v3
+        with:
+          path: |
+            ${{ steps.setup.outputs.pnpm_directory }}
+          key: |
+            generators--pnpm--nx-${{ matrix.nx_version }}--type-${{ matrix.type }}--example-${{ matrix.example }}

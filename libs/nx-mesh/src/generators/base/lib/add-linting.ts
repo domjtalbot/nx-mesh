@@ -34,7 +34,11 @@ export async function addLinting(
           ...value,
         };
 
-        config['ignorePatterns'] = [...config['ignorePatterns'], '.mesh'];
+        config['ignorePatterns'] = [
+          ...config['ignorePatterns'],
+          '.mesh',
+          '.codegen',
+        ];
 
         return config;
       }
