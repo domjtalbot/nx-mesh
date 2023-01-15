@@ -1,13 +1,10 @@
 import type { Tree } from '@nrwl/devkit';
 import type { NormalizedOptions } from './normalize-options';
 
-import { ensurePackage } from '@nrwl/devkit';
 import { cypressProjectGenerator } from '@nrwl/cypress';
 import { Linter } from '@nrwl/linter';
 
 export async function addCypress(host: Tree, options: NormalizedOptions) {
-  await ensurePackage(host, '@nrwl/cypress', '^15.4.1');
-
   const task = await cypressProjectGenerator(host, {
     ...options,
     directory: options.projectParentDirectory,
