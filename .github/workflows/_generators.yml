@@ -57,12 +57,8 @@ jobs:
           - 'star-wars-api'
           - 'trippin'
         nx_version:
-          - 14.8
-          - 15
-          - 15.1
-          - 15.2
-          - 15.3
           - 15.4
+          - 15.5
           - latest
     steps:
       - name: Check out repository
@@ -98,7 +94,7 @@ jobs:
           pnpm dlx create-nx-workspace@${{ matrix.nx_version }} \
             --name=generator \
             --appName=${{ matrix.example }} \
-            --preset=ts \
+            --preset=apps \
             --interactive=false \
             --nxCloud=false \
             --style=css \
