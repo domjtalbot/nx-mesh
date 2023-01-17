@@ -1,5 +1,4 @@
 {
-  "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "npmScope": "nx-mesh",
   "affected": {
     "defaultBase": "main"
