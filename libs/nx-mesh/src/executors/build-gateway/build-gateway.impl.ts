@@ -52,6 +52,8 @@ export default async function* buildExecutor(
     context
   );
 
+  logger.info('Done.');
+
   yield {
     success: true,
   };

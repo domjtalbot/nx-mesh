@@ -308,6 +308,7 @@ This is the equivalent of using `graphql-mesh dev`, but with extra steps for pac
 | `transformers`                            | `string[]`                           |    -     | -                  | List of TypeScript Transformer Plugins.                                                                                          |
 | `tsConfig`                                | `string`                             |    ✅    | -                  | The path to the Typescript configuration file.                                                                                   |
 | `updateBuildableProjectDepsInPackageJson` | `boolean`                            |    -     | `true`             | Whether to update the buildable project dependencies in `package.json`.                                                          |
+| `watch`                                   | `boolean`                            |    -     | `false`            | Rebuild upon file changes.                                                                                                       |
 
 </details>
 
@@ -391,6 +392,7 @@ This is the equivalent of using `graphql-mesh build`, but with extra steps for p
 | `transformers`                            | `string[]`                           |    -     | -                  | List of TypeScript Transformer Plugins.                                                                                          |
 | `tsConfig`                                | `string`                             |    ✅    | -                  | The path to the Typescript configuration file.                                                                                   |
 | `updateBuildableProjectDepsInPackageJson` | `boolean`                            |    -     | `true`             | Whether to update the buildable project dependencies in `package.json`.                                                          |
+| `watch`                                   | `boolean`                            |    -     | `false`            | Rebuild upon file changes.                                                                                                       |
 
 </details>
 
