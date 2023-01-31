@@ -37,6 +37,13 @@
         }
       }
     },
+    "dev": {
+      "executor": "nx-mesh:serve",
+      "options": {
+        "dev": true,
+        "dir": "libs/example/sdk/graphql/star-wars-api"
+      }
+    },
     "serve": {
       "executor": "nx-mesh:serve",
       "options": {

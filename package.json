@@ -52,6 +52,7 @@
     "@nrwl/nx-plugin": "15.4.1",
     "@swc-node/register": "1.5.1",
     "@swc/helpers": "0.4.11",
+    "@types/watchpack": "^2.4.0",
     "core-js": "^3.6.5",
     "encoding": "0.1.13",
     "get-port": "5.1.1",
@@ -64,7 +65,8 @@
     "regenerator-runtime": "0.13.7",
     "styled-components": "5.3.6",
     "tslib": "2.4.0",
-    "type-fest": "2.18.0"
+    "type-fest": "2.18.0",
+    "watchpack": "^2.4.0"
   },
   "devDependencies": {
     "@nrwl/cli": "15.4.1",
