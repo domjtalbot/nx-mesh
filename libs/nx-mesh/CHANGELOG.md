@@ -1,5 +1,15 @@
 # nx-mesh
 
+## 3.1.0
+
+### Minor Changes
+
+- [#124](https://github.com/domjtalbot/nx-mesh/pull/124) [`d42ba4b`](https://github.com/domjtalbot/nx-mesh/commit/d42ba4ba5fcb57b43f87b03a3edd56c2143b91c2) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Add build watcher
+
+### Patch Changes
+
+- [#125](https://github.com/domjtalbot/nx-mesh/pull/125) [`7e95367`](https://github.com/domjtalbot/nx-mesh/commit/7e953670bc68138f43b4d72ce341b697a58f80fe) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Reduce default log output
+
 ## 3.0.1
 
 ### Patch Changes
