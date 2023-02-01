@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: release--${{ github.workflow }}--${{ github.ref }}
+  group: release--main--${{ github.workflow }}--${{ github.ref }}
 
 env:
   NX__TRIPPIN__API_KEY: ${{ secrets.NX__TRIPPIN__API_KEY }}
