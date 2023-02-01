@@ -92,4 +92,5 @@ jobs:
     secrets: inherit
     with:
       affected: true
+      snapshot: true
       snapshot_tag: alpha

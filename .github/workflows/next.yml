@@ -1,0 +1,24 @@
+name: 'Main'
+
+on:
+  push:
+    branches:
+      - changeset-release/main
+
+  workflow_dispatch:
+
+concurrency:
+  group: release--${{ github.workflow }}--${{ github.ref }}
+
+env:
+  NX__TRIPPIN__API_KEY: ${{ secrets.NX__TRIPPIN__API_KEY }}
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+
+jobs:
+  changesets:
+    name: Changesets
+    uses: ./.github/workflows/_changesets.yml
+    secrets: inherit
+    with:
+      snapshot: true
+      snapshot_tag: next
