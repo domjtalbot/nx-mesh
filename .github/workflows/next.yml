@@ -1,7 +1,7 @@
 name: 'Next Release'
 
 on:
-  push:
+  pull_request:
     branches:
       - changeset-release/main
 
