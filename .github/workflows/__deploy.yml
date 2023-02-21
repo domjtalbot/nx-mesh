@@ -65,7 +65,7 @@ jobs:
     name: Vercel - example-sdk-nextjs
     needs: [setup]
     if: ${{ (inputs.affected == true && contains(needs.setup.outputs.affectedApps, 'example-sdk-nextjs')) || inputs.affected == false }}
-    uses: ./.github/workflows/_deploy-vercel.yml
+    uses: ./.github/workflows/__deploy-vercel.yml
     with:
       name: example-sdk-nextjs${{ needs.setup.outputs.suffix }}
       production: ${{ inputs.production }}

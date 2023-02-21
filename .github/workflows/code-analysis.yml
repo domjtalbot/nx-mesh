@@ -22,10 +22,10 @@ env:
 jobs:
   codeql:
     name: CodeQL
-    uses: ./.github/workflows/_code-analysis--codeql.yml
+    uses: ./.github/workflows/__code-analysis--codeql.yml
     secrets: inherit
 
   sonar:
     name: Sonar
-    uses: ./.github/workflows/_code-analysis--sonar.yml
+    uses: ./.github/workflows/__code-analysis--sonar.yml
     secrets: inherit
