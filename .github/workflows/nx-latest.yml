@@ -77,6 +77,7 @@ jobs:
   build:
     uses: ./.github/workflows/__build.yml
     needs: [nx-version]
+    if: needs.nx-version.outputs.isLatestChanged == 'true'
     secrets: inherit
     strategy:
       matrix:
@@ -88,6 +89,7 @@ jobs:
 
   generators:
     needs: [nx-version, build]
+    if: needs.nx-version.outputs.isLatestChanged == 'true'
     uses: ./.github/workflows/__generators.yml
     secrets: inherit
     strategy:
