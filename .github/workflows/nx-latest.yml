@@ -21,7 +21,8 @@ jobs:
     name: Nx version
     runs-on: ubuntu-latest
     env:
-      cache_key: nx-latest.version
+      cache_file: nx-latest.version
+      cache_key: nx-latest-version
     outputs:
       current_tag: ${{ steps.nx.outputs.current_tag }}
       isLatestChanged: ${{ steps.nx.outputs.current_tag != steps.nx.outputs.release_tag }}
@@ -35,7 +36,7 @@ jobs:
         id: nx-version-cache
         with:
           path: |
-            ${{ env.cache_key }}
+            ${{ env.cache_file }}
           key: |
             ${{ env.cache_key }}
 
@@ -61,7 +62,7 @@ jobs:
       - name: Update nx version
         if: steps.nx.outputs.current_tag != steps.nx.outputs.release_tag
         run: |
-          echo ${{ steps.nx.outputs.release_tag }} > ${{ env.cache_key }}
+          echo ${{ steps.nx.outputs.release_tag }} > ${{ env.cache_file }}
 
       # Save Cache
 
@@ -70,7 +71,7 @@ jobs:
         if: steps.nx.outputs.current_tag != steps.nx.outputs.release_tag
         with:
           path: |
-            ${{ env.cache_key }}
+            ${{ env.cache_file }}
           key: |
             ${{ env.cache_key }}
 
