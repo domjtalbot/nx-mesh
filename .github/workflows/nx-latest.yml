@@ -112,11 +112,12 @@ jobs:
         run: |
           # Get the latest tag notes from GitHub
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          RELEASE_NOTES=$(curl -sL https://api.github.com/repos/nrwl/nx/releases/latest | jq -r ".body")
           echo "RELEASE_NOTES<<$EOF" >> $GITHUB_ENV
-          $(curl -sL https://api.github.com/repos/nrwl/nx/releases/latest | jq -r ".body") >> $GITHUB_ENV
+          echo "$RELEASE_NOTES" >> $GITHUB_ENV
           echo "$EOF" >> $GITHUB_ENV
 
-          echo "${{ env.RELEASE_NOTES }}" >> $GITHUB_STEP_SUMMARY
+          echo ${{ env.RELEASE_NOTES }} >> $GITHUB_STEP_SUMMARY
 
       - uses: JasonEtco/create-an-issue@v2
         env:
