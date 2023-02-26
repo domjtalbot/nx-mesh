@@ -49,15 +49,15 @@ jobs:
         run: |
           # Get latest Nx release details
           releaseInfo=$(curl -sL https://api.github.com/repos/nrwl/nx/releases/latest)
-          echo $releaseInfo
+          echo "$releaseInfo"
           echo ""
           echo ""
 
           # Get the latest tag from GitHub
-          nxTag="$($releaseInfo | jq -r ".tag_name")"
+          nxTag="$(fromJson($releaseInfo) | jq -r ".tag_name")"
 
           # Get the latest tag notes from GitHub
-          nxReleaseNotes="$($releaseInfo | jq -r ".body")"
+          nxReleaseNotes="$(fromJson($releaseInfo) | jq -r ".body")"
 
           # Store the latest version
           echo "release_tag=$nxVersion"
