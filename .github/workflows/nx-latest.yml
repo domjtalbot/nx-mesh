@@ -54,13 +54,13 @@ jobs:
           nxReleaseNotes=$(curl -sL https://api.github.com/repos/nrwl/nx/releases/latest | jq -r ".body")
 
           # Store the latest version
-          echo "{release_tag}={$nxVersion}" >> $GITHUB_OUTPUT
+          echo "release_tag={$nxVersion}" >> $GITHUB_OUTPUT
 
           # Store the latest release notes
-          echo "{release_notes}={$nxReleaseNotes}" >> $GITHUB_OUTPUT
+          echo "release_notes={$nxReleaseNotes}" >> $GITHUB_OUTPUT
 
           # Get the current version stored in nx-latest.version
-          echo "{current_tag}={$(< nx-latest.version)}" >> $GITHUB_OUTPUT
+          echo "current_tag={$(< nx-latest.version)}" >> $GITHUB_OUTPUT
 
       # If the version of nx has updated, save it to nx-latest.version
       - name: Update nx version
