@@ -32,9 +32,9 @@ jobs:
       cache_file: nx-latest.version
       cache_key: nx-latest-version
     outputs:
-      current_tag: ${{ steps.nx.outputs.current_tag }}
-      isLatestChanged: ${{ (steps.nx.outputs.current_tag != steps.nx.outputs.release_tag) && steps.nx.outputs.release_tag != null }}
-      latest_tag: ${{ steps.nx.outputs.release_tag }}
+      current_tag: ${{ steps.nx.outputs.current_tag || steps.manual-nx.outputs.current_tag }}
+      isLatestChanged: ${{ steps.nx.outputs.isLatestChanged || steps.manual-nx.outputs.isLatestChanged }}
+      latest_tag: ${{ steps.nx.outputs.release_tag || steps.manual-nx.outputs.release_tag }}
     steps:
       - uses: actions/checkout@v3
         if: env.NX_VERSION == 'latest'
@@ -68,6 +68,8 @@ jobs:
           echo "release_tag=$nxTag"
           echo "release_tag=$nxTag" >> $GITHUB_OUTPUT
 
+          echo "isLatestChanged=${{ (steps.nx.outputs.current_tag != steps.nx.outputs.release_tag) && steps.nx.outputs.release_tag != null }}" >> $GITHUB_OUTPUT
+
       # If the version of nx has updated, save it to nx-latest.version
       - name: Update nx version
         if: (steps.nx.outputs.current_tag != steps.nx.outputs.release_tag) && env.NX_VERSION == 'latest'
@@ -87,9 +89,11 @@ jobs:
 
       - name: Manual Nx version
         if: env.NX_VERSION != 'latest'
+        id: manual-nx
         run: |
           echo "current_tag=0" >> $GITHUB_OUTPUT
           echo "release_tag=${{ env.NX_VERSION }}" >> $GITHUB_OUTPUT
+          echo "isLatestChanged=true" >> $GITHUB_OUTPUT
 
   build:
     uses: ./.github/workflows/__build.yml
