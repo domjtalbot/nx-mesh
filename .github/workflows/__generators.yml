@@ -52,7 +52,7 @@ env:
 
 jobs:
   generator:
-    name: Generator - nx-${{ matrix.nx_version }}/${{ matrix.type }}/${{ matrix.example }}
+    name: Generator - nx-${{ matrix.nx_version }}/${{ matrix.example }}/${{ matrix.type }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     strategy:
