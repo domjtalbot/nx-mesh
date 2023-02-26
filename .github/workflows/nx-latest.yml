@@ -22,6 +22,7 @@ concurrency:
 env:
   NX__TRIPPIN__API_KEY: ${{ secrets.NX__TRIPPIN__API_KEY }}
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+  NX_VERSION: ${{ inputs.nx_version || "latest" }}
 
 jobs:
   nx-version:
@@ -36,17 +37,17 @@ jobs:
       latest_tag: ${{ steps.nx.outputs.release_tag }}
     steps:
       - uses: actions/checkout@v3
-        if: inputs.nx_version == 'latest'
+        if: env.NX_VERSION == 'latest'
 
       - name: Default nx version
-        if: inputs.nx_version == 'latest'
+        if: env.NX_VERSION == 'latest'
         run: |
           echo "15.5.0" > ${{ env.cache_file }}
 
       - name: Restore Nx version cache
         uses: actions/cache/restore@v3
         id: nx-version-cache
-        if: inputs.nx_version == 'latest'
+        if: env.NX_VERSION == 'latest'
         with:
           path: |
             ${{ env.cache_file }}
@@ -55,7 +56,7 @@ jobs:
 
       - name: Fetch latest Nx release
         id: nx
-        if: inputs.nx_version == 'latest'
+        if: env.NX_VERSION == 'latest'
         run: |
           # Get the current version stored in nx-latest.version
           current_tag=$(< nx-latest.version)
@@ -69,7 +70,7 @@ jobs:
 
       # If the version of nx has updated, save it to nx-latest.version
       - name: Update nx version
-        if: (steps.nx.outputs.current_tag != steps.nx.outputs.release_tag) && inputs.nx_version == 'latest'
+        if: (steps.nx.outputs.current_tag != steps.nx.outputs.release_tag) && env.NX_VERSION == 'latest'
         run: |
           echo ${{ steps.nx.outputs.release_tag }} > ${{ env.cache_file }}
 
@@ -77,7 +78,7 @@ jobs:
 
       - name: Save Nx version
         uses: actions/cache/save@v3
-        if: (steps.nx.outputs.current_tag != steps.nx.outputs.release_tag) && inputs.nx_version == 'latest'
+        if: (steps.nx.outputs.current_tag != steps.nx.outputs.release_tag) && env.NX_VERSION == 'latest'
         with:
           path: |
             ${{ env.cache_file }}
@@ -85,9 +86,10 @@ jobs:
             ${{ env.cache_key }}
 
       - name: Manual Nx version
+        if: env.NX_VERSION != 'latest'
         run: |
           echo "current_tag=0" >> $GITHUB_OUTPUT
-          echo "release_tag=${{ inputs.nx_version }}" >> $GITHUB_OUTPUT
+          echo "release_tag=${{ env.NX_VERSION }}" >> $GITHUB_OUTPUT
 
   build:
     uses: ./.github/workflows/__build.yml
@@ -128,7 +130,7 @@ jobs:
         run: |
           # Get the latest tag notes from GitHub
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          RELEASE_NOTES=$(curl -sL https://api.github.com/repos/nrwl/nx/releases/${{ inputs.nx_version == 'latest' }} | jq -r ".body")
+          RELEASE_NOTES=$(curl -sL https://api.github.com/repos/nrwl/nx/releases/${{ env.NX_VERSION == 'latest' }} | jq -r ".body")
           echo "RELEASE_NOTES<<$EOF" >> $GITHUB_ENV
           echo "$RELEASE_NOTES" >> $GITHUB_ENV
           echo "$EOF" >> $GITHUB_ENV
