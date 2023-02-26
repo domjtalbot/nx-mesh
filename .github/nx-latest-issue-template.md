@@ -1,10 +1,10 @@
 ---
-title: Nx `v{{ env.latest_tag }}` failed tests
+title: Compatibility issues with Nx `v{{ env.latest_tag }}`
 assignees: domjtalbot
 labels: bug, enhancement
 ---
 
-Automated tests failed against Nx `v{{ env.latest_tag }}`.
+Automated tests failed against Nx `v{{ env.latest_tag }}`. These errors need to be addressed, beofre `v{{ env.latest_tag }}` can be supported.
 
 | Package                                      | Change                                              |
 | -------------------------------------------- | --------------------------------------------------- |
