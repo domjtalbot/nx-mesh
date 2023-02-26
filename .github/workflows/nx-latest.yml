@@ -60,6 +60,9 @@ jobs:
           # Get the latest tag notes from GitHub
           nxReleaseNotes="$(curl -sL https://api.github.com/repos/nrwl/nx/releases/latest | jq -r ".body")"
           echo "$nxReleaseNotes" >> $GITHUB_STEP_SUMMARY
+          nxReleaseNotes="${nxReleaseNotes//'%'/'%25'}"
+          nxReleaseNotes="${nxReleaseNotes//$'\n'/'%0A'}"
+          nxReleaseNotes="${nxReleaseNotes//$'\r'/'%0D'}"
           echo "release_notes=$nxReleaseNotes" >> $GITHUB_OUTPUT
 
       # If the version of nx has updated, save it to nx-latest.version
