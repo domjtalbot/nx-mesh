@@ -33,7 +33,7 @@ jobs:
 
       - name: Default nx version
         run: |
-          echo "none" > ${{ env.cache_file }}
+          echo "15.5.0" > ${{ env.cache_file }}
 
       - name: Restore Nx version cache
         uses: actions/cache/restore@v3
@@ -64,7 +64,7 @@ jobs:
 
           # Store the latest release notes
           echo "$nxReleaseNotes" >> $GITHUB_STEP_SUMMARY
-          echo 'release_notes="$nxReleaseNotes"' >> $GITHUB_OUTPUT
+          echo "release_notes=$nxReleaseNotes" >> $GITHUB_OUTPUT
 
       # If the version of nx has updated, save it to nx-latest.version
       - name: Update nx version
