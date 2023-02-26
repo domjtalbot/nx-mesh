@@ -95,10 +95,11 @@ jobs:
     secrets: inherit
     strategy:
       matrix:
-        node_version: [lts, latest]
+        node_version: [lts]
     with:
       affected: false
       node_version: ${{ matrix.node_version }}
+      nx_version: '["${{ needs.nx-version.outputs.latest_tag }}"]'
 
   nx-changed:
     name: Nx version changed
