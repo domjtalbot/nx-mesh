@@ -18,7 +18,7 @@ Automated tests failed against Nx `v{{ env.latest_tag }}`.
 ### [`v{{ env.latest_tag }}`](https://github.com/nx-cli/nx/releases/tag/v{{ env.latest_tag }})
 
 {{ env.release_notes }}
-[Compare v{{ env.latest_tag }} with v{{ env.current_tag }}](https://github.com/nrwl/nx/compare/v{{ env.current_tag }}...v{{ env.latest_tag }})
+[Compare v{{ env.latest_tag }} with v{{ env.current_tag }}](https://github.com/nrwl/nx/compare/{{ env.current_tag }}...{{ env.latest_tag }})
 
 </details>
 
