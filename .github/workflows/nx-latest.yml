@@ -31,6 +31,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Default nx version
+        run: |
+          echo "none" > ${{ env.cache_file }}
+
       - name: Restore Nx version cache
         uses: actions/cache/restore@v3
         id: nx-version-cache
