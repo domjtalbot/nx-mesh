@@ -47,21 +47,30 @@ jobs:
       - name: Fetch latest Nx release
         id: nx
         run: |
+          # Get latest Nx release details
+          releaseInfo=$(curl -sL https://api.github.com/repos/nrwl/nx/releases/latest)
+          echo $releaseInfo
+          echo ""
+          echo ""
+
           # Get the latest tag from GitHub
-          nxTag=$(curl -sL https://api.github.com/repos/nrwl/nx/releases/latest | jq -r ".tag_name")
-          echo $nxTag
+          nxTag="$($releaseInfo | jq -r ".tag_name")"
 
           # Get the latest tag notes from GitHub
-          nxReleaseNotes=$(curl -sL https://api.github.com/repos/nrwl/nx/releases/latest | jq -r ".body")
+          nxReleaseNotes="$($releaseInfo | jq -r ".body")"
 
           # Store the latest version
-          echo "release_tag='$nxVersion'" >> $GITHUB_OUTPUT
+          echo "release_tag=$nxVersion"
+          echo "release_tag=$nxVersion" >> $GITHUB_OUTPUT
 
           # Store the latest release notes
-          echo "release_notes='$nxReleaseNotes'" >> $GITHUB_OUTPUT
+          echo "release_notes=$nxReleaseNotes"
+          echo "release_notes=$nxReleaseNotes" >> $GITHUB_OUTPUT
 
           # Get the current version stored in nx-latest.version
-          echo "current_tag=$(< nx-latest.version)" >> $GITHUB_OUTPUT
+          current_tag=$(< nx-latest.version)
+          echo "current_tag=$current_tag"
+          echo "current_tag=$current_tag" >> $GITHUB_OUTPUT
 
       # If the version of nx has updated, save it to nx-latest.version
       - name: Update nx version
