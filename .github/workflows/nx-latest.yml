@@ -25,7 +25,7 @@ jobs:
       cache_key: nx-latest-version
     outputs:
       current_tag: ${{ steps.nx.outputs.current_tag }}
-      isLatestChanged: ${{ steps.nx.outputs.current_tag != steps.nx.outputs.release_tag }}
+      isLatestChanged: ${{ (steps.nx.outputs.current_tag != steps.nx.outputs.release_tag) && steps.nx.outputs.release_tag != null }}
       latest_tag: ${{ steps.nx.outputs.release_tag }}
       release_notes: ${{ steps.nx.outputs.release_notes }}
     steps:
@@ -54,15 +54,11 @@ jobs:
 
           # Get the latest tag from GitHub
           nxTag="$(curl -sL https://api.github.com/repos/nrwl/nx/releases/latest | jq -r ".tag_name")"
-
-          # Store the latest version
           echo "release_tag=$nxTag"
           echo "release_tag=$nxTag" >> $GITHUB_OUTPUT
 
           # Get the latest tag notes from GitHub
           nxReleaseNotes="$(curl -sL https://api.github.com/repos/nrwl/nx/releases/latest | jq -r ".body")"
-
-          # Store the latest release notes
           echo "$nxReleaseNotes" >> $GITHUB_STEP_SUMMARY
           echo "release_notes=$nxReleaseNotes" >> $GITHUB_OUTPUT
 
