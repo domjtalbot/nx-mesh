@@ -60,8 +60,8 @@ jobs:
           nxReleaseNotes="$(fromJson($releaseInfo) | jq -r ".body")"
 
           # Store the latest version
-          echo "release_tag=$nxVersion"
-          echo "release_tag=$nxVersion" >> $GITHUB_OUTPUT
+          echo "release_tag=$nxTag"
+          echo "release_tag=$nxTag" >> $GITHUB_OUTPUT
 
           # Store the latest release notes
           echo "release_notes=$nxReleaseNotes"
