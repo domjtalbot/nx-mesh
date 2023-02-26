@@ -117,7 +117,7 @@ jobs:
           echo "$RELEASE_NOTES" >> $GITHUB_ENV
           echo "$EOF" >> $GITHUB_ENV
 
-          echo ${{ env.RELEASE_NOTES }} >> $GITHUB_STEP_SUMMARY
+          echo $RELEASE_NOTES >> $GITHUB_STEP_SUMMARY
 
       - uses: JasonEtco/create-an-issue@v2
         env:
