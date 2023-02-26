@@ -4,7 +4,8 @@ assignees: domjtalbot
 labels: bug, enhancement
 ---
 
-Automated tests failed against Nx `v{{ env.latest_tag }}`. These errors need to be addressed, beofre `v{{ env.latest_tag }}` can be supported.
+Automated tests failed against Nx `v{{ env.latest_tag }}`.
+These errors need to be addressed, before `v{{ env.latest_tag }}` can be supported.
 
 | Package                                  | Change                                              |
 | ---------------------------------------- | --------------------------------------------------- |
