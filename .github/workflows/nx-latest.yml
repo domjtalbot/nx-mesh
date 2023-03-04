@@ -58,6 +58,7 @@ jobs:
       - name: Fetch latest Nx release
         id: nx
         if: env.NX_VERSION == 'latest'
+        shell: bash
         run: |
           # Get the current version stored in nx-latest.version
           current_tag=$(< nx-latest.version)
@@ -69,7 +70,14 @@ jobs:
           echo "release_tag=$nxTag"
           echo "release_tag=$nxTag" >> $GITHUB_OUTPUT
 
-          echo "isLatestChanged=$($current_tag != $nxTag && $nxTag != null)" >> $GITHUB_OUTPUT
+          if [ "$current_tag" == "$nxTag" ]; then
+            isLatestChanged=false
+          else
+            isLatestChanged=true
+          fi
+
+          echo "isLatestChanged=$isLatestChanged"
+          echo "isLatestChanged=$isLatestChanged" >> $GITHUB_OUTPUT
 
       # If the version of nx has updated, save it to nx-latest.version
       - name: Update nx version
