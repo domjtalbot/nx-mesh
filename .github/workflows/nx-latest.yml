@@ -1,0 +1,154 @@
+name: 'Nx latest'
+
+on:
+  pull_request:
+
+  schedule:
+    # Checkout for updates daily at midnight
+    - cron: '0 0 * * *'
+
+  workflow_dispatch:
+    inputs:
+      nx_version:
+        type: string
+        required: false
+        default: latest
+        description: >
+          The version of Nx to test against
+
+concurrency:
+  group: nx-latest--${{ github.workflow }}--${{ github.ref }}
+
+env:
+  NX__TRIPPIN__API_KEY: ${{ secrets.NX__TRIPPIN__API_KEY }}
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+  NX_VERSION: ${{ inputs.nx_version || '15.6.0' }}
+
+jobs:
+  nx-version:
+    name: Nx version
+    runs-on: ubuntu-latest
+    env:
+      cache_file: nx-latest.version
+      cache_key: nx-latest-version
+    outputs:
+      current_tag: ${{ steps.nx.outputs.current_tag || steps.manual-nx.outputs.current_tag }}
+      isLatestChanged: ${{ steps.nx.outputs.isLatestChanged || steps.manual-nx.outputs.isLatestChanged }}
+      latest_tag: ${{ steps.nx.outputs.release_tag || steps.manual-nx.outputs.release_tag }}
+    steps:
+      - uses: actions/checkout@v3
+        if: env.NX_VERSION == 'latest'
+
+      - name: Default nx version
+        if: env.NX_VERSION == 'latest'
+        run: |
+          echo "15.5.0" > ${{ env.cache_file }}
+
+      - name: Restore Nx version cache
+        uses: actions/cache/restore@v3
+        id: nx-version-cache
+        if: env.NX_VERSION == 'latest'
+        with:
+          path: |
+            ${{ env.cache_file }}
+          key: |
+            ${{ env.cache_key }}
+
+      - name: Fetch latest Nx release
+        id: nx
+        if: env.NX_VERSION == 'latest'
+        run: |
+          # Get the current version stored in nx-latest.version
+          current_tag=$(< nx-latest.version)
+          echo "current_tag=$current_tag"
+          echo "current_tag=$current_tag" >> $GITHUB_OUTPUT
+
+          # Get the latest tag from GitHub
+          nxTag="$(curl -sL https://api.github.com/repos/nrwl/nx/releases/latest | jq -r ".tag_name")"
+          echo "release_tag=$nxTag"
+          echo "release_tag=$nxTag" >> $GITHUB_OUTPUT
+
+          echo "isLatestChanged=${{ (steps.nx.outputs.current_tag != steps.nx.outputs.release_tag) && steps.nx.outputs.release_tag != null }}" >> $GITHUB_OUTPUT
+
+      # If the version of nx has updated, save it to nx-latest.version
+      - name: Update nx version
+        if: (steps.nx.outputs.current_tag != steps.nx.outputs.release_tag) && env.NX_VERSION == 'latest'
+        run: |
+          echo ${{ steps.nx.outputs.release_tag }} > ${{ env.cache_file }}
+
+      # Save Cache
+
+      - name: Save Nx version
+        uses: actions/cache/save@v3
+        if: (steps.nx.outputs.current_tag != steps.nx.outputs.release_tag) && env.NX_VERSION == 'latest'
+        with:
+          path: |
+            ${{ env.cache_file }}
+          key: |
+            ${{ env.cache_key }}
+
+      - name: Manual Nx version
+        if: env.NX_VERSION != 'latest'
+        id: manual-nx
+        run: |
+          echo "current_tag=0" >> $GITHUB_OUTPUT
+          echo "release_tag=${{ env.NX_VERSION }}" >> $GITHUB_OUTPUT
+          echo "isLatestChanged=true" >> $GITHUB_OUTPUT
+
+  build:
+    uses: ./.github/workflows/__build.yml
+    needs: [nx-version]
+    if: needs.nx-version.outputs.isLatestChanged == 'true'
+    secrets: inherit
+    strategy:
+      matrix:
+        node_version: [lts]
+    with:
+      affected: false
+      node_version: ${{ matrix.node_version }}
+      save_cache: true
+
+  generators:
+    needs: [nx-version, build]
+    if: needs.nx-version.outputs.isLatestChanged == 'true'
+    uses: ./.github/workflows/__generators.yml
+    secrets: inherit
+    strategy:
+      matrix:
+        node_version: [lts]
+    with:
+      affected: false
+      node_version: ${{ matrix.node_version }}
+      nx_version: '["${{ needs.nx-version.outputs.latest_tag }}"]'
+
+  nx-changed:
+    name: Nx version changed
+    needs: [nx-version, build, generators]
+    if: failure() && needs.nx-version.outputs.isLatestChanged == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Fetch release notes
+        id: nx
+        run: |
+          # Get the latest tag notes from GitHub
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          RELEASE_NOTES=$(curl -sL https://api.github.com/repos/nrwl/nx/releases/tags/${{ needs.nx-version.outputs.latest_tag }} | jq -r ".body")
+          echo "RELEASE_NOTES<<$EOF" >> $GITHUB_ENV
+          echo "$RELEASE_NOTES" >> $GITHUB_ENV
+          echo "$EOF" >> $GITHUB_ENV
+
+          echo $RELEASE_NOTES >> $GITHUB_STEP_SUMMARY
+
+      - uses: JasonEtco/create-an-issue@v2
+        env:
+          current_tag: ${{ needs.nx-version.outputs.current_tag }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          latest_tag: ${{ needs.nx-version.outputs.latest_tag }}
+          release_notes: ${{ env.RELEASE_NOTES }}
+        with:
+          assignees: domjtalbot
+          filename: .github/nx-latest-issue-template.md
+          search_existing: open
+          update_existing: true

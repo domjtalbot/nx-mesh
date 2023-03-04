@@ -16,7 +16,7 @@ env:
 
 jobs:
   lint:
-    uses: ./.github/workflows/_lint.yml
+    uses: ./.github/workflows/__lint.yml
     secrets: inherit
     with:
       affected: true
@@ -26,7 +26,7 @@ jobs:
   build:
     needs: [lint]
     if: needs.lint.outputs.hasAffected == 'true'
-    uses: ./.github/workflows/_build.yml
+    uses: ./.github/workflows/__build.yml
     secrets: inherit
     strategy:
       matrix:
@@ -39,7 +39,7 @@ jobs:
   test:
     needs: [lint, build]
     if: needs.lint.outputs.hasAffected == 'true'
-    uses: ./.github/workflows/_test.yml
+    uses: ./.github/workflows/__test.yml
     secrets: inherit
     strategy:
       matrix:
@@ -51,7 +51,7 @@ jobs:
   e2e:
     needs: [lint, build]
     if: needs.lint.outputs.hasAffectedApps == 'true'
-    uses: ./.github/workflows/_e2e.yml
+    uses: ./.github/workflows/__e2e.yml
     secrets: inherit
     strategy:
       matrix:
@@ -63,7 +63,7 @@ jobs:
   generators:
     needs: [lint, build]
     if: needs.lint.outputs.isNxMeshAffected == 'true'
-    uses: ./.github/workflows/_generators.yml
+    uses: ./.github/workflows/__generators.yml
     secrets: inherit
     strategy:
       matrix:
@@ -81,7 +81,7 @@ jobs:
   changesets:
     needs: [lint, build, test, e2e, generators]
     name: Changesets
-    uses: ./.github/workflows/_changesets.yml
+    uses: ./.github/workflows/__changesets.yml
     secrets: inherit
     with:
       release: true
@@ -89,7 +89,7 @@ jobs:
   deploy:
     needs: [lint, build, test, e2e, generators, changesets]
     name: Deploy
-    uses: ./.github/workflows/_deploy.yml
+    uses: ./.github/workflows/__deploy.yml
     secrets: inherit
     with:
       affected: true

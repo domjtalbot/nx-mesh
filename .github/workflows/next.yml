@@ -17,7 +17,7 @@ env:
 jobs:
   changesets:
     name: Changesets
-    uses: ./.github/workflows/_changesets.yml
+    uses: ./.github/workflows/__changesets.yml
     secrets: inherit
     with:
       snapshot: true

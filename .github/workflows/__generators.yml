@@ -9,6 +9,12 @@ on:
         required: false
         default: true
         type: boolean
+      examples:
+        description: >
+          The Nx version to test against
+        required: false
+        type: string
+        default: '["country-info", "fake-api", "rfram", "stackexchange", "star-wars-api", "trippin"]'
       node_version:
         description: >
           Optionally define the version of Node to install via Volta.
@@ -17,6 +23,12 @@ on:
         required: false
         default: 'config'
         type: string
+      nx_version:
+        description: >
+          The Nx version to test against
+        required: false
+        type: string
+        default: '["15.4", "15.5", "15.6", "latest"]'
       save_cache:
         description: >
           Should the cache be saved upon completion?
@@ -40,26 +52,15 @@ env:
 
 jobs:
   generator:
-    name: Generator - nx-${{ matrix.nx_version }}/${{ matrix.type }}/${{ matrix.example }}
+    name: Generator - nx-${{ matrix.nx_version }}/${{ matrix.example }}/${{ matrix.type }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:
         type: [application, sdk, preset]
-        example:
-          - 'country-info'
-          - 'fake-api'
-          - 'javascript-wiki'
-          # - 'movies'
-          - 'rfam'
-          - 'stackexchange'
-          - 'star-wars-api'
-          - 'trippin'
-        nx_version:
-          - 15.4
-          - 15.5
-          - latest
+        example: ${{fromJson(inputs.examples)}}
+        nx_version: ${{fromJson(inputs.nx_version)}}
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
