@@ -69,7 +69,7 @@ jobs:
           echo "release_tag=$nxTag"
           echo "release_tag=$nxTag" >> $GITHUB_OUTPUT
 
-          echo "isLatestChanged=${{ ($current_tag != $nxTag) && $nxTag != null }}" >> $GITHUB_OUTPUT
+          echo "isLatestChanged=$($current_tag != $nxTag && $nxTag != null)" >> $GITHUB_OUTPUT
 
       # If the version of nx has updated, save it to nx-latest.version
       - name: Update nx version
