@@ -28,7 +28,7 @@ on:
           The Nx version to test against
         required: false
         type: string
-        default: '["15.4", "15.5", "15.6", "latest"]'
+        default: '["15.4", "15.5", "15.6", "15.7", "15.8", "latest"]'
       save_cache:
         description: >
           Should the cache be saved upon completion?
