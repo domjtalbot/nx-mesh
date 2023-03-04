@@ -37,12 +37,11 @@ jobs:
       latest_tag: ${{ steps.nx.outputs.release_tag || steps.manual-nx.outputs.release_tag }}
     steps:
       - uses: actions/checkout@v3
-        if: env.NX_VERSION == 'latest'
 
       - name: Default nx version
         if: env.NX_VERSION == 'latest'
         run: |
-          echo "15.5.0" > ${{ env.cache_file }}
+          echo "15.0.0" > ${{ env.cache_file }}
 
       - name: Restore Nx version cache
         uses: actions/cache/restore@v3
@@ -68,7 +67,7 @@ jobs:
           echo "release_tag=$nxTag"
           echo "release_tag=$nxTag" >> $GITHUB_OUTPUT
 
-          echo "isLatestChanged=${{ (steps.nx.outputs.current_tag != steps.nx.outputs.release_tag) && steps.nx.outputs.release_tag != null }}" >> $GITHUB_OUTPUT
+          echo "isLatestChanged=${{ ($current_tag != $nxTag) && $nxTag != null }}" >> $GITHUB_OUTPUT
 
       # If the version of nx has updated, save it to nx-latest.version
       - name: Update nx version
