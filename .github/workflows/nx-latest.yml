@@ -1,7 +1,9 @@
 name: 'Nx latest'
 
 on:
-  pull_request:
+  push:
+    paths:
+      - '.github/workflows/nx-latest.yml'
 
   schedule:
     # Checkout for updates daily at midnight
