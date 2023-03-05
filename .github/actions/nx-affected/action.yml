@@ -131,111 +131,91 @@ runs:
       with:
         script: |
           const { exec: nodeExec } = require('child_process');
-          const { readFileSync } = require('fs');
           const { promisify } = require('util');
-
           const execAsync = promisify(nodeExec);
 
           /**
-          * Get Workspace file
-          */
+           *
+           * @param {'app' | 'lib' | 'e2e'} type
+           * @returns string array
+           */
+          const getProjects = async (type, affected = false) => {
+            let config = `--type=${type} --select=projects`;
 
-          const workspaceFile = readFileSync('./workspace.json');
-          const workspace = JSON.parse(workspaceFile);
-
-          const getProjectNames = (rootDir, workspace) => {
-            let names = [];
-
-            if (Object.prototype.hasOwnProperty.call(workspace, 'projects')) {
-              Object.entries(workspace['projects']).forEach(([name, path]) => {
-                if (path.startsWith(rootDir)) {
-                  names.push(name);
-                }
-              });
+            if (type === 'e2e') {
+              config = `--type=app --select=projectGraph.nodes`;
             }
 
-            return names;
-          };
+            const { stdout } = await execAsync(
+              `npx nx print-affected ${config} --all=${!affected}`
+            );
 
-          /**
-          * All apps & libs
-          */
-          const getWorkspaceProjects = () => {
-            const apps = getProjectNames('apps', workspace);
-            const e2eApps = apps.filter((name) => name.endsWith('-e2e'));
-            const nonE2EApps = apps.filter((name) => !name.endsWith('-e2e'));
-            const libs = getProjectNames('libs', workspace);
-
-            return {
-              apps: JSON.stringify(apps),
-              e2eApps: JSON.stringify(e2eApps),
-              nonE2EApps: JSON.stringify(nonE2EApps),
-              libs: JSON.stringify(libs),
-              numberOfApps: apps.length,
-              numberOfE2eApps: e2eApps.length,
-              numberOfNonE2EApps: nonE2EApps.length,
-              numberOfLibs: libs.length,
-              hasApps: apps.length > 0,
-              hasE2EApps: e2eApps.length > 0,
-              hasNonE2EApps: nonE2EApps.length > 0,
-              hasLibs: libs.length > 0,
-              hasProjects: apps.length > 0 || libs.length > 0,
-            };
-          };
-
-          /**
-          * Affected
-          */
-          const getAffected = async (type) => {
-            const { stdout } = await execAsync(`npx nx affected:${type} --plain`);
-
-            const affected = stdout
+            let all = stdout
               .replace(/\n/g, ' ')
               .trim()
-              .split(' ')
-              .filter((name) => name != '');
+              .split(', ')
+              .filter((project) => project !== '');
 
-            return affected;
+            if (type === 'e2e') {
+              if (affected) {
+                const apps = await getProjects('app', true);
+
+                let affectedE2e = [];
+                apps.forEach((app) => {
+                  if (all.includes(`${app}-e2e`)) {
+                    affectedE2e.push(`${app}-e2e`);
+                  }
+                });
+
+                all = affectedE2e;
+              } else {
+                all = all.filter((node) => node.endsWith('-e2e'));
+              }
+            }
+
+            return all;
           };
 
-          const getAffectedWorkspace = async () => {
-            const affectedApps = await getAffected('apps');
-            const affectedE2eApps = affectedApps.filter((name) => name.endsWith('-e2e'));
-            const affectedNonE2EApps = affectedApps.filter(
-              (name) => !name.endsWith('-e2e')
-            );
-            const affectedLibs = await getAffected('libs');
+          (async () => {
+            const apps = await getProjects('app');
+            const libs = await getProjects('lib');
+            const e2e = await getProjects('e2e');
+            const affectedApps = await getProjects('app', true);
+            const affectedLibs = await getProjects('lib', true);
+            const affectedE2e = await getProjects('e2e', true);
 
-            return {
+            let info = {
+              apps: JSON.stringify(apps),
+              e2eApps: JSON.stringify(e2e),
+              nonE2EApps: JSON.stringify(apps),
+              libs: JSON.stringify(libs),
+              numberOfApps: apps.length,
+              numberOfE2eApps: e2e.length,
+              numberOfNonE2EApps: apps.length,
+              numberOfLibs: libs.length,
+              hasApps: apps.length > 0,
+              hasE2EApps: e2e.length > 0,
+              hasNonE2EApps: apps.length > 0,
+              hasLibs: libs.length > 0,
+              hasProjects: apps.length > 0 || libs.length > 0,
               affectedApps: JSON.stringify(affectedApps),
-              affectedE2eApps: JSON.stringify(affectedE2eApps),
-              affectedNonE2EApps: JSON.stringify(affectedNonE2EApps),
+              affectedE2eApps: JSON.stringify(affectedE2e),
+              affectedNonE2EApps: JSON.stringify(affectedApps),
               affectedLibs: JSON.stringify(affectedLibs),
               numberOfAffectedApps: affectedApps.length,
-              numberOfAffectedE2eApps: affectedE2eApps.length,
-              numberOfAffectedNonE2EApps: affectedNonE2EApps.length,
+              numberOfAffectedE2eApps: affectedE2e.length,
+              numberOfAffectedNonE2EApps: affectedApps.length,
               numberOfAffectedLibs: affectedLibs.length,
               hasAffectedApps: affectedApps.length > 0,
-              hasAffectedE2EApps: affectedE2eApps.length > 0,
-              hasAffectedNonE2EApps: affectedNonE2EApps.length > 0,
+              hasAffectedE2EApps: affectedE2e.length > 0,
+              hasAffectedNonE2EApps: affectedApps.length > 0,
               hasAffectedLibs: affectedLibs.length > 0,
               hasAffected: affectedApps.length > 0 || affectedLibs.length > 0,
             };
-          };
 
-          /**
-          * Nx Data
-          */
-          const getNxData = async () => {
-            const data = {
-              ...getWorkspaceProjects(),
-              ...(await getAffectedWorkspace()),
-            };
+            console.log(info);
 
-            Object.entries(data).forEach(([name, value]) => {
-              console.log(name, value);
+            Object.entries(info).forEach(([name, value]) => {
               core.setOutput(name, value);
             });
-          };
-
-          getNxData();
+          })();
