@@ -215,7 +215,7 @@ runs:
 
             console.log(info);
 
-            Object.entries(data).forEach(([name, value]) => {
+            Object.entries(info).forEach(([name, value]) => {
               core.setOutput(name, value);
             });
           })();
