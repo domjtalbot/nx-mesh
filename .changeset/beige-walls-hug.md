@@ -2,4 +2,4 @@
 'nx-mesh': patch
 ---
 
-Restructure folders
+Rename `star-wars-api` to `star-wars`
