@@ -51,7 +51,7 @@
       "@nx-mesh/examples-sdk-soap--country-info/*": [
         "examples/sdk-soap--country-info/src/lib/*"
       ],
-      "nx-mesh": ["libs/nx-mesh/src/index.ts"]
+      "nx-mesh": ["packages/nx-mesh/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

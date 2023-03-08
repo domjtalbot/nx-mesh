@@ -11,5 +11,5 @@ export default {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/libs/nx-mesh',
+  coverageDirectory: '../../coverage/packages/nx-mesh',
 };

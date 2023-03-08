@@ -1,38 +1,38 @@
 {
   "name": "nx-mesh",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/nx-mesh/src",
+  "sourceRoot": "packages/nx-mesh/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/nx-mesh",
-        "main": "libs/nx-mesh/src/index.ts",
-        "tsConfig": "libs/nx-mesh/tsconfig.lib.json",
+        "outputPath": "dist/packages/nx-mesh",
+        "main": "packages/nx-mesh/src/index.ts",
+        "tsConfig": "packages/nx-mesh/tsconfig.lib.json",
         "assets": [
           "README.md",
           "CHANGELOG.md",
           "LICENSE",
-          "libs/nx-mesh/*.md",
+          "packages/nx-mesh/*.md",
           {
-            "input": "./libs/nx-mesh/src",
+            "input": "./packages/nx-mesh/src",
             "glob": "**/!(*.ts)",
             "output": "./src"
           },
           {
-            "input": "./libs/nx-mesh/src",
+            "input": "./packages/nx-mesh/src",
             "glob": "**/*.d.ts",
             "output": "./src"
           },
           {
-            "input": "./libs/nx-mesh",
+            "input": "./packages/nx-mesh",
             "glob": "generators.json",
             "output": "."
           },
           {
-            "input": "./libs/nx-mesh",
+            "input": "./packages/nx-mesh",
             "glob": "executors.json",
             "output": "."
           }
@@ -43,27 +43,27 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": [
         "{options.outputFile}",
-        "{workspaceRoot}/reports/libs/nx-mesh"
+        "{workspaceRoot}/reports/packages/nx-mesh"
       ],
       "options": {
-        "lintFilePatterns": ["libs/nx-mesh/**/*.ts"]
+        "lintFilePatterns": ["packages/nx-mesh/**/*.ts"]
       },
       "configurations": {
         "codeql": {
           "format": "@microsoft/eslint-formatter-sarif",
-          "outputFile": "reports/libs/nx-mesh/lint.sarif"
+          "outputFile": "reports/packages/nx-mesh/lint.sarif"
         },
         "reports": {
           "format": "json",
-          "outputFile": "reports/libs/nx-mesh/lint.json"
+          "outputFile": "reports/packages/nx-mesh/lint.json"
         }
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/nx-mesh"],
+      "outputs": ["{workspaceRoot}/coverage/packages/nx-mesh"],
       "options": {
-        "jestConfig": "libs/nx-mesh/jest.config.ts",
+        "jestConfig": "packages/nx-mesh/jest.config.ts",
         "passWithNoTests": true
       }
     }

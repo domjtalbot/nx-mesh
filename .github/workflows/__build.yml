@@ -90,7 +90,7 @@ jobs:
         if: inputs.node_version == 'lts'
         shell: bash
         run: |
-          cd dist/libs
+          cd dist/packages
           tar cvzf nx-mesh.tar.gz nx-mesh
           mv nx-mesh.tar.gz ../../
 

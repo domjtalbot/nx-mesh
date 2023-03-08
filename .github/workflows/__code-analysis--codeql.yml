@@ -55,5 +55,5 @@ jobs:
       - name: Upload Lint CodeQL
         uses: github/codeql-action/upload-sarif@v2
         with:
-          sarif_file: reports/libs/nx-mesh/lint.sarif
+          sarif_file: reports/packages/nx-mesh/lint.sarif
           wait-for-processing: true
