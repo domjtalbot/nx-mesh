@@ -37,7 +37,7 @@ describe('createSharedFiles', () => {
     'movies',
     'rfam',
     'stackexchange',
-    'star-wars-api',
+    'star-wars',
     'trippin',
   ])(`meshConfig - %s`, (example) => {
     it.each<CreateMeshExampleOptions['configExtension']>([
@@ -156,13 +156,13 @@ describe('createSharedFiles', () => {
     });
   });
 
-  describe('star-wars-api', () => {
+  describe('star-wars', () => {
     it('should create a src folder supplementary files', () => {
       const expectedPaths = ['src/graphql/getMovies.query.graphql'];
 
       createSharedFiles(tree, {
         configExtension: 'yml',
-        example: 'star-wars-api',
+        example: 'star-wars',
         isSdk: false,
         projectDirectory,
       });

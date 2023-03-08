@@ -37,7 +37,7 @@ describe('createCodegenFiles', () => {
     'movies',
     'rfam',
     'stackexchange',
-    'star-wars-api',
+    'star-wars',
     'trippin',
   ])(`codegen - %s`, (example) => {
     it('should create a codegen files', () => {

@@ -47,7 +47,7 @@
     "example": {
       "description": "Which example project would you like to start with?",
       "type": "string",
-      "default": "star-wars-api",
+      "default": "star-wars",
       "x-prompt": {
         "message": "Which example project would you like to start with?",
         "type": "list",
@@ -58,7 +58,7 @@
           { "value": "movies", "label": "Movies (Neo4j)" },
           { "value": "rfam", "label": "RFam (MySQL)" },
           { "value": "stackexchange", "label": "StackExchange (OpenAPI)" },
-          { "value": "star-wars-api", "label": "Star Wars API (GraphQL)" },
+          { "value": "star-wars", "label": "Star Wars API (GraphQL)" },
           { "value": "trippin", "label": "Trip Pin (odata)" }
         ]
       }

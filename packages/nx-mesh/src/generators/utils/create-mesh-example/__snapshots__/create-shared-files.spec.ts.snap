@@ -906,7 +906,7 @@ serve:
 "
 `;
 
-exports[`createSharedFiles meshConfig - star-wars-api should create a cjs mesh config 1`] = `
+exports[`createSharedFiles meshConfig - star-wars should create a cjs mesh config 1`] = `
 "module.exports = {
   sources: [
     {
@@ -927,7 +927,7 @@ exports[`createSharedFiles meshConfig - star-wars-api should create a cjs mesh c
 "
 `;
 
-exports[`createSharedFiles meshConfig - star-wars-api should create a js mesh config 1`] = `
+exports[`createSharedFiles meshConfig - star-wars should create a js mesh config 1`] = `
 "module.exports = {
   sources: [
     {
@@ -948,7 +948,7 @@ exports[`createSharedFiles meshConfig - star-wars-api should create a js mesh co
 "
 `;
 
-exports[`createSharedFiles meshConfig - star-wars-api should create a json mesh config 1`] = `
+exports[`createSharedFiles meshConfig - star-wars should create a json mesh config 1`] = `
 "{
   \\"sources\\": [
     {
@@ -968,7 +968,7 @@ exports[`createSharedFiles meshConfig - star-wars-api should create a json mesh 
 "
 `;
 
-exports[`createSharedFiles meshConfig - star-wars-api should create a yml mesh config 1`] = `
+exports[`createSharedFiles meshConfig - star-wars should create a yml mesh config 1`] = `
 "sources:
   - name: StarWarsApi
     handler:
@@ -1096,7 +1096,7 @@ exports[`createSharedFiles rfam should create a src folder supplementary files 1
 "
 `;
 
-exports[`createSharedFiles star-wars-api should create a src folder supplementary files 1`] = `
+exports[`createSharedFiles star-wars should create a src folder supplementary files 1`] = `
 "query getMovies {
   allFilms {
     films {

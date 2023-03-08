@@ -37,7 +37,7 @@ describe('addDependencies', () => {
     'movies',
     'rfam',
     'stackexchange',
-    'star-wars-api',
+    'star-wars',
     'trippin',
   ])('%s', (example) => {
     it(`should add dependencies to the package.json`, () => {

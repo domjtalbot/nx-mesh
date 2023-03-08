@@ -125,7 +125,7 @@ export default config;
 "
 `;
 
-exports[`createCodegenFiles codegen - star-wars-api should create a codegen files 1`] = `
+exports[`createCodegenFiles codegen - star-wars should create a codegen files 1`] = `
 "
 import type { CodegenConfig } from '@graphql-codegen/cli';
 

@@ -14,7 +14,7 @@ on:
           The Nx version to test against
         required: false
         type: string
-        default: '["country-info", "fake-api", "rfam", "stackexchange", "star-wars-api", "trippin"]'
+        default: '["country-info", "fake-api", "rfam", "stackexchange", "star-wars", "trippin"]'
       node_version:
         description: >
           Optionally define the version of Node to install via Volta.

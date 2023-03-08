@@ -11,7 +11,7 @@ export type ExampleName =
   | 'movies'
   | 'rfam'
   | 'stackexchange'
-  | 'star-wars-api'
+  | 'star-wars'
   | 'trippin';
 
 export type ExampleDependencies = {

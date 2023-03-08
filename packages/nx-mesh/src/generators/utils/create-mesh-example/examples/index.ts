@@ -6,7 +6,7 @@ import * as javascriptWiki from './javascript-wiki';
 import * as movies from './movies';
 import * as rfam from './rfam';
 import * as stackexchange from './stackexchange';
-import * as starWarsApi from './star-wars-api';
+import * as starWarsApi from './star-wars';
 import * as trippin from './trippin';
 
 export const examples: ExampleConfig = {
@@ -16,7 +16,7 @@ export const examples: ExampleConfig = {
   movies: movies.config,
   rfam: rfam.config,
   stackexchange: stackexchange.config,
-  'star-wars-api': starWarsApi.config,
+  'star-wars': starWarsApi.config,
   trippin: trippin.config,
 };
 

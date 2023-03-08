@@ -63,7 +63,7 @@ describe('createMeshExample', () => {
     const options: CreateMeshExampleOptions = {
       codegen: true,
       configExtension: 'js',
-      example: 'star-wars-api',
+      example: 'star-wars',
       isSdk: true,
       projectDirectory,
     };
