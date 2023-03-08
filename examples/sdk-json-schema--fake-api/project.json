@@ -1,0 +1,48 @@
+{
+  "name": "examples-sdk-json-schema--fake-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "examples/sdk-json-schema--fake-api/src",
+  "projectType": "library",
+  "implicitDependencies": ["nx-mesh"],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["examples/sdk-json-schema--fake-api/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "examples/sdk-json-schema--fake-api/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "nx-mesh:build-swc",
+      "outputs": ["{projectRoot}/.mesh", "{options.outputPath}"],
+      "options": {
+        "dir": "examples/sdk-json-schema--fake-api",
+        "main": "examples/sdk-json-schema--fake-api/src/index.ts",
+        "outputPath": "dist/examples/sdk-json-schema--fake-api",
+        "tsConfig": "examples/sdk-json-schema--fake-api/tsconfig.lib.json"
+      }
+    },
+    "serve": {
+      "executor": "nx-mesh:serve",
+      "options": {
+        "dev": true,
+        "dir": "examples/sdk-json-schema--fake-api"
+      }
+    },
+    "validate": {
+      "executor": "nx-mesh:validate",
+      "options": {
+        "dir": "examples/sdk-json-schema--fake-api"
+      }
+    }
+  },
+  "tags": ["type:example", "type:sdk"]
+}

@@ -1,7 +1,7 @@
 {
   "name": "nx-mesh",
   "author": "Dom Talbot",
-  "description": "GraphQL Mesh support for Nx",
+  "description": "GraphQL Mesh support for Nx   ",
   "version": "3.1.0",
   "license": "MIT",
   "main": "src/index.js",
