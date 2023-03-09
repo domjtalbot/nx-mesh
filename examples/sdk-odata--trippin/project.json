@@ -1,0 +1,48 @@
+{
+  "name": "examples-sdk-odata--trippin",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "examples/sdk-odata--trippin/src",
+  "projectType": "library",
+  "implicitDependencies": ["nx-mesh"],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["examples/sdk-odata--trippin/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "examples/sdk-odata--trippin/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "nx-mesh:build",
+      "outputs": ["{projectRoot}/.mesh", "{options.outputPath}"],
+      "options": {
+        "dir": "examples/sdk-odata--trippin",
+        "main": "examples/sdk-odata--trippin/src/index.ts",
+        "outputPath": "dist/examples/sdk-odata--trippin",
+        "tsConfig": "examples/sdk-odata--trippin/tsconfig.lib.json"
+      }
+    },
+    "serve": {
+      "executor": "nx-mesh:serve",
+      "options": {
+        "dev": true,
+        "dir": "examples/sdk-odata--trippin"
+      }
+    },
+    "validate": {
+      "executor": "nx-mesh:validate",
+      "options": {
+        "dir": "examples/sdk-odata--trippin"
+      }
+    }
+  },
+  "tags": ["type:sdk", "type:example"]
+}

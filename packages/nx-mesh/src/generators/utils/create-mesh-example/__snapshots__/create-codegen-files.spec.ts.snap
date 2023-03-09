@@ -1,0 +1,168 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createCodegenFiles codegen - country-info should create a codegen files 1`] = `
+"
+import type { CodegenConfig } from '@graphql-codegen/cli';
+
+const config: CodegenConfig = {
+  overwrite: true,
+  schema: 'test/.mesh/schema.graphql',
+  documents:
+    'test/src/graphql/**/*.*.graphql',
+  generates: {
+    'test/.codegen/': {
+      preset: 'client',
+      plugins: [],
+    },
+  },
+};
+
+export default config;
+"
+`;
+
+exports[`createCodegenFiles codegen - fake-api should create a codegen files 1`] = `
+"
+import type { CodegenConfig } from '@graphql-codegen/cli';
+
+const config: CodegenConfig = {
+  overwrite: true,
+  schema: 'test/.mesh/schema.graphql',
+  documents:
+    'test/src/graphql/**/*.*.graphql',
+  generates: {
+    'test/.codegen/': {
+      preset: 'client',
+      plugins: [],
+    },
+  },
+};
+
+export default config;
+"
+`;
+
+exports[`createCodegenFiles codegen - javascript-wiki should create a codegen files 1`] = `
+"
+import type { CodegenConfig } from '@graphql-codegen/cli';
+
+const config: CodegenConfig = {
+  overwrite: true,
+  schema: 'test/.mesh/schema.graphql',
+  generates: {
+    'test/.codegen/': {
+      preset: 'client',
+      plugins: [],
+    },
+  },
+};
+
+export default config;
+"
+`;
+
+exports[`createCodegenFiles codegen - movies should create a codegen files 1`] = `
+"
+import type { CodegenConfig } from '@graphql-codegen/cli';
+
+const config: CodegenConfig = {
+  overwrite: true,
+  schema: 'test/.mesh/schema.graphql',
+  documents:
+    'test/src/graphql/**/*.*.graphql',
+  generates: {
+    'test/.codegen/': {
+      preset: 'client',
+      plugins: [],
+    },
+  },
+};
+
+export default config;
+"
+`;
+
+exports[`createCodegenFiles codegen - rfam should create a codegen files 1`] = `
+"
+import type { CodegenConfig } from '@graphql-codegen/cli';
+
+const config: CodegenConfig = {
+  overwrite: true,
+  schema: 'test/.mesh/schema.graphql',
+  documents:
+    'test/src/graphql/**/*.*.graphql',
+  generates: {
+    'test/.codegen/': {
+      preset: 'client',
+      plugins: [],
+      config: {
+        enumsAsTypes: true,
+      },
+    },
+  },
+};
+
+export default config;
+"
+`;
+
+exports[`createCodegenFiles codegen - stackexchange should create a codegen files 1`] = `
+"
+import type { CodegenConfig } from '@graphql-codegen/cli';
+
+const config: CodegenConfig = {
+  overwrite: true,
+  schema: 'test/.mesh/schema.graphql',
+  generates: {
+    'test/.codegen/': {
+      preset: 'client',
+      plugins: [],
+    },
+  },
+};
+
+export default config;
+"
+`;
+
+exports[`createCodegenFiles codegen - star-wars should create a codegen files 1`] = `
+"
+import type { CodegenConfig } from '@graphql-codegen/cli';
+
+const config: CodegenConfig = {
+  overwrite: true,
+  schema: 'test/.mesh/schema.graphql',
+  documents:
+    'test/src/graphql/**/*.*.graphql',
+  generates: {
+    'test/.codegen/': {
+      preset: 'client',
+      plugins: [],
+    },
+  },
+};
+
+export default config;
+"
+`;
+
+exports[`createCodegenFiles codegen - trippin should create a codegen files 1`] = `
+"
+import type { CodegenConfig } from '@graphql-codegen/cli';
+
+const config: CodegenConfig = {
+  overwrite: true,
+  schema: 'test/.mesh/schema.graphql',
+  documents:
+    'test/src/graphql/**/*.*.graphql',
+  generates: {
+    'test/.codegen/': {
+      preset: 'client',
+      plugins: [],
+    },
+  },
+};
+
+export default config;
+"
+`;

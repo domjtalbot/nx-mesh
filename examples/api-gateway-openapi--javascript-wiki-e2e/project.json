@@ -1,0 +1,32 @@
+{
+  "name": "examples-api-gateway-openapi--javascript-wiki-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "examples/api-gateway-openapi--javascript-wiki-e2e/src",
+  "projectType": "application",
+  "implicitDependencies": ["examples-api-gateway-openapi--javascript-wiki"],
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "examples/api-gateway-openapi--javascript-wiki-e2e/cypress.config.ts",
+        "devServerTarget": "examples-api-gateway-openapi--javascript-wiki:serve",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "examples-api-gateway-openapi--javascript-wiki:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "examples/api-gateway-openapi--javascript-wiki-e2e/**/*.{js,ts}"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

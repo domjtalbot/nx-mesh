@@ -1,0 +1,62 @@
+{
+  "name": "examples-sdk-graphql--star-wars",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "examples/sdk-graphql--star-wars/src",
+  "projectType": "library",
+  "implicitDependencies": ["nx-mesh"],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["examples/sdk-graphql--star-wars/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "examples/sdk-graphql--star-wars/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "nx-mesh:build-swc",
+      "outputs": [
+        "{projectRoot}/.codegen",
+        "{projectRoot}/.mesh",
+        "{options.outputPath}"
+      ],
+      "options": {
+        "dir": "examples/sdk-graphql--star-wars",
+        "main": "examples/sdk-graphql--star-wars/src/index.ts",
+        "outputPath": "dist/examples/sdk-graphql--star-wars",
+        "tsConfig": "examples/sdk-graphql--star-wars/tsconfig.lib.json",
+        "codegen": {
+          "config": "examples/sdk-graphql--star-wars/codegen.ts"
+        }
+      }
+    },
+    "dev": {
+      "executor": "nx-mesh:serve",
+      "options": {
+        "dev": true,
+        "dir": "examples/sdk-graphql--star-wars"
+      }
+    },
+    "serve": {
+      "executor": "nx-mesh:serve",
+      "options": {
+        "dev": true,
+        "dir": "examples/sdk-graphql--star-wars"
+      }
+    },
+    "validate": {
+      "executor": "nx-mesh:validate",
+      "options": {
+        "dir": "examples/sdk-graphql--star-wars"
+      }
+    }
+  },
+  "tags": ["type:example", "type:sdk"]
+}

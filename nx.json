@@ -70,5 +70,9 @@
       "!{projectRoot}/jest.config.[jt]s",
       "!{projectRoot}/.eslintrc.json"
     ]
+  },
+  "workspaceLayout": {
+    "appsDir": "examples",
+    "libsDir": "examples"
   }
 }

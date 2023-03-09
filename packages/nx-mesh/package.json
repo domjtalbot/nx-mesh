@@ -1,0 +1,62 @@
+{
+  "name": "nx-mesh",
+  "author": "Dom Talbot",
+  "description": "GraphQL Mesh support for Nx   ",
+  "version": "3.1.0",
+  "license": "MIT",
+  "main": "src/index.js",
+  "generators": "./generators.json",
+  "executors": "./executors.json",
+  "peerDependencies": {
+    "@graphql-mesh/cli": ">=0.71.0",
+    "@swc-node/register": "^1.5.1",
+    "@swc/core": "^0.1.55",
+    "@swc/helpers": "^0.4.11",
+    "nx": ">= 14 <= 16"
+  },
+  "peerDependenciesMeta": {
+    "@swc-node/register": {
+      "optional": true
+    },
+    "@swc/core": {
+      "optional": true
+    },
+    "@swc/helpers": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@nrwl/cypress": "^15.4.1",
+    "@nrwl/devkit": "^15.4.1",
+    "@nrwl/js": "^15.4.1",
+    "@nrwl/linter": "^15.4.1",
+    "@nrwl/node": "^15.4.1",
+    "@nrwl/workspace": "^15.4.1",
+    "fs-extra": "^10.1.0",
+    "get-port": "5.1.1",
+    "tslib": "^2.4.0",
+    "type-fest": "^2.18.0"
+  },
+  "keywords": [
+    "Monorepo",
+    "Node",
+    "Jest",
+    "Cypress",
+    "CLI",
+    "GraphQL",
+    "GraphQL-Mesh",
+    "Mesh"
+  ],
+  "bugs": {
+    "url": "git://github.com/domjtalbot/nx-mesh/issues"
+  },
+  "repository": {
+    "directory": "packages/nx-mesh",
+    "type": "git",
+    "url": "git://github.com/domjtalbot/nx-mesh.git"
+  },
+  "funding": {
+    "type": "GitHub",
+    "url": "https://github.com/sponsors/domjtalbot"
+  }
+}

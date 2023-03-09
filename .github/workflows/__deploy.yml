@@ -61,13 +61,13 @@ jobs:
           echo The env is $name
           echo "name=$name" >> $GITHUB_OUTPUT
 
-  vercel-example-sdk-nextjs:
-    name: Vercel - example-sdk-nextjs
+  vercel-examples-sdk-nextjs:
+    name: Vercel - examples-sdk-nextjs
     needs: [setup]
-    if: ${{ (inputs.affected == true && contains(needs.setup.outputs.affectedApps, 'example-sdk-nextjs')) || inputs.affected == false }}
+    if: ${{ (inputs.affected == true && contains(needs.setup.outputs.affectedApps, 'examples-sdk-nextjs')) || inputs.affected == false }}
     uses: ./.github/workflows/__deploy-vercel.yml
     with:
-      name: example-sdk-nextjs${{ needs.setup.outputs.suffix }}
+      name: examples-sdk-nextjs${{ needs.setup.outputs.suffix }}
       production: ${{ inputs.production }}
     secrets:
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}

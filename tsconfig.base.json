@@ -15,43 +15,43 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-mesh/example/sdk/graphql/star-wars-api": [
-        "libs/example/sdk/graphql/star-wars-api/src/index.ts"
+      "@nx-mesh/examples-sdk-graphql--star-wars": [
+        "examples/sdk-graphql--star-wars/src/index.ts"
       ],
-      "@nx-mesh/example/sdk/json-schema/fake-api": [
-        "libs/example/sdk/json-schema/fake-api/src/index.ts"
+      "@nx-mesh/examples-sdk-json-schema--fake-api": [
+        "examples/sdk-json-schema--fake-api/src/index.ts"
       ],
-      "@nx-mesh/example/sdk/mysql/rfam": [
-        "libs/example/sdk/mysql/rfam/src/index.ts"
+      "@nx-mesh/examples-sdk-mysql--rfam": [
+        "examples/sdk-mysql--rfam/src/index.ts"
       ],
-      "@nx-mesh/example/sdk/neo4j/movies": [
-        "libs/example/sdk/neo4j/movies/src/index.ts"
+      "@nx-mesh/examples-sdk-neo4j--movies": [
+        "examples/sdk-neo4j--movies/src/index.ts"
       ],
-      "@nx-mesh/example/sdk/odata/trippin": [
-        "libs/example/sdk/odata/trippin/src/index.ts"
+      "@nx-mesh/examples-sdk-odata--trippin": [
+        "examples/sdk-odata--trippin/src/index.ts"
       ],
-      "@nx-mesh/example/sdk/odata/trippin/*": [
-        "libs/example/sdk/odata/trippin/src/lib/*"
+      "@nx-mesh/examples-sdk-odata--trippin/*": [
+        "examples/sdk-odata--trippin/src/lib/*"
       ],
-      "@nx-mesh/example/sdk/openapi/javascript-wiki": [
-        "libs/example/sdk/openapi/javascript-wiki/src/index.ts"
+      "@nx-mesh/examples-sdk-openapi--javascript-wiki": [
+        "examples/sdk-openapi--javascript-wiki/src/index.ts"
       ],
-      "@nx-mesh/example/sdk/openapi/javascript-wiki/*": [
-        "libs/example/sdk/openapi/javascript-wiki/src/lib/*"
+      "@nx-mesh/examples-sdk-openapi--javascript-wiki/*": [
+        "examples/sdk-openapi--javascript-wiki/src/lib/*"
       ],
-      "@nx-mesh/example/sdk/openapi/stackexchange": [
-        "libs/example/sdk/openapi/stackexchange/src/index.ts"
+      "@nx-mesh/examples-sdk-openapi--stackexchange": [
+        "examples/sdk-openapi--stackexchange/src/index.ts"
       ],
-      "@nx-mesh/example/sdk/openapi/stackexchange/*": [
-        "libs/example/sdk/openapi/stackexchange/src/lib/*"
+      "@nx-mesh/examples-sdk-openapi--stackexchange/*": [
+        "examples/sdk-openapi--stackexchange/src/lib/*"
       ],
-      "@nx-mesh/example/sdk/soap/country-info": [
-        "libs/example/sdk/soap/country-info/src/index.ts"
+      "@nx-mesh/examples-sdk-soap--country-info": [
+        "examples/sdk-soap--country-info/src/index.ts"
       ],
-      "@nx-mesh/example/sdk/soap/country-info/*": [
-        "libs/example/sdk/soap/country-info/src/lib/*"
+      "@nx-mesh/examples-sdk-soap--country-info/*": [
+        "examples/sdk-soap--country-info/src/lib/*"
       ],
-      "nx-mesh": ["libs/nx-mesh/src/index.ts"]
+      "nx-mesh": ["packages/nx-mesh/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

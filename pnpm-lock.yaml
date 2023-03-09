@@ -190,7 +190,7 @@ importers:
       ts-node: 10.9.1_b2ulvot2eensv5kijvirfsfnxq
       typescript: 4.8.4
 
-  libs/nx-mesh:
+  packages/nx-mesh:
     specifiers:
       '@nrwl/cypress': ^15.4.1
       '@nrwl/devkit': ^15.4.1

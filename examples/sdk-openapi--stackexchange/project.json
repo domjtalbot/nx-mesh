@@ -1,0 +1,48 @@
+{
+  "name": "examples-sdk-openapi--stackexchange",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "examples/sdk-openapi--stackexchange/src",
+  "projectType": "library",
+  "implicitDependencies": ["nx-mesh"],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["examples/sdk-openapi--stackexchange/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "examples/sdk-openapi--stackexchange/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "nx-mesh:build",
+      "outputs": ["{projectRoot}/.mesh", "{options.outputPath}"],
+      "options": {
+        "dir": "examples/sdk-openapi--stackexchange",
+        "main": "examples/sdk-openapi--stackexchange/src/index.ts",
+        "outputPath": "dist/examples/sdk-openapi--stackexchange",
+        "tsConfig": "examples/sdk-openapi--stackexchange/tsconfig.lib.json"
+      }
+    },
+    "serve": {
+      "executor": "nx-mesh:serve",
+      "options": {
+        "dev": true,
+        "dir": "examples/sdk-openapi--stackexchange"
+      }
+    },
+    "validate": {
+      "executor": "nx-mesh:validate",
+      "options": {
+        "dir": "examples/sdk-openapi--stackexchange"
+      }
+    }
+  },
+  "tags": ["type:example", "type:sdk"]
+}

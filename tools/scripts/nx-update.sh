@@ -103,7 +103,7 @@ function installUpdates {
       pnpm update \
         @nrwl/devkit@${version} \
         @nrwl/js@${version} && \
-        cd libs/nx-mesh && \
+        cd packages/nx-mesh && \
         pnpm update \
           @nrwl/cypress@^${version} \
           @nrwl/devkit@^${version} \

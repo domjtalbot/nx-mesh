@@ -1,0 +1,48 @@
+{
+  "name": "examples-sdk-openapi--javascript-wiki",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "examples/sdk-openapi--javascript-wiki/src",
+  "projectType": "library",
+  "implicitDependencies": ["nx-mesh"],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["examples/sdk-openapi--javascript-wiki/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "examples/sdk-openapi--javascript-wiki/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "nx-mesh:build-swc",
+      "outputs": ["{projectRoot}/.mesh", "{options.outputPath}"],
+      "options": {
+        "dir": "examples/sdk-openapi--javascript-wiki",
+        "main": "examples/sdk-openapi--javascript-wiki/src/index.ts",
+        "outputPath": "dist/examples/sdk-openapi--javascript-wiki",
+        "tsConfig": "examples/sdk-openapi--javascript-wiki/tsconfig.lib.json"
+      }
+    },
+    "serve": {
+      "executor": "nx-mesh:serve",
+      "options": {
+        "dev": true,
+        "dir": "examples/sdk-openapi--javascript-wiki"
+      }
+    },
+    "validate": {
+      "executor": "nx-mesh:validate",
+      "options": {
+        "dir": "examples/sdk-openapi--javascript-wiki"
+      }
+    }
+  },
+  "tags": ["type:example", "type:sdk"]
+}

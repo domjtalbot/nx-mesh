@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "declaration": true,
+    "types": ["node"]
+  },
+  "include": [
+    "**/*.ts",
+    "src/generators/sdk/files/src/lib/sdk.ts__tmpl__",
+    "src/generators/sdk/files/src/index.ts__tmpl__",
+    "src/generators/base/files/lib/src/index.ts__tmpl__",
+    "src/generators/base/files/lib/lib/sdk.ts__tmpl__",
+    "src/generators/utils/create-mesh-example/examples/star-wars/codegen/codegen.ts__tmpl__"
+  ],
+  "exclude": ["jest.config.ts", "**/*.spec.ts", "**/*.test.ts"]
+}
