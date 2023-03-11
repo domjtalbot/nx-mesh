@@ -39,6 +39,7 @@
   - [`serve`](#serve)
   - [`validate`](#validate)
 - [Examples](#examples)
+- [Compatibility](#compatibility)
 - [Credits](#credits)
 
 <br/>
@@ -566,9 +567,19 @@ This is the equivalent of using `graphql-mesh validate`.
 
 <br/>
 
+## Compatibility
+
+| `nx-mesh` | Nx        |
+| --------- | --------- |
+| `^3.0.0`  | `^15.4.0` |
+
+<br/>
+
 ## Credits
 
-[GraphQL Mesh](https://github.com/Urigo/graphql-mesh) is made by the awesome team at [The Guild](https://www.the-guild.dev). If you love GraphQL Mesh give them a ⭐!
+[GraphQL Mesh](https://github.com/Urigo/graphql-mesh) is made by the awesome team at [The Guild](https://www.the-guild.dev).
+
+If you love GraphQL Mesh give them a ⭐!
 
 <br/>
 <br/>

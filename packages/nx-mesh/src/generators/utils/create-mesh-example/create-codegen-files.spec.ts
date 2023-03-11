@@ -13,14 +13,6 @@ describe('createCodegenFiles', () => {
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace();
 
-    tree.write(
-      'workspace.json',
-      JSON.stringify({
-        version: 2,
-        projects: {},
-      })
-    );
-
     const workspace = getWorkspaceLayout(tree);
 
     projectDirectory = joinPathFragments(workspace.libsDir, 'test');
