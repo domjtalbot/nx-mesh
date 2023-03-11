@@ -5,7 +5,7 @@
     "ci": "pnpm lint:fix --parallel=1 && pnpm build --parallel=1 && pnpm test --parallel=1 && pnpm e2e --parallel=1",
     "e2e": "nx run-many --target=e2e --all --parallel=1 && nx run-many --target=e2e --all --configuration=start --parallel=1 && nx run-many --target=e2e --all --configuration=serve --parallel=1 && nx run-many --target=e2e --all --configuration=serve-dev",
     "lint:fix": "nx format:write && nx run-many --target=lint --all --fix",
-    "lint": "nx workspace-lint && nx format && nx run-many --target=lint --all",
+    "lint": "nx format && nx run-many --target=lint --all",
     "nx:update": "./tools/scripts/nx-update.sh",
     "postinstall": "husky install",
     "test": "nx run-many --target=test --all",
