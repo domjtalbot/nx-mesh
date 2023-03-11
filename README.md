@@ -86,7 +86,7 @@ yarn add -D nx-mesh
 
 | Name                  | Version    | Required | Auto-installed by generators |
 | --------------------- | ---------- | :------: | :--------------------------: |
-| `nx`                  | `>=15.4.1` |    ✅    |              -               |
+| `nx`                  | `>=15.7.1` |    ✅    |              -               |
 | `@graphql-mesh/cli`   | `>=0.71.0` |    ✅    |              ✅              |
 | `@graphql-codgen/cli` | `>=2.16.1` |    ✅    |              ✅              |
 
