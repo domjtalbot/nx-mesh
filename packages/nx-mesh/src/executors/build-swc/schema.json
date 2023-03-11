@@ -17,7 +17,7 @@
     },
     "swcrc": {
       "type": "string",
-      "description": "The path to the SWC configuration file. Default: .lib.swcrc"
+      "description": "The path to the SWC configuration file. Default: .swcrc"
     },
     "skipTypeCheck": {
       "type": "boolean",

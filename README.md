@@ -223,7 +223,7 @@ UPDATE workspace.json
 CREATE libs/my-mesh-sdk/.eslintrc.json
 CREATE libs/my-mesh-sdk/jest.config.ts
 CREATE libs/my-mesh-sdk/tsconfig.spec.json
-CREATE libs/my-mesh-sdk/.lib.swcrc
+CREATE libs/my-mesh-sdk/.swcrc
 CREATE libs/my-mesh-sdk/.meshrc.json
 CREATE libs/my-mesh-sdk/src/lib/sdk.ts
 CREATE libs/my-mesh-sdk/codegen.ts
@@ -389,7 +389,7 @@ This is the equivalent of using `graphql-mesh build`, but with extra steps for p
 | `outputPath`                              | `string`                             |    ✅    | -                  | The output path of the generated files.                                                                                          |
 | `require`                                 | `string[]`                           |    -     | `[]`               | Loads specific require.extensions before running the codegen and reading the configuration.                                      |
 | `skipTypeCheck`                           | `boolean`                            |    -     | `false`            | Whether to skip TypeScript type checking.                                                                                        |
-| `swcrc`                                   | `string`                             |    -     | `.lib.swcrc`       | The path to the SWC configuration file.                                                                                          |
+| `swcrc`                                   | `string`                             |    -     | `.swcrc`           | The path to the SWC configuration file.                                                                                          |
 | `transformers`                            | `string[]`                           |    -     | -                  | List of TypeScript Transformer Plugins.                                                                                          |
 | `tsConfig`                                | `string`                             |    ✅    | -                  | The path to the Typescript configuration file.                                                                                   |
 | `updateBuildableProjectDepsInPackageJson` | `boolean`                            |    -     | `true`             | Whether to update the buildable project dependencies in `package.json`.                                                          |
