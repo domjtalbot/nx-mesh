@@ -11,7 +11,6 @@ export interface AppGeneratorSchema {
   name: string;
   setParserOptionsProject?: boolean;
   skipFormat?: boolean;
-  skipWorkspaceJson?: boolean;
   standaloneConfig?: boolean;
   tags?: string;
   unitTestRunner?: 'jest' | 'none';

@@ -39,6 +39,7 @@
   - [`serve`](#serve)
   - [`validate`](#validate)
 - [Examples](#examples)
+- [Compatibility](#compatibility)
 - [Credits](#credits)
 
 <br/>
@@ -85,7 +86,7 @@ yarn add -D nx-mesh
 
 | Name                  | Version    | Required | Auto-installed by generators |
 | --------------------- | ---------- | :------: | :--------------------------: |
-| `nx`                  | `>=15.4.1` |    ✅    |              -               |
+| `nx`                  | `>=15.7.1` |    ✅    |              -               |
 | `@graphql-mesh/cli`   | `>=0.71.0` |    ✅    |              ✅              |
 | `@graphql-codgen/cli` | `>=2.16.1` |    ✅    |              ✅              |
 
@@ -157,7 +158,6 @@ CREATE apps/my-api-gateway/.eslintrc.json
 | `linter`                  | -     | `eslint`, `tslint`                                                                                       |    -     | `eslint`    | The tool to use for running lint checks                                                                                           |
 | `setParserOptionsProject` | -     | `boolean`                                                                                                |    -     | `false`     | Whether or not to configure the ESLint `parserOptions.project` option. We do not do this by default for lint performance reasons. |
 | `skipFormat`              | -     | `boolean`                                                                                                |    -     | `false`     | Skip formatting files.                                                                                                            |
-| `skipWorkspaceJson`       | -     | `boolean`                                                                                                |    -     | `false`     | Skip updating `workspace.json` with default options based on values provided to this app (e.g. `babel`).                          |
 | `standaloneConfig`        | -     | `boolean`                                                                                                |    -     | `false`     | Split the project configuration into `<projectRoot>/project.json` rather than including it inside `workspace.json`                |
 | `tags`                    | `t`   | `string`                                                                                                 |    -     | -           | Add tags to the application (used for linting).                                                                                   |
 | `unitTestRunner`          | -     | `jest`, `none`                                                                                           |    -     | `jest`      | Test runner to use for unit tests.                                                                                                |
@@ -222,7 +222,7 @@ UPDATE workspace.json
 CREATE libs/my-mesh-sdk/.eslintrc.json
 CREATE libs/my-mesh-sdk/jest.config.ts
 CREATE libs/my-mesh-sdk/tsconfig.spec.json
-CREATE libs/my-mesh-sdk/.lib.swcrc
+CREATE libs/my-mesh-sdk/.swcrc
 CREATE libs/my-mesh-sdk/.meshrc.json
 CREATE libs/my-mesh-sdk/src/lib/sdk.ts
 CREATE libs/my-mesh-sdk/codegen.ts
@@ -388,7 +388,7 @@ This is the equivalent of using `graphql-mesh build`, but with extra steps for p
 | `outputPath`                              | `string`                             |    ✅    | -                  | The output path of the generated files.                                                                                          |
 | `require`                                 | `string[]`                           |    -     | `[]`               | Loads specific require.extensions before running the codegen and reading the configuration.                                      |
 | `skipTypeCheck`                           | `boolean`                            |    -     | `false`            | Whether to skip TypeScript type checking.                                                                                        |
-| `swcrc`                                   | `string`                             |    -     | `.lib.swcrc`       | The path to the SWC configuration file.                                                                                          |
+| `swcrc`                                   | `string`                             |    -     | `.swcrc`           | The path to the SWC configuration file.                                                                                          |
 | `transformers`                            | `string[]`                           |    -     | -                  | List of TypeScript Transformer Plugins.                                                                                          |
 | `tsConfig`                                | `string`                             |    ✅    | -                  | The path to the Typescript configuration file.                                                                                   |
 | `updateBuildableProjectDepsInPackageJson` | `boolean`                            |    -     | `true`             | Whether to update the buildable project dependencies in `package.json`.                                                          |
@@ -566,9 +566,19 @@ This is the equivalent of using `graphql-mesh validate`.
 
 <br/>
 
+## Compatibility
+
+| `nx-mesh` | Nx        |
+| --------- | --------- |
+| `^3.0.0`  | `^15.4.0` |
+
+<br/>
+
 ## Credits
 
-[GraphQL Mesh](https://github.com/Urigo/graphql-mesh) is made by the awesome team at [The Guild](https://www.the-guild.dev). If you love GraphQL Mesh give them a ⭐!
+[GraphQL Mesh](https://github.com/Urigo/graphql-mesh) is made by the awesome team at [The Guild](https://www.the-guild.dev).
+
+If you love GraphQL Mesh give them a ⭐!
 
 <br/>
 <br/>

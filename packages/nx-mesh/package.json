@@ -10,6 +10,7 @@
   "peerDependencies": {
     "@graphql-mesh/cli": ">=0.71.0",
     "@swc-node/register": "^1.5.1",
+    "graphql": "^16.6.0",
     "@swc/core": "^0.1.55",
     "@swc/helpers": "^0.4.11",
     "nx": ">= 14 <= 16"
@@ -26,16 +27,17 @@
     }
   },
   "dependencies": {
-    "@nrwl/cypress": "^15.4.1",
-    "@nrwl/devkit": "^15.4.1",
-    "@nrwl/js": "^15.4.1",
-    "@nrwl/linter": "^15.4.1",
-    "@nrwl/node": "^15.4.1",
-    "@nrwl/workspace": "^15.4.1",
+    "@nrwl/cypress": "^15.7.1",
+    "@nrwl/devkit": "^15.7.1",
+    "@nrwl/js": "^15.7.1",
+    "@nrwl/linter": "^15.7.1",
+    "@nrwl/node": "^15.7.1",
+    "@nrwl/workspace": "^15.7.1",
     "fs-extra": "^10.1.0",
     "get-port": "5.1.1",
     "tslib": "^2.4.0",
-    "type-fest": "^2.18.0"
+    "type-fest": "^2.18.0",
+    "watchpack": "^2.4.0"
   },
   "keywords": [
     "Monorepo",

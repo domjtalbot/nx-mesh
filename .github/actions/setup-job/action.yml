@@ -203,7 +203,7 @@ runs:
       if: inputs.skip_node_cache == 'false'
       shell: bash
       run: |
-        echo "key=cache-version-7--os-${{ runner.os }}--volta-${{ steps.volta.outputs.version }}--node-${{ steps.node.outputs.version }}--pnpm-${{ steps.pnpm.outputs.version }}" >> $GITHUB_OUTPUT
+        echo "key=cache-version-8--os-${{ runner.os }}--volta-${{ steps.volta.outputs.version }}--node-${{ steps.node.outputs.version }}--pnpm-${{ steps.pnpm.outputs.version }}" >> $GITHUB_OUTPUT
 
     - name: Create cache key
       id: cache_key

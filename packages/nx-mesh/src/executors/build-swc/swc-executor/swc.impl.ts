@@ -3,7 +3,6 @@
 // Modifed version of Nx SWC executor
 // https://github.com/nrwl/nx/blob/master/packages/js/src/executors/swc/swc.impl.ts
 // @ts-nocheck
-
 import { ExecutorContext } from '@nrwl/devkit';
 import {
   assetGlobsToFiles,
@@ -104,7 +103,8 @@ export async function* swcExecutor(
   _options: SwcExecutorOptions,
   context: ExecutorContext
 ) {
-  const { sourceRoot, root } = context.workspace.projects[context.projectName];
+  const { sourceRoot, root } =
+    context.projectsConfigurations.projects[context.projectName];
   const options = normalizeOptions(_options, context.root, sourceRoot, root);
   const { tmpTsConfig, dependencies } = checkDependencies(
     context,

@@ -1,6 +1,6 @@
 import type { DevExecutorSchema } from '../schema';
 
-import getPort = require('get-port');
+import getPort from 'get-port';
 
 export async function getServeLocation(options: DevExecutorSchema) {
   let port = options.port.number ?? 4200;

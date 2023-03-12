@@ -12,5 +12,4 @@ export interface BaseOptions
   example?: ExampleName;
   meshConfig?: MeshConfigExtensions;
   projectType?: 'app' | 'lib';
-  skipWorkspaceJson?: boolean;
 }

@@ -18,7 +18,7 @@ export async function watcher(func: WatchFunc, options: Options) {
       ...watcherOptions,
       ignored: [
         '.eslintrc.json',
-        '.lib.swcrc',
+        '.swcrc',
         '**/.codegen',
         '**/.git',
         '**/.mesh',

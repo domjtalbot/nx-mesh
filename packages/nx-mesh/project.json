@@ -11,6 +11,7 @@
         "outputPath": "dist/packages/nx-mesh",
         "main": "packages/nx-mesh/src/index.ts",
         "tsConfig": "packages/nx-mesh/tsconfig.lib.json",
+        "updateBuildableProjectDepsInPackageJson": false,
         "assets": [
           "README.md",
           "CHANGELOG.md",

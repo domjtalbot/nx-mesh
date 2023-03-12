@@ -10,14 +10,6 @@ describe('generators/preset', () => {
 
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace();
-
-    tree.write(
-      'workspace.json',
-      JSON.stringify({
-        version: 2,
-        projects: {},
-      })
-    );
   });
 
   it('should create a workspace with the graphql-mesh sdk preset', async () => {

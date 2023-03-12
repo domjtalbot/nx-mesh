@@ -16,7 +16,17 @@
   "generators": {
     "@nrwl/react": {
       "application": {
+        "style": "css",
+        "linter": "eslint",
+        "bundler": "webpack",
         "babel": true
+      },
+      "library": {
+        "style": "css",
+        "linter": "eslint"
+      },
+      "component": {
+        "style": "css"
       }
     },
     "@nrwl/next": {

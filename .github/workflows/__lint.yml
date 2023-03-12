@@ -74,10 +74,6 @@ jobs:
           node_version: ${{ inputs.node_version }}
           save_cache: '${{ inputs.save_cache }}'
 
-      - name: Workspace Lint
-        run: |
-          pnpm nx-cloud record -- npx nx workspace-lint
-
       - name: Format
         run: |
           pnpm nx-cloud record -- npx nx format:check
