@@ -36,6 +36,11 @@
             "input": "./packages/nx-mesh",
             "glob": "executors.json",
             "output": "."
+          },
+          {
+            "input": "./packages/nx-mesh",
+            "glob": "migrations.json",
+            "output": "."
           }
         ]
       }

@@ -60,5 +60,8 @@
   "funding": {
     "type": "GitHub",
     "url": "https://github.com/sponsors/domjtalbot"
+  },
+  "nx-migrations": {
+    "migrations": "./migrations.json"
   }
 }
