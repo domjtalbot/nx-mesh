@@ -24,6 +24,16 @@ export function createFiles(tree: Tree, options: NormalizedOptions) {
     );
     tree.delete(`${options.projectDirectory}/src/index.ts`);
 
+    if (
+      options.isSwc &&
+      tree.exists(`${options.projectDirectory}/.lib.swcrc`)
+    ) {
+      tree.rename(
+        `${options.projectDirectory}/.lib.swcrc`,
+        `${options.projectDirectory}/.swcrc`
+      );
+    }
+
     generateFiles(
       tree,
       path.join(__dirname, '../files/lib'),
