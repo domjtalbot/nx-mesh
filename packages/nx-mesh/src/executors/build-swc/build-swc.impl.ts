@@ -1,7 +1,7 @@
 import type { ExecutorContext } from '@nrwl/devkit';
 
 import { logger } from '@nrwl/devkit';
-import { resolve } from 'path';
+import { join, resolve } from 'path';
 
 import { createPackageJson, watcher } from '../../utils';
 import { runCodegenCli } from '../../utils/graphql-codegen-cli';
@@ -98,7 +98,7 @@ export default async function* buildExecutor(
           main: options.main,
           outputPath: options.outputPath,
           skipTypeCheck: options.skipTypeCheck,
-          swcrc: options.swcrc,
+          swcrc: options.swcrc ?? join(options.dir ?? '', '.swcrc'),
           transformers: [],
           tsConfig: options.tsConfig,
           watch: false,

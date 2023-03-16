@@ -6,7 +6,7 @@ interface SwcExecutorSchema {
   buildableProjectDepsInPackageJsonType: boolean;
   main: string;
   skipTypeCheck: boolean;
-  swcrc: string;
+  swcrc?: string;
   transformers: unknown[];
   tsConfig: string;
   updateBuildableProjectDepsInPackageJson: boolean;
