@@ -42,7 +42,6 @@
     "@graphql-mesh/plugin-snapshot": "0.0.10",
     "@graphql-mesh/runtime": "0.44.31",
     "@graphql-mesh/soap": "0.16.0",
-    "@graphql-mesh/utils": "0.42.6",
     "@graphql-typed-document-node/core": "^3.1.2",
     "@graphql-yoga/node": "2.13.13",
     "@microsoft/eslint-formatter-sarif": "^3.0.0",

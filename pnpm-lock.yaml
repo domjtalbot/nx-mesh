@@ -26,7 +26,6 @@ importers:
       '@graphql-mesh/plugin-snapshot': 0.0.10
       '@graphql-mesh/runtime': 0.44.31
       '@graphql-mesh/soap': 0.16.0
-      '@graphql-mesh/utils': 0.42.6
       '@graphql-typed-document-node/core': ^3.1.2
       '@graphql-yoga/node': 2.13.13
       '@microsoft/eslint-formatter-sarif': ^3.0.0
@@ -119,7 +118,6 @@ importers:
       '@graphql-mesh/plugin-snapshot': 0.0.10_rjjjs2nwgns3bcvnnqb5eu5nry
       '@graphql-mesh/runtime': 0.44.31_rjjjs2nwgns3bcvnnqb5eu5nry
       '@graphql-mesh/soap': 0.16.0_graphql@16.6.0
-      '@graphql-mesh/utils': 0.42.6_graphql@16.6.0
       '@graphql-typed-document-node/core': 3.1.2_graphql@16.6.0
       '@graphql-yoga/node': 2.13.13_rjjjs2nwgns3bcvnnqb5eu5nry
       '@microsoft/eslint-formatter-sarif': 3.0.0
