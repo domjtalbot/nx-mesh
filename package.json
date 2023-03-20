@@ -30,7 +30,7 @@
     "@graphql-codegen/cli": "3.2.2",
     "@graphql-codegen/client-preset": "2.1.1",
     "@graphql-mesh/cache-file": "0.9.47",
-    "@graphql-mesh/cli": "0.79.3",
+    "@graphql-mesh/cli": "0.82.27",
     "@graphql-mesh/graphql": "0.34.10",
     "@graphql-mesh/json-schema": "0.37.21",
     "@graphql-mesh/mysql": "0.19.17",

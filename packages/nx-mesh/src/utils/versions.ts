@@ -16,13 +16,13 @@ export const versions: MeshPackageVersions = {
     '@graphql-typed-document-node/core': '^3.1.2',
   },
   '@graphql-codegen/cli': {
-    '@graphql-codegen/cli': '^2.16.1',
+    '@graphql-codegen/cli': '^3.2.2',
   },
   '@graphql-codegen/client-preset': {
     '@graphql-codegen/client-preset': '^2.1.1',
   },
   '@graphql-mesh/cli': {
-    '@graphql-mesh/cli': '^3.2.2',
+    '@graphql-mesh/cli': '^0.82.27',
   },
   '@graphql-mesh/graphql': {
     '@graphql-mesh/graphql': '^0.34.10',
