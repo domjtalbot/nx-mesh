@@ -984,7 +984,7 @@ exports[`generators/base app directory --example should create a javascriptWiki 
   - name: Trippin
     handler:
       odata:
-        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        endpoint: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
         batch: multipart
         expandNavProps: true
 
@@ -1358,7 +1358,7 @@ exports[`generators/base app directory --example should create a trippin cjs con
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -1380,7 +1380,7 @@ exports[`generators/base app directory --example should create a trippin cjs con
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -1402,7 +1402,7 @@ exports[`generators/base app directory --example should create a trippin cjs con
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -1424,7 +1424,7 @@ exports[`generators/base app directory --example should create a trippin cjs con
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -1446,7 +1446,7 @@ exports[`generators/base app directory --example should create a trippin cjs con
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -1468,7 +1468,7 @@ exports[`generators/base app directory --example should create a trippin js conf
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -1490,7 +1490,7 @@ exports[`generators/base app directory --example should create a trippin js conf
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -1512,7 +1512,7 @@ exports[`generators/base app directory --example should create a trippin js conf
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -1534,7 +1534,7 @@ exports[`generators/base app directory --example should create a trippin js conf
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -1556,7 +1556,7 @@ exports[`generators/base app directory --example should create a trippin js conf
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -1578,7 +1578,7 @@ exports[`generators/base app directory --example should create a trippin json co
       \\"name\\": \\"Trippin\\",
       \\"handler\\": {
         \\"odata\\": {
-          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          endpoint: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
           batch: \\"multipart\\",
           expandNavProps: true
         }
@@ -1600,7 +1600,7 @@ exports[`generators/base app directory --example should create a trippin json co
       \\"name\\": \\"Trippin\\",
       \\"handler\\": {
         \\"odata\\": {
-          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          endpoint: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
           batch: \\"multipart\\",
           expandNavProps: true
         }
@@ -1622,7 +1622,7 @@ exports[`generators/base app directory --example should create a trippin json co
       \\"name\\": \\"Trippin\\",
       \\"handler\\": {
         \\"odata\\": {
-          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          endpoint: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
           batch: \\"multipart\\",
           expandNavProps: true
         }
@@ -1644,7 +1644,7 @@ exports[`generators/base app directory --example should create a trippin json co
       \\"name\\": \\"Trippin\\",
       \\"handler\\": {
         \\"odata\\": {
-          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          endpoint: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
           batch: \\"multipart\\",
           expandNavProps: true
         }
@@ -1666,7 +1666,7 @@ exports[`generators/base app directory --example should create a trippin json co
       \\"name\\": \\"Trippin\\",
       \\"handler\\": {
         \\"odata\\": {
-          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          endpoint: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
           batch: \\"multipart\\",
           expandNavProps: true
         }
@@ -1686,7 +1686,7 @@ exports[`generators/base app directory --example should create a trippin yml con
   - name: Trippin
     handler:
       odata:
-        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        endpoint: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
         batch: multipart
         expandNavProps: true
 
@@ -1703,7 +1703,7 @@ exports[`generators/base app directory --example should create a trippin yml con
   - name: Trippin
     handler:
       odata:
-        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        endpoint: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
         batch: multipart
         expandNavProps: true
 
@@ -1720,7 +1720,7 @@ exports[`generators/base app directory --example should create a trippin yml con
   - name: Trippin
     handler:
       odata:
-        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        endpoint: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
         batch: multipart
         expandNavProps: true
 
@@ -1737,7 +1737,7 @@ exports[`generators/base app directory --example should create a trippin yml con
   - name: Trippin
     handler:
       odata:
-        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        endpoint: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
         batch: multipart
         expandNavProps: true
 
@@ -1754,7 +1754,7 @@ exports[`generators/base app directory --example should create a trippin yml con
   - name: Trippin
     handler:
       odata:
-        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        endpoint: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
         batch: multipart
         expandNavProps: true
 
@@ -2049,7 +2049,7 @@ exports[`generators/base app directory --meshConfig should create a cjs config w
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -2152,7 +2152,7 @@ exports[`generators/base app directory --meshConfig should create a js config wh
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -2248,7 +2248,7 @@ exports[`generators/base app directory --meshConfig should create a json config 
       \\"name\\": \\"Trippin\\",
       \\"handler\\": {
         \\"odata\\": {
-          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          endpoint: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
           batch: \\"multipart\\",
           expandNavProps: true
         }
@@ -2322,7 +2322,7 @@ exports[`generators/base app directory --meshConfig should create a yml config b
   - name: Trippin
     handler:
       odata:
-        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        endpoint: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
         batch: multipart
         expandNavProps: true
 
@@ -2393,7 +2393,7 @@ exports[`generators/base app directory --meshConfig should create a yml config w
   - name: Trippin
     handler:
       odata:
-        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        endpoint: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
         batch: multipart
         expandNavProps: true
 
@@ -2507,46 +2507,41 @@ export default {
 
 exports[`generators/base app directory should add mesh dependencies to the workspace package.json 1`] = `
 Object {
-  "@graphql-mesh/cli": "0.79.3",
-  "@graphql-mesh/openapi": "0.33.34",
-  "@graphql-mesh/runtime": "0.44.31",
-  "@graphql-mesh/utils": "0.42.6",
+  "@graphql-mesh/cli": "^0.82.27",
+  "@graphql-mesh/openapi": "0.35.23",
+  "@graphql-mesh/runtime": "0.46.18",
 }
 `;
 
 exports[`generators/base app directory should add mesh dependencies to the workspace package.json 2`] = `
 Object {
-  "@graphql-mesh/cli": "0.79.3",
-  "@graphql-mesh/runtime": "0.44.31",
-  "@graphql-mesh/soap": "0.16.0",
-  "@graphql-mesh/utils": "0.42.6",
+  "@graphql-mesh/cli": "^0.82.27",
+  "@graphql-mesh/runtime": "0.46.18",
+  "@graphql-mesh/soap": "0.17.20",
 }
 `;
 
 exports[`generators/base app directory should add mesh dependencies to the workspace package.json 3`] = `
 Object {
-  "@graphql-mesh/cli": "0.79.3",
-  "@graphql-mesh/openapi": "0.33.34",
-  "@graphql-mesh/runtime": "0.44.31",
-  "@graphql-mesh/utils": "0.42.6",
+  "@graphql-mesh/cli": "^0.82.27",
+  "@graphql-mesh/openapi": "0.35.23",
+  "@graphql-mesh/runtime": "0.46.18",
 }
 `;
 
 exports[`generators/base app directory should add mesh dependencies to the workspace package.json 4`] = `
 Object {
-  "@graphql-mesh/cli": "0.79.3",
-  "@graphql-mesh/openapi": "0.33.34",
-  "@graphql-mesh/runtime": "0.44.31",
-  "@graphql-mesh/utils": "0.42.6",
+  "@graphql-mesh/cli": "^0.82.27",
+  "@graphql-mesh/openapi": "0.35.23",
+  "@graphql-mesh/runtime": "0.46.18",
 }
 `;
 
 exports[`generators/base app directory should add mesh dependencies to the workspace package.json 5`] = `
 Object {
-  "@graphql-mesh/cli": "0.79.3",
-  "@graphql-mesh/odata": "0.20.31",
-  "@graphql-mesh/runtime": "0.44.31",
-  "@graphql-mesh/utils": "0.42.6",
+  "@graphql-mesh/cli": "^0.82.27",
+  "@graphql-mesh/odata": "0.22.18",
+  "@graphql-mesh/runtime": "0.46.18",
 }
 `;
 
@@ -2826,7 +2821,7 @@ exports[`generators/base app with standalone config --example should create a tr
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -2848,7 +2843,7 @@ exports[`generators/base app with standalone config --example should create a tr
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -2870,7 +2865,7 @@ exports[`generators/base app with standalone config --example should create a tr
       \\"name\\": \\"Trippin\\",
       \\"handler\\": {
         \\"odata\\": {
-          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          endpoint: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
           batch: \\"multipart\\",
           expandNavProps: true
         }
@@ -2890,7 +2885,7 @@ exports[`generators/base app with standalone config --example should create a tr
   - name: Trippin
     handler:
       odata:
-        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        endpoint: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
         batch: multipart
         expandNavProps: true
 
@@ -3047,10 +3042,9 @@ export default {
 
 exports[`generators/base app with standalone config should add mesh dependencies to the workspace package.json 1`] = `
 Object {
-  "@graphql-mesh/cli": "0.79.3",
-  "@graphql-mesh/openapi": "0.33.34",
-  "@graphql-mesh/runtime": "0.44.31",
-  "@graphql-mesh/utils": "0.42.6",
+  "@graphql-mesh/cli": "^0.82.27",
+  "@graphql-mesh/openapi": "0.35.23",
+  "@graphql-mesh/runtime": "0.46.18",
 }
 `;
 
@@ -4032,7 +4026,7 @@ exports[`generators/base lib directory --example should create a javascriptWiki 
   - name: Trippin
     handler:
       odata:
-        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        endpoint: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
         batch: multipart
         expandNavProps: true
 
@@ -4501,7 +4495,7 @@ exports[`generators/base lib directory --example should create a trippin cjs con
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -4523,7 +4517,7 @@ exports[`generators/base lib directory --example should create a trippin cjs con
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -4545,7 +4539,7 @@ exports[`generators/base lib directory --example should create a trippin cjs con
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -4567,7 +4561,7 @@ exports[`generators/base lib directory --example should create a trippin cjs con
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -4589,7 +4583,7 @@ exports[`generators/base lib directory --example should create a trippin cjs con
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -4611,7 +4605,7 @@ exports[`generators/base lib directory --example should create a trippin js conf
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -4633,7 +4627,7 @@ exports[`generators/base lib directory --example should create a trippin js conf
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -4655,7 +4649,7 @@ exports[`generators/base lib directory --example should create a trippin js conf
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -4677,7 +4671,7 @@ exports[`generators/base lib directory --example should create a trippin js conf
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -4699,7 +4693,7 @@ exports[`generators/base lib directory --example should create a trippin js conf
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -4721,7 +4715,7 @@ exports[`generators/base lib directory --example should create a trippin json co
       \\"name\\": \\"Trippin\\",
       \\"handler\\": {
         \\"odata\\": {
-          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          endpoint: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
           batch: \\"multipart\\",
           expandNavProps: true
         }
@@ -4743,7 +4737,7 @@ exports[`generators/base lib directory --example should create a trippin json co
       \\"name\\": \\"Trippin\\",
       \\"handler\\": {
         \\"odata\\": {
-          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          endpoint: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
           batch: \\"multipart\\",
           expandNavProps: true
         }
@@ -4765,7 +4759,7 @@ exports[`generators/base lib directory --example should create a trippin json co
       \\"name\\": \\"Trippin\\",
       \\"handler\\": {
         \\"odata\\": {
-          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          endpoint: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
           batch: \\"multipart\\",
           expandNavProps: true
         }
@@ -4787,7 +4781,7 @@ exports[`generators/base lib directory --example should create a trippin json co
       \\"name\\": \\"Trippin\\",
       \\"handler\\": {
         \\"odata\\": {
-          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          endpoint: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
           batch: \\"multipart\\",
           expandNavProps: true
         }
@@ -4809,7 +4803,7 @@ exports[`generators/base lib directory --example should create a trippin json co
       \\"name\\": \\"Trippin\\",
       \\"handler\\": {
         \\"odata\\": {
-          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          endpoint: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
           batch: \\"multipart\\",
           expandNavProps: true
         }
@@ -4829,7 +4823,7 @@ exports[`generators/base lib directory --example should create a trippin yml con
   - name: Trippin
     handler:
       odata:
-        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        endpoint: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
         batch: multipart
         expandNavProps: true
 
@@ -4846,7 +4840,7 @@ exports[`generators/base lib directory --example should create a trippin yml con
   - name: Trippin
     handler:
       odata:
-        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        endpoint: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
         batch: multipart
         expandNavProps: true
 
@@ -4863,7 +4857,7 @@ exports[`generators/base lib directory --example should create a trippin yml con
   - name: Trippin
     handler:
       odata:
-        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        endpoint: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
         batch: multipart
         expandNavProps: true
 
@@ -4880,7 +4874,7 @@ exports[`generators/base lib directory --example should create a trippin yml con
   - name: Trippin
     handler:
       odata:
-        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        endpoint: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
         batch: multipart
         expandNavProps: true
 
@@ -4897,7 +4891,7 @@ exports[`generators/base lib directory --example should create a trippin yml con
   - name: Trippin
     handler:
       odata:
-        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        endpoint: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
         batch: multipart
         expandNavProps: true
 
@@ -5207,7 +5201,7 @@ exports[`generators/base lib directory --meshConfig should create a cjs config w
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -5325,7 +5319,7 @@ exports[`generators/base lib directory --meshConfig should create a js config wh
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -5439,7 +5433,7 @@ exports[`generators/base lib directory --meshConfig should create a json config 
       \\"name\\": \\"Trippin\\",
       \\"handler\\": {
         \\"odata\\": {
-          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          endpoint: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
           batch: \\"multipart\\",
           expandNavProps: true
         }
@@ -5522,7 +5516,7 @@ exports[`generators/base lib directory --meshConfig should create a yml config b
   - name: Trippin
     handler:
       odata:
-        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        endpoint: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
         batch: multipart
         expandNavProps: true
 
@@ -5602,7 +5596,7 @@ exports[`generators/base lib directory --meshConfig should create a yml config w
   - name: Trippin
     handler:
       odata:
-        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        endpoint: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
         batch: multipart
         expandNavProps: true
 
@@ -5716,46 +5710,41 @@ export default {
 
 exports[`generators/base lib directory should add mesh dependencies to the workspace package.json 1`] = `
 Object {
-  "@graphql-mesh/cli": "0.79.3",
-  "@graphql-mesh/openapi": "0.33.34",
-  "@graphql-mesh/runtime": "0.44.31",
-  "@graphql-mesh/utils": "0.42.6",
+  "@graphql-mesh/cli": "^0.82.27",
+  "@graphql-mesh/openapi": "0.35.23",
+  "@graphql-mesh/runtime": "0.46.18",
 }
 `;
 
 exports[`generators/base lib directory should add mesh dependencies to the workspace package.json 2`] = `
 Object {
-  "@graphql-mesh/cli": "0.79.3",
-  "@graphql-mesh/runtime": "0.44.31",
-  "@graphql-mesh/soap": "0.16.0",
-  "@graphql-mesh/utils": "0.42.6",
+  "@graphql-mesh/cli": "^0.82.27",
+  "@graphql-mesh/runtime": "0.46.18",
+  "@graphql-mesh/soap": "0.17.20",
 }
 `;
 
 exports[`generators/base lib directory should add mesh dependencies to the workspace package.json 3`] = `
 Object {
-  "@graphql-mesh/cli": "0.79.3",
-  "@graphql-mesh/openapi": "0.33.34",
-  "@graphql-mesh/runtime": "0.44.31",
-  "@graphql-mesh/utils": "0.42.6",
+  "@graphql-mesh/cli": "^0.82.27",
+  "@graphql-mesh/openapi": "0.35.23",
+  "@graphql-mesh/runtime": "0.46.18",
 }
 `;
 
 exports[`generators/base lib directory should add mesh dependencies to the workspace package.json 4`] = `
 Object {
-  "@graphql-mesh/cli": "0.79.3",
-  "@graphql-mesh/openapi": "0.33.34",
-  "@graphql-mesh/runtime": "0.44.31",
-  "@graphql-mesh/utils": "0.42.6",
+  "@graphql-mesh/cli": "^0.82.27",
+  "@graphql-mesh/openapi": "0.35.23",
+  "@graphql-mesh/runtime": "0.46.18",
 }
 `;
 
 exports[`generators/base lib directory should add mesh dependencies to the workspace package.json 5`] = `
 Object {
-  "@graphql-mesh/cli": "0.79.3",
-  "@graphql-mesh/odata": "0.20.31",
-  "@graphql-mesh/runtime": "0.44.31",
-  "@graphql-mesh/utils": "0.42.6",
+  "@graphql-mesh/cli": "^0.82.27",
+  "@graphql-mesh/odata": "0.22.18",
+  "@graphql-mesh/runtime": "0.46.18",
 }
 `;
 
@@ -6054,7 +6043,7 @@ exports[`generators/base lib with standalone config --example should create a tr
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -6076,7 +6065,7 @@ exports[`generators/base lib with standalone config --example should create a tr
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -6098,7 +6087,7 @@ exports[`generators/base lib with standalone config --example should create a tr
       \\"name\\": \\"Trippin\\",
       \\"handler\\": {
         \\"odata\\": {
-          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          endpoint: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
           batch: \\"multipart\\",
           expandNavProps: true
         }
@@ -6118,7 +6107,7 @@ exports[`generators/base lib with standalone config --example should create a tr
   - name: Trippin
     handler:
       odata:
-        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        endpoint: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
         batch: multipart
         expandNavProps: true
 
@@ -6297,10 +6286,9 @@ export default {
 
 exports[`generators/base lib with standalone config should add mesh dependencies to the workspace package.json 1`] = `
 Object {
-  "@graphql-mesh/cli": "0.79.3",
-  "@graphql-mesh/openapi": "0.33.34",
-  "@graphql-mesh/runtime": "0.44.31",
-  "@graphql-mesh/utils": "0.42.6",
+  "@graphql-mesh/cli": "^0.82.27",
+  "@graphql-mesh/openapi": "0.35.23",
+  "@graphql-mesh/runtime": "0.46.18",
 }
 `;
 
@@ -6580,7 +6568,7 @@ exports[`generators/base nested within app directory --example should create a t
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -6602,7 +6590,7 @@ exports[`generators/base nested within app directory --example should create a t
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -6624,7 +6612,7 @@ exports[`generators/base nested within app directory --example should create a t
       \\"name\\": \\"Trippin\\",
       \\"handler\\": {
         \\"odata\\": {
-          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          endpoint: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
           batch: \\"multipart\\",
           expandNavProps: true
         }
@@ -6644,7 +6632,7 @@ exports[`generators/base nested within app directory --example should create a t
   - name: Trippin
     handler:
       odata:
-        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        endpoint: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
         batch: multipart
         expandNavProps: true
 
@@ -6801,10 +6789,9 @@ export default {
 
 exports[`generators/base nested within app directory should add mesh dependencies to the workspace package.json 1`] = `
 Object {
-  "@graphql-mesh/cli": "0.79.3",
-  "@graphql-mesh/openapi": "0.33.34",
-  "@graphql-mesh/runtime": "0.44.31",
-  "@graphql-mesh/utils": "0.42.6",
+  "@graphql-mesh/cli": "^0.82.27",
+  "@graphql-mesh/openapi": "0.35.23",
+  "@graphql-mesh/runtime": "0.46.18",
 }
 `;
 
@@ -7103,7 +7090,7 @@ exports[`generators/base nested within lib directory --example should create a t
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -7125,7 +7112,7 @@ exports[`generators/base nested within lib directory --example should create a t
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -7147,7 +7134,7 @@ exports[`generators/base nested within lib directory --example should create a t
       \\"name\\": \\"Trippin\\",
       \\"handler\\": {
         \\"odata\\": {
-          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          endpoint: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
           batch: \\"multipart\\",
           expandNavProps: true
         }
@@ -7167,7 +7154,7 @@ exports[`generators/base nested within lib directory --example should create a t
   - name: Trippin
     handler:
       odata:
-        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        endpoint: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
         batch: multipart
         expandNavProps: true
 
@@ -7346,9 +7333,8 @@ export default {
 
 exports[`generators/base nested within lib directory should add mesh dependencies to the workspace package.json 1`] = `
 Object {
-  "@graphql-mesh/cli": "0.79.3",
-  "@graphql-mesh/openapi": "0.33.34",
-  "@graphql-mesh/runtime": "0.44.31",
-  "@graphql-mesh/utils": "0.42.6",
+  "@graphql-mesh/cli": "^0.82.27",
+  "@graphql-mesh/openapi": "0.35.23",
+  "@graphql-mesh/runtime": "0.46.18",
 }
 `;

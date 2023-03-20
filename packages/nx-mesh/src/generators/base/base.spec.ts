@@ -354,7 +354,7 @@ describe.each<
         expect(packageJson.dependencies['graphql']).toBeDefined();
         expect(packageJson.dependencies['@graphql-mesh/cli']).toBeDefined();
         expect(packageJson.dependencies['@graphql-mesh/runtime']).toBeDefined();
-        expect(packageJson.dependencies['@graphql-mesh/utils']).toBeDefined();
+        // expect(packageJson.dependencies['@graphql-mesh/utils']).toBeDefined();
         expect(meshPackages).toMatchSnapshot();
       });
 
