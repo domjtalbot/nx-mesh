@@ -85,6 +85,8 @@ jobs:
     secrets: inherit
     with:
       release: true
+      snapshot: true
+      snapshot_tag: next
 
   deploy:
     needs: [lint, build, test, e2e, generators, changesets]
