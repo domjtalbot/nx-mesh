@@ -9,7 +9,7 @@
 // Inline variables
 const name = 'FakeAPI';
 const handler = 'jsonSchema'
-const baseUrl = 'https://not-existing-api.com/API';
+const endpoint = 'https://not-existing-api.com/API';
 const browser = false;
 const fileRoot = './src/';
 const documents = `${fileRoot}graphql/**/*.*.graphql`;
@@ -21,7 +21,7 @@ module.exports = {
       name: "<%= name %>",
       handler: {
         <%= handler %>: {
-          baseUrl: "<%= baseUrl %>",
+          endpoint: "<%= endpoint %>",
           operations: [
             {
               field: "me",
@@ -123,7 +123,7 @@ module.exports = {
       "name": "<%= name %>",
       "handler": {
         "<%= handler %>": {
-          "baseUrl": "<%= baseUrl %>",
+          "endpoint": "<%= endpoint %>",
           "operations": [
             {
               "field": "me",
@@ -221,7 +221,7 @@ sources:
   - name: <%= name %>
     handler:
       <%= handler %>:
-        baseUrl: <%= baseUrl %>
+        endpoint: <%= endpoint %>
         operations:
           - field: me
             method: GET

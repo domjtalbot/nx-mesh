@@ -11,7 +11,7 @@ const name = 'Trippin';
 const handler = 'odata';
 const batch = 'multipart';
 const expandNavProps = true;
-const baseUrl = 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/';
+const endpoint = 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/';
 const browser = false;
 const fileRoot = './src/';
 const documents = `${fileRoot}graphql/**/*.*.graphql`;
@@ -23,7 +23,7 @@ module.exports = {
       name: '<%= name %>',
       handler: {
         <%= handler %>: {
-          baseUrl: '<%= baseUrl %>',
+          endpoint: '<%= endpoint %>',
           batch: '<%= batch %>',
           expandNavProps: <%= expandNavProps %>,
         },
@@ -42,7 +42,7 @@ module.exports = {
       "name": "<%= name %>",
       "handler": {
         "<%= handler %>": {
-          baseUrl: "<%= baseUrl %>",
+          endpoint: "<%= endpoint %>",
           batch: "<%= batch %>",
           expandNavProps: <%= expandNavProps %>
         }
@@ -59,7 +59,7 @@ sources:
   - name: <%= name %>
     handler:
       <%= handler %>:
-        baseUrl: <%= baseUrl %>
+        endpoint: <%= endpoint %>
         batch: <%= batch %>
         expandNavProps: <%= expandNavProps %>
 

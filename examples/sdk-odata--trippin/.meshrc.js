@@ -4,7 +4,7 @@ module.exports = {
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl:
+          endpoint:
             'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,

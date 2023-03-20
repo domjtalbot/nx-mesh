@@ -201,7 +201,7 @@ exports[`createSharedFiles meshConfig - fake-api should create a cjs mesh config
       name: \\"FakeAPI\\",
       handler: {
         jsonSchema: {
-          baseUrl: \\"https://not-existing-api.com/API\\",
+          endpoint: \\"https://not-existing-api.com/API\\",
           operations: [
             {
               field: \\"me\\",
@@ -306,7 +306,7 @@ exports[`createSharedFiles meshConfig - fake-api should create a js mesh config 
       name: \\"FakeAPI\\",
       handler: {
         jsonSchema: {
-          baseUrl: \\"https://not-existing-api.com/API\\",
+          endpoint: \\"https://not-existing-api.com/API\\",
           operations: [
             {
               field: \\"me\\",
@@ -411,7 +411,7 @@ exports[`createSharedFiles meshConfig - fake-api should create a json mesh confi
       \\"name\\": \\"FakeAPI\\",
       \\"handler\\": {
         \\"jsonSchema\\": {
-          \\"baseUrl\\": \\"https://not-existing-api.com/API\\",
+          \\"endpoint\\": \\"https://not-existing-api.com/API\\",
           \\"operations\\": [
             {
               \\"field\\": \\"me\\",
@@ -512,7 +512,7 @@ exports[`createSharedFiles meshConfig - fake-api should create a yml mesh config
   - name: FakeAPI
     handler:
       jsonSchema:
-        baseUrl: https://not-existing-api.com/API
+        endpoint: https://not-existing-api.com/API
         operations:
           - field: me
             method: GET
@@ -990,7 +990,7 @@ exports[`createSharedFiles meshConfig - trippin should create a cjs mesh config 
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -1012,7 +1012,7 @@ exports[`createSharedFiles meshConfig - trippin should create a js mesh config 1
       name: 'Trippin',
       handler: {
         odata: {
-          baseUrl: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
+          endpoint: 'https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/',
           batch: 'multipart',
           expandNavProps: true,
         },
@@ -1034,7 +1034,7 @@ exports[`createSharedFiles meshConfig - trippin should create a json mesh config
       \\"name\\": \\"Trippin\\",
       \\"handler\\": {
         \\"odata\\": {
-          baseUrl: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
+          endpoint: \\"https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/\\",
           batch: \\"multipart\\",
           expandNavProps: true
         }
@@ -1054,7 +1054,7 @@ exports[`createSharedFiles meshConfig - trippin should create a yml mesh config 
   - name: Trippin
     handler:
       odata:
-        baseUrl: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
+        endpoint: https://services.odata.org/TripPinRESTierService/(S({env.NX__TRIPPIN__API_KEY}))/
         batch: multipart
         expandNavProps: true
 

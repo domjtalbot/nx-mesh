@@ -8,7 +8,7 @@
   "generators": "./generators.json",
   "executors": "./executors.json",
   "peerDependencies": {
-    "@graphql-mesh/cli": ">=0.71.0",
+    "@graphql-mesh/cli": ">=2.16.1",
     "@swc-node/register": "^1.5.1",
     "graphql": "^16.6.0",
     "@swc/core": "^0.1.55",
