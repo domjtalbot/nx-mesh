@@ -10,6 +10,7 @@
 .next
 .nuxt
 .sarif
+.swc
 .vercel
 .vuepress/dist
 dist
