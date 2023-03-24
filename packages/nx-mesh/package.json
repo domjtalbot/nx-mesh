@@ -63,5 +63,8 @@
   },
   "nx-migrations": {
     "migrations": "./migrations.json"
+  },
+  "exports": {
+    "./package.json": "./package.json"
   }
 }
