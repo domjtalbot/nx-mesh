@@ -203,14 +203,14 @@ runs:
       if: inputs.skip_node_cache == 'false'
       shell: bash
       run: |
-        echo "key=cache-version-8--os-${{ runner.os }}--volta-${{ steps.volta.outputs.version }}--node-${{ steps.node.outputs.version }}--pnpm-${{ steps.pnpm.outputs.version }}" >> $GITHUB_OUTPUT
+        echo "key=os-${{ runner.os }}--node-${{ steps.node.outputs.version }}--pnpm-${{ steps.pnpm.outputs.version }}" >> $GITHUB_OUTPUT
 
     - name: Create cache key
       id: cache_key
       if: inputs.skip_node_cache == 'false'
       shell: bash
       run: |
-        echo "key=${{ steps.restore_cache_key.outputs.key }}--lockfile-${{ hashFiles('*/pnpm-lock.yaml') }}" >> $GITHUB_OUTPUT
+        echo "key=${{ steps.restore_cache_key.outputs.key }}--package-${{ hashFiles('*/package.json') }}--lockfile-${{ hashFiles('*/pnpm-lock.yaml') }}" >> $GITHUB_OUTPUT
 
     - name: Nx Shas
       id: nx_shas
