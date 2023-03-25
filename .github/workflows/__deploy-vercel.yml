@@ -41,13 +41,13 @@ jobs:
       url: ${{ steps.vercel.outputs.PREVIEW_URL }}
     steps:
       - name: Check out repository
-        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
       - name: Deploy to Vercel
         id: vercel
-        uses: BetaHuhn/deploy-to-vercel-action@8aec30fa2a289649346e38660b9eb1f011bb4a65 # v1
+        uses: BetaHuhn/deploy-to-vercel-action@v1
         with:
           GITHUB_DEPLOYMENT_ENV: ${{ inputs.name }}
           GITHUB_DEPLOYMENT: true

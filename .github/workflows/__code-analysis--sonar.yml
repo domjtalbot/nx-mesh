@@ -29,7 +29,7 @@ jobs:
       - name: Setup Job
         uses: ./.github/actions/setup-job
         with:
-          node_version: lts
+          node_version: 'lts/*'
 
       - name: Lint Reports
         shell: bash

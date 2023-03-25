@@ -19,7 +19,7 @@ jobs:
     secrets: inherit
     with:
       affected: true
-      node_version: lts
+      node_version: 'lts/*'
       save_cache: true
 
   build:

@@ -11,11 +11,9 @@ on:
         type: boolean
       node_version:
         description: >
-          Optionally define the version of Node to install via Volta.
-
-          Pass `config` (default value) to use the Volta config.
+          Optionally define the version of Node to install.
         required: false
-        default: 'config'
+        default: 'lts/*'
         type: string
       save_cache:
         description: >

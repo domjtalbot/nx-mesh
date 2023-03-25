@@ -13,11 +13,9 @@ inputs:
     default: '1'
   node_version:
     description: >
-      Optionally define the version of Node to install via Volta.
-
-      Pass `config` (default value) to use the Volta config.
+      Optionally define the version of Node to install.
     required: false
-    default: 'config'
+    default: 'lts/*'
   skip_node_cache:
     description: >
       Should node_modules cahce be skipped?
@@ -60,9 +58,6 @@ outputs:
     description: >
       The restore cache key used to suffix node restore cache keys
     value: ${{ steps.restore_cache_key.outputs.key }}
-  volta_version:
-    description: The installed volta version.
-    value: ${{ steps.volta.outputs.version }}
   apps:
     description: 'All apps'
     value: ${{ steps.affected.outputs.apps }}
@@ -145,15 +140,10 @@ outputs:
 runs:
   using: 'composite'
   steps:
-    # Volta
+    # node
 
-    - name: Setup Volta
-      if: inputs.node_version == 'config'
-      uses: volta-cli/action@v4
-
-    - name: Setup Volta
-      if: inputs.node_version != 'config'
-      uses: volta-cli/action@v4
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ inputs.node_version }}
 
@@ -171,13 +161,6 @@ runs:
       shell: bash
       run: |
         echo "path=$(pwd)" >> $GITHUB_OUTPUT
-
-    - name: Volta version
-      id: volta
-      shell: bash
-      run: |
-        echo "node_version=$(node --version)" >> $GITHUB_OUTPUT
-        echo "version=$(volta --version)" >> $GITHUB_OUTPUT
 
     - name: Node version
       id: node
@@ -203,14 +186,14 @@ runs:
       if: inputs.skip_node_cache == 'false'
       shell: bash
       run: |
-        echo "key=cache-version-8--os-${{ runner.os }}--volta-${{ steps.volta.outputs.version }}--node-${{ steps.node.outputs.version }}--pnpm-${{ steps.pnpm.outputs.version }}" >> $GITHUB_OUTPUT
+        echo "key=os-${{ runner.os }}--node-${{ steps.node.outputs.version }}--pnpm-${{ steps.pnpm.outputs.version }}" >> $GITHUB_OUTPUT
 
     - name: Create cache key
       id: cache_key
       if: inputs.skip_node_cache == 'false'
       shell: bash
       run: |
-        echo "key=${{ steps.restore_cache_key.outputs.key }}--lockfile-${{ hashFiles('*/pnpm-lock.yaml') }}" >> $GITHUB_OUTPUT
+        echo "key=${{ steps.restore_cache_key.outputs.key }}--package-${{ hashFiles('*/package.json') }}--lockfile-${{ hashFiles('*/pnpm-lock.yaml') }}" >> $GITHUB_OUTPUT
 
     - name: Nx Shas
       id: nx_shas
