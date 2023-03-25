@@ -64,7 +64,7 @@ jobs:
       - name: Setup Job
         uses: ./.github/actions/setup-job
         with:
-          node_version: lts
+          node_version: 'lts/*'
 
       - name: Affected Production Build
         if: inputs.affected == true

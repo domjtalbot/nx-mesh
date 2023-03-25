@@ -45,7 +45,7 @@ jobs:
         id: setup
         uses: ./.github/actions/setup-job
         with:
-          node_version: lts
+          node_version: 'lts/*'
 
       - name: Nx-mesh Lint CodeQL
         run: |
