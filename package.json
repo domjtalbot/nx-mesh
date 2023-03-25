@@ -16,7 +16,7 @@
     "pnpm": ">=7"
   },
   "volta": {
-    "node": "16.16.0"
+    "node": "18.15.0"
   },
   "private": true,
   "dependencies": {
