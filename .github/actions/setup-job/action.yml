@@ -15,7 +15,7 @@ inputs:
     description: >
       Optionally define the version of Node to install.
     required: false
-    default: lts
+    default: 'lts/*'
   skip_node_cache:
     description: >
       Should node_modules cahce be skipped?
