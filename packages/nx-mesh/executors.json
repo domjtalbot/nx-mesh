@@ -8,37 +8,37 @@
       "hasher": "./src/executors/validate/hasher"
     },
     "build": {
-      "implementation": "./src/executors/build/build.impl",
+      "implementation": "./src/executors/build/build",
       "schema": "./src/executors/build/schema.json",
       "description": "Builds artifacts",
       "hasher": "./src/executors/build/hasher"
     },
     "build-gateway": {
-      "implementation": "./src/executors/build-gateway/build-gateway.impl",
+      "implementation": "./src/executors/build-gateway/build-gateway",
       "schema": "./src/executors/build-gateway/schema.json",
       "description": "Builds artifacts to be used as an API Gateway",
       "hasher": "./src/executors/build-gateway/hasher"
     },
     "build-swc": {
-      "implementation": "./src/executors/build-swc/build-swc.impl",
+      "implementation": "./src/executors/build-swc/build-swc",
       "schema": "./src/executors/build-swc/schema.json",
       "description": "Builds artifacts using SWC.",
       "hasher": "./src/executors/build-swc/hasher"
     },
     "serve": {
-      "implementation": "./src/executors/serve/serve.impl",
+      "implementation": "./src/executors/serve/serve",
       "schema": "./src/executors/serve/schema.json",
       "description": "Serves a GraphQL server.",
       "hasher": "./src/executors/serve/hasher"
     },
     "start": {
-      "implementation": "./src/executors/start/start.impl",
+      "implementation": "./src/executors/start/start",
       "schema": "./src/executors/start/schema.json",
       "description": "Serves a GraphQL server with GraphQL interface based on your generated artifacts",
       "hasher": "./src/executors/start/hasher"
     },
     "validate": {
-      "implementation": "./src/executors/validate/validate.impl",
+      "implementation": "./src/executors/validate/validate",
       "schema": "./src/executors/validate/schema.json",
       "description": "Validates artifacts"
     }

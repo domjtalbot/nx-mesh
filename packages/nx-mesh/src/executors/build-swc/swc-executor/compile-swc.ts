@@ -5,7 +5,7 @@
 // @ts-nocheck
 
 import { cacheDir, ExecutorContext, logger } from '@nrwl/devkit';
-import { exec, execSync } from 'child_process';
+import { exec, execSync } from 'node:child_process';
 import { removeSync } from 'fs-extra';
 import { createAsyncIterable } from '@nrwl/devkit/src/utils/async-iterable';
 import {

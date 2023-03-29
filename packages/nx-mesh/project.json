@@ -5,6 +5,13 @@
   "projectType": "library",
   "targets": {
     "build": {
+      "executor": "@nrwl/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/nx-mesh"
+      }
+    },
+    "build-swc": {
       "executor": "@nrwl/js:swc",
       "outputs": ["{options.outputPath}"],
       "options": {

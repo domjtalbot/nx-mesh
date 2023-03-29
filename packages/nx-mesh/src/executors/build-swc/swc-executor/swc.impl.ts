@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 // Modifed version of Nx SWC executor
-// https://github.com/nrwl/nx/blob/master/packages/js/src/executors/swc/swc.impl.ts
+// https://github.com/nrwl/nx/blob/master/packages/js/src/executors/swc/swc.ts
 // @ts-nocheck
 import { ExecutorContext } from '@nrwl/devkit';
 import {
@@ -9,7 +9,7 @@ import {
   FileInputOutput,
 } from '@nrwl/workspace/src/utilities/assets';
 import { removeSync } from 'fs-extra';
-import { dirname, join, relative, resolve } from 'path';
+import { dirname, join, relative, resolve } from 'node:path';
 import { copyAssets } from '@nrwl/js/src/utils/assets';
 import { checkDependencies } from '@nrwl/js/src/utils/check-dependencies';
 import {

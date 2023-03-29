@@ -3,7 +3,7 @@ import type { ExecutorContext } from '@nrwl/devkit';
 import { logger } from '@nrwl/devkit';
 import { directoryExists } from '@nrwl/workspace/src/utilities/fileutils';
 import { copySync, mkdir } from 'fs-extra';
-import { join, resolve } from 'path';
+import { join, resolve } from 'node:path';
 
 import { createPackageJson } from '../../utils';
 import { runMeshCli } from '../../utils/mesh-cli';

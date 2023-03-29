@@ -1,7 +1,7 @@
 import type { ExecutorContext } from '@nrwl/devkit';
 
 import { logger } from '@nrwl/devkit';
-import { join, resolve } from 'path';
+import { join, resolve } from 'node:path';
 
 import { createPackageJson, watcher } from '../../utils';
 import { runCodegenCli } from '../../utils/graphql-codegen-cli';

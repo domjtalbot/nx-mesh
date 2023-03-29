@@ -3,7 +3,7 @@ import type { Tree } from '@nrwl/devkit';
 import type { NormalizedOptions } from './normalize-options';
 
 import { generateFiles } from '@nrwl/devkit';
-import * as path from 'path';
+import * as path from 'node:path';
 
 export function createFiles(tree: Tree, options: NormalizedOptions) {
   if (options.isApp) {
@@ -11,7 +11,7 @@ export function createFiles(tree: Tree, options: NormalizedOptions) {
       tree,
       path.join(__dirname, '../files/app'),
       options.projectDirectory,
-      options
+      { ...options, tmpl: '' }
     );
   }
 

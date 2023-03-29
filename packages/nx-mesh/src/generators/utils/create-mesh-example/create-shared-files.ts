@@ -2,7 +2,7 @@ import type { Tree } from '@nrwl/devkit';
 import type { CreateMeshExampleOptions } from './types';
 
 import { generateFiles } from '@nrwl/devkit';
-import * as path from 'path';
+import * as path from 'node:path';
 
 export function createSharedFiles(
   tree: Tree,
