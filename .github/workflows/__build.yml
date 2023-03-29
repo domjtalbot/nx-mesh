@@ -85,7 +85,7 @@ jobs:
             --configuration=production
 
       - name: Create build artifact tar
-        if: inputs.node_version == 'lts'
+        if: inputs.node_version == 'lts/*'
         shell: bash
         run: |
           cd dist/packages
@@ -94,7 +94,7 @@ jobs:
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v3
-        if: inputs.node_version == 'lts'
+        if: inputs.node_version == 'lts/*'
         with:
           name: nx-mesh
           retention-days: 2
