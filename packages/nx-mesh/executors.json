@@ -2,10 +2,10 @@
   "$schema": "http://json-schema.org/schema",
   "executors": {
     "dev": {
-      "implementation": "./src/executors/dev/executor",
+      "implementation": "./src/executors/dev/dev",
       "schema": "./src/executors/dev/schema.json",
       "description": "Serves a GraphQL server with GraphQL interface by building artifacts on the fly",
-      "hasher": "./src/executors/validate/hasher"
+      "hasher": "./src/executors/dev/hasher"
     },
     "build": {
       "implementation": "./src/executors/build/build",

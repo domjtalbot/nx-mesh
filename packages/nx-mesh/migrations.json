@@ -4,7 +4,7 @@
       "version": "4.0.0",
       "description": "Rename .lib.swcrc to .swcrc for better SWC support throughout the workspace",
       "cli": "nx",
-      "implementation": "./src/migrations/4.0.0/rename-swcrc-config/rename-swcrc-config"
+      "implementation": "./src/migrations/4.0.0/rename-swcrc-config"
     }
   }
 }

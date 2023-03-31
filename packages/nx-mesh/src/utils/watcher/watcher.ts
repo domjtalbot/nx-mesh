@@ -1,7 +1,7 @@
 import type { WatcherOptions } from 'watchpack';
 
 import { logger } from '@nrwl/devkit';
-import Watchpack = require('watchpack');
+import Watchpack from 'watchpack';
 
 export type WatchFunc<T = unknown> = () => Promise<T>;
 
