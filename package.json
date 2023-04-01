@@ -37,20 +37,17 @@
     "@graphql-mesh/soap": "0.17.20",
     "@graphql-typed-document-node/core": "3.1.2",
     "@nrwl/devkit": "15.7.1",
-    "@nrwl/esbuild": "15.7.1",
     "@nrwl/next": "15.7.1",
     "@swc/helpers": "0.4.14",
     "fs-extra": "10.1.0",
     "get-port": "5.1.1",
     "graphql": "16.6.0",
-    "jest_workaround": "^0.69.0",
     "next": "13.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-is": "18.2.0",
     "styled-components": "5.3.6",
     "tslib": "2.5.0",
-    "vite-plugin-static-copy": "^0.13.1",
     "watchpack": "2.4.0"
   },
   "devDependencies": {
@@ -60,6 +57,7 @@
     "@commitlint/config-angular": "17.4.4",
     "@microsoft/eslint-formatter-sarif": "3.0.0",
     "@nrwl/cypress": "15.7.1",
+    "@nrwl/esbuild": "15.7.1",
     "@nrwl/eslint-plugin-nx": "15.7.1",
     "@nrwl/jest": "15.7.1",
     "@nrwl/js": "15.7.1",
@@ -68,7 +66,6 @@
     "@nrwl/nx-cloud": "15.2.1",
     "@nrwl/nx-plugin": "15.7.1",
     "@nrwl/react": "15.7.1",
-    "@nrwl/vite": "15.7.1",
     "@nrwl/workspace": "15.7.1",
     "@swc-node/register": "1.6.2",
     "@swc/cli": "0.1.62",
@@ -85,7 +82,6 @@
     "@types/watchpack": "2.4.0",
     "@typescript-eslint/eslint-plugin": "5.56.0",
     "@typescript-eslint/parser": "5.56.0",
-    "@vitest/ui": "^0.25.8",
     "babel-jest": "28.1.1",
     "babel-plugin-styled-components": "1.10.7",
     "cypress": "^12.2.0",
@@ -110,12 +106,7 @@
     "ts-jest": "28.0.5",
     "ts-node": "10.9.1",
     "type-fest": "3.6.1",
-    "typescript": "4.8.4",
-    "vite": "^4.0.1",
-    "vite-plugin-dts": "~1.7.1",
-    "vite-plugin-eslint": "^1.8.1",
-    "vite-tsconfig-paths": "^4.0.2",
-    "vitest": "^0.25.8"
+    "typescript": "4.8.4"
   },
   "pnpm": {
     "overrides": {
