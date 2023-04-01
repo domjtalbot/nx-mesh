@@ -19,8 +19,11 @@
         "main": "packages/nx-mesh/src/index.ts",
         "tsConfig": "packages/nx-mesh/tsconfig.lib.json",
         "deleteOutputPath": false,
-        "format": ["esm", "cjs"],
+        "format": ["cjs"],
         "minify": true,
+        "esbuildOptions": {
+          "outExtension": { ".js": ".js" }
+        },
         "sourcemap": true,
         "additionalEntryPoints": [
           "packages/nx-mesh/src/executors/build-gateway/build-gateway.ts",
@@ -98,6 +101,7 @@
       ],
       "options": {
         "outputPath": "dist/packages/nx-mesh",
+        "swcrc": "packages/nx-mesh/.swcrc",
         "main": "packages/nx-mesh/src/generators/index.ts",
         "tsConfig": "packages/nx-mesh/tsconfig.lib.json"
       }

@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { readFileSync } from 'fs';
 
-const swcrc = JSON.parse(readFileSync(`${__dirname}/.lib.swcrc`, 'utf-8'));
+const swcrc = JSON.parse(readFileSync(`${__dirname}/.swcrc`, 'utf-8'));
 
 // Reading the SWC compilation config and remove the "exclude"
 // for the test files to be compiled by SWC
