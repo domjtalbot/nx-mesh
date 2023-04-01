@@ -5,44 +5,104 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/js:swc",
-      "outputs": ["{options.outputPath}"],
+      "executor": "nx:run-commands",
       "options": {
-        "outputPath": "dist/packages/nx-mesh",
+        "command": "rm -rf dist/packages/nx-mesh/node_modules dist/packages/nx-mesh/src/package.json"
+      },
+      "dependsOn": ["build-bundle"]
+    },
+    "build-bundle": {
+      "executor": "@nrwl/esbuild:esbuild",
+      "outputs": ["dist/packages/nx-mesh"],
+      "options": {
+        "outputPath": "dist/packages/nx-mesh/src",
         "main": "packages/nx-mesh/src/index.ts",
         "tsConfig": "packages/nx-mesh/tsconfig.lib.json",
-        "updateBuildableProjectDepsInPackageJson": false,
+        "deleteOutputPath": false,
+        "format": ["cjs"],
+        "minify": true,
+        "esbuildOptions": {
+          "outExtension": { ".js": ".js" }
+        },
+        "sourcemap": true,
+        "additionalEntryPoints": [
+          "packages/nx-mesh/src/executors/build-gateway/build-gateway.ts",
+          "packages/nx-mesh/src/executors/build-gateway/hasher.ts",
+          "packages/nx-mesh/src/executors/build-swc/build-swc.ts",
+          "packages/nx-mesh/src/executors/build-swc/hasher.ts",
+          "packages/nx-mesh/src/executors/build/build.ts",
+          "packages/nx-mesh/src/executors/build/hasher.ts",
+          "packages/nx-mesh/src/executors/dev/dev.ts",
+          "packages/nx-mesh/src/executors/dev/hasher.ts",
+          "packages/nx-mesh/src/executors/serve/serve.ts",
+          "packages/nx-mesh/src/executors/serve/hasher.ts",
+          "packages/nx-mesh/src/executors/start/start.ts",
+          "packages/nx-mesh/src/executors/start/hasher.ts",
+          "packages/nx-mesh/src/executors/validate/validate.ts",
+          "packages/nx-mesh/src/executors/validate/hasher.ts",
+          "packages/nx-mesh/src/migrations/4.0.0/rename-swcrc-config"
+        ],
+        "external": [
+          "@graphql-mesh/cli",
+          "@nrwl/cypress",
+          "@nrwl/devkit",
+          "@nrwl/js",
+          "@nrwl/linter",
+          "@nrwl/node",
+          "@nrwl/workspace",
+          "@swc-node/register",
+          "@swc/core",
+          "@swc/helpers",
+          "graphql",
+          "nx"
+        ],
         "assets": [
-          "README.md",
-          "CHANGELOG.md",
-          "LICENSE",
-          "packages/nx-mesh/*.md",
+          {
+            "input": ".",
+            "glob": "(README.md|CHANGELOG.md|LICENSE)",
+            "output": "../"
+          },
+          {
+            "input": "packages/nx-mesh",
+            "glob": "*.md",
+            "output": "../"
+          },
           {
             "input": "./packages/nx-mesh/src",
-            "glob": "**/!(*.ts)",
-            "output": "./src"
+            "glob": "**/!(*.ts|*.snap)",
+            "output": "."
           },
           {
             "input": "./packages/nx-mesh/src",
             "glob": "**/*.d.ts",
-            "output": "./src"
-          },
-          {
-            "input": "./packages/nx-mesh",
-            "glob": "generators.json",
             "output": "."
           },
           {
             "input": "./packages/nx-mesh",
-            "glob": "executors.json",
-            "output": "."
-          },
-          {
-            "input": "./packages/nx-mesh",
-            "glob": "migrations.json",
-            "output": "."
+            "glob": "(generators|executors|migrations|package).json",
+            "output": "../"
           }
         ]
+      },
+      "dependsOn": ["build-non-bundle-cleanup"]
+    },
+    "build-non-bundle-cleanup": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "rm -rf dist/packages/nx-mesh/node_modules dist/packages/nx-mesh/src/executors dist/packages/nx-mesh/src/migrations dist/packages/nx-mesh/src/index.js dist/packages/nx-mesh/src/index.cjs"
+      },
+      "dependsOn": ["build-non-bundle"]
+    },
+    "build-non-bundle": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": [
+        "dist/packages/nx-mesh/generators",
+        "dist/packages/nx-mesh/utils"
+      ],
+      "options": {
+        "outputPath": "dist/packages/nx-mesh",
+        "main": "packages/nx-mesh/src/generators/index.ts",
+        "tsConfig": "packages/nx-mesh/tsconfig.lib.json"
       }
     },
     "lint": {

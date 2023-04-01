@@ -12,7 +12,7 @@ import { getCliEnv } from './env';
 export type Command = 'build' | 'dev' | 'serve-source' | 'start' | 'validate';
 
 /**
- * Command Options that can be passed to a child_process.
+ * Command Options that can be passed to a node:child_process.
  */
 export type CommandOptions<
   TArgs extends Arguments = Arguments,

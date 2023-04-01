@@ -5,7 +5,7 @@ import {
   readCachedProjectGraph,
   writeJsonFile,
 } from '@nrwl/devkit';
-import { join } from 'path';
+import { join } from 'node:path';
 
 import { meshPackages } from './mesh-packages';
 import { getMeshPackages } from './get-mesh-packages';

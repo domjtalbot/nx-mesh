@@ -4,7 +4,7 @@ import type { SetOptional } from 'type-fest';
 import type { CreateMeshExampleOptions } from './types';
 
 import { generateFiles } from '@nrwl/devkit';
-import * as path from 'path';
+import * as path from 'node:path';
 
 export function createCodegenFiles(
   tree: Tree,

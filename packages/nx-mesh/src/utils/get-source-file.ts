@@ -1,5 +1,5 @@
-import { readFile } from 'fs/promises';
-import { resolve, join } from 'path';
+import { readFile } from 'node:fs/promises';
+import { resolve, join } from 'node:path';
 
 export type GetSourceFileProps = {
   dir: string;

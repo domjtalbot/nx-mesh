@@ -2,7 +2,7 @@ import type { ExecutorContext } from '@nrwl/devkit';
 
 import { logger } from '@nrwl/devkit';
 import { tscExecutor } from '@nrwl/js/src/executors/tsc/tsc.impl';
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 
 import { createPackageJson, watcher } from '../../utils';
 import { runCodegenCli } from '../../utils/graphql-codegen-cli';

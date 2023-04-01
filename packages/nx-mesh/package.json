@@ -21,12 +21,7 @@
     "@nrwl/workspace": "^15.7.1",
     "@swc-node/register": "^1.6.2",
     "@swc/core": "^1.3.42",
-    "@swc/helpers": "^0.4.14",
-    "fs-extra": "^10.1.0",
-    "get-port": "5.1.1",
-    "tslib": "^2.5.0",
-    "type-fest": "^2.18.0",
-    "watchpack": "^2.4.0"
+    "@swc/helpers": "^0.4.14"
   },
   "keywords": [
     "Monorepo",
@@ -36,7 +31,10 @@
     "CLI",
     "GraphQL",
     "GraphQL-Mesh",
-    "Mesh"
+    "Mesh",
+    "Nx",
+    "nx-plugin",
+    "plugin"
   ],
   "bugs": {
     "url": "git://github.com/domjtalbot/nx-mesh/issues"
@@ -55,5 +53,6 @@
   },
   "exports": {
     "./package.json": "./package.json"
-  }
+  },
+  "type": "commonjs"
 }

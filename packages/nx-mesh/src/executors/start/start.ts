@@ -1,7 +1,7 @@
 import type { ExecutorContext } from '@nrwl/devkit';
 
 import { logger } from '@nrwl/devkit';
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 
 import { childProcess, runMeshCli } from '../../utils/mesh-cli';
 import getServeLocation from './lib/get-serve-location';

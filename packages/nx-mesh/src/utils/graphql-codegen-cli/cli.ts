@@ -1,9 +1,9 @@
 import type { ExecutorContext } from '@nrwl/devkit';
-import type { ChildProcess, ForkOptions } from 'child_process';
+import type { ChildProcess, ForkOptions } from 'node:child_process';
 
 import type { Arguments } from './arguments';
 
-import { spawn } from 'child_process';
+import { spawn } from 'node:child_process';
 
 import { getCliArguments, flatternCliArguments } from './arguments';
 
