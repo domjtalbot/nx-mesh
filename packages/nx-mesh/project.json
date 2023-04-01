@@ -21,6 +21,7 @@
         "deleteOutputPath": false,
         "format": ["esm", "cjs"],
         "minify": true,
+        "sourcemap": true,
         "additionalEntryPoints": [
           "packages/nx-mesh/src/executors/build-gateway/build-gateway.ts",
           "packages/nx-mesh/src/executors/build-gateway/hasher.ts",
@@ -91,7 +92,7 @@
       "dependsOn": ["build-non-bundle"]
     },
     "build-non-bundle": {
-      "executor": "@nrwl/esbuild:esbuild",
+      "executor": "@nrwl/js:swc",
       "outputs": [
         "dist/packages/nx-mesh/generators",
         "dist/packages/nx-mesh/utils"
@@ -99,32 +100,7 @@
       "options": {
         "outputPath": "dist/packages/nx-mesh",
         "main": "packages/nx-mesh/src/generators/index.ts",
-        "tsConfig": "packages/nx-mesh/tsconfig.lib.json",
-        "bundle": false,
-        "format": ["esm", "cjs"],
-        "minify": true,
-        "deleteOutputPath": false,
-        "additionalEntryPoints": [
-          "packages/nx-mesh/src/generators/application/index.ts",
-          "packages/nx-mesh/src/generators/base/index.ts",
-          "packages/nx-mesh/src/generators/preset/index.ts",
-          "packages/nx-mesh/src/generators/sdk/index.ts"
-        ],
-        "external": [
-          "@graphql-mesh/cli",
-          "@nrwl/cypress",
-          "@nrwl/devkit",
-          "@nrwl/js",
-          "@nrwl/linter",
-          "@nrwl/node",
-          "@nrwl/workspace",
-          "@swc-node/register",
-          "@swc/core",
-          "@swc/helpers",
-          "graphql",
-          "nx",
-          "tslib"
-        ]
+        "tsConfig": "packages/nx-mesh/tsconfig.lib.json"
       }
     },
     "lint": {
