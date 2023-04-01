@@ -100,6 +100,11 @@ jobs:
             --skipGit
           cd generator
           pnpm nx report
+          npm pkg set "pnpm.overrides.@nrwl/cypress"="${{ matrix.nx_version }}"
+          npm pkg set "pnpm.overrides.@nrwl/jest"="${{ matrix.nx_version }}"
+          npm pkg set "pnpm.overrides.@nrwl/js"="${{ matrix.nx_version }}"
+          npm pkg set "pnpm.overrides.@nrwl/node"="${{ matrix.nx_version }}"
+          npm pkg set "pnpm.overrides.@nrwl/webpack"="${{ matrix.nx_version }}"
           pnpm add ../nx-mesh/nx-mesh.tar.gz
           pnpm nx report
           pnpm exec nx generate nx-mesh:${{ matrix.type }} \
