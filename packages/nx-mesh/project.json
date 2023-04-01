@@ -94,14 +94,13 @@
       "dependsOn": ["build-non-bundle"]
     },
     "build-non-bundle": {
-      "executor": "@nrwl/js:swc",
+      "executor": "@nrwl/js:tsc",
       "outputs": [
         "dist/packages/nx-mesh/generators",
         "dist/packages/nx-mesh/utils"
       ],
       "options": {
         "outputPath": "dist/packages/nx-mesh",
-        "swcrc": "packages/nx-mesh/.swcrc",
         "main": "packages/nx-mesh/src/generators/index.ts",
         "tsConfig": "packages/nx-mesh/tsconfig.lib.json"
       }
