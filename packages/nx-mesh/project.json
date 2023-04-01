@@ -51,8 +51,7 @@
           "@swc/core",
           "@swc/helpers",
           "graphql",
-          "nx",
-          "tslib"
+          "nx"
         ],
         "assets": [
           {
