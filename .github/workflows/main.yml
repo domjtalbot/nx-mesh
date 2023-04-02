@@ -19,33 +19,31 @@ jobs:
     uses: ./.github/workflows/__lint.yml
     secrets: inherit
     with:
-      affected: true
+      affected: false
       node_version: 'lts/*'
       save_cache: true
 
   build:
     needs: [lint]
-    if: needs.lint.outputs.hasAffected == 'true'
     uses: ./.github/workflows/__build.yml
     secrets: inherit
     strategy:
       matrix:
         node_version: ['lts/*', latest]
     with:
-      affected: true
+      affected: false
       node_version: ${{ matrix.node_version }}
       save_cache: ${{ matrix.node_version == 'latest' }}
 
   test:
     needs: [lint, build]
-    if: needs.lint.outputs.hasAffected == 'true'
     uses: ./.github/workflows/__test.yml
     secrets: inherit
     strategy:
       matrix:
         node_version: ['lts/*', latest]
     with:
-      affected: true
+      affected: false
       node_version: ${{ matrix.node_version }}
 
   e2e:
@@ -57,7 +55,7 @@ jobs:
       matrix:
         node_version: ['lts/*', latest]
     with:
-      affected: true
+      affected: false
       node_version: ${{ matrix.node_version }}
 
   generators:
@@ -69,7 +67,7 @@ jobs:
       matrix:
         node_version: ['lts/*', latest]
     with:
-      affected: true
+      affected: false
       node_version: ${{ matrix.node_version }}
 
   code-analysis:
@@ -94,5 +92,5 @@ jobs:
     uses: ./.github/workflows/__deploy.yml
     secrets: inherit
     with:
-      affected: true
+      affected: false
       production: ${{ needs.changesets.outputs.released == 'true' }}
