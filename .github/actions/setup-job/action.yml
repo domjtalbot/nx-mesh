@@ -193,7 +193,7 @@ runs:
       if: inputs.skip_node_cache == 'false'
       shell: bash
       run: |
-        echo "key=${{ steps.restore_cache_key.outputs.key }}--package-${{ hashFiles('*/package.json') }}--lockfile-${{ hashFiles('*/pnpm-lock.yaml') }}" >> $GITHUB_OUTPUT
+        echo "key=${{ steps.restore_cache_key.outputs.key }}--package-${{ hashFiles('**/package.json') }}--lockfile-${{ hashFiles('**/pnpm-lock.yaml') }}" >> $GITHUB_OUTPUT
 
     - name: Nx Shas
       id: nx_shas
