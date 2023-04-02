@@ -39,6 +39,7 @@
     "@nrwl/devkit": "15.7.1",
     "@nrwl/next": "15.7.1",
     "@swc/helpers": "0.4.14",
+    "esbuild": "^0.17.15",
     "fs-extra": "10.1.0",
     "get-port": "5.1.1",
     "graphql": "16.6.0",
