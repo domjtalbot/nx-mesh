@@ -418,19 +418,19 @@ This is the equivalent of using `graphql-mesh dev`.
 <details>
   <summary>`dev` executor options</summary>
 
-| Name              | Type           | Required | Default   | Description                                                                                        |
-| ----------------- | -------------- | :------: | --------- | -------------------------------------------------------------------------------------------------- |
-| `debug`           | `boolean`      |    -     | `false`   | Display debugging info by applying the `DEBUG` env variable.                                       |
-| `dir`             | `string`       |    ✅    | -         | The path of the directory containing the GraphQL Mesh config.                                      |
-| `port`            | `object`       |    -     | -         | Port selection settings                                                                            |
-| `port.auto`       | `boolean`      |    -     | `true`    | Use the first available port                                                                       |
-| `port.number`     | `number`       |    -     | `4200`    | Define the preferred port to use when `auto` is set to `false`                                     |
-| `port.range`      | `object`       |    -     | -         | The range of ports to select from.                                                                 |
-| `port.range.from` | `number`       |    -     | -         | The first port of the range. Must be in the range `1024`...`65535`                                 |
-| `port.range.to`   | `number`       |    -     | -         | The last port of the range. Must be in the range `1024`...`65535` and must be greater than `from`. |
-| `port.fallback`   | `auto`, `none` |    -     | `auto`    | The fallback strategy to use when the preferred port is unavailable.                               |
-| `port.host`       | `string`       |    -     | `0.0.0.0` | The host to listen on (only used for port number lookup).                                          |
-| `require`         | `string[]`     |    -     | `[]`      | Loads specific require.extensions before running the codegen and reading the configuration.        |
+| Name              | Type           | Required | Default     | Description                                                                                        |
+| ----------------- | -------------- | :------: | ----------- | -------------------------------------------------------------------------------------------------- |
+| `debug`           | `boolean`      |    -     | `false`     | Display debugging info by applying the `DEBUG` env variable.                                       |
+| `dir`             | `string`       |    ✅    | -           | The path of the directory containing the GraphQL Mesh config.                                      |
+| `port`            | `object`       |    -     | -           | Port selection settings                                                                            |
+| `port.auto`       | `boolean`      |    -     | `true`      | Use the first available port                                                                       |
+| `port.number`     | `number`       |    -     | `4200`      | Define the preferred port to use when `auto` is set to `false`                                     |
+| `port.range`      | `object`       |    -     | -           | The range of ports to select from.                                                                 |
+| `port.range.from` | `number`       |    -     | -           | The first port of the range. Must be in the range `1024`...`65535`                                 |
+| `port.range.to`   | `number`       |    -     | -           | The last port of the range. Must be in the range `1024`...`65535` and must be greater than `from`. |
+| `port.fallback`   | `auto`, `none` |    -     | `auto`      | The fallback strategy to use when the preferred port is unavailable.                               |
+| `port.host`       | `string`       |    -     | `localhost` | The host to listen on (only used for port number lookup).                                          |
+| `require`         | `string[]`     |    -     | `[]`        | Loads specific require.extensions before running the codegen and reading the configuration.        |
 
 </details>
 
@@ -456,19 +456,19 @@ This is the equivalent of using `graphql-mesh start`.
 <details>
   <summary>`start` executor options</summary>
 
-| Name              | Type           | Required | Default   | Description                                                                                        |
-| ----------------- | -------------- | :------: | --------- | -------------------------------------------------------------------------------------------------- |
-| `debug`           | `boolean`      |    -     | `false`   | Display debugging info by applying the `DEBUG` env variable.                                       |
-| `dir`             | `string`       |    ✅    | -         | The path of the directory containing the GraphQL Mesh config.                                      |
-| `port`            | `object`       |    -     | -         | Port selection settings                                                                            |
-| `port.auto`       | `boolean`      |    -     | `true`    | Use the first available port                                                                       |
-| `port.number`     | `number`       |    -     | `4200`    | Define the preferred port to use when `auto` is set to `false`                                     |
-| `port.range`      | `object`       |    -     | -         | The range of ports to select from.                                                                 |
-| `port.range.from` | `number`       |    -     | -         | The first port of the range. Must be in the range `1024`...`65535`                                 |
-| `port.range.to`   | `number`       |    -     | -         | The last port of the range. Must be in the range `1024`...`65535` and must be greater than `from`. |
-| `port.fallback`   | `auto`, `none` |    -     | `auto`    | The fallback strategy to use when the preferred port is unavailable.                               |
-| `port.host`       | `string`       |    -     | `0.0.0.0` | The host to listen on (only used for port number lookup).                                          |
-| `require`         | `string[]`     |    -     | `[]`      | Loads specific require.extensions before running the codegen and reading the configuration.        |
+| Name              | Type           | Required | Default     | Description                                                                                        |
+| ----------------- | -------------- | :------: | ----------- | -------------------------------------------------------------------------------------------------- |
+| `debug`           | `boolean`      |    -     | `false`     | Display debugging info by applying the `DEBUG` env variable.                                       |
+| `dir`             | `string`       |    ✅    | -           | The path of the directory containing the GraphQL Mesh config.                                      |
+| `port`            | `object`       |    -     | -           | Port selection settings                                                                            |
+| `port.auto`       | `boolean`      |    -     | `true`      | Use the first available port                                                                       |
+| `port.number`     | `number`       |    -     | `4200`      | Define the preferred port to use when `auto` is set to `false`                                     |
+| `port.range`      | `object`       |    -     | -           | The range of ports to select from.                                                                 |
+| `port.range.from` | `number`       |    -     | -           | The first port of the range. Must be in the range `1024`...`65535`                                 |
+| `port.range.to`   | `number`       |    -     | -           | The last port of the range. Must be in the range `1024`...`65535` and must be greater than `from`. |
+| `port.fallback`   | `auto`, `none` |    -     | `auto`      | The fallback strategy to use when the preferred port is unavailable.                               |
+| `port.host`       | `string`       |    -     | `localhost` | The host to listen on (only used for port number lookup).                                          |
+| `require`         | `string[]`     |    -     | `[]`        | Loads specific require.extensions before running the codegen and reading the configuration.        |
 
 </details>
 
@@ -500,20 +500,20 @@ This combines `dev` & `start` via a `dev` option toggle.
 <details>
   <summary>`serve` executor options</summary>
 
-| Name              | Type           | Required | Default   | Description                                                                                        |
-| ----------------- | -------------- | :------: | --------- | -------------------------------------------------------------------------------------------------- |
-| `debug`           | `boolean`      |    -     | `false`   | Display debugging info by applying the `DEBUG` env variable.                                       |
-| `dev`             | `string`       |    -     | `false`   | Run the server in dev or production mode.                                                          |
-| `dir`             | `string`       |    ✅    | -         | The path of the directory containing the GraphQL Mesh config.                                      |
-| `port`            | `object`       |    -     | -         | Port selection settings                                                                            |
-| `port.auto`       | `boolean`      |    -     | `true`    | Use the first available port                                                                       |
-| `port.number`     | `number`       |    -     | `4200`    | Define the preferred port to use when `auto` is set to `false`                                     |
-| `port.range`      | `object`       |    -     | -         | The range of ports to select from.                                                                 |
-| `port.range.from` | `number`       |    -     | -         | The first port of the range. Must be in the range `1024`...`65535`                                 |
-| `port.range.to`   | `number`       |    -     | -         | The last port of the range. Must be in the range `1024`...`65535` and must be greater than `from`. |
-| `port.fallback`   | `auto`, `none` |    -     | `auto`    | The fallback strategy to use when the preferred port is unavailable.                               |
-| `port.host`       | `string`       |    -     | `0.0.0.0` | The host to listen on (only used for port number lookup).                                          |
-| `require`         | `string[]`     |    -     | `[]`      | Loads specific require.extensions before running the codegen and reading the configuration.        |
+| Name              | Type           | Required | Default     | Description                                                                                        |
+| ----------------- | -------------- | :------: | ----------- | -------------------------------------------------------------------------------------------------- |
+| `debug`           | `boolean`      |    -     | `false`     | Display debugging info by applying the `DEBUG` env variable.                                       |
+| `dev`             | `string`       |    -     | `false`     | Run the server in dev or production mode.                                                          |
+| `dir`             | `string`       |    ✅    | -           | The path of the directory containing the GraphQL Mesh config.                                      |
+| `port`            | `object`       |    -     | -           | Port selection settings                                                                            |
+| `port.auto`       | `boolean`      |    -     | `true`      | Use the first available port                                                                       |
+| `port.number`     | `number`       |    -     | `4200`      | Define the preferred port to use when `auto` is set to `false`                                     |
+| `port.range`      | `object`       |    -     | -           | The range of ports to select from.                                                                 |
+| `port.range.from` | `number`       |    -     | -           | The first port of the range. Must be in the range `1024`...`65535`                                 |
+| `port.range.to`   | `number`       |    -     | -           | The last port of the range. Must be in the range `1024`...`65535` and must be greater than `from`. |
+| `port.fallback`   | `auto`, `none` |    -     | `auto`      | The fallback strategy to use when the preferred port is unavailable.                               |
+| `port.host`       | `string`       |    -     | `localhost` | The host to listen on (only used for port number lookup).                                          |
+| `require`         | `string[]`     |    -     | `[]`        | Loads specific require.extensions before running the codegen and reading the configuration.        |
 
 </details>
 
