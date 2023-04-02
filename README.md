@@ -64,23 +64,29 @@
 
 ## Installing
 
-Using [npm](https://npmjs.com):
-
-```bash
-npm install -D nx-mesh
-```
-
 Using [pnpm](http://pnpm.io):
 
 ```bash
 pnpm add -D nx-mesh
 ```
 
-Using [yarn](http://yarnpkg.com):
+<details>
+  <summary>Using npm</summary>
+
+```bash
+npm install -D nx-mesh
+```
+
+</details>
+
+<details>
+  <summary>Using yarn</summary>
 
 ```bash
 yarn add -D nx-mesh
 ```
+
+</details>
 
 ### Peer Dependencies
 
@@ -118,7 +124,7 @@ nx generate nx-mesh:app my-api-gateway
 ```
 
 <details>
-  <summary>`application` generator output</summary>
+  <summary>application generator output</summary>
 
 ```bash
 >  NX  Generating nx-mesh:application
@@ -145,7 +151,7 @@ CREATE apps/my-api-gateway/.eslintrc.json
 </details>
 
 <details>
-  <summary>`application` generator options</summary>
+  <summary>application generator options</summary>
 
 | Name                      | Alias | Type                                                                                                     | Required | Default     | Description                                                                                                                       |
 | ------------------------- | ----- | -------------------------------------------------------------------------------------------------------- | :------: | ----------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -179,7 +185,7 @@ nx generate nx-mesh:library my-mesh-sdk
 ```
 
 <details>
-  <summary>Example `sdk` `tsc` generator output</summary>
+  <summary>Example sdk tsc generator output</summary>
 
 ```bash
 >  NX  Generating nx-mesh:sdk
@@ -206,7 +212,7 @@ UPDATE nx.json
 </details>
 
 <details>
-  <summary>Example `sdk` `swc` generator output</summary>
+  <summary>Example sdk swc generator output</summary>
 
 ```bash
 >  NX  Generating nx-mesh:sdk
@@ -232,7 +238,7 @@ CREATE libs/my-mesh-sdk/src/lib/client.ts
 </details>
 
 <details>
-  <summary>`sdk` generator options</summary>
+  <summary>sdk generator options</summary>
 
 | Name                      | Alias | Type                                                        | Required | Default           | Description                                                                                                                                            |
 | ------------------------- | ----- | ----------------------------------------------------------- | :------: | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -285,7 +291,7 @@ This is the equivalent of using `graphql-mesh dev`, but with extra steps for pac
 ```
 
 <details>
-  <summary>`build` executor options</summary>
+  <summary>build executor options</summary>
 
 | Name                                      | Type                                 | Required | Default            | Description                                                                                                                      |
 | ----------------------------------------- | ------------------------------------ | :------: | ------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
@@ -333,7 +339,7 @@ This is the equivalent of using `graphql-mesh build`, but with extra steps for c
 ```
 
 <details>
-  <summary>`build-gateway` executor options</summary>
+  <summary>build-gateway executor options</summary>
 
 | Name       | Type                 | Required | Default | Description                                                                                 |
 | ---------- | -------------------- | :------: | ------- | ------------------------------------------------------------------------------------------- |
@@ -367,7 +373,7 @@ This is the equivalent of using `graphql-mesh build`, but with extra steps for p
 ```
 
 <details>
-  <summary>`build-swc` executor options</summary>
+  <summary>build-swc executor options</summary>
 
 | Name                                      | Type                                 | Required | Default            | Description                                                                                                                      |
 | ----------------------------------------- | ------------------------------------ | :------: | ------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
@@ -416,7 +422,7 @@ This is the equivalent of using `graphql-mesh dev`.
 ```
 
 <details>
-  <summary>`dev` executor options</summary>
+  <summary>dev executor options</summary>
 
 | Name              | Type           | Required | Default     | Description                                                                                        |
 | ----------------- | -------------- | :------: | ----------- | -------------------------------------------------------------------------------------------------- |
@@ -454,7 +460,7 @@ This is the equivalent of using `graphql-mesh start`.
 ```
 
 <details>
-  <summary>`start` executor options</summary>
+  <summary>start executor options</summary>
 
 | Name              | Type           | Required | Default     | Description                                                                                        |
 | ----------------- | -------------- | :------: | ----------- | -------------------------------------------------------------------------------------------------- |
@@ -498,7 +504,7 @@ This combines `dev` & `start` via a `dev` option toggle.
 ```
 
 <details>
-  <summary>`serve` executor options</summary>
+  <summary>serve executor options</summary>
 
 | Name              | Type           | Required | Default     | Description                                                                                        |
 | ----------------- | -------------- | :------: | ----------- | -------------------------------------------------------------------------------------------------- |
@@ -537,7 +543,7 @@ This is the equivalent of using `graphql-mesh validate`.
 ```
 
 <details>
-  <summary>`validate` executor options</summary>
+  <summary>validate executor options</summary>
 
 | Name      | Type       | Required | Default | Description                                                                                 |
 | --------- | ---------- | :------: | ------- | ------------------------------------------------------------------------------------------- |
@@ -576,9 +582,12 @@ This is the equivalent of using `graphql-mesh validate`.
 
 ## Credits
 
-[GraphQL Mesh](https://github.com/Urigo/graphql-mesh) is made by the awesome team at [The Guild](https://www.the-guild.dev).
+This plugin wouldn't be possible without the great teams behind these projects:
 
-If you love GraphQL Mesh give them a ⭐!
+- [The Guild](https://www.the-guild.dev) - The team behind [GraphQL Mesh](https://github.com/Urigo/graphql-mesh).
+- [Nrwl](https://github.com/nrwl) - The team behind [Nx](https://github.com/nrwl/nx).
+
+Please show them your support! ❤️
 
 <br/>
 <br/>
