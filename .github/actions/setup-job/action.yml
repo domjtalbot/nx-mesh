@@ -152,7 +152,6 @@ runs:
     - uses: pnpm/action-setup@v2
       with:
         run_install: false
-        version: latest
 
     # Utils
 
@@ -172,7 +171,9 @@ runs:
       id: pnpm
       shell: bash
       run: |
-        echo "cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+        echo 'cache_dir<<EOF' >> $GITHUB_OUTPUT
+        pnpm store path >> $GITHUB_OUTPUT
+        echo 'EOF' >> $GITHUB_OUTPUT
         echo "version=$(pnpm --version)" >> $GITHUB_OUTPUT
 
     - name: NX Cloud Envs

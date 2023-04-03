@@ -13,11 +13,12 @@
   },
   "license": "MIT",
   "engines": {
-    "pnpm": ">=7"
+    "pnpm": ">=8"
   },
   "volta": {
     "node": "18.15.0"
   },
+  "packageManager": "pnpm@8.0.0",
   "private": true,
   "dependencies": {
     "@nrwl/cypress": "15.7.1",
