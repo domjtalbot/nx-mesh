@@ -6,21 +6,34 @@ on:
 
   workflow_dispatch:
     inputs:
-      branch:
+      branchName:
         type: string
         required: false
         default: 'main'
         description: >
           The branch to clear cache for.
 
-env:
-  branch: ${{ github.event.number || inputs.branch || 'latest' }}
+      pullRequestId:
+        type: number
+        required: false
+        default: 'main'
+        description: >
+          The pull request ID to clear cache for.
 
 jobs:
-  delete:
+  deletePullRequest:
+    if: ${{ github.event_name == 'closed' || inputs.pullRequestId }}
     runs-on: ubuntu-latest
     steps:
       - uses: snnaplab/delete-branch-cache-action@v1
         with:
           # Specify explicitly because the ref at the time of merging will be a branch name such as 'main', 'develop'
-          ref: refs/pull/${{ env.branch }}/merge
+          ref: refs/pull/${{ github.event.number || inputs.pullRequestId }}/merge
+
+  deleteBranch:
+    if: ${{ inputs.branchName }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: snnaplab/delete-branch-cache-action@v1
+        with:
+          ref: refs/heads/${{ inputs.branchName }}
