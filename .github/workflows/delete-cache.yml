@@ -9,14 +9,12 @@ on:
       branchName:
         type: string
         required: false
-        default: 'main'
         description: >
           The branch to clear cache for.
 
       pullRequestId:
         type: number
         required: false
-        default: 'main'
         description: >
           The pull request ID to clear cache for.
 
