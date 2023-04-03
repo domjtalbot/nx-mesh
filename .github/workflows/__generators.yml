@@ -26,7 +26,7 @@ on:
           The Nx version to test against
         required: false
         type: string
-        default: '["15.7", "15.8", "latest"]'
+        default: '["15.7.1", "15.7", "15.8", "latest"]'
       save_cache:
         description: >
           Should the cache be saved upon completion?
@@ -54,7 +54,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         type: [application, sdk, preset]
         example: ${{fromJson(inputs.examples)}}
