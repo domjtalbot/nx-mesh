@@ -6,6 +6,7 @@
   "targets": {
     "build": {
       "executor": "nx:run-commands",
+      "outputs": ["dist/packages/nx-mesh"],
       "options": {
         "command": "rm -rf dist/packages/nx-mesh/node_modules dist/packages/nx-mesh/src/package.json"
       },
