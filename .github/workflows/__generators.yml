@@ -61,7 +61,7 @@ jobs:
         nx_version: ${{fromJson(inputs.nx_version)}}
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3
         with:
           fetch-depth: 0
 
@@ -73,7 +73,7 @@ jobs:
           skip_node_cache: 'true'
 
       - name: Restore PNPM cache
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3
         id: pnpm-cache
         with:
           path: |
@@ -82,7 +82,7 @@ jobs:
             generators--pnpm--nx-${{ matrix.nx_version }}--type-${{ matrix.type }}--example-${{ matrix.example }}
 
       - name: Download Nx Mesh
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3
         with:
           name: nx-mesh
 
@@ -114,7 +114,7 @@ jobs:
           pnpm nx run ${{ matrix.example }}:build
 
       - name: Save PNPM cache
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3
         with:
           path: |
             ${{ steps.setup.outputs.pnpm_directory }}

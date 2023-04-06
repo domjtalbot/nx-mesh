@@ -143,7 +143,7 @@ runs:
     # node
 
     - name: Setup Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3
       with:
         node-version: ${{ inputs.node_version }}
 
@@ -204,7 +204,7 @@ runs:
     # Restore Cache
 
     - name: Restore PNPM cache
-      uses: actions/cache/restore@v3
+      uses: actions/cache/restore@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3
       if: inputs.skip_node_cache == 'false'
       id: pnpm-cache
       with:
@@ -218,7 +218,7 @@ runs:
           pnpm--${{ steps.restore_cache_key.outputs.key }}
 
     - name: Restore Cypress Cache
-      uses: actions/cache@v3
+      uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3
       id: cypress-cache
       if: inputs.browsers == 'true' && inputs.skip_node_cache == 'false'
       with:
@@ -247,7 +247,7 @@ runs:
     # Save Cache
 
     - name: Save Cypress cache
-      uses: actions/cache/save@v3
+      uses: actions/cache/save@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3
       if: inputs.save_cache == 'true' && steps.pnpm-cache.outputs.cache-hit != 'true' && inputs.skip_node_cache == 'false'
       with:
         path: |
@@ -256,7 +256,7 @@ runs:
           browsers--${{ steps.cache_key.outputs.key }}
 
     - name: Save PNPM cache
-      uses: actions/cache/save@v3
+      uses: actions/cache/save@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3
       if: inputs.save_cache == 'true' && steps.pnpm-cache.outputs.cache-hit != 'true' && inputs.skip_node_cache == 'false'
       with:
         path: |

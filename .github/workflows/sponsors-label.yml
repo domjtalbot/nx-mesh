@@ -12,7 +12,7 @@ jobs:
     name: is-sponsor-label
     runs-on: ubuntu-latest
     steps:
-      - uses: JasonEtco/is-sponsor-label-action@v1
+      - uses: JasonEtco/is-sponsor-label-action@39d88e461a53ecb1b3c0a13673e6252f9976f2f5 # v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
