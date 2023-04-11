@@ -38,7 +38,7 @@ jobs:
       isLatestChanged: ${{ steps.nx.outputs.isLatestChanged || steps.manual-nx.outputs.isLatestChanged }}
       latest_tag: ${{ steps.nx.outputs.release_tag || steps.manual-nx.outputs.release_tag }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3
 
       - name: Default nx version
         if: env.NX_VERSION == 'latest'
@@ -46,7 +46,7 @@ jobs:
           echo "15.0.0" > ${{ env.cache_file }}
 
       - name: Restore Nx version cache
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3
         id: nx-version-cache
         if: env.NX_VERSION == 'latest'
         with:
@@ -88,7 +88,7 @@ jobs:
       # Save Cache
 
       - name: Save Nx version
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8 # v3
         if: (steps.nx.outputs.current_tag != steps.nx.outputs.release_tag) && env.NX_VERSION == 'latest'
         with:
           path: |
@@ -136,7 +136,7 @@ jobs:
     if: failure() && needs.nx-version.outputs.isLatestChanged == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3
 
       - name: Fetch release notes
         id: nx
@@ -150,7 +150,7 @@ jobs:
 
           echo $RELEASE_NOTES >> $GITHUB_STEP_SUMMARY
 
-      - uses: JasonEtco/create-an-issue@v2
+      - uses: JasonEtco/create-an-issue@e27dddc79c92bc6e4562f268fffa5ed752639abd # v2
         env:
           current_tag: ${{ needs.nx-version.outputs.current_tag }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
