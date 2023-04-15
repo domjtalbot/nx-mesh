@@ -1,8 +1,8 @@
-![Nx Mesh. GraphQL Mesh for Nx](https://github.com/domjtalbot/nx-mesh/raw/main/.github/banner.jpg)
+<!-- omit in toc -->
 
-<h1 align="center">Nx Mesh</h1>
+# ![nx–mesh — GraphQL Mesh support for Nx.](https://github.com/domjtalbot/nx-mesh/raw/main/.github/banner-4.png 'nx–mesh — GraphQL Mesh support for Nx.')
 
-<p align="center"><a href="http://graphql-mesh.com">GraphQL Mesh</a> support for <a href="http://nx.dev">Nx</a>.</p>
+<br/>
 
 <div align="center">
   <p dir="auto">
