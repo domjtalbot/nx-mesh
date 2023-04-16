@@ -20,7 +20,7 @@ on:
 
 jobs:
   deletePullRequest:
-    if: ${{ github.event_name == 'closed' || inputs.pullRequestId }}
+    if: ${{ github.event.number || inputs.pullRequestId }}
     runs-on: ubuntu-latest
     steps:
       - uses: snnaplab/delete-branch-cache-action@v1
