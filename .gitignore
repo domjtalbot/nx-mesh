@@ -111,7 +111,7 @@ node_modules/
 # =========================================================
 
 migrations.json
-!packages/nx-mesh/migrations.json
+!packages/*/migrations.json
 
 
 # =========================================================

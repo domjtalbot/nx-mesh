@@ -1,0 +1,139 @@
+{
+  "name": "nx-mesh",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/nx-mesh-old/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "outputs": ["dist/packages/nx-mesh-old"],
+      "options": {
+        "command": "rm -rf dist/packages/nx-mesh-old/node_modules dist/packages/nx-mesh-old/src/package.json"
+      },
+      "dependsOn": ["build-bundle"]
+    },
+    "build-bundle": {
+      "executor": "@nrwl/esbuild:esbuild",
+      "outputs": ["dist/packages/nx-mesh-old"],
+      "options": {
+        "outputPath": "dist/packages/nx-mesh-old/src",
+        "main": "packages/nx-mesh-old/src/index.ts",
+        "tsConfig": "packages/nx-mesh-old/tsconfig.lib.json",
+        "deleteOutputPath": false,
+        "format": ["cjs"],
+        "minify": true,
+        "esbuildOptions": {
+          "outExtension": { ".js": ".js" }
+        },
+        "sourcemap": true,
+        "additionalEntryPoints": [
+          "packages/nx-mesh-old/src/executors/build-gateway/build-gateway.ts",
+          "packages/nx-mesh-old/src/executors/build-gateway/hasher.ts",
+          "packages/nx-mesh-old/src/executors/build-swc/build-swc.ts",
+          "packages/nx-mesh-old/src/executors/build-swc/hasher.ts",
+          "packages/nx-mesh-old/src/executors/build/build.ts",
+          "packages/nx-mesh-old/src/executors/build/hasher.ts",
+          "packages/nx-mesh-old/src/executors/dev/dev.ts",
+          "packages/nx-mesh-old/src/executors/dev/hasher.ts",
+          "packages/nx-mesh-old/src/executors/serve/serve.ts",
+          "packages/nx-mesh-old/src/executors/serve/hasher.ts",
+          "packages/nx-mesh-old/src/executors/start/start.ts",
+          "packages/nx-mesh-old/src/executors/start/hasher.ts",
+          "packages/nx-mesh-old/src/executors/validate/validate.ts",
+          "packages/nx-mesh-old/src/executors/validate/hasher.ts",
+          "packages/nx-mesh-old/src/migrations/4.0.0/rename-swcrc-config"
+        ],
+        "external": [
+          "@graphql-mesh/cli",
+          "@nrwl/cypress",
+          "@nrwl/devkit",
+          "@nrwl/js",
+          "@nrwl/linter",
+          "@nrwl/node",
+          "@nrwl/workspace",
+          "@swc-node/register",
+          "@swc/core",
+          "@swc/helpers",
+          "graphql",
+          "nx"
+        ],
+        "assets": [
+          {
+            "input": ".",
+            "glob": "(README.md|CHANGELOG.md|LICENSE)",
+            "output": "../"
+          },
+          {
+            "input": "packages/nx-mesh-old",
+            "glob": "*.md",
+            "output": "../"
+          },
+          {
+            "input": "./packages/nx-mesh-old/src",
+            "glob": "**/!(*.ts|*.snap)",
+            "output": "."
+          },
+          {
+            "input": "./packages/nx-mesh-old/src",
+            "glob": "**/*.d.ts",
+            "output": "."
+          },
+          {
+            "input": "./packages/nx-mesh-old",
+            "glob": "(generators|executors|migrations|package).json",
+            "output": "../"
+          }
+        ]
+      },
+      "dependsOn": ["build-non-bundle-cleanup"]
+    },
+    "build-non-bundle-cleanup": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "rm -rf dist/packages/nx-mesh-old/node_modules dist/packages/nx-mesh-old/src/executors dist/packages/nx-mesh-old/src/migrations dist/packages/nx-mesh-old/src/index.js dist/packages/nx-mesh-old/src/index.cjs"
+      },
+      "dependsOn": ["build-non-bundle"]
+    },
+    "build-non-bundle": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": [
+        "dist/packages/nx-mesh-old/generators",
+        "dist/packages/nx-mesh-old/utils"
+      ],
+      "options": {
+        "outputPath": "dist/packages/nx-mesh-old",
+        "main": "packages/nx-mesh-old/src/generators/index.ts",
+        "tsConfig": "packages/nx-mesh-old/tsconfig.lib.json"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}",
+        "{workspaceRoot}/reports/packages/nx-mesh-old"
+      ],
+      "options": {
+        "lintFilePatterns": ["packages/nx-mesh-old/**/*.ts"]
+      },
+      "configurations": {
+        "codeql": {
+          "format": "@microsoft/eslint-formatter-sarif",
+          "outputFile": "reports/packages/nx-mesh-old/lint.sarif"
+        },
+        "reports": {
+          "format": "json",
+          "outputFile": "reports/packages/nx-mesh-old/lint.json"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/nx-mesh-old"],
+      "options": {
+        "jestConfig": "packages/nx-mesh-old/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["type:nx-plugin"]
+}
