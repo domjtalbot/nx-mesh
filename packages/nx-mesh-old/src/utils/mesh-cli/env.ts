@@ -31,7 +31,7 @@ export const getCliEnv = (options: Env): CliEnv => {
     const cliKey = key.toUpperCase() as keyof CliEnv;
 
     if (key === 'debug' && value !== undefined) {
-      CliEnv[cliKey] = (+value).toString() as typeof CliEnv['DEBUG'];
+      CliEnv[cliKey] = (+value).toString() as (typeof CliEnv)['DEBUG'];
     }
   });
 

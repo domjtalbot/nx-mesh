@@ -69,7 +69,7 @@ export const meshPackages = [
   ...utils,
 ];
 
-export type CodegenPackages = typeof codegen[number];
-export type MeshPackages = typeof meshPackages[number];
+export type CodegenPackages = (typeof codegen)[number];
+export type MeshPackages = (typeof meshPackages)[number];
 
 export default meshPackages;
