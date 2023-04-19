@@ -6,6 +6,21 @@
   "implicitDependencies": ["nx-mesh"],
   "targets": {
     "build": {
+      "executor": "nx-mesh:esbuild",
+      "outputs": ["{projectRoot}/.mesh", "{options.outputPath}"],
+      "options": {
+        "dir": "examples/api-gateway-openapi--javascript-wiki",
+        "outputPath": "dist/examples/api-gateway-openapi--javascript-wiki",
+        "main": "examples/api-gateway-openapi--javascript-wiki/.mesh/index.ts",
+        "tsConfig": "examples/api-gateway-openapi--javascript-wiki/tsconfig.app.json",
+        "minify": true,
+        "esbuildOptions": {
+          "outExtension": { ".js": ".js" }
+        },
+        "sourcemap": true
+      }
+    },
+    "build-mesh": {
       "executor": "nx-mesh:build-gateway",
       "outputs": ["{projectRoot}/.mesh", "{options.outputPath}"],
       "options": {
@@ -20,6 +35,12 @@
       "options": {
         "dev": true,
         "dir": "examples/api-gateway-openapi--javascript-wiki"
+      },
+      "configurations": {
+        "production": {
+          "dev": false,
+          "dir": "dist/examples/api-gateway-openapi--javascript-wiki"
+        }
       }
     },
     "validate": {

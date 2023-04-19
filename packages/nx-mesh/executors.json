@@ -41,6 +41,11 @@
       "implementation": "./src/executors/validate/validate",
       "schema": "./src/executors/validate/schema.json",
       "description": "Validates artifacts"
+    },
+    "esbuild": {
+      "implementation": "./src/executors/esbuild/executor",
+      "schema": "./src/executors/esbuild/schema.json",
+      "description": "esbuild executor"
     }
   }
 }

@@ -21,13 +21,24 @@
       }
     },
     "build": {
-      "executor": "nx-mesh:build-swc",
+      "executor": "nx-mesh:esbuild",
       "outputs": ["{projectRoot}/.mesh", "{options.outputPath}"],
       "options": {
         "dir": "examples/sdk-openapi--javascript-wiki",
+        "outputPath": "dist/examples/sdk-openapi--javascript-wiki/src",
         "main": "examples/sdk-openapi--javascript-wiki/src/index.ts",
-        "outputPath": "dist/examples/sdk-openapi--javascript-wiki",
-        "tsConfig": "examples/sdk-openapi--javascript-wiki/tsconfig.lib.json"
+        "tsConfig": "examples/sdk-openapi--javascript-wiki/tsconfig.lib.json",
+        "minify": true,
+        "esbuildOptions": {
+          "outExtension": { ".js": ".js" }
+        },
+        "sourcemap": true,
+        "additionalEntryPoints": [
+          "examples/sdk-openapi--javascript-wiki/src/lib/sdk.ts",
+          "examples/sdk-openapi--javascript-wiki/src/lib/server.ts",
+          "examples/sdk-openapi--javascript-wiki/src/lib/types.ts",
+          "examples/sdk-openapi--javascript-wiki/src/lib/utils/index.ts"
+        ]
       }
     },
     "serve": {

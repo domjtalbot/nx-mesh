@@ -63,15 +63,33 @@ importers:
       '@graphql-mesh/cache-file':
         specifier: 0.9.47
         version: 0.9.47(graphql@16.6.0)
+      '@graphql-mesh/cache-localforage':
+        specifier: 0.7.17
+        version: 0.7.17(graphql@16.6.0)
       '@graphql-mesh/cli':
         specifier: 0.82.27
         version: 0.82.27(@swc/core@1.3.42)(@types/node@18.11.9)(graphql@16.6.0)
+      '@graphql-mesh/config':
+        specifier: 10.1.10
+        version: 10.1.10(@graphql-mesh/runtime@0.46.18)(@types/node@18.11.9)(graphql@16.6.0)
+      '@graphql-mesh/cross-helpers':
+        specifier: 0.3.3
+        version: 0.3.3(graphql@16.6.0)
       '@graphql-mesh/graphql':
         specifier: 0.34.10
         version: 0.34.10(@types/node@18.11.9)(graphql@16.6.0)
+      '@graphql-mesh/http':
+        specifier: 0.3.23
+        version: 0.3.23(@types/node@18.11.9)(graphql@16.6.0)
       '@graphql-mesh/json-schema':
         specifier: 0.37.21
         version: 0.37.21(@types/node@18.11.9)(graphql@16.6.0)
+      '@graphql-mesh/merger-bare':
+        specifier: 0.16.19
+        version: 0.16.19(graphql@16.6.0)
+      '@graphql-mesh/merger-stitching':
+        specifier: 0.18.19
+        version: 0.18.19(graphql@16.6.0)
       '@graphql-mesh/mysql':
         specifier: 0.19.17
         version: 0.19.17(graphql@16.6.0)
@@ -99,6 +117,18 @@ importers:
       '@graphql-mesh/soap':
         specifier: 0.17.20
         version: 0.17.20(graphql@16.6.0)
+      '@graphql-mesh/store':
+        specifier: 0.9.17
+        version: 0.9.17(graphql@16.6.0)
+      '@graphql-mesh/string-interpolation':
+        specifier: 0.4.2
+        version: 0.4.2(graphql@16.6.0)
+      '@graphql-mesh/types':
+        specifier: 0.91.9
+        version: 0.91.9(graphql@16.6.0)
+      '@graphql-mesh/utils':
+        specifier: 0.43.17
+        version: 0.43.17(graphql@16.6.0)
       '@graphql-typed-document-node/core':
         specifier: 3.1.2
         version: 3.1.2(graphql@16.6.0)
@@ -162,6 +192,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: 5.56.0
         version: 5.56.0(eslint@8.15.0)(typescript@4.8.4)
+      '@whatwg-node/fetch':
+        specifier: 0.8.3
+        version: 0.8.3(@types/node@18.11.9)
       babel-jest:
         specifier: 28.1.1
         version: 28.1.1
@@ -2342,7 +2375,7 @@ packages:
       '@graphql-tools/url-loader': 7.17.14(@types/node@18.11.9)(graphql@16.6.0)
       '@graphql-tools/utils': 9.2.1(graphql@16.6.0)
       '@parcel/watcher': 2.1.0
-      '@whatwg-node/fetch': 0.8.2(@types/node@18.11.9)
+      '@whatwg-node/fetch': 0.8.3(@types/node@18.11.9)
       chalk: 4.1.2
       cosmiconfig: 7.1.0
       debounce: 1.2.1
@@ -2792,7 +2825,7 @@ packages:
       '@graphql-tools/graphql-file-loader': 7.5.16(graphql@16.6.0)
       '@graphql-tools/load': 7.8.12(graphql@16.6.0)
       '@graphql-tools/utils': 9.2.1(graphql@16.6.0)
-      '@whatwg-node/fetch': 0.8.2(@types/node@18.11.9)
+      '@whatwg-node/fetch': 0.8.3(@types/node@18.11.9)
       camel-case: 4.1.2
       graphql: 16.6.0
       param-case: 3.0.4
@@ -3028,7 +3061,7 @@ packages:
       '@graphql-mesh/utils': 0.43.17(graphql@16.6.0)
       '@graphql-tools/delegate': 9.0.28(graphql@16.6.0)
       '@graphql-tools/utils': 9.2.1(graphql@16.6.0)
-      '@whatwg-node/fetch': 0.8.2(@types/node@18.11.9)
+      '@whatwg-node/fetch': 0.8.3(@types/node@18.11.9)
       dataloader: 2.2.2
       fast-xml-parser: 4.1.3
       graphql: 16.6.0
@@ -3120,7 +3153,7 @@ packages:
       '@graphql-tools/delegate': 9.0.28(graphql@16.6.0)
       '@graphql-tools/utils': 9.2.1(graphql@16.6.0)
       '@graphql-tools/wrap': 9.3.7(graphql@16.6.0)
-      '@whatwg-node/fetch': 0.8.2(@types/node@18.11.9)
+      '@whatwg-node/fetch': 0.8.3(@types/node@18.11.9)
       graphql: 16.6.0
       tslib: 2.5.0
     transitivePeerDependencies:
@@ -3356,7 +3389,7 @@ packages:
     dependencies:
       '@ardatan/sync-fetch': 0.0.1
       '@graphql-tools/utils': 9.2.1(graphql@16.6.0)
-      '@whatwg-node/fetch': 0.8.2(@types/node@18.11.9)
+      '@whatwg-node/fetch': 0.8.3(@types/node@18.11.9)
       graphql: 16.6.0
       tslib: 2.5.0
     transitivePeerDependencies:
@@ -3628,7 +3661,7 @@ packages:
       '@ardatan/sync-fetch': 0.0.1
       '@graphql-tools/graphql-tag-pluck': 7.5.0(graphql@16.6.0)
       '@graphql-tools/utils': 9.2.1(graphql@16.6.0)
-      '@whatwg-node/fetch': 0.8.2(@types/node@18.11.9)
+      '@whatwg-node/fetch': 0.8.3(@types/node@18.11.9)
       graphql: 16.6.0
       tslib: 2.5.0
     transitivePeerDependencies:
@@ -3944,7 +3977,7 @@ packages:
       '@graphql-tools/utils': 9.2.1(graphql@16.6.0)
       '@graphql-tools/wrap': 9.3.8(graphql@16.6.0)
       '@types/ws': 8.5.4
-      '@whatwg-node/fetch': 0.8.2(@types/node@18.11.9)
+      '@whatwg-node/fetch': 0.8.3(@types/node@18.11.9)
       graphql: 16.6.0
       isomorphic-ws: 5.0.0(ws@8.13.0)
       tslib: 2.5.0
@@ -3970,7 +4003,7 @@ packages:
       '@graphql-tools/utils': 9.2.1(graphql@16.6.0)
       '@graphql-tools/wrap': 9.3.8(graphql@16.6.0)
       '@types/ws': 8.5.4
-      '@whatwg-node/fetch': 0.8.2(@types/node@18.11.9)
+      '@whatwg-node/fetch': 0.8.3(@types/node@18.11.9)
       graphql: 16.6.0
       isomorphic-ws: 5.0.0(ws@8.13.0)
       tslib: 2.5.0
@@ -5532,7 +5565,7 @@ packages:
       '@graphql-mesh/utils': 0.43.17(graphql@16.6.0)
       '@graphql-tools/utils': 9.2.1(graphql@16.6.0)
       '@json-schema-tools/meta-schema': 1.7.0
-      '@whatwg-node/fetch': 0.8.2(@types/node@18.11.9)
+      '@whatwg-node/fetch': 0.8.3(@types/node@18.11.9)
       ajv: 8.12.0
       ajv-formats: 2.1.1
       dset: 3.1.2
@@ -6717,19 +6750,7 @@ packages:
     resolution: {integrity: sha512-Fkd1qQHK2tAWxKlC85h9L86Lgbq3BzxMnHSnTsnzNZMMzn6Xi+HlN8/LJ90LxorhSqD54td+Q864LgwUaYDj1Q==}
     dependencies:
       '@peculiar/webcrypto': 1.4.1
-      '@whatwg-node/node-fetch': 0.3.1(@types/node@18.11.9)
-      busboy: 1.6.0
-      urlpattern-polyfill: 6.0.2
-      web-streams-polyfill: 3.2.1
-    transitivePeerDependencies:
-      - '@types/node'
-    dev: true
-
-  /@whatwg-node/fetch@0.8.2(@types/node@18.11.9):
-    resolution: {integrity: sha512-6u1xGzFZvskJpQXhWreR9s1/4nsuY4iFRsTb4BC3NiDHmzgj/Hu1Ovt4iHs5KAjLzbnsjaQOI5f5bQPucqvPsQ==}
-    dependencies:
-      '@peculiar/webcrypto': 1.4.1
-      '@whatwg-node/node-fetch': 0.3.1(@types/node@18.11.9)
+      '@whatwg-node/node-fetch': 0.3.3(@types/node@18.11.9)
       busboy: 1.6.0
       urlpattern-polyfill: 6.0.2
       web-streams-polyfill: 3.2.1
@@ -6749,19 +6770,6 @@ packages:
       - '@types/node'
     dev: true
 
-  /@whatwg-node/node-fetch@0.3.1(@types/node@18.11.9):
-    resolution: {integrity: sha512-/U4onp5eBkRHfFe/VL+ppyupqj7z6iBtjcuPSosQNH2/y+LxRn5lyFb7Vqhb5DokjrDMjssLcqiVYnx+UABFsw==}
-    peerDependencies:
-      '@types/node': ^18.0.6
-    dependencies:
-      '@types/node': 18.11.9
-      '@whatwg-node/events': 0.0.2
-      busboy: 1.6.0
-      fast-querystring: 1.1.1
-      fast-url-parser: 1.1.3
-      tslib: 2.5.0
-    dev: true
-
   /@whatwg-node/node-fetch@0.3.3(@types/node@18.11.9):
     resolution: {integrity: sha512-WMnvPE/59cgpqfCAKPiid536LX9ugo0TehID26KYZzKzNNvk5hxyJZ7sBWoNFRRBcZsySI3b47BTevtg6FRILA==}
     peerDependencies:
@@ -6778,7 +6786,7 @@ packages:
   /@whatwg-node/router@0.3.0(@types/node@18.11.9):
     resolution: {integrity: sha512-d7qzIvbbBm6d0VpJGlRbp/G9PTLRCcpS9fRNnfjE87ZbWbB05vBzHkaUyOs2zaTny/GPuBzrEY2QewoLj4+5JQ==}
     dependencies:
-      '@whatwg-node/fetch': 0.8.2(@types/node@18.11.9)
+      '@whatwg-node/fetch': 0.8.3(@types/node@18.11.9)
       '@whatwg-node/server': 0.7.5(@types/node@18.11.9)
       tslib: 2.5.0
     transitivePeerDependencies:
@@ -10147,7 +10155,7 @@ packages:
     dependencies:
       '@graphql-tools/graphql-file-loader': 7.5.16(graphql@16.6.0)
       '@graphql-tools/json-file-loader': 7.4.17(graphql@16.6.0)
-      '@graphql-tools/load': 7.8.4(graphql@16.6.0)
+      '@graphql-tools/load': 7.8.12(graphql@16.6.0)
       '@graphql-tools/merge': 8.4.0(graphql@16.6.0)
       '@graphql-tools/url-loader': 7.17.14(@types/node@18.11.9)(graphql@16.6.0)
       '@graphql-tools/utils': 9.2.1(graphql@16.6.0)
@@ -10279,7 +10287,7 @@ packages:
       '@graphql-tools/schema': 9.0.17(graphql@16.6.0)
       '@graphql-tools/utils': 9.2.1(graphql@16.6.0)
       '@graphql-yoga/subscription': 3.1.0
-      '@whatwg-node/fetch': 0.8.2(@types/node@18.11.9)
+      '@whatwg-node/fetch': 0.8.3(@types/node@18.11.9)
       '@whatwg-node/server': 0.6.7(@types/node@18.11.9)
       dset: 3.1.2
       graphql: 16.6.0
@@ -11739,7 +11747,7 @@ packages:
       '@graphql-mesh/utils': 0.43.17(graphql@16.6.0)
       '@graphql-tools/utils': 9.2.1(graphql@16.6.0)
       '@json-schema-tools/meta-schema': 1.7.0
-      '@whatwg-node/fetch': 0.8.2(@types/node@18.11.9)
+      '@whatwg-node/fetch': 0.8.3(@types/node@18.11.9)
       graphql: 16.6.0
       json-pointer: 0.6.2
       to-json-schema: 0.2.5
