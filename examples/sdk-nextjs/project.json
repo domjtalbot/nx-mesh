@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "examples/sdk-nextjs",
   "projectType": "application",
-  "implicitDependencies": ["nx-mesh"],
+  "implicitDependencies": ["nx-mesh-old"],
   "targets": {
     "build": {
       "executor": "@nrwl/next:build",

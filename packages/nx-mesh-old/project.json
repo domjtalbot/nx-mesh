@@ -1,5 +1,5 @@
 {
-  "name": "nx-mesh",
+  "name": "nx-mesh-old",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/nx-mesh-old/src",
   "projectType": "library",

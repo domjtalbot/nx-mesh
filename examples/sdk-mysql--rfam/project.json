@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "examples/sdk-mysql--rfam/src",
   "projectType": "library",
-  "implicitDependencies": ["nx-mesh"],
+  "implicitDependencies": ["nx-mesh-old"],
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",

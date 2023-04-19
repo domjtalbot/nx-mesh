@@ -1,5 +1,6 @@
+/* eslint-disable */
 export default {
-  displayName: 'nx-mesh-old',
+  displayName: 'nx-mesh',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -10,5 +11,5 @@ export default {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/packages/nx-mesh-old',
+  coverageDirectory: '../../coverage/packages/nx-mesh',
 };
