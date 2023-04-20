@@ -582,7 +582,7 @@ This is the equivalent of using `graphql-mesh validate`.
 
 ## Credits
 
-This plugin wouldn't be possible without the great teams behind these projects:
+This plugin wouldn't be possible without the projects from these great teams:
 
 - [The Guild](https://www.the-guild.dev) - The team behind [GraphQL Mesh](https://github.com/Urigo/graphql-mesh).
 - [Nrwl](https://github.com/nrwl) - The team behind [Nx](https://github.com/nrwl/nx).
