@@ -576,6 +576,7 @@ This is the equivalent of using `graphql-mesh validate`.
 
 | `nx-mesh` | Nx        |
 | --------- | --------- |
+| `^4.0.0`  | `^15.7.1` |
 | `^3.0.0`  | `^15.4.0` |
 
 <br/>
