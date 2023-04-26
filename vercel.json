@@ -1,5 +1,8 @@
 {
+  "buildCommand": "pnpm nx run examples-sdk-nextjs:build",
   "github": {
     "enabled": false
-  }
+  },
+  "installCommand": "mv .npmrc .npmrc-dev && mv .npmrc-vercel .npmrc &&  pnpm install",
+  "outputDirectory": "dist/examples/sdk-nextjs/.next"
 }
