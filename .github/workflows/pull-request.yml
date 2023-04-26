@@ -29,7 +29,7 @@ jobs:
     secrets: inherit
     strategy:
       matrix:
-        node_version: ['lts/*', latest]
+        node_version: ['lts/*']
     with:
       affected: true
       node_version: ${{ matrix.node_version }}
@@ -42,7 +42,7 @@ jobs:
     secrets: inherit
     strategy:
       matrix:
-        node_version: ['lts/*', latest]
+        node_version: ['lts/*']
     with:
       affected: true
       node_version: ${{ matrix.node_version }}
@@ -54,7 +54,7 @@ jobs:
     secrets: inherit
     strategy:
       matrix:
-        node_version: ['lts/*', latest]
+        node_version: ['lts/*']
     with:
       affected: true
       node_version: ${{ matrix.node_version }}
@@ -66,7 +66,7 @@ jobs:
     secrets: inherit
     strategy:
       matrix:
-        node_version: ['lts/*', latest]
+        node_version: ['lts/*']
     with:
       affected: true
       node_version: ${{ matrix.node_version }}
