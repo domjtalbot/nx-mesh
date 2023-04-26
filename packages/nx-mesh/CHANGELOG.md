@@ -1,5 +1,29 @@
 # nx-mesh
 
+## 4.0.0
+
+### Major Changes
+
+- [#146](https://github.com/domjtalbot/nx-mesh/pull/146) [`08fd42f`](https://github.com/domjtalbot/nx-mesh/commit/08fd42fa7a0530ea80f3e14ec19a682c10592fef) Thanks [@domjtalbot](https://github.com/domjtalbot)! - - Update GraphQL Mesh dependencies
+
+  - Generators install `@graphql-mesh/cli` versions `^0.82.2`
+
+- [#143](https://github.com/domjtalbot/nx-mesh/pull/143) [`d7e2393`](https://github.com/domjtalbot/nx-mesh/commit/d7e2393b7bf5faed2bf8fc008f985adb7da4042f) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Update Nx support to ">=15.7"
+
+### Minor Changes
+
+- [#153](https://github.com/domjtalbot/nx-mesh/pull/153) [`eef0fd6`](https://github.com/domjtalbot/nx-mesh/commit/eef0fd6807e58916d8a11a9501f809c939be52a6) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Bundle `nx-mesh` with esbuild and reduce dependency list
+
+- [#160](https://github.com/domjtalbot/nx-mesh/pull/160) [`ea1dd05`](https://github.com/domjtalbot/nx-mesh/commit/ea1dd05245a07be3dd71e5e0f7ffe8664ff75e0c) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Update GraphQL-Mesh packages to `v1.0.0`
+
+- [`ccb4777`](https://github.com/domjtalbot/nx-mesh/commit/ccb47776586a1c628c73064edb88fc31c045688b) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Rename `.lib.swcrc` to `.swcrc`
+
+### Patch Changes
+
+- [#141](https://github.com/domjtalbot/nx-mesh/pull/141) [`3645190`](https://github.com/domjtalbot/nx-mesh/commit/36451909a8d2373600947f292779535388a01ee0) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Rename `star-wars-api` to `star-wars`
+
+- [`5f01c58`](https://github.com/domjtalbot/nx-mesh/commit/5f01c58c07701a0a8507dff6c14c87193ef44c95) Thanks [@domjtalbot](https://github.com/domjtalbot)! - Use `localhost` as the default host
+
 ## 3.1.0
 
 ### Minor Changes
