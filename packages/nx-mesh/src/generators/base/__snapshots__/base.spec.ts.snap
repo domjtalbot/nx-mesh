@@ -2507,41 +2507,41 @@ export default {
 
 exports[`generators/base app directory should add mesh dependencies to the workspace package.json 1`] = `
 Object {
-  "@graphql-mesh/cli": "^0.82.27",
-  "@graphql-mesh/openapi": "0.35.23",
-  "@graphql-mesh/runtime": "0.46.18",
+  "@graphql-mesh/cli": "^0.82.34",
+  "@graphql-mesh/openapi": "^1.0.0",
+  "@graphql-mesh/runtime": "^1.0.0",
 }
 `;
 
 exports[`generators/base app directory should add mesh dependencies to the workspace package.json 2`] = `
 Object {
-  "@graphql-mesh/cli": "^0.82.27",
-  "@graphql-mesh/runtime": "0.46.18",
-  "@graphql-mesh/soap": "0.17.20",
+  "@graphql-mesh/cli": "^0.82.34",
+  "@graphql-mesh/runtime": "^1.0.0",
+  "@graphql-mesh/soap": "^1.0.0",
 }
 `;
 
 exports[`generators/base app directory should add mesh dependencies to the workspace package.json 3`] = `
 Object {
-  "@graphql-mesh/cli": "^0.82.27",
-  "@graphql-mesh/openapi": "0.35.23",
-  "@graphql-mesh/runtime": "0.46.18",
+  "@graphql-mesh/cli": "^0.82.34",
+  "@graphql-mesh/openapi": "^1.0.0",
+  "@graphql-mesh/runtime": "^1.0.0",
 }
 `;
 
 exports[`generators/base app directory should add mesh dependencies to the workspace package.json 4`] = `
 Object {
-  "@graphql-mesh/cli": "^0.82.27",
-  "@graphql-mesh/openapi": "0.35.23",
-  "@graphql-mesh/runtime": "0.46.18",
+  "@graphql-mesh/cli": "^0.82.34",
+  "@graphql-mesh/openapi": "^1.0.0",
+  "@graphql-mesh/runtime": "^1.0.0",
 }
 `;
 
 exports[`generators/base app directory should add mesh dependencies to the workspace package.json 5`] = `
 Object {
-  "@graphql-mesh/cli": "^0.82.27",
-  "@graphql-mesh/odata": "0.22.18",
-  "@graphql-mesh/runtime": "0.46.18",
+  "@graphql-mesh/cli": "^0.82.34",
+  "@graphql-mesh/odata": "^1.0.0",
+  "@graphql-mesh/runtime": "^1.0.0",
 }
 `;
 
@@ -3042,9 +3042,9 @@ export default {
 
 exports[`generators/base app with standalone config should add mesh dependencies to the workspace package.json 1`] = `
 Object {
-  "@graphql-mesh/cli": "^0.82.27",
-  "@graphql-mesh/openapi": "0.35.23",
-  "@graphql-mesh/runtime": "0.46.18",
+  "@graphql-mesh/cli": "^0.82.34",
+  "@graphql-mesh/openapi": "^1.0.0",
+  "@graphql-mesh/runtime": "^1.0.0",
 }
 `;
 
@@ -5710,41 +5710,41 @@ export default {
 
 exports[`generators/base lib directory should add mesh dependencies to the workspace package.json 1`] = `
 Object {
-  "@graphql-mesh/cli": "^0.82.27",
-  "@graphql-mesh/openapi": "0.35.23",
-  "@graphql-mesh/runtime": "0.46.18",
+  "@graphql-mesh/cli": "^0.82.34",
+  "@graphql-mesh/openapi": "^1.0.0",
+  "@graphql-mesh/runtime": "^1.0.0",
 }
 `;
 
 exports[`generators/base lib directory should add mesh dependencies to the workspace package.json 2`] = `
 Object {
-  "@graphql-mesh/cli": "^0.82.27",
-  "@graphql-mesh/runtime": "0.46.18",
-  "@graphql-mesh/soap": "0.17.20",
+  "@graphql-mesh/cli": "^0.82.34",
+  "@graphql-mesh/runtime": "^1.0.0",
+  "@graphql-mesh/soap": "^1.0.0",
 }
 `;
 
 exports[`generators/base lib directory should add mesh dependencies to the workspace package.json 3`] = `
 Object {
-  "@graphql-mesh/cli": "^0.82.27",
-  "@graphql-mesh/openapi": "0.35.23",
-  "@graphql-mesh/runtime": "0.46.18",
+  "@graphql-mesh/cli": "^0.82.34",
+  "@graphql-mesh/openapi": "^1.0.0",
+  "@graphql-mesh/runtime": "^1.0.0",
 }
 `;
 
 exports[`generators/base lib directory should add mesh dependencies to the workspace package.json 4`] = `
 Object {
-  "@graphql-mesh/cli": "^0.82.27",
-  "@graphql-mesh/openapi": "0.35.23",
-  "@graphql-mesh/runtime": "0.46.18",
+  "@graphql-mesh/cli": "^0.82.34",
+  "@graphql-mesh/openapi": "^1.0.0",
+  "@graphql-mesh/runtime": "^1.0.0",
 }
 `;
 
 exports[`generators/base lib directory should add mesh dependencies to the workspace package.json 5`] = `
 Object {
-  "@graphql-mesh/cli": "^0.82.27",
-  "@graphql-mesh/odata": "0.22.18",
-  "@graphql-mesh/runtime": "0.46.18",
+  "@graphql-mesh/cli": "^0.82.34",
+  "@graphql-mesh/odata": "^1.0.0",
+  "@graphql-mesh/runtime": "^1.0.0",
 }
 `;
 
@@ -6286,9 +6286,9 @@ export default {
 
 exports[`generators/base lib with standalone config should add mesh dependencies to the workspace package.json 1`] = `
 Object {
-  "@graphql-mesh/cli": "^0.82.27",
-  "@graphql-mesh/openapi": "0.35.23",
-  "@graphql-mesh/runtime": "0.46.18",
+  "@graphql-mesh/cli": "^0.82.34",
+  "@graphql-mesh/openapi": "^1.0.0",
+  "@graphql-mesh/runtime": "^1.0.0",
 }
 `;
 
@@ -6789,9 +6789,9 @@ export default {
 
 exports[`generators/base nested within app directory should add mesh dependencies to the workspace package.json 1`] = `
 Object {
-  "@graphql-mesh/cli": "^0.82.27",
-  "@graphql-mesh/openapi": "0.35.23",
-  "@graphql-mesh/runtime": "0.46.18",
+  "@graphql-mesh/cli": "^0.82.34",
+  "@graphql-mesh/openapi": "^1.0.0",
+  "@graphql-mesh/runtime": "^1.0.0",
 }
 `;
 
@@ -7333,8 +7333,8 @@ export default {
 
 exports[`generators/base nested within lib directory should add mesh dependencies to the workspace package.json 1`] = `
 Object {
-  "@graphql-mesh/cli": "^0.82.27",
-  "@graphql-mesh/openapi": "0.35.23",
-  "@graphql-mesh/runtime": "0.46.18",
+  "@graphql-mesh/cli": "^0.82.34",
+  "@graphql-mesh/openapi": "^1.0.0",
+  "@graphql-mesh/runtime": "^1.0.0",
 }
 `;

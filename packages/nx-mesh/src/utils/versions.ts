@@ -13,7 +13,7 @@ export type MeshPackageVersions = {
 
 export const versions: MeshPackageVersions = {
   '@graphql-typed-document-node/core': {
-    '@graphql-typed-document-node/core': '^3.1.2',
+    '@graphql-typed-document-node/core': '^3.2.0',
   },
   '@graphql-codegen/cli': {
     '@graphql-codegen/cli': '^3.2.2',
@@ -22,31 +22,31 @@ export const versions: MeshPackageVersions = {
     '@graphql-codegen/client-preset': '^2.1.1',
   },
   '@graphql-mesh/cli': {
-    '@graphql-mesh/cli': '^0.82.27',
+    '@graphql-mesh/cli': '^0.82.34',
   },
   '@graphql-mesh/graphql': {
-    '@graphql-mesh/graphql': '^0.34.10',
+    '@graphql-mesh/graphql': '^1.0.0',
   },
   '@graphql-mesh/json-schema': {
-    '@graphql-mesh/json-schema': '^0.37.21',
+    '@graphql-mesh/json-schema': '^1.0.0',
   },
   '@graphql-mesh/mysql': {
-    '@graphql-mesh/mysql': '^0.19.17',
+    '@graphql-mesh/mysql': '^1.0.0',
   },
   '@graphql-mesh/neo4j': {
-    '@graphql-mesh/neo4j': '0.22.19',
+    '@graphql-mesh/neo4j': '^1.0.0',
   },
-  '@graphql-mesh/new-openapi': { '@graphql-mesh/new-openapi': '0.8.2' },
-  '@graphql-mesh/odata': { '@graphql-mesh/odata': '0.22.18' },
-  '@graphql-mesh/openapi': { '@graphql-mesh/openapi': '0.35.23' },
+  '@graphql-mesh/new-openapi': { '@graphql-mesh/new-openapi': '^0.8.2' },
+  '@graphql-mesh/odata': { '@graphql-mesh/odata': '^1.0.0' },
+  '@graphql-mesh/openapi': { '@graphql-mesh/openapi': '^1.0.0' },
   '@graphql-mesh/plugin-mock': {
-    '@graphql-mesh/plugin-mock': '0.1.18',
+    '@graphql-mesh/plugin-mock': '^1.0.0',
   },
   '@graphql-mesh/plugin-snapshot': {
-    '@graphql-mesh/plugin-snapshot': '0.1.20',
+    '@graphql-mesh/plugin-snapshot': '^1.0.0',
   },
-  '@graphql-mesh/runtime': { '@graphql-mesh/runtime': '0.46.18' },
-  '@graphql-mesh/soap': { '@graphql-mesh/soap': '0.17.20' },
+  '@graphql-mesh/runtime': { '@graphql-mesh/runtime': '^1.0.0' },
+  '@graphql-mesh/soap': { '@graphql-mesh/soap': '^1.0.0' },
   // '@graphql-mesh/utils': { '@graphql-mesh/utils': '0.42.6' },
-  graphql: { graphql: '16.6.0' },
+  graphql: { graphql: '^16.6.0' },
 };
